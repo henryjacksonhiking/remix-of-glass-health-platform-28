@@ -2,12 +2,18 @@ import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { products } from "@/lib/products";
 import * as LucideIcons from "lucide-react";
+import heroBg from "@/assets/hero-bg.jpg";
 
 const iconMap: Record<string, React.ComponentType<{ className?: string }>> = LucideIcons as any;
 
 const HeroSection = () => {
   return (
     <section className="relative overflow-hidden py-24 md:py-32">
+      {/* Background image */}
+      <div className="absolute inset-0 z-0">
+        <img src={heroBg} alt="" className="w-full h-full object-cover opacity-60" />
+        <div className="absolute inset-0 bg-background/40" />
+      </div>
       {/* Background glows */}
       <div className="absolute top-0 left-1/4 w-96 h-96 rounded-full bg-primary/10 blur-[120px] animate-glow-pulse" />
       <div className="absolute bottom-0 right-1/4 w-80 h-80 rounded-full bg-secondary/10 blur-[100px] animate-glow-pulse" style={{ animationDelay: "1.5s" }} />
