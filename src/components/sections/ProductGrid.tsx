@@ -10,7 +10,7 @@ const iconMap: Record<string, React.ComponentType<{ className?: string; style?: 
 
 const ORBIT_RADIUS = 240;
 const ROTATION_DURATION = 60; // seconds per full rotation
-const NODE_SIZE = 56;
+const NODE_SIZE = 52;
 
 const ProductGrid = () => {
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
@@ -167,9 +167,9 @@ const ProductGrid = () => {
                             boxShadow: `0 0 20px 4px ${product.accentColor}20`,
                           }}
                         >
-                          <IconComp className="w-5 h-5" style={{ color: product.accentColor }} />
+                          <IconComp style={{ color: product.accentColor, width: 22, height: 22 }} />
                         </div>
-                        <span className="text-[10px] font-medium text-muted-foreground whitespace-nowrap text-center">
+                        <span className="whitespace-nowrap text-center font-medium" style={{ fontSize: 11, color: 'rgba(255,255,255,0.85)' }}>
                           {product.name}
                         </span>
                       </div>
@@ -177,23 +177,29 @@ const ProductGrid = () => {
 
                     {/* Expanded card on hover */}
                     {isActive && (
-                      <div className="absolute" style={{ width: 220, left: '50%', top: '50%', transform: 'translate(-50%, -50%)' }}>
+                      <div className="absolute" style={{ width: 'min(380px, 340px)', minWidth: 340, left: '50%', top: '50%', transform: 'translate(-50%, -50%)' }}>
                         <Link
                           to={product.href}
-                          className="glass-panel-hover p-4 block group !border-primary/30 shadow-lg shadow-primary/10"
+                          className="block group backdrop-blur-lg rounded-2xl shadow-lg transition-all duration-300"
+                          style={{
+                            padding: 28,
+                            background: 'rgba(255,255,255,0.10)',
+                            border: '1px solid rgba(255,255,255,0.20)',
+                            boxShadow: '0 8px 32px hsla(170, 100%, 43%, 0.1)',
+                          }}
                         >
                           <div
-                            className="w-9 h-9 rounded-lg mb-2 flex items-center justify-center"
-                            style={{ backgroundColor: `${product.accentColor}15` }}
+                            className="rounded-lg mb-3 flex items-center justify-center"
+                            style={{ width: 40, height: 40, backgroundColor: `${product.accentColor}15` }}
                           >
-                            <IconComp className="w-4.5 h-4.5" style={{ color: product.accentColor }} />
+                            <IconComp style={{ color: product.accentColor, width: 20, height: 20 }} />
                           </div>
-                          <h3 className="text-sm font-medium text-foreground mb-1">{product.name}</h3>
-                          <p className="text-[11px] text-muted-foreground leading-relaxed mb-2 line-clamp-2">
+                          <h3 className="mb-1.5" style={{ fontSize: 18, fontWeight: 600, color: 'rgba(255,255,255,1)' }}>{product.name}</h3>
+                          <p className="line-clamp-2" style={{ fontSize: 14, lineHeight: 1.6, color: 'rgba(255,255,255,0.75)' }}>
                             {product.tagline}
                           </p>
-                          <span className="inline-flex items-center gap-1 text-xs text-primary group-hover:gap-2 transition-all">
-                            Learn more <ArrowRight className="w-3 h-3" />
+                          <span className="inline-flex items-center transition-all group-hover:gap-2" style={{ fontSize: 13, marginTop: 16, gap: 6, color: '#00DEC4', opacity: 1 }}>
+                            Learn more <ArrowRight style={{ width: 14, height: 14 }} />
                           </span>
                         </Link>
                       </div>
