@@ -153,23 +153,25 @@ const ProductGrid = () => {
                       setIsPaused(false);
                     }}
                   >
-                    {/* Default: small circular node */}
+                    {/* Default: circular planet node */}
                     {!isActive && (
                       <div
-                        className="flex flex-col items-center gap-1.5 cursor-pointer"
+                        className="flex flex-col items-center cursor-pointer"
                         style={{ width: NODE_SIZE }}
                       >
                         <div
-                          className="rounded-full flex items-center justify-center glass-panel"
+                          className="rounded-full flex items-center justify-center backdrop-blur-lg"
                           style={{
                             width: NODE_SIZE,
                             height: NODE_SIZE,
-                            boxShadow: `0 0 20px 4px ${product.accentColor}20`,
+                            background: 'rgba(255,255,255,0.05)',
+                            border: '1.5px solid rgba(255,255,255,0.15)',
+                            boxShadow: `0 0 0 6px ${product.accentColor}1F, 0 0 20px ${product.accentColor}26`,
                           }}
                         >
-                          <IconComp style={{ color: product.accentColor, width: 22, height: 22 }} />
+                          <IconComp style={{ color: product.accentColor, width: 28, height: 28 }} />
                         </div>
-                        <span className="whitespace-nowrap text-center font-medium" style={{ fontSize: 11, color: 'rgba(255,255,255,0.85)' }}>
+                        <span className="whitespace-nowrap text-center" style={{ fontSize: 12, fontWeight: 500, marginTop: 8, color: 'rgba(255,255,255,0.9)' }}>
                           {product.name}
                         </span>
                       </div>
