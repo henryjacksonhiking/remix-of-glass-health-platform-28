@@ -53,7 +53,7 @@ const ProductGrid = () => {
     // We want bottom (180) = front (scale 1, opacity 1), top (0) = back
     const rad = (angleDeg * Math.PI) / 180;
     const depth = (Math.sin(rad) + 1) / 2; // 0 at top, 1 at bottom
-    const scale = 0.8 + depth * 0.2;
+    const scale = 0.75 + depth * 0.25;
     const opacity = 0.6 + depth * 0.4;
     return { scale, opacity, zIndex: Math.round(depth * 10) };
   };
