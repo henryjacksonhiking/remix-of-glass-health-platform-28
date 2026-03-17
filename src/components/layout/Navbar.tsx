@@ -12,9 +12,8 @@ const Navbar = () => {
     <nav className="fixed top-0 left-0 right-0 z-50 border-b border-glass-border backdrop-blur-xl bg-background/70">
       <div className="container mx-auto flex items-center justify-between h-16 px-4 md:px-6">
         {/* Logo */}
-        <Link to="/" className="flex items-center gap-2">
-          <div className="w-8 h-8 rounded-lg gradient-btn flex items-center justify-center text-sm font-bold">B</div>
-          <span className="text-lg font-semibold text-foreground">Borna.ai</span>
+        <Link to="/" className="flex items-center">
+          <img src={bornaLogo} alt="Borna" className="h-6 w-auto" />
         </Link>
 
         {/* Desktop Nav */}
