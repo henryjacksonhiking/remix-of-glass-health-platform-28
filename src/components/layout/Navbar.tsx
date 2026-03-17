@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { Menu, X, ChevronDown } from "lucide-react";
 import { products } from "@/lib/products";
 import { motion, AnimatePresence } from "framer-motion";
-import bornaLogo from "@/assets/borna-logo.svg";
+import BornaLogo from "@/components/BornaLogo";
 
 const Navbar = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -13,8 +13,8 @@ const Navbar = () => {
     <nav className="fixed top-0 left-0 right-0 z-50 border-b border-glass-border backdrop-blur-xl bg-background/70">
       <div className="container mx-auto flex items-center justify-between h-16 px-4 md:px-6">
         {/* Logo */}
-        <Link to="/" className="flex items-center">
-          <img src={bornaLogo} alt="Borna" className="h-6 w-auto text-foreground" style={{ color: 'hsl(var(--foreground))' }} />
+        <Link to="/" className="flex items-center text-foreground">
+          <BornaLogo className="h-7 w-auto" />
         </Link>
 
         {/* Desktop Nav */}
