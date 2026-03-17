@@ -10,7 +10,7 @@ const iconMap: Record<string, React.ComponentType<{ className?: string; style?: 
 
 const ORBIT_RADIUS = 240;
 const ROTATION_DURATION = 60; // seconds per full rotation
-const NODE_SIZE = 52;
+const NODE_SIZE = 72;
 
 const ProductGrid = () => {
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
