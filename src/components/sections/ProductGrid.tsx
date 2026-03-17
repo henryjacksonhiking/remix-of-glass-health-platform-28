@@ -10,7 +10,7 @@ const iconMap: Record<string, React.ComponentType<{ className?: string; style?: 
 
 const ORBIT_RADIUS = 240;
 const ROTATION_DURATION = 60; // seconds per full rotation
-const NODE_SIZE = 52;
+const NODE_SIZE = 72;
 
 const ProductGrid = () => {
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
@@ -53,7 +53,7 @@ const ProductGrid = () => {
     // We want bottom (180) = front (scale 1, opacity 1), top (0) = back
     const rad = (angleDeg * Math.PI) / 180;
     const depth = (Math.sin(rad) + 1) / 2; // 0 at top, 1 at bottom
-    const scale = 0.8 + depth * 0.2;
+    const scale = 0.75 + depth * 0.25;
     const opacity = 0.6 + depth * 0.4;
     return { scale, opacity, zIndex: Math.round(depth * 10) };
   };
@@ -153,23 +153,25 @@ const ProductGrid = () => {
                       setIsPaused(false);
                     }}
                   >
-                    {/* Default: small circular node */}
+                    {/* Default: circular planet node */}
                     {!isActive && (
                       <div
-                        className="flex flex-col items-center gap-1.5 cursor-pointer"
+                        className="flex flex-col items-center cursor-pointer"
                         style={{ width: NODE_SIZE }}
                       >
                         <div
-                          className="rounded-full flex items-center justify-center glass-panel"
+                          className="rounded-full flex items-center justify-center backdrop-blur-lg"
                           style={{
                             width: NODE_SIZE,
                             height: NODE_SIZE,
-                            boxShadow: `0 0 20px 4px ${product.accentColor}20`,
+                            background: 'rgba(255,255,255,0.05)',
+                            border: '1.5px solid rgba(255,255,255,0.15)',
+                            boxShadow: `0 0 0 6px ${product.accentColor}1F, 0 0 20px ${product.accentColor}26`,
                           }}
                         >
-                          <IconComp style={{ color: product.accentColor, width: 22, height: 22 }} />
+                          <IconComp style={{ color: product.accentColor, width: 28, height: 28 }} />
                         </div>
-                        <span className="whitespace-nowrap text-center font-medium" style={{ fontSize: 11, color: 'rgba(255,255,255,0.85)' }}>
+                        <span className="whitespace-nowrap text-center" style={{ fontSize: 12, fontWeight: 500, marginTop: 8, color: 'rgba(255,255,255,0.9)' }}>
                           {product.name}
                         </span>
                       </div>
