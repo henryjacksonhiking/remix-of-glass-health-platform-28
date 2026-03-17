@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { products } from "@/lib/products";
+import bornaLogo from "@/assets/borna-logo.svg";
 
 const Footer = () => {
   const columns = [
