@@ -3,12 +3,15 @@ import { motion } from "framer-motion";
 import { products } from "@/lib/products";
 import * as LucideIcons from "lucide-react";
 import heroBg from "@/assets/hero-bg.jpg";
+import mockupCalendar from "@/assets/mockup-calendar.jpg";
+import mockupPayments from "@/assets/mockup-payments.jpg";
+import mockupAppointment from "@/assets/mockup-appointment.jpg";
 
 const iconMap: Record<string, React.ComponentType<{ className?: string }>> = LucideIcons as any;
 
 const HeroSection = () => {
   return (
-    <section className="relative overflow-hidden py-24 md:py-32">
+    <section className="relative overflow-hidden py-20 md:py-28">
       {/* Background image */}
       <div className="absolute inset-0 z-0">
         <img src={heroBg} alt="" className="w-full h-full object-cover opacity-60" />
@@ -19,44 +22,75 @@ const HeroSection = () => {
       <div className="absolute bottom-0 right-1/4 w-80 h-80 rounded-full bg-secondary/10 blur-[100px] animate-glow-pulse" style={{ animationDelay: "1.5s" }} />
 
       <div className="container mx-auto px-4 md:px-6 relative z-10">
-        <div className="max-w-3xl mx-auto text-center mb-16">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-8 items-center mb-16">
+          {/* Left side - Text content */}
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
+            initial={{ opacity: 0, x: -30 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.6 }}
           >
             <span className="inline-block glass-panel px-4 py-1.5 text-xs font-medium text-primary mb-6">
               AI-powered healthcare platform
             </span>
+
+            <h1 className="hero-headline text-foreground mb-6">
+              The operating system for{" "}
+              <span className="gradient-text">modern clinics</span>
+            </h1>
+
+            <p className="body-text mb-8 max-w-lg">
+              Borna.ai unifies patient management, communications, and analytics in one modular ecosystem — built for how clinics actually work.
+            </p>
+
+            <div className="flex flex-col sm:flex-row items-start gap-4">
+              <Link to="/demo" className="gradient-btn text-base px-8 py-3.5">Book a demo</Link>
+              <a href="#platform" className="ghost-btn text-base px-8 py-3.5">See how it works</a>
+            </div>
           </motion.div>
 
-          <motion.h1
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.1 }}
-            className="hero-headline text-foreground mb-6"
-          >
-            The operating system for{" "}
-            <span className="gradient-text">modern clinics</span>
-          </motion.h1>
-
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-            className="body-text mx-auto mb-8"
-          >
-            Borna.ai unifies patient management, communications, and analytics in one modular ecosystem — built for how clinics actually work.
-          </motion.p>
-
+          {/* Right side - Product mockups */}
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.3 }}
-            className="flex flex-col sm:flex-row items-center justify-center gap-4"
+            initial={{ opacity: 0, x: 40 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.7, delay: 0.2 }}
+            className="relative hidden lg:block"
           >
-            <Link to="/demo" className="gradient-btn text-base px-8 py-3.5">Book a demo</Link>
-            <a href="#platform" className="ghost-btn text-base px-8 py-3.5">See how it works</a>
+            {/* Main mockup - Calendar view */}
+            <div className="relative z-10 rounded-xl overflow-hidden shadow-2xl border border-border/30">
+              <img
+                src={mockupCalendar}
+                alt="Borna Care calendar view"
+                className="w-full h-auto"
+              />
+            </div>
+
+            {/* Floating mockup - Payments (bottom-left, overlapping) */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.6 }}
+              className="absolute -bottom-8 -left-12 z-20 w-[55%] rounded-xl overflow-hidden shadow-2xl border border-border/30"
+            >
+              <img
+                src={mockupPayments}
+                alt="Borna Care payments dashboard"
+                className="w-full h-auto"
+              />
+            </motion.div>
+
+            {/* Floating mockup - Appointment detail (top-right) */}
+            <motion.div
+              initial={{ opacity: 0, y: -15 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.8 }}
+              className="absolute -top-6 -right-6 z-20 w-[45%] rounded-xl overflow-hidden shadow-2xl border border-border/30"
+            >
+              <img
+                src={mockupAppointment}
+                alt="Borna Care appointment details"
+                className="w-full h-auto"
+              />
+            </motion.div>
           </motion.div>
         </div>
 
@@ -67,7 +101,7 @@ const HeroSection = () => {
           transition={{ duration: 0.7, delay: 0.4 }}
           className="grid grid-cols-2 md:grid-cols-5 gap-3 max-w-4xl mx-auto"
         >
-          {products.map((product, i) => {
+          {products.map((product) => {
             const IconComp = iconMap[product.features[0]?.icon] || LucideIcons.Box;
             return (
               <Link
