@@ -74,80 +74,51 @@ const ProductGrid = () => {
               <span className="text-[10px] text-muted-foreground">Core Engine</span>
             </motion.div>
 
-            {/* Rotating wrapper */}
-            <div
-              className="absolute inset-0"
-              style={{
-                animation: isPaused ? 'none' : `orbit-spin ${ROTATION_DURATION}s linear infinite`,
-              }}
-            >
-              {products.map((product, i) => {
-                const IconComp = iconMap[product.features[0]?.icon] || LucideIcons.Box;
-                const angle = (angleStep * i - 90) * (Math.PI / 180);
-                const x = Math.cos(angle) * ORBIT_RADIUS;
-                const y = Math.sin(angle) * ORBIT_RADIUS;
+            {/* Static orbital positions */}
+            {products.map((product, i) => {
+              const IconComp = iconMap[product.features[0]?.icon] || LucideIcons.Box;
+              const angle = (angleStep * i - 90) * (Math.PI / 180);
+              const x = Math.cos(angle) * ORBIT_RADIUS;
+              const y = Math.sin(angle) * ORBIT_RADIUS;
 
-                return (
-                  <motion.div
-                    key={product.id}
-                    className="absolute"
-                    style={{
-                      width: 220,
-                      left: '50%',
-                      top: '50%',
-                      transform: `translate(-50%, -50%) translate(${x}px, ${y}px)`,
-                      animation: isPaused ? 'none' : `orbit-counter-spin ${ROTATION_DURATION}s linear infinite`,
-                    }}
-                    initial={{ opacity: 0, scale: 0.6 }}
-                    whileInView={{ opacity: 1, scale: 1 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: i * 0.1, duration: 0.5 }}
-                    onMouseEnter={() => {
-                      setActiveIndex(i);
-                      setIsPaused(true);
-                    }}
-                    onMouseLeave={() => {
-                      setActiveIndex(null);
-                      setIsPaused(false);
-                    }}
+              return (
+                <motion.div
+                  key={product.id}
+                  className="absolute"
+                  style={{
+                    width: 220,
+                    left: '50%',
+                    top: '50%',
+                    transform: `translate(-50%, -50%) translate(${x}px, ${y}px)`,
+                  }}
+                  initial={{ opacity: 0, scale: 0.6 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: i * 0.1, duration: 0.5 }}
+                  onMouseEnter={() => setActiveIndex(i)}
+                  onMouseLeave={() => setActiveIndex(null)}
+                >
+                  <Link
+                    to={product.href}
+                    className={`glass-panel-hover p-5 block group transition-all duration-300 ${
+                      activeIndex === i ? 'scale-110 !border-primary/30' : activeIndex !== null ? 'opacity-50' : ''
+                    }`}
                   >
-                    <Link
-                      to={product.href}
-                      className={`glass-panel-hover p-5 block group transition-all duration-300 ${
-                        activeIndex === i ? 'scale-110 !border-primary/30' : activeIndex !== null ? 'opacity-50' : ''
-                      }`}
+                    <div
+                      className="w-10 h-10 rounded-lg mb-3 flex items-center justify-center"
+                      style={{ backgroundColor: `${product.accentColor}15` }}
                     >
-                      <div
-                        className="w-10 h-10 rounded-lg mb-3 flex items-center justify-center"
-                        style={{ backgroundColor: `${product.accentColor}15` }}
-                      >
-                        <IconComp className="w-5 h-5" style={{ color: product.accentColor }} />
-                      </div>
-                      <h3 className="text-sm font-medium text-foreground mb-1">{product.name}</h3>
-                      <p className="text-xs text-muted-foreground leading-relaxed mb-3 line-clamp-2">{product.tagline}</p>
-                      <span className="inline-flex items-center gap-1 text-xs text-primary group-hover:gap-2 transition-all">
-                        Learn more <ArrowRight className="w-3 h-3" />
-                      </span>
-                    </Link>
-
-                    {/* Connection line to center */}
-                    <svg
-                      className="absolute pointer-events-none"
-                      style={{
-                        width: Math.abs(x) + 20,
-                        height: Math.abs(y) + 20,
-                        left: '50%',
-                        top: '50%',
-                        transform: `translate(${x > 0 ? '-100%' : '0'}, ${y > 0 ? '-100%' : '0'})`,
-                        overflow: 'visible',
-                        opacity: 0,
-                      }}
-                    >
-                    </svg>
-                  </motion.div>
-                );
-              })}
-            </div>
+                      <IconComp className="w-5 h-5" style={{ color: product.accentColor }} />
+                    </div>
+                    <h3 className="text-sm font-medium text-foreground mb-1">{product.name}</h3>
+                    <p className="text-xs text-muted-foreground leading-relaxed mb-3 line-clamp-2">{product.tagline}</p>
+                    <span className="inline-flex items-center gap-1 text-xs text-primary group-hover:gap-2 transition-all">
+                      Learn more <ArrowRight className="w-3 h-3" />
+                    </span>
+                  </Link>
+                </motion.div>
+              );
+            })}
 
             {/* Floating particles */}
             {[...Array(8)].map((_, i) => (
