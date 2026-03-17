@@ -124,10 +124,8 @@ const ProductGrid = () => {
                       to={product.href}
                       className={`glass-panel-hover p-4 block group transition-all duration-300 ${
                         activeIndex === i
-                          ? 'scale-110 !border-primary/30'
-                          : activeIndex !== null
-                            ? 'opacity-50'
-                            : ''
+                          ? 'scale-105 !border-primary/30 shadow-lg shadow-primary/10'
+                          : ''
                       }`}
                     >
                       <div
