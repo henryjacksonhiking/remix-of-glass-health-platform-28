@@ -40,9 +40,8 @@ const Footer = () => {
         <div className="grid grid-cols-2 md:grid-cols-5 gap-8">
           {/* Brand col */}
           <div className="col-span-2 md:col-span-1">
-            <Link to="/" className="flex items-center gap-2 mb-4">
-              <div className="w-8 h-8 rounded-lg gradient-btn flex items-center justify-center text-sm font-bold">B</div>
-              <span className="text-lg font-semibold text-foreground">Borna.ai</span>
+            <Link to="/" className="flex items-center mb-4">
+              <img src={bornaLogo} alt="Borna" className="h-6 w-auto" />
             </Link>
             <p className="text-sm text-muted-foreground leading-relaxed">
               The operating system for modern clinics.

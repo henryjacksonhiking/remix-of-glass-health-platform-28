@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { Menu, X, ChevronDown } from "lucide-react";
 import { products } from "@/lib/products";
 import { motion, AnimatePresence } from "framer-motion";
+import bornaLogo from "@/assets/borna-logo.svg";
 
 const Navbar = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
