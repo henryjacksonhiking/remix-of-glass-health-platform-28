@@ -167,9 +167,9 @@ const ProductGrid = () => {
                             boxShadow: `0 0 20px 4px ${product.accentColor}20`,
                           }}
                         >
-                          <IconComp className="w-5 h-5" style={{ color: product.accentColor }} />
+                          <IconComp style={{ color: product.accentColor, width: 22, height: 22 }} />
                         </div>
-                        <span className="text-[10px] font-medium text-muted-foreground whitespace-nowrap text-center">
+                        <span className="whitespace-nowrap text-center font-medium" style={{ fontSize: 11, color: 'rgba(255,255,255,0.85)' }}>
                           {product.name}
                         </span>
                       </div>
