@@ -1,19 +1,19 @@
 import { Link } from "react-router-dom";
-import { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { useState, useRef, useEffect } from "react";
+import { motion } from "framer-motion";
 import { products } from "@/lib/products";
 import * as LucideIcons from "lucide-react";
-import { ArrowRight, Cpu } from "lucide-react";
+import { ArrowRight } from "lucide-react";
+import bornaIcon from "@/assets/borna-icon.svg";
 
 const iconMap: Record<string, React.ComponentType<{ className?: string; style?: React.CSSProperties }>> = LucideIcons as any;
 
-const ORBIT_RADIUS = 300; // px from center
-const ROTATION_DURATION = 60; // seconds for full rotation
+const ORBIT_RADIUS = 260;
+const ROTATION_DURATION = 50;
 
 const ProductGrid = () => {
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
   const [isPaused, setIsPaused] = useState(false);
-
   const angleStep = 360 / products.length;
 
   return (
@@ -27,11 +27,25 @@ const ProductGrid = () => {
         </div>
 
         {/* Desktop orbital layout */}
-        <div className="hidden lg:block">
-          <div className="relative mx-auto" style={{ width: 700, height: 700 }}>
-            {/* Orbit ring */}
+        <div className="hidden lg:flex items-center justify-center">
+          <div
+            className="relative"
+            style={{ width: ORBIT_RADIUS * 2 + 240, height: ORBIT_RADIUS * 2 + 240 }}
+          >
+            {/* Outer subtle ring */}
             <div
-              className="absolute rounded-full border border-glass-border"
+              className="absolute rounded-full border border-glass-border opacity-20"
+              style={{
+                width: ORBIT_RADIUS * 2 + 80,
+                height: ORBIT_RADIUS * 2 + 80,
+                top: '50%',
+                left: '50%',
+                transform: 'translate(-50%, -50%)',
+              }}
+            />
+            {/* Main orbit ring */}
+            <div
+              className="absolute rounded-full border border-glass-border opacity-40"
               style={{
                 width: ORBIT_RADIUS * 2,
                 height: ORBIT_RADIUS * 2,
@@ -40,12 +54,12 @@ const ProductGrid = () => {
                 transform: 'translate(-50%, -50%)',
               }}
             />
-            {/* Second subtle ring */}
+            {/* Inner ring */}
             <div
-              className="absolute rounded-full border border-glass-border opacity-30"
+              className="absolute rounded-full border border-glass-border opacity-15"
               style={{
-                width: ORBIT_RADIUS * 2 + 60,
-                height: ORBIT_RADIUS * 2 + 60,
+                width: ORBIT_RADIUS * 2 - 100,
+                height: ORBIT_RADIUS * 2 - 100,
                 top: '50%',
                 left: '50%',
                 transform: 'translate(-50%, -50%)',
@@ -53,32 +67,29 @@ const ProductGrid = () => {
             />
 
             {/* Center hub */}
-            <motion.div
+            <div
               className="absolute z-10 flex flex-col items-center justify-center glass-panel"
               style={{
-                width: 140,
-                height: 140,
+                width: 130,
+                height: 130,
                 top: '50%',
                 left: '50%',
                 transform: 'translate(-50%, -50%)',
                 borderRadius: '50%',
                 boxShadow: '0 0 80px 20px hsla(170, 100%, 43%, 0.12)',
               }}
-              initial={{ scale: 0, opacity: 0 }}
-              whileInView={{ scale: 1, opacity: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, ease: "easeOut" }}
             >
-              <Cpu className="w-8 h-8 text-primary mb-1" />
-              <span className="text-sm font-semibold text-foreground">Borna AI</span>
-              <span className="text-[10px] text-muted-foreground">Core Engine</span>
-            </motion.div>
+              <img src={bornaIcon} alt="Borna AI" className="w-12 h-12 mb-1" />
+              <span className="text-[10px] font-medium text-muted-foreground">Core Engine</span>
+            </div>
 
             {/* Rotating wrapper */}
             <div
               className="absolute inset-0"
               style={{
-                animation: isPaused ? 'none' : `orbit-spin ${ROTATION_DURATION}s linear infinite`,
+                animation: isPaused
+                  ? 'none'
+                  : `orbit-spin ${ROTATION_DURATION}s linear infinite`,
               }}
             >
               {products.map((product, i) => {
@@ -88,20 +99,18 @@ const ProductGrid = () => {
                 const y = Math.sin(angle) * ORBIT_RADIUS;
 
                 return (
-                  <motion.div
+                  <div
                     key={product.id}
                     className="absolute"
                     style={{
-                      width: 220,
+                      width: 200,
                       left: '50%',
                       top: '50%',
                       transform: `translate(-50%, -50%) translate(${x}px, ${y}px)`,
-                      animation: isPaused ? 'none' : `orbit-counter-spin ${ROTATION_DURATION}s linear infinite`,
+                      animation: isPaused
+                        ? 'none'
+                        : `orbit-counter-spin ${ROTATION_DURATION}s linear infinite`,
                     }}
-                    initial={{ opacity: 0, scale: 0.6 }}
-                    whileInView={{ opacity: 1, scale: 1 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: i * 0.1, duration: 0.5 }}
                     onMouseEnter={() => {
                       setActiveIndex(i);
                       setIsPaused(true);
@@ -113,54 +122,45 @@ const ProductGrid = () => {
                   >
                     <Link
                       to={product.href}
-                      className={`glass-panel-hover p-5 block group transition-all duration-300 ${
-                        activeIndex === i ? 'scale-110 !border-primary/30' : activeIndex !== null ? 'opacity-50' : ''
+                      className={`glass-panel-hover p-4 block group transition-all duration-300 ${
+                        activeIndex === i
+                          ? 'scale-110 !border-primary/30'
+                          : activeIndex !== null
+                            ? 'opacity-50'
+                            : ''
                       }`}
                     >
                       <div
-                        className="w-10 h-10 rounded-lg mb-3 flex items-center justify-center"
+                        className="w-9 h-9 rounded-lg mb-2 flex items-center justify-center"
                         style={{ backgroundColor: `${product.accentColor}15` }}
                       >
-                        <IconComp className="w-5 h-5" style={{ color: product.accentColor }} />
+                        <IconComp className="w-4.5 h-4.5" style={{ color: product.accentColor }} />
                       </div>
                       <h3 className="text-sm font-medium text-foreground mb-1">{product.name}</h3>
-                      <p className="text-xs text-muted-foreground leading-relaxed mb-3 line-clamp-2">{product.tagline}</p>
+                      <p className="text-[11px] text-muted-foreground leading-relaxed mb-2 line-clamp-2">
+                        {product.tagline}
+                      </p>
                       <span className="inline-flex items-center gap-1 text-xs text-primary group-hover:gap-2 transition-all">
                         Learn more <ArrowRight className="w-3 h-3" />
                       </span>
                     </Link>
-
-                    {/* Connection line to center */}
-                    <svg
-                      className="absolute pointer-events-none"
-                      style={{
-                        width: Math.abs(x) + 20,
-                        height: Math.abs(y) + 20,
-                        left: '50%',
-                        top: '50%',
-                        transform: `translate(${x > 0 ? '-100%' : '0'}, ${y > 0 ? '-100%' : '0'})`,
-                        overflow: 'visible',
-                        opacity: 0,
-                      }}
-                    >
-                    </svg>
-                  </motion.div>
+                  </div>
                 );
               })}
             </div>
 
             {/* Floating particles */}
-            {[...Array(8)].map((_, i) => (
+            {[...Array(6)].map((_, i) => (
               <motion.div
                 key={`particle-${i}`}
                 className="absolute w-1 h-1 rounded-full bg-primary/30"
                 style={{
-                  left: `${20 + Math.random() * 60}%`,
-                  top: `${20 + Math.random() * 60}%`,
+                  left: `${25 + Math.random() * 50}%`,
+                  top: `${25 + Math.random() * 50}%`,
                 }}
                 animate={{
-                  y: [0, -15, 0],
-                  opacity: [0.2, 0.6, 0.2],
+                  y: [0, -12, 0],
+                  opacity: [0.2, 0.5, 0.2],
                 }}
                 transition={{
                   duration: 3 + Math.random() * 2,
