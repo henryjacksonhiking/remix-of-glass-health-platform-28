@@ -101,41 +101,50 @@ const ProductStory = () => {
           </div>
         </div>
 
-        <div
-          key={`story-content-${safeActiveTab}`}
-          className="grid grid-cols-1 lg:grid-cols-5 gap-8 md:gap-12 items-start max-w-5xl mx-auto animate-fade-in"
-        >
-          <div className="lg:col-span-2 order-1 self-start animate-fade-in">
-            <span className="inline-block rounded-full bg-primary/15 text-primary text-xs font-medium px-3 py-1 mb-4">
-              {current.badge}
-            </span>
-            <h3 className="text-xl md:text-2xl font-medium text-foreground mb-3 tracking-tight">
-              {current.headline}
-            </h3>
-            <p className="text-[15px] text-muted-foreground leading-relaxed max-w-[50ch]">
-              {current.body}
-            </p>
-          </div>
-
-          <div className="lg:col-span-3 order-2">
+        <div className="relative max-w-5xl mx-auto min-h-[480px] lg:min-h-[560px]">
+          {productStoryTabs.map((tab, i) => (
             <div
-              className={`glass-panel p-4 rounded-2xl overflow-hidden ${
-                current.mobileLayout ? 'max-h-[320px]' : ''
-              }`}
+              key={tab.label}
+              className="grid grid-cols-1 lg:grid-cols-5 gap-8 md:gap-12 items-start transition-opacity duration-150 ease-in-out"
+              style={{
+                opacity: i === safeActiveTab ? 1 : 0,
+                position: i === safeActiveTab ? 'relative' : 'absolute',
+                top: 0,
+                left: 0,
+                right: 0,
+                pointerEvents: i === safeActiveTab ? 'auto' : 'none',
+              }}
             >
-              <img
-                key={`story-image-${safeActiveTab}`}
-                src={current.image}
-                alt={current.label}
-                className={`w-full rounded-xl animate-fade-in ${
-                  current.mobileLayout
-                    ? "max-w-[280px] mx-auto md:max-w-full h-full object-cover object-top"
-                    : "h-auto object-contain"
-                }`}
-                loading="lazy"
-              />
+              <div className="lg:col-span-2 order-1 self-start min-h-[200px]">
+                <span className="inline-block rounded-full bg-primary/15 text-primary text-xs font-medium px-3 py-1 mb-4">
+                  {tab.badge}
+                </span>
+                <h3 className="text-xl md:text-2xl font-medium text-foreground mb-3 tracking-tight">
+                  {tab.headline}
+                </h3>
+                <p className="text-[15px] text-muted-foreground leading-relaxed max-w-[50ch]">
+                  {tab.body}
+                </p>
+              </div>
+
+              <div className="lg:col-span-3 order-2">
+                <div
+                  className="glass-panel p-4 rounded-2xl overflow-hidden lg:h-[520px]"
+                >
+                  <img
+                    src={tab.image}
+                    alt={tab.label}
+                    className={`w-full rounded-xl h-full ${
+                      tab.mobileLayout
+                        ? "max-w-[280px] mx-auto md:max-w-full object-cover object-top"
+                        : "object-contain object-top"
+                    }`}
+                    loading="lazy"
+                  />
+                </div>
+              </div>
             </div>
-          </div>
+          ))}
         </div>
       </div>
 
