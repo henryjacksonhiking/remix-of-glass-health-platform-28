@@ -5,7 +5,7 @@ const rows = [
     headline: "Patients book themselves, any time",
     body: "Patients choose their service, provider, and time slot — from any device, at any hour. Your schedule fills automatically, even while your team is with other patients.",
     link: "See online booking ›",
-    image: "/images/step_1_-_Choose_your_appointment.png",
+    image: "/images/Choose_your_appointment-2.png",
     mobileImage: false,
   },
   {
