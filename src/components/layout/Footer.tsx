@@ -65,7 +65,7 @@ const Footer = () => {
         </div>
 
         {/* Newsletter */}
-        <div className="mt-12 pt-8 border-t border-glass-border flex flex-col md:flex-row items-center justify-between gap-4">
+        <div className="mt-12 pt-8 border-t border-glass-border flex flex-col md:flex-row items-center justify-center gap-8">
           <p className="text-sm text-muted-foreground">Stay updated with Borna.ai</p>
           <div className="flex gap-2">
             <input
