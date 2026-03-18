@@ -118,13 +118,18 @@ const ProductStory = () => {
           </div>
 
           <div className="lg:col-span-3 order-2">
-            <div className="glass-panel p-4 rounded-2xl">
+            <div
+              className="glass-panel p-4 rounded-2xl overflow-hidden"
+              style={{ maxHeight: current.mobileLayout ? '520px' : undefined }}
+            >
               <img
                 key={`story-image-${safeActiveTab}`}
                 src={current.image}
                 alt={current.label}
-                className={`w-full h-auto object-contain rounded-xl animate-fade-in ${
-                  current.mobileLayout ? "max-w-[280px] mx-auto md:max-w-full" : ""
+                className={`w-full rounded-xl animate-fade-in ${
+                  current.mobileLayout
+                    ? "max-w-[280px] mx-auto md:max-w-full h-full object-cover object-top"
+                    : "h-auto object-contain"
                 }`}
                 loading="lazy"
               />
