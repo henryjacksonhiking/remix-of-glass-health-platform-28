@@ -11,7 +11,7 @@ const iconMap: Record<string, React.ComponentType<{ className?: string }>> = Luc
 
 const HeroSection = () => {
   return (
-    <section className="relative overflow-visible py-20 md:py-28">
+    <section className="relative overflow-hidden md:overflow-visible pt-10 pb-8 md:py-28">
       {/* Background image */}
       <div className="absolute inset-0 z-0">
         <img src={heroBg} alt="" className="w-full h-full object-cover opacity-60" />
@@ -29,22 +29,22 @@ const HeroSection = () => {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6 }}
           >
-            <span className="inline-block glass-panel px-4 py-1.5 text-xs font-medium text-primary mb-6">
+            <span className="inline-block glass-panel px-4 py-1.5 text-[11px] md:text-xs font-medium text-primary mb-3 md:mb-6">
               AI-powered healthcare platform
             </span>
 
-            <h1 className="hero-headline text-foreground mb-6">
+            <h1 className="hero-headline text-foreground mb-3 md:mb-6">
               The operating system for{" "}
               <span className="gradient-text">modern clinics</span>
             </h1>
 
-            <p className="body-text mb-8 max-w-lg">
+            <p className="text-[13px] md:text-[17px] text-muted-foreground leading-relaxed mb-5 md:mb-8 max-w-lg line-clamp-2 md:line-clamp-none">
               Borna.ai unifies patient management, communications, and analytics in one modular ecosystem — built for how clinics actually work.
             </p>
 
-            <div className="flex flex-col sm:flex-row items-start gap-4">
-              <Link to="/demo" className="gradient-btn text-base px-8 py-3.5">Book a demo</Link>
-              <a href="#platform" className="ghost-btn text-base px-8 py-3.5">See how it works</a>
+            <div className="flex flex-col sm:flex-row items-stretch sm:items-start gap-2.5 sm:gap-4 mb-6 md:mb-0">
+              <Link to="/demo" className="gradient-btn text-base px-8 py-3 h-11 flex items-center justify-center w-full sm:w-auto whitespace-nowrap">Book a demo</Link>
+              <a href="#platform" className="ghost-btn text-base px-8 py-3 h-11 flex items-center justify-center w-full sm:w-auto whitespace-nowrap">See how it works</a>
             </div>
           </motion.div>
 
@@ -53,10 +53,19 @@ const HeroSection = () => {
             initial={{ opacity: 0, x: 40 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.7, delay: 0.2 }}
-            className="mt-8 lg:mt-0 relative flex justify-center lg:block"
+            className="mt-0 lg:mt-0 relative flex justify-center lg:block"
           >
-            {/* Mobile/Tablet: single centered mockup */}
-            <div className="lg:hidden w-full max-w-[340px] md:max-w-[420px] mx-auto rounded-xl overflow-hidden shadow-2xl border border-border/30">
+            {/* Mobile: single flat mockup */}
+            <div className="md:hidden w-full max-w-[340px] mx-auto rounded-xl overflow-hidden">
+              <img
+                src={mockupCalendar}
+                alt="Borna Care calendar view"
+                className="w-full max-h-[220px] object-cover object-top rounded-xl"
+              />
+            </div>
+
+            {/* Tablet: single centered mockup */}
+            <div className="hidden md:block lg:hidden w-full max-w-[420px] mx-auto rounded-xl overflow-hidden shadow-2xl border border-border/30">
               <img
                 src={mockupCalendar}
                 alt="Borna Care calendar view"

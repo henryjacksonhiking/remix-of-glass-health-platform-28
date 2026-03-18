@@ -134,7 +134,7 @@
   }
 
   .hero-headline {
-    @apply text-4xl md:text-5xl lg:text-[52px] font-medium tracking-tight leading-tight;
+    @apply text-[28px] md:text-5xl lg:text-[52px] font-medium tracking-tight leading-[1.2] md:leading-tight;
     letter-spacing: -1.5px;
   }
 
