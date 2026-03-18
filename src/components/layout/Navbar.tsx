@@ -152,7 +152,21 @@ const Navbar = () => {
               <Link to="/solutions" onClick={() => setMobileOpen(false)} className="block px-3 py-2 text-sm text-foreground">Solutions</Link>
               <Link to="/pricing" onClick={() => setMobileOpen(false)} className="block px-3 py-2 text-sm text-foreground">Pricing</Link>
               <Link to="/resources" onClick={() => setMobileOpen(false)} className="block px-3 py-2 text-sm text-foreground">Resources</Link>
-              <Link to="/demo" onClick={() => setMobileOpen(false)} className="gradient-btn text-sm block text-center mt-4">Book a demo</Link>
+              <a
+                href="https://care.borna.ai"
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={() => setMobileOpen(false)}
+                className="block px-3 py-2 text-sm font-medium rounded-lg mt-2 text-center transition-all duration-150 ease-in-out"
+                style={{
+                  background: 'transparent',
+                  border: '1px solid rgba(255, 255, 255, 0.18)',
+                  color: 'rgba(255, 255, 255, 0.85)',
+                }}
+              >
+                Sign in
+              </a>
+              <Link to="/demo" onClick={() => setMobileOpen(false)} className="gradient-btn text-sm block text-center mt-2">Book a demo</Link>
             </div>
           </motion.div>
         )}
