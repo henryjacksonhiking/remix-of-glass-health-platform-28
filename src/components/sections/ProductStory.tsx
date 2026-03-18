@@ -170,7 +170,7 @@ const ProductStory = () => {
                     alt={tab.label}
                     className={`w-full rounded-xl ${
                       tab.mobileLayout
-                        ? "max-w-full object-cover object-[center_top] h-[320px] md:h-[380px] md:max-w-full lg:max-w-full"
+                        ? "block h-auto"
                         : "object-contain object-top h-full"
                     }`}
                     loading="lazy"
