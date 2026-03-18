@@ -162,19 +162,24 @@ const ProductStory = () => {
               </div>
 
               <div className="lg:col-span-3 order-2">
-                <div
-                  className="glass-panel p-4 rounded-2xl overflow-hidden lg:h-[520px]"
-                >
-                  <img
-                    src={tab.image}
-                    alt={tab.label}
-                    className={`w-full rounded-xl ${
-                      tab.mobileLayout
-                        ? "block h-auto"
-                        : "object-contain object-top h-full"
-                    }`}
-                    loading="lazy"
-                  />
+                <div className="glass-panel p-4 rounded-2xl overflow-hidden lg:h-[520px]">
+                  {tab.mobileLayout ? (
+                    <div className="rounded-xl overflow-hidden max-h-[300px] lg:max-h-none lg:h-full">
+                      <img
+                        src={tab.image}
+                        alt={tab.label}
+                        className="w-full h-[300px] lg:h-full object-cover object-[center_top] rounded-xl"
+                        loading="lazy"
+                      />
+                    </div>
+                  ) : (
+                    <img
+                      src={tab.image}
+                      alt={tab.label}
+                      className="w-full rounded-xl h-full object-contain object-top"
+                      loading="lazy"
+                    />
+                  )}
                 </div>
               </div>
             </div>
