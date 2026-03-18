@@ -13,6 +13,7 @@ const Index = () => {
     <PageWrapper>
       <HeroSection />
       <SocialProofBar />
+      <ProductStory />
       <ProductGrid />
       <ValueProps />
       <Testimonials />
