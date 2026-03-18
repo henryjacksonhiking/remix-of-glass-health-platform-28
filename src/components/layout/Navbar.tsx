@@ -34,21 +34,40 @@ const Navbar = () => {
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: 8 }}
                   transition={{ duration: 0.2 }}
-                  className="absolute top-full left-0 mt-2 w-72 glass-panel p-2"
+                  className="absolute top-full left-0 mt-2 w-72 p-2 rounded-xl"
+                  style={{
+                    background: 'rgba(10, 15, 40, 0.97)',
+                    backdropFilter: 'blur(12px)',
+                    border: '1px solid rgba(255, 255, 255, 0.12)',
+                    boxShadow: '0 8px 32px rgba(0, 0, 0, 0.4)',
+                  }}
                 >
                   {products.map((p) => (
                     <Link
                       key={p.id}
                       to={p.href}
-                      className="flex items-center gap-3 px-3 py-2.5 rounded-lg hover:bg-glass-hover transition-colors"
+                      className="flex items-center gap-3 px-3 py-2.5 rounded-lg transition-all duration-150 ease-in-out focus:outline-2 focus:outline-offset-2"
+                      style={{
+                        outlineColor: '#00DEC4',
+                      }}
+                      onMouseEnter={(e) => {
+                        e.currentTarget.style.background = 'rgba(255, 255, 255, 0.08)';
+                        const nameEl = e.currentTarget.querySelector('[data-name]') as HTMLElement;
+                        if (nameEl) nameEl.style.color = '#00DEC4';
+                      }}
+                      onMouseLeave={(e) => {
+                        e.currentTarget.style.background = 'transparent';
+                        const nameEl = e.currentTarget.querySelector('[data-name]') as HTMLElement;
+                        if (nameEl) nameEl.style.color = 'rgba(255, 255, 255, 1)';
+                      }}
                     >
                       <div
-                        className="w-2 h-2 rounded-full shrink-0"
-                        style={{ backgroundColor: p.accentColor }}
+                        className="shrink-0 rounded-full"
+                        style={{ width: 8, height: 8, backgroundColor: p.accentColor, opacity: 1 }}
                       />
                       <div>
-                        <div className="text-sm font-medium text-foreground">{p.name}</div>
-                        <div className="text-xs text-muted-foreground">{p.tagline}</div>
+                        <div data-name className="text-sm font-medium" style={{ color: 'rgba(255, 255, 255, 1)', fontWeight: 500, transition: 'color 150ms ease' }}>{p.name}</div>
+                        <div className="text-xs" style={{ color: 'rgba(255, 255, 255, 0.75)' }}>{p.tagline}</div>
                       </div>
                     </Link>
                   ))}
