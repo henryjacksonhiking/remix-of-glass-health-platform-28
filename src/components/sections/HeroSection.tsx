@@ -80,7 +80,7 @@ const HeroSection = () => {
                 <img
                   src={mockupCalendar}
                   alt="Borna Care calendar view"
-                  className="w-full h-auto"
+                  className="w-full h-auto rounded-xl"
                 />
               </div>
 
