@@ -75,9 +75,9 @@ const Navbar = () => {
               )}
             </AnimatePresence>
           </div>
-          <Link to="/solutions" className="hidden lg:block text-sm text-muted-foreground hover:text-foreground transition-colors whitespace-nowrap">Solutions</Link>
-          <Link to="/pricing" className="hidden lg:block text-sm text-muted-foreground hover:text-foreground transition-colors whitespace-nowrap">Pricing</Link>
-          <Link to="/resources" className="hidden lg:block text-sm text-muted-foreground hover:text-foreground transition-colors whitespace-nowrap">Resources</Link>
+          <Link to="/solutions" className="text-[13px] lg:text-sm text-muted-foreground hover:text-foreground transition-colors whitespace-nowrap">Solutions</Link>
+          <Link to="/pricing" className="text-[13px] lg:text-sm text-muted-foreground hover:text-foreground transition-colors whitespace-nowrap">Pricing</Link>
+          <Link to="/resources" className="text-[13px] lg:text-sm text-muted-foreground hover:text-foreground transition-colors whitespace-nowrap">Resources</Link>
         </div>
 
         {/* Desktop CTA */}
