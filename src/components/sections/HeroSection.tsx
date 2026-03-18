@@ -11,7 +11,7 @@ const iconMap: Record<string, React.ComponentType<{ className?: string }>> = Luc
 
 const HeroSection = () => {
   return (
-    <section className="relative overflow-hidden py-20 md:py-28">
+    <section className="relative overflow-visible py-20 md:py-28">
       {/* Background image */}
       <div className="absolute inset-0 z-0">
         <img src={heroBg} alt="" className="w-full h-full object-cover opacity-60" />
@@ -22,7 +22,7 @@ const HeroSection = () => {
       <div className="absolute bottom-0 right-1/4 w-80 h-80 rounded-full bg-secondary/10 blur-[100px] animate-glow-pulse" style={{ animationDelay: "1.5s" }} />
 
       <div className="container mx-auto px-4 md:px-6 relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-8 items-center mb-44">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center mb-16 lg:mb-44">
           {/* Left side - Text content */}
           <motion.div
             initial={{ opacity: 0, x: -30 }}
@@ -53,10 +53,10 @@ const HeroSection = () => {
             initial={{ opacity: 0, x: 40 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.7, delay: 0.2 }}
-            className="relative hidden lg:block"
+            className="mt-8 lg:mt-0 relative flex justify-center lg:block"
           >
-            {/* Main mockup - Calendar view */}
-            <div className="relative z-10 rounded-xl overflow-hidden shadow-2xl border border-border/30">
+            {/* Mobile/Tablet: single centered mockup */}
+            <div className="lg:hidden w-full max-w-[340px] md:max-w-[420px] mx-auto rounded-xl overflow-hidden shadow-2xl border border-border/30">
               <img
                 src={mockupCalendar}
                 alt="Borna Care calendar view"
@@ -64,33 +64,45 @@ const HeroSection = () => {
               />
             </div>
 
-            {/* Floating mockup - Payments (bottom-left, overlapping) */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.6 }}
-              className="absolute -bottom-8 -left-12 z-20 w-[55%] rounded-xl overflow-hidden shadow-2xl border border-border/30"
-            >
-              <img
-                src={mockupPayments}
-                alt="Borna Care payments dashboard"
-                className="w-full h-auto"
-              />
-            </motion.div>
+            {/* Desktop: layered mockups */}
+            <div className="hidden lg:block relative">
+              {/* Main mockup - Calendar view */}
+              <div className="relative z-10 rounded-xl overflow-hidden shadow-2xl border border-border/30">
+                <img
+                  src={mockupCalendar}
+                  alt="Borna Care calendar view"
+                  className="w-full h-auto"
+                />
+              </div>
 
-            {/* Floating mockup - Appointment detail (top-right) */}
-            <motion.div
-              initial={{ opacity: 0, y: -15 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.8 }}
-              className="absolute -top-6 -right-6 z-20 w-[45%] rounded-xl overflow-hidden shadow-2xl border border-border/30"
-            >
-              <img
-                src={mockupAppointment}
-                alt="Borna Care appointment details"
-                className="w-full h-auto"
-              />
-            </motion.div>
+              {/* Floating mockup - Payments (bottom-left, overlapping) */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.6 }}
+                className="absolute -bottom-8 -left-12 z-20 w-[55%] rounded-xl overflow-hidden shadow-2xl border border-border/30"
+              >
+                <img
+                  src={mockupPayments}
+                  alt="Borna Care payments dashboard"
+                  className="w-full h-auto"
+                />
+              </motion.div>
+
+              {/* Floating mockup - Appointment detail (top-right) */}
+              <motion.div
+                initial={{ opacity: 0, y: -15 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.8 }}
+                className="absolute -top-6 -right-6 z-20 w-[45%] rounded-xl overflow-hidden shadow-2xl border border-border/30"
+              >
+                <img
+                  src={mockupAppointment}
+                  alt="Borna Care appointment details"
+                  className="w-full h-auto"
+                />
+              </motion.div>
+            </div>
           </motion.div>
         </div>
 

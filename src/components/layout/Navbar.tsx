@@ -11,20 +11,20 @@ const Navbar = () => {
 
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 border-b border-glass-border backdrop-blur-xl bg-background/70">
-      <div className="container mx-auto flex items-center justify-between h-16 px-4 md:px-6">
+      <div className="container mx-auto flex flex-nowrap items-center justify-between h-16 px-4 md:px-6">
         {/* Logo */}
-        <Link to="/" className="flex items-center text-foreground">
+        <Link to="/" className="flex shrink-0 items-center text-foreground">
           <BornaLogo className="h-7 w-auto" />
         </Link>
 
         {/* Desktop Nav */}
-        <div className="hidden md:flex items-center gap-8">
+        <div className="hidden md:flex items-center gap-2 lg:gap-8">
           <div
             className="relative"
             onMouseEnter={() => setProductsOpen(true)}
             onMouseLeave={() => setProductsOpen(false)}
           >
-            <button className="flex items-center gap-1 text-sm text-muted-foreground hover:text-foreground transition-colors">
+            <button className="flex items-center gap-1 text-[13px] lg:text-sm text-muted-foreground hover:text-foreground transition-colors whitespace-nowrap">
               Products <ChevronDown className="w-3.5 h-3.5" />
             </button>
             <AnimatePresence>
@@ -75,23 +75,25 @@ const Navbar = () => {
               )}
             </AnimatePresence>
           </div>
-          <Link to="/solutions" className="text-sm text-muted-foreground hover:text-foreground transition-colors">Solutions</Link>
-          <Link to="/pricing" className="text-sm text-muted-foreground hover:text-foreground transition-colors">Pricing</Link>
-          <Link to="/resources" className="text-sm text-muted-foreground hover:text-foreground transition-colors">Resources</Link>
+          <Link to="/solutions" className="hidden lg:block text-sm text-muted-foreground hover:text-foreground transition-colors whitespace-nowrap">Solutions</Link>
+          <Link to="/pricing" className="hidden lg:block text-sm text-muted-foreground hover:text-foreground transition-colors whitespace-nowrap">Pricing</Link>
+          <Link to="/resources" className="hidden lg:block text-sm text-muted-foreground hover:text-foreground transition-colors whitespace-nowrap">Resources</Link>
         </div>
 
         {/* Desktop CTA */}
-        <div className="hidden md:flex items-center gap-3">
+        <div className="hidden md:flex items-center gap-2 lg:gap-3">
           <a
             href="https://care.borna.ai"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-sm font-medium rounded-lg px-[18px] py-2 transition-all duration-150 ease-in-out"
+            className="text-sm font-medium rounded-lg px-3.5 lg:px-[18px] py-2 transition-all duration-150 ease-in-out whitespace-nowrap"
             style={{
               background: 'transparent',
               border: '1px solid rgba(255, 255, 255, 0.18)',
               color: 'rgba(255, 255, 255, 0.85)',
               outline: 'none',
+              minWidth: '80px',
+              textAlign: 'center',
             }}
             onMouseEnter={(e) => {
               e.currentTarget.style.background = 'rgba(255, 255, 255, 0.08)';
@@ -113,7 +115,7 @@ const Navbar = () => {
           >
             Sign in
           </a>
-          <Link to="/demo" className="gradient-btn text-sm">Book a demo</Link>
+          <Link to="/demo" className="gradient-btn text-sm whitespace-nowrap">Book a demo</Link>
         </div>
 
         {/* Mobile toggle */}
