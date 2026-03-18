@@ -15,8 +15,8 @@ const productStoryTabs: ProductStoryTab[] = [
     headline: "Patients book themselves, any time",
     body: "Patients choose their service, provider, and time slot — from any device, at any hour. Your schedule fills automatically, even while your team is with other patients.",
     badge: "No more phone tag",
-    image: "/images/step_1_-_Choose_your_appointment.png",
-    mobileLayout: true,
+    image: "/images/Choose_your_appointment.png",
+    mobileLayout: false,
   },
   {
     label: "Admin dashboard",
