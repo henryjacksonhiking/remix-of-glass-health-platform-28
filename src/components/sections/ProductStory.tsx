@@ -1,219 +1,279 @@
-import { useState, useRef, useCallback, useEffect } from "react";
-
-interface ProductStoryTab {
-  label: string;
-  headline: string;
-  body: string;
-  badge: string;
-  image: string;
-  mobileLayout: boolean;
-}
-
-const productStoryTabs: ProductStoryTab[] = [
+const rows = [
   {
-    label: "Online booking",
+    step: "STEP 01",
+    badge: "No more phone tag",
     headline: "Patients book themselves, any time",
     body: "Patients choose their service, provider, and time slot — from any device, at any hour. Your schedule fills automatically, even while your team is with other patients.",
-    badge: "No more phone tag",
-    image: "/images/Choose_your_appointment.png",
-    mobileLayout: false,
+    link: "See online booking ›",
+    image: "/images/step_1_-_Choose_your_appointment.png",
+    mobileImage: false,
   },
   {
-    label: "Admin dashboard",
+    step: "STEP 02",
+    badge: "Full clinic visibility",
     headline: "Your team starts the day ready",
     body: "Every appointment confirmed, every pending payment visible, every provider accounted for — before your first patient walks in.",
-    badge: "Full clinic visibility in one view",
+    link: "See admin dashboard ›",
     image: "/images/step_2_and_hero_-_admin_Dashboard.png",
-    mobileLayout: false,
+    mobileImage: false,
   },
   {
-    label: "Digital forms",
-    headline: "No more paper forms",
-    body: "Intake, consent, and referral forms completed digitally before patients arrive. 128 submitted, 14 pending review — all searchable and downloadable.",
+    step: "STEP 03",
     badge: "Zero manual data entry",
+    headline: "No more paper forms",
+    body: "Intake, consent, and referral forms completed digitally before patients arrive. All submitted forms are searchable, downloadable, and linked to the patient record.",
+    link: "See digital forms ›",
     image: "/images/step_3_-_new_patient_forms.png",
-    mobileLayout: false,
+    mobileImage: false,
   },
   {
-    label: "Payments",
-    headline: "Get paid without chasing",
-    body: "Create a payment request in seconds, send it by email or SMS, and let patients pay securely online. Your billing stays clean without awkward front-desk conversations.",
+    step: "STEP 04",
     badge: "Secure online payments",
+    headline: "Get paid without chasing",
+    body: "Create a payment request in seconds, send it by email or SMS, and let patients pay securely online. No awkward front-desk conversations. No outstanding invoices slipping through.",
+    link: "See payments ›",
     image: "/images/admin_vs_patient_-_New_Payment_Request.png",
-    mobileLayout: false,
+    mobileImage: false,
   },
   {
-    label: "Family management",
+    step: "STEP 05",
+    badge: "Dependents & family profiles",
     headline: "One account for the whole family",
     body: "Parents manage every family member's appointments, forms, and payments from a single account. Fewer duplicates, cleaner records, happier patients.",
-    badge: "Dependents & family profiles",
+    link: "See family management ›",
     image: "/images/step_5_-_Dependents.png",
-    mobileLayout: true,
+    mobileImage: true,
   },
 ];
 
+const BrowserChrome = () => (
+  <div
+    className="flex items-center gap-2 px-3"
+    style={{
+      height: 28,
+      borderBottom: "0.5px solid rgba(255,255,255,0.07)",
+      marginBottom: 12,
+    }}
+  >
+    <span className="inline-block w-[10px] h-[10px] rounded-full" style={{ background: "#ff5f57" }} />
+    <span className="inline-block w-[10px] h-[10px] rounded-full" style={{ background: "#febc2e" }} />
+    <span className="inline-block w-[10px] h-[10px] rounded-full" style={{ background: "#28c840" }} />
+    <span
+      className="ml-3 flex-1 max-w-[160px] h-[14px] rounded-full"
+      style={{ background: "rgba(255,255,255,0.08)" }}
+    />
+  </div>
+);
+
 const ProductStory = () => {
-  const [activeTab, setActiveTab] = useState(0);
-  const tabRefs = useRef<(HTMLButtonElement | null)[]>([]);
-  const scrollRef = useRef<HTMLDivElement>(null);
-  const [showFade, setShowFade] = useState(true);
-
-  const handleTabClick = useCallback((i: number) => {
-    setActiveTab(i);
-    tabRefs.current[i]?.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
-  }, []);
-
-  const handleScroll = useCallback(() => {
-    const el = scrollRef.current;
-    if (!el) return;
-    const atEnd = el.scrollLeft + el.clientWidth >= el.scrollWidth - 8;
-    setShowFade(!atEnd);
-  }, []);
-
-  useEffect(() => {
-    const el = scrollRef.current;
-    if (el) handleScroll();
-  }, [handleScroll]);
-
-  if (!productStoryTabs || productStoryTabs.length === 0) {
-    return null;
-  }
-
-  const safeActiveTab = activeTab >= 0 && activeTab < productStoryTabs.length ? activeTab : 0;
-  const current = productStoryTabs[safeActiveTab];
-
-  if (!current) {
-    return null;
-  }
-
   return (
-    <section className="py-16 md:py-24 relative overflow-x-hidden" id="platform">
-      <div className="container mx-auto px-4 md:px-6">
-        <div className="text-center mb-12 md:mb-16">
-          <span className="inline-block text-[11px] md:text-xs font-semibold uppercase tracking-[0.15em] text-primary mb-3">
-            How it works
+    <section
+      id="how-it-works"
+      className="overflow-hidden"
+      style={{ background: "#0d1535" }}
+    >
+      {/* Header */}
+      <div className="text-center px-4" style={{ paddingTop: 80, paddingBottom: 64 }}>
+        <span
+          className="inline-block mb-3"
+          style={{
+            fontSize: 11,
+            textTransform: "uppercase",
+            letterSpacing: "1.5px",
+            color: "#00DEC4",
+            fontWeight: 600,
+          }}
+        >
+          How it works
+        </span>
+        <h2
+          className="mb-4"
+          style={{
+            fontSize: 36,
+            fontWeight: 500,
+            color: "rgba(255,255,255,0.95)",
+            letterSpacing: "-1px",
+          }}
+        >
+          A full day at your clinic — without the chaos
+        </h2>
+        <p
+          className="mx-auto"
+          style={{
+            fontSize: 15,
+            color: "rgba(255,255,255,0.45)",
+            maxWidth: 480,
+          }}
+        >
+          See how Borna Care handles every touchpoint, from the moment a patient books to the moment they pay.
+        </p>
+      </div>
+
+      {/* Feature rows */}
+      {rows.map((row, i) => {
+        const reversed = i % 2 !== 0;
+        return (
+          <div
+            key={row.step}
+            className="flex items-center mx-auto"
+            style={{
+              maxWidth: 1200,
+              flexDirection: reversed ? "row-reverse" : "row",
+              gap: 64,
+              padding: "64px 80px",
+              borderTop: "0.5px solid rgba(255,255,255,0.06)",
+            }}
+          >
+            {/* Copy */}
+            <div className="shrink-0" style={{ flex: "0 0 380px" }}>
+              <span
+                className="block"
+                style={{
+                  fontSize: 11,
+                  textTransform: "uppercase",
+                  letterSpacing: "1.5px",
+                  color: "rgba(255,255,255,0.25)",
+                  marginBottom: 12,
+                }}
+              >
+                {row.step}
+              </span>
+
+              <span
+                className="inline-flex items-center gap-1.5"
+                style={{
+                  background: "rgba(0,222,196,0.1)",
+                  border: "0.5px solid rgba(0,222,196,0.25)",
+                  color: "#00DEC4",
+                  fontSize: 11,
+                  borderRadius: 980,
+                  padding: "4px 12px",
+                  marginBottom: 16,
+                }}
+              >
+                <span className="inline-block w-[5px] h-[5px] rounded-full" style={{ background: "#00DEC4" }} />
+                {row.badge}
+              </span>
+
+              <h3
+                style={{
+                  fontSize: 26,
+                  fontWeight: 500,
+                  color: "rgba(255,255,255,0.95)",
+                  letterSpacing: "-0.5px",
+                  lineHeight: 1.25,
+                  marginBottom: 12,
+                }}
+              >
+                {row.headline}
+              </h3>
+
+              <p
+                style={{
+                  fontSize: 14,
+                  color: "rgba(255,255,255,0.5)",
+                  lineHeight: 1.75,
+                  marginBottom: 20,
+                }}
+              >
+                {row.body}
+              </p>
+
+              <span style={{ fontSize: 13, color: "#00DEC4", fontWeight: 500, cursor: "pointer" }}>
+                {row.link}
+              </span>
+            </div>
+
+            {/* Screenshot */}
+            <div className="min-w-0" style={{ flex: 1 }}>
+              <div
+                style={{
+                  background: "rgba(255,255,255,0.05)",
+                  border: "0.5px solid rgba(255,255,255,0.12)",
+                  borderRadius: 16,
+                  padding: 16,
+                  overflow: "hidden",
+                }}
+              >
+                <BrowserChrome />
+                <img
+                  src={row.image}
+                  alt={row.headline}
+                  loading="lazy"
+                  style={{
+                    width: "100%",
+                    display: "block",
+                    borderRadius: 12,
+                    ...(row.mobileImage
+                      ? { maxHeight: 320, objectFit: "cover" as const, objectPosition: "center top" }
+                      : { height: "auto" }),
+                  }}
+                />
+              </div>
+            </div>
+          </div>
+        );
+      })}
+
+      {/* Notifications strip */}
+      <div
+        className="flex items-center mx-auto"
+        style={{
+          maxWidth: 1200,
+          background: "rgba(255,255,255,0.03)",
+          borderTop: "0.5px solid rgba(255,255,255,0.07)",
+          borderBottom: "0.5px solid rgba(255,255,255,0.07)",
+          padding: "48px 80px",
+          gap: 64,
+        }}
+      >
+        <div className="shrink-0" style={{ flex: "0 0 340px" }}>
+          <span
+            className="inline-flex items-center gap-1.5 mb-4"
+            style={{
+              background: "rgba(0,222,196,0.1)",
+              border: "0.5px solid rgba(0,222,196,0.25)",
+              color: "#00DEC4",
+              fontSize: 11,
+              borderRadius: 980,
+              padding: "4px 12px",
+            }}
+          >
+            <span className="inline-block w-[5px] h-[5px] rounded-full" style={{ background: "#00DEC4" }} />
+            Automated notifications
           </span>
-          <h2 className="section-headline text-foreground mb-4">
-            A full day at your clinic — without the chaos
-          </h2>
-          <p className="text-[15px] text-muted-foreground max-w-xl mx-auto">
-            See how Borna Care handles every touchpoint, from the moment a patient books to the moment they pay.
+
+          <h3
+            style={{
+              fontSize: 22,
+              fontWeight: 500,
+              color: "rgba(255,255,255,0.95)",
+              marginBottom: 12,
+            }}
+          >
+            Patients stay informed automatically
+          </h3>
+
+          <p style={{ fontSize: 14, color: "rgba(255,255,255,0.5)", lineHeight: 1.75 }}>
+            Confirmation emails and SMS sent the moment a booking is made. Zero manual work from your team.
           </p>
         </div>
 
-        <div className="mb-10 md:mb-14 relative">
-          <div
-            ref={scrollRef}
-            onScroll={handleScroll}
-            className="overflow-x-auto -mx-4 px-4 pb-1 scrollbar-hide"
-            style={{ WebkitOverflowScrolling: 'touch', scrollbarWidth: 'none' }}
-          >
-            <div className="flex gap-2 md:gap-3 flex-nowrap pr-6 md:pr-0 md:w-auto md:justify-center mx-auto">
-              {productStoryTabs.map((tab, i) => (
-                <button
-                  key={tab.label}
-                  type="button"
-                  ref={(el) => { tabRefs.current[i] = el; }}
-                  onClick={() => handleTabClick(i)}
-                  className={`whitespace-nowrap flex-shrink-0 rounded-full px-4 py-2 text-sm font-medium transition-all duration-200 border ${
-                    i === safeActiveTab
-                      ? "text-primary-foreground border-transparent"
-                      : "text-foreground/55 border-glass-border bg-[hsla(0,0%,100%,0.06)] hover:bg-[hsla(0,0%,100%,0.1)]"
-                  }`}
-                  style={i === safeActiveTab ? { background: "var(--gradient-primary)" } : undefined}
-                >
-                  {tab.label}
-                </button>
-              ))}
-            </div>
-          </div>
-          {showFade && (
-            <div
-              className="absolute right-0 top-0 bottom-0 w-12 pointer-events-none md:hidden"
-              style={{ background: 'linear-gradient(to right, transparent, hsl(var(--background)) 90%)' }}
-            />
-          )}
-        </div>
-
-        <div className="relative max-w-5xl mx-auto min-h-[480px] lg:min-h-[560px]">
-          {productStoryTabs.map((tab, i) => (
-            <div
-              key={tab.label}
-              className="grid grid-cols-1 lg:grid-cols-5 gap-8 md:gap-12 items-start transition-opacity duration-150 ease-in-out"
-              style={{
-                opacity: i === safeActiveTab ? 1 : 0,
-                position: i === safeActiveTab ? 'relative' : 'absolute',
-                top: 0,
-                left: 0,
-                right: 0,
-                pointerEvents: i === safeActiveTab ? 'auto' : 'none',
-              }}
-            >
-              <div className="lg:col-span-2 order-1 self-start min-h-[200px]">
-                <span className="inline-block rounded-full bg-primary/15 text-primary text-xs font-medium px-3 py-1 mb-4">
-                  {tab.badge}
-                </span>
-                <h3 className="text-xl md:text-2xl font-medium text-foreground mb-3 tracking-tight">
-                  {tab.headline}
-                </h3>
-                <p className="text-[15px] text-muted-foreground leading-relaxed max-w-[50ch]">
-                  {tab.body}
-                </p>
-              </div>
-
-              <div className="lg:col-span-3 order-2">
-                <div className="glass-panel p-4 rounded-2xl overflow-hidden lg:h-[520px]">
-                  <div style={{ borderRadius: tab.mobileLayout ? '12px' : '12px', overflow: 'hidden', width: '100%', ...(tab.mobileLayout ? { height: '240px' } : {}) }}>
-                    {tab.mobileLayout ? (
-                      <img
-                        src={tab.image}
-                        alt={tab.label}
-                        style={{ width: '100%', height: '240px', objectFit: 'cover', objectPosition: 'center top', display: 'block', borderRadius: '0' }}
-                        loading="lazy"
-                      />
-                    ) : (
-                      <img
-                        src={tab.image}
-                        alt={tab.label}
-                        style={{ width: '100%', height: 'auto', display: 'block', borderRadius: '12px' }}
-                        loading="lazy"
-                      />
-                    )}
-                  </div>
-                </div>
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
-
-      <div className="mt-16 md:mt-24 border-t border-b border-[hsla(0,0%,100%,0.08)] bg-[hsla(0,0%,100%,0.03)]">
-        <div className="container mx-auto px-4 md:px-6 py-12 md:py-16">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 items-center max-w-5xl mx-auto">
-            <div>
-              <h3 className="text-xl md:text-2xl font-medium text-foreground mb-3 tracking-tight">
-                Patients stay informed automatically
-              </h3>
-              <p className="text-[15px] text-muted-foreground leading-relaxed max-w-[50ch]">
-                Confirmation emails and SMS sent the moment a booking is made. Zero manual work from your team.
-              </p>
-            </div>
-
-            <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-end">
-              <img
-                src="/images/Admin_vs_patient_-_patient_Email_notification.png"
-                alt="Patient email notification"
-                className="max-w-[220px] w-full rounded-xl shadow-lg"
-                loading="lazy"
-              />
-              <img
-                src="/images/Admin_vs_patient_-_patient_SMS_notification.png"
-                alt="Patient SMS notification"
-                className="max-w-[220px] w-full rounded-xl shadow-lg"
-                loading="lazy"
-              />
-            </div>
-          </div>
+        <div className="flex items-start gap-4" style={{ flex: 1 }}>
+          <img
+            src="/images/Admin_vs_patient_-_patient_Email_notification.png"
+            alt="Patient email notification"
+            loading="lazy"
+            className="flex-1"
+            style={{ borderRadius: 12, maxHeight: 280, objectFit: "cover", objectPosition: "top" }}
+          />
+          <img
+            src="/images/Admin_vs_patient_-_patient_SMS_notification.png"
+            alt="Patient SMS notification"
+            loading="lazy"
+            className="hidden md:block"
+            style={{ flex: "0 0 140px", borderRadius: 12, maxHeight: 280, objectFit: "cover", objectPosition: "top" }}
+          />
         </div>
       </div>
     </section>
