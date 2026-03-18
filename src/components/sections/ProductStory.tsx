@@ -73,7 +73,7 @@ const ProductStory = () => {
       style={{ background: "#0d1535" }}
     >
       {/* Header */}
-      <div className="text-center px-4" style={{ paddingTop: 80, paddingBottom: 64 }}>
+      <div className="text-center px-4 pt-20 pb-16">
         <span
           className="inline-block mb-3"
           style={{
@@ -115,17 +115,16 @@ const ProductStory = () => {
         return (
           <div
             key={row.step}
-            className="flex items-center mx-auto"
+            className={`flex flex-col md:items-center mx-auto py-12 px-6 gap-8 md:py-16 md:px-20 md:gap-16 ${
+              reversed ? "md:flex-row-reverse" : "md:flex-row"
+            }`}
             style={{
               maxWidth: 1200,
-              flexDirection: reversed ? "row-reverse" : "row",
-              gap: 64,
-              padding: "64px 80px",
               borderTop: "0.5px solid rgba(255,255,255,0.06)",
             }}
           >
             {/* Copy */}
-            <div className="shrink-0" style={{ flex: "0 0 380px" }}>
+            <div className="w-full md:w-auto md:shrink-0" style={{ flex: "0 0 380px" }}>
               <span
                 className="block"
                 style={{
@@ -185,7 +184,7 @@ const ProductStory = () => {
             </div>
 
             {/* Screenshot */}
-            <div className="min-w-0" style={{ flex: 1 }}>
+            <div className="min-w-0 flex-1">
               <div
                 style={{
                   background: "rgba(255,255,255,0.05)",
@@ -200,13 +199,12 @@ const ProductStory = () => {
                   src={row.image}
                   alt={row.headline}
                   loading="lazy"
+                  className={row.mobileImage ? "max-h-[280px] md:max-h-[320px] object-cover object-top" : "max-h-[280px] md:max-h-none object-cover md:object-contain object-top md:object-center"}
                   style={{
                     width: "100%",
                     display: "block",
                     borderRadius: 12,
-                    ...(row.mobileImage
-                      ? { maxHeight: 320, objectFit: "cover" as const, objectPosition: "center top" }
-                      : { height: "auto" }),
+                    ...(row.mobileImage ? {} : { height: "auto" }),
                   }}
                 />
               </div>
@@ -217,17 +215,15 @@ const ProductStory = () => {
 
       {/* Notifications strip */}
       <div
-        className="flex items-center mx-auto"
+        className="flex flex-col md:flex-row md:items-center mx-auto py-12 px-6 gap-8 md:py-12 md:px-20 md:gap-16"
         style={{
           maxWidth: 1200,
           background: "rgba(255,255,255,0.03)",
           borderTop: "0.5px solid rgba(255,255,255,0.07)",
           borderBottom: "0.5px solid rgba(255,255,255,0.07)",
-          padding: "48px 80px",
-          gap: 64,
         }}
       >
-        <div className="shrink-0" style={{ flex: "0 0 340px" }}>
+        <div className="w-full md:w-auto md:shrink-0" style={{ flex: "0 0 340px" }}>
           <span
             className="inline-flex items-center gap-1.5 mb-4"
             style={{
@@ -259,7 +255,7 @@ const ProductStory = () => {
           </p>
         </div>
 
-        <div className="flex items-start gap-4" style={{ flex: 1 }}>
+        <div className="flex items-start gap-4 flex-1">
           <img
             src="/images/Admin_vs_patient_-_patient_Email_notification.png"
             alt="Patient email notification"
