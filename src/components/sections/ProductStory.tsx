@@ -54,6 +54,26 @@ const productStoryTabs: ProductStoryTab[] = [
 
 const ProductStory = () => {
   const [activeTab, setActiveTab] = useState(0);
+  const tabRefs = useRef<(HTMLButtonElement | null)[]>([]);
+  const scrollRef = useRef<HTMLDivElement>(null);
+  const [showFade, setShowFade] = useState(true);
+
+  const handleTabClick = useCallback((i: number) => {
+    setActiveTab(i);
+    tabRefs.current[i]?.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+  }, []);
+
+  const handleScroll = useCallback(() => {
+    const el = scrollRef.current;
+    if (!el) return;
+    const atEnd = el.scrollLeft + el.clientWidth >= el.scrollWidth - 8;
+    setShowFade(!atEnd);
+  }, []);
+
+  useEffect(() => {
+    const el = scrollRef.current;
+    if (el) handleScroll();
+  }, [handleScroll]);
 
   if (!productStoryTabs || productStoryTabs.length === 0) {
     return null;
@@ -81,24 +101,38 @@ const ProductStory = () => {
           </p>
         </div>
 
-        <div className="mb-10 md:mb-14 overflow-x-auto -mx-4 px-4 pb-1 scrollbar-hide" style={{ WebkitOverflowScrolling: 'touch', scrollbarWidth: 'none' }}>
-          <div className="flex gap-2 md:gap-3 w-max md:w-auto md:justify-center mx-auto">
-            {productStoryTabs.map((tab, i) => (
-              <button
-                key={tab.label}
-                type="button"
-                onClick={() => setActiveTab(i)}
-                className={`whitespace-nowrap rounded-full px-4 py-2 text-sm font-medium transition-all duration-200 border ${
-                  i === safeActiveTab
-                    ? "text-primary-foreground border-transparent"
-                    : "text-foreground/55 border-glass-border bg-[hsla(0,0%,100%,0.06)] hover:bg-[hsla(0,0%,100%,0.1)]"
-                }`}
-                style={i === safeActiveTab ? { background: "var(--gradient-primary)" } : undefined}
-              >
-                {tab.label}
-              </button>
-            ))}
+        <div className="mb-10 md:mb-14 relative">
+          <div
+            ref={scrollRef}
+            onScroll={handleScroll}
+            className="overflow-x-auto -mx-4 px-4 pb-1 scrollbar-hide"
+            style={{ WebkitOverflowScrolling: 'touch', scrollbarWidth: 'none' }}
+          >
+            <div className="flex gap-2 md:gap-3 flex-nowrap pr-6 md:pr-0 md:w-auto md:justify-center mx-auto">
+              {productStoryTabs.map((tab, i) => (
+                <button
+                  key={tab.label}
+                  type="button"
+                  ref={(el) => { tabRefs.current[i] = el; }}
+                  onClick={() => handleTabClick(i)}
+                  className={`whitespace-nowrap flex-shrink-0 rounded-full px-4 py-2 text-sm font-medium transition-all duration-200 border ${
+                    i === safeActiveTab
+                      ? "text-primary-foreground border-transparent"
+                      : "text-foreground/55 border-glass-border bg-[hsla(0,0%,100%,0.06)] hover:bg-[hsla(0,0%,100%,0.1)]"
+                  }`}
+                  style={i === safeActiveTab ? { background: "var(--gradient-primary)" } : undefined}
+                >
+                  {tab.label}
+                </button>
+              ))}
+            </div>
           </div>
+          {showFade && (
+            <div
+              className="absolute right-0 top-0 bottom-0 w-12 pointer-events-none md:hidden"
+              style={{ background: 'linear-gradient(to right, transparent, hsl(var(--background)) 90%)' }}
+            />
+          )}
         </div>
 
         <div className="relative max-w-5xl mx-auto min-h-[480px] lg:min-h-[560px]">
