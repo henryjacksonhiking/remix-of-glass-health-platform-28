@@ -260,33 +260,32 @@ const ProductStory = () => {
 
         <div className="flex items-start gap-4 flex-1">
           <div
-            className="flex-1"
             style={{
+              flex: "0 0 auto",
+              maxWidth: 320,
+              width: "100%",
               background: "rgba(255,255,255,0.05)",
               border: "0.5px solid rgba(255,255,255,0.12)",
               borderRadius: 16,
               padding: 16,
-              overflow: "hidden",
-              maxHeight: 320,
             }}
           >
             <img
               src="/images/Admin_vs_patient_-_patient_Email_notification.png"
               alt="Patient email notification"
               loading="lazy"
-              style={{ width: "100%", height: 320, objectFit: "cover", objectPosition: "top center", borderRadius: 10, display: "block" }}
+              style={{ width: "100%", height: "auto", borderRadius: 10, display: "block" }}
             />
           </div>
           <div
             className="hidden md:block"
             style={{
-              flex: "0 0 180px",
+              flex: "0 0 auto",
+              maxWidth: 160,
               background: "rgba(255,255,255,0.05)",
               border: "0.5px solid rgba(255,255,255,0.12)",
               borderRadius: 16,
               padding: 16,
-              overflow: "hidden",
-              maxHeight: 320,
             }}
           >
             <img
