@@ -103,9 +103,9 @@ const ProductStory = () => {
 
         <div
           key={`story-content-${safeActiveTab}`}
-          className="grid grid-cols-1 lg:grid-cols-5 gap-8 md:gap-12 items-center max-w-5xl mx-auto animate-fade-in"
+          className="grid grid-cols-1 lg:grid-cols-5 gap-8 md:gap-12 items-start max-w-5xl mx-auto animate-fade-in"
         >
-          <div className="lg:col-span-2 order-1 animate-fade-in">
+          <div className="lg:col-span-2 order-1 self-start animate-fade-in">
             <span className="inline-block rounded-full bg-primary/15 text-primary text-xs font-medium px-3 py-1 mb-4">
               {current.badge}
             </span>
