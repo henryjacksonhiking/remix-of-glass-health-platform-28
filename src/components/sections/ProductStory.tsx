@@ -119,8 +119,9 @@ const ProductStory = () => {
 
           <div className="lg:col-span-3 order-2">
             <div
-              className="glass-panel p-4 rounded-2xl overflow-hidden"
-              style={{ maxHeight: current.mobileLayout ? '520px' : undefined }}
+              className={`glass-panel p-4 rounded-2xl overflow-hidden ${
+                current.mobileLayout ? 'max-h-[320px]' : ''
+              }`}
             >
               <img
                 key={`story-image-${safeActiveTab}`}
