@@ -195,18 +195,21 @@ const ProductStory = () => {
                 }}
               >
                 <BrowserChrome />
-                <img
-                  src={row.image}
-                  alt={row.headline}
-                  loading="lazy"
-                  className={row.mobileImage ? "max-h-[280px] md:max-h-[320px] object-cover object-top" : "max-h-[280px] md:max-h-none object-cover md:object-contain object-top md:object-center"}
-                  style={{
-                    width: "100%",
-                    display: "block",
-                    borderRadius: 12,
-                    ...(row.mobileImage ? {} : { height: "auto" }),
-                  }}
-                />
+                <div style={{ overflow: "hidden", ...(i === 0 ? { maxHeight: 480 } : {}), borderRadius: 12 }}>
+                  <img
+                    src={row.image}
+                    alt={row.headline}
+                    loading="lazy"
+                    className={row.mobileImage ? "max-h-[280px] md:max-h-[320px] object-cover object-top" : "max-h-[280px] md:max-h-none object-cover md:object-contain object-top md:object-center"}
+                    style={{
+                      width: "100%",
+                      display: "block",
+                      borderRadius: 12,
+                      ...(i === 0 ? { maxHeight: 480, objectFit: "cover" as const, objectPosition: "top center" } : {}),
+                      ...(row.mobileImage ? {} : { height: "auto" }),
+                    }}
+                  />
+                </div>
               </div>
             </div>
           </div>
@@ -256,20 +259,41 @@ const ProductStory = () => {
         </div>
 
         <div className="flex items-start gap-4 flex-1">
-          <img
-            src="/images/Admin_vs_patient_-_patient_Email_notification.png"
-            alt="Patient email notification"
-            loading="lazy"
+          <div
             className="flex-1"
-            style={{ borderRadius: 12, maxHeight: 280, objectFit: "cover", objectPosition: "top" }}
-          />
-          <img
-            src="/images/Admin_vs_patient_-_patient_SMS_notification.png"
-            alt="Patient SMS notification"
-            loading="lazy"
+            style={{
+              background: "rgba(255,255,255,0.05)",
+              border: "0.5px solid rgba(255,255,255,0.12)",
+              borderRadius: 16,
+              padding: 16,
+              overflow: "hidden",
+            }}
+          >
+            <img
+              src="/images/Admin_vs_patient_-_patient_Email_notification.png"
+              alt="Patient email notification"
+              loading="lazy"
+              style={{ width: "100%", height: "auto", borderRadius: 10, display: "block" }}
+            />
+          </div>
+          <div
             className="hidden md:block"
-            style={{ flex: "0 0 140px", borderRadius: 12, maxHeight: 280, objectFit: "cover", objectPosition: "top" }}
-          />
+            style={{
+              maxWidth: 160,
+              background: "rgba(255,255,255,0.05)",
+              border: "0.5px solid rgba(255,255,255,0.12)",
+              borderRadius: 16,
+              padding: 16,
+              overflow: "hidden",
+            }}
+          >
+            <img
+              src="/images/Admin_vs_patient_-_patient_SMS_notification.png"
+              alt="Patient SMS notification"
+              loading="lazy"
+              style={{ width: "100%", height: "auto", borderRadius: 10, display: "block" }}
+            />
+          </div>
         </div>
       </div>
     </section>
