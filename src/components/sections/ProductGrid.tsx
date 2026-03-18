@@ -61,7 +61,7 @@ const ProductGrid = () => {
   return (
     <section id="platform" className="py-24">
       <div className="container mx-auto px-4 md:px-6">
-        <div className="text-center mb-16">
+        <div className="text-center mb-2">
           <span className="text-xs font-medium text-primary uppercase tracking-wider">Platform overview</span>
           <h2 className="section-headline text-foreground mt-3">
             Five modules. One unified platform.
@@ -69,7 +69,7 @@ const ProductGrid = () => {
         </div>
 
         {/* Desktop orbital layout */}
-        <div className="hidden lg:flex items-center justify-center" style={{ padding: '120px 0' }}>
+        <div className="hidden lg:flex items-center justify-center" style={{ padding: '40px 0' }}>
           <div
             className="relative"
             style={{ width: containerSize, height: containerSize }}
@@ -171,7 +171,7 @@ const ProductGrid = () => {
                         >
                           <IconComp style={{ color: product.accentColor, width: 28, height: 28 }} />
                         </div>
-                        <span className="whitespace-nowrap text-center" style={{ fontSize: 12, fontWeight: 500, marginTop: 8, color: 'rgba(255,255,255,0.9)' }}>
+                        <span className="whitespace-nowrap text-center" style={{ fontSize: 22, fontWeight: 500, marginTop: 8, color: 'rgba(255,255,255,0.9)' }}>
                           {product.name}
                         </span>
                       </div>
