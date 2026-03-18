@@ -134,10 +134,10 @@ const ProductStory = () => {
                   <img
                     src={tab.image}
                     alt={tab.label}
-                    className={`w-full rounded-xl h-full ${
+                    className={`w-full rounded-xl ${
                       tab.mobileLayout
-                        ? "max-w-[280px] mx-auto md:max-w-full object-cover object-top"
-                        : "object-contain object-top"
+                        ? "max-w-[280px] mx-auto md:max-w-full object-cover object-top h-[380px]"
+                        : "object-contain object-top h-full"
                     }`}
                     loading="lazy"
                   />
