@@ -22,7 +22,7 @@ const HeroSection = () => {
       <div className="absolute bottom-0 right-1/4 w-80 h-80 rounded-full bg-secondary/10 blur-[100px] animate-glow-pulse" style={{ animationDelay: "1.5s" }} />
 
       <div className="container mx-auto px-4 md:px-6 relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-8 items-center mb-16">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-8 items-center mb-44">
           {/* Left side - Text content */}
           <motion.div
             initial={{ opacity: 0, x: -30 }}
@@ -99,7 +99,7 @@ const HeroSection = () => {
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.4 }}
-          className="grid grid-cols-2 md:grid-cols-5 gap-3 max-w-4xl mx-auto"
+          className="grid grid-cols-2 md:grid-cols-5 gap-3 max-w-5xl mx-auto"
         >
           {products.map((product) => {
             const IconComp = iconMap[product.features[0]?.icon] || LucideIcons.Box;
@@ -107,13 +107,13 @@ const HeroSection = () => {
               <Link
                 key={product.id}
                 to={product.href}
-                className="glass-panel-hover p-4 text-center group"
+                className="glass-panel-hover p-6 text-center group"
               >
                 <div
-                  className="w-10 h-10 rounded-lg mx-auto mb-3 flex items-center justify-center"
+                  className="w-14 h-14 rounded-lg mx-auto mb-3 flex items-center justify-center"
                   style={{ backgroundColor: `${product.accentColor}20` }}
                 >
-                  <IconComp className="w-5 h-5" style={{ color: product.accentColor }} />
+                  <IconComp className="w-6 h-6" style={{ color: product.accentColor }} />
                 </div>
                 <div className="text-sm font-medium text-foreground">{product.name}</div>
               </Link>
