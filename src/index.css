@@ -76,8 +76,9 @@
     font-family: 'Inter', system-ui, -apple-system, sans-serif;
   }
 
-  html {
+  html, body {
     scroll-behavior: smooth;
+    overflow-x: hidden;
   }
 }
 
