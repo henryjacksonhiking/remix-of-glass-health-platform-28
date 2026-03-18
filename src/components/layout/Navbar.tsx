@@ -81,7 +81,38 @@ const Navbar = () => {
         </div>
 
         {/* Desktop CTA */}
-        <div className="hidden md:block">
+        <div className="hidden md:flex items-center gap-3">
+          <a
+            href="https://care.borna.ai"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-sm font-medium rounded-lg px-[18px] py-2 transition-all duration-150 ease-in-out"
+            style={{
+              background: 'transparent',
+              border: '1px solid rgba(255, 255, 255, 0.18)',
+              color: 'rgba(255, 255, 255, 0.85)',
+              outline: 'none',
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.background = 'rgba(255, 255, 255, 0.08)';
+              e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.3)';
+              e.currentTarget.style.color = 'rgba(255, 255, 255, 1)';
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.background = 'transparent';
+              e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.18)';
+              e.currentTarget.style.color = 'rgba(255, 255, 255, 0.85)';
+            }}
+            onFocus={(e) => {
+              e.currentTarget.style.outline = '2px solid #00DEC4';
+              e.currentTarget.style.outlineOffset = '2px';
+            }}
+            onBlur={(e) => {
+              e.currentTarget.style.outline = 'none';
+            }}
+          >
+            Sign in
+          </a>
           <Link to="/demo" className="gradient-btn text-sm">Book a demo</Link>
         </div>
 
@@ -121,7 +152,21 @@ const Navbar = () => {
               <Link to="/solutions" onClick={() => setMobileOpen(false)} className="block px-3 py-2 text-sm text-foreground">Solutions</Link>
               <Link to="/pricing" onClick={() => setMobileOpen(false)} className="block px-3 py-2 text-sm text-foreground">Pricing</Link>
               <Link to="/resources" onClick={() => setMobileOpen(false)} className="block px-3 py-2 text-sm text-foreground">Resources</Link>
-              <Link to="/demo" onClick={() => setMobileOpen(false)} className="gradient-btn text-sm block text-center mt-4">Book a demo</Link>
+              <a
+                href="https://care.borna.ai"
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={() => setMobileOpen(false)}
+                className="block px-3 py-2 text-sm font-medium rounded-lg mt-2 text-center transition-all duration-150 ease-in-out"
+                style={{
+                  background: 'transparent',
+                  border: '1px solid rgba(255, 255, 255, 0.18)',
+                  color: 'rgba(255, 255, 255, 0.85)',
+                }}
+              >
+                Sign in
+              </a>
+              <Link to="/demo" onClick={() => setMobileOpen(false)} className="gradient-btn text-sm block text-center mt-2">Book a demo</Link>
             </div>
           </motion.div>
         )}
