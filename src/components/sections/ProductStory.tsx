@@ -163,23 +163,23 @@ const ProductStory = () => {
 
               <div className="lg:col-span-3 order-2">
                 <div className="glass-panel p-4 rounded-2xl overflow-hidden lg:h-[520px]">
-                  {tab.mobileLayout ? (
-                    <div className="rounded-xl overflow-hidden lg:h-full">
+                  <div style={{ borderRadius: '12px', overflow: 'hidden', width: '100%' }}>
+                    {tab.mobileLayout ? (
                       <img
                         src={tab.image}
                         alt={tab.label}
-                        className="w-full h-auto block rounded-xl lg:h-full lg:object-cover lg:object-[center_top]"
+                        style={{ width: '100%', height: '300px', objectFit: 'cover', objectPosition: 'center top', display: 'block', borderRadius: '12px' }}
                         loading="lazy"
                       />
-                    </div>
-                  ) : (
-                    <img
-                      src={tab.image}
-                      alt={tab.label}
-                      className="w-full rounded-xl h-full object-contain object-top"
-                      loading="lazy"
-                    />
-                  )}
+                    ) : (
+                      <img
+                        src={tab.image}
+                        alt={tab.label}
+                        style={{ width: '100%', height: 'auto', display: 'block', borderRadius: '12px' }}
+                        loading="lazy"
+                      />
+                    )}
+                  </div>
                 </div>
               </div>
             </div>
