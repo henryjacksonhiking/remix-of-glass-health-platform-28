@@ -6,6 +6,7 @@ import { GlowingEffect } from "@/components/ui/glowing-effect";
 import { products } from "@/lib/products";
 import PageWrapper from "@/components/layout/PageWrapper";
 import CTASection from "@/components/sections/CTASection";
+import CareHero from "@/components/sections/CareHero";
 
 const iconMap: Record<string, React.ComponentType<{ className?: string }>> = LucideIcons as any;
 
