@@ -6,7 +6,7 @@ import heroBg from "@/assets/hero-bg.jpg";
 import mockupCalendar from "@/assets/mockup-calendar.jpg";
 import mockupPayments from "@/assets/mockup-payments.jpg";
 import mockupAppointment from "@/assets/mockup-appointment.jpg";
-
+import { BeamsBackground } from "@/components/ui/beams-background";
 const iconMap: Record<string, React.ComponentType<{ className?: string }>> = LucideIcons as any;
 
 const HeroSection = () => {
