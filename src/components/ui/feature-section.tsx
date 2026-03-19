@@ -97,10 +97,7 @@ export function FeatureSteps({
           </div>
 
           <div
-            className={cn(
-              "order-1 md:order-2 relative overflow-hidden rounded-xl bg-muted/30 flex items-center justify-center",
-              imageHeight
-            )}
+            className="order-1 md:order-2 relative overflow-hidden rounded-xl"
           >
             <AnimatePresence mode="wait">
               {features.map(
