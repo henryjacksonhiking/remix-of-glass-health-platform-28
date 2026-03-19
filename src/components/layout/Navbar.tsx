@@ -86,7 +86,7 @@ const Navbar = () => {
             href="https://care.borna.ai"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-sm font-medium rounded-lg px-3.5 lg:px-[18px] py-2 transition-all duration-150 ease-in-out whitespace-nowrap"
+            className="text-sm font-medium rounded-lg px-3.5 lg:px-[18px] py-3 transition-all duration-150 ease-in-out whitespace-nowrap"
             style={{
               background: 'transparent',
               border: '1px solid rgba(255, 255, 255, 0.18)',
