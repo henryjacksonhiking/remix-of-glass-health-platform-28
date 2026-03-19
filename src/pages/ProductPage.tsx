@@ -3,11 +3,14 @@ import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import * as LucideIcons from "lucide-react";
 import { GlowingEffect } from "@/components/ui/glowing-effect";
+import { FeatureSteps } from "@/components/ui/feature-section";
 import { products } from "@/lib/products";
 import PageWrapper from "@/components/layout/PageWrapper";
 import CTASection from "@/components/sections/CTASection";
 import CareHero from "@/components/sections/CareHero";
-
+import careDashboardScreen from "@/assets/care-dashboard-screen.png";
+import careFormsScreen from "@/assets/care-forms-screen.png";
+import careAppointmentScreen from "@/assets/care-appointment-screen.png";
 const iconMap: Record<string, React.ComponentType<{ className?: string }>> = LucideIcons as any;
 
 const howItWorks: Record<string, { step: string; description: string; icon: string }[]> = {
