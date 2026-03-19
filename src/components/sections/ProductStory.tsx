@@ -1,9 +1,9 @@
 const rows = [
   {
     step: "STEP 01",
-    badge: "No more phone tag",
-    headline: "Patients book themselves, any time",
-    body: "Patients choose their service, provider, and time slot — from any device, at any hour. Your schedule fills automatically, even while your team is with other patients.",
+    badge: "11pm — a patient wants to book",
+    headline: "A patient wants to book at 11pm",
+    body: "Patients book, reschedule, and cancel on their own — without calling your front desk. Your schedule fills while your team sleeps.",
     link: "See online booking ›",
     image: "/images/Choose_your_appointment-2.png",
     mobileImage: false,
