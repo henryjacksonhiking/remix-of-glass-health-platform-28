@@ -95,7 +95,7 @@ const ProductStory = () => {
             letterSpacing: "-1px",
           }}
         >
-          A full day at your clinic — without the chaos
+          A day in the life of your clinic
         </h2>
         <p
           className="mx-auto"
