@@ -204,6 +204,9 @@ const ProductPage = () => {
           </div>
         </section>
       )}
+
+      {/* Integration callout */}
+      {showIntegrations && (
         <section className="py-16 bg-muted/30 border-y border-glass-border">
           <div className="container mx-auto px-4 md:px-6 text-center">
             <h2 className="section-headline text-foreground mb-4">Works with your existing EHR</h2>
