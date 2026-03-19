@@ -37,13 +37,11 @@ const HeroSection = () => {
               AI-powered healthcare platform
             </span>
 
-            {/* Headline: 24px mobile-small → 28px mobile → 32px tablet → 28px lg (tight) → 38px xl → 44px 2xl */}
             <h1 className="text-[24px] leading-[1.15] sm:text-[28px] md:text-[32px] lg:text-[28px] xl:text-[38px] 2xl:text-[44px] font-medium tracking-tight md:leading-tight text-foreground mb-2 md:mb-3 lg:mb-3 xl:mb-5" style={{ letterSpacing: '-1.5px' }}>
               The operating system for{" "}
               <span className="gradient-text">modern clinics</span>
             </h1>
 
-            {/* Subtext: 12px mobile-small → 13px mobile → 15px tablet → 12px lg → 16px xl → 17px 2xl */}
             <p className="text-[12px] sm:text-[13px] md:text-[15px] lg:text-[12px] xl:text-base 2xl:text-[17px] text-muted-foreground leading-relaxed mb-3 md:mb-4 lg:mb-3 xl:mb-6 max-w-lg line-clamp-2 md:line-clamp-3 lg:line-clamp-2 xl:line-clamp-none">
               Borna.ai unifies patient management, communications, and analytics in one modular ecosystem — built for how clinics actually work.
             </p>
@@ -61,8 +59,8 @@ const HeroSection = () => {
             transition={{ duration: 0.7, delay: 0.2 }}
             className="hidden md:flex items-center justify-center min-h-0"
           >
-            {/* Tablet portrait + tablet landscape: single mockup */}
-            <div className="lg:hidden w-full max-w-[380px] mx-auto rounded-xl overflow-hidden shadow-2xl border border-border/30 max-h-[420px]">
+            {/* Tablet portrait: single mockup, contained */}
+            <div className="lg:hidden w-full max-w-[340px] mx-auto rounded-xl overflow-hidden shadow-2xl border border-border/30 max-h-[280px]">
               <img
                 src={mockupCalendar}
                 alt="Borna Care calendar view"
@@ -70,10 +68,10 @@ const HeroSection = () => {
               />
             </div>
 
-            {/* Desktop: layered mockups */}
-            <div className="hidden lg:block relative w-full max-h-[280px] xl:max-h-[420px] 2xl:max-h-[480px] overflow-hidden">
+            {/* Desktop: layered mockups — inset so nothing clips */}
+            <div className="hidden lg:block relative w-full max-h-[280px] xl:max-h-[420px] 2xl:max-h-[480px] overflow-visible">
               {/* Main mockup - Calendar view */}
-              <div className="relative z-10 rounded-xl overflow-hidden shadow-2xl border border-border/30">
+              <div className="relative z-10 mx-6 xl:mx-8 rounded-xl overflow-hidden shadow-2xl border border-border/30">
                 <img
                   src={mockupCalendar}
                   alt="Borna Care calendar view"
@@ -86,7 +84,7 @@ const HeroSection = () => {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.6 }}
-                className="absolute -bottom-8 -left-12 z-20 w-[55%] rounded-xl overflow-hidden shadow-2xl border border-border/30"
+                className="absolute -bottom-8 left-0 z-20 w-[55%] rounded-xl overflow-hidden shadow-2xl border border-border/30"
               >
                 <img
                   src={mockupPayments}
@@ -100,7 +98,7 @@ const HeroSection = () => {
                 initial={{ opacity: 0, y: -15 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.8 }}
-                className="absolute -top-6 -right-6 z-20 w-[45%] rounded-xl overflow-hidden shadow-2xl border border-border/30"
+                className="absolute -top-6 right-0 z-20 w-[45%] rounded-xl overflow-hidden shadow-2xl border border-border/30"
               >
                 <img
                   src={mockupAppointment}
@@ -126,26 +124,12 @@ const HeroSection = () => {
           </motion.div>
         </div>
 
-        {/* Stats row */}
-        <div className="flex items-center justify-center gap-4 sm:gap-6 md:gap-8 py-2 md:py-3 lg:py-2 xl:py-3">
-          {[
-            { value: "40%", label: "fewer missed calls" },
-            { value: "3×", label: "faster intake" },
-            { value: "98%", label: "uptime" },
-          ].map((stat, i) => (
-            <div key={i} className="text-center">
-              <span className="text-[11px] sm:text-xs md:text-sm lg:text-xs xl:text-sm font-semibold text-primary">{stat.value}</span>
-              <span className="text-[10px] sm:text-[11px] md:text-xs lg:text-[10px] xl:text-xs text-muted-foreground ml-1">{stat.label}</span>
-            </div>
-          ))}
-        </div>
-
         {/* Module cards — compact, always visible */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.4 }}
-          className="flex gap-2 md:gap-3 overflow-x-auto scrollbar-hide md:grid md:grid-cols-5 md:overflow-visible max-w-5xl mx-auto w-full shrink-0"
+          className="flex gap-2 md:gap-3 overflow-x-auto scrollbar-hide snap-x snap-mandatory pb-2 md:pb-0 md:grid md:grid-cols-5 md:overflow-visible max-w-5xl mx-auto w-full shrink-0"
         >
           {products.map((product) => {
             const IconComp = iconMap[product.features[0]?.icon] || LucideIcons.Box;
@@ -153,7 +137,7 @@ const HeroSection = () => {
               <Link
                 key={product.id}
                 to={product.href}
-                className="glass-panel-hover p-3 md:p-4 lg:p-3 xl:p-5 text-center group flex-shrink-0 w-[120px] md:w-auto min-w-0"
+                className="glass-panel-hover p-3 md:p-4 lg:p-3 xl:p-5 text-center group flex-shrink-0 w-[100px] snap-start md:w-auto min-w-0"
               >
                 <div
                   className="w-9 h-9 md:w-11 md:h-11 lg:w-9 lg:h-9 xl:w-12 xl:h-12 rounded-lg mx-auto mb-1.5 md:mb-2 flex items-center justify-center"
