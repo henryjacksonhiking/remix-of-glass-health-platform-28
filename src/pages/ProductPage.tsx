@@ -2,6 +2,7 @@ import { useParams, Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import * as LucideIcons from "lucide-react";
+import { GlowingEffect } from "@/components/ui/glowing-effect";
 import { products } from "@/lib/products";
 import PageWrapper from "@/components/layout/PageWrapper";
 import CTASection from "@/components/sections/CTASection";
