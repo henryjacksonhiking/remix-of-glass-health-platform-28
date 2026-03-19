@@ -250,7 +250,7 @@ const ProductStory = () => {
               marginBottom: 12,
             }}
           >
-            Patients stay informed automatically
+            And through it all — patients stay informed automatically
           </h3>
 
           <p style={{ fontSize: 14, color: "rgba(255,255,255,0.5)", lineHeight: 1.75 }}>
