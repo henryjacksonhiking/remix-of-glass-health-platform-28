@@ -10,9 +10,9 @@ const rows = [
   },
   {
     step: "STEP 02",
-    badge: "Full clinic visibility",
-    headline: "Your team starts the day ready",
-    body: "Every appointment confirmed, every pending payment visible, every provider accounted for — before your first patient walks in.",
+    badge: "8am — your front desk opens",
+    headline: "Your front desk opens at 8am",
+    body: "Your team sees everything confirmed, organised, and ready. No voicemails to return, no double bookings, no catching up.",
     link: "See admin dashboard ›",
     image: "/images/step_2_and_hero_-_admin_Dashboard.png",
     mobileImage: false,
