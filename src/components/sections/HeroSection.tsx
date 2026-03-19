@@ -89,7 +89,7 @@ const HeroSection = () => {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.6 }}
-                className="absolute -bottom-16 -left-16 z-20 w-[55%] rounded-xl overflow-hidden shadow-2xl border border-border/30"
+                className="absolute -bottom-8 -left-12 z-20 w-[55%] rounded-xl overflow-hidden shadow-2xl border border-border/30"
               >
                 <img
                   src={mockupPayments}
@@ -103,7 +103,7 @@ const HeroSection = () => {
                 initial={{ opacity: 0, y: -15 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.8 }}
-                className="absolute -top-14 -right-16 z-20 w-[45%] rounded-xl overflow-hidden shadow-2xl border border-border/30"
+                className="absolute -top-6 -right-6 z-20 w-[45%] rounded-xl overflow-hidden shadow-2xl border border-border/30"
               >
                 <img
                   src={mockupAppointment}
