@@ -7,11 +7,12 @@ import mockupCalendar from "@/assets/mockup-calendar.jpg";
 import mockupPayments from "@/assets/mockup-payments.jpg";
 import mockupAppointment from "@/assets/mockup-appointment.jpg";
 import { BeamsBackground } from "@/components/ui/beams-background";
+
 const iconMap: Record<string, React.ComponentType<{ className?: string }>> = LucideIcons as any;
 
 const HeroSection = () => {
   return (
-    <section className="relative overflow-hidden md:overflow-visible pt-10 pb-8 md:py-28">
+    <section className="relative overflow-hidden h-[calc(100vh-4rem)] max-h-[calc(100vh-4rem)] flex flex-col">
       {/* Background image + beams */}
       <div className="absolute inset-0 z-0">
         <img src={heroBg} alt="" className="w-full h-full object-cover opacity-60" />
@@ -21,30 +22,35 @@ const HeroSection = () => {
         </div>
       </div>
 
-      <div className="container mx-auto px-4 md:px-6 relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center mb-16 lg:mb-44">
+      {/* Content wrapper — fills available space */}
+      <div className="container mx-auto px-4 md:px-6 relative z-10 flex flex-col flex-1 min-h-0 pt-6 pb-4 md:pt-8 md:pb-6 lg:pt-8 lg:pb-6 xl:pt-12 xl:pb-8 2xl:pt-16 2xl:pb-10">
+        {/* Top area: text + visual — takes remaining space */}
+        <div className="flex-1 min-h-0 grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 lg:gap-8 items-center">
           {/* Left side - Text content */}
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6 }}
+            className="flex flex-col justify-center"
           >
-            <span className="inline-block glass-panel px-4 py-1.5 text-[11px] md:text-xs font-medium text-primary mb-3 md:mb-6">
+            <span className="inline-block glass-panel px-3 py-1 text-[10px] md:text-[11px] lg:text-xs font-medium text-primary mb-2 md:mb-3 lg:mb-4 xl:mb-5 self-start">
               AI-powered healthcare platform
             </span>
 
-            <h1 className="hero-headline text-foreground mb-3 md:mb-6">
+            {/* Headline: 24px mobile-small → 28px mobile → 32px tablet → 28px lg (tight) → 38px xl → 44px 2xl */}
+            <h1 className="text-[24px] leading-[1.15] sm:text-[28px] md:text-[32px] lg:text-[28px] xl:text-[38px] 2xl:text-[44px] font-medium tracking-tight md:leading-tight text-foreground mb-2 md:mb-3 lg:mb-3 xl:mb-5" style={{ letterSpacing: '-1.5px' }}>
               The operating system for{" "}
               <span className="gradient-text">modern clinics</span>
             </h1>
 
-            <p className="text-[13px] md:text-[17px] text-muted-foreground leading-relaxed mb-5 md:mb-8 max-w-lg line-clamp-2 md:line-clamp-none">
+            {/* Subtext: 12px mobile-small → 13px mobile → 15px tablet → 12px lg → 16px xl → 17px 2xl */}
+            <p className="text-[12px] sm:text-[13px] md:text-[15px] lg:text-[12px] xl:text-base 2xl:text-[17px] text-muted-foreground leading-relaxed mb-3 md:mb-4 lg:mb-3 xl:mb-6 max-w-lg line-clamp-2 md:line-clamp-3 lg:line-clamp-2 xl:line-clamp-none">
               Borna.ai unifies patient management, communications, and analytics in one modular ecosystem — built for how clinics actually work.
             </p>
 
-            <div className="flex flex-col sm:flex-row items-stretch sm:items-start gap-2.5 sm:gap-4 mb-6 md:mb-0">
-              <Link to="/demo" className="gradient-btn text-base px-8 py-3 h-11 flex items-center justify-center w-full sm:w-auto whitespace-nowrap">Book a demo</Link>
-              <a href="#how-it-works" className="ghost-btn text-base px-8 py-3 h-11 flex items-center justify-center w-full sm:w-auto whitespace-nowrap">See how it works</a>
+            <div className="flex flex-col sm:flex-row items-stretch sm:items-start gap-2 sm:gap-3">
+              <Link to="/demo" className="gradient-btn text-sm md:text-base px-6 md:px-8 py-2.5 md:py-3 h-10 md:h-11 flex items-center justify-center w-full sm:w-auto whitespace-nowrap">Book a demo</Link>
+              <a href="#how-it-works" className="ghost-btn text-sm md:text-base px-6 md:px-8 py-2.5 md:py-3 h-10 md:h-11 flex items-center justify-center w-full sm:w-auto whitespace-nowrap">See how it works</a>
             </div>
           </motion.div>
 
@@ -53,28 +59,19 @@ const HeroSection = () => {
             initial={{ opacity: 0, x: 40 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.7, delay: 0.2 }}
-            className="mt-0 lg:mt-0 relative flex justify-center lg:block"
+            className="hidden md:flex items-center justify-center min-h-0"
           >
-            {/* Mobile: single flat mockup */}
-            <div className="md:hidden w-full max-w-[340px] mx-auto rounded-xl overflow-hidden">
+            {/* Tablet portrait + tablet landscape: single mockup */}
+            <div className="lg:hidden w-full max-w-[380px] mx-auto rounded-xl overflow-hidden shadow-2xl border border-border/30 max-h-[420px]">
               <img
                 src={mockupCalendar}
                 alt="Borna Care calendar view"
-                className="w-full max-h-[220px] object-cover object-top rounded-xl"
-              />
-            </div>
-
-            {/* Tablet: single centered mockup */}
-            <div className="hidden md:block lg:hidden w-full max-w-[420px] mx-auto rounded-xl overflow-hidden shadow-2xl border border-border/30">
-              <img
-                src={mockupCalendar}
-                alt="Borna Care calendar view"
-                className="w-full h-auto"
+                className="w-full h-full object-cover object-top"
               />
             </div>
 
             {/* Desktop: layered mockups */}
-            <div className="hidden lg:block relative">
+            <div className="hidden lg:block relative w-full max-h-[280px] xl:max-h-[420px] 2xl:max-h-[480px] overflow-hidden">
               {/* Main mockup - Calendar view */}
               <div className="relative z-10 rounded-xl overflow-hidden shadow-2xl border border-border/30">
                 <img
@@ -84,7 +81,7 @@ const HeroSection = () => {
                 />
               </div>
 
-              {/* Floating mockup - Payments (bottom-left, overlapping) */}
+              {/* Floating mockup - Payments (bottom-left) */}
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -113,14 +110,42 @@ const HeroSection = () => {
               </motion.div>
             </div>
           </motion.div>
+
+          {/* Mobile-only: compact mockup */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.3 }}
+            className="md:hidden w-full max-w-[340px] mx-auto rounded-xl overflow-hidden max-h-[180px] sm:max-h-[220px]"
+          >
+            <img
+              src={mockupCalendar}
+              alt="Borna Care calendar view"
+              className="w-full h-full object-cover object-top rounded-xl"
+            />
+          </motion.div>
         </div>
 
-        {/* Module cards */}
+        {/* Stats row */}
+        <div className="flex items-center justify-center gap-4 sm:gap-6 md:gap-8 py-2 md:py-3 lg:py-2 xl:py-3">
+          {[
+            { value: "40%", label: "fewer missed calls" },
+            { value: "3×", label: "faster intake" },
+            { value: "98%", label: "uptime" },
+          ].map((stat, i) => (
+            <div key={i} className="text-center">
+              <span className="text-[11px] sm:text-xs md:text-sm lg:text-xs xl:text-sm font-semibold text-primary">{stat.value}</span>
+              <span className="text-[10px] sm:text-[11px] md:text-xs lg:text-[10px] xl:text-xs text-muted-foreground ml-1">{stat.label}</span>
+            </div>
+          ))}
+        </div>
+
+        {/* Module cards — compact, always visible */}
         <motion.div
-          initial={{ opacity: 0, y: 40 }}
+          initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.4 }}
-          className="grid grid-cols-2 md:grid-cols-5 gap-3 max-w-5xl mx-auto"
+          className="flex gap-2 md:gap-3 overflow-x-auto scrollbar-hide md:grid md:grid-cols-5 md:overflow-visible max-w-5xl mx-auto w-full shrink-0"
         >
           {products.map((product) => {
             const IconComp = iconMap[product.features[0]?.icon] || LucideIcons.Box;
@@ -128,15 +153,15 @@ const HeroSection = () => {
               <Link
                 key={product.id}
                 to={product.href}
-                className="glass-panel-hover p-6 text-center group"
+                className="glass-panel-hover p-3 md:p-4 lg:p-3 xl:p-5 text-center group flex-shrink-0 w-[120px] md:w-auto min-w-0"
               >
                 <div
-                  className="w-14 h-14 rounded-lg mx-auto mb-3 flex items-center justify-center"
+                  className="w-9 h-9 md:w-11 md:h-11 lg:w-9 lg:h-9 xl:w-12 xl:h-12 rounded-lg mx-auto mb-1.5 md:mb-2 flex items-center justify-center"
                   style={{ backgroundColor: `${product.accentColor}20` }}
                 >
-                  <IconComp className="w-6 h-6" style={{ color: product.accentColor }} />
+                  <IconComp className="w-4 h-4 md:w-5 md:h-5 lg:w-4 lg:h-4 xl:w-5 xl:h-5" style={{ color: product.accentColor }} />
                 </div>
-                <div className="text-sm font-medium text-foreground">{product.name}</div>
+                <div className="text-[11px] md:text-xs lg:text-[11px] xl:text-sm font-medium text-foreground truncate">{product.name}</div>
               </Link>
             );
           })}
