@@ -20,7 +20,7 @@ const CTASection = () => {
         </div>
 
         {/* Sparkles effect below buttons — matching Acme reference */}
-        <div className="relative w-full max-w-lg mx-auto h-20">
+        <div className="relative w-full max-w-lg mx-auto h-40 -mt-5">
           {/* Gradient line */}
           <div className="absolute top-0 left-1/2 -translate-x-1/2 w-3/4 h-[2px] bg-gradient-to-r from-transparent via-primary to-transparent" />
           {/* Secondary glow line */}
