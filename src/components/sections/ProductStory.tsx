@@ -278,7 +278,7 @@ const ProductStory = () => {
             />
           </div>
           <div
-            className="hidden md:block"
+            className="hidden lg:block"
             style={{
               flex: "0 0 auto",
               maxWidth: 200,
