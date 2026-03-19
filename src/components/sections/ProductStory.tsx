@@ -37,9 +37,9 @@ const rows = [
   },
   {
     step: "STEP 05",
-    badge: "Dependents & family profiles",
-    headline: "One account for the whole family",
-    body: "Parents manage every family member's appointments, forms, and payments from a single account. Fewer duplicates, cleaner records, happier patients.",
+    badge: "Always — a patient has a family",
+    headline: "A patient has a family",
+    body: "One account for the whole family. Parents manage everyone's appointments, forms, and payments in one place. No duplicate records, no confusion.",
     link: "See family management ›",
     image: "/images/step_5_-_Dependents.png",
     mobileImage: true,
