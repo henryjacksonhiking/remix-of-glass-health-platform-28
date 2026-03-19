@@ -89,12 +89,12 @@ const HeroSection = () => {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.6 }}
-                className="absolute -bottom-8 -left-12 z-20 w-[55%] rounded-xl overflow-hidden shadow-2xl border border-border/30"
+                className="absolute -bottom-8 -left-12 z-20 w-[55%] rounded-2xl overflow-hidden shadow-2xl border border-border/30"
               >
                 <img
                   src={mockupPayments}
                   alt="Borna Care payments dashboard"
-                  className="w-full h-auto"
+                  className="w-full h-auto block"
                 />
               </motion.div>
 
