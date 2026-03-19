@@ -48,7 +48,7 @@ const HeroSection = () => {
 
             <div className="flex flex-col sm:flex-row items-stretch sm:items-start gap-2 sm:gap-3">
               <Link to="/demo" className="gradient-btn text-sm md:text-base px-6 md:px-8 py-2.5 md:py-3 h-10 md:h-11 flex items-center justify-center w-full sm:w-auto whitespace-nowrap">Book a demo</Link>
-              <a href="#how-it-works" className="ghost-btn text-sm md:text-base px-6 md:px-8 py-2.5 md:py-3 h-10 md:h-11 flex items-center justify-center w-full sm:w-auto whitespace-nowrap">See how it works</a>
+              <a href="#how-it-works" className="ghost-btn text-sm md:text-base px-6 md:px-4 py-2.5 md:py-3 h-10 md:h-11 flex items-center justify-center w-full sm:w-auto whitespace-nowrap">See how it works</a>
             </div>
           </motion.div>
 
