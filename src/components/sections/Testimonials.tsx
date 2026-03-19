@@ -40,7 +40,7 @@ const testimonials = [
   },
   {
     text: "Patient engagement skyrocketed after we started using the automated follow-up campaigns. Reactivation rates doubled.",
-    image: "https://images.unsplash.com/photo-1607990281513-2c110a25bd8c?w=200&h=200&fit=crop&crop=face",
+    image: "https://images.unsplash.com/photo-1614608682850-e0d6ed316d47?w=200&h=200&fit=crop&crop=face",
     name: "Dr. Amanda Torres",
     role: "Partner, Coastal Smiles Group",
   },
