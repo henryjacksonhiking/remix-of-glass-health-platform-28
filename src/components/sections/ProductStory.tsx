@@ -115,7 +115,7 @@ const ProductStory = () => {
         return (
           <div
             key={row.step}
-            className={`flex flex-col md:items-center mx-auto py-12 px-6 gap-0 md:py-16 md:px-4 md:gap-8 lg:gap-40 ${
+            className={`flex flex-col md:items-center mx-auto py-12 px-6 gap-16 md:py-16 md:px-4 md:gap-8 lg:gap-40 ${
               reversed ? "md:flex-row-reverse" : "md:flex-row"
             }`}
             style={{
@@ -124,7 +124,7 @@ const ProductStory = () => {
             }}
           >
             {/* Copy */}
-            <div className="w-full md:w-auto md:shrink-0" style={{ flex: "0 0 380px" }}>
+            <div className="w-full md:w-auto md:shrink-0 max-h-[260px] md:max-h-[340px] overflow-hidden" style={{ flex: "0 0 380px" }}>
               <span
                 className="block"
                 style={{
