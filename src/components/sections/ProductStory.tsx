@@ -28,9 +28,9 @@ const rows = [
   },
   {
     step: "STEP 04",
-    badge: "Secure online payments",
-    headline: "Get paid without chasing",
-    body: "Create a payment request in seconds, send it by email or SMS, and let patients pay securely online. No awkward front-desk conversations. No outstanding invoices slipping through.",
+    badge: "After the visit — time to collect payment",
+    headline: "Time to collect payment",
+    body: "Send a payment request in seconds. Patients pay online from their phone. Your billing stays clean without a single awkward conversation.",
     link: "See payments ›",
     image: "/images/admin_vs_patient_-_New_Payment_Request.png",
     mobileImage: false,
