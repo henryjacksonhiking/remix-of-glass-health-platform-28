@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { cn } from "@/lib/utils";
 
@@ -22,10 +22,56 @@ export function FeatureSteps({
   className,
   title = "How to get Started",
   autoPlayInterval = 3000,
-  imageHeight = "h-[400px]",
 }: FeatureStepsProps) {
   const [currentFeature, setCurrentFeature] = useState(0);
   const [progress, setProgress] = useState(0);
+  const [containerHeight, setContainerHeight] = useState<number | undefined>(undefined);
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  // Preload all images and measure max height
+  useEffect(() => {
+    const images: HTMLImageElement[] = [];
+    let loaded = 0;
+
+    const recalculate = () => {
+      if (!containerRef.current) return;
+      const containerWidth = containerRef.current.clientWidth;
+      let maxH = 0;
+      images.forEach((img) => {
+        if (img.naturalWidth > 0) {
+          const h = (containerWidth / img.naturalWidth) * img.naturalHeight;
+          if (h > maxH) maxH = h;
+        }
+      });
+      if (maxH > 0) setContainerHeight(maxH);
+    };
+
+    features.forEach((feature) => {
+      const img = new Image();
+      img.src = feature.image;
+      img.onload = () => {
+        loaded++;
+        if (loaded === features.length) recalculate();
+      };
+      images.push(img);
+    });
+
+    const onResize = () => {
+      if (!containerRef.current) return;
+      const containerWidth = containerRef.current.clientWidth;
+      let maxH = 0;
+      images.forEach((img) => {
+        if (img.naturalWidth > 0) {
+          const h = (containerWidth / img.naturalWidth) * img.naturalHeight;
+          if (h > maxH) maxH = h;
+        }
+      });
+      if (maxH > 0) setContainerHeight(maxH);
+    };
+
+    window.addEventListener("resize", onResize);
+    return () => window.removeEventListener("resize", onResize);
+  }, [features]);
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -97,7 +143,9 @@ export function FeatureSteps({
           </div>
 
           <div
+            ref={containerRef}
             className="order-1 md:order-2 relative overflow-hidden rounded-xl"
+            style={containerHeight ? { height: containerHeight } : undefined}
           >
             <AnimatePresence mode="wait">
               {features.map(
@@ -105,6 +153,7 @@ export function FeatureSteps({
                   index === currentFeature && (
                     <motion.div
                       key={index}
+                      className={containerHeight ? "absolute inset-0 flex items-center justify-center" : ""}
                       initial={{ opacity: 0, scale: 0.96 }}
                       animate={{ opacity: 1, scale: 1 }}
                       exit={{ opacity: 0, scale: 1.04 }}
