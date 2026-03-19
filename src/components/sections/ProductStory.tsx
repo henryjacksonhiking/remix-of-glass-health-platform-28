@@ -262,7 +262,7 @@ const ProductStory = () => {
           <div
             style={{
               flex: "0 0 auto",
-              maxWidth: 320,
+              maxWidth: 270,
               width: "100%",
               background: "rgba(255,255,255,0.05)",
               border: "0.5px solid rgba(255,255,255,0.12)",
@@ -281,7 +281,7 @@ const ProductStory = () => {
             className="hidden md:block"
             style={{
               flex: "0 0 auto",
-              maxWidth: 160,
+              maxWidth: 200,
               background: "rgba(255,255,255,0.05)",
               border: "0.5px solid rgba(255,255,255,0.12)",
               borderRadius: 16,
