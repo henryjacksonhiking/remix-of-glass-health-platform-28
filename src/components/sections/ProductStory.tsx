@@ -19,9 +19,9 @@ const rows = [
   },
   {
     step: "STEP 03",
-    badge: "Zero manual data entry",
-    headline: "No more paper forms",
-    body: "Intake, consent, and referral forms completed digitally before patients arrive. All submitted forms are searchable, downloadable, and linked to the patient record.",
+    badge: "9am — a new patient arrives",
+    headline: "A new patient arrives",
+    body: "Intake forms completed before they walk in. No clipboards, no scanning, no manual data entry. The chart is ready before they sit down.",
     link: "See digital forms ›",
     image: "/images/step_3_-_new_patient_forms.png",
     mobileImage: false,
