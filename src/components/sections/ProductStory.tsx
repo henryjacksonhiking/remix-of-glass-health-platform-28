@@ -218,7 +218,7 @@ const ProductStory = () => {
 
       {/* Notifications strip */}
       <div
-        className="flex flex-col md:flex-row md:items-center mx-auto py-12 px-6 gap-8 md:py-12 md:px-20 md:gap-16"
+        className="flex flex-col md:flex-row md:items-center mx-auto py-12 px-6 gap-8 md:py-12 md:px-20 md:gap-16 "
         style={{
           maxWidth: 1200,
           background: "rgba(255,255,255,0.03)",
@@ -226,7 +226,7 @@ const ProductStory = () => {
           borderBottom: "0.5px solid rgba(255,255,255,0.07)",
         }}
       >
-        <div className="w-full md:w-auto md:shrink-0" style={{ flex: "0 0 340px" }}>
+        <div className="w-full md:w-auto md:shrink-0 max-h-[260px] md:max-h-[340px] overflow-hidden" style={{ flex: "0 0 340px" }}>
           <span
             className="inline-flex items-center gap-1.5 mb-4"
             style={{
