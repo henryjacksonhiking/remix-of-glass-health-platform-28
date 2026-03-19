@@ -22,7 +22,6 @@ const SocialProofBar = () => {
           density={400}
           speed={0.8}
           opacity={0.6}
-          opacitySpeed={2}
         />
         {/* Bottom gradient fade */}
         <div
