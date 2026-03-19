@@ -76,11 +76,11 @@ const HeroSection = () => {
             {/* Desktop: layered mockups */}
             <div className="hidden lg:block relative">
               {/* Main mockup - Calendar view */}
-              <div className="relative z-10 rounded-2xl overflow-hidden shadow-2xl border border-border/30">
+              <div className="relative z-10 rounded-xl overflow-hidden shadow-2xl border border-border/30">
                 <img
                   src={mockupCalendar}
                   alt="Borna Care calendar view"
-                  className="w-full h-auto block"
+                  className="w-full h-auto rounded-xl"
                 />
               </div>
 
@@ -89,12 +89,12 @@ const HeroSection = () => {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.6 }}
-                className="absolute -bottom-8 -left-12 z-20 w-[55%] rounded-2xl overflow-hidden shadow-2xl border border-border/30"
+                className="absolute -bottom-8 -left-12 z-20 w-[55%] rounded-xl overflow-hidden shadow-2xl border border-border/30"
               >
                 <img
                   src={mockupPayments}
                   alt="Borna Care payments dashboard"
-                  className="w-full h-auto block"
+                  className="w-full h-auto"
                 />
               </motion.div>
 
@@ -103,12 +103,12 @@ const HeroSection = () => {
                 initial={{ opacity: 0, y: -15 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.8 }}
-                className="absolute -top-6 -right-6 z-20 w-[45%] rounded-2xl overflow-hidden shadow-2xl border border-border/30"
+                className="absolute -top-6 -right-6 z-20 w-[45%] rounded-xl overflow-hidden shadow-2xl border border-border/30"
               >
                 <img
                   src={mockupAppointment}
                   alt="Borna Care appointment details"
-                  className="w-full h-auto block"
+                  className="w-full h-auto"
                 />
               </motion.div>
             </div>
