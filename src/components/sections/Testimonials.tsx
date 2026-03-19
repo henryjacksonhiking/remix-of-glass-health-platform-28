@@ -16,7 +16,7 @@ const testimonials = [
   },
   {
     text: "The AI summaries after every call are a game-changer. Our team actually reads them because they are concise and actionable.",
-    image: "https://images.unsplash.com/photo-1594824476967-48c8b964ac31?w=200&h=200&fit=crop&crop=face",
+    image: "https://images.unsplash.com/photo-1643297654416-05795d62e39c?w=200&h=200&fit=crop&crop=face",
     name: "Dr. Priya Patel",
     role: "Clinical Director, Pacific Dental Care",
   },
