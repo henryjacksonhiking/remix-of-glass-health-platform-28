@@ -2,6 +2,7 @@ import { useParams, Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import * as LucideIcons from "lucide-react";
+import { GlowingEffect } from "@/components/ui/glowing-effect";
 import { products } from "@/lib/products";
 import PageWrapper from "@/components/layout/PageWrapper";
 import CTASection from "@/components/sections/CTASection";
@@ -110,16 +111,26 @@ const ProductPage = () => {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: i * 0.08 }}
-                  className="glass-panel p-6"
+                  className="group/glowing relative rounded-xl glass-panel p-6"
                 >
-                  <div
-                    className="w-10 h-10 rounded-lg flex items-center justify-center mb-4"
-                    style={{ backgroundColor: `${product.accentColor}15` }}
-                  >
-                    <IconComp className="w-5 h-5" style={{ color: product.accentColor }} />
+                  <GlowingEffect
+                    spread={40}
+                    glow={false}
+                    disabled={false}
+                    proximity={64}
+                    inactiveZone={0.01}
+                    borderWidth={2}
+                  />
+                  <div className="relative z-10">
+                    <div
+                      className="w-10 h-10 rounded-lg flex items-center justify-center mb-4"
+                      style={{ backgroundColor: `${product.accentColor}15` }}
+                    >
+                      <IconComp className="w-5 h-5" style={{ color: product.accentColor }} />
+                    </div>
+                    <h3 className="text-base font-medium text-foreground mb-1">{feat.title}</h3>
+                    <p className="text-sm text-muted-foreground leading-relaxed">{feat.description}</p>
                   </div>
-                  <h3 className="text-base font-medium text-foreground mb-1">{feat.title}</h3>
-                  <p className="text-sm text-muted-foreground leading-relaxed">{feat.description}</p>
                 </motion.div>
               );
             })}
