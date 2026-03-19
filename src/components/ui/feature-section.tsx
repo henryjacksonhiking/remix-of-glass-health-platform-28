@@ -117,7 +117,7 @@ export function FeatureSteps({
                       <img
                         src={feature.image}
                         alt={feature.title || feature.step}
-                        className="w-full h-full object-cover rounded-xl"
+                        className="w-full h-full object-contain rounded-xl"
                       />
                     </motion.div>
                   )
