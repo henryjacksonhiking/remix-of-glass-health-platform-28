@@ -42,59 +42,65 @@ const ProductPage = () => {
   const steps = howItWorks[product.slug];
   const showIntegrations = product.slug === "care" || product.slug === "core";
 
+  const isCare = product.slug === "care";
+
   return (
     <PageWrapper>
       {/* Hero */}
-      <section className="relative overflow-hidden py-24 md:py-32">
-        <div className="absolute top-0 left-1/3 w-80 h-80 rounded-full blur-[120px] animate-glow-pulse" style={{ backgroundColor: `${product.accentColor}15` }} />
-        <div className="container mx-auto px-4 md:px-6 relative z-10">
-          {/* Breadcrumb */}
-          <div className="flex items-center gap-2 text-sm text-muted-foreground mb-8">
-            <Link to="/" className="hover:text-foreground transition-colors">Home</Link>
-            <span>/</span>
-            <span>Products</span>
-            <span>/</span>
-            <span className="text-foreground">{product.name}</span>
-          </div>
+      {isCare ? (
+        <CareHero />
+      ) : (
+        <section className="relative overflow-hidden py-24 md:py-32">
+          <div className="absolute top-0 left-1/3 w-80 h-80 rounded-full blur-[120px] animate-glow-pulse" style={{ backgroundColor: `${product.accentColor}15` }} />
+          <div className="container mx-auto px-4 md:px-6 relative z-10">
+            {/* Breadcrumb */}
+            <div className="flex items-center gap-2 text-sm text-muted-foreground mb-8">
+              <Link to="/" className="hover:text-foreground transition-colors">Home</Link>
+              <span>/</span>
+              <span>Products</span>
+              <span>/</span>
+              <span className="text-foreground">{product.name}</span>
+            </div>
 
-          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}>
-            <span
-              className="inline-block px-3 py-1 text-xs font-medium rounded-full mb-6"
-              style={{ backgroundColor: `${product.accentColor}20`, color: product.accentColor }}
+            <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}>
+              <span
+                className="inline-block px-3 py-1 text-xs font-medium rounded-full mb-6"
+                style={{ backgroundColor: `${product.accentColor}20`, color: product.accentColor }}
+              >
+                {product.name}
+              </span>
+            </motion.div>
+
+            <motion.h1
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.1 }}
+              className="hero-headline text-foreground max-w-2xl mb-6"
             >
-              {product.name}
-            </span>
-          </motion.div>
+              {product.tagline}
+            </motion.h1>
 
-          <motion.h1
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.1 }}
-            className="hero-headline text-foreground max-w-2xl mb-6"
-          >
-            {product.tagline}
-          </motion.h1>
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.2 }}
+              className="body-text max-w-xl mb-8"
+            >
+              {product.description}
+            </motion.p>
 
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-            className="body-text max-w-xl mb-8"
-          >
-            {product.description}
-          </motion.p>
-
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.3 }}
-            className="flex flex-col sm:flex-row gap-4"
-          >
-            <Link to="/demo" className="gradient-btn text-base px-8 py-3.5">Book a demo</Link>
-            <a href="#features" className="ghost-btn text-base px-8 py-3.5">See features</a>
-          </motion.div>
-        </div>
-      </section>
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.3 }}
+              className="flex flex-col sm:flex-row gap-4"
+            >
+              <Link to="/demo" className="gradient-btn text-base px-8 py-3.5">Book a demo</Link>
+              <a href="#features" className="ghost-btn text-base px-8 py-3.5">See features</a>
+            </motion.div>
+          </div>
+        </section>
+      )}
 
       {/* Features grid */}
       <section id="features" className="py-24 border-t border-glass-border">
