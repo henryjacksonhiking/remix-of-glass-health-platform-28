@@ -44,6 +44,9 @@
     --pink-accent: 330 100% 44%;
     --indigo-accent: 239 84% 67%;
 
+    --gradient-color: 170 100% 43%;
+    --sparkles-color: #00DEC4;
+
     /* Glassmorphism tokens */
     --glass-bg: 0 0% 100% / 0.05;
     --glass-border: 0 0% 100% / 0.1;
