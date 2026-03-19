@@ -6,20 +6,20 @@ import heroBg from "@/assets/hero-bg.jpg";
 import mockupCalendar from "@/assets/mockup-calendar.jpg";
 import mockupPayments from "@/assets/mockup-payments.jpg";
 import mockupAppointment from "@/assets/mockup-appointment.jpg";
-
+import { BeamsBackground } from "@/components/ui/beams-background";
 const iconMap: Record<string, React.ComponentType<{ className?: string }>> = LucideIcons as any;
 
 const HeroSection = () => {
   return (
     <section className="relative overflow-hidden md:overflow-visible pt-10 pb-8 md:py-28">
-      {/* Background image */}
+      {/* Background image + beams */}
       <div className="absolute inset-0 z-0">
         <img src={heroBg} alt="" className="w-full h-full object-cover opacity-60" />
         <div className="absolute inset-0 bg-background/40" />
+        <div className="absolute inset-0 opacity-60">
+          <BeamsBackground intensity="medium" />
+        </div>
       </div>
-      {/* Background glows */}
-      <div className="absolute top-0 left-1/4 w-96 h-96 rounded-full bg-primary/10 blur-[120px] animate-glow-pulse" />
-      <div className="absolute bottom-0 right-1/4 w-80 h-80 rounded-full bg-secondary/10 blur-[100px] animate-glow-pulse" style={{ animationDelay: "1.5s" }} />
 
       <div className="container mx-auto px-4 md:px-6 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center mb-16 lg:mb-44">
