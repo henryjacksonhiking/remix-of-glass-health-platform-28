@@ -1,45 +1,45 @@
 const rows = [
   {
     step: "STEP 01",
-    badge: "No more phone tag",
-    headline: "Patients book themselves, any time",
-    body: "Patients choose their service, provider, and time slot — from any device, at any hour. Your schedule fills automatically, even while your team is with other patients.",
+    badge: "11pm — a patient wants to book",
+    headline: "A patient wants to book at 11pm",
+    body: "Patients book, reschedule, and cancel on their own — without calling your front desk. Your schedule fills while your team sleeps.",
     link: "See online booking ›",
     image: "/images/Choose_your_appointment-2.png",
     mobileImage: false,
   },
   {
     step: "STEP 02",
-    badge: "Full clinic visibility",
-    headline: "Your team starts the day ready",
-    body: "Every appointment confirmed, every pending payment visible, every provider accounted for — before your first patient walks in.",
+    badge: "8am — your front desk opens",
+    headline: "Your front desk opens at 8am",
+    body: "Your team sees everything confirmed, organised, and ready. No voicemails to return, no double bookings, no catching up.",
     link: "See admin dashboard ›",
     image: "/images/step_2_and_hero_-_admin_Dashboard.png",
     mobileImage: false,
   },
   {
     step: "STEP 03",
-    badge: "Zero manual data entry",
-    headline: "No more paper forms",
-    body: "Intake, consent, and referral forms completed digitally before patients arrive. All submitted forms are searchable, downloadable, and linked to the patient record.",
+    badge: "9am — a new patient arrives",
+    headline: "A new patient arrives",
+    body: "Intake forms completed before they walk in. No clipboards, no scanning, no manual data entry. The chart is ready before they sit down.",
     link: "See digital forms ›",
     image: "/images/step_3_-_new_patient_forms.png",
     mobileImage: false,
   },
   {
     step: "STEP 04",
-    badge: "Secure online payments",
-    headline: "Get paid without chasing",
-    body: "Create a payment request in seconds, send it by email or SMS, and let patients pay securely online. No awkward front-desk conversations. No outstanding invoices slipping through.",
+    badge: "After the visit — time to collect payment",
+    headline: "Time to collect payment",
+    body: "Send a payment request in seconds. Patients pay online from their phone. Your billing stays clean without a single awkward conversation.",
     link: "See payments ›",
     image: "/images/admin_vs_patient_-_New_Payment_Request.png",
     mobileImage: false,
   },
   {
     step: "STEP 05",
-    badge: "Dependents & family profiles",
-    headline: "One account for the whole family",
-    body: "Parents manage every family member's appointments, forms, and payments from a single account. Fewer duplicates, cleaner records, happier patients.",
+    badge: "Always — a patient has a family",
+    headline: "A patient has a family",
+    body: "One account for the whole family. Parents manage everyone's appointments, forms, and payments in one place. No duplicate records, no confusion.",
     link: "See family management ›",
     image: "/images/step_5_-_Dependents.png",
     mobileImage: true,
@@ -95,7 +95,7 @@ const ProductStory = () => {
             letterSpacing: "-1px",
           }}
         >
-          A full day at your clinic — without the chaos
+          A day in the life of your clinic
         </h2>
         <p
           className="mx-auto"
@@ -105,7 +105,7 @@ const ProductStory = () => {
             maxWidth: 480,
           }}
         >
-          See how Borna Care handles every touchpoint, from the moment a patient books to the moment they pay.
+          Not a feature list. A real day — from the first patient booking at 11pm to the family that manages everything from one account.
         </p>
       </div>
 
@@ -250,11 +250,11 @@ const ProductStory = () => {
               marginBottom: 12,
             }}
           >
-            Patients stay informed automatically
+            And through it all — patients stay informed automatically
           </h3>
 
           <p style={{ fontSize: 14, color: "rgba(255,255,255,0.5)", lineHeight: 1.75 }}>
-            Confirmation emails and SMS sent the moment a booking is made. Zero manual work from your team.
+            Every booking confirmed by email and SMS the moment it happens. No manual follow-up. No missed reminders. Just a clinic that feels effortlessly professional.
           </p>
         </div>
 
