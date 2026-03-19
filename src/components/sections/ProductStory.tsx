@@ -254,7 +254,7 @@ const ProductStory = () => {
           </h3>
 
           <p style={{ fontSize: 14, color: "rgba(255,255,255,0.5)", lineHeight: 1.75 }}>
-            Confirmation emails and SMS sent the moment a booking is made. Zero manual work from your team.
+            Every booking confirmed by email and SMS the moment it happens. No manual follow-up. No missed reminders. Just a clinic that feels effortlessly professional.
           </p>
         </div>
 
