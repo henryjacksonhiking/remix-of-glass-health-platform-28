@@ -76,11 +76,11 @@ const HeroSection = () => {
             {/* Desktop: layered mockups */}
             <div className="hidden lg:block relative">
               {/* Main mockup - Calendar view */}
-              <div className="relative z-10 rounded-xl overflow-hidden shadow-2xl border border-border/30">
+              <div className="relative z-10 rounded-2xl overflow-hidden shadow-2xl border border-border/30">
                 <img
                   src={mockupCalendar}
                   alt="Borna Care calendar view"
-                  className="w-full h-auto rounded-xl"
+                  className="w-full h-auto block"
                 />
               </div>
 
