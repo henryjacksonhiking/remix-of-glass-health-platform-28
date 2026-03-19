@@ -97,10 +97,7 @@ export function FeatureSteps({
           </div>
 
           <div
-            className={cn(
-              "order-1 md:order-2 relative overflow-hidden rounded-xl bg-muted/30 flex items-center justify-center",
-              imageHeight
-            )}
+            className="order-1 md:order-2 relative overflow-hidden rounded-xl"
           >
             <AnimatePresence mode="wait">
               {features.map(
@@ -108,7 +105,6 @@ export function FeatureSteps({
                   index === currentFeature && (
                     <motion.div
                       key={index}
-                      className="absolute inset-0"
                       initial={{ opacity: 0, scale: 0.96 }}
                       animate={{ opacity: 1, scale: 1 }}
                       exit={{ opacity: 0, scale: 1.04 }}
@@ -117,7 +113,7 @@ export function FeatureSteps({
                       <img
                         src={feature.image}
                         alt={feature.title || feature.step}
-                        className="w-full h-full object-contain rounded-xl"
+                        className="w-full h-auto rounded-xl"
                       />
                     </motion.div>
                   )
