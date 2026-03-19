@@ -115,7 +115,7 @@ const ProductStory = () => {
         return (
           <div
             key={row.step}
-            className={`flex flex-col md:items-center mx-auto py-12 px-6 gap-8 md:py-16 md:px-20 md:gap-16 ${
+            className={`flex flex-col md:items-center mx-auto py-12 px-6 gap-0 md:py-16 md:px-4 md:gap-8 lg:gap-40 ${
               reversed ? "md:flex-row-reverse" : "md:flex-row"
             }`}
             style={{
