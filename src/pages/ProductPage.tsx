@@ -3,25 +3,44 @@ import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import * as LucideIcons from "lucide-react";
 import { GlowingEffect } from "@/components/ui/glowing-effect";
+import { FeatureSteps } from "@/components/ui/feature-section";
 import { products } from "@/lib/products";
 import PageWrapper from "@/components/layout/PageWrapper";
 import CTASection from "@/components/sections/CTASection";
 import CareHero from "@/components/sections/CareHero";
-
+import careDashboardScreen from "@/assets/care-dashboard-screen.png";
+import careFormsScreen from "@/assets/care-forms-screen.png";
+import careAppointmentScreen from "@/assets/care-appointment-screen.png";
 const iconMap: Record<string, React.ComponentType<{ className?: string }>> = LucideIcons as any;
 
 const howItWorks: Record<string, { step: string; description: string; icon: string }[]> = {
-  care: [
-    { step: "Patient signs up", description: "Patients create a profile and connect to your clinic in minutes.", icon: "UserPlus" },
-    { step: "Book and complete forms", description: "Online booking, digital intake, and consent — all before the visit.", icon: "ClipboardCheck" },
-    { step: "Visit and follow up", description: "Check-in, treatment, payment, and automated follow-up in one flow.", icon: "CheckCircle" },
-  ],
   connect: [
     { step: "All channels, one inbox", description: "Calls, SMS, chat, and email arrive in a single shared inbox.", icon: "Inbox" },
     { step: "AI tags and summarizes", description: "Every interaction is auto-summarized and linked to the patient record.", icon: "Bot" },
     { step: "Team collaborates", description: "Route messages, assign tasks, and follow up — without switching tools.", icon: "Users" },
   ],
 };
+
+const careFeatureSteps = [
+  {
+    step: "Step 1",
+    title: "Patient signs up",
+    content: "Patients create a profile and connect to your clinic in minutes.",
+    image: careDashboardScreen,
+  },
+  {
+    step: "Step 2",
+    title: "Book and complete forms",
+    content: "Online booking, digital intake, and consent — all before the visit.",
+    image: careFormsScreen,
+  },
+  {
+    step: "Step 3",
+    title: "Visit and follow up",
+    content: "Check-in, treatment, payment, and automated follow-up in one flow.",
+    image: careAppointmentScreen,
+  },
+];
 
 const ProductPage = () => {
   const { slug } = useParams<{ slug: string }>();
@@ -146,7 +165,18 @@ const ProductPage = () => {
       </section>
 
       {/* How it works */}
-      {steps && (
+      {isCare && (
+        <section className="py-24 border-t border-glass-border">
+          <FeatureSteps
+            features={careFeatureSteps}
+            title="How it works"
+            autoPlayInterval={4000}
+            imageHeight="h-[400px] md:h-[500px]"
+          />
+        </section>
+      )}
+
+      {steps && !isCare && (
         <section className="py-24 border-t border-glass-border">
           <div className="container mx-auto px-4 md:px-6">
             <h2 className="section-headline text-foreground text-center mb-16">How it works</h2>
