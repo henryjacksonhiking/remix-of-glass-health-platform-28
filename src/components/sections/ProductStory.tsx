@@ -105,7 +105,7 @@ const ProductStory = () => {
             maxWidth: 480,
           }}
         >
-          See how Borna Care handles every touchpoint, from the moment a patient books to the moment they pay.
+          Not a feature list. A real day — from the first patient booking at 11pm to the family that manages everything from one account.
         </p>
       </div>
 
