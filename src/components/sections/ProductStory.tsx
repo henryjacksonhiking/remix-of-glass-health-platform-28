@@ -258,7 +258,7 @@ const ProductStory = () => {
           </p>
         </div>
 
-        <div className="flex items-start gap-4 flex-1">
+        <div className="flex items-center md:items-start gap-4 flex-1 md:flex-row flex-col justify-center md:justify-start">
           <div
             style={{
               flex: "0 0 auto",
