@@ -129,7 +129,7 @@ const HeroSection = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.4 }}
-          className="grid grid-cols-3 gap-2 md:grid-cols-5 md:gap-3 max-w-5xl mx-auto w-full shrink-0"
+          className="grid grid-cols-3 gap-1.5 md:grid-cols-5 md:gap-3 max-w-5xl mx-auto w-full shrink-0"
         >
           {products.map((product) => {
             const IconComp = iconMap[product.features[0]?.icon] || LucideIcons.Box;
@@ -137,15 +137,15 @@ const HeroSection = () => {
               <Link
                 key={product.id}
                 to={product.href}
-                className="glass-panel-hover p-2 md:p-4 lg:p-3 xl:p-5 text-center group min-w-0"
+                className="glass-panel-hover p-1.5 md:p-4 lg:p-3 xl:p-5 text-center group min-w-0"
               >
                 <div
-                  className="w-8 h-8 md:w-11 md:h-11 lg:w-9 lg:h-9 xl:w-12 xl:h-12 rounded-lg mx-auto mb-1 md:mb-2 flex items-center justify-center"
+                  className="w-6 h-6 md:w-11 md:h-11 lg:w-9 lg:h-9 xl:w-12 xl:h-12 rounded-md mx-auto mb-0.5 md:mb-2 flex items-center justify-center"
                   style={{ backgroundColor: `${product.accentColor}20` }}
                 >
-                  <IconComp className="w-3.5 h-3.5 md:w-5 md:h-5 lg:w-4 lg:h-4 xl:w-5 xl:h-5" style={{ color: product.accentColor }} />
+                  <IconComp className="w-3 h-3 md:w-5 md:h-5 lg:w-4 lg:h-4 xl:w-5 xl:h-5" style={{ color: product.accentColor }} />
                 </div>
-                <div className="text-[10px] md:text-xs lg:text-[11px] xl:text-sm font-medium text-foreground truncate">{product.name}</div>
+                <div className="text-[9px] md:text-xs lg:text-[11px] xl:text-sm font-medium text-foreground truncate">{product.name}</div>
               </Link>
             );
           })}
