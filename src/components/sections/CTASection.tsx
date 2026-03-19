@@ -15,8 +15,8 @@ const CTASection = () => {
           Book a 30-minute demo and see how modern clinics operate.
         </p>
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-8">
-          <Link to="/demo" className="gradient-btn text-base px-8 py-3.5">Book a demo</Link>
-          <Link to="/contact" className="ghost-btn text-base px-8 py-3.5">Request a consultation</Link>
+          <Link to="/contact" className="ghost-btn text-base px-8 py-3.5 w-full sm:w-[260px]">Request a consultation</Link>
+          <Link to="/demo" className="gradient-btn text-base px-8 py-3.5 w-full sm:w-[260px]">Book a demo</Link>
         </div>
 
         {/* Sparkles effect below buttons — matching Acme reference */}
