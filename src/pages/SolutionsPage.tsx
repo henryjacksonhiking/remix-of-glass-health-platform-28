@@ -121,7 +121,17 @@ const useCases = [
       <div className="space-y-3">
         <div className="flex gap-2">
           {["Forms", "Reminders", "Billing"].map((label, i) => (
-            <div key={label} className="flex-1 glass-panel rounded-md p-2 text-center">
+            <motion.div
+              key={label}
+              className="flex-1 glass-panel rounded-md p-2 text-center cursor-pointer"
+              whileHover={{
+                scale: 1.08,
+                y: -3,
+                boxShadow: "0 8px 20px hsl(var(--primary) / 0.15)",
+              }}
+              whileTap={{ scale: 0.95 }}
+              transition={{ type: "spring", stiffness: 350, damping: 20 }}
+            >
               <motion.div
                 className="text-lg font-bold text-primary"
                 initial={{ opacity: 0 }}
@@ -132,7 +142,7 @@ const useCases = [
                 {["98%", "4x", "2h"][i]}
               </motion.div>
               <div className="text-[10px] text-muted-foreground mt-0.5">{label}</div>
-            </div>
+            </motion.div>
           ))}
         </div>
         <StatBadge value="12hrs" label="saved per week" trend="up" />
