@@ -1,13 +1,22 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, NavLink, useLocation } from "react-router-dom";
 import { Menu, X, ChevronDown } from "lucide-react";
 import { products } from "@/lib/products";
 import { motion, AnimatePresence } from "framer-motion";
 import BornaLogo from "@/components/BornaLogo";
+import { cn } from "@/lib/utils";
 
 const Navbar = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [productsOpen, setProductsOpen] = useState(false);
+  const location = useLocation();
+  const isProductActive = location.pathname.startsWith("/products");
+
+  const navLinkClass = ({ isActive }: { isActive: boolean }) =>
+    cn(
+      "text-[13px] lg:text-sm transition-colors whitespace-nowrap",
+      isActive ? "text-foreground font-medium" : "text-muted-foreground hover:text-foreground"
+    );
 
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 border-b border-glass-border backdrop-blur-xl bg-background/70">
@@ -24,7 +33,10 @@ const Navbar = () => {
             onMouseEnter={() => setProductsOpen(true)}
             onMouseLeave={() => setProductsOpen(false)}
           >
-            <button className="flex items-center gap-1 text-[13px] lg:text-sm text-muted-foreground hover:text-foreground transition-colors whitespace-nowrap">
+            <button className={cn(
+              "flex items-center gap-1 text-[13px] lg:text-sm transition-colors whitespace-nowrap",
+              isProductActive ? "text-foreground font-medium" : "text-muted-foreground hover:text-foreground"
+            )}>
               Products <ChevronDown className="w-3.5 h-3.5" />
             </button>
             <AnimatePresence>
@@ -75,11 +87,11 @@ const Navbar = () => {
               )}
             </AnimatePresence>
           </div>
-          <Link to="/platform" className="text-[13px] lg:text-sm text-muted-foreground hover:text-foreground transition-colors whitespace-nowrap">Platform</Link>
-          <Link to="/solutions" className="text-[13px] lg:text-sm text-muted-foreground hover:text-foreground transition-colors whitespace-nowrap">Solutions</Link>
-          <Link to="/pricing" className="text-[13px] lg:text-sm text-muted-foreground hover:text-foreground transition-colors whitespace-nowrap">Pricing</Link>
-          <Link to="/resources" className="text-[13px] lg:text-sm text-muted-foreground hover:text-foreground transition-colors whitespace-nowrap">Resources</Link>
-          <Link to="/about" className="text-[13px] lg:text-sm text-muted-foreground hover:text-foreground transition-colors whitespace-nowrap">About</Link>
+          <NavLink to="/platform" className={navLinkClass}>Platform</NavLink>
+          <NavLink to="/solutions" className={navLinkClass}>Solutions</NavLink>
+          <NavLink to="/pricing" className={navLinkClass}>Pricing</NavLink>
+          <NavLink to="/resources" className={navLinkClass}>Resources</NavLink>
+          <NavLink to="/about" className={navLinkClass}>About</NavLink>
         </div>
 
         {/* Desktop CTA */}
