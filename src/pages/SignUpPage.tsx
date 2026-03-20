@@ -10,6 +10,7 @@ import PageWrapper from "@/components/layout/PageWrapper";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
+import { CreditCard, Shield } from "lucide-react";
 
 const signUpSchema = z.object({
   fullName: z.string().trim().min(2, "Name must be at least 2 characters").max(100),
@@ -238,6 +239,18 @@ const SignUpPage = () => {
                   )}
                 </div>
 
+                {selectedPlan === "starter" && (
+                  <div className="rounded-lg bg-primary/5 border border-primary/10 p-4 space-y-2">
+                    <div className="flex items-center gap-2 text-sm font-medium text-foreground">
+                      <CreditCard className="w-4 h-4 text-primary" />
+                      Credit card required
+                    </div>
+                    <p className="text-xs text-muted-foreground">
+                      30 days free, then $249/month. Cancel anytime — no long-term contracts.
+                    </p>
+                  </div>
+                )}
+
                 <Button
                   type="submit"
                   disabled={isSubmitting}
@@ -247,8 +260,13 @@ const SignUpPage = () => {
                     ? "Processing…"
                     : selectedPlan === "free-trial"
                     ? "Start Free Trial"
-                    : "Subscribe — $249/mo"}
+                    : "Start 30-Day Free Trial"}
                 </Button>
+
+                <div className="flex items-center justify-center gap-1.5 text-xs text-muted-foreground">
+                  <Shield className="w-3 h-3" />
+                  Secure & encrypted
+                </div>
 
                 <p className="text-xs text-muted-foreground text-center">
                   By signing up you agree to our{" "}
