@@ -87,11 +87,11 @@ const Navbar = () => {
               )}
             </AnimatePresence>
           </div>
-          <Link to="/platform" className="text-[13px] lg:text-sm text-muted-foreground hover:text-foreground transition-colors whitespace-nowrap">Platform</Link>
-          <Link to="/solutions" className="text-[13px] lg:text-sm text-muted-foreground hover:text-foreground transition-colors whitespace-nowrap">Solutions</Link>
-          <Link to="/pricing" className="text-[13px] lg:text-sm text-muted-foreground hover:text-foreground transition-colors whitespace-nowrap">Pricing</Link>
-          <Link to="/resources" className="text-[13px] lg:text-sm text-muted-foreground hover:text-foreground transition-colors whitespace-nowrap">Resources</Link>
-          <Link to="/about" className="text-[13px] lg:text-sm text-muted-foreground hover:text-foreground transition-colors whitespace-nowrap">About</Link>
+          <NavLink to="/platform" className={navLinkClass}>Platform</NavLink>
+          <NavLink to="/solutions" className={navLinkClass}>Solutions</NavLink>
+          <NavLink to="/pricing" className={navLinkClass}>Pricing</NavLink>
+          <NavLink to="/resources" className={navLinkClass}>Resources</NavLink>
+          <NavLink to="/about" className={navLinkClass}>About</NavLink>
         </div>
 
         {/* Desktop CTA */}
