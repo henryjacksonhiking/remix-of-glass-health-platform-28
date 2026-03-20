@@ -1,33 +1,134 @@
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import { UserPlus, Heart, Zap, DollarSign, Stethoscope, Building2, Activity } from "lucide-react";
+import { UserPlus, Heart, Zap, DollarSign, Stethoscope, Building2, Activity, TrendingUp, TrendingDown } from "lucide-react";
 import PageWrapper from "@/components/layout/PageWrapper";
 import CTASection from "@/components/sections/CTASection";
 
+/* ── Mini chart components ── */
+const BarChart = ({ values, color }: { values: number[]; color: string }) => (
+  <div className="flex items-end gap-1 h-16">
+    {values.map((v, i) => (
+      <motion.div
+        key={i}
+        initial={{ height: 0 }}
+        whileInView={{ height: `${v}%` }}
+        viewport={{ once: true }}
+        transition={{ delay: i * 0.08, duration: 0.5 }}
+        className="flex-1 rounded-sm min-w-[6px]"
+        style={{ background: `hsl(var(--${color}) / ${0.3 + (v / 100) * 0.7})` }}
+      />
+    ))}
+  </div>
+);
+
+const DonutChart = ({ percentage, color }: { percentage: number; color: string }) => {
+  const r = 28;
+  const c = 2 * Math.PI * r;
+  return (
+    <div className="relative w-16 h-16 flex items-center justify-center">
+      <svg viewBox="0 0 64 64" className="w-full h-full -rotate-90">
+        <circle cx="32" cy="32" r={r} fill="none" strokeWidth="5" className="stroke-muted/20" />
+        <motion.circle
+          cx="32" cy="32" r={r} fill="none" strokeWidth="5"
+          strokeLinecap="round"
+          className={`stroke-${color}`}
+          style={{ stroke: `hsl(var(--${color}))` }}
+          strokeDasharray={c}
+          initial={{ strokeDashoffset: c }}
+          whileInView={{ strokeDashoffset: c * (1 - percentage / 100) }}
+          viewport={{ once: true }}
+          transition={{ duration: 1, ease: "easeOut" }}
+        />
+      </svg>
+      <span className="absolute text-xs font-semibold text-foreground">{percentage}%</span>
+    </div>
+  );
+};
+
+const StatBadge = ({ value, label, trend }: { value: string; label: string; trend: "up" | "down" }) => (
+  <div className="flex items-center gap-2">
+    <div className={`w-7 h-7 rounded-full flex items-center justify-center ${trend === "up" ? "bg-emerald-500/10" : "bg-amber-500/10"}`}>
+      {trend === "up"
+        ? <TrendingUp className="w-3.5 h-3.5 text-emerald-400" />
+        : <TrendingDown className="w-3.5 h-3.5 text-amber-400" />}
+    </div>
+    <div>
+      <span className="text-sm font-semibold text-foreground">{value}</span>
+      <span className="text-[11px] text-muted-foreground ml-1">{label}</span>
+    </div>
+  </div>
+);
+
+/* ── Data ── */
 const useCases = [
   {
     icon: UserPlus,
     title: "Patient acquisition",
-    description: "Capture and convert leads through better communication, scheduling, and a frictionless first impression. Patients find you, book instantly, and start their journey digitally.",
+    description: "Capture and convert leads through better communication, scheduling, and a frictionless first impression.",
     outcomes: ["Increase online bookings", "Reduce lead response time", "Convert more enquiries"],
+    visual: () => (
+      <div className="space-y-3">
+        <BarChart values={[30, 45, 55, 65, 50, 80, 90, 95]} color="primary" />
+        <StatBadge value="+64%" label="more bookings" trend="up" />
+      </div>
+    ),
   },
   {
     icon: Heart,
     title: "Patient retention",
-    description: "Keep patients engaged with automated reminders, follow-ups, and a portal they actually want to use. Retention starts the moment the first visit ends.",
+    description: "Keep patients engaged with automated reminders, follow-ups, and a portal they actually want to use.",
     outcomes: ["Reduce no-shows", "Increase recall compliance", "Improve patient satisfaction"],
+    visual: () => (
+      <div className="flex items-center gap-5">
+        <DonutChart percentage={92} color="primary" />
+        <div className="space-y-1.5">
+          <StatBadge value="92%" label="retention rate" trend="up" />
+          <StatBadge value="-38%" label="no-shows" trend="down" />
+        </div>
+      </div>
+    ),
   },
   {
     icon: Zap,
     title: "Workflow automation",
-    description: "Reduce manual tasks through automation — from intake forms to appointment confirmations to billing. Your team focuses on care, not admin.",
+    description: "Reduce manual tasks through automation — from intake forms to appointment confirmations to billing.",
     outcomes: ["Eliminate paper forms", "Automate appointment reminders", "Streamline billing workflows"],
+    visual: () => (
+      <div className="space-y-3">
+        <div className="flex gap-2">
+          {["Forms", "Reminders", "Billing"].map((label, i) => (
+            <div key={label} className="flex-1 glass-panel rounded-md p-2 text-center">
+              <motion.div
+                className="text-lg font-bold text-primary"
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.15 }}
+              >
+                {["98%", "4x", "2h"][i]}
+              </motion.div>
+              <div className="text-[10px] text-muted-foreground mt-0.5">{label}</div>
+            </div>
+          ))}
+        </div>
+        <StatBadge value="12hrs" label="saved per week" trend="up" />
+      </div>
+    ),
   },
   {
     icon: DollarSign,
     title: "Revenue optimization",
-    description: "Improve billing efficiency, reduce missed opportunities, and gain visibility into your clinic's financial performance with real-time data.",
+    description: "Improve billing efficiency, reduce missed opportunities, and gain visibility into your clinic's financial performance.",
     outcomes: ["Track outstanding invoices", "Reduce payment delays", "Identify revenue gaps"],
+    visual: () => (
+      <div className="space-y-3">
+        <BarChart values={[40, 35, 50, 60, 55, 70, 75, 85, 90, 95]} color="primary" />
+        <div className="flex gap-4">
+          <StatBadge value="+27%" label="revenue" trend="up" />
+          <StatBadge value="-45%" label="delays" trend="down" />
+        </div>
+      </div>
+    ),
   },
 ];
 
@@ -72,10 +173,12 @@ const SolutionsPage = () => (
     {/* Use cases */}
     <section className="py-24 border-t border-glass-border">
       <div className="container mx-auto px-4 md:px-6">
-        <h2 className="section-headline text-foreground text-center mb-16">Solve real clinic challenges</h2>
+        <h2 className="section-headline text-foreground text-center mb-4">Solve real clinic challenges</h2>
+        <p className="text-muted-foreground text-center mb-16 max-w-xl mx-auto">Real results from clinics using Borna.ai to transform their operations</p>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-5xl mx-auto">
           {useCases.map((uc, i) => {
             const Icon = uc.icon;
+            const Visual = uc.visual;
             return (
               <motion.div
                 key={uc.title}
@@ -83,14 +186,22 @@ const SolutionsPage = () => (
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, amount: 0.3 }}
                 transition={{ delay: i * 0.08, duration: 0.5 }}
-                className="glass-panel p-8"
+                className="glass-panel p-8 flex flex-col"
               >
-                <div className="w-11 h-11 rounded-lg bg-primary/10 flex items-center justify-center mb-5">
-                  <Icon className="w-5 h-5 text-primary" />
+                <div className="flex items-start justify-between mb-5">
+                  <div className="w-11 h-11 rounded-lg bg-primary/10 flex items-center justify-center">
+                    <Icon className="w-5 h-5 text-primary" />
+                  </div>
                 </div>
                 <h3 className="text-lg font-medium text-foreground mb-3">{uc.title}</h3>
                 <p className="text-sm text-muted-foreground mb-5 leading-relaxed">{uc.description}</p>
-                <ul className="space-y-2">
+
+                {/* Visual / chart area */}
+                <div className="rounded-lg bg-background/30 border border-glass-border p-4 mb-5">
+                  <Visual />
+                </div>
+
+                <ul className="space-y-2 mt-auto">
                   {uc.outcomes.map((o) => (
                     <li key={o} className="flex items-center gap-2 text-sm text-muted-foreground">
                       <span className="w-1.5 h-1.5 rounded-full bg-primary shrink-0" />
