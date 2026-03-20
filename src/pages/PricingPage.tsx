@@ -5,57 +5,50 @@ import PageWrapper from "@/components/layout/PageWrapper";
 
 const plans = [
   {
-    name: "Starter",
-    description: "Basic patient portal and scheduling",
-    price: "Contact us",
+    name: "Free Trial",
+    description: "Try Borna Care with no commitment",
+    price: "Free",
     features: [
-      "Online appointment booking",
-      "Digital intake forms",
-      "Patient portal",
-      "Email notifications",
-      "Basic reporting",
-    ],
-    cta: "Book a demo",
-    highlighted: false,
-  },
-  {
-    name: "Growth",
-    description: "Advanced features and automation",
-    price: "Contact us",
-    features: [
-      "Everything in Starter",
+      "1 Branch",
+      "1 User",
+      "Online appointment booking (without EHR integration)",
+      "New patient intake forms",
+      "Referral, Consent forms with eSignature",
       "Online payments",
-      "Automated reminders",
-      "Family management",
-      "EHR integration",
-      "Priority support",
+      "Appointment notifications",
+      "Support",
+      "Role-based user permissions",
     ],
-    cta: "Book a demo",
-    highlighted: true,
+    cta: "Start free trial",
+    highlighted: false,
   },
   {
-    name: "Enterprise",
-    description: "Custom solutions and scaling support",
-    price: "Custom",
+    name: "Starter Plan",
+    description: "Everything you need to run your clinic",
+    price: "$249",
+    period: "/month",
     features: [
-      "Everything in Growth",
-      "Multi-location support",
-      "Custom workflows",
-      "Dedicated account manager",
-      "API access",
-      "SLA guarantees",
+      "1 Branch",
+      "Up to 20 Users per clinic",
+      "Online appointment booking",
+      "New patient intake forms",
+      "Referral, Consent forms with eSignature",
+      "Online payments",
+      "Appointment notifications",
+      "Support",
+      "Role-based user permissions",
     ],
-    cta: "Contact sales",
-    highlighted: false,
+    cta: "Get started",
+    highlighted: true,
   },
 ];
 
 const faqs = [
-  { q: "What is included in Borna Care?", a: "Borna Care includes online booking, digital forms, patient portal, online payments, automated reminders, and EHR integration. The exact features depend on your plan." },
-  { q: "How does pricing scale?", a: "Pricing scales based on the number of providers and locations. Contact our team for a custom quote tailored to your clinic's needs." },
-  { q: "When will future modules be available?", a: "Borna Connect is coming soon. Borna Engage, Insight, and Core are in active development. Join our early access list to be notified." },
-  { q: "Can I add more clinic locations later?", a: "Yes. You can add locations at any time. Multi-location support is available on the Growth and Enterprise plans." },
-  { q: "Is there a free trial?", a: "We offer guided demos and pilot programs. Book a demo to discuss options with our team." },
+  { q: "What is included in the Free Trial?", a: "The Free Trial includes all core features for 1 branch and 1 user, including online booking (without EHR integration), intake forms, payments, and notifications." },
+  { q: "Can I add more branches?", a: "Yes. Additional branches can be added to the Starter Plan for $199 per branch per month." },
+  { q: "How does pricing scale?", a: "The Starter Plan supports up to 20 users per clinic. Contact our team for custom pricing if you need more." },
+  { q: "Is there a long-term contract?", a: "No. The Starter Plan is a monthly subscription — cancel anytime." },
+  { q: "What happens after my free trial ends?", a: "You can upgrade to the Starter Plan to keep all your data and unlock the full feature set." },
 ];
 
 const PricingPage = () => (
@@ -69,7 +62,7 @@ const PricingPage = () => (
           transition={{ duration: 0.6 }}
           className="hero-headline text-foreground mb-6"
         >
-          Simple and flexible pricing
+          Simple and transparent pricing
         </motion.h1>
         <motion.p
           initial={{ opacity: 0, y: 20 }}
@@ -77,7 +70,7 @@ const PricingPage = () => (
           transition={{ duration: 0.6, delay: 0.1 }}
           className="body-text mx-auto max-w-xl"
         >
-          Start with Borna Care and expand as your clinic grows. No hidden fees, no long-term contracts.
+          Start free, upgrade when you're ready. No hidden fees, no long-term contracts.
         </motion.p>
       </div>
     </section>
@@ -85,7 +78,7 @@ const PricingPage = () => (
     {/* Plans */}
     <section className="pb-24">
       <div className="container mx-auto px-4 md:px-6">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
           {plans.map((plan, i) => (
             <motion.div
               key={plan.name}
@@ -100,11 +93,18 @@ const PricingPage = () => (
               }`}
             >
               {plan.highlighted && (
-                <span className="text-xs font-medium text-primary mb-4">Most popular</span>
+                <span className="text-xs font-medium text-primary mb-4">Recommended</span>
               )}
               <h3 className="text-xl font-semibold text-foreground mb-1">{plan.name}</h3>
               <p className="text-sm text-muted-foreground mb-6">{plan.description}</p>
-              <div className="text-2xl font-bold text-foreground mb-8">{plan.price}</div>
+              <div className="text-3xl font-bold text-foreground mb-1">
+                {plan.price}
+                {plan.period && <span className="text-base font-normal text-muted-foreground">{plan.period}</span>}
+              </div>
+              {plan.highlighted && (
+                <p className="text-xs text-muted-foreground mb-6">per clinic</p>
+              )}
+              {!plan.highlighted && <div className="mb-6" />}
               <ul className="space-y-3 mb-8 flex-1">
                 {plan.features.map((f) => (
                   <li key={f} className="flex items-start gap-2.5 text-sm text-muted-foreground">
@@ -125,15 +125,17 @@ const PricingPage = () => (
       </div>
     </section>
 
-    {/* Add-ons */}
+    {/* Add-on */}
     <section className="py-16 border-t border-glass-border">
       <div className="container mx-auto px-4 md:px-6 max-w-3xl text-center">
-        <h2 className="section-headline text-foreground mb-4">Add-ons</h2>
-        <p className="body-text mx-auto mb-8">Extend your setup with additional capabilities as your clinic grows.</p>
-        <div className="flex flex-wrap justify-center gap-3">
-          {["Additional clinic locations", "Communication features", "Future modules (early access)"].map((addon) => (
-            <div key={addon} className="glass-panel px-5 py-2.5 text-sm text-muted-foreground">{addon}</div>
-          ))}
+        <h2 className="section-headline text-foreground mb-4">Add-on</h2>
+        <p className="body-text mx-auto mb-8">Scale your setup as your clinic grows.</p>
+        <div className="glass-panel inline-flex items-center gap-4 px-8 py-5">
+          <div className="text-left">
+            <p className="text-sm font-medium text-foreground">Additional Branch Setup</p>
+            <p className="text-xs text-muted-foreground">Add more locations to your Starter Plan</p>
+          </div>
+          <div className="text-xl font-bold text-foreground whitespace-nowrap">$199<span className="text-sm font-normal text-muted-foreground">/branch</span></div>
         </div>
       </div>
     </section>
