@@ -36,8 +36,8 @@ const Navbar = () => {
             onMouseLeave={() => setProductsOpen(false)}
           >
             <button className={cn(
-              "flex items-center gap-1 text-[13px] lg:text-sm transition-colors whitespace-nowrap",
-              isProductActive ? "text-foreground font-medium" : "text-muted-foreground hover:text-foreground"
+              "relative flex items-center gap-1 text-[13px] lg:text-sm transition-all duration-300 whitespace-nowrap py-1 px-2 rounded-md",
+              isProductActive ? "text-foreground font-medium nav-spotlight" : "text-muted-foreground hover:text-foreground"
             )}>
               Products <ChevronDown className="w-3.5 h-3.5" />
             </button>
