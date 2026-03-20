@@ -113,7 +113,7 @@ const PricingPage = () => (
                 ))}
               </ul>
               <Link
-                to="/demo"
+                to={`/sign-up?plan=${plan.highlighted ? "starter" : "free-trial"}`}
                 className={plan.highlighted ? "gradient-btn text-center py-3" : "ghost-btn text-center py-3"}
               >
                 {plan.cta}
