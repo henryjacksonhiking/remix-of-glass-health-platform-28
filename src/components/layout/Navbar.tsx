@@ -153,9 +153,11 @@ const Navbar = () => {
                   </Link>
                 ))}
               </div>
+              <Link to="/platform" onClick={() => setMobileOpen(false)} className="block px-3 py-2 text-sm text-foreground">Platform</Link>
               <Link to="/solutions" onClick={() => setMobileOpen(false)} className="block px-3 py-2 text-sm text-foreground">Solutions</Link>
               <Link to="/pricing" onClick={() => setMobileOpen(false)} className="block px-3 py-2 text-sm text-foreground">Pricing</Link>
               <Link to="/resources" onClick={() => setMobileOpen(false)} className="block px-3 py-2 text-sm text-foreground">Resources</Link>
+              <Link to="/about" onClick={() => setMobileOpen(false)} className="block px-3 py-2 text-sm text-foreground">About</Link>
               <a
                 href="https://care.borna.ai"
                 target="_blank"

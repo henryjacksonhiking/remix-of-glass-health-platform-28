@@ -9,24 +9,27 @@ const Footer = () => {
       links: products.map((p) => ({ label: p.name, href: p.href })),
     },
     {
-      title: "Solutions",
+      title: "Platform",
       links: [
-        { label: "Dental clinics", href: "/solutions" },
-        { label: "Multi-location", href: "/solutions" },
-        { label: "Specialist practices", href: "/solutions" },
+        { label: "Overview", href: "/platform" },
+        { label: "Solutions", href: "/solutions" },
+        { label: "Pricing", href: "/pricing" },
+        { label: "Security", href: "/security" },
+      ],
+    },
+    {
+      title: "Resources",
+      links: [
+        { label: "Blog", href: "/blog" },
+        { label: "Resources", href: "/resources" },
+        { label: "Book a demo", href: "/demo" },
+        { label: "Contact", href: "/contact" },
       ],
     },
     {
       title: "Company",
       links: [
         { label: "About", href: "/about" },
-        { label: "Security", href: "/security" },
-        { label: "Contact", href: "/contact" },
-      ],
-    },
-    {
-      title: "Legal",
-      links: [
         { label: "Privacy policy", href: "/privacy" },
         { label: "Terms of service", href: "/terms" },
         { label: "HIPAA compliance", href: "/security" },
