@@ -13,9 +13,17 @@ import { Button } from "@/components/ui/button";
 import { CreditCard, Shield } from "lucide-react";
 
 const signUpSchema = z.object({
-  fullName: z.string().trim().min(2, "Name must be at least 2 characters").max(100),
+  fullName: z
+    .string()
+    .trim()
+    .min(2, "Name must be at least 2 characters")
+    .max(100),
   email: z.string().trim().email("Please enter a valid email").max(255),
-  clinicName: z.string().trim().min(2, "Clinic name must be at least 2 characters").max(100),
+  clinicName: z
+    .string()
+    .trim()
+    .min(2, "Clinic name must be at least 2 characters")
+    .max(100),
   phone: z.string().trim().min(7, "Please enter a valid phone number").max(20),
 });
 
@@ -92,9 +100,12 @@ const SignUpPage = () => {
             <div className="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center mx-auto mb-6">
               <Check className="w-8 h-8 text-primary" />
             </div>
-            <h1 className="text-2xl font-bold text-foreground mb-3">You're all set!</h1>
+            <h1 className="text-2xl font-bold text-foreground mb-3">
+              You're all set!
+            </h1>
             <p className="text-muted-foreground mb-8">
-              We've received your sign-up request. Our team will reach out shortly to get your clinic onboarded.
+              We've received your sign-up request. Our team will reach out
+              shortly to get your clinic onboarded.
             </p>
             <Link to="/" className="gradient-btn inline-block px-8 py-3">
               Back to Home
@@ -122,7 +133,9 @@ const SignUpPage = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
           >
-            <h1 className="hero-headline text-foreground mb-3">Start with Borna Care</h1>
+            <h1 className="hero-headline text-foreground mb-3">
+              Start with Borna Care
+            </h1>
             <p className="body-text max-w-xl mb-12">
               Choose your plan and fill in your details to get started.
             </p>
@@ -135,7 +148,9 @@ const SignUpPage = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.1, duration: 0.5 }}
             >
-              <h2 className="text-lg font-semibold text-foreground mb-4">Select your plan</h2>
+              <h2 className="text-lg font-semibold text-foreground mb-4">
+                Select your plan
+              </h2>
               <div className="space-y-4">
                 {plans.map((plan) => (
                   <button
@@ -149,7 +164,9 @@ const SignUpPage = () => {
                     }`}
                   >
                     <div className="flex items-center justify-between mb-2">
-                      <h3 className="font-semibold text-foreground">{plan.name}</h3>
+                      <h3 className="font-semibold text-foreground">
+                        {plan.name}
+                      </h3>
                       <div className="text-lg font-bold text-foreground">
                         {plan.price}
                         {plan.period && (
@@ -161,7 +178,10 @@ const SignUpPage = () => {
                     </div>
                     <ul className="space-y-1.5 mt-3">
                       {plan.features.slice(0, 4).map((f) => (
-                        <li key={f} className="flex items-center gap-2 text-xs text-muted-foreground">
+                        <li
+                          key={f}
+                          className="flex items-center gap-2 text-xs text-muted-foreground"
+                        >
                           <Check className="w-3 h-3 text-primary shrink-0" />
                           {f}
                         </li>
@@ -183,8 +203,13 @@ const SignUpPage = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2, duration: 0.5 }}
             >
-              <h2 className="text-lg font-semibold text-foreground mb-4">Your details</h2>
-              <form onSubmit={handleSubmit(onSubmit)} className="glass-panel p-8 rounded-xl space-y-6">
+              <h2 className="text-lg font-semibold text-foreground mb-4">
+                Your details
+              </h2>
+              <form
+                onSubmit={handleSubmit(onSubmit)}
+                className="glass-panel p-8 rounded-xl space-y-6"
+              >
                 <div className="space-y-2">
                   <Label htmlFor="fullName">Full Name</Label>
                   <Input
@@ -194,7 +219,9 @@ const SignUpPage = () => {
                     className={errors.fullName ? "border-destructive" : ""}
                   />
                   {errors.fullName && (
-                    <p className="text-xs text-destructive">{errors.fullName.message}</p>
+                    <p className="text-xs text-destructive">
+                      {errors.fullName.message}
+                    </p>
                   )}
                 </div>
 
@@ -208,7 +235,9 @@ const SignUpPage = () => {
                     className={errors.email ? "border-destructive" : ""}
                   />
                   {errors.email && (
-                    <p className="text-xs text-destructive">{errors.email.message}</p>
+                    <p className="text-xs text-destructive">
+                      {errors.email.message}
+                    </p>
                   )}
                 </div>
 
@@ -221,7 +250,9 @@ const SignUpPage = () => {
                     className={errors.clinicName ? "border-destructive" : ""}
                   />
                   {errors.clinicName && (
-                    <p className="text-xs text-destructive">{errors.clinicName.message}</p>
+                    <p className="text-xs text-destructive">
+                      {errors.clinicName.message}
+                    </p>
                   )}
                 </div>
 
@@ -235,21 +266,22 @@ const SignUpPage = () => {
                     className={errors.phone ? "border-destructive" : ""}
                   />
                   {errors.phone && (
-                    <p className="text-xs text-destructive">{errors.phone.message}</p>
+                    <p className="text-xs text-destructive">
+                      {errors.phone.message}
+                    </p>
                   )}
                 </div>
 
-                {selectedPlan === "starter" && (
-                  <div className="rounded-lg bg-primary/5 border border-primary/10 p-4 space-y-2">
-                    <div className="flex items-center gap-2 text-sm font-medium text-foreground">
-                      <CreditCard className="w-4 h-4 text-primary" />
-                      Credit card required
-                    </div>
-                    <p className="text-xs text-muted-foreground">
-                      30 days free, then $249/month. Cancel anytime — no long-term contracts.
-                    </p>
+                <div className="rounded-lg bg-primary/5 border border-primary/10 p-4 space-y-2">
+                  <div className="flex items-center gap-2 text-sm font-medium text-foreground">
+                    <CreditCard className="w-4 h-4 text-primary" />
+                    Credit card required
                   </div>
-                )}
+                  <p className="text-xs text-muted-foreground">
+                    30 days free, then $249/month. Cancel anytime — no long-term
+                    contracts.
+                  </p>
+                </div>
 
                 <Button
                   type="submit"
@@ -259,8 +291,8 @@ const SignUpPage = () => {
                   {isSubmitting
                     ? "Processing…"
                     : selectedPlan === "free-trial"
-                    ? "Start Free Trial"
-                    : "Start 30-Day Free Trial"}
+                      ? "Start Free Trial"
+                      : "Start 30-Day Free Trial"}
                 </Button>
 
                 <div className="flex items-center justify-center gap-1.5 text-xs text-muted-foreground">
@@ -274,7 +306,10 @@ const SignUpPage = () => {
                     Terms
                   </Link>{" "}
                   and{" "}
-                  <Link to="/privacy" className="underline hover:text-foreground">
+                  <Link
+                    to="/privacy"
+                    className="underline hover:text-foreground"
+                  >
                     Privacy Policy
                   </Link>
                   .
