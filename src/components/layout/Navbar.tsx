@@ -1,9 +1,10 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, NavLink, useLocation } from "react-router-dom";
 import { Menu, X, ChevronDown } from "lucide-react";
 import { products } from "@/lib/products";
 import { motion, AnimatePresence } from "framer-motion";
 import BornaLogo from "@/components/BornaLogo";
+import { cn } from "@/lib/utils";
 
 const Navbar = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
