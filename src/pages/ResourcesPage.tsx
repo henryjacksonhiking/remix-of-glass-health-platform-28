@@ -55,10 +55,19 @@ const ResourcesPage = () => (
                 viewport={{ once: true, amount: 0.3 }}
                 transition={{ delay: i * 0.08, duration: 0.5 }}
               >
-                <Wrapper
-                  {...(cat.href ? { to: cat.href } : {})}
+              {cat.href ? (
+                <Link
+                  to={cat.href}
                   className="glass-panel p-6 text-center block hover:bg-glass-hover transition-colors h-full"
                 >
+                  <div className="w-11 h-11 rounded-lg bg-primary/10 flex items-center justify-center mx-auto mb-4">
+                    <Icon className="w-5 h-5 text-primary" />
+                  </div>
+                  <h3 className="text-base font-medium text-foreground mb-2">{cat.label}</h3>
+                  <p className="text-sm text-muted-foreground">{cat.description}</p>
+                </Link>
+              ) : (
+                <div className="glass-panel p-6 text-center block hover:bg-glass-hover transition-colors h-full">
                   <div className="w-11 h-11 rounded-lg bg-primary/10 flex items-center justify-center mx-auto mb-4">
                     <Icon className="w-5 h-5 text-primary" />
                   </div>
