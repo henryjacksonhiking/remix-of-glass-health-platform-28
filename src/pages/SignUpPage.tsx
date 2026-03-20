@@ -10,6 +10,7 @@ import PageWrapper from "@/components/layout/PageWrapper";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
+import { CreditCard, Shield } from "lucide-react";
 
 const signUpSchema = z.object({
   fullName: z.string().trim().min(2, "Name must be at least 2 characters").max(100),
