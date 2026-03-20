@@ -173,10 +173,10 @@
   transform: translateX(-50%);
   width: 0;
   height: 0;
-  border-left: 28px solid transparent;
-  border-right: 28px solid transparent;
-  border-top: 40px solid hsl(var(--primary) / 0.12);
-  filter: blur(6px);
+  border-left: 36px solid transparent;
+  border-right: 36px solid transparent;
+  border-top: 56px solid hsl(var(--primary) / 0.10);
+  filter: blur(8px);
   pointer-events: none;
 }
 
