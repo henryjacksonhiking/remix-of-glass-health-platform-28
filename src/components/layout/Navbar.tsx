@@ -14,8 +14,10 @@ const Navbar = () => {
 
   const navLinkClass = ({ isActive }: { isActive: boolean }) =>
     cn(
-      "text-[13px] lg:text-sm transition-colors whitespace-nowrap",
-      isActive ? "text-foreground font-medium" : "text-muted-foreground hover:text-foreground"
+      "relative text-[13px] lg:text-sm transition-all duration-300 whitespace-nowrap py-1 px-2 rounded-md",
+      isActive
+        ? "text-foreground font-medium nav-spotlight"
+        : "text-muted-foreground hover:text-foreground"
     );
 
   return (
