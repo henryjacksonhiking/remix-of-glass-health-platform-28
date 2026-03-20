@@ -279,7 +279,6 @@ const SignUpPage = () => {
                   </Link>
                   .
                 </p>
-                </p>
               </form>
             </motion.div>
           </div>
