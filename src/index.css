@@ -154,11 +154,11 @@
 .nav-spotlight::before {
   content: '';
   position: absolute;
-  top: -16px;
+  top: -12px;
   left: 50%;
   transform: translateX(-50%);
   width: 40px;
-  height: 6px;
+  height: 5px;
   background: hsl(var(--primary));
   border-radius: 0 0 50% 50%;
   opacity: 0.9;
@@ -168,14 +168,17 @@
 .nav-spotlight::after {
   content: '';
   position: absolute;
-  top: -16px;
+  top: -10px;
   left: 50%;
   transform: translateX(-50%);
-  width: 0;
-  height: 0;
-  border-left: 36px solid transparent;
-  border-right: 36px solid transparent;
-  border-top: 56px solid hsl(var(--primary) / 0.10);
+  width: 120px;
+  height: 85px;
+  background: radial-gradient(
+    ellipse at top,
+    hsl(var(--primary) / 0.18) 0%,
+    hsl(var(--primary) / 0.16) 35%,
+    transparent 75%
+  );
   filter: blur(8px);
   pointer-events: none;
 }
