@@ -83,14 +83,16 @@ const PricingPage = () => (
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.3 }}
               transition={{ delay: i * 0.1, duration: 0.5 }}
-              className={`rounded-xl p-8 flex flex-col ${
+              className={`rounded-xl p-8 flex flex-col relative ${
                 plan.highlighted
                   ? "border-2 border-primary bg-primary/5"
                   : "glass-panel"
               }`}
             >
               {plan.highlighted && (
-                <span className="text-xs font-medium text-primary mb-4">Recommended</span>
+                <span className="absolute top-4 right-4 inline-flex items-center rounded-full bg-primary/10 border border-primary/20 px-3 py-1 text-xs font-semibold text-primary">
+                  Recommended
+                </span>
               )}
               <h3 className="text-xl font-semibold text-foreground mb-1">{plan.name}</h3>
               <p className="text-sm text-muted-foreground mb-6">{plan.description}</p>
