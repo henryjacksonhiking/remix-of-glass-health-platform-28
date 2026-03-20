@@ -62,17 +62,25 @@ const DonutChart = ({ percentage, color }: { percentage: number; color: string }
 };
 
 const StatBadge = ({ value, label, trend }: { value: string; label: string; trend: "up" | "down" }) => (
-  <div className="flex items-center gap-2">
-    <div className={`w-7 h-7 rounded-full flex items-center justify-center ${trend === "up" ? "bg-primary/10" : "bg-accent/10"}`}>
+  <motion.div
+    className="flex items-center gap-2 cursor-pointer"
+    whileHover={{ scale: 1.06, y: -2 }}
+    whileTap={{ scale: 0.97 }}
+    transition={{ type: "spring", stiffness: 400, damping: 22 }}
+  >
+    <motion.div
+      className={`w-7 h-7 rounded-full flex items-center justify-center ${trend === "up" ? "bg-primary/10" : "bg-accent/10"}`}
+      whileHover={{ rotate: trend === "up" ? 12 : -12 }}
+    >
       {trend === "up"
         ? <TrendingUp className="w-3.5 h-3.5 text-primary" />
         : <TrendingDown className="w-3.5 h-3.5 text-accent" />}
-    </div>
+    </motion.div>
     <div>
       <span className="text-sm font-semibold text-foreground">{value}</span>
       <span className="text-[11px] text-muted-foreground ml-1">{label}</span>
     </div>
-  </div>
+  </motion.div>
 );
 
 /* ── Data ── */
