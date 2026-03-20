@@ -33,7 +33,10 @@ const Navbar = () => {
             onMouseEnter={() => setProductsOpen(true)}
             onMouseLeave={() => setProductsOpen(false)}
           >
-            <button className="flex items-center gap-1 text-[13px] lg:text-sm text-muted-foreground hover:text-foreground transition-colors whitespace-nowrap">
+            <button className={cn(
+              "flex items-center gap-1 text-[13px] lg:text-sm transition-colors whitespace-nowrap",
+              isProductActive ? "text-foreground font-medium" : "text-muted-foreground hover:text-foreground"
+            )}>
               Products <ChevronDown className="w-3.5 h-3.5" />
             </button>
             <AnimatePresence>
