@@ -9,6 +9,14 @@ import { cn } from "@/lib/utils";
 const Navbar = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [productsOpen, setProductsOpen] = useState(false);
+  const location = useLocation();
+  const isProductActive = location.pathname.startsWith("/products");
+
+  const navLinkClass = ({ isActive }: { isActive: boolean }) =>
+    cn(
+      "text-[13px] lg:text-sm transition-colors whitespace-nowrap",
+      isActive ? "text-foreground font-medium" : "text-muted-foreground hover:text-foreground"
+    );
 
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 border-b border-glass-border backdrop-blur-xl bg-background/70">
