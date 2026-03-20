@@ -6,32 +6,48 @@ import CTASection from "@/components/sections/CTASection";
 
 /* ── Mini chart components ── */
 const BarChart = ({ values, color }: { values: number[]; color: string }) => (
-  <div className="flex items-end gap-1 h-16">
+  <motion.div
+    className="flex items-end gap-1 h-16 cursor-pointer"
+    whileHover={{ scale: 1.03, rotateX: 4, rotateY: -2 }}
+    transition={{ type: "spring", stiffness: 300, damping: 20 }}
+    style={{ perspective: 600, transformStyle: "preserve-3d" }}
+  >
     {values.map((v, i) => (
       <motion.div
         key={i}
         initial={{ height: 0 }}
         whileInView={{ height: `${v}%` }}
+        whileHover={{
+          scaleY: 1.15,
+          boxShadow: `0 0 12px hsl(var(--${color}) / 0.5)`,
+        }}
         viewport={{ once: true }}
         transition={{ delay: i * 0.08, duration: 0.5 }}
-        className="flex-1 rounded-sm min-w-[6px]"
+        className="flex-1 rounded-sm min-w-[6px] origin-bottom transition-shadow"
         style={{ background: `hsl(var(--${color}) / ${0.3 + (v / 100) * 0.7})` }}
       />
     ))}
-  </div>
+  </motion.div>
 );
 
 const DonutChart = ({ percentage, color }: { percentage: number; color: string }) => {
   const r = 28;
   const c = 2 * Math.PI * r;
   return (
-    <div className="relative w-16 h-16 flex items-center justify-center">
+    <motion.div
+      className="relative w-16 h-16 flex items-center justify-center cursor-pointer"
+      whileHover={{
+        scale: 1.12,
+        rotate: 8,
+        filter: `drop-shadow(0 0 10px hsl(var(--${color}) / 0.4))`,
+      }}
+      transition={{ type: "spring", stiffness: 260, damping: 18 }}
+    >
       <svg viewBox="0 0 64 64" className="w-full h-full -rotate-90">
         <circle cx="32" cy="32" r={r} fill="none" strokeWidth="5" className="stroke-muted/20" />
         <motion.circle
           cx="32" cy="32" r={r} fill="none" strokeWidth="5"
           strokeLinecap="round"
-          className={`stroke-${color}`}
           style={{ stroke: `hsl(var(--${color}))` }}
           strokeDasharray={c}
           initial={{ strokeDashoffset: c }}
@@ -41,7 +57,7 @@ const DonutChart = ({ percentage, color }: { percentage: number; color: string }
         />
       </svg>
       <span className="absolute text-xs font-semibold text-foreground">{percentage}%</span>
-    </div>
+    </motion.div>
   );
 };
 
