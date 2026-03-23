@@ -82,6 +82,25 @@ const ProductDemo = () => {
   const safeDisplayedScene = clampSceneIndex(displayedScene);
   const scene = scenes[safeDisplayedScene];
 
+  const buildImageSrc = useCallback((rawPath: string) => {
+    return rawPath
+      .split("/")
+      .map((segment, index) => (index === 0 ? segment : encodeURIComponent(segment)))
+      .join("/");
+  }, []);
+
+  // Preload all demo images so scene switches never show blank screens
+  useEffect(() => {
+    const allSources = Array.from(
+      new Set(scenes.flatMap((s) => [buildImageSrc(s.patientImg), buildImageSrc(s.adminImg)])),
+    );
+
+    allSources.forEach((src) => {
+      const img = new Image();
+      img.src = src;
+    });
+  }, [buildImageSrc]);
+
   // Start progress bar for current scene
   const startProgress = useCallback((duration: number) => {
     setProgressWidth("0%");
@@ -366,8 +385,10 @@ const ProductDemo = () => {
                   className="scrollbar-hide"
                 >
                   <img
-                    src={scene.patientImg}
+                    src={buildImageSrc(scene.patientImg)}
                     alt={scene.patientTag}
+                    loading="eager"
+                    decoding="async"
                     style={{
                       width: "100%",
                       display: "block",
@@ -422,8 +443,10 @@ const ProductDemo = () => {
                   className="scrollbar-hide"
                 >
                   <img
-                    src={scene.adminImg}
+                    src={buildImageSrc(scene.adminImg)}
                     alt={scene.adminTag}
+                    loading="eager"
+                    decoding="async"
                     style={{
                       width: "100%",
                       display: "block",
