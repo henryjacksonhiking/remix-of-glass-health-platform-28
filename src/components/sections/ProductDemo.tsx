@@ -410,8 +410,8 @@ const ProductDemo = () => {
                     overflow: "hidden",
                     background: "#f5f6f8",
                     height: 320,
-                    overflowY: "auto",
-                    WebkitOverflowScrolling: "touch",
+                    overflowY: "auto" as const,
+                    WebkitOverflowScrolling: "touch" as const,
                   }}
                   className="scrollbar-hide"
                 >
