@@ -62,488 +62,488 @@ const BornaIcon = () => (
   </svg>
 );
 
-const ProductDemo = () => {
-  const [currentScene, setCurrentScene] = useState(0);
-  const [imgOpacity, setImgOpacity] = useState(1);
-  const [displayedScene, setDisplayedScene] = useState(0);
-  const [typedText, setTypedText] = useState("");
-  const [progressWidth, setProgressWidth] = useState("0%");
-  const [progressTransition, setProgressTransition] = useState("none");
+// const ProductDemo = () => {
+//   const [currentScene, setCurrentScene] = useState(0);
+//   const [imgOpacity, setImgOpacity] = useState(1);
+//   const [displayedScene, setDisplayedScene] = useState(0);
+//   const [typedText, setTypedText] = useState("");
+//   const [progressWidth, setProgressWidth] = useState("0%");
+//   const [progressTransition, setProgressTransition] = useState("none");
 
-  const typeIntervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
-  const sceneTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
-  const fadeTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
-  const patientScreenRef = useRef<HTMLDivElement>(null);
-  const adminScreenRef = useRef<HTMLDivElement>(null);
-  const scrollAnimRef = useRef<number | null>(null);
+//   const typeIntervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
+//   const sceneTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+//   const fadeTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+//   const patientScreenRef = useRef<HTMLDivElement>(null);
+//   const adminScreenRef = useRef<HTMLDivElement>(null);
+//   const scrollAnimRef = useRef<number | null>(null);
 
-  const clampSceneIndex = (index: number) => ((index % scenes.length) + scenes.length) % scenes.length;
-  const safeCurrentScene = clampSceneIndex(currentScene);
-  const safeDisplayedScene = clampSceneIndex(displayedScene);
-  const scene = scenes[safeDisplayedScene];
+//   const clampSceneIndex = (index: number) => ((index % scenes.length) + scenes.length) % scenes.length;
+//   const safeCurrentScene = clampSceneIndex(currentScene);
+//   const safeDisplayedScene = clampSceneIndex(displayedScene);
+//   const scene = scenes[safeDisplayedScene];
 
-  const buildImageSrc = useCallback((rawPath: string) => {
-    return rawPath
-      .split("/")
-      .map((segment, index) => (index === 0 ? segment : encodeURIComponent(segment)))
-      .join("/");
-  }, []);
+//   const buildImageSrc = useCallback((rawPath: string) => {
+//     return rawPath
+//       .split("/")
+//       .map((segment, index) => (index === 0 ? segment : encodeURIComponent(segment)))
+//       .join("/");
+//   }, []);
 
-  // Preload all demo images so scene switches never show blank screens
-  useEffect(() => {
-    const allSources = Array.from(
-      new Set(scenes.flatMap((s) => [buildImageSrc(s.patientImg), buildImageSrc(s.adminImg)])),
-    );
+//   // Preload all demo images so scene switches never show blank screens
+//   useEffect(() => {
+//     const allSources = Array.from(
+//       new Set(scenes.flatMap((s) => [buildImageSrc(s.patientImg), buildImageSrc(s.adminImg)])),
+//     );
 
-    allSources.forEach((src) => {
-      const img = new Image();
-      img.src = src;
-    });
-  }, [buildImageSrc]);
+//     allSources.forEach((src) => {
+//       const img = new Image();
+//       img.src = src;
+//     });
+//   }, [buildImageSrc]);
 
-  // Start progress bar for current scene
-  const startProgress = useCallback((duration: number) => {
-    setProgressWidth("0%");
-    setProgressTransition("none");
+//   // Start progress bar for current scene
+//   const startProgress = useCallback((duration: number) => {
+//     setProgressWidth("0%");
+//     setProgressTransition("none");
 
-    const run = () => {
-      setProgressTransition(`width ${duration}ms linear`);
-      setProgressWidth("100%");
-    };
+//     const run = () => {
+//       setProgressTransition(`width ${duration}ms linear`);
+//       setProgressWidth("100%");
+//     };
 
-    if (typeof window !== "undefined" && typeof window.requestAnimationFrame === "function") {
-      window.requestAnimationFrame(() => window.requestAnimationFrame(run));
-      return;
-    }
+//     if (typeof window !== "undefined" && typeof window.requestAnimationFrame === "function") {
+//       window.requestAnimationFrame(() => window.requestAnimationFrame(run));
+//       return;
+//     }
 
-    setTimeout(run, 16);
-  }, []);
+//     setTimeout(run, 16);
+//   }, []);
 
-  // Keep state in bounds (important during Fast Refresh)
-  useEffect(() => {
-    if (currentScene !== safeCurrentScene) setCurrentScene(safeCurrentScene);
-    if (displayedScene !== safeDisplayedScene) setDisplayedScene(safeDisplayedScene);
-  }, [currentScene, displayedScene, safeCurrentScene, safeDisplayedScene]);
+//   // Keep state in bounds (important during Fast Refresh)
+//   useEffect(() => {
+//     if (currentScene !== safeCurrentScene) setCurrentScene(safeCurrentScene);
+//     if (displayedScene !== safeDisplayedScene) setDisplayedScene(safeDisplayedScene);
+//   }, [currentScene, displayedScene, safeCurrentScene, safeDisplayedScene]);
 
-  // Typewriter effect
-  useEffect(() => {
-    const text = scenes[safeDisplayedScene].caption;
-    setTypedText("");
-    let i = 0;
+//   // Typewriter effect
+//   useEffect(() => {
+//     const text = scenes[safeDisplayedScene].caption;
+//     setTypedText("");
+//     let i = 0;
 
-    if (typeIntervalRef.current) clearInterval(typeIntervalRef.current);
+//     if (typeIntervalRef.current) clearInterval(typeIntervalRef.current);
 
-    typeIntervalRef.current = setInterval(() => {
-      i += 1;
-      setTypedText(text.slice(0, i));
+//     typeIntervalRef.current = setInterval(() => {
+//       i += 1;
+//       setTypedText(text.slice(0, i));
 
-      if (i >= text.length && typeIntervalRef.current) {
-        clearInterval(typeIntervalRef.current);
-      }
-    }, 22);
+//       if (i >= text.length && typeIntervalRef.current) {
+//         clearInterval(typeIntervalRef.current);
+//       }
+//     }, 22);
 
-    return () => {
-      if (typeIntervalRef.current) clearInterval(typeIntervalRef.current);
-    };
-  }, [safeDisplayedScene]);
+//     return () => {
+//       if (typeIntervalRef.current) clearInterval(typeIntervalRef.current);
+//     };
+//   }, [safeDisplayedScene]);
 
-  // Auto-scroll screens — wait for images to actually load before measuring
-  useEffect(() => {
-    const patientEl = patientScreenRef.current;
-    const adminEl = adminScreenRef.current;
-    if (patientEl) patientEl.scrollTop = 0;
-    if (adminEl) adminEl.scrollTop = 0;
+//   // Auto-scroll screens — wait for images to actually load before measuring
+//   useEffect(() => {
+//     const patientEl = patientScreenRef.current;
+//     const adminEl = adminScreenRef.current;
+//     if (patientEl) patientEl.scrollTop = 0;
+//     if (adminEl) adminEl.scrollTop = 0;
 
-    let cancelled = false;
-    let delayTimer: ReturnType<typeof setTimeout> | null = null;
+//     let cancelled = false;
+//     let delayTimer: ReturnType<typeof setTimeout> | null = null;
 
-    const startScrolling = () => {
-      const speed = 0.4;
-      let lastTime = 0;
-      const tick = (time: number) => {
-        if (cancelled) return;
-        if (!lastTime) lastTime = time;
-        const delta = time - lastTime;
-        lastTime = time;
-        const px = speed * (delta / 16);
-        if (patientEl) {
-          const max = patientEl.scrollHeight - patientEl.clientHeight;
-          if (max > 0 && patientEl.scrollTop < max) patientEl.scrollTop = Math.min(patientEl.scrollTop + px, max);
-        }
-        if (adminEl) {
-          const max = adminEl.scrollHeight - adminEl.clientHeight;
-          if (max > 0 && adminEl.scrollTop < max) adminEl.scrollTop = Math.min(adminEl.scrollTop + px, max);
-        }
-        scrollAnimRef.current = requestAnimationFrame(tick);
-      };
-      scrollAnimRef.current = requestAnimationFrame(tick);
-    };
+//     const startScrolling = () => {
+//       const speed = 0.4;
+//       let lastTime = 0;
+//       const tick = (time: number) => {
+//         if (cancelled) return;
+//         if (!lastTime) lastTime = time;
+//         const delta = time - lastTime;
+//         lastTime = time;
+//         const px = speed * (delta / 16);
+//         if (patientEl) {
+//           const max = patientEl.scrollHeight - patientEl.clientHeight;
+//           if (max > 0 && patientEl.scrollTop < max) patientEl.scrollTop = Math.min(patientEl.scrollTop + px, max);
+//         }
+//         if (adminEl) {
+//           const max = adminEl.scrollHeight - adminEl.clientHeight;
+//           if (max > 0 && adminEl.scrollTop < max) adminEl.scrollTop = Math.min(adminEl.scrollTop + px, max);
+//         }
+//         scrollAnimRef.current = requestAnimationFrame(tick);
+//       };
+//       scrollAnimRef.current = requestAnimationFrame(tick);
+//     };
 
-    // Wait for both images in the current scene to load before starting scroll
-    const s = scenes[safeDisplayedScene];
-    const patientSrc = buildImageSrc(s.patientImg);
-    const adminSrc = buildImageSrc(s.adminImg);
-    let loaded = 0;
-    const onLoad = () => {
-      loaded++;
-      if (loaded >= 2 && !cancelled) {
-        // Small extra delay so the browser has painted
-        delayTimer = setTimeout(() => {
-          if (!cancelled) startScrolling();
-        }, 800);
-      }
-    };
+//     // Wait for both images in the current scene to load before starting scroll
+//     const s = scenes[safeDisplayedScene];
+//     const patientSrc = buildImageSrc(s.patientImg);
+//     const adminSrc = buildImageSrc(s.adminImg);
+//     let loaded = 0;
+//     const onLoad = () => {
+//       loaded++;
+//       if (loaded >= 2 && !cancelled) {
+//         // Small extra delay so the browser has painted
+//         delayTimer = setTimeout(() => {
+//           if (!cancelled) startScrolling();
+//         }, 800);
+//       }
+//     };
 
-    const img1 = new Image();
-    const img2 = new Image();
-    img1.onload = onLoad;
-    img2.onload = onLoad;
-    // If already cached, onload fires synchronously in some browsers
-    img1.src = patientSrc;
-    img2.src = adminSrc;
-    // Handle already-complete (cached) images
-    if (img1.complete) onLoad();
-    if (img2.complete) onLoad();
+//     const img1 = new Image();
+//     const img2 = new Image();
+//     img1.onload = onLoad;
+//     img2.onload = onLoad;
+//     // If already cached, onload fires synchronously in some browsers
+//     img1.src = patientSrc;
+//     img2.src = adminSrc;
+//     // Handle already-complete (cached) images
+//     if (img1.complete) onLoad();
+//     if (img2.complete) onLoad();
 
-    return () => {
-      cancelled = true;
-      if (delayTimer) clearTimeout(delayTimer);
-      if (scrollAnimRef.current) cancelAnimationFrame(scrollAnimRef.current);
-    };
-  }, [safeDisplayedScene, buildImageSrc]);
+//     return () => {
+//       cancelled = true;
+//       if (delayTimer) clearTimeout(delayTimer);
+//       if (scrollAnimRef.current) cancelAnimationFrame(scrollAnimRef.current);
+//     };
+//   }, [safeDisplayedScene, buildImageSrc]);
 
-  // Scene cycling
-  useEffect(() => {
-    const duration = scenes[safeCurrentScene].duration;
-    startProgress(duration);
+//   // Scene cycling
+//   useEffect(() => {
+//     const duration = scenes[safeCurrentScene].duration;
+//     startProgress(duration);
 
-    sceneTimeoutRef.current = setTimeout(() => {
-      const next = (safeCurrentScene + 1) % scenes.length;
-      setCurrentScene(next);
-    }, duration);
+//     sceneTimeoutRef.current = setTimeout(() => {
+//       const next = (safeCurrentScene + 1) % scenes.length;
+//       setCurrentScene(next);
+//     }, duration);
 
-    return () => {
-      if (sceneTimeoutRef.current) clearTimeout(sceneTimeoutRef.current);
-    };
-  }, [safeCurrentScene, startProgress]);
+//     return () => {
+//       if (sceneTimeoutRef.current) clearTimeout(sceneTimeoutRef.current);
+//     };
+//   }, [safeCurrentScene, startProgress]);
 
-  // Fade transition only when scene actually changes
-  useEffect(() => {
-    if (safeCurrentScene === safeDisplayedScene) return;
+//   // Fade transition only when scene actually changes
+//   useEffect(() => {
+//     if (safeCurrentScene === safeDisplayedScene) return;
 
-    setImgOpacity(0);
-    fadeTimeoutRef.current = setTimeout(() => {
-      setDisplayedScene(safeCurrentScene);
-      setImgOpacity(1);
-    }, 200);
+//     setImgOpacity(0);
+//     fadeTimeoutRef.current = setTimeout(() => {
+//       setDisplayedScene(safeCurrentScene);
+//       setImgOpacity(1);
+//     }, 200);
 
-    return () => {
-      if (fadeTimeoutRef.current) clearTimeout(fadeTimeoutRef.current);
-    };
-  }, [safeCurrentScene, safeDisplayedScene]);
+//     return () => {
+//       if (fadeTimeoutRef.current) clearTimeout(fadeTimeoutRef.current);
+//     };
+//   }, [safeCurrentScene, safeDisplayedScene]);
 
-  return (
-    <section id="demo" className="overflow-hidden" style={{ background: "#0B1130" }}>
-      {/* Header */}
-      <div className="text-center px-4 pt-20 pb-10">
-        <span
-          className="inline-block mb-3"
-          style={{
-            fontSize: 11,
-            textTransform: "uppercase",
-            letterSpacing: "1.5px",
-            color: "#00DEC4",
-            fontWeight: 600,
-          }}
-        >
-          See it in action
-        </span>
-        <h2
-          className="mb-4"
-          style={{
-            fontSize: 36,
-            fontWeight: 500,
-            color: "rgba(255,255,255,0.95)",
-            letterSpacing: "-1px",
-          }}
-        >
-          Watch Borna Care work
-        </h2>
-        <p
-          className="mx-auto"
-          style={{
-            fontSize: 15,
-            color: "rgba(255,255,255,0.45)",
-            maxWidth: 480,
-          }}
-        >
-          A real clinic day — from the moment a patient books at 11pm to the moment they pay.
-        </p>
-      </div>
+//   return (
+//     <section id="demo" className="overflow-hidden" style={{ background: "#0B1130" }}>
+//       {/* Header */}
+//       <div className="text-center px-4 pt-20 pb-10">
+//         <span
+//           className="inline-block mb-3"
+//           style={{
+//             fontSize: 11,
+//             textTransform: "uppercase",
+//             letterSpacing: "1.5px",
+//             color: "#00DEC4",
+//             fontWeight: 600,
+//           }}
+//         >
+//           See it in action
+//         </span>
+//         <h2
+//           className="mb-4"
+//           style={{
+//             fontSize: 36,
+//             fontWeight: 500,
+//             color: "rgba(255,255,255,0.95)",
+//             letterSpacing: "-1px",
+//           }}
+//         >
+//           Watch Borna Care work
+//         </h2>
+//         <p
+//           className="mx-auto"
+//           style={{
+//             fontSize: 15,
+//             color: "rgba(255,255,255,0.45)",
+//             maxWidth: 480,
+//           }}
+//         >
+//           A real clinic day — from the moment a patient books at 11pm to the moment they pay.
+//         </p>
+//       </div>
 
-      {/* Demo player */}
-      <div style={{ maxWidth: 1100, margin: "0 auto", padding: "0 40px" }} className="pb-20 px-5 md:px-10">
-        <div
-          style={{
-            background: "rgba(255,255,255,0.04)",
-            border: "0.5px solid rgba(255,255,255,0.1)",
-            borderRadius: 20,
-            overflow: "hidden",
-          }}
-        >
-          {/* Player header */}
-          <div
-            className="flex items-center justify-between"
-            style={{
-              background: "#0d1535",
-              borderBottom: "0.5px solid rgba(255,255,255,0.08)",
-              padding: "12px 24px",
-            }}
-          >
-            {/* Left: logo + title */}
-            <div className="flex items-center gap-2.5">
-              <BornaIcon />
-              <span style={{ fontSize: 13, fontWeight: 600, color: "rgba(255,255,255,0.9)" }}>
-                Borna Care — product demo
-              </span>
-            </div>
-            {/* Center: scene badge */}
-            <span
-              className="hidden md:inline-flex items-center gap-1.5"
-              style={{
-                background: "rgba(0,222,196,0.1)",
-                border: "0.5px solid rgba(0,222,196,0.25)",
-                color: "#00DEC4",
-                fontSize: 10,
-                borderRadius: 980,
-                padding: "4px 12px",
-              }}
-            >
-              <span
-                className="inline-block rounded-full"
-                style={{ width: 5, height: 5, background: "#00DEC4" }}
-              />
-              {scene.badge}
-            </span>
-            {/* Right: dot indicators */}
-            <div className="flex items-center gap-1.5">
-              {scenes.map((_, i) => (
-                <button
-                  key={i}
-                  onClick={() => setCurrentScene(i)}
-                  style={{
-                    width: 7,
-                    height: 7,
-                    borderRadius: "50%",
-                    background: i === currentScene ? "#00DEC4" : "rgba(255,255,255,0.2)",
-                    border: "none",
-                    padding: 0,
-                    cursor: "pointer",
-                    transition: "background 0.3s",
-                  }}
-                  aria-label={`Go to scene ${i + 1}`}
-                />
-              ))}
-            </div>
-          </div>
+//       {/* Demo player */}
+//       <div style={{ maxWidth: 1100, margin: "0 auto", padding: "0 40px" }} className="pb-20 px-5 md:px-10">
+//         <div
+//           style={{
+//             background: "rgba(255,255,255,0.04)",
+//             border: "0.5px solid rgba(255,255,255,0.1)",
+//             borderRadius: 20,
+//             overflow: "hidden",
+//           }}
+//         >
+//           {/* Player header */}
+//           <div
+//             className="flex items-center justify-between"
+//             style={{
+//               background: "#0d1535",
+//               borderBottom: "0.5px solid rgba(255,255,255,0.08)",
+//               padding: "12px 24px",
+//             }}
+//           >
+//             {/* Left: logo + title */}
+//             <div className="flex items-center gap-2.5">
+//               <BornaIcon />
+//               <span style={{ fontSize: 13, fontWeight: 600, color: "rgba(255,255,255,0.9)" }}>
+//                 Borna Care — product demo
+//               </span>
+//             </div>
+//             {/* Center: scene badge */}
+//             <span
+//               className="hidden md:inline-flex items-center gap-1.5"
+//               style={{
+//                 background: "rgba(0,222,196,0.1)",
+//                 border: "0.5px solid rgba(0,222,196,0.25)",
+//                 color: "#00DEC4",
+//                 fontSize: 10,
+//                 borderRadius: 980,
+//                 padding: "4px 12px",
+//               }}
+//             >
+//               <span
+//                 className="inline-block rounded-full"
+//                 style={{ width: 5, height: 5, background: "#00DEC4" }}
+//               />
+//               {scene.badge}
+//             </span>
+//             {/* Right: dot indicators */}
+//             <div className="flex items-center gap-1.5">
+//               {scenes.map((_, i) => (
+//                 <button
+//                   key={i}
+//                   onClick={() => setCurrentScene(i)}
+//                   style={{
+//                     width: 7,
+//                     height: 7,
+//                     borderRadius: "50%",
+//                     background: i === currentScene ? "#00DEC4" : "rgba(255,255,255,0.2)",
+//                     border: "none",
+//                     padding: 0,
+//                     cursor: "pointer",
+//                     transition: "background 0.3s",
+//                   }}
+//                   aria-label={`Go to scene ${i + 1}`}
+//                 />
+//               ))}
+//             </div>
+//           </div>
 
-          {/* Progress bar */}
-          <div style={{ width: "100%", height: 2, background: "rgba(255,255,255,0.08)" }}>
-            <div
-              style={{
-                height: "100%",
-                width: progressWidth,
-                background: "linear-gradient(90deg, #00DEC4, #00479B)",
-                transition: progressTransition,
-              }}
-            />
-          </div>
+//           {/* Progress bar */}
+//           <div style={{ width: "100%", height: 2, background: "rgba(255,255,255,0.08)" }}>
+//             <div
+//               style={{
+//                 height: "100%",
+//                 width: progressWidth,
+//                 background: "linear-gradient(90deg, #00DEC4, #00479B)",
+//                 transition: progressTransition,
+//               }}
+//             />
+//           </div>
 
-          {/* Split screen */}
-          <div
-            className="grid grid-cols-1 md:grid-cols-2"
-            style={{ minHeight: 480 }}
-          >
-            {/* Patient side */}
-            <div
-              className="flex flex-col items-center justify-center p-6 md:p-8"
-              style={{ borderRight: "0.5px solid rgba(255,255,255,0.06)" }}
-            >
-              <span
-                className="block mb-4 text-center"
-                style={{
-                  fontSize: 9,
-                  textTransform: "uppercase",
-                  letterSpacing: "1.5px",
-                  color: "rgba(255,255,255,0.3)",
-                }}
-              >
-                {scene.patientTag}
-              </span>
-              {/* Phone frame */}
-              <div
-                style={{
-                  background: "#1a2340",
-                  borderRadius: 26,
-                  padding: 7,
-                  border: "0.5px solid rgba(255,255,255,0.1)",
-                  maxWidth: 200,
-                  width: "100%",
-                }}
-              >
-                {/* Notch */}
-                <div className="flex justify-center mb-1.5">
-                  <div
-                    style={{
-                      width: 44,
-                      height: 5,
-                      background: "rgba(255,255,255,0.12)",
-                      borderRadius: 3,
-                    }}
-                  />
-                </div>
-                {/* Screen */}
-                <div
-                  ref={patientScreenRef}
-                  style={{
-                    borderRadius: 18,
-                    overflow: "hidden",
-                    background: "#f5f6f8",
-                  }}
-                >
-                  <img
-                    src={buildImageSrc(scene.patientImg)}
-                    alt={scene.patientTag}
-                    loading="eager"
-                    decoding="async"
-                    style={{
-                      width: "100%",
-                      height: 320,
-                      objectFit: "cover",
-                      objectPosition: "top center",
-                      display: "block",
-                      opacity: imgOpacity,
-                      transition: "opacity 0.4s ease",
-                    }}
-                  />
-                </div>
-              </div>
-            </div>
+//           {/* Split screen */}
+//           <div
+//             className="grid grid-cols-1 md:grid-cols-2"
+//             style={{ minHeight: 480 }}
+//           >
+//             {/* Patient side */}
+//             <div
+//               className="flex flex-col items-center justify-center p-6 md:p-8"
+//               style={{ borderRight: "0.5px solid rgba(255,255,255,0.06)" }}
+//             >
+//               <span
+//                 className="block mb-4 text-center"
+//                 style={{
+//                   fontSize: 9,
+//                   textTransform: "uppercase",
+//                   letterSpacing: "1.5px",
+//                   color: "rgba(255,255,255,0.3)",
+//                 }}
+//               >
+//                 {scene.patientTag}
+//               </span>
+//               {/* Phone frame */}
+//               <div
+//                 style={{
+//                   background: "#1a2340",
+//                   borderRadius: 26,
+//                   padding: 7,
+//                   border: "0.5px solid rgba(255,255,255,0.1)",
+//                   maxWidth: 200,
+//                   width: "100%",
+//                 }}
+//               >
+//                 {/* Notch */}
+//                 <div className="flex justify-center mb-1.5">
+//                   <div
+//                     style={{
+//                       width: 44,
+//                       height: 5,
+//                       background: "rgba(255,255,255,0.12)",
+//                       borderRadius: 3,
+//                     }}
+//                   />
+//                 </div>
+//                 {/* Screen */}
+//                 <div
+//                   ref={patientScreenRef}
+//                   style={{
+//                     borderRadius: 18,
+//                     overflow: "hidden",
+//                     background: "#f5f6f8",
+//                   }}
+//                 >
+//                   <img
+//                     src={buildImageSrc(scene.patientImg)}
+//                     alt={scene.patientTag}
+//                     loading="eager"
+//                     decoding="async"
+//                     style={{
+//                       width: "100%",
+//                       height: 320,
+//                       objectFit: "cover",
+//                       objectPosition: "top center",
+//                       display: "block",
+//                       opacity: imgOpacity,
+//                       transition: "opacity 0.4s ease",
+//                     }}
+//                   />
+//                 </div>
+//               </div>
+//             </div>
 
-            {/* Admin side */}
-            <div className="flex flex-col items-center justify-center p-6 md:p-8">
-              <span
-                className="block mb-4 text-center"
-                style={{
-                  fontSize: 9,
-                  textTransform: "uppercase",
-                  letterSpacing: "1.5px",
-                  color: "rgba(255,255,255,0.3)",
-                }}
-              >
-                {scene.adminTag}
-              </span>
-              {/* Desktop frame */}
-              <div
-                style={{
-                  background: "white",
-                  borderRadius: 12,
-                  overflow: "hidden",
-                  border: "0.5px solid rgba(0,0,0,0.1)",
-                  width: "100%",
-                }}
-              >
-                {/* Browser chrome */}
-                <div
-                  className="flex items-center gap-2"
-                  style={{ background: "#f0f0f0", padding: "7px 10px" }}
-                >
-                  <span style={{ width: 10, height: 10, borderRadius: "50%", background: "#ff5f57", display: "inline-block" }} />
-                  <span style={{ width: 10, height: 10, borderRadius: "50%", background: "#febc2e", display: "inline-block" }} />
-                  <span style={{ width: 10, height: 10, borderRadius: "50%", background: "#28c840", display: "inline-block" }} />
-                  <div
-                    className="ml-2 flex-1 max-w-[120px]"
-                    style={{ height: 14, background: "#e0e0e0", borderRadius: 3 }}
-                  />
-                </div>
-                {/* Screen */}
-                <div
-                  ref={adminScreenRef}
-                  style={{ overflow: "hidden", maxHeight: 340 }}
-                >
-                  <img
-                    src={buildImageSrc(scene.adminImg)}
-                    alt={scene.adminTag}
-                    loading="eager"
-                    decoding="async"
-                    style={{
-                      width: "100%",
-                      objectFit: "cover",
-                      objectPosition: "top center",
-                      display: "block",
-                      opacity: imgOpacity,
-                      transition: "opacity 0.4s ease",
-                    }}
-                  />
-                </div>
-              </div>
-            </div>
-          </div>
+//             {/* Admin side */}
+//             <div className="flex flex-col items-center justify-center p-6 md:p-8">
+//               <span
+//                 className="block mb-4 text-center"
+//                 style={{
+//                   fontSize: 9,
+//                   textTransform: "uppercase",
+//                   letterSpacing: "1.5px",
+//                   color: "rgba(255,255,255,0.3)",
+//                 }}
+//               >
+//                 {scene.adminTag}
+//               </span>
+//               {/* Desktop frame */}
+//               <div
+//                 style={{
+//                   background: "white",
+//                   borderRadius: 12,
+//                   overflow: "hidden",
+//                   border: "0.5px solid rgba(0,0,0,0.1)",
+//                   width: "100%",
+//                 }}
+//               >
+//                 {/* Browser chrome */}
+//                 <div
+//                   className="flex items-center gap-2"
+//                   style={{ background: "#f0f0f0", padding: "7px 10px" }}
+//                 >
+//                   <span style={{ width: 10, height: 10, borderRadius: "50%", background: "#ff5f57", display: "inline-block" }} />
+//                   <span style={{ width: 10, height: 10, borderRadius: "50%", background: "#febc2e", display: "inline-block" }} />
+//                   <span style={{ width: 10, height: 10, borderRadius: "50%", background: "#28c840", display: "inline-block" }} />
+//                   <div
+//                     className="ml-2 flex-1 max-w-[120px]"
+//                     style={{ height: 14, background: "#e0e0e0", borderRadius: 3 }}
+//                   />
+//                 </div>
+//                 {/* Screen */}
+//                 <div
+//                   ref={adminScreenRef}
+//                   style={{ overflow: "hidden", maxHeight: 340 }}
+//                 >
+//                   <img
+//                     src={buildImageSrc(scene.adminImg)}
+//                     alt={scene.adminTag}
+//                     loading="eager"
+//                     decoding="async"
+//                     style={{
+//                       width: "100%",
+//                       objectFit: "cover",
+//                       objectPosition: "top center",
+//                       display: "block",
+//                       opacity: imgOpacity,
+//                       transition: "opacity 0.4s ease",
+//                     }}
+//                   />
+//                 </div>
+//               </div>
+//             </div>
+//           </div>
 
-          {/* Caption bar */}
-          <div
-            className="flex items-start gap-3.5"
-            style={{
-              background: "#0d1535",
-              borderTop: "0.5px solid rgba(255,255,255,0.06)",
-              padding: "14px 24px",
-            }}
-          >
-            <span
-              className="inline-flex items-center gap-1.5 shrink-0"
-              style={{
-                background: "rgba(0,222,196,0.1)",
-                border: "0.5px solid rgba(0,222,196,0.25)",
-                color: "#00DEC4",
-                fontSize: 10,
-                borderRadius: 980,
-                padding: "4px 12px",
-                whiteSpace: "nowrap",
-              }}
-            >
-              <span
-                className="inline-block rounded-full"
-                style={{ width: 5, height: 5, background: "#00DEC4" }}
-              />
-              {scene.step}
-            </span>
-            <p
-              className="text-xs md:text-[13px]"
-              style={{ color: "rgba(255,255,255,0.7)", lineHeight: 1.6, minHeight: 42 }}
-            >
-              {typedText}
-              <span
-                className="inline-block ml-0.5 align-middle"
-                style={{
-                  width: 1.5,
-                  height: 12,
-                  background: "#00DEC4",
-                  animation: "demoCursorBlink 0.7s step-end infinite",
-                }}
-              />
-            </p>
-          </div>
-        </div>
-      </div>
+//           {/* Caption bar */}
+//           <div
+//             className="flex items-start gap-3.5"
+//             style={{
+//               background: "#0d1535",
+//               borderTop: "0.5px solid rgba(255,255,255,0.06)",
+//               padding: "14px 24px",
+//             }}
+//           >
+//             <span
+//               className="inline-flex items-center gap-1.5 shrink-0"
+//               style={{
+//                 background: "rgba(0,222,196,0.1)",
+//                 border: "0.5px solid rgba(0,222,196,0.25)",
+//                 color: "#00DEC4",
+//                 fontSize: 10,
+//                 borderRadius: 980,
+//                 padding: "4px 12px",
+//                 whiteSpace: "nowrap",
+//               }}
+//             >
+//               <span
+//                 className="inline-block rounded-full"
+//                 style={{ width: 5, height: 5, background: "#00DEC4" }}
+//               />
+//               {scene.step}
+//             </span>
+//             <p
+//               className="text-xs md:text-[13px]"
+//               style={{ color: "rgba(255,255,255,0.7)", lineHeight: 1.6, minHeight: 42 }}
+//             >
+//               {typedText}
+//               <span
+//                 className="inline-block ml-0.5 align-middle"
+//                 style={{
+//                   width: 1.5,
+//                   height: 12,
+//                   background: "#00DEC4",
+//                   animation: "demoCursorBlink 0.7s step-end infinite",
+//                 }}
+//               />
+//             </p>
+//           </div>
+//         </div>
+//       </div>
 
-      <style>{`
-        @keyframes demoCursorBlink {
-          0%, 100% { opacity: 1; }
-          50% { opacity: 0; }
-        }
-      `}</style>
-    </section>
-  );
-};
+//       <style>{`
+//         @keyframes demoCursorBlink {
+//           0%, 100% { opacity: 1; }
+//           50% { opacity: 0; }
+//         }
+//       `}</style>
+//     </section>
+//   );
+// };
 
-export default ProductDemo;
+// export default ProductDemo;
