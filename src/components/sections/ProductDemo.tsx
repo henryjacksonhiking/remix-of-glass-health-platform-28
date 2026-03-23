@@ -128,6 +128,40 @@ const ProductDemo = () => {
     };
   }, [safeDisplayedScene]);
 
+  // Auto-scroll screens
+  useEffect(() => {
+    const patientEl = patientScreenRef.current;
+    const adminEl = adminScreenRef.current;
+    if (patientEl) patientEl.scrollTop = 0;
+    if (adminEl) adminEl.scrollTop = 0;
+
+    const startDelay = setTimeout(() => {
+      const speed = 0.4;
+      let lastTime = 0;
+      const tick = (time: number) => {
+        if (!lastTime) lastTime = time;
+        const delta = time - lastTime;
+        lastTime = time;
+        const px = speed * (delta / 16);
+        if (patientEl) {
+          const max = patientEl.scrollHeight - patientEl.clientHeight;
+          if (patientEl.scrollTop < max) patientEl.scrollTop = Math.min(patientEl.scrollTop + px, max);
+        }
+        if (adminEl) {
+          const max = adminEl.scrollHeight - adminEl.clientHeight;
+          if (adminEl.scrollTop < max) adminEl.scrollTop = Math.min(adminEl.scrollTop + px, max);
+        }
+        scrollAnimRef.current = requestAnimationFrame(tick);
+      };
+      scrollAnimRef.current = requestAnimationFrame(tick);
+    }, 1500);
+
+    return () => {
+      clearTimeout(startDelay);
+      if (scrollAnimRef.current) cancelAnimationFrame(scrollAnimRef.current);
+    };
+  }, [safeDisplayedScene]);
+
   // Scene cycling
   useEffect(() => {
     const duration = scenes[safeCurrentScene].duration;
