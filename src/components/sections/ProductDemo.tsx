@@ -140,9 +140,9 @@ const ProductDemo = () => {
     };
   }, [safeCurrentScene, startProgress]);
 
-  // Fade transition on scene change
+  // Fade transition only when scene actually changes
   useEffect(() => {
-    if (safeCurrentScene === safeDisplayedScene && safeCurrentScene === 0 && imgOpacity === 1) return;
+    if (safeCurrentScene === safeDisplayedScene) return;
 
     setImgOpacity(0);
     fadeTimeoutRef.current = setTimeout(() => {
@@ -153,7 +153,7 @@ const ProductDemo = () => {
     return () => {
       if (fadeTimeoutRef.current) clearTimeout(fadeTimeoutRef.current);
     };
-  }, [safeCurrentScene, safeDisplayedScene, imgOpacity]);
+  }, [safeCurrentScene, safeDisplayedScene]);
 
   return (
     <section id="demo" className="overflow-hidden" style={{ background: "#0B1130" }}>
