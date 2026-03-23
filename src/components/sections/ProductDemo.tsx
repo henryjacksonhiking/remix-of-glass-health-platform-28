@@ -74,8 +74,6 @@ const ProductDemo = () => {
   const sceneTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const fadeTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
-  if (!scenes.length) return null;
-
   const clampSceneIndex = (index: number) => ((index % scenes.length) + scenes.length) % scenes.length;
   const safeCurrentScene = clampSceneIndex(currentScene);
   const safeDisplayedScene = clampSceneIndex(displayedScene);
