@@ -321,16 +321,17 @@ const ProductDemo = () => {
                     borderRadius: 18,
                     overflow: "hidden",
                     background: "#f5f6f8",
+                    height: 320,
+                    overflowY: "auto",
+                    WebkitOverflowScrolling: "touch",
                   }}
+                  className="scrollbar-hide"
                 >
                   <img
                     src={scene.patientImg}
                     alt={scene.patientTag}
                     style={{
                       width: "100%",
-                      height: 320,
-                      objectFit: "cover",
-                      objectPosition: "top center",
                       display: "block",
                       opacity: imgOpacity,
                       transition: "opacity 0.4s ease",
