@@ -470,7 +470,7 @@ const ProductDemo = () => {
                 {/* Screen */}
                 <div
                   ref={adminScreenRef}
-                  style={{ maxHeight: 340, overflowY: "auto", WebkitOverflowScrolling: "touch" }}
+                  style={{ height: 340, overflowY: "auto" as const, WebkitOverflowScrolling: "touch" as const }}
                   className="scrollbar-hide"
                 >
                   <img
