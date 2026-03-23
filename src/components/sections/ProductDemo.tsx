@@ -321,16 +321,17 @@ const ProductDemo = () => {
                     borderRadius: 18,
                     overflow: "hidden",
                     background: "#f5f6f8",
+                    height: 320,
+                    overflowY: "auto",
+                    WebkitOverflowScrolling: "touch",
                   }}
+                  className="scrollbar-hide"
                 >
                   <img
                     src={scene.patientImg}
                     alt={scene.patientTag}
                     style={{
                       width: "100%",
-                      height: 320,
-                      objectFit: "cover",
-                      objectPosition: "top center",
                       display: "block",
                       opacity: imgOpacity,
                       transition: "opacity 0.4s ease",
@@ -377,15 +378,16 @@ const ProductDemo = () => {
                   />
                 </div>
                 {/* Screen */}
-                <div style={{ overflow: "hidden", maxHeight: 340 }}>
+                <div
+                  style={{ maxHeight: 340, overflowY: "auto", WebkitOverflowScrolling: "touch" }}
+                  className="scrollbar-hide"
+                >
                   <img
                     src={scene.adminImg}
                     alt={scene.adminTag}
                     style={{
                       width: "100%",
                       display: "block",
-                      objectFit: "cover",
-                      objectPosition: "top center",
                       opacity: imgOpacity,
                       transition: "opacity 0.4s ease",
                     }}
