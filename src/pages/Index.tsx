@@ -14,6 +14,7 @@ const Index = () => {
     <PageWrapper>
       <HeroSection />
       <SocialProofBar />
+      <ProductDemo />
       <ProductStory />
       <ProductGrid />
       <ValueProps />
