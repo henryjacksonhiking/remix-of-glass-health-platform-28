@@ -147,39 +147,70 @@ const ProductDemo = () => {
     };
   }, [safeDisplayedScene]);
 
-  // Auto-scroll screens
+  // Auto-scroll screens — wait for images to actually load before measuring
   useEffect(() => {
     const patientEl = patientScreenRef.current;
     const adminEl = adminScreenRef.current;
     if (patientEl) patientEl.scrollTop = 0;
     if (adminEl) adminEl.scrollTop = 0;
 
-    const startDelay = setTimeout(() => {
+    let cancelled = false;
+    let delayTimer: ReturnType<typeof setTimeout> | null = null;
+
+    const startScrolling = () => {
       const speed = 0.4;
       let lastTime = 0;
       const tick = (time: number) => {
+        if (cancelled) return;
         if (!lastTime) lastTime = time;
         const delta = time - lastTime;
         lastTime = time;
         const px = speed * (delta / 16);
         if (patientEl) {
           const max = patientEl.scrollHeight - patientEl.clientHeight;
-          if (patientEl.scrollTop < max) patientEl.scrollTop = Math.min(patientEl.scrollTop + px, max);
+          if (max > 0 && patientEl.scrollTop < max) patientEl.scrollTop = Math.min(patientEl.scrollTop + px, max);
         }
         if (adminEl) {
           const max = adminEl.scrollHeight - adminEl.clientHeight;
-          if (adminEl.scrollTop < max) adminEl.scrollTop = Math.min(adminEl.scrollTop + px, max);
+          if (max > 0 && adminEl.scrollTop < max) adminEl.scrollTop = Math.min(adminEl.scrollTop + px, max);
         }
         scrollAnimRef.current = requestAnimationFrame(tick);
       };
       scrollAnimRef.current = requestAnimationFrame(tick);
-    }, 1500);
+    };
+
+    // Wait for both images in the current scene to load before starting scroll
+    const s = scenes[safeDisplayedScene];
+    const patientSrc = buildImageSrc(s.patientImg);
+    const adminSrc = buildImageSrc(s.adminImg);
+    let loaded = 0;
+    const onLoad = () => {
+      loaded++;
+      if (loaded >= 2 && !cancelled) {
+        // Small extra delay so the browser has painted
+        delayTimer = setTimeout(() => {
+          if (!cancelled) startScrolling();
+        }, 800);
+      }
+    };
+
+    const img1 = new Image();
+    const img2 = new Image();
+    img1.onload = onLoad;
+    img2.onload = onLoad;
+    // If already cached, onload fires synchronously in some browsers
+    img1.src = patientSrc;
+    img2.src = adminSrc;
+    // Handle already-complete (cached) images
+    if (img1.complete) onLoad();
+    if (img2.complete) onLoad();
 
     return () => {
-      clearTimeout(startDelay);
+      cancelled = true;
+      if (delayTimer) clearTimeout(delayTimer);
       if (scrollAnimRef.current) cancelAnimationFrame(scrollAnimRef.current);
     };
-  }, [safeDisplayedScene]);
+  }, [safeDisplayedScene, buildImageSrc]);
 
   // Scene cycling
   useEffect(() => {
@@ -379,8 +410,8 @@ const ProductDemo = () => {
                     overflow: "hidden",
                     background: "#f5f6f8",
                     height: 320,
-                    overflowY: "auto",
-                    WebkitOverflowScrolling: "touch",
+                    overflowY: "auto" as const,
+                    WebkitOverflowScrolling: "touch" as const,
                   }}
                   className="scrollbar-hide"
                 >
@@ -439,7 +470,7 @@ const ProductDemo = () => {
                 {/* Screen */}
                 <div
                   ref={adminScreenRef}
-                  style={{ maxHeight: 340, overflowY: "auto", WebkitOverflowScrolling: "touch" }}
+                  style={{ height: 340, overflowY: "auto" as const, WebkitOverflowScrolling: "touch" as const }}
                   className="scrollbar-hide"
                 >
                   <img
