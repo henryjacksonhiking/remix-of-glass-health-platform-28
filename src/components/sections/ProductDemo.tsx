@@ -74,64 +74,88 @@ const ProductDemo = () => {
   const sceneTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const fadeTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
-  const scene = scenes[displayedScene];
+  if (!scenes.length) return null;
+
+  const clampSceneIndex = (index: number) => ((index % scenes.length) + scenes.length) % scenes.length;
+  const safeCurrentScene = clampSceneIndex(currentScene);
+  const safeDisplayedScene = clampSceneIndex(displayedScene);
+  const scene = scenes[safeDisplayedScene];
 
   // Start progress bar for current scene
   const startProgress = useCallback((duration: number) => {
     setProgressWidth("0%");
     setProgressTransition("none");
-    requestAnimationFrame(() => {
-      requestAnimationFrame(() => {
-        setProgressTransition(`width ${duration}ms linear`);
-        setProgressWidth("100%");
-      });
-    });
+
+    const run = () => {
+      setProgressTransition(`width ${duration}ms linear`);
+      setProgressWidth("100%");
+    };
+
+    if (typeof window !== "undefined" && typeof window.requestAnimationFrame === "function") {
+      window.requestAnimationFrame(() => window.requestAnimationFrame(run));
+      return;
+    }
+
+    setTimeout(run, 16);
   }, []);
+
+  // Keep state in bounds (important during Fast Refresh)
+  useEffect(() => {
+    if (currentScene !== safeCurrentScene) setCurrentScene(safeCurrentScene);
+    if (displayedScene !== safeDisplayedScene) setDisplayedScene(safeDisplayedScene);
+  }, [currentScene, displayedScene, safeCurrentScene, safeDisplayedScene]);
 
   // Typewriter effect
   useEffect(() => {
-    const text = scenes[displayedScene].caption;
+    const text = scenes[safeDisplayedScene].caption;
     setTypedText("");
     let i = 0;
+
     if (typeIntervalRef.current) clearInterval(typeIntervalRef.current);
+
     typeIntervalRef.current = setInterval(() => {
-      i++;
+      i += 1;
       setTypedText(text.slice(0, i));
+
       if (i >= text.length && typeIntervalRef.current) {
         clearInterval(typeIntervalRef.current);
       }
     }, 22);
+
     return () => {
       if (typeIntervalRef.current) clearInterval(typeIntervalRef.current);
     };
-  }, [displayedScene]);
+  }, [safeDisplayedScene]);
 
   // Scene cycling
   useEffect(() => {
-    startProgress(scenes[currentScene].duration);
+    const duration = scenes[safeCurrentScene].duration;
+    startProgress(duration);
 
     sceneTimeoutRef.current = setTimeout(() => {
-      const next = (currentScene + 1) % scenes.length;
+      const next = (safeCurrentScene + 1) % scenes.length;
       setCurrentScene(next);
-    }, scenes[currentScene].duration);
+    }, duration);
 
     return () => {
       if (sceneTimeoutRef.current) clearTimeout(sceneTimeoutRef.current);
     };
-  }, [currentScene, startProgress]);
+  }, [safeCurrentScene, startProgress]);
 
   // Fade transition on scene change
   useEffect(() => {
-    if (currentScene === displayedScene && currentScene === 0 && imgOpacity === 1) return;
+    if (safeCurrentScene === safeDisplayedScene && safeCurrentScene === 0 && imgOpacity === 1) return;
+
     setImgOpacity(0);
     fadeTimeoutRef.current = setTimeout(() => {
-      setDisplayedScene(currentScene);
+      setDisplayedScene(safeCurrentScene);
       setImgOpacity(1);
     }, 200);
+
     return () => {
       if (fadeTimeoutRef.current) clearTimeout(fadeTimeoutRef.current);
     };
-  }, [currentScene]);
+  }, [safeCurrentScene, safeDisplayedScene, imgOpacity]);
 
   return (
     <section id="demo" className="overflow-hidden" style={{ background: "#0B1130" }}>
