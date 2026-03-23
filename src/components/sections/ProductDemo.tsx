@@ -73,6 +73,9 @@ const ProductDemo = () => {
   const typeIntervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
   const sceneTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const fadeTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const patientScreenRef = useRef<HTMLDivElement>(null);
+  const adminScreenRef = useRef<HTMLDivElement>(null);
+  const scrollAnimRef = useRef<number | null>(null);
 
   const clampSceneIndex = (index: number) => ((index % scenes.length) + scenes.length) % scenes.length;
   const safeCurrentScene = clampSceneIndex(currentScene);
@@ -122,6 +125,40 @@ const ProductDemo = () => {
 
     return () => {
       if (typeIntervalRef.current) clearInterval(typeIntervalRef.current);
+    };
+  }, [safeDisplayedScene]);
+
+  // Auto-scroll screens
+  useEffect(() => {
+    const patientEl = patientScreenRef.current;
+    const adminEl = adminScreenRef.current;
+    if (patientEl) patientEl.scrollTop = 0;
+    if (adminEl) adminEl.scrollTop = 0;
+
+    const startDelay = setTimeout(() => {
+      const speed = 0.4;
+      let lastTime = 0;
+      const tick = (time: number) => {
+        if (!lastTime) lastTime = time;
+        const delta = time - lastTime;
+        lastTime = time;
+        const px = speed * (delta / 16);
+        if (patientEl) {
+          const max = patientEl.scrollHeight - patientEl.clientHeight;
+          if (patientEl.scrollTop < max) patientEl.scrollTop = Math.min(patientEl.scrollTop + px, max);
+        }
+        if (adminEl) {
+          const max = adminEl.scrollHeight - adminEl.clientHeight;
+          if (adminEl.scrollTop < max) adminEl.scrollTop = Math.min(adminEl.scrollTop + px, max);
+        }
+        scrollAnimRef.current = requestAnimationFrame(tick);
+      };
+      scrollAnimRef.current = requestAnimationFrame(tick);
+    }, 1500);
+
+    return () => {
+      clearTimeout(startDelay);
+      if (scrollAnimRef.current) cancelAnimationFrame(scrollAnimRef.current);
     };
   }, [safeDisplayedScene]);
 
@@ -317,6 +354,7 @@ const ProductDemo = () => {
                 </div>
                 {/* Screen */}
                 <div
+                  ref={patientScreenRef}
                   style={{
                     borderRadius: 18,
                     overflow: "hidden",
@@ -379,6 +417,7 @@ const ProductDemo = () => {
                 </div>
                 {/* Screen */}
                 <div
+                  ref={adminScreenRef}
                   style={{ maxHeight: 340, overflowY: "auto", WebkitOverflowScrolling: "touch" }}
                   className="scrollbar-hide"
                 >
