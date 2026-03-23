@@ -13,6 +13,7 @@ const ShaderCanvas = () => {
   const glBgColorLocationRef = useRef<WebGLUniformLocation | null>(null);
   const glRef = useRef<WebGLRenderingContext | null>(null);
   const [backgroundColor, setBackgroundColor] = useState([1.0, 1.0, 1.0]);
+  const [webglSupported, setWebglSupported] = useState(true);
 
   useEffect(() => {
     const root = document.documentElement;
@@ -46,92 +47,115 @@ const ShaderCanvas = () => {
     const canvas = canvasRef.current;
     if (!canvas) return;
     const gl = canvas.getContext('webgl');
-    if (!gl) return;
+    if (!gl) {
+      setWebglSupported(false);
+      return;
+    }
     glRef.current = gl;
 
-    const vertexShaderSource = `attribute vec2 aPosition; void main() { gl_Position = vec4(aPosition, 0.0, 1.0); }`;
-    const fragmentShaderSource = `
-      precision highp float;
-      uniform float iTime;
-      uniform vec2 iResolution;
-      uniform vec3 uBackgroundColor;
-      mat2 rotate2d(float angle){ float c=cos(angle),s=sin(angle); return mat2(c,-s,s,c); }
-      float variation(vec2 v1,vec2 v2,float strength,float speed){ return sin(dot(normalize(v1),normalize(v2))*strength+iTime*speed)/100.0; }
-      vec3 paintCircle(vec2 uv,vec2 center,float rad,float width){
-        vec2 diff = center-uv;
-        float len = length(diff);
-        len += variation(diff,vec2(0.,1.),5.,2.);
-        len -= variation(diff,vec2(1.,0.),5.,2.);
-        float circle = smoothstep(rad-width,rad,len)-smoothstep(rad,rad+width,len);
-        return vec3(circle);
+    try {
+      const vertexShaderSource = `attribute vec2 aPosition; void main() { gl_Position = vec4(aPosition, 0.0, 1.0); }`;
+      const fragmentShaderSource = `
+        precision highp float;
+        uniform float iTime;
+        uniform vec2 iResolution;
+        uniform vec3 uBackgroundColor;
+        mat2 rotate2d(float angle){ float c=cos(angle),s=sin(angle); return mat2(c,-s,s,c); }
+        float variation(vec2 v1,vec2 v2,float strength,float speed){ return sin(dot(normalize(v1),normalize(v2))*strength+iTime*speed)/100.0; }
+        vec3 paintCircle(vec2 uv,vec2 center,float rad,float width){
+          vec2 diff = center-uv;
+          float len = length(diff);
+          len += variation(diff,vec2(0.,1.),5.,2.);
+          len -= variation(diff,vec2(1.,0.),5.,2.);
+          float circle = smoothstep(rad-width,rad,len)-smoothstep(rad,rad+width,len);
+          return vec3(circle);
+        }
+        void main(){
+          vec2 uv = gl_FragCoord.xy/iResolution.xy;
+          uv.x *= 1.5; uv.x -= 0.25;
+          float mask = 0.0;
+          float radius = .35;
+          vec2 center = vec2(.5);
+          mask += paintCircle(uv,center,radius,.035).r;
+          mask += paintCircle(uv,center,radius-.018,.01).r;
+          mask += paintCircle(uv,center,radius+.018,.005).r;
+          vec2 v=rotate2d(iTime)*uv;
+          vec3 foregroundColor=vec3(v.x,v.y,.7-v.y*v.x);
+          vec3 color=mix(uBackgroundColor,foregroundColor,mask);
+          color=mix(color,vec3(1.),paintCircle(uv,center,radius,.003).r);
+          gl_FragColor=vec4(color,1.);
+        }`;
+
+      const compileShader = (type: number, source: string) => {
+        const shader = gl.createShader(type);
+        if (!shader) return null;
+        gl.shaderSource(shader, source);
+        gl.compileShader(shader);
+        if (!gl.getShaderParameter(shader, gl.COMPILE_STATUS)) {
+          console.warn('Shader compile error:', gl.getShaderInfoLog(shader));
+          return null;
+        }
+        return shader;
+      };
+
+      const program = gl.createProgram();
+      if (!program) { setWebglSupported(false); return; }
+      const vs = compileShader(gl.VERTEX_SHADER, vertexShaderSource);
+      const fs = compileShader(gl.FRAGMENT_SHADER, fragmentShaderSource);
+      if (!vs || !fs) { setWebglSupported(false); return; }
+      gl.attachShader(program, vs);
+      gl.attachShader(program, fs);
+      gl.linkProgram(program);
+      if (!gl.getProgramParameter(program, gl.LINK_STATUS)) {
+        setWebglSupported(false);
+        return;
       }
-      void main(){
-        vec2 uv = gl_FragCoord.xy/iResolution.xy;
-        uv.x *= 1.5; uv.x -= 0.25;
-        float mask = 0.0;
-        float radius = .35;
-        vec2 center = vec2(.5);
-        mask += paintCircle(uv,center,radius,.035).r;
-        mask += paintCircle(uv,center,radius-.018,.01).r;
-        mask += paintCircle(uv,center,radius+.018,.005).r;
-        vec2 v=rotate2d(iTime)*uv;
-        vec3 foregroundColor=vec3(v.x,v.y,.7-v.y*v.x);
-        vec3 color=mix(uBackgroundColor,foregroundColor,mask);
-        color=mix(color,vec3(1.),paintCircle(uv,center,radius,.003).r);
-        gl_FragColor=vec4(color,1.);
-      }`;
+      gl.useProgram(program);
+      glProgramRef.current = program;
 
-    const compileShader = (type: number, source: string) => {
-      const shader = gl.createShader(type);
-      if (!shader) throw new Error("Could not create shader");
-      gl.shaderSource(shader, source);
-      gl.compileShader(shader);
-      if (!gl.getShaderParameter(shader, gl.COMPILE_STATUS)) {
-        throw new Error(gl.getShaderInfoLog(shader) || "Shader compilation error");
-      }
-      return shader;
-    };
+      const buffer = gl.createBuffer();
+      gl.bindBuffer(gl.ARRAY_BUFFER, buffer);
+      gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1, -1, 1, -1, -1, 1, -1, 1, 1, -1, 1, 1]), gl.STATIC_DRAW);
+      const aPosition = gl.getAttribLocation(program, 'aPosition');
+      gl.enableVertexAttribArray(aPosition);
+      gl.vertexAttribPointer(aPosition, 2, gl.FLOAT, false, 0, 0);
 
-    const program = gl.createProgram();
-    if (!program) throw new Error("Could not create program");
-    gl.attachShader(program, compileShader(gl.VERTEX_SHADER, vertexShaderSource));
-    gl.attachShader(program, compileShader(gl.FRAGMENT_SHADER, fragmentShaderSource));
-    gl.linkProgram(program);
-    gl.useProgram(program);
-    glProgramRef.current = program;
+      const iTimeLoc = gl.getUniformLocation(program, 'iTime');
+      const iResLoc = gl.getUniformLocation(program, 'iResolution');
+      glBgColorLocationRef.current = gl.getUniformLocation(program, 'uBackgroundColor');
+      gl.uniform3fv(glBgColorLocationRef.current, new Float32Array(backgroundColor));
 
-    const buffer = gl.createBuffer();
-    gl.bindBuffer(gl.ARRAY_BUFFER, buffer);
-    gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1, -1, 1, -1, -1, 1, -1, 1, 1, -1, 1, 1]), gl.STATIC_DRAW);
-    const aPosition = gl.getAttribLocation(program, 'aPosition');
-    gl.enableVertexAttribArray(aPosition);
-    gl.vertexAttribPointer(aPosition, 2, gl.FLOAT, false, 0, 0);
-
-    const iTimeLoc = gl.getUniformLocation(program, 'iTime');
-    const iResLoc = gl.getUniformLocation(program, 'iResolution');
-    glBgColorLocationRef.current = gl.getUniformLocation(program, 'uBackgroundColor');
-    gl.uniform3fv(glBgColorLocationRef.current, new Float32Array(backgroundColor));
-
-    let animationFrameId: number;
-    const render = (time: number) => {
-      gl.uniform1f(iTimeLoc, time * 0.001);
-      gl.uniform2f(iResLoc, canvas.width, canvas.height);
-      gl.drawArrays(gl.TRIANGLES, 0, 6);
+      let animationFrameId: number;
+      const render = (time: number) => {
+        gl.uniform1f(iTimeLoc, time * 0.001);
+        gl.uniform2f(iResLoc, canvas.width, canvas.height);
+        gl.drawArrays(gl.TRIANGLES, 0, 6);
+        animationFrameId = requestAnimationFrame(render);
+      };
+      const handleResize = () => {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+        gl.viewport(0, 0, gl.drawingBufferWidth, gl.drawingBufferHeight);
+      };
+      handleResize();
+      window.addEventListener('resize', handleResize);
       animationFrameId = requestAnimationFrame(render);
-    };
-    const handleResize = () => {
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
-      gl.viewport(0, 0, gl.drawingBufferWidth, gl.drawingBufferHeight);
-    };
-    handleResize();
-    window.addEventListener('resize', handleResize);
-    animationFrameId = requestAnimationFrame(render);
-    return () => {
-      window.removeEventListener('resize', handleResize);
-      cancelAnimationFrame(animationFrameId);
-    };
+      return () => {
+        window.removeEventListener('resize', handleResize);
+        cancelAnimationFrame(animationFrameId);
+      };
+    } catch (e) {
+      console.warn('WebGL initialization failed:', e);
+      setWebglSupported(false);
+    }
   }, []);
+
+  if (!webglSupported) {
+    // CSS-only fallback gradient
+    return (
+      <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-accent/5" />
+    );
+  }
 
   return <canvas ref={canvasRef} className="absolute inset-0 w-full h-full" />;
 };
