@@ -409,11 +409,7 @@ const ProductDemo = () => {
                     borderRadius: 18,
                     overflow: "hidden",
                     background: "#f5f6f8",
-                    height: 320,
-                    overflowY: "auto" as const,
-                    WebkitOverflowScrolling: "touch" as const,
                   }}
-                  className="scrollbar-hide"
                 >
                   <img
                     src={buildImageSrc(scene.patientImg)}
@@ -422,6 +418,9 @@ const ProductDemo = () => {
                     decoding="async"
                     style={{
                       width: "100%",
+                      height: 320,
+                      objectFit: "cover",
+                      objectPosition: "top center",
                       display: "block",
                       opacity: imgOpacity,
                       transition: "opacity 0.4s ease",
@@ -470,8 +469,7 @@ const ProductDemo = () => {
                 {/* Screen */}
                 <div
                   ref={adminScreenRef}
-                  style={{ height: 340, overflowY: "auto" as const, WebkitOverflowScrolling: "touch" as const }}
-                  className="scrollbar-hide"
+                  style={{ overflow: "hidden", maxHeight: 340 }}
                 >
                   <img
                     src={buildImageSrc(scene.adminImg)}
@@ -480,6 +478,8 @@ const ProductDemo = () => {
                     decoding="async"
                     style={{
                       width: "100%",
+                      objectFit: "cover",
+                      objectPosition: "top center",
                       display: "block",
                       opacity: imgOpacity,
                       transition: "opacity 0.4s ease",
