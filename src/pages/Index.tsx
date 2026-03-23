@@ -1,6 +1,7 @@
 import PageWrapper from "@/components/layout/PageWrapper";
 import HeroSection from "@/components/sections/HeroSection";
 import SocialProofBar from "@/components/sections/SocialProofBar";
+import ProductDemo from "@/components/sections/ProductDemo";
 import ProductStory from "@/components/sections/ProductStory";
 import ProductGrid from "@/components/sections/ProductGrid";
 import ValueProps from "@/components/sections/ValueProps";
