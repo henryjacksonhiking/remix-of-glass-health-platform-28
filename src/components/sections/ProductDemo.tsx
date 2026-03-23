@@ -354,6 +354,7 @@ const ProductDemo = () => {
                 </div>
                 {/* Screen */}
                 <div
+                  ref={patientScreenRef}
                   style={{
                     borderRadius: 18,
                     overflow: "hidden",
