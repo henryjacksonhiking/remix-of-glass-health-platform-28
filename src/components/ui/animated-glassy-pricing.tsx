@@ -24,7 +24,7 @@ class ShaderErrorBoundary extends Component<
 /*  CSS-only fallback (used when WebGL unavailable or crashes)        */
 /* ------------------------------------------------------------------ */
 const CSSFallbackRing = () => (
-  <div className="absolute inset-0 flex items-center justify-center overflow-hidden" aria-hidden="true">
+  <div className="absolute bottom-0 left-0 right-0 flex items-end justify-center overflow-hidden" aria-hidden="true">
     {/* Animated spinning ring via CSS */}
     <div
       className="absolute w-[32rem] h-[32rem] rounded-full opacity-30"
@@ -156,16 +156,18 @@ const ShaderCanvas = () => {
 
   if (failed) return <CSSFallbackRing />;
 
-  return <canvas ref={canvasRef} className="absolute inset-0 w-full h-full" />;
+  return <canvas ref={canvasRef} className="absolute bottom-0 left-0 right-0 w-full h-[80%]" />;
 };
 
 /* ------------------------------------------------------------------ */
 /*  Animated background wrapper                                       */
 /* ------------------------------------------------------------------ */
 const AnimatedBackground = () => (
-  <ShaderErrorBoundary fallback={<CSSFallbackRing />}>
-    <ShaderCanvas />
-  </ShaderErrorBoundary>
+  <div className="hidden md:block">
+    <ShaderErrorBoundary fallback={<CSSFallbackRing />}>
+      <ShaderCanvas />
+    </ShaderErrorBoundary>
+  </div>
 );
 
 /* ------------------------------------------------------------------ */
@@ -198,9 +200,9 @@ export const PricingCard = ({
   isPopular = false, buttonVariant = "primary", badge, onClick,
 }: PricingCardProps) => (
   <div className={cn(
-    "backdrop-blur-xl bg-gradient-to-br rounded-2xl shadow-xl flex-1 max-w-sm px-7 py-8 flex flex-col transition-all duration-300",
+    "backdrop-blur-xl bg-gradient-to-br rounded-2xl shadow-xl flex-1 max-w-sm w-full px-7 py-8 flex flex-col transition-all duration-300",
     "from-background/80 to-background/40 border border-border/30",
-    isPopular && "scale-[1.02] relative ring-2 ring-primary/20 from-background/90 to-background/50 border-primary/30 shadow-2xl",
+    isPopular && "relative ring-2 ring-primary/20 from-background/90 to-background/50 border-primary/30 shadow-2xl",
   )}>
     {badge && (
       <span className="absolute -top-3 left-1/2 -translate-x-1/2 inline-flex items-center rounded-full bg-primary/10 border border-primary/20 px-4 py-1 text-xs font-semibold text-primary whitespace-nowrap">
@@ -254,11 +256,11 @@ export const ModernPricingPage = ({
   <div className="relative min-h-[70vh] flex items-center justify-center overflow-hidden">
     {showAnimatedBackground && <AnimatedBackground />}
     <div className="relative z-10 w-full py-20 px-4 md:px-6">
-      <div className="text-center mb-14">
+      <div className="text-center mb-32">
         <h1 className="hero-headline text-foreground mb-4">{title}</h1>
         <p className="body-text mx-auto max-w-xl">{subtitle}</p>
       </div>
-      <div className="flex flex-col md:flex-row items-center justify-center gap-8 max-w-4xl mx-auto">
+      <div className="flex flex-col md:flex-row items-stretch justify-center gap-8 max-w-4xl mx-auto">
         {plans.map((plan) => <PricingCard key={plan.planName} {...plan} />)}
       </div>
     </div>
