@@ -73,6 +73,9 @@ const ProductDemo = () => {
   const typeIntervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
   const sceneTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const fadeTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const patientScreenRef = useRef<HTMLDivElement>(null);
+  const adminScreenRef = useRef<HTMLDivElement>(null);
+  const scrollAnimRef = useRef<number | null>(null);
 
   const clampSceneIndex = (index: number) => ((index % scenes.length) + scenes.length) % scenes.length;
   const safeCurrentScene = clampSceneIndex(currentScene);
