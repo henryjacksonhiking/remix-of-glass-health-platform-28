@@ -406,7 +406,10 @@ const ProductDemo = () => {
                     borderRadius: 18,
                     overflow: "hidden",
                     background: "#f5f6f8",
+                    maxHeight: 380,
+                    overflowY: "auto",
                   }}
+                  className="scrollbar-hide"
                 >
                   <img
                     src={buildImageSrc(scene.patientImg)}
@@ -415,9 +418,6 @@ const ProductDemo = () => {
                     decoding="async"
                     style={{
                       width: "100%",
-                      height: 320,
-                      objectFit: "cover",
-                      objectPosition: "top center",
                       display: "block",
                       opacity: imgOpacity,
                       transition: "opacity 0.4s ease",
