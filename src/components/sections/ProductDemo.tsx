@@ -39,8 +39,8 @@ const scenes = [
     step: "After the visit — payment",
     caption:
       "The admin creates a payment request in seconds and sends it by email and SMS. Sarah opens it on her phone and pays online. Billing stays clean.",
-    patientImg: "/images/Pay now.png",
-    adminImg: "/images/New Payment Request  - OWNER and ADMIN ONLY.png",
+    patientImg: "/images/Pay_now.png",
+    adminImg: "/images/New_Payment_Request__-_OWNER_and_ADMIN_ONLY.png",
     patientTag: "Patient — payment request received",
     adminTag: "Admin — creating payment request",
     duration: 5500,
