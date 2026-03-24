@@ -163,6 +163,9 @@ export function FeatureSteps({
                         src={feature.image}
                         alt={feature.title || feature.step}
                         className="w-full h-auto rounded-xl"
+                        loading="lazy"
+                        width={1200}
+                        height={800}
                       />
                     </motion.div>
                   )

@@ -79,6 +79,8 @@ const BlogPostPage = () => {
                     src={r.image}
                     alt={r.title}
                     loading="lazy"
+                    width={800}
+                    height={420}
                     className="w-full h-40 object-cover"
                   />
                   <div className="p-5">

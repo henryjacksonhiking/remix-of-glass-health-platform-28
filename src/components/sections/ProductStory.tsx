@@ -296,6 +296,8 @@ const ProductStory = () => {
               src="/images/Admin_vs_patient_-_patient_SMS_notification.png"
               alt="Patient SMS notification"
               loading="lazy"
+              width={400}
+              height={540}
               style={{ width: "100%", height: "auto", borderRadius: 10, display: "block" }}
             />
           </div>

@@ -73,8 +73,8 @@ const BlogPage = () => {
                     src={article.image}
                     alt={article.title}
                     loading="lazy"
-                    width={800}
-                    height={512}
+                    width={1200}
+                    height={630}
                     className="w-full h-44 object-cover"
                   />
                   <div className="p-6 flex flex-col flex-1">

@@ -58,6 +58,8 @@ const CareHero = () => {
               alt="Borna Care admin dashboard showing appointments, payments, providers, and forms management"
               className="w-full h-auto"
               loading="eager"
+              width={1920}
+              height={1080}
             />
           </div>
 
