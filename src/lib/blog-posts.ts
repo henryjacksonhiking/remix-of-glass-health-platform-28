@@ -383,7 +383,7 @@ Borna provides the complete digital toolkit for patient-first practices: online 
     category: "Clinic operations",
     date: "January 2026",
     readTime: "7 min read",
-    image: "/images/blog/ehr-integration.jpg",
+    image: "/images/blog/patient-experience.jpg",
     excerpt: "Integrating your tools with your EHR doesn't have to be painful. Here's a practical guide to what matters and what to watch out for.",
     content: `
 ## Why EHR integration matters
