@@ -10,7 +10,7 @@ const scenes = [
     adminImg: "/images/Admin_Dashboard.png",
     patientTag: "Patient — Sarah Collins",
     adminTag: "Admin — Yalan Corp Dental",
-    duration: 9000,
+    duration: 6000,
   },
   {
     badge: "Scene 2 of 4",
@@ -21,7 +21,7 @@ const scenes = [
     adminImg: "/images/Notifications_Admin_Side_-_View_All.png",
     patientTag: "Patient — confirmation received",
     adminTag: "Admin — new booking notification",
-    duration: 9000,
+    duration: 6000,
   },
   {
     badge: "Scene 3 of 4",
@@ -32,7 +32,7 @@ const scenes = [
     adminImg: "/images/Patient_s_Forms.png",
     patientTag: "Patient — completing intake form",
     adminTag: "Admin — forms overview",
-    duration: 9000,
+    duration: 6000,
   },
   {
     badge: "Scene 4 of 4",
@@ -43,7 +43,7 @@ const scenes = [
     adminImg: "/images/New_Payment_Request__-_OWNER_and_ADMIN_ONLY.png",
     patientTag: "Patient — payment request received",
     adminTag: "Admin — creating payment request",
-    duration: 9000,
+    duration: 6000,
   },
 ];
 
