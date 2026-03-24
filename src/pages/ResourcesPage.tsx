@@ -1,12 +1,16 @@
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { FileText, BookOpen, Video, BarChart2 } from "lucide-react";
-import { BeamsBackground } from "@/components/ui/beams-background";
 import PageWrapper from "@/components/layout/PageWrapper";
 
 const categories = [
   { icon: BarChart2, label: "Case studies", description: "See how real clinics improved operations with Borna Care." },
-  { icon: FileText, label: "Blog", description: "Insights on patient engagement, clinic operations, and automation.", href: "/blog" },
+  {
+    icon: FileText,
+    label: "Blog",
+    description: "Insights on patient engagement, clinic operations, and automation.",
+    href: "/blog",
+  },
   { icon: BookOpen, label: "Guides", description: "Step-by-step guides to get the most out of Borna.ai." },
   { icon: Video, label: "Videos", description: "Product walkthroughs, webinars, and customer stories." },
 ];
@@ -21,9 +25,6 @@ const ResourcesPage = () => (
   <PageWrapper>
     {/* Hero */}
     <section className="relative overflow-hidden py-24 md:py-32">
-      <div className="absolute inset-0 opacity-50">
-        <BeamsBackground intensity="medium" />
-      </div>
       <div className="container mx-auto px-4 md:px-6 relative z-10 max-w-3xl text-center">
         <motion.h1
           initial={{ opacity: 0, y: 20 }}
@@ -45,7 +46,7 @@ const ResourcesPage = () => (
     </section>
 
     {/* Categories */}
-    <section className="pb-24">
+    <section className="pb-24 pt-24">
       <div className="container mx-auto px-4 md:px-6">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-5xl mx-auto">
           {categories.map((cat, i) => {
@@ -98,7 +99,10 @@ const ResourcesPage = () => (
               viewport={{ once: true, amount: 0.3 }}
               transition={{ delay: i * 0.08, duration: 0.4 }}
             >
-              <Link to={item.href} className="glass-panel p-6 flex items-center justify-between group hover:bg-glass-hover transition-colors">
+              <Link
+                to={item.href}
+                className="glass-panel p-6 flex items-center justify-between group hover:bg-glass-hover transition-colors"
+              >
                 <div>
                   <span className="text-xs text-primary font-medium">{item.category}</span>
                   <h3 className="text-base font-medium text-foreground mt-1">{item.title}</h3>
@@ -115,7 +119,9 @@ const ResourcesPage = () => (
     <section className="py-16 border-t border-glass-border">
       <div className="container mx-auto px-4 md:px-6 max-w-xl text-center">
         <h2 className="text-xl font-semibold text-foreground mb-3">Subscribe for updates</h2>
-        <p className="text-sm text-muted-foreground mb-6">Get the latest insights and product updates delivered to your inbox.</p>
+        <p className="text-sm text-muted-foreground mb-6">
+          Get the latest insights and product updates delivered to your inbox.
+        </p>
         <div className="flex gap-2">
           <input
             type="email"
