@@ -8,6 +8,7 @@ import { products } from "@/lib/products";
 import PageWrapper from "@/components/layout/PageWrapper";
 import CTASection from "@/components/sections/CTASection";
 import CareHero from "@/components/sections/CareHero";
+import AetherFlowBackground from "@/components/ui/aether-flow-hero";
 import careDashboardScreen from "@/assets/care-dashboard-screen.png";
 import careFormsScreen from "@/assets/care-forms-screen.png";
 import careAppointmentScreen from "@/assets/care-appointment-screen.png";
