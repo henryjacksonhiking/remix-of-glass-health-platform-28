@@ -176,8 +176,8 @@ const ProductDemo = () => {
     };
 
     const startScrolling = () => {
-      if (patientEl) smoothScrollTo(patientEl, 500);
-      if (adminEl) smoothScrollTo(adminEl, 500);
+      if (patientEl) smoothScrollTo(patientEl, 1500);
+      if (adminEl) smoothScrollTo(adminEl, 1500);
     };
 
     // Wait for both images to load
