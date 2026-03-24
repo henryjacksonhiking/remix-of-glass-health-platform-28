@@ -10,7 +10,7 @@ const scenes = [
     adminImg: "/images/Admin Dashboard.png",
     patientTag: "Patient — Sarah Collins",
     adminTag: "Admin — Yalan Corp Dental",
-    duration: 9000,
+    duration: 5500,
   },
   {
     badge: "Scene 2 of 4",
@@ -21,7 +21,7 @@ const scenes = [
     adminImg: "/images/Notifications Admin Side - View All.png",
     patientTag: "Patient — confirmation received",
     adminTag: "Admin — new booking notification",
-    duration: 9000,
+    duration: 5500,
   },
   {
     badge: "Scene 3 of 4",
@@ -32,7 +32,7 @@ const scenes = [
     adminImg: "/images/Patient's Forms.png",
     patientTag: "Patient — completing intake form",
     adminTag: "Admin — forms overview",
-    duration: 9000,
+    duration: 5500,
   },
   {
     badge: "Scene 4 of 4",
@@ -43,7 +43,7 @@ const scenes = [
     adminImg: "/images/New Payment Request  - OWNER and ADMIN ONLY.png",
     patientTag: "Patient — payment request received",
     adminTag: "Admin — creating payment request",
-    duration: 9000,
+    duration: 5500,
   },
 ];
 
@@ -166,7 +166,7 @@ const ProductDemo = () => {
         const elapsed = now - start;
         const progress = Math.min(elapsed / duration, 1);
         // ease-in-out
-        const ease = progress < 0.5
+        const ease = progress < 1
           ? 2 * progress * progress
           : 1 - Math.pow(-2 * progress + 2, 2) / 2;
         el.scrollTop = ease * maxScroll;
@@ -176,8 +176,8 @@ const ProductDemo = () => {
     };
 
     const startScrolling = () => {
-      if (patientEl) smoothScrollTo(patientEl, 1500);
-      if (adminEl) smoothScrollTo(adminEl, 1500);
+      if (patientEl) smoothScrollTo(patientEl, 5000);
+      if (adminEl) smoothScrollTo(adminEl, 5000);
     };
 
     // Wait for both images to load
