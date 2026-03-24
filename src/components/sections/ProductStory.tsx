@@ -200,6 +200,8 @@ const ProductStory = () => {
                     src={row.image}
                     alt={row.headline}
                     loading="lazy"
+                    width={1440}
+                    height={900}
                     className={row.mobileImage ? "max-h-[280px] md:max-h-[320px] object-cover object-top" : "max-h-[280px] md:max-h-none object-cover md:object-contain object-top md:object-center"}
                     style={{
                       width: "100%",
