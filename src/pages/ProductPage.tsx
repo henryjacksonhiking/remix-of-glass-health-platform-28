@@ -71,6 +71,7 @@ const ProductPage = () => {
         <CareHero />
       ) : (
         <section className="relative overflow-hidden py-24 md:py-32">
+          <AetherFlowBackground accentColor={product.accentColor} />
           <div className="absolute top-0 left-1/3 w-80 h-80 rounded-full blur-[120px] animate-glow-pulse" style={{ backgroundColor: `${product.accentColor}15` }} />
           <div className="container mx-auto px-4 md:px-6 relative z-10">
             {/* Breadcrumb */}
