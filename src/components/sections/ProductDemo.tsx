@@ -6,8 +6,8 @@ const scenes = [
     step: "11pm — patient books",
     caption:
       "Sarah opens Borna Care at 11pm and books her dental appointment — without calling anyone. She picks her service, doctor, and time slot in under 2 minutes.",
-    patientImg: "/images/Choose your appointment (1).png",
-    adminImg: "/images/Admin Dashboard.png",
+    patientImg: "/images/Choose_your_appointment__1_.png",
+    adminImg: "/images/Admin_Dashboard.png",
     patientTag: "Patient — Sarah Collins",
     adminTag: "Admin — Yalan Corp Dental",
     duration: 5500,
