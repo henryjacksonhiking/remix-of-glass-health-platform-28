@@ -28,8 +28,8 @@ const scenes = [
     step: "Before the visit — forms",
     caption:
       "Before arriving, Sarah completes her intake form digitally. No clipboards, no scanning, no manual data entry. The admin sees all submitted forms instantly.",
-    patientImg: "/images/Patient Information (Personal Info).png",
-    adminImg: "/images/Patient's Forms.png",
+    patientImg: "/images/Patient_Information__Personal_Info_.png",
+    adminImg: "/images/Patient_s_Forms.png",
     patientTag: "Patient — completing intake form",
     adminTag: "Admin — forms overview",
     duration: 5500,
