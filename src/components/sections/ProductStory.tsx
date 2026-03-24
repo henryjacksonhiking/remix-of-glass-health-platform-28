@@ -276,6 +276,8 @@ const ProductStory = () => {
               src="/images/Admin_vs_patient_-_patient_Email_notification.png"
               alt="Patient email notification"
               loading="lazy"
+              width={540}
+              height={720}
               style={{ width: "100%", height: "auto", borderRadius: 10, display: "block" }}
             />
           </div>
