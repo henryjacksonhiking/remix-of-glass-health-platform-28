@@ -17,8 +17,8 @@ const scenes = [
     step: "Booking confirmed instantly",
     caption:
       "Appointment confirmed. Sarah gets her confirmation screen with all details. The admin sees a new notification automatically — no one had to do a thing.",
-    patientImg: "/images/patient appointment Confirmation.png",
-    adminImg: "/images/Notifications Admin Side - View All.png",
+    patientImg: "/images/patient_appointment_Confirmation.png",
+    adminImg: "/images/Notifications_Admin_Side_-_View_All.png",
     patientTag: "Patient — confirmation received",
     adminTag: "Admin — new booking notification",
     duration: 5500,
