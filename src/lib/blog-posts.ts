@@ -143,7 +143,7 @@ The ROI typically becomes clear within the first month: fewer phone calls, fewer
     category: "Automation",
     date: "February 2026",
     readTime: "6 min read",
-    image: "/images/blog/digital-intake.jpg",
+    image: "/images/blog/ehr-integration.jpg",
     excerpt: "Replace clipboards with smart digital forms that save time, reduce errors, and improve patient satisfaction from day one.",
     content: `
 ## Why go digital with intake forms?
@@ -304,7 +304,7 @@ The transition to online payments is one of the quickest wins in practice modern
     category: "Patient engagement",
     date: "January 2026",
     readTime: "5 min read",
-    image: "/images/blog/patient-experience.jpg",
+    image: "/images/blog/digital-intake.jpg",
     excerpt: "Patients expect the same digital convenience from their clinic that they get from every other service. Here's how to deliver it.",
     content: `
 ## The expectation gap
@@ -383,7 +383,7 @@ Borna provides the complete digital toolkit for patient-first practices: online 
     category: "Clinic operations",
     date: "January 2026",
     readTime: "7 min read",
-    image: "/images/blog/ehr-integration.jpg",
+    image: "/images/blog/patient-experience.jpg",
     excerpt: "Integrating your tools with your EHR doesn't have to be painful. Here's a practical guide to what matters and what to watch out for.",
     content: `
 ## Why EHR integration matters
