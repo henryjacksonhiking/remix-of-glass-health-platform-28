@@ -19,7 +19,7 @@ const BlogPostPage = () => {
         <img
           src={post.image}
           alt={post.title}
-          className="w-full h-full object-cover"
+          className="w-full h-full object-cover object-top"
           loading="eager"
           width={1200}
           height={630}
@@ -81,7 +81,7 @@ const BlogPostPage = () => {
                     loading="lazy"
                     width={800}
                     height={420}
-                    className="w-full h-40 object-cover"
+                    className="w-full h-40 object-cover object-top"
                   />
                   <div className="p-5">
                     <span className="text-xs text-primary font-medium">{r.category}</span>

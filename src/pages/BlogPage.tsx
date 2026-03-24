@@ -75,7 +75,7 @@ const BlogPage = () => {
                     loading="lazy"
                     width={1200}
                     height={630}
-                    className="w-full h-44 object-cover"
+                    className="w-full h-44 object-cover object-top"
                   />
                   <div className="p-6 flex flex-col flex-1">
                     <span className="text-xs text-primary font-medium mb-3">{article.category}</span>
