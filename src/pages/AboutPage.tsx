@@ -15,6 +15,9 @@ const AboutPage = () => (
   <PageWrapper>
     {/* Hero */}
     <section className="relative overflow-hidden py-24 md:py-32">
+      <div className="absolute inset-0 opacity-50">
+        <BeamsBackground intensity="medium" />
+      </div>
       <div className="absolute top-0 left-1/3 w-80 h-80 rounded-full blur-[120px] animate-glow-pulse bg-primary/10" />
       <div className="container mx-auto px-4 md:px-6 relative z-10 max-w-3xl text-center">
         <motion.h1
