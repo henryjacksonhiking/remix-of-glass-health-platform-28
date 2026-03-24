@@ -67,7 +67,8 @@ const ShaderCanvas = () => {
 
     // Detect dark mode for bg color
     const isDark = document.documentElement.classList.contains("dark");
-    const bgColor = isDark ? [0.07, 0.08, 0.14] : [0.07, 0.08, 0.14]; // always dark-navy for this site
+    // --background: 226 60% 12% → approx rgb(12, 20, 49)
+    const bgColor = [0.047, 0.078, 0.192];
 
     const vertSrc = `attribute vec2 aPosition; void main(){ gl_Position=vec4(aPosition,0.,1.); }`;
     const fragSrc = `
