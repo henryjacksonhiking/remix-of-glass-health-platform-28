@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { FileText, BookOpen, Video, BarChart2 } from "lucide-react";
+import { BeamsBackground } from "@/components/ui/beams-background";
 import PageWrapper from "@/components/layout/PageWrapper";
 
 const categories = [
@@ -20,6 +21,9 @@ const ResourcesPage = () => (
   <PageWrapper>
     {/* Hero */}
     <section className="relative overflow-hidden py-24 md:py-32">
+      <div className="absolute inset-0 opacity-50">
+        <BeamsBackground intensity="medium" />
+      </div>
       <div className="container mx-auto px-4 md:px-6 relative z-10 max-w-3xl text-center">
         <motion.h1
           initial={{ opacity: 0, y: 20 }}
