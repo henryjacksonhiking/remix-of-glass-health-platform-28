@@ -17,7 +17,8 @@ export const blogPosts: BlogPost[] = [
     date: "March 2026",
     readTime: "5 min read",
     image: "/images/blog/patient-reminders.jpg",
-    excerpt: "No-shows cost clinics thousands every month. Learn how automated SMS and email reminders can cut missed appointments by up to 40%.",
+    excerpt:
+      "No-shows cost clinics thousands every month. Learn how automated SMS and email reminders can cut missed appointments by up to 40%.",
     content: `
 ## The true cost of no-shows
 
@@ -76,7 +77,8 @@ Ready to cut your no-show rate? [Book a demo](/demo) to see it in action.
     date: "March 2026",
     readTime: "4 min read",
     image: "/images/blog/ehr-integration.jpg",
-    excerpt: "Phone tag, double bookings, and endless spreadsheets — manual scheduling drains your clinic more than you think.",
+    excerpt:
+      "Phone tag, double bookings, and endless spreadsheets — manual scheduling drains your clinic more than you think.",
     content: `
 ## Beyond the obvious inefficiencies
 
@@ -138,13 +140,94 @@ The ROI typically becomes clear within the first month: fewer phone calls, fewer
     `,
   },
   {
+    slug: "building-patient-first-digital-experience",
+    title: "Building a patient-first digital experience",
+    category: "Patient engagement",
+    date: "January 2026",
+    readTime: "5 min read",
+    image: "/images/blog/digital-intake.jpg",
+    excerpt:
+      "Patients expect the same digital convenience from their clinic that they get from every other service. Here's how to deliver it.",
+    content: `
+## The expectation gap
+
+Today's patients book restaurants, flights, and haircuts from their phones in seconds. Yet when it comes to healthcare — arguably the most important service in their lives — they're often stuck calling during business hours, waiting on hold, and filling out paper forms with a clipboard.
+
+This gap between expectation and reality is driving patient dissatisfaction and, increasingly, patient churn. A 2024 survey by NRC Health found that 80% of patients would switch providers for a better digital experience.
+
+## What "patient-first digital" actually means
+
+A patient-first digital experience isn't just about having a website. It's about designing every touchpoint — from discovery to follow-up — around the patient's needs and preferences.
+
+### Discovery and access
+
+- Modern, mobile-responsive website with clear service information
+- Online booking available 24/7
+- Transparent pricing where possible
+- Easy-to-find contact information and directions
+
+### Pre-visit
+
+- Digital intake forms sent automatically after booking
+- Appointment reminders via preferred channel (SMS, email)
+- Clear instructions for what to bring or prepare
+- Virtual check-in options
+
+### During the visit
+
+- Minimal wait times (enabled by better scheduling)
+- Digital consent and documentation
+- Clear communication about treatment plans and costs
+
+### Post-visit
+
+- Digital payment options
+- Automated follow-up messages
+- Easy prescription refill requests
+- Access to visit summaries and records
+
+## Principles for designing patient-first experiences
+
+### 1. Remove friction at every step
+
+Map your patient journey end-to-end and identify every point of friction. Each phone call required, each form duplicated, each unnecessary wait is an opportunity to improve.
+
+### 2. Meet patients where they are
+
+Not every patient wants the same thing. Younger patients may prefer text-based communication and self-service tools. Older patients may want phone support with the option of digital. Offer multiple channels and let patients choose.
+
+### 3. Be proactive, not reactive
+
+Don't wait for patients to call for appointment reminders, test results, or billing questions. Automated, proactive communication builds trust and reduces inbound call volume.
+
+### 4. Respect their time
+
+The most valuable thing you can offer patients — besides quality care — is their time back. Every digital tool should measurably reduce the time patients spend on administrative tasks.
+
+## Measuring patient experience
+
+- **Net Promoter Score (NPS)** — would patients recommend your practice?
+- **Online reviews** — monitor Google, Healthgrades, and Yelp
+- **Patient retention rate** — are patients coming back?
+- **Digital adoption** — what % of patients use your online tools?
+- **Wait times** — are they improving?
+
+## Building with Borna
+
+Borna provides the complete digital toolkit for patient-first practices: online booking, automated reminders, digital intake, secure messaging, and online payments — all connected in a single platform designed for healthcare.
+
+[Explore the platform →](/platform)
+    `,
+  },
+  {
     slug: "digital-intake-forms-implementation-guide",
     title: "Digital intake forms: a step-by-step implementation guide",
     category: "Automation",
     date: "February 2026",
     readTime: "6 min read",
     image: "/images/blog/digital-intake.webp",
-    excerpt: "Replace clipboards with smart digital forms that save time, reduce errors, and improve patient satisfaction from day one.",
+    excerpt:
+      "Replace clipboards with smart digital forms that save time, reduce errors, and improve patient satisfaction from day one.",
     content: `
 ## Why go digital with intake forms?
 
@@ -240,7 +323,8 @@ Borna's digital intake forms are designed specifically for healthcare practices.
     date: "February 2026",
     readTime: "4 min read",
     image: "/images/blog/online-payments.jpg",
-    excerpt: "Collecting payments shouldn't be the hardest part of running a clinic. Online payment tools accelerate cash flow and reduce outstanding balances.",
+    excerpt:
+      "Collecting payments shouldn't be the hardest part of running a clinic. Online payment tools accelerate cash flow and reduce outstanding balances.",
     content: `
 ## The payment problem in healthcare
 
@@ -299,92 +383,14 @@ The transition to online payments is one of the quickest wins in practice modern
     `,
   },
   {
-    slug: "building-patient-first-digital-experience",
-    title: "Building a patient-first digital experience",
-    category: "Patient engagement",
-    date: "January 2026",
-    readTime: "5 min read",
-    image: "/images/blog/digital-intake.jpg",
-    excerpt: "Patients expect the same digital convenience from their clinic that they get from every other service. Here's how to deliver it.",
-    content: `
-## The expectation gap
-
-Today's patients book restaurants, flights, and haircuts from their phones in seconds. Yet when it comes to healthcare — arguably the most important service in their lives — they're often stuck calling during business hours, waiting on hold, and filling out paper forms with a clipboard.
-
-This gap between expectation and reality is driving patient dissatisfaction and, increasingly, patient churn. A 2024 survey by NRC Health found that 80% of patients would switch providers for a better digital experience.
-
-## What "patient-first digital" actually means
-
-A patient-first digital experience isn't just about having a website. It's about designing every touchpoint — from discovery to follow-up — around the patient's needs and preferences.
-
-### Discovery and access
-
-- Modern, mobile-responsive website with clear service information
-- Online booking available 24/7
-- Transparent pricing where possible
-- Easy-to-find contact information and directions
-
-### Pre-visit
-
-- Digital intake forms sent automatically after booking
-- Appointment reminders via preferred channel (SMS, email)
-- Clear instructions for what to bring or prepare
-- Virtual check-in options
-
-### During the visit
-
-- Minimal wait times (enabled by better scheduling)
-- Digital consent and documentation
-- Clear communication about treatment plans and costs
-
-### Post-visit
-
-- Digital payment options
-- Automated follow-up messages
-- Easy prescription refill requests
-- Access to visit summaries and records
-
-## Principles for designing patient-first experiences
-
-### 1. Remove friction at every step
-
-Map your patient journey end-to-end and identify every point of friction. Each phone call required, each form duplicated, each unnecessary wait is an opportunity to improve.
-
-### 2. Meet patients where they are
-
-Not every patient wants the same thing. Younger patients may prefer text-based communication and self-service tools. Older patients may want phone support with the option of digital. Offer multiple channels and let patients choose.
-
-### 3. Be proactive, not reactive
-
-Don't wait for patients to call for appointment reminders, test results, or billing questions. Automated, proactive communication builds trust and reduces inbound call volume.
-
-### 4. Respect their time
-
-The most valuable thing you can offer patients — besides quality care — is their time back. Every digital tool should measurably reduce the time patients spend on administrative tasks.
-
-## Measuring patient experience
-
-- **Net Promoter Score (NPS)** — would patients recommend your practice?
-- **Online reviews** — monitor Google, Healthgrades, and Yelp
-- **Patient retention rate** — are patients coming back?
-- **Digital adoption** — what % of patients use your online tools?
-- **Wait times** — are they improving?
-
-## Building with Borna
-
-Borna provides the complete digital toolkit for patient-first practices: online booking, automated reminders, digital intake, secure messaging, and online payments — all connected in a single platform designed for healthcare.
-
-[Explore the platform →](/platform)
-    `,
-  },
-  {
     slug: "ehr-integration-what-clinics-need-to-know",
     title: "EHR integration: what clinics need to know",
     category: "Clinic operations",
     date: "January 2026",
     readTime: "7 min read",
     image: "/images/blog/patient-experience.jpg",
-    excerpt: "Integrating your tools with your EHR doesn't have to be painful. Here's a practical guide to what matters and what to watch out for.",
+    excerpt:
+      "Integrating your tools with your EHR doesn't have to be painful. Here's a practical guide to what matters and what to watch out for.",
     content: `
 ## Why EHR integration matters
 
