@@ -21,7 +21,7 @@ const scenes = [
     adminImg: "/images/Notifications_Admin_Side_-_View_All.png",
     patientTag: "Patient — confirmation received",
     adminTag: "Admin — new booking notification",
-    duration: 5500,
+    duration: 9000,
   },
   {
     badge: "Scene 3 of 4",
