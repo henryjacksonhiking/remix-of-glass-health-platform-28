@@ -81,7 +81,7 @@ const BlogPostPage = () => {
                     loading="lazy"
                     width={800}
                     height={420}
-                    className="w-full h-40 object-cover"
+                    className="w-full h-40 object-cover object-top"
                   />
                   <div className="p-5">
                     <span className="text-xs text-primary font-medium">{r.category}</span>
