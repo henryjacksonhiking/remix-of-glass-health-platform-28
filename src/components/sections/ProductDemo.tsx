@@ -190,7 +190,7 @@ const ProductDemo = () => {
       if (loaded >= 2 && !cancelled) {
         delayTimer = setTimeout(() => {
           if (!cancelled) startScrolling();
-        }, 1500);
+        }, 500);
       }
     };
 
