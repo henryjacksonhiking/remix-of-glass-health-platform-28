@@ -96,6 +96,9 @@ const HeroSection = () => {
                   src={mockupPayments}
                   alt="Borna Care payments dashboard"
                   className="w-full h-auto"
+                  loading="eager"
+                  width={1440}
+                  height={900}
                 />
               </motion.div>
 
