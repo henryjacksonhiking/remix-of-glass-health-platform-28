@@ -147,7 +147,7 @@ const ProductDemo = () => {
     };
   }, [safeDisplayedScene]);
 
-  // Auto-scroll screens — wait for images to actually load before measuring
+  // Auto-scroll screens smoothly to bottom within 0.5s
   useEffect(() => {
     const patientEl = patientScreenRef.current;
     const adminEl = adminScreenRef.current;
@@ -157,29 +157,30 @@ const ProductDemo = () => {
     let cancelled = false;
     let delayTimer: ReturnType<typeof setTimeout> | null = null;
 
-    const startScrolling = () => {
-      const speed = 0.4;
-      let lastTime = 0;
-      const tick = (time: number) => {
+    const smoothScrollTo = (el: HTMLDivElement, duration: number) => {
+      const maxScroll = el.scrollHeight - el.clientHeight;
+      if (maxScroll <= 0) return;
+      const start = performance.now();
+      const tick = (now: number) => {
         if (cancelled) return;
-        if (!lastTime) lastTime = time;
-        const delta = time - lastTime;
-        lastTime = time;
-        const px = speed * (delta / 16);
-        if (patientEl) {
-          const max = patientEl.scrollHeight - patientEl.clientHeight;
-          if (max > 0 && patientEl.scrollTop < max) patientEl.scrollTop = Math.min(patientEl.scrollTop + px, max);
-        }
-        if (adminEl) {
-          const max = adminEl.scrollHeight - adminEl.clientHeight;
-          if (max > 0 && adminEl.scrollTop < max) adminEl.scrollTop = Math.min(adminEl.scrollTop + px, max);
-        }
-        scrollAnimRef.current = requestAnimationFrame(tick);
+        const elapsed = now - start;
+        const progress = Math.min(elapsed / duration, 1);
+        // ease-in-out
+        const ease = progress < 0.5
+          ? 2 * progress * progress
+          : 1 - Math.pow(-2 * progress + 2, 2) / 2;
+        el.scrollTop = ease * maxScroll;
+        if (progress < 1) requestAnimationFrame(tick);
       };
-      scrollAnimRef.current = requestAnimationFrame(tick);
+      requestAnimationFrame(tick);
     };
 
-    // Wait for both images in the current scene to load before starting scroll
+    const startScrolling = () => {
+      if (patientEl) smoothScrollTo(patientEl, 500);
+      if (adminEl) smoothScrollTo(adminEl, 500);
+    };
+
+    // Wait for both images to load
     const s = scenes[safeDisplayedScene];
     const patientSrc = buildImageSrc(s.patientImg);
     const adminSrc = buildImageSrc(s.adminImg);
@@ -187,10 +188,9 @@ const ProductDemo = () => {
     const onLoad = () => {
       loaded++;
       if (loaded >= 2 && !cancelled) {
-        // Small extra delay so the browser has painted
         delayTimer = setTimeout(() => {
           if (!cancelled) startScrolling();
-        }, 800);
+        }, 1500);
       }
     };
 
@@ -198,17 +198,14 @@ const ProductDemo = () => {
     const img2 = new Image();
     img1.onload = onLoad;
     img2.onload = onLoad;
-    // If already cached, onload fires synchronously in some browsers
     img1.src = patientSrc;
     img2.src = adminSrc;
-    // Handle already-complete (cached) images
     if (img1.complete) onLoad();
     if (img2.complete) onLoad();
 
     return () => {
       cancelled = true;
       if (delayTimer) clearTimeout(delayTimer);
-      if (scrollAnimRef.current) cancelAnimationFrame(scrollAnimRef.current);
     };
   }, [safeDisplayedScene, buildImageSrc]);
 
@@ -409,7 +406,10 @@ const ProductDemo = () => {
                     borderRadius: 18,
                     overflow: "hidden",
                     background: "#f5f6f8",
+                    maxHeight: 380,
+                    overflowY: "auto",
                   }}
+                  className="scrollbar-hide"
                 >
                   <img
                     src={buildImageSrc(scene.patientImg)}
@@ -418,9 +418,6 @@ const ProductDemo = () => {
                     decoding="async"
                     style={{
                       width: "100%",
-                      height: 320,
-                      objectFit: "cover",
-                      objectPosition: "top center",
                       display: "block",
                       opacity: imgOpacity,
                       transition: "opacity 0.4s ease",
@@ -469,7 +466,8 @@ const ProductDemo = () => {
                 {/* Screen */}
                 <div
                   ref={adminScreenRef}
-                  style={{ overflow: "hidden", maxHeight: 340 }}
+                  style={{ overflow: "hidden", maxHeight: 380, overflowY: "auto" }}
+                  className="scrollbar-hide"
                 >
                   <img
                     src={buildImageSrc(scene.adminImg)}
@@ -478,8 +476,6 @@ const ProductDemo = () => {
                     decoding="async"
                     style={{
                       width: "100%",
-                      objectFit: "cover",
-                      objectPosition: "top center",
                       display: "block",
                       opacity: imgOpacity,
                       transition: "opacity 0.4s ease",
