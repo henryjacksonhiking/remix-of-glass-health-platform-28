@@ -196,3 +196,133 @@
 .scrollbar-hide::-webkit-scrollbar {
   display: none;
 }
+
+/* ── Blog prose ── */
+.blog-prose {
+  max-width: 680px;
+  margin: 0 auto;
+}
+
+.blog-prose h2 {
+  font-size: 20px;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.95);
+  margin-top: 40px;
+  margin-bottom: 12px;
+  line-height: 1.3;
+}
+
+.blog-prose h3 {
+  font-size: 17px;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.9);
+  margin-top: 32px;
+  margin-bottom: 10px;
+  line-height: 1.3;
+}
+
+.blog-prose p {
+  font-size: 16px;
+  line-height: 1.8;
+  color: rgba(255, 255, 255, 0.65);
+  margin-bottom: 20px;
+}
+
+.blog-prose strong {
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.blog-prose a {
+  color: hsl(var(--primary));
+  text-decoration: none;
+  transition: opacity 0.2s;
+}
+.blog-prose a:hover {
+  opacity: 0.8;
+}
+
+.blog-prose em {
+  font-style: italic;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+/* Unordered lists — teal left-border style */
+.blog-prose ul {
+  list-style: none;
+  padding-left: 0;
+  margin-bottom: 20px;
+}
+
+.blog-prose ul li {
+  border-left: 2px solid rgba(0, 222, 196, 0.4);
+  padding-left: 14px;
+  margin-bottom: 10px;
+  font-size: 15px;
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.blog-prose ul li strong {
+  font-size: 15px;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+/* Ordered lists — custom numbered circles */
+.blog-prose ol {
+  list-style: none;
+  padding-left: 0;
+  margin-bottom: 20px;
+  counter-reset: blog-ol;
+}
+
+.blog-prose ol li {
+  counter-increment: blog-ol;
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  margin-bottom: 12px;
+  font-size: 15px;
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.55);
+}
+
+.blog-prose ol li::before {
+  content: counter(blog-ol);
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: rgba(0, 222, 196, 0.1);
+  border: 0.5px solid rgba(0, 222, 196, 0.3);
+  font-size: 11px;
+  font-weight: 700;
+  color: #00DEC4;
+  margin-top: 2px;
+}
+
+.blog-prose ol li strong {
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 15px;
+}
+
+/* Blockquotes — citation / pull-quote style */
+.blog-prose blockquote {
+  background: rgba(0, 222, 196, 0.06);
+  border-left: 3px solid #00DEC4;
+  border-radius: 0 8px 8px 0;
+  padding: 14px 18px;
+  margin: 24px 0;
+}
+
+.blog-prose blockquote p {
+  font-size: 15px;
+  font-style: italic;
+  color: rgba(255, 255, 255, 0.7);
+  margin-bottom: 0;
+}

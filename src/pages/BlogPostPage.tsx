@@ -2,6 +2,7 @@ import { useParams, Link, Navigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import { ArrowLeft } from "lucide-react";
 import PageWrapper from "@/components/layout/PageWrapper";
+import BlogContent from "@/components/BlogContent";
 import { getBlogPost, blogPosts } from "@/lib/blog-posts";
 
 const BlogPostPage = () => {
@@ -26,7 +27,7 @@ const BlogPostPage = () => {
         />
       </div>
 
-      <article className="container mx-auto px-4 md:px-6 max-w-3xl py-12 md:py-16">
+      <article className="mx-auto px-6 py-12" style={{ maxWidth: 680 }}>
         {/* Back link */}
         <Link
           to="/blog"
@@ -42,11 +43,34 @@ const BlogPostPage = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
         >
-          <span className="text-xs font-medium text-primary">{post.category}</span>
-          <h1 className="text-3xl md:text-4xl font-bold text-foreground mt-2 mb-4 leading-tight">
+          <span
+            className="block mb-3"
+            style={{
+              fontSize: 11,
+              textTransform: "uppercase",
+              letterSpacing: "1.5px",
+              color: "#00DEC4",
+              fontWeight: 500,
+            }}
+          >
+            {post.category}
+          </span>
+          <h1
+            className="text-foreground"
+            style={{
+              fontSize: "clamp(26px, 4vw, 36px)",
+              fontWeight: 500,
+              lineHeight: 1.2,
+              letterSpacing: "-0.5px",
+              marginBottom: 16,
+            }}
+          >
             {post.title}
           </h1>
-          <div className="flex items-center gap-3 text-sm text-muted-foreground mb-10">
+          <div
+            className="flex items-center gap-2"
+            style={{ fontSize: 13, color: "rgba(255,255,255,0.4)", marginBottom: 40 }}
+          >
             <span>{post.date}</span>
             <span>·</span>
             <span>{post.readTime}</span>
@@ -58,15 +82,15 @@ const BlogPostPage = () => {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.5, delay: 0.15 }}
-          className="prose prose-lg prose-headings:text-foreground prose-p:text-muted-foreground prose-strong:text-foreground prose-li:text-muted-foreground prose-a:text-primary hover:prose-a:text-primary/80 max-w-none"
-          dangerouslySetInnerHTML={{ __html: markdownToHtml(post.content) }}
-        />
+        >
+          <BlogContent html={markdownToHtml(post.content)} />
+        </motion.div>
       </article>
 
       {/* Related articles */}
       {related.length > 0 && (
         <section className="border-t border-glass-border py-16">
-          <div className="container mx-auto px-4 md:px-6 max-w-3xl">
+          <div className="mx-auto px-6" style={{ maxWidth: 680 }}>
             <h2 className="text-xl font-semibold text-foreground mb-8">Related articles</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {related.map((r) => (
@@ -99,7 +123,7 @@ const BlogPostPage = () => {
   );
 };
 
-/** Minimal markdown→HTML (headings, bold, lists, links, paragraphs) */
+/** Enhanced markdown→HTML with blockquote support */
 function markdownToHtml(md: string): string {
   return md
     .trim()
@@ -111,6 +135,11 @@ function markdownToHtml(md: string): string {
       if (block.startsWith("### ")) return `<h3>${inline(block.slice(4))}</h3>`;
       if (block.startsWith("## ")) return `<h2>${inline(block.slice(3))}</h2>`;
       if (block.startsWith("# ")) return `<h1>${inline(block.slice(2))}</h1>`;
+      // blockquote
+      if (block.startsWith("> ")) {
+        const text = block.replace(/^> ?/gm, "");
+        return `<blockquote><p>${inline(text.replace(/\n/g, " "))}</p></blockquote>`;
+      }
       // unordered list
       if (/^- /.test(block)) {
         const items = block.split("\n").map((l) => `<li>${inline(l.replace(/^- /, ""))}</li>`).join("");
