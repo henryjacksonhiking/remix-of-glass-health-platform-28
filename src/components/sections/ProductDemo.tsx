@@ -188,9 +188,7 @@ const ProductDemo = () => {
     const onLoad = () => {
       loaded++;
       if (loaded >= 2 && !cancelled) {
-        delayTimer = setTimeout(() => {
-          if (!cancelled) startScrolling();
-        }, 500);
+        startScrolling();
       }
     };
 
