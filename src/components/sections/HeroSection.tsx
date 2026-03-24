@@ -113,6 +113,9 @@ const HeroSection = () => {
                   src={mockupAppointment}
                   alt="Borna Care appointment details"
                   className="w-full h-auto"
+                  loading="eager"
+                  width={1440}
+                  height={900}
                 />
               </motion.div>
             </div>
