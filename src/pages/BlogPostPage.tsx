@@ -19,7 +19,7 @@ const BlogPostPage = () => {
         <img
           src={post.image}
           alt={post.title}
-          className="w-full h-full object-cover"
+          className="w-full h-full object-cover object-top"
           loading="eager"
           width={1200}
           height={630}
