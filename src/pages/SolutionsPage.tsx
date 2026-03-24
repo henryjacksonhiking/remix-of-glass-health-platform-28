@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { UserPlus, Heart, Zap, DollarSign, Stethoscope, Building2, Activity, TrendingUp, TrendingDown } from "lucide-react";
+import { BeamsBackground } from "@/components/ui/beams-background";
 import PageWrapper from "@/components/layout/PageWrapper";
 import CTASection from "@/components/sections/CTASection";
 
