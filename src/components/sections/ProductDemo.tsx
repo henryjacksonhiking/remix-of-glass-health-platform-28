@@ -43,7 +43,7 @@ const scenes = [
     adminImg: "/images/New_Payment_Request__-_OWNER_and_ADMIN_ONLY.png",
     patientTag: "Patient — payment request received",
     adminTag: "Admin — creating payment request",
-    duration: 5500,
+    duration: 9000,
   },
 ];
 
