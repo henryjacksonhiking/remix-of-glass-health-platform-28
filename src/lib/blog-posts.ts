@@ -143,7 +143,7 @@ The ROI typically becomes clear within the first month: fewer phone calls, fewer
     category: "Automation",
     date: "February 2026",
     readTime: "6 min read",
-    image: "/images/blog/digital-intake.jpg",
+    image: "/images/blog/ehr-integration.jpg",
     excerpt: "Replace clipboards with smart digital forms that save time, reduce errors, and improve patient satisfaction from day one.",
     content: `
 ## Why go digital with intake forms?
