@@ -15,7 +15,7 @@ const HeroSection = () => {
     <section className="relative overflow-hidden h-[calc(100vh-4rem)] max-h-[calc(100vh-4rem)] flex flex-col">
       {/* Background image + beams */}
       <div className="absolute inset-0 z-0">
-        <img src={heroBg} alt="" className="w-full h-full object-cover opacity-60" />
+        <img src={heroBg} alt="" className="w-full h-full object-cover opacity-60" loading="eager" width={1920} height={1080} />
         <div className="absolute inset-0 bg-background/40" />
         <div className="absolute inset-0 opacity-60">
           <BeamsBackground intensity="medium" />
