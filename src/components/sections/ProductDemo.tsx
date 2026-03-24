@@ -32,7 +32,7 @@ const scenes = [
     adminImg: "/images/Patient_s_Forms.png",
     patientTag: "Patient — completing intake form",
     adminTag: "Admin — forms overview",
-    duration: 5500,
+    duration: 9000,
   },
   {
     badge: "Scene 4 of 4",
