@@ -16,11 +16,12 @@ const BlogPostPage = () => {
   return (
     <PageWrapper>
       {/* Hero image */}
-      <div className="w-full h-64 md:h-80 lg:h-96 overflow-hidden">
+      <div className="w-full" style={{ background: "#0B1130" }}>
         <img
           src={post.image}
           alt={post.title}
-          className="w-full h-full object-cover object-top"
+          className="w-full h-auto block"
+          style={{ maxHeight: 560, objectFit: "contain" }}
           loading="eager"
           width={1200}
           height={630}
