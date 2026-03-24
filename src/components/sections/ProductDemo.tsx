@@ -466,7 +466,8 @@ const ProductDemo = () => {
                 {/* Screen */}
                 <div
                   ref={adminScreenRef}
-                  style={{ overflow: "hidden", maxHeight: 340 }}
+                  style={{ overflow: "hidden", maxHeight: 380, overflowY: "auto" }}
+                  className="scrollbar-hide"
                 >
                   <img
                     src={buildImageSrc(scene.adminImg)}
@@ -475,8 +476,6 @@ const ProductDemo = () => {
                     decoding="async"
                     style={{
                       width: "100%",
-                      objectFit: "cover",
-                      objectPosition: "top center",
                       display: "block",
                       opacity: imgOpacity,
                       transition: "opacity 0.4s ease",
