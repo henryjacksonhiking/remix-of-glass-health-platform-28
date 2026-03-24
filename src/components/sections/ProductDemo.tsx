@@ -10,7 +10,7 @@ const scenes = [
     adminImg: "/images/Admin_Dashboard.png",
     patientTag: "Patient — Sarah Collins",
     adminTag: "Admin — Yalan Corp Dental",
-    duration: 5500,
+    duration: 9000,
   },
   {
     badge: "Scene 2 of 4",
