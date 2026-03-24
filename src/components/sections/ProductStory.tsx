@@ -200,6 +200,8 @@ const ProductStory = () => {
                     src={row.image}
                     alt={row.headline}
                     loading="lazy"
+                    width={1440}
+                    height={900}
                     className={row.mobileImage ? "max-h-[280px] md:max-h-[320px] object-cover object-top" : "max-h-[280px] md:max-h-none object-cover md:object-contain object-top md:object-center"}
                     style={{
                       width: "100%",
@@ -274,6 +276,8 @@ const ProductStory = () => {
               src="/images/Admin_vs_patient_-_patient_Email_notification.png"
               alt="Patient email notification"
               loading="lazy"
+              width={540}
+              height={720}
               style={{ width: "100%", height: "auto", borderRadius: 10, display: "block" }}
             />
           </div>
@@ -292,6 +296,8 @@ const ProductStory = () => {
               src="/images/Admin_vs_patient_-_patient_SMS_notification.png"
               alt="Patient SMS notification"
               loading="lazy"
+              width={400}
+              height={540}
               style={{ width: "100%", height: "auto", borderRadius: 10, display: "block" }}
             />
           </div>

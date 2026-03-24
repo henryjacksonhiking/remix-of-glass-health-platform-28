@@ -20,6 +20,9 @@ const BlogPostPage = () => {
           src={post.image}
           alt={post.title}
           className="w-full h-full object-cover"
+          loading="eager"
+          width={1200}
+          height={630}
         />
       </div>
 
@@ -76,6 +79,8 @@ const BlogPostPage = () => {
                     src={r.image}
                     alt={r.title}
                     loading="lazy"
+                    width={800}
+                    height={420}
                     className="w-full h-40 object-cover"
                   />
                   <div className="p-5">

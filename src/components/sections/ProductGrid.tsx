@@ -116,7 +116,7 @@ const ProductGrid = () => {
                 boxShadow: '0 0 80px 20px hsla(170, 100%, 43%, 0.12)',
               }}
             >
-              <img src={bornaIcon} alt="Borna AI" className="w-12 h-12 mb-1" />
+              <img src={bornaIcon} alt="Borna AI" className="w-12 h-12 mb-1" loading="lazy" width={48} height={48} />
               <span className="text-[10px] font-medium text-muted-foreground">Core Engine</span>
             </div>
 
