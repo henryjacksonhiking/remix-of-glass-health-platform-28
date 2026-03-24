@@ -13,6 +13,7 @@ import ResourcesPage from "./pages/ResourcesPage.tsx";
 import AboutPage from "./pages/AboutPage.tsx";
 import DemoPage from "./pages/DemoPage.tsx";
 import BlogPage from "./pages/BlogPage.tsx";
+import BlogPostPage from "./pages/BlogPostPage.tsx";
 import ContactPage from "./pages/ContactPage.tsx";
 import PrivacyPage from "./pages/PrivacyPage.tsx";
 import TermsPage from "./pages/TermsPage.tsx";
