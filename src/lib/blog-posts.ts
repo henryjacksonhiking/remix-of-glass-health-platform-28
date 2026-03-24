@@ -304,7 +304,7 @@ The transition to online payments is one of the quickest wins in practice modern
     category: "Patient engagement",
     date: "January 2026",
     readTime: "5 min read",
-    image: "/images/blog/patient-experience.jpg",
+    image: "/images/blog/digital-intake.jpg",
     excerpt: "Patients expect the same digital convenience from their clinic that they get from every other service. Here's how to deliver it.",
     content: `
 ## The expectation gap
