@@ -79,6 +79,9 @@ const HeroSection = () => {
                   src={mockupCalendar}
                   alt="Borna Care calendar view"
                   className="w-full h-auto rounded-xl"
+                  loading="eager"
+                  width={1440}
+                  height={900}
                 />
               </div>
 
