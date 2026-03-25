@@ -88,8 +88,8 @@ export const products: Product[] = [
     id: 'engage',
     name: 'Borna Engage',
     slug: 'engage',
-    tagline: 'Turn every patient into a loyal long-term patient',
-    description: 'Borna Engage manages the full patient relationship — from first enquiry to repeat visits — with automated follow-ups, campaigns, and lifecycle tracking.',
+    tagline: 'Healthcare CRM software that turns every patient into a loyal long-term patient',
+    description: 'Borna Engage is healthcare CRM software and a patient retention platform that manages the full patient relationship — from first enquiry to repeat visits — with automated follow-ups, campaigns, and lifecycle tracking.',
     accentColor: '#D6007F',
     href: '/products/engage',
     features: [
