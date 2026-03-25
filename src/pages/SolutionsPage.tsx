@@ -169,7 +169,7 @@ const useCases = [
 ];
 
 const clinicTypes = [
-  { icon: Stethoscope, name: "Dental clinics", description: "Streamline patient flow from first call to follow-up across operatories and hygienists." },
+  { icon: Stethoscope, name: "Dental clinics", description: "Dental clinic management software that streamlines patient flow from first call to follow-up across operatories and hygienists." },
   { icon: Building2, name: "Multi-location practices", description: "Unified operations, consistent patient experience, and centralized data across all your sites." },
   { icon: Activity, name: "Medical clinics", description: "Reduce admin burden for GP practices, specialist clinics, and allied health providers." },
 ];
