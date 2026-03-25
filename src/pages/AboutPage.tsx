@@ -14,6 +14,10 @@ const whyBorna = [
 
 const AboutPage = () => (
   <PageWrapper>
+    <Helmet>
+      <title>About Borna.ai — Healthcare Technology Company</title>
+      <meta name="description" content="Borna.ai is a HealthTech SaaS company building intelligent, modular digital infrastructure for modern clinics and healthcare providers." />
+    </Helmet>
     {/* Hero */}
     <section className="relative overflow-hidden py-24 md:py-32">
       <div className="absolute inset-0 opacity-50">
