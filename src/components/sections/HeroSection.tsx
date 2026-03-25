@@ -34,16 +34,16 @@ const HeroSection = () => {
             className="flex flex-col justify-center"
           >
             <span className="inline-block glass-panel px-3 py-1 text-[10px] md:text-[11px] lg:text-xs font-medium text-primary mb-2 md:mb-3 lg:mb-4 xl:mb-5 self-start">
-              AI-powered healthcare platform
+              AI healthcare platform
             </span>
 
             <h1 className="text-[24px] leading-[1.15] sm:text-[28px] md:text-[32px] lg:text-[28px] xl:text-[38px] 2xl:text-[44px] font-medium tracking-tight md:leading-tight text-foreground mb-2 md:mb-3 lg:mb-3 xl:mb-5" style={{ letterSpacing: '-1.5px' }}>
-              The operating system for{" "}
+              The healthcare operations platform for{" "}
               <span className="gradient-text">modern clinics</span>
             </h1>
 
             <p className="text-[12px] sm:text-[13px] md:text-[15px] lg:text-[12px] xl:text-base 2xl:text-[17px] text-muted-foreground leading-relaxed mb-3 md:mb-4 lg:mb-3 xl:mb-6 max-w-lg line-clamp-2 md:line-clamp-3 lg:line-clamp-2 xl:line-clamp-none">
-              Borna.ai unifies patient management, communications, and analytics in one modular ecosystem — built for how clinics actually work.
+              Borna.ai is a HealthTech SaaS for clinics — unifying patient management, communications, and analytics in one modular ecosystem built for how clinics actually work.
             </p>
 
             <div className="flex flex-col sm:flex-row items-stretch sm:items-start gap-2 sm:gap-3">

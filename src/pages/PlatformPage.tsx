@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
 import { motion } from "framer-motion";
 import { ArrowRight, Layers, MessageSquare, BarChart2, Users, Cpu, Clock } from "lucide-react";
 import { BeamsBackground } from "@/components/ui/beams-background";
@@ -64,6 +65,10 @@ const howItWorks = [
 
 const PlatformPage = () => (
   <PageWrapper>
+    <Helmet>
+      <title>Platform — Healthcare Operations Platform | Borna.ai</title>
+      <meta name="description" content="Borna.ai is building a modular healthcare operations platform designed to unify communication, patient management, analytics, and automation for modern clinics." />
+    </Helmet>
     {/* Hero */}
     <section className="relative overflow-hidden py-24 md:py-32">
       <div className="absolute inset-0 opacity-50">

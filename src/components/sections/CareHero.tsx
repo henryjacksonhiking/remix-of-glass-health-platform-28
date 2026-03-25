@@ -28,9 +28,10 @@ const CareHero = () => {
 
         {/* Description */}
         <p className="body-text max-w-xl mx-auto mb-10">
-          Borna Care gives patients a seamless digital experience — booking,
-          forms, payments, and communication — while giving clinic staff the
-          tools to manage everything from one place.
+          Borna Care is patient portal software that gives patients a seamless
+          digital experience — online appointment scheduling, intake forms,
+          payments, and communication — while giving clinic staff the tools to
+          manage everything from one place.
         </p>
 
         {/* Buttons */}

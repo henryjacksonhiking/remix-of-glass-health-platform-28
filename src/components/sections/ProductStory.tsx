@@ -105,7 +105,7 @@ const ProductStory = () => {
             maxWidth: 480,
           }}
         >
-          Not a feature list. A real day — from the first patient booking at 11pm to the family that manages everything from one account.
+          Not a feature list. A real day — from the first patient booking at 11pm to the family that manages everything from one account. See how our medical practice management system handles it all.
         </p>
       </div>
 

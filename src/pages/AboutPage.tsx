@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { Helmet } from "react-helmet-async";
 import { Link } from "react-router-dom";
 import { Layers, Cpu, Workflow } from "lucide-react";
 import { BeamsBackground } from "@/components/ui/beams-background";
@@ -13,6 +14,10 @@ const whyBorna = [
 
 const AboutPage = () => (
   <PageWrapper>
+    <Helmet>
+      <title>About Borna.ai — Healthcare Technology Company</title>
+      <meta name="description" content="Borna.ai is a HealthTech SaaS company building intelligent, modular digital infrastructure for modern clinics and healthcare providers." />
+    </Helmet>
     {/* Hero */}
     <section className="relative overflow-hidden py-24 md:py-32">
       <div className="absolute inset-0 opacity-50">
@@ -25,7 +30,7 @@ const AboutPage = () => (
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           className="hero-headline text-foreground mb-6"
-        >
+         >
           Healthcare technology company
         </motion.h1>
         <motion.p
@@ -34,7 +39,7 @@ const AboutPage = () => (
           transition={{ duration: 0.6, delay: 0.1 }}
           className="body-text mx-auto max-w-xl"
         >
-          Borna.ai is building a modular healthcare platform starting with Borna Care to simplify clinic operations and improve patient experience.
+          Borna.ai is a HealthTech SaaS company building a modular healthcare platform starting with Borna Care to simplify clinic operations and improve patient experience.
         </motion.p>
       </div>
     </section>

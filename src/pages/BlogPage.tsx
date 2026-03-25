@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Helmet } from "react-helmet-async";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import PageWrapper from "@/components/layout/PageWrapper";
@@ -12,6 +13,10 @@ const BlogPage = () => {
 
   return (
     <PageWrapper>
+      <Helmet>
+        <title>Resources — Healthcare Case Studies & Clinic Management Guides | Borna.ai</title>
+        <meta name="description" content="Explore Borna.ai resources — healthcare case studies, clinic management best practices, ebooks, and guides to help your practice grow." />
+      </Helmet>
       {/* Hero */}
       <section className="relative overflow-hidden py-24 md:py-32">
         <div className="container mx-auto px-4 md:px-6 relative z-10 max-w-3xl text-center">

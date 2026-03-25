@@ -8,21 +8,21 @@ const features = [
     step: "Step 1",
     title: "Unified communications",
     content:
-      "Calls, SMS, chat, and email in one place — every conversation linked to a patient profile.",
+      "Calls, SMS, chat, and email in one place — every conversation linked to a patient profile on your patient engagement platform.",
     image: doctorDesk,
   },
   {
     step: "Step 2",
-    title: "AI automation",
+    title: "Healthcare workflow automation",
     content:
-      "Smart routing, call summaries, and predictive scheduling that reduce manual work by hours.",
+      "Smart routing, call summaries, and predictive scheduling that reduce manual work by hours through intelligent healthcare workflow automation.",
     image: doctorTeleconsultation,
   },
   {
     step: "Step 3",
     title: "Patient-centric design",
     content:
-      "A single patient profile across multiple clinics, with full history and preferences.",
+      "A single patient profile across multiple clinics, with full history and preferences — powered by our clinic management software.",
     image: nursePortrait,
   },
 ];

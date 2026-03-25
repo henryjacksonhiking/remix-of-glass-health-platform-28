@@ -1,4 +1,5 @@
 import { useNavigate } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
 import { motion } from "framer-motion";
 import PageWrapper from "@/components/layout/PageWrapper";
 import { ModernPricingPage, PricingCardProps } from "@/components/ui/animated-glassy-pricing";
@@ -57,9 +58,13 @@ const PricingPage = () => {
 
   return (
     <PageWrapper>
+      <Helmet>
+        <title>Pricing — Healthcare Software for Clinics | Borna.ai</title>
+        <meta name="description" content="Simple and transparent healthcare software pricing. Explore Borna.ai clinic management software plans and find the right fit for your practice." />
+      </Helmet>
       <ModernPricingPage
-        title="Simple and transparent pricing"
-        subtitle="Start free, upgrade when you're ready. No hidden fees, no long-term contracts."
+        title="Simple and transparent healthcare software pricing"
+        subtitle="Explore our clinic management software cost — start free, upgrade when you're ready. No hidden fees, no long-term contracts."
         plans={plans}
         showAnimatedBackground={true}
       />
