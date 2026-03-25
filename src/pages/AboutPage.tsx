@@ -30,9 +30,17 @@ const AboutPage = () => (
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           className="hero-headline text-foreground mb-6"
-        >
+         >
           Healthcare technology company
         </motion.h1>
+        <motion.p
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.1 }}
+          className="body-text mx-auto max-w-xl"
+        >
+          Borna.ai is a HealthTech SaaS company building a modular healthcare platform starting with Borna Care to simplify clinic operations and improve patient experience.
+        </motion.p>
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
