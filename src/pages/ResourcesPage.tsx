@@ -20,6 +20,10 @@ const featured = [
 
 const ResourcesPage = () => (
   <PageWrapper>
+    <Helmet>
+      <title>Resources — Healthcare Case Studies & Clinic Management Guides | Borna.ai</title>
+      <meta name="description" content="Explore Borna.ai resources — healthcare case studies, clinic management best practices, ebooks, and guides to help your practice grow." />
+    </Helmet>
     {/* Hero */}
     <section className="relative overflow-hidden py-24 md:py-32">
       <div className="absolute inset-0 opacity-50">
