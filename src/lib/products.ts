@@ -20,8 +20,8 @@ export const products: Product[] = [
     id: 'care',
     name: 'Borna Care',
     slug: 'care',
-    tagline: 'The patient portal your clinic actually deserves',
-    description: 'Borna Care gives patients a seamless digital experience — booking, forms, payments, and communication — while giving clinic staff the tools to manage everything from one place.',
+    tagline: 'The patient portal software your clinic actually deserves',
+    description: 'Borna Care is patient portal software that gives patients a seamless digital experience — online appointment scheduling for clinics, digital intake forms, payments, and communication — while giving staff the tools to manage everything from one place.',
     accentColor: '#00479B',
     href: '/products/care',
     features: [
