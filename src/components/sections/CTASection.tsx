@@ -11,11 +11,14 @@ const CTASection = () => {
 
       <div className="container mx-auto px-4 md:px-6 relative z-10 text-center">
         <h2 className="section-headline text-foreground mb-4">See Borna.ai in action</h2>
-        <p className="body-text mx-auto mb-8">
+        <p className="body-text mx-auto mb-4">
           Book a 30-minute demo and discover our digital healthcare solutions for modern clinics.
         </p>
+        <p className="text-sm text-muted-foreground mx-auto mb-8 max-w-xl">
+          Book a healthcare software demo or request a clinic software consultation — our team will get back to you within one business day.
+        </p>
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-8">
-          <Link to="/contact" className="ghost-btn text-base px-8 py-3.5 w-full sm:w-[260px]">Request a clinic software consultation</Link>
+          <Link to="/contact" className="ghost-btn text-base px-8 py-3.5 w-full sm:w-[260px]">Talk to our team</Link>
           <Link to="/demo" className="gradient-btn text-base px-8 py-3.5 w-full sm:w-[260px]">Book a demo</Link>
         </div>
 
