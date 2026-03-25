@@ -76,7 +76,7 @@ export const products: Product[] = [
     accentColor: '#818CF8',
     href: '/products/insight',
     features: [
-      { title: 'Appointment analytics', description: 'No-shows, cancellations, and booking trends over time.', icon: 'BarChart2' },
+      { title: 'Appointment analytics', description: 'Track no-shows, cancellations, and booking trends with clinic performance analytics.', icon: 'BarChart2' },
       { title: 'Revenue insights', description: 'Billing performance, outstanding invoices, and payment tracking.', icon: 'TrendingUp' },
       { title: 'Communication metrics', description: 'Missed calls, response times, and channel performance.', icon: 'Activity' },
       { title: 'Staff performance', description: 'Per-provider and per-team metrics and KPIs.', icon: 'UserCheck' },
