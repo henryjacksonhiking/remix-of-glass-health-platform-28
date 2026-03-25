@@ -73,7 +73,7 @@ export const products: Product[] = [
     slug: 'insight',
     tagline: 'See exactly what is happening in your clinic',
     description: 'Borna Insight surfaces actionable data across appointments, revenue, communications, and patient engagement — so clinic leaders can make decisions with confidence.',
-    accentColor: '#6366F1',
+    accentColor: '#818CF8',
     href: '/products/insight',
     features: [
       { title: 'Appointment analytics', description: 'No-shows, cancellations, and booking trends over time.', icon: 'BarChart2' },
