@@ -105,6 +105,16 @@ const ProductStory = () => {
             maxWidth: 480,
           }}
         >
+          Not a feature list. A real day — from the first patient booking at 11pm to the family that manages everything from one account. See how our medical practice management system handles it all.
+        </p>
+        <p
+          className="mx-auto"
+          style={{
+            fontSize: 15,
+            color: "rgba(255,255,255,0.45)",
+            maxWidth: 480,
+          }}
+        >
           Not a feature list. A real day — from the first patient booking at 11pm to the family that manages everything from one account.
         </p>
       </div>
