@@ -56,7 +56,7 @@ export const products: Product[] = [
     slug: 'core',
     tagline: 'The intelligence engine behind every Borna module',
     description: 'Borna Core is the invisible backbone — powering AI automation, secure data sync, workflow orchestration, and system governance across the entire platform.',
-    accentColor: '#1435C1',
+    accentColor: '#4F6AFF',
     href: '/products/core',
     features: [
       { title: 'AI workflow automation', description: 'Smart routing, predictive analytics, and intelligent scheduling.', icon: 'Cpu' },
@@ -73,7 +73,7 @@ export const products: Product[] = [
     slug: 'insight',
     tagline: 'See exactly what is happening in your clinic',
     description: 'Borna Insight surfaces actionable data across appointments, revenue, communications, and patient engagement — so clinic leaders can make decisions with confidence.',
-    accentColor: '#6366F1',
+    accentColor: '#818CF8',
     href: '/products/insight',
     features: [
       { title: 'Appointment analytics', description: 'No-shows, cancellations, and booking trends over time.', icon: 'BarChart2' },

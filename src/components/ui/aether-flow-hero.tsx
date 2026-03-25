@@ -150,8 +150,16 @@ const AetherFlowBackground: React.FC<AetherFlowBackgroundProps> = ({
 
     const handleMouseMove = (event: MouseEvent) => {
       const rect = canvas!.getBoundingClientRect();
-      mouse.x = event.clientX - rect.left;
-      mouse.y = event.clientY - rect.top;
+      const x = event.clientX - rect.left;
+      const y = event.clientY - rect.top;
+      // Only track mouse when it's within or near the canvas bounds
+      if (x >= -mouse.radius && x <= rect.width + mouse.radius && y >= -mouse.radius && y <= rect.height + mouse.radius) {
+        mouse.x = x;
+        mouse.y = y;
+      } else {
+        mouse.x = null;
+        mouse.y = null;
+      }
     };
 
     const handleMouseOut = () => {
@@ -159,15 +167,16 @@ const AetherFlowBackground: React.FC<AetherFlowBackgroundProps> = ({
       mouse.y = null;
     };
 
-    canvas!.addEventListener("mousemove", handleMouseMove);
-    canvas!.addEventListener("mouseout", handleMouseOut);
+    // Listen on window so overlapping z-indexed content doesn't block events
+    window.addEventListener("mousemove", handleMouseMove);
+    window.addEventListener("mouseout", handleMouseOut);
 
     animate();
 
     return () => {
       resizeObserver.disconnect();
-      canvas!.removeEventListener("mousemove", handleMouseMove);
-      canvas!.removeEventListener("mouseout", handleMouseOut);
+      window.removeEventListener("mousemove", handleMouseMove);
+      window.removeEventListener("mouseout", handleMouseOut);
       cancelAnimationFrame(animationFrameId);
     };
   }, [accentColor]);
@@ -175,7 +184,7 @@ const AetherFlowBackground: React.FC<AetherFlowBackgroundProps> = ({
   return (
     <canvas
       ref={canvasRef}
-      className={`absolute inset-0 w-full h-full pointer-events-auto ${className}`}
+      className={`absolute inset-0 w-full h-full pointer-events-none ${className}`}
       style={{ zIndex: 0 }}
     />
   );
