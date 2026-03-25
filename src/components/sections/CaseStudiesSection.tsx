@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import { caseStudies } from "@/lib/case-studies";
 
 const CaseStudiesSection = () => (
-  <section className="pb-12 pt-0">
+  <section className="pb-12 pt-12">
     {/* Header */}
     <div className="text-center" style={{ paddingBottom: 48 }}>
       <span
