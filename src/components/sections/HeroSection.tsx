@@ -38,7 +38,7 @@ const HeroSection = () => {
             </span>
 
             <h1 className="text-[24px] leading-[1.15] sm:text-[28px] md:text-[32px] lg:text-[28px] xl:text-[38px] 2xl:text-[44px] font-medium tracking-tight md:leading-tight text-foreground mb-2 md:mb-3 lg:mb-3 xl:mb-5" style={{ letterSpacing: '-1.5px' }}>
-              The operating system for{" "}
+              The healthcare operations platform for{" "}
               <span className="gradient-text">modern clinics</span>
             </h1>
 
