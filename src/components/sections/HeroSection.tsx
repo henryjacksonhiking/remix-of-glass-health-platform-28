@@ -34,7 +34,7 @@ const HeroSection = () => {
             className="flex flex-col justify-center"
           >
             <span className="inline-block glass-panel px-3 py-1 text-[10px] md:text-[11px] lg:text-xs font-medium text-primary mb-2 md:mb-3 lg:mb-4 xl:mb-5 self-start">
-              AI-powered healthcare platform
+              AI healthcare platform
             </span>
 
             <h1 className="text-[24px] leading-[1.15] sm:text-[28px] md:text-[32px] lg:text-[28px] xl:text-[38px] 2xl:text-[44px] font-medium tracking-tight md:leading-tight text-foreground mb-2 md:mb-3 lg:mb-3 xl:mb-5" style={{ letterSpacing: '-1.5px' }}>
