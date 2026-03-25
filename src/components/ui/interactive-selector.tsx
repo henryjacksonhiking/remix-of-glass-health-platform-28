@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import { FaUserMd, FaCalendarCheck, FaLaptopMedical, FaFileAlt, FaCreditCard, FaNetworkWired } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
 
 interface SelectorOption {
   title: string;
   description: string;
   image: string;
   icon: React.ReactNode;
+  slug?: string;
 }
 
 const InteractiveSelector = ({ options }: { options: SelectorOption[] }) => {
