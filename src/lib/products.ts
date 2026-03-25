@@ -37,8 +37,8 @@ export const products: Product[] = [
     id: 'connect',
     name: 'Borna Connect',
     slug: 'connect',
-    tagline: 'Every patient conversation, in one place',
-    description: 'Borna Connect centralizes all clinic communications — calls, SMS, chat, email, and telehealth — and links every interaction to the patient record.',
+    tagline: 'The healthcare communication platform for every patient conversation',
+    description: 'Borna Connect is a unified communications platform for clinics — centralizing calls, SMS, chat, email, and telehealth and linking every interaction to the patient record.',
     accentColor: '#00DEC4',
     href: '/products/connect',
     features: [
