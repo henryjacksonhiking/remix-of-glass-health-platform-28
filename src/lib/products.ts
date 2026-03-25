@@ -54,8 +54,8 @@ export const products: Product[] = [
     id: 'core',
     name: 'Borna Core',
     slug: 'core',
-    tagline: 'The intelligence engine behind every Borna module',
-    description: 'Borna Core is the invisible backbone — powering AI automation, secure data sync, workflow orchestration, and system governance across the entire platform.',
+    tagline: 'Healthcare AI infrastructure behind every Borna module',
+    description: 'Borna Core is the healthcare AI infrastructure powering medical workflow automation, secure data sync, workflow orchestration, and system governance across the entire platform.',
     accentColor: '#4F6AFF',
     href: '/products/core',
     features: [
