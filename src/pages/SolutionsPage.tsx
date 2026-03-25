@@ -176,6 +176,10 @@ const clinicTypes = [
 
 const SolutionsPage = () => (
   <PageWrapper>
+    <Helmet>
+      <title>Healthcare Solutions for Clinics — Borna.ai</title>
+      <meta name="description" content="Borna.ai provides healthcare solutions for clinics of all sizes — including dental clinic management software, multi-location practice tools, and AI-powered patient engagement." />
+    </Helmet>
     {/* Hero */}
     <section className="relative overflow-hidden py-24 md:py-32">
       <div className="absolute inset-0 opacity-50">

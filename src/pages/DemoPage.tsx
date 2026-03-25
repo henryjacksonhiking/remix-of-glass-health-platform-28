@@ -35,7 +35,7 @@ const DemoPage = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
             >
-              <h1 className="hero-headline text-foreground mb-6">Book a demo</h1>
+              <h1 className="hero-headline text-foreground mb-6">Book a healthcare software demo</h1>
               <p className="body-text mb-8">
                 We'll show you how Borna Care can improve your clinic operations. Pick a time that works and we'll handle the rest.
               </p>

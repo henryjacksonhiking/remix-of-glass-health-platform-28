@@ -16,6 +16,10 @@ const securityFeatures = [
 
 const SecurityPage = () => (
   <PageWrapper>
+    <Helmet>
+      <title>Security & Compliance — Secure Healthcare Data Platform | Borna.ai</title>
+      <meta name="description" content="Borna.ai is a secure healthcare data platform with HIPAA-ready architecture, enterprise-grade encryption, and compliance-ready governance controls." />
+    </Helmet>
     {/* Hero */}
     <section className="relative overflow-hidden py-24 md:py-32">
       <div className="absolute top-0 left-1/2 w-80 h-80 rounded-full blur-[120px] animate-glow-pulse bg-primary/10" />

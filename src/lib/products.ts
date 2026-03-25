@@ -93,7 +93,7 @@ export const products: Product[] = [
     accentColor: '#D6007F',
     href: '/products/engage',
     features: [
-      { title: 'Patient pipeline', description: 'Lead and patient management from first contact onward.', icon: 'Funnel' },
+      { title: 'Patient pipeline', description: 'Lead and patient management from first contact onward — built into your patient retention platform.', icon: 'Funnel' },
       { title: 'Automated follow-ups', description: 'Triggered messages for recalls, no-shows, and check-ins.', icon: 'Bell' },
       { title: 'SMS & email campaigns', description: 'Targeted campaigns with segmentation and tagging.', icon: 'Mail' },
       { title: 'Referral tracking', description: 'Track and reward patient referral sources.', icon: 'Share2' },

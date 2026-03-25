@@ -6,8 +6,8 @@ import { BeamsBackground } from "@/components/ui/beams-background";
 import PageWrapper from "@/components/layout/PageWrapper";
 
 const categories = [
-  { icon: BarChart2, label: "Case studies", description: "See how real clinics improved operations with Borna Care." },
-  { icon: FileText, label: "Blog", description: "Insights on patient engagement, clinic operations, and automation.", href: "/blog" },
+  { icon: BarChart2, label: "Healthcare case studies", description: "See how real clinics improved operations with Borna Care." },
+  { icon: FileText, label: "Blog", description: "Clinic management best practices, patient engagement insights, and automation tips.", href: "/blog" },
   { icon: BookOpen, label: "Guides", description: "Step-by-step guides to get the most out of Borna.ai." },
   { icon: Video, label: "Videos", description: "Product walkthroughs, webinars, and customer stories." },
 ];

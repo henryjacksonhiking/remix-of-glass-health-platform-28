@@ -64,7 +64,7 @@ const ProductGrid = () => {
         <div className="text-center mb-20 lg:mb-2">
           <span className="text-xs font-medium text-primary uppercase tracking-wider">Platform overview</span>
           <h2 className="section-headline text-foreground mt-3">
-            Five modules. One unified platform.
+            Five modules. One medical practice management system.
           </h2>
         </div>
 
