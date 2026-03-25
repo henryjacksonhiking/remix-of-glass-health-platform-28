@@ -12,7 +12,7 @@ const CTASection = () => {
       <div className="container mx-auto px-4 md:px-6 relative z-10 text-center">
         <h2 className="section-headline text-foreground mb-4">See Borna.ai in action</h2>
         <p className="body-text mx-auto mb-8">
-          Book a 30-minute demo and see how modern clinics operate.
+          Book a 30-minute demo and discover our digital healthcare solutions for modern clinics.
         </p>
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-8">
           <Link to="/contact" className="ghost-btn text-base px-8 py-3.5 w-full sm:w-[260px]">Request a consultation</Link>
