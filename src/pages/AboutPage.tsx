@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { Helmet } from "react-helmet-async";
 import { Link } from "react-router-dom";
 import { Layers, Cpu, Workflow } from "lucide-react";
 import { BeamsBackground } from "@/components/ui/beams-background";
