@@ -59,7 +59,7 @@ export const products: Product[] = [
     accentColor: '#4F6AFF',
     href: '/products/core',
     features: [
-      { title: 'AI workflow automation', description: 'Smart routing, predictive analytics, and intelligent scheduling.', icon: 'Cpu' },
+      { title: 'AI workflow automation', description: 'Smart routing, predictive analytics, and intelligent scheduling — the core of our medical workflow automation system.', icon: 'Cpu' },
       { title: 'EHR & payments sync', description: 'Secure bidirectional sync with health records and payment gateways.', icon: 'RefreshCw' },
       { title: 'NLP & transcription', description: 'Natural language processing for calls, chat, and summaries.', icon: 'Braces' },
       { title: 'Multi-tenant architecture', description: 'Scalable infrastructure for single and multi-location practices.', icon: 'Server' },
