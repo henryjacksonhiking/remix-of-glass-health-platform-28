@@ -71,8 +71,8 @@ export const products: Product[] = [
     id: 'insight',
     name: 'Borna Insight',
     slug: 'insight',
-    tagline: 'See exactly what is happening in your clinic',
-    description: 'Borna Insight surfaces actionable data across appointments, revenue, communications, and patient engagement — so clinic leaders can make decisions with confidence.',
+    tagline: 'The healthcare analytics dashboard for your clinic',
+    description: 'Borna Insight is a healthcare analytics dashboard that surfaces clinic performance analytics across appointments, revenue, communications, and patient engagement — so clinic leaders can make decisions with confidence.',
     accentColor: '#818CF8',
     href: '/products/insight',
     features: [
