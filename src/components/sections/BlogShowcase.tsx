@@ -1,16 +1,16 @@
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import { FaUserMd, FaCalendarCheck, FaLaptopMedical, FaFileAlt, FaCreditCard, FaNetworkWired } from "react-icons/fa";
+import { Stethoscope, CalendarCheck, MonitorSmartphone, FileText, CreditCard, Network } from "lucide-react";
 import InteractiveSelector from "@/components/ui/interactive-selector";
 import { blogPosts } from "@/lib/blog-posts";
 
 const iconMap = [
-  <FaUserMd key="0" />,
-  <FaCalendarCheck key="1" />,
-  <FaLaptopMedical key="2" />,
-  <FaFileAlt key="3" />,
-  <FaCreditCard key="4" />,
-  <FaNetworkWired key="5" />,
+  <Stethoscope key="0" size={18} />,
+  <CalendarCheck key="1" size={18} />,
+  <MonitorSmartphone key="2" size={18} />,
+  <FileText key="3" size={18} />,
+  <CreditCard key="4" size={18} />,
+  <Network key="5" size={18} />,
 ];
 
 const shortTitles: Record<string, string> = {
