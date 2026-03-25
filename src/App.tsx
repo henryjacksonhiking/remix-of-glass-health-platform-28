@@ -18,6 +18,7 @@ import ContactPage from "./pages/ContactPage.tsx";
 import PrivacyPage from "./pages/PrivacyPage.tsx";
 import TermsPage from "./pages/TermsPage.tsx";
 import SignUpPage from "./pages/SignUpPage.tsx";
+import CaseStudyPage from "./pages/CaseStudyPage.tsx";
 import NotFound from "./pages/NotFound.tsx";
 
 const queryClient = new QueryClient();
