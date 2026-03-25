@@ -13,6 +13,15 @@ const iconMap = [
   <FaNetworkWired key="5" />,
 ];
 
+const shortTitles: Record<string, string> = {
+  "reduce-patient-no-shows-automated-reminders": "Automated Reminders",
+  "hidden-cost-manual-appointment-management": "Manual Scheduling Costs",
+  "building-patient-first-digital-experience": "Patient-First Digital",
+  "digital-intake-forms-implementation-guide": "Digital Intake Forms",
+  "online-payments-improve-clinic-cash-flow": "Online Payments",
+  "ehr-integration-what-clinics-need-to-know": "EHR Integration",
+};
+
 const shortDescriptions: Record<string, string> = {
   "reduce-patient-no-shows-automated-reminders": "Cut missed appointments by up to 40%",
   "hidden-cost-manual-appointment-management": "Why manual scheduling drains your clinic",
@@ -23,7 +32,7 @@ const shortDescriptions: Record<string, string> = {
 };
 
 const options = blogPosts.map((post, i) => ({
-  title: post.title,
+  title: shortTitles[post.slug] || post.title,
   description: shortDescriptions[post.slug] || post.excerpt.slice(0, 50),
   image: post.image,
   icon: iconMap[i % iconMap.length],
