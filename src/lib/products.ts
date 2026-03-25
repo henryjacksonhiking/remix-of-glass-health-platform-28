@@ -25,7 +25,7 @@ export const products: Product[] = [
     accentColor: '#00479B',
     href: '/products/care',
     features: [
-      { title: 'Online booking', description: 'Patients book, reschedule, or cancel appointments 24/7.', icon: 'Calendar' },
+      { title: 'Online appointment scheduling', description: 'Patients book, reschedule, or cancel appointments 24/7 with online appointment scheduling for clinics.', icon: 'Calendar' },
       { title: 'Digital intake forms', description: 'Paperless consent, referral, and intake forms.', icon: 'FileText' },
       { title: 'Online payments', description: 'Invoice tracking and secure payment requests.', icon: 'CreditCard' },
       { title: 'Family management', description: 'Manage dependents and family bookings in one account.', icon: 'Users' },
