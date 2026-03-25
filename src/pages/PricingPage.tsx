@@ -1,4 +1,5 @@
 import { useNavigate } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
 import { motion } from "framer-motion";
 import PageWrapper from "@/components/layout/PageWrapper";
 import { ModernPricingPage, PricingCardProps } from "@/components/ui/animated-glassy-pricing";
