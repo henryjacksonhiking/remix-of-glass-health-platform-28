@@ -189,7 +189,7 @@ const SolutionsPage = () => (
           transition={{ duration: 0.6 }}
           className="hero-headline text-foreground mb-6"
         >
-          Solutions for modern clinics
+          Healthcare solutions for clinics
         </motion.h1>
         <motion.p
           initial={{ opacity: 0, y: 20 }}
