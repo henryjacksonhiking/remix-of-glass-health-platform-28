@@ -56,7 +56,7 @@ export const products: Product[] = [
     slug: 'core',
     tagline: 'The intelligence engine behind every Borna module',
     description: 'Borna Core is the invisible backbone — powering AI automation, secure data sync, workflow orchestration, and system governance across the entire platform.',
-    accentColor: '#1435C1',
+    accentColor: '#4F6AFF',
     href: '/products/core',
     features: [
       { title: 'AI workflow automation', description: 'Smart routing, predictive analytics, and intelligent scheduling.', icon: 'Cpu' },
