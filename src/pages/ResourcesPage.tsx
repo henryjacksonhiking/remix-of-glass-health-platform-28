@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { FileText, BookOpen, Video, BarChart2 } from "lucide-react";
 import { BeamsBackground } from "@/components/ui/beams-background";
 import PageWrapper from "@/components/layout/PageWrapper";
+import CaseStudiesSection from "@/components/sections/CaseStudiesSection";
 
 const categories = [
   { icon: BarChart2, label: "Healthcare case studies", description: "See how real clinics improved operations with Borna Care." },
@@ -48,6 +49,9 @@ const ResourcesPage = () => (
         </motion.p>
       </div>
     </section>
+
+    {/* Case Studies */}
+    <CaseStudiesSection />
 
     {/* Categories */}
     <section className="pb-24 pt-24">
