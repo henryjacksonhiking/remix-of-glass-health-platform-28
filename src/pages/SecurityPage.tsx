@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { Helmet } from "react-helmet-async";
 import { Shield, Lock, Eye, Server, FileCheck, Users } from "lucide-react";
 import { Link } from "react-router-dom";
 import PageWrapper from "@/components/layout/PageWrapper";
