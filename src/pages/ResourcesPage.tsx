@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
 import { motion } from "framer-motion";
 import { FileText, BookOpen, Video, BarChart2 } from "lucide-react";
 import { BeamsBackground } from "@/components/ui/beams-background";
