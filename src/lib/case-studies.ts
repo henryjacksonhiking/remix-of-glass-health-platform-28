@@ -53,6 +53,9 @@ The manual reminder process was inconsistent — staff would sometimes skip call
     clinic: "4-location family medicine practice · Texas",
     readTime: "6 min read",
     keyStat: { value: "85%", label: "less manual data entry" },
+    heroImage: "/images/case-study-medical-texas-1.webp",
+    bodyImage: "/images/case-study-medical-texas-2.webp",
+    bodyCaption: "Multi-location family medicine practice — Texas",
     problem: `Hill Country Family Medicine runs four clinics across central Texas, with a combined patient volume of over 200 visits per day. Every new patient visit required a 6-page paper intake form, which staff then had to manually key into the EHR system — a process that took 8 to 12 minutes per patient.
 
 The practice estimated that across all four locations, administrative staff spent a combined 12 hours per day on data entry alone. Errors were common: misspelled names, transposed insurance ID numbers, and missing allergy information created downstream issues that affected billing accuracy and patient safety. The paper-based process also frustrated patients, who often arrived early only to spend 20 minutes filling out redundant forms in the waiting room.`,
