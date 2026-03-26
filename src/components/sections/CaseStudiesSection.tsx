@@ -70,7 +70,7 @@ const CaseStudiesSection = () => (
                 src={cs.heroImage}
                 alt={cs.title}
                 className="transition-transform duration-[400ms] ease-in-out group-hover:scale-[1.03]"
-                style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center", display: "block" }}
+                style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: cs.slug === "texas-medical-practice-digital-forms" ? "center 20%" : "center center", display: "block" }}
               />
               <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to bottom, transparent 50%, rgba(11,17,48,0.4) 100%)" }} />
             </div>
