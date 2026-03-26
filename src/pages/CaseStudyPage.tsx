@@ -70,7 +70,7 @@ const CaseStudyPage = () => {
           src={cs.heroImage}
           alt={cs.title}
           className="w-full h-[360px] max-md:h-[220px]"
-          style={{ objectFit: "cover", objectPosition: cs.slug === "texas-medical-practice-digital-forms" ? "center 20%" : "center 30%", display: "block" }}
+          style={{ objectFit: "cover", objectPosition: cs.slug === "dental-group-california-no-shows" ? "center top" : cs.slug === "texas-medical-practice-digital-forms" ? "center 20%" : "center 30%", display: "block" }}
         />
         <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to bottom, transparent 40%, #0B1130 100%)" }} />
       </div>
