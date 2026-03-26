@@ -85,8 +85,8 @@ const CaseStudyPage = () => {
               cs.slug === "dental-group-california-no-shows"
                 ? "center 50%"
                 : cs.slug === "texas-medical-practice-digital-forms"
-                  ? "center 20%"
-                  : "center 30%",
+                  ? "center 30%"
+                  : "center 40%",
             display: "block",
           }}
         />
