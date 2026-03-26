@@ -140,6 +140,7 @@ const CaseStudiesSection = () => (
             >
               Read case study →
             </span>
+            </div>
           </Link>
         </motion.div>
       ))}
