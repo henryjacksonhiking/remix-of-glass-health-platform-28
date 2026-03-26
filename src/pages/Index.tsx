@@ -7,7 +7,7 @@ import ProductGrid from "@/components/sections/ProductGrid";
 import ValueProps from "@/components/sections/ValueProps";
 import Testimonials from "@/components/sections/Testimonials";
 import SecurityBanner from "@/components/sections/SecurityBanner";
-import BlogShowcase from "@/components/sections/BlogShowcase";
+
 import CTASection from "@/components/sections/CTASection";
 
 const Index = () => {
