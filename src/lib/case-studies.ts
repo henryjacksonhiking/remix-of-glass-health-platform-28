@@ -56,6 +56,7 @@ The manual reminder process was inconsistent — staff would sometimes skip call
     readTime: "6 min read",
     keyStat: { value: "85%", label: "less manual data entry" },
     heroImage: "/images/case-study-medical-texas-2.webp",
+    cardImage: "/images/case-study-medical-texas-1.webp",
     bodyImage: "/images/case-study-medical-texas-1.webp",
     bodyCaption: "Multi-location family medicine practice — Texas",
     problem: `Hill Country Family Medicine runs four clinics across central Texas, with a combined patient volume of over 200 visits per day. Every new patient visit required a 6-page paper intake form, which staff then had to manually key into the EHR system — a process that took 8 to 12 minutes per patient.
