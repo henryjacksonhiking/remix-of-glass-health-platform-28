@@ -5,6 +5,7 @@ import { FileText, BookOpen, Video, BarChart2 } from "lucide-react";
 import { BeamsBackground } from "@/components/ui/beams-background";
 import PageWrapper from "@/components/layout/PageWrapper";
 import CaseStudiesSection from "@/components/sections/CaseStudiesSection";
+import BlogShowcase from "@/components/sections/BlogShowcase";
 
 const categories = [
   { icon: BarChart2, label: "Healthcare case studies", description: "See how real clinics improved operations with Borna Care." },
@@ -52,6 +53,9 @@ const ResourcesPage = () => (
 
     {/* Case Studies */}
     <CaseStudiesSection />
+
+    {/* Blog Showcase */}
+    <BlogShowcase />
 
     {/* Categories */}
     <section className="pb-24 pt-24">
