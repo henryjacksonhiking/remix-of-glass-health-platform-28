@@ -6,6 +6,7 @@ export interface CaseStudy {
   readTime: string;
   keyStat: { value: string; label: string };
   heroImage: string;
+  cardImage?: string;
   bodyImage: string;
   bodyCaption: string;
   problem: string;
