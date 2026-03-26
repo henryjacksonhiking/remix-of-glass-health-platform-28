@@ -64,33 +64,33 @@ const CaseStudyPage = () => {
         <meta name="description" content={`${cs.clinic}. ${cs.keyStat.value} ${cs.keyStat.label}. Read the full case study.`} />
       </Helmet>
 
-      {/* Hero with background image */}
-      <div className="relative w-full h-[420px] max-md:h-[320px]">
+      {/* Full-bleed hero image */}
+      <div style={{ width: "100%", maxHeight: 360, overflow: "hidden", position: "relative" }}>
         <img
           src={cs.heroImage}
           alt={cs.title}
-          className="w-full h-full object-cover block"
-          style={{ objectPosition: "center center" }}
+          className="w-full h-[360px] max-md:h-[220px]"
+          style={{ objectFit: "cover", objectPosition: cs.slug === "dental-group-california-no-shows" ? "center top" : cs.slug === "texas-medical-practice-digital-forms" ? "center 20%" : "center 30%", display: "block" }}
         />
-        <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to bottom, rgba(11,17,48,0.45) 0%, rgba(11,17,48,0.85) 70%, #0B1130 100%)" }} />
+        <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to bottom, transparent 40%, #0B1130 100%)" }} />
+      </div>
 
+      <article className="mx-auto px-6 py-12" style={{ maxWidth: 680 }}>
         {/* Back link */}
         <Link
           to="/resources"
-          className="absolute top-6 left-10 max-md:left-6 inline-flex items-center gap-1.5 transition-colors hover:text-foreground"
-          style={{ fontSize: 13, color: "rgba(255,255,255,0.6)" }}
+          className="inline-flex items-center gap-1.5 text-sm text-muted-foreground hover:text-foreground transition-colors mb-8"
         >
-          <ArrowLeft className="w-3.5 h-3.5" />
+          <ArrowLeft className="w-4 h-4" />
           Back to resources
         </Link>
 
-        {/* Overlay text */}
         <motion.div
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
-          className="absolute bottom-0 left-0 right-0 px-10 pb-10 max-md:px-6 max-md:pb-6"
         >
+          {/* Badge */}
           <span
             style={{
               display: "inline-block",
@@ -100,37 +100,34 @@ const CaseStudyPage = () => {
               fontSize: 11,
               borderRadius: 980,
               padding: "4px 12px",
-              marginBottom: 14,
+              marginBottom: 16,
             }}
           >
             {cs.category}
           </span>
 
           <h1
+            className="text-foreground"
             style={{
-              fontSize: "clamp(22px, 4vw, 32px)",
+              fontSize: "clamp(26px, 4vw, 36px)",
               fontWeight: 500,
-              lineHeight: 1.25,
-              color: "rgba(255,255,255,0.95)",
-              maxWidth: 680,
-              marginBottom: 10,
+              lineHeight: 1.2,
+              letterSpacing: "-0.5px",
+              marginBottom: 16,
             }}
           >
             {cs.title}
           </h1>
 
-          <p style={{ fontSize: 13, color: "rgba(255,255,255,0.5)", margin: 0 }}>
-            {cs.clinic} · {cs.readTime}
-          </p>
-        </motion.div>
-      </div>
+          <div
+            className="flex items-center gap-2"
+            style={{ fontSize: 13, color: "rgba(255,255,255,0.4)", marginBottom: 24 }}
+          >
+            <span>{cs.clinic}</span>
+            <span>·</span>
+            <span>{cs.readTime}</span>
+          </div>
 
-      <article className="mx-auto px-6 py-12" style={{ maxWidth: 680 }}>
-        <motion.div
-          initial={{ opacity: 0, y: 16 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-        >
           {/* Key stat callout */}
           <div
             style={{
