@@ -67,7 +67,7 @@ const CaseStudiesSection = () => (
             {/* Hero image */}
             <div style={{ width: "100%", height: 200, overflow: "hidden", position: "relative", borderRadius: "12px 12px 0 0" }}>
               <img
-                src={cs.heroImage}
+                src={cs.cardImage || cs.heroImage}
                 alt={cs.title}
                 className="transition-transform duration-[400ms] ease-in-out group-hover:scale-[1.03]"
                 style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: cs.slug === "texas-medical-practice-digital-forms" ? "center 20%" : "center center", display: "block" }}

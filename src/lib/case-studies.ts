@@ -6,6 +6,7 @@ export interface CaseStudy {
   readTime: string;
   keyStat: { value: string; label: string };
   heroImage: string;
+  cardImage?: string;
   bodyImage: string;
   bodyCaption: string;
   problem: string;
@@ -22,7 +23,8 @@ export const caseStudies: CaseStudy[] = [
     clinic: "3-location dental group · San Francisco Bay Area",
     readTime: "5 min read",
     keyStat: { value: "34%", label: "reduction in no-shows" },
-    heroImage: "/images/case-study-dental-california-1.webp",
+    heroImage: "/images/case-study-dental-california-hero.webp",
+    cardImage: "/images/case-study-dental-california-1.webp",
     bodyImage: "/images/case-study-dental-california-2.webp",
     bodyCaption: "Yalan Corp Dental Studio — Bay Area, California",
     problem: `Pacific Dental Associates operates three busy locations across the San Francisco Bay Area, serving over 12,000 active patients. Their front-desk teams were spending nearly two hours every morning manually calling patients to confirm next-day appointments. Despite this effort, no-show rates hovered around 18%, costing the practice an estimated $22,000 per month in lost revenue.
