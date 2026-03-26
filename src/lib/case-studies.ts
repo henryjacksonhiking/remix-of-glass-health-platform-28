@@ -5,6 +5,9 @@ export interface CaseStudy {
   clinic: string;
   readTime: string;
   keyStat: { value: string; label: string };
+  heroImage: string;
+  bodyImage: string;
+  bodyCaption: string;
   problem: string;
   solution: string;
   results: string;
