@@ -48,12 +48,12 @@ const CaseStudiesSection = () => (
         >
           <Link
             to={`/resources/case-studies/${cs.slug}`}
-            className="flex flex-col h-full transition-all duration-200"
+            className="flex flex-col h-full transition-all duration-200 group"
             style={{
               background: "rgba(255,255,255,0.05)",
               border: "0.5px solid rgba(255,255,255,0.1)",
               borderRadius: 16,
-              padding: 28,
+              overflow: "hidden",
             }}
             onMouseEnter={(e) => {
               e.currentTarget.style.background = "rgba(255,255,255,0.08)";
@@ -64,6 +64,18 @@ const CaseStudiesSection = () => (
               e.currentTarget.style.borderColor = "rgba(255,255,255,0.1)";
             }}
           >
+            {/* Hero image */}
+            <div style={{ width: "100%", height: 200, overflow: "hidden", position: "relative", borderRadius: "12px 12px 0 0" }}>
+              <img
+                src={cs.heroImage}
+                alt={cs.title}
+                className="transition-transform duration-[400ms] ease-in-out group-hover:scale-[1.03]"
+                style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center", display: "block" }}
+              />
+              <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to bottom, transparent 50%, rgba(11,17,48,0.4) 100%)" }} />
+            </div>
+
+            <div style={{ padding: 28, display: "flex", flexDirection: "column", flex: 1 }}>
             {/* Badge */}
             <span
               style={{
