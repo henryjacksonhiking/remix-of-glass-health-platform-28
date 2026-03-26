@@ -5,6 +5,9 @@ export interface CaseStudy {
   clinic: string;
   readTime: string;
   keyStat: { value: string; label: string };
+  heroImage: string;
+  bodyImage: string;
+  bodyCaption: string;
   problem: string;
   solution: string;
   results: string;
@@ -19,6 +22,9 @@ export const caseStudies: CaseStudy[] = [
     clinic: "3-location dental group · San Francisco Bay Area",
     readTime: "5 min read",
     keyStat: { value: "34%", label: "reduction in no-shows" },
+    heroImage: "/images/case-study-dental-california-1.webp",
+    bodyImage: "/images/case-study-dental-california-2.webp",
+    bodyCaption: "Yalan Corp Dental Studio — Bay Area, California",
     problem: `Pacific Dental Associates operates three busy locations across the San Francisco Bay Area, serving over 12,000 active patients. Their front-desk teams were spending nearly two hours every morning manually calling patients to confirm next-day appointments. Despite this effort, no-show rates hovered around 18%, costing the practice an estimated $22,000 per month in lost revenue.
 
 The manual reminder process was inconsistent — staff would sometimes skip calls during peak hours, and patients who preferred text messages were unreachable by phone. The practice needed a solution that could automate outreach across all three locations without adding headcount.`,
@@ -47,6 +53,9 @@ The manual reminder process was inconsistent — staff would sometimes skip call
     clinic: "4-location family medicine practice · Texas",
     readTime: "6 min read",
     keyStat: { value: "85%", label: "less manual data entry" },
+    heroImage: "/images/case-study-medical-texas-1.webp",
+    bodyImage: "/images/case-study-medical-texas-2.webp",
+    bodyCaption: "Multi-location family medicine practice — Texas",
     problem: `Hill Country Family Medicine runs four clinics across central Texas, with a combined patient volume of over 200 visits per day. Every new patient visit required a 6-page paper intake form, which staff then had to manually key into the EHR system — a process that took 8 to 12 minutes per patient.
 
 The practice estimated that across all four locations, administrative staff spent a combined 12 hours per day on data entry alone. Errors were common: misspelled names, transposed insurance ID numbers, and missing allergy information created downstream issues that affected billing accuracy and patient safety. The paper-based process also frustrated patients, who often arrived early only to spend 20 minutes filling out redundant forms in the waiting room.`,
@@ -76,6 +85,9 @@ The practice estimated that across all four locations, administrative staff spen
     clinic: "Independent dental studio · New York",
     readTime: "5 min read",
     keyStat: { value: "$14K", label: "recovered in 60 days" },
+    heroImage: "/images/case-study-dental-newyork-1.webp",
+    bodyImage: "/images/case-study-dental-newyork-2.webp",
+    bodyCaption: "Independent dental studio — New York",
     problem: `Studio Dental NYC is a boutique cosmetic and general dentistry practice in Manhattan. Despite a loyal patient base and strong case acceptance rates, the practice struggled with accounts receivable. At any given time, over $40,000 in patient balances remained outstanding — some invoices more than 120 days past due.
 
 The office manager spent hours each week generating paper statements and making collection calls, most of which went to voicemail. Patients frequently cited confusion over what they owed, difficulty understanding their insurance breakdown, and the inconvenience of paying by check or calling in a credit card number. The practice had no online payment option, and the manual billing process was straining the small team's capacity.`,
