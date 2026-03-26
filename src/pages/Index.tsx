@@ -21,7 +21,7 @@ const Index = () => {
       <ValueProps />
       <Testimonials />
       <SecurityBanner />
-      <BlogShowcase />
+      
       <CTASection />
     </PageWrapper>
   );

@@ -54,6 +54,9 @@ const ResourcesPage = () => (
     {/* Case Studies */}
     <CaseStudiesSection />
 
+    {/* Blog Showcase */}
+    <BlogShowcase />
+
     {/* Categories */}
     <section className="pb-24 pt-24">
       <div className="container mx-auto px-4 md:px-6">
