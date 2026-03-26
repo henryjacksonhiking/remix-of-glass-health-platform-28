@@ -51,6 +51,7 @@ const CaseStudyPage = () => {
     markdownToHtml(cs.problem),
     `<h2>The solution</h2>`,
     markdownToHtml(cs.solution),
+    `<div style="width:100%;margin:32px 0;border-radius:12px;overflow:hidden"><img src="${cs.bodyImage}" alt="${cs.bodyCaption}" style="width:100%;height:auto;max-height:360px;object-fit:cover;object-position:center;display:block;border-radius:12px" /><p style="font-size:12px;color:rgba(255,255,255,0.35);text-align:center;margin-top:8px;font-style:italic">${cs.bodyCaption}</p></div>`,
     `<h2>The results</h2>`,
     markdownToHtml(cs.results),
     `<blockquote><p>${cs.quote.text}</p><p>— ${cs.quote.author}</p></blockquote>`,
