@@ -83,10 +83,10 @@ const CaseStudyPage = () => {
             objectFit: "cover",
             objectPosition:
               cs.slug === "dental-group-california-no-shows"
-                ? "center top"
+                ? "center 50%"
                 : cs.slug === "texas-medical-practice-digital-forms"
                   ? "center 20%"
-                  : "center 40%",
+                  : "center 30%",
             display: "block",
           }}
         />
