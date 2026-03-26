@@ -85,6 +85,9 @@ The practice estimated that across all four locations, administrative staff spen
     clinic: "Independent dental studio · New York",
     readTime: "5 min read",
     keyStat: { value: "$14K", label: "recovered in 60 days" },
+    heroImage: "/images/case-study-dental-newyork-1.webp",
+    bodyImage: "/images/case-study-dental-newyork-2.webp",
+    bodyCaption: "Independent dental studio — New York",
     problem: `Studio Dental NYC is a boutique cosmetic and general dentistry practice in Manhattan. Despite a loyal patient base and strong case acceptance rates, the practice struggled with accounts receivable. At any given time, over $40,000 in patient balances remained outstanding — some invoices more than 120 days past due.
 
 The office manager spent hours each week generating paper statements and making collection calls, most of which went to voicemail. Patients frequently cited confusion over what they owed, difficulty understanding their insurance breakdown, and the inconvenience of paying by check or calling in a credit card number. The practice had no online payment option, and the manual billing process was straining the small team's capacity.`,
