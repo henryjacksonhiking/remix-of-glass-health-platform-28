@@ -64,6 +64,17 @@ const CaseStudyPage = () => {
         <meta name="description" content={`${cs.clinic}. ${cs.keyStat.value} ${cs.keyStat.label}. Read the full case study.`} />
       </Helmet>
 
+      {/* Full-bleed hero image */}
+      <div style={{ width: "100%", maxHeight: 460, overflow: "hidden", position: "relative" }}>
+        <img
+          src={cs.heroImage}
+          alt={cs.title}
+          className="w-full h-[460px] max-md:h-[240px]"
+          style={{ objectFit: "cover", objectPosition: "center top", display: "block" }}
+        />
+        <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to bottom, transparent 40%, #0B1130 100%)" }} />
+      </div>
+
       <article className="mx-auto px-6 py-12" style={{ maxWidth: 680 }}>
         {/* Back link */}
         <Link
