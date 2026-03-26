@@ -22,6 +22,9 @@ export const caseStudies: CaseStudy[] = [
     clinic: "3-location dental group · San Francisco Bay Area",
     readTime: "5 min read",
     keyStat: { value: "34%", label: "reduction in no-shows" },
+    heroImage: "/images/case-study-dental-california-1.webp",
+    bodyImage: "/images/case-study-dental-california-2.webp",
+    bodyCaption: "Yalan Corp Dental Studio — Bay Area, California",
     problem: `Pacific Dental Associates operates three busy locations across the San Francisco Bay Area, serving over 12,000 active patients. Their front-desk teams were spending nearly two hours every morning manually calling patients to confirm next-day appointments. Despite this effort, no-show rates hovered around 18%, costing the practice an estimated $22,000 per month in lost revenue.
 
 The manual reminder process was inconsistent — staff would sometimes skip calls during peak hours, and patients who preferred text messages were unreachable by phone. The practice needed a solution that could automate outreach across all three locations without adding headcount.`,
