@@ -21,11 +21,17 @@ function markdownToHtml(md: string): string {
         return `<blockquote><p>${inline(text.replace(/\n/g, " "))}</p></blockquote>`;
       }
       if (/^- /.test(block)) {
-        const items = block.split("\n").map((l) => `<li>${inline(l.replace(/^- /, ""))}</li>`).join("");
+        const items = block
+          .split("\n")
+          .map((l) => `<li>${inline(l.replace(/^- /, ""))}</li>`)
+          .join("");
         return `<ul>${items}</ul>`;
       }
       if (/^\d+\. /.test(block)) {
-        const items = block.split("\n").map((l) => `<li>${inline(l.replace(/^\d+\.\s*/, ""))}</li>`).join("");
+        const items = block
+          .split("\n")
+          .map((l) => `<li>${inline(l.replace(/^\d+\.\s*/, ""))}</li>`)
+          .join("");
         return `<ol>${items}</ol>`;
       }
       return `<p>${inline(block.replace(/\n/g, " "))}</p>`;
@@ -61,7 +67,10 @@ const CaseStudyPage = () => {
     <PageWrapper>
       <Helmet>
         <title>{cs.title} | Borna.ai Case Study</title>
-        <meta name="description" content={`${cs.clinic}. ${cs.keyStat.value} ${cs.keyStat.label}. Read the full case study.`} />
+        <meta
+          name="description"
+          content={`${cs.clinic}. ${cs.keyStat.value} ${cs.keyStat.label}. Read the full case study.`}
+        />
       </Helmet>
 
       {/* Full-bleed hero image */}
@@ -70,9 +79,24 @@ const CaseStudyPage = () => {
           src={cs.heroImage}
           alt={cs.title}
           className="w-full h-[360px] max-md:h-[220px]"
-          style={{ objectFit: "cover", objectPosition: cs.slug === "dental-group-california-no-shows" ? "center top" : cs.slug === "texas-medical-practice-digital-forms" ? "center 20%" : "center 30%", display: "block" }}
+          style={{
+            objectFit: "cover",
+            objectPosition:
+              cs.slug === "dental-group-california-no-shows"
+                ? "center top"
+                : cs.slug === "texas-medical-practice-digital-forms"
+                  ? "center 20%"
+                  : "center 40%",
+            display: "block",
+          }}
         />
-        <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to bottom, transparent 40%, #0B1130 100%)" }} />
+        <div
+          style={{
+            position: "absolute",
+            inset: 0,
+            background: "linear-gradient(to bottom, transparent 40%, #0B1130 100%)",
+          }}
+        />
       </div>
 
       <article className="mx-auto px-6 py-12" style={{ maxWidth: 680 }}>
@@ -85,11 +109,7 @@ const CaseStudyPage = () => {
           Back to resources
         </Link>
 
-        <motion.div
-          initial={{ opacity: 0, y: 16 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-        >
+        <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}>
           {/* Badge */}
           <span
             style={{
@@ -144,18 +164,12 @@ const CaseStudyPage = () => {
             <span style={{ fontSize: 36, fontWeight: 500, color: "#00DEC4", letterSpacing: -1 }}>
               {cs.keyStat.value}
             </span>
-            <span style={{ fontSize: 14, color: "rgba(255,255,255,0.55)" }}>
-              {cs.keyStat.label}
-            </span>
+            <span style={{ fontSize: 14, color: "rgba(255,255,255,0.55)" }}>{cs.keyStat.label}</span>
           </div>
         </motion.div>
 
         {/* Body */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.5, delay: 0.15 }}
-        >
+        <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.5, delay: 0.15 }}>
           <BlogContent html={bodyHtml} />
         </motion.div>
       </article>
@@ -173,10 +187,7 @@ const CaseStudyPage = () => {
           >
             Ready to see results like these?
           </h2>
-          <Link
-            to="/demo"
-            className="gradient-btn inline-block text-sm px-6 py-3"
-          >
+          <Link to="/demo" className="gradient-btn inline-block text-sm px-6 py-3">
             Book a demo
           </Link>
         </div>
