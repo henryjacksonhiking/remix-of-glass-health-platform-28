@@ -52,7 +52,7 @@ const HeroSection = () => {
           initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.9, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-          className="relative w-full max-w-[1400px] mx-auto mb-6 md:mb-8 flex-1 min-h-0"
+          className="relative w-full mx-auto mb-6 md:mb-8 flex-1 min-h-0"
         >
           <img
             src="/images/admin-hero-collage.webp"
@@ -60,7 +60,7 @@ const HeroSection = () => {
             className="w-full h-full object-contain object-top"
             loading="eager"
             width={1920}
-            height={1632}
+            height={1527}
           />
           {/* Bottom fade to blend into page */}
           <div className="absolute bottom-0 left-0 right-0 h-24 md:h-32 bg-gradient-to-t from-background to-transparent pointer-events-none" />
