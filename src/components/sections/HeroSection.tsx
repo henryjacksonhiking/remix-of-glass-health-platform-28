@@ -10,23 +10,24 @@ const iconMap: Record<string, React.ComponentType<{ className?: string }>> = Luc
 const HeroSection = () => {
   return (
     <section className="relative overflow-hidden min-h-screen flex flex-col">
-      {/* Background image + beams */}
-      <div className="absolute inset-0 z-0">
+      {/* Background — text area only, transparent behind image */}
+      <div className="absolute inset-x-0 top-0 z-0" style={{ height: '45%' }}>
         <img src={heroBg} alt="" className="w-full h-full object-cover opacity-60" loading="eager" width={1920} height={1080} />
         <div className="absolute inset-0 bg-background/40" />
         <div className="absolute inset-0 opacity-60">
           <BeamsBackground intensity="medium" />
         </div>
+        <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-background to-transparent" />
       </div>
 
       {/* Content */}
-      <div className="container mx-auto px-4 md:px-6 relative z-10 flex flex-col flex-1 pt-8 md:pt-12 lg:pt-16 xl:pt-20 pb-4 md:pb-6">
+      <div className="container mx-auto px-4 md:px-6 relative z-10 flex flex-col flex-1 pt-4 md:pt-12 lg:pt-16 xl:pt-20 pb-2 md:pb-6">
         {/* Text content — centered */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          className="text-center max-w-3xl mx-auto mb-6 md:mb-8 lg:mb-10"
+          className="text-center max-w-3xl mx-auto mb-3 md:mb-8 lg:mb-10"
         >
           <span className="inline-block glass-panel px-3 py-1 text-[10px] md:text-[11px] lg:text-xs font-medium text-primary mb-3 md:mb-4 lg:mb-5">
             AI healthcare platform
@@ -52,7 +53,7 @@ const HeroSection = () => {
           initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.9, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-          className="relative w-full mx-auto mb-6 md:mb-8 flex-1 min-h-0"
+          className="relative w-full mx-auto mb-2 md:mb-8 flex-1 min-h-0"
         >
           <img
             src="/images/admin-hero-collage.webp"
