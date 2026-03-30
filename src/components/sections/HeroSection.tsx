@@ -27,7 +27,7 @@ const HeroSection = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          className="text-center max-w-3xl mx-auto mb-8 md:mb-8 lg:mb-12"
+          className="text-center max-w-3xl mx-auto mb-3 md:mb-8 lg:mb-10"
         >
           <span className="inline-block glass-panel px-3 py-1 text-[10px] md:text-[11px] lg:text-xs font-medium text-primary mb-3 md:mb-4 lg:mb-5">
             AI healthcare platform
@@ -48,12 +48,12 @@ const HeroSection = () => {
           </div>
         </motion.div>
 
-        {/* Hero collage image — full width */}
+        {/* Hero collage image — almost full width */}
         <motion.div
           initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.9, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-          className="relative w-full mx-auto mb-12 md:mb-8 min-h-0"
+          className="relative w-full mx-auto mb-2 md:mb-8 flex-1 min-h-0"
         >
           <img
             src="/images/admin-hero-collage.webp"
