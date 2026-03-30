@@ -53,7 +53,7 @@ const HeroSection = () => {
           initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.9, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-          className="relative w-full mx-auto mb-6 md:mb-8 flex-1 min-h-0"
+          className="relative w-full mx-auto mb-2 md:mb-8 flex-1 min-h-0"
         >
           <img
             src="/images/admin-hero-collage.webp"
