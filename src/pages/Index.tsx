@@ -19,10 +19,10 @@ const Index = () => {
       <ProductStory />
       <ProductGrid />
       <ValueProps />
+      <Testimonials />
       <SecurityBanner />
       
       <CTASection />
-      <Testimonials />
     </PageWrapper>
   );
 };
