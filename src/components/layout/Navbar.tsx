@@ -223,7 +223,12 @@ const Navbar = () => {
               <Link to="/platform" onClick={() => setMobileOpen(false)} className="block px-3 py-2 text-sm text-foreground">Platform</Link>
               <Link to="/solutions" onClick={() => setMobileOpen(false)} className="block px-3 py-2 text-sm text-foreground">Solutions</Link>
               <Link to="/pricing" onClick={() => setMobileOpen(false)} className="block px-3 py-2 text-sm text-foreground">Pricing</Link>
-              <Link to="/resources" onClick={() => setMobileOpen(false)} className="block px-3 py-2 text-sm text-foreground">Resources</Link>
+              <div className="space-y-1">
+                <p className="text-xs text-muted-foreground uppercase tracking-wider px-3 pb-2 pt-3">Resources</p>
+                <Link to="/resources" onClick={() => setMobileOpen(false)} className="block px-3 py-2 text-sm text-foreground">Case Studies & Guides</Link>
+                <Link to="/blog" onClick={() => setMobileOpen(false)} className="block px-3 py-2 text-sm text-foreground">Blog</Link>
+                <Link to="/roadmap" onClick={() => setMobileOpen(false)} className="block px-3 py-2 text-sm text-foreground">Roadmap</Link>
+              </div>
               <Link to="/about" onClick={() => setMobileOpen(false)} className="block px-3 py-2 text-sm text-foreground">About</Link>
               <a
                 href="https://care.borna.ai"
