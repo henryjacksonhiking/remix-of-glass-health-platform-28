@@ -63,7 +63,7 @@ const DifferentiationSection = () => (
           maxWidth: '680px',
         }}
       >
-        You are not a CRM. You are not a booking tool. You are a unified healthcare operations platform built with AI at its core.
+        Borna.ai is not a CRM. Not a booking tool. Not just another patient portal. It is a unified healthcare operations platform — built with AI at its core.
       </blockquote>
     </div>
   </section>
