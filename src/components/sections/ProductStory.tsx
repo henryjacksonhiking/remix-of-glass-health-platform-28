@@ -186,20 +186,19 @@ const ProductStory = () => {
                 }}
               >
                 <BrowserChrome />
-                <div style={{ overflow: "hidden", ...(i === 0 ? { maxHeight: 480 } : {}), borderRadius: 12 }}>
+                <div style={{ overflow: "hidden", borderRadius: 12 }}>
                   <img
                     src={row.image}
                     alt={row.headline}
                     loading="lazy"
                     width={1440}
                     height={900}
-                    className={row.mobileImage ? "max-h-[280px] md:max-h-[320px] object-cover object-top" : "max-h-[280px] md:max-h-none object-cover md:object-contain object-top md:object-center"}
+                    className={row.mobileImage ? "max-h-[280px] md:max-h-[320px] object-cover object-top" : "max-h-[280px] md:max-h-none object-contain object-top md:object-center"}
                     style={{
                       width: "100%",
                       display: "block",
                       borderRadius: 12,
-                      ...(i === 0 ? { maxHeight: 480, objectFit: "cover" as const, objectPosition: "top center" } : {}),
-                      ...(row.mobileImage ? {} : { height: "auto" }),
+                      height: "auto",
                     }}
                   />
                 </div>
