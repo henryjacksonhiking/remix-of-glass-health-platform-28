@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import careDashboard from "@/assets/care-dashboard.png";
+import careHero from "@/assets/care-hero.webp";
 
 const CareHero = () => {
   return (
@@ -38,19 +38,15 @@ const CareHero = () => {
           </Link>
         </div>
 
-        <div className="relative max-w-5xl mx-auto">
-          <div className="absolute -top-px left-1/2 -translate-x-1/2 w-2/3 h-[1px] bg-gradient-to-r from-transparent via-primary/60 to-transparent" />
-          <div className="rounded-t-xl border border-glass-border border-b-0 overflow-hidden bg-card/50 backdrop-blur-sm shadow-2xl shadow-primary/5">
-            <img
-              src={careDashboard}
-              alt="Borna Care admin dashboard showing appointments, payments, providers, and forms management"
-              className="w-full h-auto"
-              loading="eager"
-              width={1920}
-              height={1080}
-            />
-          </div>
-          <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-background to-transparent pointer-events-none" />
+        <div className="relative w-full mx-auto">
+          <img
+            src={careHero}
+            alt="Borna Care patient portal showing appointments, forms, payments, and scheduling"
+            className="w-full h-auto"
+            loading="eager"
+            width={1600}
+            height={611}
+          />
         </div>
       </div>
     </section>
