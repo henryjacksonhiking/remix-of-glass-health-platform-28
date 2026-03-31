@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { Link, NavLink, useLocation } from "react-router-dom";
 import { Menu, X, ChevronDown } from "lucide-react";
 import { products } from "@/lib/products";
@@ -9,8 +9,10 @@ import { cn } from "@/lib/utils";
 const Navbar = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [productsOpen, setProductsOpen] = useState(false);
+  const [resourcesOpen, setResourcesOpen] = useState(false);
   const location = useLocation();
   const isProductActive = location.pathname.startsWith("/products");
+  const isResourcesActive = location.pathname.startsWith("/resources") || location.pathname.startsWith("/roadmap");
 
   const navLinkClass = ({ isActive }: { isActive: boolean }) =>
     cn(
@@ -92,7 +94,58 @@ const Navbar = () => {
           <NavLink to="/platform" className={navLinkClass}>Platform</NavLink>
           <NavLink to="/solutions" className={navLinkClass}>Solutions</NavLink>
           <NavLink to="/pricing" className={navLinkClass}>Pricing</NavLink>
-          <NavLink to="/resources" className={navLinkClass}>Resources</NavLink>
+          <div
+            className="relative"
+            onMouseEnter={() => setResourcesOpen(true)}
+            onMouseLeave={() => setResourcesOpen(false)}
+          >
+            <button className={cn(
+              "relative flex items-center gap-1 text-[13px] lg:text-sm transition-all duration-300 whitespace-nowrap py-1 px-2 rounded-md",
+              isResourcesActive ? "text-foreground font-medium nav-spotlight" : "text-muted-foreground hover:text-foreground"
+            )}>
+              Resources <ChevronDown className="w-3.5 h-3.5" />
+            </button>
+            <AnimatePresence>
+              {resourcesOpen && (
+                <motion.div
+                  initial={{ opacity: 0, y: 8 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: 8 }}
+                  transition={{ duration: 0.2 }}
+                  className="absolute top-full left-0 mt-2 w-56 p-2 rounded-xl"
+                  style={{
+                    background: 'rgba(10, 15, 40, 0.97)',
+                    backdropFilter: 'blur(12px)',
+                    border: '1px solid rgba(255, 255, 255, 0.12)',
+                    boxShadow: '0 8px 32px rgba(0, 0, 0, 0.4)',
+                  }}
+                >
+                  {[
+                    { to: "/resources", label: "Case Studies & Guides" },
+                    { to: "/blog", label: "Blog" },
+                    { to: "/roadmap", label: "Roadmap" },
+                  ].map((item) => (
+                    <Link
+                      key={item.to}
+                      to={item.to}
+                      className="block px-3 py-2.5 rounded-lg text-sm transition-all duration-150"
+                      style={{ color: 'rgba(255, 255, 255, 0.85)' }}
+                      onMouseEnter={(e) => {
+                        e.currentTarget.style.background = 'rgba(255, 255, 255, 0.08)';
+                        e.currentTarget.style.color = '#00DEC4';
+                      }}
+                      onMouseLeave={(e) => {
+                        e.currentTarget.style.background = 'transparent';
+                        e.currentTarget.style.color = 'rgba(255, 255, 255, 0.85)';
+                      }}
+                    >
+                      {item.label}
+                    </Link>
+                  ))}
+                </motion.div>
+              )}
+            </AnimatePresence>
+          </div>
           <NavLink to="/about" className={navLinkClass}>About</NavLink>
         </div>
 
@@ -170,7 +223,12 @@ const Navbar = () => {
               <Link to="/platform" onClick={() => setMobileOpen(false)} className="block px-3 py-2 text-sm text-foreground">Platform</Link>
               <Link to="/solutions" onClick={() => setMobileOpen(false)} className="block px-3 py-2 text-sm text-foreground">Solutions</Link>
               <Link to="/pricing" onClick={() => setMobileOpen(false)} className="block px-3 py-2 text-sm text-foreground">Pricing</Link>
-              <Link to="/resources" onClick={() => setMobileOpen(false)} className="block px-3 py-2 text-sm text-foreground">Resources</Link>
+              <div className="space-y-1">
+                <p className="text-xs text-muted-foreground uppercase tracking-wider px-3 pb-2 pt-3">Resources</p>
+                <Link to="/resources" onClick={() => setMobileOpen(false)} className="block px-3 py-2 text-sm text-foreground">Case Studies & Guides</Link>
+                <Link to="/blog" onClick={() => setMobileOpen(false)} className="block px-3 py-2 text-sm text-foreground">Blog</Link>
+                <Link to="/roadmap" onClick={() => setMobileOpen(false)} className="block px-3 py-2 text-sm text-foreground">Roadmap</Link>
+              </div>
               <Link to="/about" onClick={() => setMobileOpen(false)} className="block px-3 py-2 text-sm text-foreground">About</Link>
               <a
                 href="https://care.borna.ai"
