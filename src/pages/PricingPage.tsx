@@ -5,11 +5,9 @@ import PageWrapper from "@/components/layout/PageWrapper";
 import { ModernPricingPage, PricingCardProps } from "@/components/ui/animated-glassy-pricing";
 
 const faqs = [
-  { q: "What is included in the Free Trial?", a: "The Free Trial includes all core features for 1 branch and 1 user, including online booking (without EHR integration), intake forms, payments, and notifications." },
-  { q: "Can I add more branches?", a: "Yes. Additional branches can be added to the Starter Plan for $199 per branch per month." },
-  { q: "How does pricing scale?", a: "The Starter Plan supports up to 20 users per clinic. Contact our team for custom pricing if you need more." },
-  { q: "Is there a long-term contract?", a: "No. The Starter Plan is a monthly subscription — cancel anytime." },
-  { q: "What happens after my free trial ends?", a: "You can upgrade to the Starter Plan to keep all your data and unlock the full feature set." },
+  { q: "What is included in Borna Care?", a: "Borna Care includes online appointment booking, digital intake and consent forms, online payments, patient dashboard, family management, and EHR integration support." },
+  { q: "When will other modules be available?", a: "Borna Connect and Borna Insight are currently in development. Join our early access list to be notified." },
+  { q: "Can I start with one location and add more?", a: "Yes — Borna Care supports multi-location practices. Additional locations are available as an add-on." },
 ];
 
 const PricingPage = () => {
@@ -63,11 +61,20 @@ const PricingPage = () => {
         <meta name="description" content="Simple and transparent healthcare software pricing. Explore Borna.ai clinic management software plans and find the right fit for your practice." />
       </Helmet>
       <ModernPricingPage
-        title="Simple and transparent healthcare software pricing"
-        subtitle="Explore our clinic management software cost — start free, upgrade when you're ready. No hidden fees, no long-term contracts."
+        title="Simple and flexible healthcare software pricing"
+        subtitle="Start with Borna Care and expand as your clinic grows. No hidden fees. No long-term lock-in."
         plans={plans}
         showAnimatedBackground={true}
       />
+
+      {/* Module pricing note */}
+      <section className="py-12 border-t border-glass-border">
+        <div className="container mx-auto px-4 md:px-6 max-w-3xl text-center">
+          <p className="text-sm text-muted-foreground italic">
+            Pricing for Borna Connect, Insight, Engage, and Core will be announced when each module launches.
+          </p>
+        </div>
+      </section>
 
       {/* Add-on */}
       <section className="py-16 border-t border-glass-border">

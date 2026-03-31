@@ -31,7 +31,7 @@ const AboutPage = () => (
           transition={{ duration: 0.6 }}
           className="hero-headline text-foreground mb-6"
          >
-          Healthcare technology company
+          Healthcare technology company building the future of clinic operations
         </motion.h1>
         <motion.p
           initial={{ opacity: 0, y: 20 }}
@@ -39,7 +39,7 @@ const AboutPage = () => (
           transition={{ duration: 0.6, delay: 0.1 }}
           className="body-text mx-auto max-w-xl"
         >
-          Borna.ai is a HealthTech SaaS company building a modular healthcare platform starting with Borna Care to simplify clinic operations and improve patient experience.
+          Borna.ai is a HealthTech SaaS company building a modular healthcare platform — starting with Borna Care to simplify clinic operations and improve patient experience.
         </motion.p>
       </div>
     </section>
@@ -57,7 +57,7 @@ const AboutPage = () => (
           >
             <h2 className="text-lg font-semibold text-foreground mb-3">Mission</h2>
             <p className="text-sm text-muted-foreground leading-relaxed">
-              Simplify and modernize healthcare operations so clinics can focus on what matters most — patient care.
+              Our mission is to simplify and modernise healthcare operations — eliminating administrative burden so clinics can focus on delivering quality care.
             </p>
           </motion.div>
           <motion.div
@@ -69,7 +69,7 @@ const AboutPage = () => (
           >
             <h2 className="text-lg font-semibold text-foreground mb-3">Vision</h2>
             <p className="text-sm text-muted-foreground leading-relaxed">
-              Become the operational backbone of modern clinics — a single platform that connects every part of the practice.
+              To become the operational backbone of modern clinics — combining workflow automation, unified communication, and patient-centric design in one intelligent platform.
             </p>
           </motion.div>
         </div>
@@ -107,9 +107,9 @@ const AboutPage = () => (
     {/* Team placeholder */}
     <section className="py-24 border-t border-glass-border">
       <div className="container mx-auto px-4 md:px-6 max-w-3xl text-center">
-        <h2 className="section-headline text-foreground mb-4">Leadership</h2>
+        <h2 className="section-headline text-foreground mb-4">Our team</h2>
         <p className="body-text mx-auto">
-          Our team combines deep healthcare domain expertise with modern product engineering. More details coming soon.
+          We're a team of healthcare technology specialists, designers, and engineers building the tools clinics deserve.
         </p>
       </div>
     </section>

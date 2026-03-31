@@ -90,7 +90,7 @@ const useCases = [
   {
     icon: UserPlus,
     title: "Patient acquisition",
-    description: "Capture and convert leads through better communication, scheduling, and a frictionless first impression.",
+    description: "Convert more enquiries into booked appointments. Borna Care's online booking means patients can schedule at any time — no phone call needed.",
     outcomes: ["Increase online bookings", "Reduce lead response time", "Convert more enquiries"],
     visual: () => (
       <div className="space-y-3">
@@ -102,7 +102,7 @@ const useCases = [
   {
     icon: Heart,
     title: "Patient retention",
-    description: "Keep patients engaged with automated reminders, follow-ups, and a portal they actually want to use.",
+    description: "Automated reminders, follow-ups, and a seamless patient portal keep patients coming back and reduce no-shows.",
     outcomes: ["Reduce no-shows", "Increase recall compliance", "Improve patient satisfaction"],
     visual: () => (
       <div className="flex items-center gap-5">
@@ -117,7 +117,7 @@ const useCases = [
   {
     icon: Zap,
     title: "Workflow automation",
-    description: "Reduce manual tasks through automation — from intake forms to appointment confirmations to billing.",
+    description: "Replace manual scheduling, paper forms, and phone-based payment collection with automated digital workflows.",
     outcomes: ["Eliminate paper forms", "Automate appointment reminders", "Streamline billing workflows"],
     visual: () => (
       <div className="space-y-3">
@@ -153,8 +153,8 @@ const useCases = [
   },
   {
     icon: DollarSign,
-    title: "Revenue optimization",
-    description: "Improve billing efficiency, reduce missed opportunities, and gain visibility into your clinic's financial performance.",
+    title: "Revenue optimisation",
+    description: "Recover outstanding payments faster, reduce no-shows, and free up admin time to focus on patient care.",
     outcomes: ["Track outstanding invoices", "Reduce payment delays", "Identify revenue gaps"],
     visual: () => (
       <div className="space-y-3">
@@ -169,9 +169,9 @@ const useCases = [
 ];
 
 const clinicTypes = [
-  { icon: Stethoscope, name: "Dental clinics", description: "Dental clinic management software that streamlines patient flow from first call to follow-up across operatories and hygienists." },
-  { icon: Building2, name: "Multi-location practices", description: "Unified operations, consistent patient experience, and centralized data across all your sites." },
-  { icon: Activity, name: "Medical clinics", description: "Reduce admin burden for GP practices, specialist clinics, and allied health providers." },
+  { icon: Stethoscope, name: "Dental clinics", description: "Borna Care is purpose-built for dental practices — online booking, digital consent forms, and payment requests designed around how dental clinics operate." },
+  { icon: Building2, name: "Multi-location practices", description: "Manage providers, schedules, and patient interactions across multiple locations from one centralised admin dashboard." },
+  { icon: Activity, name: "Independent medical clinics", description: "Reduce administrative burden and improve patient experience without the complexity or cost of enterprise healthcare software." },
 ];
 
 const SolutionsPage = () => (
@@ -193,7 +193,7 @@ const SolutionsPage = () => (
           transition={{ duration: 0.6 }}
           className="hero-headline text-foreground mb-6"
         >
-          Healthcare solutions for clinics
+          Healthcare solutions for clinics of every size
         </motion.h1>
         <motion.p
           initial={{ opacity: 0, y: 20 }}
@@ -201,7 +201,7 @@ const SolutionsPage = () => (
           transition={{ duration: 0.6, delay: 0.1 }}
           className="body-text mx-auto mb-8 max-w-xl"
         >
-          Borna.ai helps clinics solve real operational challenges through a unified platform, starting with Borna Care.
+          Borna.ai helps dental clinics and multi-location medical practices solve real operational challenges — starting with Borna Care.
         </motion.p>
         <motion.div
           initial={{ opacity: 0, y: 20 }}
