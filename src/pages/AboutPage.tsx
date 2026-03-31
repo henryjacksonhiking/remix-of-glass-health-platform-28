@@ -31,7 +31,7 @@ const AboutPage = () => (
           transition={{ duration: 0.6 }}
           className="hero-headline text-foreground mb-6"
          >
-          Healthcare technology company
+          Healthcare technology company building the future of clinic operations
         </motion.h1>
         <motion.p
           initial={{ opacity: 0, y: 20 }}
