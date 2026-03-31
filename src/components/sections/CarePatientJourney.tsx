@@ -17,7 +17,7 @@ const CarePatientJourney = () => {
           The patient experience, reimagined
         </h2>
 
-        <div className="flex flex-col md:flex-row items-start justify-center gap-4 max-w-5xl mx-auto">
+        <div className="flex flex-col md:flex-row items-center justify-center gap-4 max-w-5xl mx-auto">
           {steps.map((s, i) => (
             <motion.div
               key={s.num}
