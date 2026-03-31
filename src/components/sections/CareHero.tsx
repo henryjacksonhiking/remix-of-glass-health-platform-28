@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import careDashboard from "@/assets/care-dashboard.png";
+import careHero from "@/assets/care-hero.webp";
 
 const CareHero = () => {
   return (
