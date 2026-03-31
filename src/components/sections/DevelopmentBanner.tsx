@@ -27,11 +27,11 @@ const DevelopmentBanner = ({ moduleName }: DevelopmentBannerProps) => {
       {submitted ? (
         <div className="flex items-center justify-center gap-2 text-sm text-foreground">
           <CheckCircle className="w-4 h-4" style={{ color: '#00DEC4' }} />
-          Thank you! We'll notify  you when {moduleName} launches.
+          Thank you! We'll notify you when {moduleName} launches.
         </div>
-      perfomance) : (
+      ) : (
         <div className="text-center">
-          <p className="text-sm text-foreground_ mb-3">
+          <p className="text-sm text-foreground mb-3">
             <strong>{moduleName}</strong> is currently in development.{" "}
             <span className="text-muted-foreground">Join our early access list to be notified when it launches.</span>
           </p>
