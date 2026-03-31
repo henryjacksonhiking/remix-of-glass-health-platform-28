@@ -99,6 +99,7 @@ const ProductPage = () => {
           <meta name="description" content={meta.description} />
         </Helmet>
       )}
+      {!isCare && <DevelopmentBanner moduleName={product.name} />}
       {/* Hero */}
       {isCare ? (
         <CareHero />

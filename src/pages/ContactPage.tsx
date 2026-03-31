@@ -16,7 +16,7 @@ const ContactPage = () => {
     <PageWrapper>
       <Helmet>
         <title>Book a Demo — Healthcare Software for Clinics | Borna.ai</title>
-        <meta name="description" content="Book a healthcare software demo and see Borna.ai in action. Request a clinic software consultation and discover how Borna Care can transform your practice operations." />
+        <meta name="description" content="Book a healthcare software demo and see Borna.ai in action. Request a clinic software consultation and discover how Borna Care can transform your practice." />
       </Helmet>
       <section className="py-24 md:py-32">
         <div className="container mx-auto px-4 md:px-6 max-w-5xl">
