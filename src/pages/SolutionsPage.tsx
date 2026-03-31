@@ -169,9 +169,9 @@ const useCases = [
 ];
 
 const clinicTypes = [
-  { icon: Stethoscope, name: "Dental clinics", description: "Dental clinic management software that streamlines patient flow from first call to follow-up across operatories and hygienists." },
-  { icon: Building2, name: "Multi-location practices", description: "Unified operations, consistent patient experience, and centralized data across all your sites." },
-  { icon: Activity, name: "Medical clinics", description: "Reduce admin burden for GP practices, specialist clinics, and allied health providers." },
+  { icon: Stethoscope, name: "Dental clinics", description: "Borna Care is purpose-built for dental practices — online booking, digital consent forms, and payment requests designed around how dental clinics operate." },
+  { icon: Building2, name: "Multi-location practices", description: "Manage providers, schedules, and patient interactions across multiple locations from one centralised admin dashboard." },
+  { icon: Activity, name: "Independent medical clinics", description: "Reduce administrative burden and improve patient experience without the complexity or cost of enterprise healthcare software." },
 ];
 
 const SolutionsPage = () => (
