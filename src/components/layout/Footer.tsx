@@ -1,8 +1,19 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import { products } from "@/lib/products";
 import BornaLogo from "@/components/BornaLogo";
 
 const Footer = () => {
+  const [email, setEmail] = useState("");
+  const [subscribed, setSubscribed] = useState(false);
+
+  const handleSubscribe = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (email.trim()) {
+      setSubscribed(true);
+    }
+  };
+
   const columns = [
     {
       title: "Products",
@@ -14,7 +25,7 @@ const Footer = () => {
         { label: "Overview", href: "/platform" },
         { label: "Solutions", href: "/solutions" },
         { label: "Pricing", href: "/pricing" },
-        { label: "Security", href: "/security" },
+        { label: "Roadmap", href: "/roadmap" },
       ],
     },
     {
@@ -32,7 +43,7 @@ const Footer = () => {
         { label: "About", href: "/about" },
         { label: "Privacy policy", href: "/privacy" },
         { label: "Terms of service", href: "/terms" },
-        { label: "HIPAA compliance", href: "/security" },
+        { label: "Security & compliance", href: "/security" },
       ],
     },
   ];
@@ -68,17 +79,27 @@ const Footer = () => {
         </div>
 
         {/* Newsletter */}
-        <div className="mt-12 pt-8 border-t border-glass-border flex flex-col md:flex-row items-center justify-center gap-8">
+        <div className="mt-12 pt-8 border-t border-glass-border flex flex-col items-center justify-center gap-4">
           <p className="text-sm text-muted-foreground">Stay updated with Borna.ai</p>
-          <div className="flex gap-2">
-            <input
-              type="email"
-              placeholder="Enter your email"
-              className="bg-glass border border-glass-border rounded-lg px-4 py-2 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-1 focus:ring-primary w-64"
-              aria-label="Email for newsletter"
-            />
-            <button className="gradient-btn text-sm px-4 py-2">Subscribe</button>
-          </div>
+          {subscribed ? (
+            <p className="text-sm text-primary font-medium">Thank you — we'll be in touch soon.</p>
+          ) : (
+            <form onSubmit={handleSubscribe} className="flex gap-2">
+              <input
+                type="email"
+                required
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                placeholder="Enter your email for clinic management insights"
+                className="bg-glass border border-glass-border rounded-lg px-4 py-2 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-1 focus:ring-primary w-80"
+                aria-label="Email for newsletter"
+              />
+              <button type="submit" className="gradient-btn text-sm px-4 py-2">Subscribe</button>
+            </form>
+          )}
+          {!subscribed && (
+            <p className="text-xs text-muted-foreground">Join 500+ clinic owners receiving weekly operational tips.</p>
+          )}
         </div>
 
         <div className="mt-8 text-center">

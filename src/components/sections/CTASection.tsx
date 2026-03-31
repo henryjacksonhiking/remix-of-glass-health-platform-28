@@ -15,8 +15,8 @@ const CTASection = () => {
           Book a healthcare software demo or request a clinic software consultation — our team will get back to you within one business day.
         </p>
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-8">
-          <Link to="/contact" className="ghost-btn text-base px-8 py-3.5 w-full sm:w-[260px]">Talk to our team</Link>
           <Link to="/demo" className="gradient-btn text-base px-8 py-3.5 w-full sm:w-[260px]">Book a demo</Link>
+          <Link to="/sign-up" className="ghost-btn text-base px-8 py-3.5 w-full sm:w-[260px]">Start free trial</Link>
         </div>
 
         {/* Sparkles effect below buttons */}
