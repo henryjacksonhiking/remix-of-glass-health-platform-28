@@ -69,7 +69,7 @@ const AboutPage = () => (
           >
             <h2 className="text-lg font-semibold text-foreground mb-3">Vision</h2>
             <p className="text-sm text-muted-foreground leading-relaxed">
-              Become the operational backbone of modern clinics — a single platform that connects every part of the practice.
+              To become the operational backbone of modern clinics — combining workflow automation, unified communication, and patient-centric design in one intelligent platform.
             </p>
           </motion.div>
         </div>
