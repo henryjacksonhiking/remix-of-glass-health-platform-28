@@ -39,7 +39,7 @@ const HeroSection = () => {
           </h1>
 
           <p className="text-[12px] sm:text-[13px] md:text-[15px] lg:text-base xl:text-[17px] text-muted-foreground leading-relaxed mb-4 md:mb-6 max-w-xl mx-auto">
-            Borna.ai is a HealthTech SaaS for clinics — unifying patient management, communications, and analytics in one modular ecosystem built for how clinics actually work.
+            Start with Borna Care to streamline your clinic today — and scale into a complete AI-driven system as you grow.
           </p>
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-3">
