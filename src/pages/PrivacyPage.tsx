@@ -1,43 +1,44 @@
 import { motion } from "framer-motion";
+import { Helmet } from "react-helmet-async";
 import PageWrapper from "@/components/layout/PageWrapper";
 
 const sections = [
   {
     title: "Information we collect",
-    content: "We collect information you provide directly, such as your name, email address, clinic details, and any data entered through our platform. We also collect usage data automatically, including device information, IP address, and interaction patterns within the application.",
+    content: "We collect information you provide directly to us, including your name, email address, clinic name, contact details, and any data you enter into the Borna.ai platform. We also automatically collect certain technical information when you use our services, such as your IP address, browser type, device information, and usage patterns within the application. When patients interact with your clinic through Borna Care, we process appointment data, intake form submissions, and payment information on your behalf.",
   },
   {
     title: "How we use your information",
-    content: "We use collected information to provide and improve our services, communicate with you about your account, process transactions, ensure platform security, and comply with legal obligations. We do not sell your personal information to third parties.",
+    content: "We use your information to provide, maintain, and improve our services, including processing appointments, managing patient intake forms, and facilitating payments. We also use your data to communicate with you about your account, respond to support requests, send service updates, and ensure the security and reliability of our platform. We do not sell, rent, or share your personal information with third parties for their marketing purposes.",
   },
   {
     title: "Data storage and security",
-    content: "All data is stored using enterprise-grade cloud infrastructure with AES-256 encryption at rest and TLS 1.2+ in transit. We implement role-based access controls, regular security audits, and comprehensive monitoring to protect your data.",
+    content: "All data processed through Borna.ai is stored using enterprise-grade cloud infrastructure. We employ AES-256 encryption for data at rest and TLS 1.2+ encryption for data in transit. Our infrastructure includes automated backups, redundant storage, and disaster recovery procedures. We conduct regular security assessments, vulnerability scanning, and penetration testing to identify and address potential risks.",
   },
   {
-    title: "Patient data handling",
-    content: "Patient data processed through Borna.ai is handled in accordance with HIPAA requirements. We act as a Business Associate and maintain appropriate safeguards, including encryption, access controls, audit logging, and incident response procedures.",
+    title: "HIPAA compliance",
+    content: "Borna.ai maintains a HIPAA-ready architecture designed to protect patient health information (PHI). We implement administrative, physical, and technical safeguards as required under the HIPAA Security Rule. For covered entities, we enter into Business Associate Agreements (BAAs) and maintain comprehensive policies covering access controls, audit logging, breach notification, and incident response. All team members with access to PHI receive regular HIPAA training.",
   },
   {
-    title: "Data retention",
-    content: "We retain your data for as long as your account is active or as needed to provide services. Upon account termination, data is securely deleted within 90 days unless retention is required by law.",
+    title: "Third-party services",
+    content: "We use carefully selected third-party service providers to support our platform operations, including cloud hosting, payment processing, email delivery, and analytics. All third-party providers are evaluated for their security practices and, where applicable, are required to sign Business Associate Agreements. We only share the minimum information necessary for these providers to perform their services on our behalf.",
   },
   {
     title: "Your rights",
-    content: "You have the right to access, correct, or delete your personal information. You may also request data portability or object to certain processing activities. Contact us at privacy@borna.ai to exercise these rights.",
+    content: "You have the right to access, correct, update, or delete your personal information at any time. You may request a copy of the data we hold about you, ask us to restrict certain processing activities, or request data portability. If you are a clinic administrator, you can manage patient data directly through the Borna Care admin dashboard. For all privacy-related requests, contact us at privacy@borna.ai and we will respond within 30 days.",
   },
   {
-    title: "Changes to this policy",
-    content: "We may update this privacy policy from time to time. We will notify you of any material changes by posting the updated policy on our website and, where appropriate, via email.",
-  },
-  {
-    title: "Contact",
-    content: "For questions about this privacy policy or our data practices, contact us at privacy@borna.ai.",
+    title: "Contact us",
+    content: "If you have questions about this privacy policy, our data practices, or wish to exercise your privacy rights, please contact us at privacy@borna.ai. For HIPAA-related inquiries, you may also reach our compliance team at compliance@borna.ai.",
   },
 ];
 
 const PrivacyPage = () => (
   <PageWrapper>
+    <Helmet>
+      <title>Privacy Policy — Borna.ai</title>
+      <meta name="description" content="Learn how Borna.ai collects, uses, and protects your data. Read our privacy policy covering HIPAA compliance, data security, and your rights." />
+    </Helmet>
     <section className="py-24 md:py-32">
       <div className="container mx-auto px-4 md:px-6 max-w-3xl">
         <motion.h1

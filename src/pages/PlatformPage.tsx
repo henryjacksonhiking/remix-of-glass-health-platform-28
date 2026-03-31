@@ -193,7 +193,7 @@ const PlatformPage = () => (
         <h2 className="section-headline text-foreground mb-6">Start today. Scale without limits.</h2>
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
           <Link to="/demo" className="gradient-btn text-base px-8 py-3.5">Book a demo</Link>
-          <Link to="/contact" className="ghost-btn text-base px-8 py-3.5">Join Early Access</Link>
+          <Link to="/sign-up" className="ghost-btn text-base px-8 py-3.5">Start free trial</Link>
         </div>
       </div>
     </section>

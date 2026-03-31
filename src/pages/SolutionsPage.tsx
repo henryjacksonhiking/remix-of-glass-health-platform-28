@@ -208,7 +208,10 @@ const SolutionsPage = () => (
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2 }}
         >
-          <Link to="/demo" className="gradient-btn text-base px-8 py-3.5">Book a demo</Link>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Link to="/demo" className="gradient-btn text-base px-8 py-3.5">Book a demo</Link>
+            <Link to="/sign-up" className="ghost-btn text-base px-8 py-3.5">Start free trial</Link>
+          </div>
         </motion.div>
       </div>
     </section>
