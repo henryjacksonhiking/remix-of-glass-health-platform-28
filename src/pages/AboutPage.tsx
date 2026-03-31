@@ -57,7 +57,7 @@ const AboutPage = () => (
           >
             <h2 className="text-lg font-semibold text-foreground mb-3">Mission</h2>
             <p className="text-sm text-muted-foreground leading-relaxed">
-              Simplify and modernize healthcare operations so clinics can focus on what matters most — patient care.
+              Our mission is to simplify and modernise healthcare operations — eliminating administrative burden so clinics can focus on delivering quality care.
             </p>
           </motion.div>
           <motion.div
