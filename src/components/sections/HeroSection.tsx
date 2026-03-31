@@ -30,16 +30,16 @@ const HeroSection = () => {
           className="text-center max-w-3xl mx-auto mb-3 md:mb-8 lg:mb-10"
         >
           <span className="inline-block glass-panel px-3 py-1 text-[10px] md:text-[11px] lg:text-xs font-medium text-primary mb-3 md:mb-4 lg:mb-5">
-            AI healthcare platform
+            AI-powered healthcare operations platform
           </span>
 
           <h1 className="text-[24px] leading-[1.15] sm:text-[28px] md:text-[32px] lg:text-[36px] xl:text-[42px] 2xl:text-[48px] font-medium tracking-tight md:leading-tight text-foreground mb-3 md:mb-4 lg:mb-5" style={{ letterSpacing: '-1.5px' }}>
-            The healthcare operations platform for{" "}
-            <span className="gradient-text">modern clinics</span>
+            AI-Powered Healthcare{" "}
+            <span className="gradient-text">Operations Platform</span>
           </h1>
 
           <p className="text-[12px] sm:text-[13px] md:text-[15px] lg:text-base xl:text-[17px] text-muted-foreground leading-relaxed mb-4 md:mb-6 max-w-xl mx-auto">
-            Borna.ai is a HealthTech SaaS for clinics — unifying patient management, communications, and analytics in one modular ecosystem built for how clinics actually work.
+            Start with Borna Care to streamline your clinic today — and scale into a complete AI-driven system as you grow.
           </p>
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-3">
@@ -72,26 +72,45 @@ const HeroSection = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.4 }}
-          className="grid grid-cols-3 gap-2 md:grid-cols-5 md:gap-3 max-w-5xl mx-auto w-full shrink-0"
+          className="shrink-0 max-w-5xl mx-auto w-full"
         >
-          {products.map((product) => {
-            const IconComp = iconMap[product.features[0]?.icon] || LucideIcons.Box;
-            return (
-              <Link
-                key={product.id}
-                to={product.href}
-                className="glass-panel-hover p-2 md:p-4 lg:p-3 xl:p-5 text-center group min-w-0"
-              >
-                <div
-                  className="w-8 h-8 md:w-11 md:h-11 lg:w-9 lg:h-9 xl:w-12 xl:h-12 rounded-lg mx-auto mb-1 md:mb-2 flex items-center justify-center"
-                  style={{ backgroundColor: `${product.accentColor}20` }}
+          <div className="grid grid-cols-3 gap-2 md:grid-cols-5 md:gap-3 w-full">
+            {products.map((product) => {
+              const IconComp = iconMap[product.features[0]?.icon] || LucideIcons.Box;
+              const isCare = product.id === 'care';
+              const statusText = isCare ? '✓ Available now' : (product.id === 'engage' || product.id === 'core') ? 'Coming soon' : 'In development';
+              return (
+                <Link
+                  key={product.id}
+                  to={product.href}
+                  className="glass-panel-hover p-2 md:p-4 lg:p-3 xl:p-5 text-center group min-w-0"
                 >
-                  <IconComp className="w-3.5 h-3.5 md:w-5 md:h-5 lg:w-4 lg:h-4 xl:w-5 xl:h-5" style={{ color: product.accentColor }} />
-                </div>
-                <div className="text-[10px] md:text-xs lg:text-[11px] xl:text-sm font-medium text-foreground truncate">{product.name}</div>
-              </Link>
-            );
-          })}
+                  <div
+                    className="w-8 h-8 md:w-11 md:h-11 lg:w-9 lg:h-9 xl:w-12 xl:h-12 rounded-lg mx-auto mb-1 md:mb-2 flex items-center justify-center"
+                    style={{ backgroundColor: `${product.accentColor}20` }}
+                  >
+                    <IconComp className="w-3.5 h-3.5 md:w-5 md:h-5 lg:w-4 lg:h-4 xl:w-5 xl:h-5" style={{ color: product.accentColor }} />
+                  </div>
+                  <div className="text-[10px] md:text-xs lg:text-[11px] xl:text-sm font-medium text-foreground truncate">{product.name}</div>
+                  <span
+                    className="inline-block mt-1 text-[8px] md:text-[10px] font-medium px-1.5 py-0.5 rounded-full truncate"
+                    style={{
+                      backgroundColor: isCare ? '#00DEC420' : 'rgba(255,255,255,0.08)',
+                      color: isCare ? '#00DEC4' : 'rgba(255,255,255,0.3)',
+                    }}
+                  >
+                    {statusText}
+                  </span>
+                </Link>
+              );
+            })}
+          </div>
+          <p className="text-center mt-4 md:mt-5" style={{ fontSize: '13px', color: 'rgba(255,255,255,0.4)' }}>
+            Each module is being built as part of one unified architecture — not as disconnected tools.
+          </p>
+          <div className="text-center mt-3">
+            <Link to="/contact" className="ghost-btn text-sm px-6 py-2.5">Join Early Access</Link>
+          </div>
         </motion.div>
       </div>
     </section>
