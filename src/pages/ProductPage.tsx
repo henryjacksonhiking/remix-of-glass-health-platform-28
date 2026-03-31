@@ -9,6 +9,12 @@ import { products } from "@/lib/products";
 import PageWrapper from "@/components/layout/PageWrapper";
 import CTASection from "@/components/sections/CTASection";
 import CareHero from "@/components/sections/CareHero";
+import CareProblemSection from "@/components/sections/CareProblemSection";
+import CareSolutionOverview from "@/components/sections/CareSolutionOverview";
+import CarePatientJourney from "@/components/sections/CarePatientJourney";
+import CareAdminCapabilities from "@/components/sections/CareAdminCapabilities";
+import CareBenefitsSection from "@/components/sections/CareBenefitsSection";
+import CareCTASection from "@/components/sections/CareCTASection";
 import DevelopmentBanner from "@/components/sections/DevelopmentBanner";
 import AetherFlowBackground from "@/components/ui/aether-flow-hero";
 import careDashboardScreen from "@/assets/care-dashboard-screen.png";
@@ -91,6 +97,77 @@ const ProductPage = () => {
 
   const meta = metaTags[product.slug];
 
+  if (isCare) {
+    return (
+      <PageWrapper>
+        {meta && (
+          <Helmet>
+            <title>{meta.title}</title>
+            <meta name="description" content={meta.description} />
+          </Helmet>
+        )}
+        <CareHero />
+        <CareProblemSection />
+        <CareSolutionOverview />
+
+        {/* Features grid */}
+        <section id="features" className="py-24 border-t border-glass-border">
+          <div className="container mx-auto px-4 md:px-6">
+            <h2 className="section-headline text-foreground text-center mb-16">
+              Everything Borna Care does for your clinic
+            </h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 max-w-5xl mx-auto">
+              {product.features.map((feat, i) => {
+                const IconComp = iconMap[feat.icon] || LucideIcons.Box;
+                return (
+                  <motion.div
+                    key={feat.title}
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: i * 0.08 }}
+                    className="group/glowing relative rounded-xl glass-panel p-6"
+                  >
+                    <GlowingEffect spread={40} glow={false} disabled={false} proximity={64} inactiveZone={0.01} borderWidth={2} />
+                    <div className="relative z-10">
+                      <div className="w-10 h-10 rounded-lg flex items-center justify-center mb-4" style={{ backgroundColor: `${product.accentColor}15` }}>
+                        <IconComp className="w-5 h-5" style={{ color: product.accentColor }} />
+                      </div>
+                      <h3 className="text-base font-medium text-foreground mb-1">{feat.title}</h3>
+                      <p className="text-sm text-muted-foreground leading-relaxed">{feat.description}</p>
+                    </div>
+                  </motion.div>
+                );
+              })}
+            </div>
+          </div>
+        </section>
+
+        <CarePatientJourney />
+        <CareAdminCapabilities />
+        <CareBenefitsSection />
+
+        {/* Integration callout */}
+        <section className="py-16 bg-muted/30 border-y border-glass-border">
+          <div className="container mx-auto px-4 md:px-6 text-center">
+            <h2 className="section-headline text-foreground mb-4">Works with your existing EHR</h2>
+            <p className="body-text mx-auto mb-8">
+              Bidirectional sync with major electronic health record systems and payment gateways.
+            </p>
+            <div className="flex flex-wrap justify-center gap-4 mb-8">
+              {["Open Dental", "Dentrix", "Eaglesoft", "Curve Dental"].map((ehr) => (
+                <div key={ehr} className="glass-panel px-5 py-2.5 text-sm text-muted-foreground">{ehr}</div>
+              ))}
+            </div>
+            <Link to="/contact" className="ghost-btn text-sm">See all integrations</Link>
+          </div>
+        </section>
+
+        <CareCTASection />
+      </PageWrapper>
+    );
+  }
+
   return (
     <PageWrapper>
       {meta && (
@@ -99,63 +176,40 @@ const ProductPage = () => {
           <meta name="description" content={meta.description} />
         </Helmet>
       )}
-      {!isCare && <DevelopmentBanner moduleName={product.name} />}
+      <DevelopmentBanner moduleName={product.name} />
       {/* Hero */}
-      {isCare ? (
-        <CareHero />
-      ) : (
-        <section className="relative overflow-hidden py-24 md:py-32">
-          <AetherFlowBackground accentColor={product.accentColor} />
-          <div className="absolute top-0 left-1/3 w-80 h-80 rounded-full blur-[120px] animate-glow-pulse" style={{ backgroundColor: `${product.accentColor}15` }} />
-          <div className="container mx-auto px-4 md:px-6 relative z-10">
-            {/* Breadcrumb */}
-            <div className="flex items-center gap-2 text-sm text-muted-foreground mb-8">
-              <Link to="/" className="hover:text-foreground transition-colors">Home</Link>
-              <span>/</span>
-              <span>Products</span>
-              <span>/</span>
-              <span className="text-foreground">{product.name}</span>
-            </div>
-
-            <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}>
-              <span
-                className="inline-block px-3 py-1 text-xs font-medium rounded-full mb-6"
-                style={{ backgroundColor: `${product.accentColor}20`, color: product.accentColor }}
-              >
-                {product.name}
-              </span>
-            </motion.div>
-
-            <motion.h1
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.1 }}
-              className="hero-headline text-foreground max-w-2xl mb-6"
-            >
-              {product.tagline}
-            </motion.h1>
-
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.2 }}
-              className="body-text max-w-xl mb-8"
-            >
-              {product.description}
-            </motion.p>
-
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.3 }}
-              className="flex flex-col sm:flex-row gap-4"
-            >
-              <Link to="/demo" className="gradient-btn text-base px-8 py-3.5">Book a demo</Link>
-              <a href="#features" className="ghost-btn text-base px-8 py-3.5">See features</a>
-            </motion.div>
+      <section className="relative overflow-hidden py-24 md:py-32">
+        <AetherFlowBackground accentColor={product.accentColor} />
+        <div className="absolute top-0 left-1/3 w-80 h-80 rounded-full blur-[120px] animate-glow-pulse" style={{ backgroundColor: `${product.accentColor}15` }} />
+        <div className="container mx-auto px-4 md:px-6 relative z-10">
+          <div className="flex items-center gap-2 text-sm text-muted-foreground mb-8">
+            <Link to="/" className="hover:text-foreground transition-colors">Home</Link>
+            <span>/</span>
+            <span>Products</span>
+            <span>/</span>
+            <span className="text-foreground">{product.name}</span>
           </div>
-        </section>
-      )}
+
+          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}>
+            <span className="inline-block px-3 py-1 text-xs font-medium rounded-full mb-6" style={{ backgroundColor: `${product.accentColor}20`, color: product.accentColor }}>
+              {product.name}
+            </span>
+          </motion.div>
+
+          <motion.h1 initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, delay: 0.1 }} className="hero-headline text-foreground max-w-2xl mb-6">
+            {product.tagline}
+          </motion.h1>
+
+          <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, delay: 0.2 }} className="body-text max-w-xl mb-8">
+            {product.description}
+          </motion.p>
+
+          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, delay: 0.3 }} className="flex flex-col sm:flex-row gap-4">
+            <Link to="/demo" className="gradient-btn text-base px-8 py-3.5">Book a demo</Link>
+            <a href="#features" className="ghost-btn text-base px-8 py-3.5">See features</a>
+          </motion.div>
+        </div>
+      </section>
 
       {/* Features grid */}
       <section id="features" className="py-24 border-t border-glass-border">
@@ -175,19 +229,9 @@ const ProductPage = () => {
                   transition={{ delay: i * 0.08 }}
                   className="group/glowing relative rounded-xl glass-panel p-6"
                 >
-                  <GlowingEffect
-                    spread={40}
-                    glow={false}
-                    disabled={false}
-                    proximity={64}
-                    inactiveZone={0.01}
-                    borderWidth={2}
-                  />
+                  <GlowingEffect spread={40} glow={false} disabled={false} proximity={64} inactiveZone={0.01} borderWidth={2} />
                   <div className="relative z-10">
-                    <div
-                      className="w-10 h-10 rounded-lg flex items-center justify-center mb-4"
-                      style={{ backgroundColor: `${product.accentColor}15` }}
-                    >
+                    <div className="w-10 h-10 rounded-lg flex items-center justify-center mb-4" style={{ backgroundColor: `${product.accentColor}15` }}>
                       <IconComp className="w-5 h-5" style={{ color: product.accentColor }} />
                     </div>
                     <h3 className="text-base font-medium text-foreground mb-1">{feat.title}</h3>
@@ -201,18 +245,7 @@ const ProductPage = () => {
       </section>
 
       {/* How it works */}
-      {isCare && (
-        <section className="py-24 border-t border-glass-border">
-          <FeatureSteps
-            features={careFeatureSteps}
-            title="How it works"
-            autoPlayInterval={4000}
-            imageHeight="h-[400px] md:h-[500px]"
-          />
-        </section>
-      )}
-
-      {steps && !isCare && (
+      {steps && (
         <section className="py-24 border-t border-glass-border">
           <div className="container mx-auto px-4 md:px-6">
             <h2 className="section-headline text-foreground text-center mb-16">How it works</h2>
@@ -268,10 +301,7 @@ const ProductPage = () => {
               const IconComp = iconMap[rp.features[0]?.icon] || LucideIcons.Box;
               return (
                 <Link key={rp.id} to={rp.href} className="glass-panel-hover p-6 group">
-                  <div
-                    className="w-10 h-10 rounded-lg flex items-center justify-center mb-3"
-                    style={{ backgroundColor: `${rp.accentColor}15` }}
-                  >
+                  <div className="w-10 h-10 rounded-lg flex items-center justify-center mb-3" style={{ backgroundColor: `${rp.accentColor}15` }}>
                     <IconComp className="w-5 h-5" style={{ color: rp.accentColor }} />
                   </div>
                   <h3 className="text-base font-medium text-foreground mb-1">{rp.name}</h3>
@@ -286,7 +316,6 @@ const ProductPage = () => {
         </div>
       </section>
 
-      {/* CTA */}
       <CTASection />
     </PageWrapper>
   );
