@@ -30,7 +30,7 @@ const HeroSection = () => {
           className="text-center max-w-3xl mx-auto mb-3 md:mb-8 lg:mb-10"
         >
           <span className="inline-block glass-panel px-3 py-1 text-[10px] md:text-[11px] lg:text-xs font-medium text-primary mb-3 md:mb-4 lg:mb-5">
-            AI healthcare platform
+            AI-powered healthcare operations platform
           </span>
 
           <h1 className="text-[24px] leading-[1.15] sm:text-[28px] md:text-[32px] lg:text-[36px] xl:text-[42px] 2xl:text-[48px] font-medium tracking-tight md:leading-tight text-foreground mb-3 md:mb-4 lg:mb-5" style={{ letterSpacing: '-1.5px' }}>
