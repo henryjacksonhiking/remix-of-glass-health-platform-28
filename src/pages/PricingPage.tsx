@@ -61,8 +61,8 @@ const PricingPage = () => {
         <meta name="description" content="Simple and transparent healthcare software pricing. Explore Borna.ai clinic management software plans and find the right fit for your practice." />
       </Helmet>
       <ModernPricingPage
-        title="Simple and transparent healthcare software pricing"
-        subtitle="Explore our clinic management software cost — start free, upgrade when you're ready. No hidden fees, no long-term contracts."
+        title="Simple and flexible healthcare software pricing"
+        subtitle="Start with Borna Care and expand as your clinic grows. No hidden fees. No long-term lock-in."
         plans={plans}
         showAnimatedBackground={true}
       />
