@@ -17,7 +17,7 @@ const CarePatientJourney = () => {
           The patient experience, reimagined
         </h2>
 
-        <div className="flex flex-col md:flex-row items-center justify-center gap-4 max-w-5xl mx-auto">
+        <div className="flex flex-col md:flex-row items-start justify-center gap-4 max-w-5xl mx-auto">
           {steps.map((s, i) => (
             <motion.div
               key={s.num}
@@ -25,7 +25,7 @@ const CarePatientJourney = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.1 }}
-              className="flex-1 flex flex-col md:flex-row items-center gap-4"
+              className="flex-1 flex flex-col md:flex-row items-start gap-4"
             >
               <div className="flex flex-col items-center text-center flex-1">
                 <div
@@ -42,7 +42,7 @@ const CarePatientJourney = () => {
               </div>
 
               {i < steps.length - 1 && (
-                <ArrowRight className="hidden md:block w-4 h-4 text-muted-foreground/40 shrink-0 mt-2" />
+                <ArrowRight className="hidden md:block w-4 h-4 text-muted-foreground/40 shrink-0 mt-5" />
               )}
             </motion.div>
           ))}
