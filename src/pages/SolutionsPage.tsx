@@ -153,8 +153,8 @@ const useCases = [
   },
   {
     icon: DollarSign,
-    title: "Revenue optimization",
-    description: "Improve billing efficiency, reduce missed opportunities, and gain visibility into your clinic's financial performance.",
+    title: "Revenue optimisation",
+    description: "Recover outstanding payments faster, reduce no-shows, and free up admin time to focus on patient care.",
     outcomes: ["Track outstanding invoices", "Reduce payment delays", "Identify revenue gaps"],
     visual: () => (
       <div className="space-y-3">
