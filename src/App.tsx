@@ -19,6 +19,7 @@ import PrivacyPage from "./pages/PrivacyPage.tsx";
 import TermsPage from "./pages/TermsPage.tsx";
 import SignUpPage from "./pages/SignUpPage.tsx";
 import CaseStudyPage from "./pages/CaseStudyPage.tsx";
+import RoadmapPage from "./pages/RoadmapPage.tsx";
 import NotFound from "./pages/NotFound.tsx";
 
 const queryClient = new QueryClient();
