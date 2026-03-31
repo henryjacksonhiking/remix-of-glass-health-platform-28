@@ -67,6 +67,15 @@ const PricingPage = () => {
         showAnimatedBackground={true}
       />
 
+      {/* Module pricing note */}
+      <section className="py-12 border-t border-glass-border">
+        <div className="container mx-auto px-4 md:px-6 max-w-3xl text-center">
+          <p className="text-sm text-muted-foreground italic">
+            Pricing for Borna Connect, Insight, Engage, and Core will be announced when each module launches.
+          </p>
+        </div>
+      </section>
+
       {/* Add-on */}
       <section className="py-16 border-t border-glass-border">
         <div className="container mx-auto px-4 md:px-6 max-w-3xl text-center">

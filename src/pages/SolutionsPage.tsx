@@ -193,7 +193,7 @@ const SolutionsPage = () => (
           transition={{ duration: 0.6 }}
           className="hero-headline text-foreground mb-6"
         >
-          Healthcare solutions for clinics
+          Healthcare solutions for clinics of every size
         </motion.h1>
         <motion.p
           initial={{ opacity: 0, y: 20 }}
@@ -201,7 +201,7 @@ const SolutionsPage = () => (
           transition={{ duration: 0.6, delay: 0.1 }}
           className="body-text mx-auto mb-8 max-w-xl"
         >
-          Borna.ai helps clinics solve real operational challenges through a unified platform, starting with Borna Care.
+          Borna.ai helps dental clinics and multi-location medical practices solve real operational challenges — starting with Borna Care.
         </motion.p>
         <motion.div
           initial={{ opacity: 0, y: 20 }}

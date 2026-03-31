@@ -107,9 +107,9 @@ const AboutPage = () => (
     {/* Team placeholder */}
     <section className="py-24 border-t border-glass-border">
       <div className="container mx-auto px-4 md:px-6 max-w-3xl text-center">
-        <h2 className="section-headline text-foreground mb-4">Leadership</h2>
+        <h2 className="section-headline text-foreground mb-4">Our team</h2>
         <p className="body-text mx-auto">
-          Our team combines deep healthcare domain expertise with modern product engineering. More details coming soon.
+          We're a team of healthcare technology specialists, designers, and engineers building the tools clinics deserve.
         </p>
       </div>
     </section>
