@@ -15,9 +15,9 @@ const categories = [
 ];
 
 const featured = [
-  { title: "How a dental clinic reduced no-shows by 40%", category: "Case study", href: "#" },
-  { title: "5 ways to automate your clinic's patient intake", category: "Guide", href: "#" },
-  { title: "The true cost of manual appointment management", category: "Blog", href: "#" },
+  { title: "How a dental clinic reduced no-shows by 40%", category: "Case study", href: "/resources/case-studies/dental-group-california-no-shows" },
+  { title: "5 ways to automate your clinic's patient intake", category: "Guide", href: "/blog/5-ways-automate-patient-intake" },
+  { title: "The true cost of manual appointment management", category: "Blog", href: "/blog/true-cost-manual-appointment-management" },
 ];
 
 const ResourcesPage = () => (
