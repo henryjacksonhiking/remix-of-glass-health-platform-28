@@ -9,8 +9,10 @@ import { cn } from "@/lib/utils";
 const Navbar = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [productsOpen, setProductsOpen] = useState(false);
+  const [resourcesOpen, setResourcesOpen] = useState(false);
   const location = useLocation();
   const isProductActive = location.pathname.startsWith("/products");
+  const isResourcesActive = location.pathname.startsWith("/resources") || location.pathname.startsWith("/roadmap");
 
   const navLinkClass = ({ isActive }: { isActive: boolean }) =>
     cn(
