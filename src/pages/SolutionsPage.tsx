@@ -102,7 +102,7 @@ const useCases = [
   {
     icon: Heart,
     title: "Patient retention",
-    description: "Keep patients engaged with automated reminders, follow-ups, and a portal they actually want to use.",
+    description: "Automated reminders, follow-ups, and a seamless patient portal keep patients coming back and reduce no-shows.",
     outcomes: ["Reduce no-shows", "Increase recall compliance", "Improve patient satisfaction"],
     visual: () => (
       <div className="flex items-center gap-5">
