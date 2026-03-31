@@ -5,7 +5,7 @@ const rows = [
     headline: "A patient wants to book at 11pm",
     body: "Patients book, reschedule, and cancel on their own — without calling your front desk. Your schedule fills while your team sleeps.",
     link: "See online booking ›",
-    image: "/images/Choose_your_appointment-2.png",
+    image: "/images/Choose_your_appointment-3.png",
     mobileImage: false,
   },
   {
