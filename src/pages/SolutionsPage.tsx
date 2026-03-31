@@ -117,7 +117,7 @@ const useCases = [
   {
     icon: Zap,
     title: "Workflow automation",
-    description: "Reduce manual tasks through automation — from intake forms to appointment confirmations to billing.",
+    description: "Replace manual scheduling, paper forms, and phone-based payment collection with automated digital workflows.",
     outcomes: ["Eliminate paper forms", "Automate appointment reminders", "Streamline billing workflows"],
     visual: () => (
       <div className="space-y-3">
