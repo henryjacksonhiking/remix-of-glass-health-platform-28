@@ -73,19 +73,19 @@ const ProductPage = () => {
     },
     connect: {
       title: "Borna Connect — Healthcare Communication Platform for Clinics",
-      description: "Borna Connect is a unified communications platform for clinics — combining web calling, SMS, email, telehealth, and AI call summaries in one place.",
+      description: "Borna Connect is a unified communications platform for clinics combining web calling, SMS, email, telehealth, and AI call summaries in one place.",
     },
     core: {
       title: "Borna Core — Healthcare AI Infrastructure & Medical Workflow Automation",
-      description: "Borna Core is the healthcare AI infrastructure powering the entire Borna platform — enabling medical workflow automation, EHR sync, predictive analytics, and enterprise-grade security.",
+      description: "Borna Core is the healthcare AI infrastructure powering the entire Borna platform — enabling medical workflow automation, EHR sync, and enterprise-grade security.",
     },
     insight: {
       title: "Borna Insight — Healthcare Analytics Dashboard for Clinics",
-      description: "Borna Insight is a healthcare analytics dashboard that provides clinic performance analytics, revenue insights, communication metrics, and AI-generated operational summaries.",
+      description: "Borna Insight is a healthcare analytics dashboard providing clinic performance analytics, revenue insights, and AI-generated operational summaries.",
     },
     engage: {
       title: "Borna Engage — Healthcare CRM Software & Patient Retention Platform",
-      description: "Borna Engage is healthcare CRM software and a patient retention platform that automates follow-ups, manages patient lifecycle, and drives clinic growth through targeted campaigns.",
+      description: "Borna Engage is healthcare CRM software and a patient retention platform that automates follow-ups and manages patient lifecycle.",
     },
   };
 
