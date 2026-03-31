@@ -80,7 +80,7 @@ const Footer = () => {
 
         {/* Newsletter */}
         <div className="mt-12 pt-8 border-t border-glass-border flex flex-col items-center justify-center gap-4">
-          <p className="text-sm text-muted-foreground">Stay updated with Borna.ai</p>
+          <p className="text-sm text-muted-foreground">Join 500+ clinic owners receiving weekly operational tips.</p>
           {subscribed ? (
             <p className="text-sm text-primary font-medium">Thank you — we'll be in touch soon.</p>
           ) : (
@@ -90,15 +90,12 @@ const Footer = () => {
                 required
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                placeholder="Enter your email for clinic management insights"
+                placeholder="Enter your email"
                 className="bg-glass border border-glass-border rounded-lg px-4 py-2 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-1 focus:ring-primary w-80"
                 aria-label="Email for newsletter"
               />
               <button type="submit" className="gradient-btn text-sm px-4 py-2">Subscribe</button>
             </form>
-          )}
-          {!subscribed && (
-            <p className="text-xs text-muted-foreground">Join 500+ clinic owners receiving weekly operational tips.</p>
           )}
         </div>
 
