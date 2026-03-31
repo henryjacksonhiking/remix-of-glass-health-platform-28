@@ -35,15 +35,6 @@ const rows = [
     image: "/images/admin_vs_patient_-_New_Payment_Request.png",
     mobileImage: false,
   },
-  {
-    step: "STEP 05",
-    badge: "Always — a patient has a family",
-    headline: "A patient has a family",
-    body: "One account for the whole family. Parents manage everyone's appointments, forms, and payments in one place. No duplicate records, no confusion.",
-    link: "See family management ›",
-    image: "/images/step_5_-_Dependents.png",
-    mobileImage: true,
-  },
 ];
 
 const BrowserChrome = () => (
