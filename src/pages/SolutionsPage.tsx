@@ -90,7 +90,7 @@ const useCases = [
   {
     icon: UserPlus,
     title: "Patient acquisition",
-    description: "Capture and convert leads through better communication, scheduling, and a frictionless first impression.",
+    description: "Convert more enquiries into booked appointments. Borna Care's online booking means patients can schedule at any time — no phone call needed.",
     outcomes: ["Increase online bookings", "Reduce lead response time", "Convert more enquiries"],
     visual: () => (
       <div className="space-y-3">
