@@ -80,7 +80,7 @@ const Footer = () => {
 
         {/* Newsletter */}
         <div className="mt-12 pt-8 border-t border-glass-border flex flex-col items-center justify-center gap-4">
-          <p className="text-sm text-muted-foreground">Join 500+ clinic owners receiving weekly operational tips.</p>
+          <p className="text-sm text-muted-foreground text-center">Join 500+ clinic owners receiving weekly operational tips.</p>
           {subscribed ? (
             <p className="text-sm text-primary font-medium">Thank you — we'll be in touch soon.</p>
           ) : (
