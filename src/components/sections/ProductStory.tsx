@@ -5,7 +5,7 @@ const rows = [
     headline: "A patient wants to book at 11pm",
     body: "Patients book, reschedule, and cancel on their own — without calling your front desk. Your schedule fills while your team sleeps.",
     link: "See online booking ›",
-    image: "/images/Choose_your_appointment-3.png",
+    image: "/images/Choose_your_appointment-3.webp",
     mobileImage: false,
   },
   {
@@ -14,7 +14,7 @@ const rows = [
     headline: "Your front desk opens at 8am",
     body: "Your team sees everything confirmed, organised, and ready. No voicemails to return, no double bookings, no catching up.",
     link: "See admin dashboard ›",
-    image: "/images/step_2_and_hero_-_admin_Dashboard.png",
+    image: "/images/step_2_and_hero_-_admin_Dashboard.webp",
     mobileImage: false,
   },
   {
@@ -23,7 +23,7 @@ const rows = [
     headline: "A new patient arrives",
     body: "Intake forms completed before they walk in. No clipboards, no scanning, no manual data entry. The chart is ready before they sit down.",
     link: "See digital forms ›",
-    image: "/images/step_3_-_new_patient_forms.png",
+    image: "/images/step_3_-_new_patient_forms.webp",
     mobileImage: false,
   },
   {
@@ -32,7 +32,7 @@ const rows = [
     headline: "Time to collect payment",
     body: "Send a payment request in seconds. Patients pay online from their phone. Your billing stays clean without a single awkward conversation.",
     link: "See payments ›",
-    image: "/images/admin_vs_patient_-_New_Payment_Request.png",
+    image: "/images/admin_vs_patient_-_New_Payment_Request.webp",
     mobileImage: false,
   },
 ];
@@ -263,7 +263,7 @@ const ProductStory = () => {
             }}
           >
             <img
-              src="/images/Admin_vs_patient_-_patient_Email_notification.png"
+              src="/images/Admin_vs_patient_-_patient_Email_notification.webp"
               alt="Patient email notification"
               loading="lazy"
               width={540}
@@ -283,7 +283,7 @@ const ProductStory = () => {
             }}
           >
             <img
-              src="/images/Admin_vs_patient_-_patient_SMS_notification.png"
+              src="/images/Admin_vs_patient_-_patient_SMS_notification.webp"
               alt="Patient SMS notification"
               loading="lazy"
               width={400}
