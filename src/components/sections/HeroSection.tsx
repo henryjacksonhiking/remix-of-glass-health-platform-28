@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { products } from "@/lib/products";
 import * as LucideIcons from "lucide-react";
-import heroBg from "@/assets/hero-bg.jpg";
+import heroBg from "@/assets/hero-bg.webp";
 import { BeamsBackground } from "@/components/ui/beams-background";
 
 const iconMap: Record<string, React.ComponentType<{ className?: string }>> = LucideIcons as any;

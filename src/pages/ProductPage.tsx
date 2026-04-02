@@ -17,9 +17,9 @@ import CareBenefitsSection from "@/components/sections/CareBenefitsSection";
 import CareCTASection from "@/components/sections/CareCTASection";
 import DevelopmentBanner from "@/components/sections/DevelopmentBanner";
 import AetherFlowBackground from "@/components/ui/aether-flow-hero";
-import careDashboardScreen from "@/assets/care-dashboard-screen.png";
-import careFormsScreen from "@/assets/care-forms-screen.png";
-import careAppointmentScreen from "@/assets/care-appointment-screen.png";
+import careDashboardScreen from "@/assets/care-dashboard-screen.webp";
+import careFormsScreen from "@/assets/care-forms-screen.webp";
+import careAppointmentScreen from "@/assets/care-appointment-screen.webp";
 const iconMap: Record<string, React.ComponentType<{ className?: string }>> = LucideIcons as any;
 
 const howItWorks: Record<string, { step: string; description: string; icon: string }[]> = {

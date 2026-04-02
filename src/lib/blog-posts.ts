@@ -16,7 +16,7 @@ export const blogPosts: BlogPost[] = [
     category: "Patient engagement",
     date: "March 2026",
     readTime: "5 min read",
-    image: "/images/blog/patient-reminders.jpg",
+    image: "/images/blog/patient-reminders.webp",
     excerpt:
       "No-shows cost clinics thousands every month. Learn how automated SMS and email reminders can cut missed appointments by up to 40%.",
     content: `
@@ -76,7 +76,7 @@ Ready to cut your no-show rate? [Book a demo](/demo) to see it in action.
     category: "Clinic operations",
     date: "March 2026",
     readTime: "4 min read",
-    image: "/images/blog/ehr-integration.jpg",
+    image: "/images/blog/ehr-integration.webp",
     excerpt:
       "Phone tag, double bookings, and endless spreadsheets — manual scheduling drains your clinic more than you think.",
     content: `
@@ -145,7 +145,7 @@ The ROI typically becomes clear within the first month: fewer phone calls, fewer
     category: "Patient engagement",
     date: "January 2026",
     readTime: "5 min read",
-    image: "/images/blog/digital-intake.jpg",
+    image: "/images/blog/digital-intake.webp",
     excerpt:
       "Patients expect the same digital convenience from their clinic that they get from every other service. Here's how to deliver it.",
     content: `
@@ -322,7 +322,7 @@ Borna's digital intake forms are designed specifically for healthcare practices.
     category: "Revenue growth",
     date: "February 2026",
     readTime: "4 min read",
-    image: "/images/blog/online-payments.jpg",
+    image: "/images/blog/online-payments.webp",
     excerpt:
       "Collecting payments shouldn't be the hardest part of running a clinic. Online payment tools accelerate cash flow and reduce outstanding balances.",
     content: `
@@ -388,7 +388,7 @@ The transition to online payments is one of the quickest wins in practice modern
     category: "Clinic operations",
     date: "January 2026",
     readTime: "7 min read",
-    image: "/images/blog/patient-experience.jpg",
+    image: "/images/blog/patient-experience.webp",
     excerpt:
       "Integrating your tools with your EHR doesn't have to be painful. Here's a practical guide to what matters and what to watch out for.",
     content: `
@@ -487,7 +487,7 @@ We handle the technical complexity so you can focus on patient care.
     category: "Operations",
     date: "March 2026",
     readTime: "6 min read",
-    image: "/images/blog/patient-reminders.jpg",
+    image: "/images/blog/patient-reminders.webp",
     excerpt:
       "Manual scheduling drains staff time, increases errors, and quietly costs clinics thousands each month. Here's what the numbers say — and how to fix it.",
     content: `
@@ -563,7 +563,7 @@ The clinics that thrive in the coming years will be the ones that automate the r
     category: "Guide",
     date: "March 2026",
     readTime: "7 min read",
-    image: "/images/blog/patient-reminders.jpg",
+    image: "/images/blog/patient-reminders.webp",
     excerpt:
       "Patient intake is one of the most time-consuming workflows in any clinic. These five automation strategies can cut intake time in half while improving data accuracy.",
     content: `

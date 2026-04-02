@@ -6,8 +6,8 @@ const scenes = [
     step: "11pm — patient books",
     caption:
       "Sarah opens Borna Care at 11pm and books her dental appointment — without calling anyone. She picks her service, doctor, and time slot in under 2 minutes.",
-    patientImg: "/images/Choose_your_appointment__1_.png",
-    adminImg: "/images/Admin_Dashboard.png",
+    patientImg: "/images/Choose_your_appointment__1_.webp",
+    adminImg: "/images/Admin_Dashboard.webp",
     patientTag: "Patient — Sarah Collins",
     adminTag: "Admin — Yalan Corp Dental",
     duration: 6000,
@@ -17,8 +17,8 @@ const scenes = [
     step: "Booking confirmed instantly",
     caption:
       "Appointment confirmed. Sarah gets her confirmation screen with all details. The admin sees a new notification automatically — no one had to do a thing.",
-    patientImg: "/images/patient_appointment_Confirmation.png",
-    adminImg: "/images/Notifications_Admin_Side_-_View_All.png",
+    patientImg: "/images/patient_appointment_Confirmation.webp",
+    adminImg: "/images/Notifications_Admin_Side_-_View_All.webp",
     patientTag: "Patient — confirmation received",
     adminTag: "Admin — new booking notification",
     duration: 6000,
@@ -28,8 +28,8 @@ const scenes = [
     step: "Before the visit — forms",
     caption:
       "Before arriving, Sarah completes her intake form digitally. No clipboards, no scanning, no manual data entry. The admin sees all submitted forms instantly.",
-    patientImg: "/images/Patient_Information__Personal_Info_.png",
-    adminImg: "/images/Patient_s_Forms.png",
+    patientImg: "/images/Patient_Information__Personal_Info_.webp",
+    adminImg: "/images/Patient_s_Forms.webp",
     patientTag: "Patient — completing intake form",
     adminTag: "Admin — forms overview",
     duration: 6000,
@@ -39,8 +39,8 @@ const scenes = [
     step: "After the visit — payment",
     caption:
       "The admin creates a payment request in seconds and sends it by email and SMS. Sarah opens it on her phone and pays online. Billing stays clean.",
-    patientImg: "/images/Pay_now.png",
-    adminImg: "/images/New_Payment_Request__-_OWNER_and_ADMIN_ONLY.png",
+    patientImg: "/images/Pay_now.webp",
+    adminImg: "/images/New_Payment_Request__-_OWNER_and_ADMIN_ONLY.webp",
     patientTag: "Patient — payment request received",
     adminTag: "Admin — creating payment request",
     duration: 6000,

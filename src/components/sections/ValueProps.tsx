@@ -1,7 +1,7 @@
 import { FeatureSteps } from "@/components/ui/feature-section";
-import doctorDesk from "@/assets/doctor-desk.jpg";
-import doctorTeleconsultation from "@/assets/doctor-teleconsultation.jpg";
-import nursePortrait from "@/assets/nurse-portrait.jpg";
+import doctorDesk from "@/assets/doctor-desk.webp";
+import doctorTeleconsultation from "@/assets/doctor-teleconsultation.webp";
+import nursePortrait from "@/assets/nurse-portrait.webp";
 
 const features = [
   {
