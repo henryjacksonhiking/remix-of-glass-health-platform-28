@@ -326,3 +326,29 @@
   color: rgba(255, 255, 255, 0.7);
   margin-bottom: 0;
 }
+
+/* Homepage diagram animations */
+@keyframes dash-flow {
+  from { stroke-dashoffset: 0; }
+  to { stroke-dashoffset: -20; }
+}
+.animate-dash-flow {
+  stroke-dasharray: 8 6;
+  animation: dash-flow 3s linear infinite;
+}
+
+@keyframes broken-dash {
+  0%, 100% { opacity: 0.3; }
+  50% { opacity: 0.6; }
+}
+.animate-broken-dash {
+  animation: broken-dash 2s ease-in-out infinite;
+}
+
+@keyframes pulse-line {
+  0%, 100% { opacity: 0.2; }
+  50% { opacity: 0.5; }
+}
+.animate-pulse-line {
+  animation: pulse-line 2.5s ease-in-out infinite;
+}
