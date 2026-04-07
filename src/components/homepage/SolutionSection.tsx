@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 
-const modules = [
+const modules: { label: string | string[]; angle: number }[] = [
   { label: "Communication", angle: 0 },
   { label: "CRM", angle: 90 },
   { label: "Analytics", angle: 180 },
