@@ -28,7 +28,7 @@ const SystemDiagram = () => {
         const ey = cy + r * Math.sin(rad);
         const isArray = Array.isArray(mod.label);
         return (
-          <g key={isArray ? mod.label.join(" ") : mod.label}>
+          <g key={String(isArray ? (mod.label as string[]).join(" ") : mod.label)}>
             <line x1={cx} y1={cy} x2={ex} y2={ey} stroke="rgba(0,222,196,0.3)" strokeWidth="1.5" />
             {/* Animated dot with glow */}
             <circle r="6" fill="#00DEC4" opacity="0.9" filter="url(#dot-glow)">
