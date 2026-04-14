@@ -38,8 +38,11 @@ const HeroSection = () => {
             <span className="gradient-text">Operations Platform</span>
           </h1>
 
-          <p className="text-[12px] sm:text-[13px] md:text-[15px] lg:text-base xl:text-[17px] text-muted-foreground leading-relaxed mb-4 md:mb-6 max-w-xl mx-auto">
-            Start with Borna Care to streamline your clinic today — and scale into a complete AI-driven system as you grow.
+          <p className="text-[12px] sm:text-[13px] md:text-[15px] lg:text-base xl:text-[17px] text-foreground/80 leading-relaxed mb-3 md:mb-4 max-w-2xl mx-auto font-medium">
+            Borna AI is a unified healthcare platform designed to help practices improve patient engagement, streamline communication, and automate operations through one intelligent system.
+          </p>
+          <p className="text-[11px] sm:text-[12px] md:text-[14px] lg:text-[15px] text-muted-foreground leading-relaxed mb-4 md:mb-6 max-w-xl mx-auto">
+            Start with Borna Care and expand into a complete AI-powered healthcare ecosystem.
           </p>
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-3">
@@ -106,7 +109,7 @@ const HeroSection = () => {
             })}
           </div>
           <p className="text-center mt-4 md:mt-5" style={{ fontSize: '13px', color: 'rgba(255,255,255,0.4)' }}>
-            Each module is being built as part of one unified architecture — not as disconnected tools.
+            Borna is built as a modular platform. Each module handles a distinct layer of your practice operations, and all modules share a unified data layer.
           </p>
           <div className="text-center mt-3">
             <Link to="/contact" className="ghost-btn text-sm px-6 py-2.5">Join Early Access</Link>

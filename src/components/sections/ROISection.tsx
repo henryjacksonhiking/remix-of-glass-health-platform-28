@@ -1,10 +1,10 @@
 import { motion } from "framer-motion";
 
 const outcomes = [
-  { stat: "40%", label: "Reduction in no-shows", desc: "Automated reminders and easy rescheduling keep patients informed and your schedule full." },
-  { stat: "3×", label: "Faster patient intake", desc: "Digital forms completed before arrival eliminate manual data entry and waiting room paperwork." },
-  { stat: "85%", label: "Less admin time on payments", desc: "Online payment requests sent in seconds. Patients pay from their phone. Billing stays clean." },
-  { stat: "0", label: "Paper forms", desc: "Every intake, consent, and referral form completed digitally — searchable, downloadable, linked to the patient record." },
+  { stat: "38%", label: "Reduction in no-show rates with automated SMS appointment reminders", desc: "" },
+  { stat: "$150K", label: "Average annual revenue recovered per practice from missed call automation", desc: "" },
+  { stat: "3×", label: "Faster patient onboarding with digital intake forms and white-labeled portal", desc: "" },
+  { stat: "90%", label: "Call answer rate achieved versus the 65% dental industry average", desc: "" },
 ];
 
 const cardStyle: React.CSSProperties = {
@@ -50,7 +50,7 @@ const ROISection = () => (
           >
             <div style={statStyle}>{item.stat}</div>
             <div style={{ fontSize: '14px', color: 'rgba(255,255,255,0.9)', fontWeight: 500, marginTop: '4px' }}>{item.label}</div>
-            <p style={{ fontSize: '13px', color: 'rgba(255,255,255,0.45)', lineHeight: 1.6, marginTop: '8px' }}>{item.desc}</p>
+            {item.desc && <p style={{ fontSize: '13px', color: 'rgba(255,255,255,0.45)', lineHeight: 1.6, marginTop: '8px' }}>{item.desc}</p>}
           </motion.div>
         ))}
       </div>
