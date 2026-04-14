@@ -50,7 +50,7 @@ const ROISection = () => (
           >
             <div style={statStyle}>{item.stat}</div>
             <div style={{ fontSize: '14px', color: 'rgba(255,255,255,0.9)', fontWeight: 500, marginTop: '4px' }}>{item.label}</div>
-            <p style={{ fontSize: '13px', color: 'rgba(255,255,255,0.45)', lineHeight: 1.6, marginTop: '8px' }}>{item.desc}</p>
+            {item.desc && <p style={{ fontSize: '13px', color: 'rgba(255,255,255,0.45)', lineHeight: 1.6, marginTop: '8px' }}>{item.desc}</p>}
           </motion.div>
         ))}
       </div>
