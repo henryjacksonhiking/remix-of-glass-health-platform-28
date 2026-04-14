@@ -1,97 +1,47 @@
 import { Helmet } from "react-helmet-async";
 import PageWrapper from "@/components/layout/PageWrapper";
-import HeroSection from "@/components/homepage/HeroSection";
-import DefinitionSection from "@/components/homepage/DefinitionSection";
-import ProblemSection from "@/components/homepage/ProblemSection";
-import SolutionSection from "@/components/homepage/SolutionSection";
-import BornaCareSection from "@/components/homepage/BornaCareSection";
-import CapabilitiesSection from "@/components/homepage/CapabilitiesSection";
-import EcosystemSection from "@/components/homepage/EcosystemSection";
-import HowItWorksSection from "@/components/homepage/HowItWorksSection";
-import ComparisonSection from "@/components/homepage/ComparisonSection";
-import TakeawaysSection from "@/components/homepage/TakeawaysSection";
-import FAQSection from "@/components/homepage/FAQSection";
-import FinalCTASection from "@/components/homepage/FinalCTASection";
+import HeroSection from "@/components/sections/HeroSection";
+import HomeProblemSection from "@/components/ProblemSection";
+import ProblemSection from "@/components/sections/ProblemSection";
+import SocialProofBar from "@/components/sections/SocialProofBar";
+import ProductDemo from "@/components/sections/ProductDemo";
+import ProductStory from "@/components/sections/ProductStory";
+import BornaCareSection from "@/components/BornaCareSection";
+import ROISection from "@/components/sections/ROISection";
+import ProductGrid from "@/components/sections/ProductGrid";
+import OutcomesSection from "@/components/OutcomesSection";
+import EmotionalSection from "@/components/EmotionalSection";
+import ValueProps from "@/components/sections/ValueProps";
+import Testimonials from "@/components/sections/Testimonials";
+import SecurityBanner from "@/components/sections/SecurityBanner";
+import DifferentiationSection from "@/components/sections/DifferentiationSection";
+import InvestorSection from "@/components/InvestorSection";
+import CTASection from "@/components/sections/CTASection";
 
 const Index = () => {
   return (
     <PageWrapper>
       <Helmet>
-        <title>AI Healthcare Platform for Patient Engagement, CRM & Automation | Borna AI</title>
-        <meta name="description" content="Borna AI is a unified healthcare platform for patient engagement, CRM, communication, and automation. Start with Borna Care and scale your practice with AI." />
-        <meta property="og:title" content="AI Healthcare Platform for Patient Engagement, CRM & Automation | Borna AI" />
-        <meta property="og:description" content="Borna AI is a unified healthcare platform for patient engagement, CRM, communication, and automation. Start with Borna Care and scale your practice with AI." />
-        <meta property="og:type" content="website" />
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="AI Healthcare Platform for Patient Engagement, CRM & Automation | Borna AI" />
-        <meta name="twitter:description" content="Borna AI is a unified healthcare platform for patient engagement, CRM, communication, and automation. Start with Borna Care and scale your practice with AI." />
-        <script type="application/ld+json">{`
-          [
-            {
-              "@context": "https://schema.org",
-              "@type": "SoftwareApplication",
-              "name": "Borna AI",
-              "applicationCategory": "HealthApplication",
-              "operatingSystem": "Web, iOS, Android",
-              "description": "AI healthcare platform for patient engagement, CRM, communication, analytics, and automation."
-            },
-            {
-              "@context": "https://schema.org",
-              "@type": "Organization",
-              "name": "Borna AI",
-              "url": "https://borna.ai"
-            },
-            {
-              "@context": "https://schema.org",
-              "@type": "WebPage",
-              "name": "AI Healthcare Platform | Borna AI",
-              "description": "Unified healthcare platform for patient engagement, CRM, and automation."
-            },
-            {
-              "@context": "https://schema.org",
-              "@type": "FAQPage",
-              "mainEntity": [
-                {
-                  "@type": "Question",
-                  "name": "What is an AI healthcare platform?",
-                  "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "An AI healthcare platform integrates communication, CRM, analytics, and automation into one system."
-                  }
-                },
-                {
-                  "@type": "Question",
-                  "name": "What is patient engagement software?",
-                  "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "Patient engagement software helps healthcare practices communicate with patients and improve retention."
-                  }
-                },
-                {
-                  "@type": "Question",
-                  "name": "How does Borna AI work?",
-                  "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "Borna AI captures interactions, centralizes data, analyzes it using AI, and automates workflows."
-                  }
-                }
-              ]
-            }
-          ]
-        `}</script>
+        <title>Borna.ai — AI-Powered Healthcare Operations Platform</title>
+        <meta name="description" content="Borna.ai is an AI healthcare platform and clinic management software that unifies patient engagement, healthcare workflow automation, and unified communications in one modular ecosystem." />
       </Helmet>
       <HeroSection />
-      <DefinitionSection />
+      <HomeProblemSection />
       <ProblemSection />
-      <SolutionSection />
+      <SocialProofBar />
+      <ProductDemo />
+      <ProductStory />
       <BornaCareSection />
-      <CapabilitiesSection />
-      <EcosystemSection />
-      <HowItWorksSection />
-      <ComparisonSection />
-      <TakeawaysSection />
-      <FAQSection />
-      <FinalCTASection />
+      <ROISection />
+      <ProductGrid />
+      <OutcomesSection />
+      <EmotionalSection />
+      <ValueProps />
+      <Testimonials />
+      <SecurityBanner />
+      <DifferentiationSection />
+      <InvestorSection />
+      <CTASection />
     </PageWrapper>
   );
 };
