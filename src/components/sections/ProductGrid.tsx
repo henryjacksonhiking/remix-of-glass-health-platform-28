@@ -1,16 +1,18 @@
 import { Link } from "react-router-dom";
-import { useState, useRef, useEffect, useCallback } from "react";
+import { useState, useRef, useEffect } from "react";
 import { motion } from "framer-motion";
 import { products } from "@/lib/products";
 import * as LucideIcons from "lucide-react";
-import { ArrowRight } from "lucide-react";
-import bornaIcon from "@/assets/borna-icon.svg";
+import { ArrowRight, Cpu } from "lucide-react";
 
 const iconMap: Record<string, React.ComponentType<{ className?: string; style?: React.CSSProperties }>> = LucideIcons as any;
 
 const ORBIT_RADIUS = 240;
-const ROTATION_DURATION = 60; // seconds per full rotation
+const ROTATION_DURATION = 60;
 const NODE_SIZE = 72;
+
+const coreProduct = products.find(p => p.id === 'core')!;
+const orbitalProducts = products.filter(p => p.id !== 'core');
 
 const ProductGrid = () => {
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
@@ -44,15 +46,12 @@ const ProductGrid = () => {
     return () => cancelAnimationFrame(animRef.current);
   }, []);
 
-  const angleStep = 360 / products.length;
+  const angleStep = 360 / orbitalProducts.length;
   const containerSize = ORBIT_RADIUS * 2 + 300;
 
-  // Depth: bottom of circle (angle 90deg from top) = front, top = back
   const getDepth = (angleDeg: number) => {
-    // angleDeg 0 = top, 90 = right, 180 = bottom, 270 = left
-    // We want bottom (180) = front (scale 1, opacity 1), top (0) = back
     const rad = (angleDeg * Math.PI) / 180;
-    const depth = (Math.sin(rad) + 1) / 2; // 0 at top, 1 at bottom
+    const depth = (Math.sin(rad) + 1) / 2;
     const scale = 0.75 + depth * 0.25;
     const opacity = 0.6 + depth * 0.4;
     return { scale, opacity, zIndex: Math.round(depth * 10) };
@@ -64,8 +63,11 @@ const ProductGrid = () => {
         <div className="text-center mb-20 lg:mb-2">
           <span className="text-xs font-medium text-primary uppercase tracking-wider">Platform overview</span>
           <h2 className="section-headline text-foreground mt-3">
-            Five modules. One medical practice management system.
+            One platform to manage your entire practice
           </h2>
+          <p className="mt-4 mx-auto max-w-2xl" style={{ fontSize: '15px', color: 'rgba(255,255,255,0.45)' }}>
+            Borna combines patient engagement software, healthcare CRM, communication tools, analytics, and AI automation into one unified platform.
+          </p>
         </div>
 
         {/* Desktop orbital layout */}
@@ -74,7 +76,7 @@ const ProductGrid = () => {
             className="relative"
             style={{ width: containerSize, height: containerSize }}
           >
-            {/* Orbit rings - pointer-events: none */}
+            {/* Orbit rings */}
             <div className="absolute inset-0" style={{ pointerEvents: 'none' }}>
               <div
                 className="absolute rounded-full border border-glass-border opacity-20"
@@ -105,7 +107,7 @@ const ProductGrid = () => {
               />
             </div>
 
-            {/* Center hub */}
+            {/* Center hub - Borna Core */}
             <div
               className="absolute z-20 flex flex-col items-center justify-center glass-panel"
               style={{
@@ -116,13 +118,14 @@ const ProductGrid = () => {
                 boxShadow: '0 0 80px 20px hsla(170, 100%, 43%, 0.12)',
               }}
             >
-              <img src={bornaIcon} alt="Borna AI" className="w-12 h-12 mb-1" loading="lazy" width={48} height={48} />
-              <span className="text-[10px] font-medium text-muted-foreground">Core Engine</span>
+              <Cpu className="w-12 h-12 mb-1" style={{ color: coreProduct.accentColor }} />
+              <span className="text-[11px] font-semibold text-foreground">Borna Core</span>
+              <span className="text-[10px] font-medium text-muted-foreground">AI Engine</span>
             </div>
 
-            {/* Orbiting nodes - wrapper has pointer-events: none */}
+            {/* Orbiting nodes */}
             <div className="absolute inset-0" style={{ pointerEvents: 'none' }}>
-              {products.map((product, i) => {
+              {orbitalProducts.map((product, i) => {
                 const IconComp = iconMap[product.features[0]?.icon] || LucideIcons.Box;
                 const currentAngle = rotation + angleStep * i;
                 const angleRad = ((currentAngle - 90) * Math.PI) / 180;
@@ -153,12 +156,8 @@ const ProductGrid = () => {
                       setIsPaused(false);
                     }}
                   >
-                    {/* Default: circular planet node */}
                     {!isActive && (
-                      <div
-                        className="flex flex-col items-center cursor-pointer"
-                        style={{ width: NODE_SIZE }}
-                      >
+                      <div className="flex flex-col items-center cursor-pointer" style={{ width: NODE_SIZE }}>
                         <div
                           className="rounded-full flex items-center justify-center backdrop-blur-lg"
                           style={{
@@ -177,7 +176,6 @@ const ProductGrid = () => {
                       </div>
                     )}
 
-                    {/* Expanded card on hover */}
                     {isActive && (
                       <div className="absolute" style={{ width: 'min(380px, 340px)', minWidth: 340, left: '50%', top: '50%', transform: 'translate(-50%, -50%)' }}>
                         <Link
@@ -234,7 +232,7 @@ const ProductGrid = () => {
 
         {/* Mobile/tablet fallback grid */}
         <div className="lg:hidden grid grid-cols-1 md:grid-cols-2 gap-4 max-w-2xl mx-auto">
-          {products.map((product, i) => {
+          {orbitalProducts.map((product, i) => {
             const IconComp = iconMap[product.features[0]?.icon] || LucideIcons.Box;
             return (
               <motion.div
