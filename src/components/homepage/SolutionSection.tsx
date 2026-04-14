@@ -1,102 +1,149 @@
 import { Link } from "react-router-dom";
-import { motion } from "framer-motion";
+import { Heart, Phone, BarChart3, Target, Cpu } from "lucide-react";
+import { useScrollAnimation } from "@/hooks/useScrollAnimation";
+import { useState } from "react";
 
-const modules: { label: string | string[]; angle: number }[] = [
-  { label: "Communication", angle: 0 },
-  { label: "CRM", angle: 90 },
-  { label: "Analytics", angle: 180 },
-  { label: ["Patient", "Experience"], angle: 270 },
+const modules = [
+  { name: "Borna Care", icon: Heart, status: "Live Now", statusColor: "#22C55E", desc: "Patient portal and engagement platform", angle: -90, href: "/products/care" },
+  { name: "Borna Connect", icon: Phone, status: "In Development", statusColor: "#F59E0B", desc: "Unified communications hub", angle: -18, href: "/products/connect" },
+  { name: "Borna Insight", icon: BarChart3, status: "In Development", statusColor: "#F59E0B", desc: "AI-powered analytics dashboard", angle: 54, href: "/products/insight" },
+  { name: "Borna Engage", icon: Target, status: "In Development", statusColor: "#F59E0B", desc: "CRM and marketing automation", angle: 126, href: "/products/engage" },
+  { name: "Borna Core", icon: Cpu, status: "Coming Soon", statusColor: "#94A3B8", desc: "AI automation engine", angle: 198, href: "/products/core" },
 ];
 
-const SystemDiagram = () => {
-  const cx = 200, cy = 200, r = 130;
+const SolutionSection = () => {
+  const ref = useScrollAnimation();
+  const [expandedModule, setExpandedModule] = useState<number | null>(null);
+
   return (
-    <svg viewBox="0 0 400 400" className="w-full max-w-[400px] mx-auto" role="img" aria-label="Borna Core system diagram with connected modules">
-      <defs>
-        <filter id="dot-glow">
-          <feGaussianBlur stdDeviation="3" result="blur" />
-          <feMerge>
-            <feMergeNode in="blur" />
-            <feMergeNode in="SourceGraphic" />
-          </feMerge>
-        </filter>
-      </defs>
-
-      {modules.map((mod, i) => {
-        const rad = (mod.angle - 90) * (Math.PI / 180);
-        const ex = cx + r * Math.cos(rad);
-        const ey = cy + r * Math.sin(rad);
-        const isArray = Array.isArray(mod.label);
-        return (
-          <g key={String(isArray ? (mod.label as string[]).join(" ") : mod.label)}>
-            <line x1={cx} y1={cy} x2={ex} y2={ey} stroke="rgba(0,222,196,0.3)" strokeWidth="1.5" />
-            {/* Animated dot with glow */}
-            <circle r="6" fill="#00DEC4" opacity="0.9" filter="url(#dot-glow)">
-              <animateMotion
-                dur={`${2.5 + i * 0.4}s`}
-                repeatCount="indefinite"
-                path={`M${cx},${cy} L${ex},${ey}`}
-              />
-            </circle>
-            {/* Module node */}
-            <circle cx={ex} cy={ey} r="40" fill="rgba(255,255,255,0.06)" stroke="rgba(255,255,255,0.15)" strokeWidth="0.75" />
-            {isArray ? (
-              <>
-                <text x={ex} y={ey - 2} textAnchor="middle" fill="rgba(255,255,255,0.9)" fontSize="12" fontWeight="500">{mod.label[0]}</text>
-                <text x={ex} y={ey + 12} textAnchor="middle" fill="rgba(255,255,255,0.9)" fontSize="12" fontWeight="500">{mod.label[1]}</text>
-              </>
-            ) : (
-              <text x={ex} y={ey + 5} textAnchor="middle" fill="rgba(255,255,255,0.9)" fontSize="12" fontWeight="500">{mod.label}</text>
-            )}
-          </g>
-        );
-      })}
-
-      {/* Centre — Borna Core */}
-      <circle cx={cx} cy={cy} r="52" fill="rgba(0,71,155,0.3)" />
-      <circle cx={cx} cy={cy} r="48" fill="rgba(0,71,155,0.2)" stroke="#00479B" strokeWidth="1.5" />
-      <text x={cx} y={cy - 5} textAnchor="middle" fill="rgba(255,255,255,0.95)" fontSize="15" fontWeight="600">Borna</text>
-      <text x={cx} y={cy + 13} textAnchor="middle" fill="rgba(255,255,255,0.95)" fontSize="15" fontWeight="600">Core</text>
-
-      {/* Subtle glow */}
-      <circle cx={cx} cy={cy} r="60" fill="none" stroke="rgba(0,71,155,0.15)" strokeWidth="10" />
-    </svg>
-  );
-};
-
-const SolutionSection = () => (
-  <section id="solution" className="py-20 md:py-28">
-    <div className="container mx-auto px-4 md:px-6">
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center max-w-5xl mx-auto">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
-        >
-          <h2 className="text-2xl md:text-[36px] font-medium text-foreground mb-5" style={{ letterSpacing: "-0.5px" }}>
-            One platform to manage your entire practice
-          </h2>
-          <p className="text-[15px] text-muted-foreground leading-relaxed mb-6">
+    <section className="py-20 md:py-28" style={{ background: "#07090F" }}>
+      <div className="container mx-auto px-5 md:px-6" ref={ref}>
+        <div className="text-center max-w-2xl mx-auto mb-14">
+          <span className="animate-on-scroll section-label block mb-4">THE ECOSYSTEM</span>
+          <h2 className="animate-on-scroll section-headline mb-5">One platform to manage your entire practice</h2>
+          <p className="animate-on-scroll text-base mb-4" style={{ color: "#94A3B8" }}>
             Borna combines patient engagement software, healthcare CRM, communication tools, analytics, and AI automation into one unified platform.
           </p>
-          <Link to="/platform" className="text-sm font-medium transition-colors" style={{ color: "#00DEC4" }}>
+          <Link to="/platform" className="animate-on-scroll inline-block text-sm font-medium transition-colors hover:underline" style={{ color: "#00C9B1" }}>
             Learn how it works →
           </Link>
-        </motion.div>
+        </div>
 
-        <motion.div
-          initial={{ opacity: 0, scale: 0.95 }}
-          whileInView={{ opacity: 1, scale: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.1 }}
-          className="glass-panel p-8"
-        >
-          <SystemDiagram />
-        </motion.div>
+        {/* Hub diagram — desktop */}
+        <div className="animate-on-scroll hidden lg:block relative max-w-[600px] mx-auto" style={{ height: 500, marginBottom: 40 }}>
+          {/* Center hub */}
+          <div
+            className="absolute animate-center-pulse"
+            style={{
+              left: "50%", top: "50%",
+              transform: "translate(-50%, -50%)",
+              width: 110, height: 110,
+              borderRadius: "50%",
+              background: "linear-gradient(135deg, #00C9B1, #0EA5E9)",
+              boxShadow: "0 0 80px rgba(0,201,177,0.3)",
+              display: "flex", alignItems: "center", justifyContent: "center",
+              flexDirection: "column", zIndex: 10,
+            }}
+          >
+            <span className="font-display text-sm font-bold" style={{ color: "#07090F" }}>Borna Core</span>
+            <span className="text-[10px] font-medium" style={{ color: "#07090F", opacity: 0.7 }}>AI Engine</span>
+          </div>
+
+          {/* Module nodes */}
+          {modules.map((mod, i) => {
+            const rad = (mod.angle) * (Math.PI / 180);
+            const r = 200;
+            const cx = 300 + r * Math.cos(rad);
+            const cy = 250 + r * Math.sin(rad);
+            const Icon = mod.icon;
+
+            return (
+              <div key={mod.name}>
+                {/* Connecting line */}
+                <svg className="absolute inset-0 w-full h-full pointer-events-none" viewBox="0 0 600 500">
+                  <line x1="300" y1="250" x2={cx} y2={cy} stroke="rgba(0,201,177,0.2)" strokeWidth="1" strokeDasharray="6 4" className="animate-dash-flow" style={{ animationDelay: `${i * 0.3}s` }} />
+                </svg>
+
+                {/* Node card */}
+                <div
+                  className="absolute glass-panel-hover p-4 cursor-pointer"
+                  style={{
+                    left: `${(cx / 600) * 100}%`,
+                    top: `${(cy / 500) * 100}%`,
+                    transform: "translate(-50%, -50%)",
+                    width: 160, zIndex: 5,
+                    textAlign: "center",
+                  }}
+                >
+                  <div className="glow-icon-container mx-auto mb-2" style={{ width: 44, height: 44, padding: 10 }}>
+                    <Icon className="w-5 h-5" style={{ color: "#00C9B1" }} />
+                  </div>
+                  <p className="text-sm font-semibold" style={{ color: "#F8FAFC" }}>{mod.name}</p>
+                  <span
+                    className="status-pill inline-block mt-1"
+                    style={{ borderColor: mod.statusColor, color: mod.statusColor }}
+                  >
+                    {mod.status}
+                  </span>
+                  <p className="text-[11px] mt-1.5" style={{ color: "#94A3B8" }}>{mod.desc}</p>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+
+        {/* Mobile — accordion list */}
+        <div className="lg:hidden space-y-3 max-w-md mx-auto">
+          {modules.map((mod, i) => {
+            const Icon = mod.icon;
+            const isOpen = expandedModule === i;
+            return (
+              <div key={mod.name} className="animate-on-scroll glass-panel overflow-hidden">
+                <button
+                  className="w-full flex items-center gap-3 p-4 text-left"
+                  onClick={() => setExpandedModule(isOpen ? null : i)}
+                >
+                  <div className="glow-icon-container" style={{ padding: 8, flexShrink: 0 }}>
+                    <Icon className="w-4 h-4" style={{ color: "#00C9B1" }} />
+                  </div>
+                  <div className="flex-1">
+                    <p className="text-sm font-semibold" style={{ color: "#F8FAFC" }}>{mod.name}</p>
+                    <span className="status-pill text-[10px]" style={{ borderColor: mod.statusColor, color: mod.statusColor }}>{mod.status}</span>
+                  </div>
+                  <svg className={`w-4 h-4 transition-transform ${isOpen ? "rotate-180" : ""}`} style={{ color: "#00C9B1" }} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M6 9l6 6 6-6" /></svg>
+                </button>
+                {isOpen && (
+                  <div className="px-4 pb-4">
+                    <p className="text-sm mb-2" style={{ color: "#94A3B8" }}>{mod.desc}</p>
+                    <Link to={mod.href} className="text-xs font-medium" style={{ color: "#00C9B1" }}>Learn more →</Link>
+                  </div>
+                )}
+              </div>
+            );
+          })}
+        </div>
+
+        {/* SEO-friendly module list below diagram */}
+        <div className="hidden lg:block max-w-3xl mx-auto mt-8 space-y-2">
+          {modules.map((mod) => {
+            const Icon = mod.icon;
+            return (
+              <Link key={mod.name} to={mod.href} className="glass-panel-hover flex items-center gap-4 p-4">
+                <div className="glow-icon-container" style={{ padding: 8, flexShrink: 0 }}>
+                  <Icon className="w-4 h-4" style={{ color: "#00C9B1" }} />
+                </div>
+                <div className="flex-1">
+                  <span className="text-sm font-semibold" style={{ color: "#F8FAFC" }}>{mod.name}</span>
+                  <span className="status-pill ml-2 text-[10px]" style={{ borderColor: mod.statusColor, color: mod.statusColor }}>{mod.status}</span>
+                </div>
+                <p className="text-sm hidden md:block" style={{ color: "#94A3B8" }}>{mod.desc}</p>
+              </Link>
+            );
+          })}
+        </div>
       </div>
-    </div>
-  </section>
-);
+    </section>
+  );
+};
 
 export default SolutionSection;
