@@ -15,12 +15,16 @@ export default {
     extend: {
       fontFamily: {
         sans: ['Inter', 'system-ui', '-apple-system', 'sans-serif'],
+        display: ['Plus Jakarta Sans', 'Inter', 'system-ui', 'sans-serif'],
+        mono: ['JetBrains Mono', 'Fira Code', 'monospace'],
       },
       colors: {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
         background: "hsl(var(--background))",
+        "background-secondary": "hsl(var(--background-secondary))",
+        "background-card": "hsl(var(--background-card))",
         foreground: "hsl(var(--foreground))",
         primary: {
           DEFAULT: "hsl(var(--primary))",
@@ -51,11 +55,9 @@ export default {
           foreground: "hsl(var(--card-foreground))",
         },
         teal: "hsl(var(--teal))",
+        "sky-blue": "hsl(var(--sky-blue))",
         "deep-blue": "hsl(var(--deep-blue))",
         "dark-navy": "hsl(var(--dark-navy))",
-        "electric-blue": "hsl(var(--electric-blue))",
-        "pink-accent": "hsl(var(--pink-accent))",
-        "indigo-accent": "hsl(var(--indigo-accent))",
         glass: {
           DEFAULT: "hsla(var(--glass-bg))",
           border: "hsla(var(--glass-border))",
@@ -99,17 +101,22 @@ export default {
           "50%": { opacity: "0.8" },
         },
         float: {
-          "0%, 100%": { transform: "translateY(0)" },
-          "50%": { transform: "translateY(-10px)" },
+          "0%, 100%": { transform: "translateY(-8px)" },
+          "50%": { transform: "translateY(8px)" },
+        },
+        "center-pulse": {
+          "0%, 100%": { transform: "scale(1)" },
+          "50%": { transform: "scale(1.04)" },
         },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
-        "fade-up": "fade-up 0.6s ease-out forwards",
+        "fade-up": "fade-up 0.6s cubic-bezier(0.22, 1, 0.36, 1) forwards",
         "fade-in": "fade-in 0.5s ease-out forwards",
         "glow-pulse": "glow-pulse 3s ease-in-out infinite",
         float: "float 6s ease-in-out infinite",
+        "center-pulse": "center-pulse 3s ease-in-out infinite",
       },
     },
   },
