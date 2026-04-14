@@ -4,12 +4,12 @@ import HeroSection from "@/components/homepage/HeroSection";
 import DefinitionSection from "@/components/homepage/DefinitionSection";
 import ProblemSection from "@/components/homepage/ProblemSection";
 import SolutionSection from "@/components/homepage/SolutionSection";
-import CapabilitiesSection from "@/components/homepage/CapabilitiesSection";
-import ComparisonSection from "@/components/homepage/ComparisonSection";
-import GrowthSection from "@/components/homepage/GrowthSection";
-import TestimonialsSection from "@/components/homepage/TestimonialsSection";
-import OperationalSection from "@/components/homepage/OperationalSection";
 import BornaCareSection from "@/components/homepage/BornaCareSection";
+import CapabilitiesSection from "@/components/homepage/CapabilitiesSection";
+import EcosystemSection from "@/components/homepage/EcosystemSection";
+import HowItWorksSection from "@/components/homepage/HowItWorksSection";
+import ComparisonSection from "@/components/homepage/ComparisonSection";
+import TakeawaysSection from "@/components/homepage/TakeawaysSection";
 import FAQSection from "@/components/homepage/FAQSection";
 import FinalCTASection from "@/components/homepage/FinalCTASection";
 
@@ -43,30 +43,36 @@ const Index = () => {
             },
             {
               "@context": "https://schema.org",
+              "@type": "WebPage",
+              "name": "AI Healthcare Platform | Borna AI",
+              "description": "Unified healthcare platform for patient engagement, CRM, and automation."
+            },
+            {
+              "@context": "https://schema.org",
               "@type": "FAQPage",
               "mainEntity": [
                 {
                   "@type": "Question",
-                  "name": "What is Borna AI and how does it work for dental and healthcare practices?",
+                  "name": "What is an AI healthcare platform?",
                   "acceptedAnswer": {
                     "@type": "Answer",
-                    "text": "Borna AI is a modular, AI-powered healthcare SaaS platform that acts as an operating system for clinics."
+                    "text": "An AI healthcare platform integrates communication, CRM, analytics, and automation into one system."
                   }
                 },
                 {
                   "@type": "Question",
-                  "name": "Is Borna HIPAA compliant?",
+                  "name": "What is patient engagement software?",
                   "acceptedAnswer": {
                     "@type": "Answer",
-                    "text": "Borna is built with HIPAA compliance as a foundational requirement. AES-256 encryption, TLS 1.3, BAA available."
+                    "text": "Patient engagement software helps healthcare practices communicate with patients and improve retention."
                   }
                 },
                 {
                   "@type": "Question",
-                  "name": "What measurable results can a clinic expect?",
+                  "name": "How does Borna AI work?",
                   "acceptedAnswer": {
                     "@type": "Answer",
-                    "text": "38% reduction in no-shows, $150K average revenue recovered, 3x faster onboarding, 90% call answer rate."
+                    "text": "Borna AI captures interactions, centralizes data, analyzes it using AI, and automates workflows."
                   }
                 }
               ]
@@ -78,12 +84,12 @@ const Index = () => {
       <DefinitionSection />
       <ProblemSection />
       <SolutionSection />
-      <CapabilitiesSection />
-      <ComparisonSection />
-      <GrowthSection />
-      <TestimonialsSection />
-      <OperationalSection />
       <BornaCareSection />
+      <CapabilitiesSection />
+      <EcosystemSection />
+      <HowItWorksSection />
+      <ComparisonSection />
+      <TakeawaysSection />
       <FAQSection />
       <FinalCTASection />
     </PageWrapper>

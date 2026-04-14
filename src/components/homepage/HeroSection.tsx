@@ -1,147 +1,113 @@
 import { Link } from "react-router-dom";
-import { Sparkles, ArrowRight, Calendar, MessageSquare, TrendingUp } from "lucide-react";
-import { useScrollAnimation } from "@/hooks/useScrollAnimation";
+import { motion } from "framer-motion";
 
-const HeroSection = () => {
-  const ref = useScrollAnimation(0.1, 80);
+const NetworkMesh = () => (
+  <svg
+    className="absolute inset-0 w-full h-full"
+    role="img"
+    aria-label="Decorative network mesh background"
+    style={{ opacity: 0.08 }}
+  >
+    <defs>
+      <pattern id="mesh-dots" x="0" y="0" width="60" height="60" patternUnits="userSpaceOnUse">
+        <circle cx="30" cy="30" r="1.5" fill="hsl(var(--primary))" />
+      </pattern>
+    </defs>
+    <rect width="100%" height="100%" fill="url(#mesh-dots)" />
+    {/* Animated flow lines */}
+    <line x1="10%" y1="20%" x2="40%" y2="35%" stroke="hsl(var(--primary))" strokeWidth="0.5" className="animate-dash-flow" />
+    <line x1="60%" y1="15%" x2="85%" y2="40%" stroke="hsl(var(--primary))" strokeWidth="0.5" className="animate-dash-flow" style={{ animationDelay: "1s" }} />
+    <line x1="25%" y1="50%" x2="55%" y2="70%" stroke="hsl(var(--primary))" strokeWidth="0.5" className="animate-dash-flow" style={{ animationDelay: "2s" }} />
+    <line x1="70%" y1="55%" x2="90%" y2="75%" stroke="hsl(var(--primary))" strokeWidth="0.5" className="animate-dash-flow" style={{ animationDelay: "1.5s" }} />
+  </svg>
+);
 
-  return (
-    <section className="relative overflow-hidden min-h-[90vh] flex items-center py-20 md:py-28" style={{ background: "#07090F" }}>
-      {/* Ambient gradient mesh */}
-      <div
-        className="absolute inset-0 opacity-40 pointer-events-none"
-        style={{
-          background: "radial-gradient(ellipse at 30% 50%, rgba(0,201,177,0.06) 0%, transparent 60%), radial-gradient(ellipse at 70% 30%, rgba(14,165,233,0.04) 0%, transparent 60%)",
-          backgroundSize: "200% 200%",
-          animation: "gradient-mesh 20s ease infinite",
-        }}
-      />
+const HeroSection = () => (
+  <section id="hero" className="relative overflow-hidden min-h-[90vh] flex items-center py-20 md:py-28">
+    {/* Background gradient */}
+    <div className="absolute inset-0 bg-gradient-to-b from-background via-background to-background/95" />
+    <NetworkMesh />
 
-      <div className="container mx-auto px-5 md:px-6 relative z-10" ref={ref}>
-        <div className="grid grid-cols-1 lg:grid-cols-[55%_45%] gap-10 lg:gap-16 items-center">
-          {/* Left — text */}
-          <div>
-            {/* Badge */}
-            <div className="animate-on-scroll inline-flex items-center gap-2 px-4 py-1.5 rounded-full mb-6" style={{ border: "1px solid rgba(0,201,177,0.4)", background: "rgba(0,201,177,0.08)" }}>
-              <Sparkles className="w-3.5 h-3.5" style={{ color: "#00C9B1" }} />
-              <span className="font-mono text-xs font-medium" style={{ color: "#00C9B1" }}>AI-Powered Healthcare Platform</span>
-            </div>
+    <div className="container mx-auto px-4 md:px-6 relative z-10">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
+        {/* Left — text */}
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+        >
+          <h1
+            className="text-[28px] sm:text-[34px] md:text-[40px] lg:text-[44px] font-medium tracking-tight text-foreground mb-5"
+            style={{ letterSpacing: "-1px", lineHeight: 1.15 }}
+          >
+            AI Healthcare Platform for Patient Engagement, CRM, and Automation
+          </h1>
 
-            {/* Headline */}
-            <h1 className="animate-on-scroll hero-headline mb-6">
-              The <span className="gradient-text">Operating System</span>
-              <br />for Modern Clinics
-            </h1>
+          <p className="text-[15px] md:text-base text-muted-foreground leading-relaxed mb-3 max-w-lg">
+            Borna AI is a unified healthcare platform designed to help practices improve patient engagement, streamline communication, and automate operations through one intelligent system.
+          </p>
+          <p className="text-[15px] md:text-base text-muted-foreground leading-relaxed mb-8 max-w-lg">
+            Start with Borna Care and expand into a complete AI-powered healthcare ecosystem.
+          </p>
 
-            {/* Subtitle */}
-            <div className="animate-on-scroll max-w-[480px] mb-8">
-              <p className="text-base leading-[1.7] mb-3" style={{ color: "#94A3B8" }}>
-                Borna AI is a unified healthcare platform designed to help practices improve patient engagement, streamline communication, and automate operations through one intelligent system.
-              </p>
-              <p className="text-base leading-[1.7]" style={{ color: "#94A3B8" }}>
-                Start with Borna Care and expand into a complete AI-powered healthcare ecosystem.
-              </p>
-            </div>
+          <div className="flex flex-col sm:flex-row gap-3">
+            <Link to="/demo" className="gradient-btn text-sm md:text-base px-8 py-3 h-11 inline-flex items-center justify-center">
+              Book a demo
+            </Link>
+            <Link
+              to="/platform"
+              className="ghost-btn text-sm md:text-base px-8 py-3 h-11 inline-flex items-center justify-center"
+              style={{ border: "1px solid #00DEC4", color: "#00DEC4" }}
+              onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = "rgba(0,222,196,0.1)")}
+              onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = "transparent")}
+            >
+              Explore platform
+            </Link>
+          </div>
+        </motion.div>
 
-            {/* CTAs */}
-            <div className="animate-on-scroll flex flex-col sm:flex-row gap-3 mb-6">
-              <Link to="/demo" className="gradient-btn text-sm md:text-base inline-flex items-center justify-center gap-2">
-                Book a demo <ArrowRight className="w-4 h-4" />
-              </Link>
-              <Link to="/platform" className="ghost-btn text-sm md:text-base inline-flex items-center justify-center">
-                Explore platform
-              </Link>
-            </div>
-
-            {/* Trust signals */}
-            <div className="animate-on-scroll flex flex-wrap items-center gap-2 text-xs" style={{ color: "#475569" }}>
-              <span>✓ No credit card required</span>
-              <span>·</span>
-              <span>✓ 90-day free trial</span>
-              <span>·</span>
-              <span>✓ HIPAA Compliant</span>
-            </div>
+        {/* Right — floating UI screenshots */}
+        <motion.div
+          initial={{ opacity: 0, scale: 0.95 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.8, delay: 0.2 }}
+          className="relative"
+        >
+          {/* Main dashboard */}
+          <div className="glass-panel p-2 relative hover:-translate-y-1 transition-transform duration-300">
+            <img
+              src="/images/Admin_Dashboard.webp"
+              alt="Borna Care admin dashboard showing patient scheduling and management"
+              width={680}
+              height={440}
+              className="w-full h-auto rounded-xl object-cover"
+              loading="eager"
+            />
           </div>
 
-          {/* Right — screenshot with floating cards */}
-          <div className="animate-on-scroll relative">
-            <div
-              className="relative rounded-2xl overflow-hidden animate-float"
-              style={{
-                boxShadow: "0 32px 80px rgba(0,0,0,0.6), 0 0 120px rgba(0,201,177,0.15)",
-                border: "1px solid rgba(255,255,255,0.1)",
-                transform: "perspective(1200px) rotateY(-4deg) rotateX(2deg)",
-              }}
-            >
-              <img
-                src="/images/Admin_Dashboard.webp"
-                alt="Borna Care admin dashboard showing patient scheduling and management"
-                className="w-full h-auto"
-                loading="eager"
-                width={680}
-                height={440}
-              />
-            </div>
-
-            {/* Floating Card 1 — top-left */}
-            <div
-              className="hidden lg:flex absolute -top-4 -left-6 glass-panel p-3 items-center gap-3 animate-float"
-              style={{ animationDelay: "0.5s", zIndex: 2, minWidth: 220 }}
-            >
-              <div className="glow-icon-container" style={{ padding: 8 }}>
-                <Calendar className="w-4 h-4" style={{ color: "#00C9B1" }} />
-              </div>
-              <div>
-                <p className="text-sm font-medium" style={{ color: "#F8FAFC" }}>Appointment Booked</p>
-                <p className="text-xs" style={{ color: "#94A3B8" }}>Dr. Turner · 2:30 PM</p>
-              </div>
-              <div className="w-2 h-2 rounded-full ml-auto animate-pulse" style={{ background: "#22C55E" }} />
-            </div>
-
-            {/* Floating Card 2 — right */}
-            <div
-              className="hidden lg:flex absolute top-1/3 -right-8 glass-panel p-3 items-center gap-3 animate-float"
-              style={{ animationDelay: "1s", zIndex: 2, minWidth: 210 }}
-            >
-              <div className="glow-icon-container" style={{ padding: 8 }}>
-                <MessageSquare className="w-4 h-4" style={{ color: "#00C9B1" }} />
-              </div>
-              <div>
-                <p className="text-sm font-medium" style={{ color: "#F8FAFC" }}>SMS Reminder Sent</p>
-                <p className="text-xs" style={{ color: "#94A3B8" }}>38% fewer no-shows</p>
-              </div>
-            </div>
-
-            {/* Floating Card 3 — bottom-left */}
-            <div
-              className="hidden lg:flex absolute -bottom-6 -left-4 glass-panel p-3 items-center gap-3 animate-float"
-              style={{ animationDelay: "1.5s", zIndex: 2, minWidth: 220 }}
-            >
-              <div className="glow-icon-container" style={{ padding: 8 }}>
-                <TrendingUp className="w-4 h-4" style={{ color: "#00C9B1" }} />
-              </div>
-              <div>
-                <p className="text-sm font-medium" style={{ color: "#F8FAFC" }}>$12,400 Recovered</p>
-                <p className="text-xs" style={{ color: "#94A3B8" }}>This month · recalls</p>
-              </div>
-            </div>
-
-            {/* Mobile: show one card below */}
-            <div className="lg:hidden flex glass-panel p-3 items-center gap-3 mt-4 mx-auto max-w-[260px]">
-              <div className="glow-icon-container" style={{ padding: 8 }}>
-                <Calendar className="w-4 h-4" style={{ color: "#00C9B1" }} />
-              </div>
-              <div>
-                <p className="text-sm font-medium" style={{ color: "#F8FAFC" }}>Appointment Booked</p>
-                <p className="text-xs" style={{ color: "#94A3B8" }}>Dr. Turner · 2:30 PM</p>
-              </div>
-              <div className="w-2 h-2 rounded-full ml-auto animate-pulse" style={{ background: "#22C55E" }} />
-            </div>
+          {/* Floating secondary screen */}
+          <div
+            className="absolute -bottom-6 -left-6 md:-bottom-8 md:-left-10 glass-panel p-1.5 w-[140px] md:w-[200px] hover:-translate-y-1 transition-transform duration-300"
+            style={{ zIndex: 2 }}
+          >
+            <img
+              src="/images/patient_appointment_Confirmation.webp"
+              alt="Borna Care patient appointment confirmation screen"
+              width={390}
+              height={720}
+              className="w-full h-auto rounded-lg object-cover"
+              loading="eager"
+            />
           </div>
-        </div>
+
+          {/* Decorative connecting lines */}
+          <svg className="absolute inset-0 w-full h-full pointer-events-none" style={{ opacity: 0.2 }}>
+            <line x1="20%" y1="80%" x2="5%" y2="95%" stroke="#00DEC4" strokeWidth="1" strokeDasharray="4 4" />
+          </svg>
+        </motion.div>
       </div>
-    </section>
-  );
-};
+    </div>
+  </section>
+);
 
 export default HeroSection;
