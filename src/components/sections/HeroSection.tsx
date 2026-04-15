@@ -22,7 +22,9 @@ const HeroSection = () => {
 
       {/* Content */}
       <div className="container mx-auto px-4 md:px-6 relative z-10 flex flex-col flex-1 pt-4 md:pt-12 lg:pt-16 xl:pt-20 pb-2 md:pb-6">
-        {/* Text content — centered */}
+        {/* Mobile: Title + badge only, then image, then description + CTAs */}
+        {/* Desktop: everything together then image */}
+
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -38,34 +40,54 @@ const HeroSection = () => {
             <span className="gradient-text">Operating System</span>
           </h1>
 
-          <p className="text-[12px] sm:text-[13px] md:text-[15px] lg:text-base xl:text-[17px] text-foreground/80 leading-relaxed mb-3 md:mb-4 max-w-2xl mx-auto font-medium">
-            Borna AI is a unified healthcare platform designed to help practices improve patient engagement, streamline communication, and automate operations through one intelligent system.
-          </p>
+          {/* Description & CTAs: hidden on mobile, shown on md+ */}
+          <div className="hidden md:block">
+            <p className="text-[15px] lg:text-base xl:text-[17px] text-foreground/80 leading-relaxed mb-4 max-w-2xl mx-auto font-medium">
+              Borna AI is a unified healthcare platform designed to help practices improve patient engagement, streamline communication, and automate operations through one intelligent system.
+            </p>
 
-
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-3">
-            <Link to="/demo" className="gradient-btn text-sm md:text-base px-6 md:px-8 py-2.5 md:py-3 h-10 md:h-11 flex items-center justify-center w-full sm:w-auto whitespace-nowrap">Book a demo</Link>
-            <a href="#how-it-works" className="ghost-btn text-sm md:text-base px-6 md:px-4 py-2.5 md:py-3 h-10 md:h-11 flex items-center justify-center w-full sm:w-auto whitespace-nowrap">See how it works</a>
+            <div className="flex flex-row items-center justify-center gap-3">
+              <Link to="/demo" className="gradient-btn text-base px-8 py-3 h-11 flex items-center justify-center whitespace-nowrap">Book a demo</Link>
+              <a href="#how-it-works" className="ghost-btn text-base px-4 py-3 h-11 flex items-center justify-center whitespace-nowrap">See how it works</a>
+            </div>
           </div>
         </motion.div>
 
-        {/* Hero collage image — almost full width */}
+        {/* Hero collage image */}
         <motion.div
           initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.9, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-          className="relative w-full mx-auto mb-2 md:mb-8 flex-1 min-h-0"
+          className="relative w-full mx-auto mb-6 md:mb-8 flex-1 min-h-0"
         >
           <img
             src="/images/admin-hero-collage.webp"
             alt="Borna Care platform — admin dashboard, payments, scheduling, forms, and patient management"
-            className="w-full h-full object-contain object-top"
+            className="w-full h-auto md:h-full object-contain object-top"
             loading="eager"
             width={1920}
             height={1527}
+            style={{ minHeight: '280px' }}
           />
           {/* Bottom fade to blend into page */}
           <div className="absolute bottom-0 left-0 right-0 h-24 md:h-32 bg-gradient-to-t from-background to-transparent pointer-events-none" />
+        </motion.div>
+
+        {/* Description & CTAs: mobile only, after image */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.3 }}
+          className="md:hidden text-center mb-6"
+        >
+          <p className="text-[12px] sm:text-[13px] text-foreground/80 leading-relaxed mb-4 max-w-sm mx-auto font-medium">
+            Borna AI is a unified healthcare platform designed to help practices improve patient engagement, streamline communication, and automate operations through one intelligent system.
+          </p>
+
+          <div className="flex flex-row items-center justify-center gap-2">
+            <Link to="/demo" className="gradient-btn text-sm px-5 py-2.5 h-10 flex items-center justify-center whitespace-nowrap">Book a demo</Link>
+            <a href="#how-it-works" className="ghost-btn text-sm px-4 py-2.5 h-10 flex items-center justify-center whitespace-nowrap">See how it works</a>
+          </div>
         </motion.div>
 
         {/* Module cards — compact, always visible */}
