@@ -33,7 +33,7 @@ const HeroSection = () => {
             AI Healthcare Platform Designed for Automation, Integration, and Intelligence
           </span>
 
-          <h1 className="text-[24px] leading-[1.15] sm:text-[28px] md:text-[32px] lg:text-[36px] xl:text-[42px] 2xl:text-[48px] font-medium tracking-tight md:leading-tight text-foreground mb-3 md:mb-4 lg:mb-5 max-w-4xl mx-auto whitespace-nowrap" style={{ letterSpacing: '-1.5px' }}>
+          <h1 className="text-[24px] leading-[1.15] sm:text-[28px] md:text-[32px] lg:text-[36px] xl:text-[42px] 2xl:text-[48px] font-medium tracking-tight md:leading-tight text-foreground mb-3 md:mb-4 lg:mb-5 max-w-4xl mx-auto md:whitespace-nowrap text-center" style={{ letterSpacing: '-1.5px' }}>
             AI-Powered Healthcare{" "}
             <span className="gradient-text">Operating System</span>
           </h1>
