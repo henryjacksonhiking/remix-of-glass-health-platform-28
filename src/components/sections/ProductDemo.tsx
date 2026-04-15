@@ -240,7 +240,7 @@ const ProductDemo = () => {
   return (
     <section id="demo" className="overflow-hidden" style={{ background: "#0B1130" }}>
       {/* Header */}
-      <div className="text-center px-4 pt-20 pb-10">
+      <div className="text-center px-4 pt-12 pb-6">
         <span className="section-eyebrow">
           See it in action
         </span>
