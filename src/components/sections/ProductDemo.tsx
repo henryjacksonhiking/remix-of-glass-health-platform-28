@@ -241,27 +241,10 @@ const ProductDemo = () => {
     <section id="demo" className="overflow-hidden" style={{ background: "#0B1130" }}>
       {/* Header */}
       <div className="text-center px-4 pt-20 pb-10">
-        <span
-          className="inline-block mb-3"
-          style={{
-            fontSize: 11,
-            textTransform: "uppercase",
-            letterSpacing: "1.5px",
-            color: "#00DEC4",
-            fontWeight: 600,
-          }}
-        >
+        <span className="section-eyebrow">
           See it in action
         </span>
-        <h2
-          className="mb-4"
-          style={{
-            fontSize: 36,
-            fontWeight: 500,
-            color: "rgba(255,255,255,0.95)",
-            letterSpacing: "-1px",
-          }}
-        >
+        <h2 className="section-title mt-3 mb-4">
           Watch Borna Care work
         </h2>
         <p
