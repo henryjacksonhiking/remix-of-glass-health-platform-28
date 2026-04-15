@@ -22,12 +22,16 @@ const cardStyle: React.CSSProperties = {
 };
 
 const statStyle: React.CSSProperties = {
-  fontSize: '48px',
+  fontSize: '38px',
   fontWeight: 500,
   background: 'linear-gradient(90deg, #00DEC4, #6eb3ff)',
   WebkitBackgroundClip: 'text',
   WebkitTextFillColor: 'transparent',
   backgroundClip: 'text',
+};
+
+const suffixStyle: React.CSSProperties = {
+  fontSize: '30px',
 };
 
 const ROISection = () => (
@@ -72,7 +76,7 @@ const ROISection = () => (
             transition={{ delay: i * 0.08, duration: 0.5 }}
             style={cardStyle}
           >
-            <div style={statStyle}>{'prefix' in item && item.prefix ? item.prefix : ''}{item.stat}{'suffix' in item && item.suffix ? item.suffix : ''}</div>
+            <div style={statStyle}>{'prefix' in item && item.prefix ? item.prefix : ''}{item.stat}{'suffix' in item && item.suffix ? <span style={suffixStyle}>{item.suffix}</span> : ''}</div>
             <div style={{ fontSize: '14px', color: 'rgba(255,255,255,0.9)', fontWeight: 500, marginTop: '4px' }}>{item.label}</div>
             {item.desc && <p style={{ fontSize: '13px', color: 'rgba(255,255,255,0.45)', lineHeight: 1.6, marginTop: '8px' }}>{item.desc}</p>}
           </motion.div>
