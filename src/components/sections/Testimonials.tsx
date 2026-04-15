@@ -66,7 +66,7 @@ const Testimonials = () => {
   return (
     <section className="py-10 md:py-16 overflow-hidden">
       <div className="container mx-auto px-4 md:px-6">
-        <div className="flex flex-col items-center mb-12 md:mb-40">
+        <div className="flex flex-col items-center mb-8 md:mb-12">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
