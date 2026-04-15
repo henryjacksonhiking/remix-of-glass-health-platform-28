@@ -64,7 +64,7 @@ const thirdColumn = testimonials.slice(6, 9);
 
 const Testimonials = () => {
   return (
-    <section className="py-24 overflow-hidden">
+    <section className="py-10 md:py-16 overflow-hidden">
       <div className="container mx-auto px-4 md:px-6">
         <div className="flex flex-col items-center mb-12 md:mb-40">
           <motion.div

@@ -58,7 +58,7 @@ const ProductGrid = () => {
   };
 
   return (
-    <section id="platform" className="py-24">
+    <section id="platform" className="py-10 md:py-16">
       <div className="container mx-auto px-4 md:px-6">
         <div className="text-center mb-20 lg:mb-2">
           <span className="text-xs font-medium text-primary uppercase tracking-wider">Platform overview</span>

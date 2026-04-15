@@ -3,7 +3,7 @@ import { SparklesCore } from "@/components/ui/sparkles-core";
 
 const CTASection = () => {
   return (
-    <section className="py-24 relative overflow-hidden">
+    <section className="py-10 md:py-16 relative overflow-hidden">
       {/* Glow */}
       <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
         <div className="w-[600px] h-[400px] rounded-full bg-primary/5 blur-[120px]" />

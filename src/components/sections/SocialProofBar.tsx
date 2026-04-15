@@ -12,7 +12,7 @@ const clinics = ["Bright Dental", "Summit Health", "Metro Clinic Group", "Pacifi
 
 const SocialProofBar = () => {
   return (
-    <section className="relative py-16 border-y border-glass-border overflow-hidden">
+    <section className="relative py-8 md:py-12 border-y border-glass-border overflow-hidden">
       {/* Sparkles background */}
       <div className="absolute inset-0 z-0">
         <Sparkles

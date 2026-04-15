@@ -29,7 +29,7 @@ const features = [
 
 const ValueProps = () => {
   return (
-    <section className="py-24 border-t border-glass-border">
+    <section className="py-10 md:py-16 border-t border-glass-border">
       <FeatureSteps
         features={features}
         title="Built for the operational realities of real clinics"
