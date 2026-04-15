@@ -30,17 +30,18 @@ const HeroSection = () => {
           className="text-center max-w-3xl mx-auto mb-3 md:mb-8 lg:mb-10"
         >
           <span className="inline-block glass-panel px-3 py-1 text-[10px] md:text-[11px] lg:text-xs font-medium text-primary mb-3 md:mb-4 lg:mb-5">
-            AI-powered healthcare operations platform
+            AI Healthcare Platform Designed for Automation, Integration, and Intelligence
           </span>
 
-          <h1 className="text-[24px] leading-[1.15] sm:text-[28px] md:text-[32px] lg:text-[36px] xl:text-[42px] 2xl:text-[48px] font-medium tracking-tight md:leading-tight text-foreground mb-3 md:mb-4 lg:mb-5" style={{ letterSpacing: '-1.5px' }}>
+          <h1 className="text-[24px] leading-[1.15] sm:text-[28px] md:text-[32px] lg:text-[36px] xl:text-[42px] 2xl:text-[48px] font-medium tracking-tight md:leading-tight text-foreground mb-3 md:mb-4 lg:mb-5 max-w-4xl mx-auto whitespace-nowrap" style={{ letterSpacing: '-1.5px' }}>
             AI-Powered Healthcare{" "}
-            <span className="gradient-text">Operations Platform</span>
+            <span className="gradient-text">Operating System</span>
           </h1>
 
           <p className="text-[12px] sm:text-[13px] md:text-[15px] lg:text-base xl:text-[17px] text-foreground/80 leading-relaxed mb-3 md:mb-4 max-w-2xl mx-auto font-medium">
             Borna AI is a unified healthcare platform designed to help practices improve patient engagement, streamline communication, and automate operations through one intelligent system.
           </p>
+
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-3">
             <Link to="/demo" className="gradient-btn text-sm md:text-base px-6 md:px-8 py-2.5 md:py-3 h-10 md:h-11 flex items-center justify-center w-full sm:w-auto whitespace-nowrap">Book a demo</Link>

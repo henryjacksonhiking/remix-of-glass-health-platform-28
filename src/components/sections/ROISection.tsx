@@ -22,7 +22,7 @@ const cardStyle: React.CSSProperties = {
 };
 
 const statStyle: React.CSSProperties = {
-  fontSize: '48px',
+  fontSize: '38px',
   fontWeight: 500,
   background: 'linear-gradient(90deg, #00DEC4, #6eb3ff)',
   WebkitBackgroundClip: 'text',
@@ -30,14 +30,18 @@ const statStyle: React.CSSProperties = {
   backgroundClip: 'text',
 };
 
+const suffixStyle: React.CSSProperties = {
+  fontSize: '30px',
+};
+
 const ROISection = () => (
   <section className="py-24">
     <div className="container mx-auto px-4 md:px-6">
       <div className="text-center mb-16">
-        <span style={{ fontSize: '11px', textTransform: 'uppercase', letterSpacing: '1.5px', color: 'rgba(255,255,255,0.3)' }}>
+        <span className="section-eyebrow">
           WHAT YOU GET
         </span>
-        <h2 className="mt-4" style={{ fontSize: '36px', fontWeight: 500, color: 'rgba(255,255,255,0.95)' }}>
+        <h2 className="section-title mt-4">
           Built to drive measurable growth
         </h2>
         <p className="mt-4 mx-auto" style={{ fontSize: '15px', color: 'rgba(255,255,255,0.45)', maxWidth: '520px' }}>
@@ -72,7 +76,7 @@ const ROISection = () => (
             transition={{ delay: i * 0.08, duration: 0.5 }}
             style={cardStyle}
           >
-            <div style={statStyle}>{'prefix' in item && item.prefix ? item.prefix : ''}{item.stat}{'suffix' in item && item.suffix ? item.suffix : ''}</div>
+            <div style={statStyle}>{'prefix' in item && item.prefix ? item.prefix : ''}{item.stat}{'suffix' in item && item.suffix ? <span style={suffixStyle}>{item.suffix}</span> : ''}</div>
             <div style={{ fontSize: '14px', color: 'rgba(255,255,255,0.9)', fontWeight: 500, marginTop: '4px' }}>{item.label}</div>
             {item.desc && <p style={{ fontSize: '13px', color: 'rgba(255,255,255,0.45)', lineHeight: 1.6, marginTop: '8px' }}>{item.desc}</p>}
           </motion.div>

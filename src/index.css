@@ -131,6 +131,19 @@
     box-shadow: 0 0 60px 20px hsla(212, 100%, 30%, 0.08);
   }
 
+  .section-eyebrow {
+    @apply block text-xs font-medium uppercase tracking-widest;
+    font-size: 11px;
+    letter-spacing: 1.5px;
+    color: rgba(255,255,255,0.3);
+  }
+
+  .section-title {
+    @apply text-3xl md:text-4xl font-medium tracking-tight;
+    letter-spacing: -1px;
+    color: rgba(255,255,255,0.95);
+  }
+
   .section-headline {
     @apply text-3xl md:text-4xl font-medium tracking-tight;
     letter-spacing: -1px;
