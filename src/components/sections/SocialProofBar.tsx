@@ -36,9 +36,9 @@ const SocialProofBar = () => {
         <p className="text-sm text-muted-foreground text-center mb-8">Trusted by forward-thinking clinics</p>
 
         {/* Clinic logos placeholder */}
-        <div className="flex flex-wrap justify-center gap-8 mb-12">
+        <div className="grid grid-cols-2 sm:flex sm:flex-wrap justify-center gap-3 sm:gap-8 mb-12">
           {clinics.map((name) => (
-            <div key={name} className="glass-panel px-6 py-3 text-sm font-medium text-muted-foreground">
+            <div key={name} className="glass-panel px-4 sm:px-6 py-3 text-xs sm:text-sm font-medium text-muted-foreground text-center">
               {name}
             </div>
           ))}

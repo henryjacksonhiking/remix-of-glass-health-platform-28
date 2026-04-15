@@ -469,11 +469,10 @@ const ProductDemo = () => {
 
           {/* Caption bar */}
           <div
-            className="flex items-start gap-3.5"
+            className="flex flex-col sm:flex-row items-start gap-2 sm:gap-3.5 p-3.5 sm:px-6 sm:py-3.5"
             style={{
               background: "#0d1535",
               borderTop: "0.5px solid rgba(255,255,255,0.06)",
-              padding: "14px 24px",
             }}
           >
             <span
