@@ -38,10 +38,10 @@ const ROISection = () => (
   <section className="py-24">
     <div className="container mx-auto px-4 md:px-6">
       <div className="text-center mb-16">
-        <span style={{ fontSize: '11px', textTransform: 'uppercase', letterSpacing: '1.5px', color: 'rgba(255,255,255,0.3)' }}>
+        <span className="section-eyebrow">
           WHAT YOU GET
         </span>
-        <h2 className="mt-4" style={{ fontSize: '36px', fontWeight: 500, color: 'rgba(255,255,255,0.95)' }}>
+        <h2 className="section-title mt-4">
           Built to drive measurable growth
         </h2>
         <p className="mt-4 mx-auto" style={{ fontSize: '15px', color: 'rgba(255,255,255,0.45)', maxWidth: '520px' }}>
