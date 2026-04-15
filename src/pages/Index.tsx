@@ -3,13 +3,11 @@ import PageWrapper from "@/components/layout/PageWrapper";
 import HeroSection from "@/components/sections/HeroSection";
 import SocialProofBar from "@/components/sections/SocialProofBar";
 import ProductDemo from "@/components/sections/ProductDemo";
-import ProductStory from "@/components/sections/ProductStory";
 import ROISection from "@/components/sections/ROISection";
 import ProductGrid from "@/components/sections/ProductGrid";
 import ValueProps from "@/components/sections/ValueProps";
 import Testimonials from "@/components/sections/Testimonials";
 import DifferentiationSection from "@/components/sections/DifferentiationSection";
-import WatchBornaCareWork from "@/components/sections/WatchBornaCareWork";
 import CTASection from "@/components/sections/CTASection";
 
 const Index = () => {
@@ -23,12 +21,10 @@ const Index = () => {
       <DifferentiationSection />
       <ProductGrid />
       <SocialProofBar />
-      <ProductDemo />
-      <ProductStory />
       <ROISection />
       <Testimonials />
       <ValueProps />
-      <WatchBornaCareWork />
+      <ProductDemo />
       <CTASection />
     </PageWrapper>
   );

@@ -24,10 +24,10 @@ const DifferentiationSection = () => (
         <h2 className="mt-4" style={{ fontSize: '36px', fontWeight: 500, color: 'rgba(255,255,255,0.95)' }}>
           Why healthcare practices struggle with fragmented systems
         </h2>
-        <p className="mt-4 mx-auto max-w-xl" style={{ fontSize: '15px', color: 'rgba(255,255,255,0.45)' }}>
+        <p className="mt-4 mx-auto max-w-2xl" style={{ fontSize: '15px', color: 'rgba(255,255,255,0.45)' }}>
           Most practices rely on multiple disconnected tools: patient communication software, healthcare CRM systems, scheduling platforms, and analytics dashboards.
         </p>
-        <p className="mt-3 mx-auto max-w-xl" style={{ fontSize: '15px', color: 'rgba(255,255,255,0.45)' }}>
+        <p className="mt-3 mx-auto max-w-2xl" style={{ fontSize: '15px', color: 'rgba(255,255,255,0.45)' }}>
           This leads to missed patient opportunities, inefficient workflows, and lack of visibility.
         </p>
       </div>
