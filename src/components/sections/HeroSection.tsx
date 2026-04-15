@@ -41,9 +41,6 @@ const HeroSection = () => {
           <p className="text-[12px] sm:text-[13px] md:text-[15px] lg:text-base xl:text-[17px] text-foreground/80 leading-relaxed mb-3 md:mb-4 max-w-2xl mx-auto font-medium">
             Borna AI is a unified healthcare platform designed to help practices improve patient engagement, streamline communication, and automate operations through one intelligent system.
           </p>
-          <p className="text-[11px] sm:text-[12px] md:text-[14px] lg:text-[15px] text-muted-foreground leading-relaxed mb-4 md:mb-6 max-w-xl mx-auto">
-            Start with Borna Care and expand into a complete AI-powered healthcare ecosystem.
-          </p>
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-3">
             <Link to="/demo" className="gradient-btn text-sm md:text-base px-6 md:px-8 py-2.5 md:py-3 h-10 md:h-11 flex items-center justify-center w-full sm:w-auto whitespace-nowrap">Book a demo</Link>
