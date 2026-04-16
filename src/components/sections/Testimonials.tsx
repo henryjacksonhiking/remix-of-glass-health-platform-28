@@ -72,9 +72,9 @@ const Testimonials = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
           >
-            <div className="inline-block text-xs font-semibold tracking-widest uppercase text-primary border border-primary/20 rounded-full px-4 py-1.5 mb-6">
+            <span className="section-eyebrow">
               Testimonials
-            </div>
+            </span>
           </motion.div>
 
           <motion.h2
