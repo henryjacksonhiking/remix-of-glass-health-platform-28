@@ -55,13 +55,12 @@ const DifferentiationSection = () => (
       </div>
 
       <blockquote
-        className="mx-auto mt-10"
+        className="mx-auto mt-10 text-[12px] md:text-base"
         style={{
           borderLeft: '3px solid #00DEC4',
           background: 'rgba(0,222,196,0.05)',
-          padding: '20px 24px',
+          padding: '16px 18px',
           borderRadius: '0 10px 10px 0',
-          fontSize: '16px',
           color: 'rgba(255,255,255,0.8)',
           maxWidth: '680px',
         }}

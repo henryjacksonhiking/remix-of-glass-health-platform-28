@@ -88,7 +88,7 @@ const HeroSection = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.3 }}
-          className="md:hidden text-center mb-6 mt-2"
+          className="md:hidden text-center mb-10 mt-2"
         >
           <p className="text-[12px] sm:text-[13px] text-foreground/80 leading-relaxed mb-4 max-w-sm mx-auto font-medium">
             Borna AI is a unified healthcare platform designed to help practices improve patient engagement, streamline communication, and automate operations through one intelligent system.
@@ -107,7 +107,7 @@ const HeroSection = () => {
           transition={{ duration: 0.7, delay: 0.4 }}
           className="shrink-0 max-w-5xl mx-auto w-full"
         >
-          <div className="grid grid-cols-3 gap-2 md:grid-cols-5 md:gap-3 w-full justify-items-center mx-auto place-items-center">
+          <div className="flex flex-wrap md:grid md:grid-cols-5 justify-center gap-2 md:gap-3 w-full mx-auto">
             {products.map((product) => {
               const IconComp = iconMap[product.features[0]?.icon] || LucideIcons.Box;
               const isCare = product.id === 'care';
@@ -116,7 +116,7 @@ const HeroSection = () => {
                 <Link
                   key={product.id}
                   to={product.href}
-                  className="glass-panel-hover p-2 md:p-4 lg:p-3 xl:p-5 text-center group min-w-0 w-full max-w-[140px]"
+                  className="glass-panel-hover p-2 md:p-4 lg:p-3 xl:p-5 text-center group min-w-0 basis-[30%] md:basis-auto md:w-full max-w-[140px]"
                 >
                   <div
                     className="w-8 h-8 md:w-11 md:h-11 lg:w-9 lg:h-9 xl:w-12 xl:h-12 rounded-lg mx-auto mb-1 md:mb-2 flex items-center justify-center"
