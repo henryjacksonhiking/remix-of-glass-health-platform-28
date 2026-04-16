@@ -11,7 +11,7 @@ const rows = [
   {
     capability: "Data",
     traditional: "Fragmented",
-    borna: "Centralised",
+    borna: "Centralized",
     advantage: "Replaces isolated, disconnected applications",
   },
   {
