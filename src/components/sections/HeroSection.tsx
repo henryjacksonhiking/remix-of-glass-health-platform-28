@@ -116,7 +116,7 @@ const HeroSection = () => {
                 <Link
                   key={product.id}
                   to={product.href}
-                  className="glass-panel-hover p-2 md:p-4 lg:p-3 xl:p-5 text-center group min-w-0 w-full max-w-[140px]"
+                  className="glass-panel-hover p-2 md:p-4 lg:p-3 xl:p-5 text-center group min-w-0 basis-[30%] md:basis-auto md:w-full max-w-[140px]"
                 >
                   <div
                     className="w-8 h-8 md:w-11 md:h-11 lg:w-9 lg:h-9 xl:w-12 xl:h-12 rounded-lg mx-auto mb-1 md:mb-2 flex items-center justify-center"
