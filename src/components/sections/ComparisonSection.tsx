@@ -53,62 +53,40 @@ const ComparisonSection = () => (
             overflow: 'hidden',
           }}
         >
-          {/* Header — hidden on mobile, use stacked cards instead */}
+          {/* Header — 3 cols on mobile, 4 cols on desktop */}
           <div
-            className="hidden md:grid grid-cols-4 gap-0"
+            className="grid grid-cols-3 md:grid-cols-4 gap-2 md:gap-0 px-3 md:px-6 py-3 md:py-4"
             style={{
               borderBottom: '0.5px solid rgba(255,255,255,0.08)',
-              padding: '16px 24px',
               background: 'rgba(255,255,255,0.02)',
             }}
           >
-            <span className="text-xs font-semibold uppercase tracking-wider" style={{ color: 'rgba(255,255,255,0.4)' }}>Capability</span>
-            <span className="text-xs font-semibold uppercase tracking-wider" style={{ color: 'rgba(255,255,255,0.4)' }}>Traditional</span>
-            <span className="text-xs font-semibold uppercase tracking-wider text-primary">Borna</span>
-            <span className="text-xs font-semibold uppercase tracking-wider" style={{ color: 'rgba(255,255,255,0.4)' }}>Advantage</span>
+            <span className="text-[10px] md:text-xs font-semibold uppercase tracking-wider" style={{ color: 'rgba(255,255,255,0.4)' }}>Capability</span>
+            <span className="text-[10px] md:text-xs font-semibold uppercase tracking-wider" style={{ color: 'rgba(255,255,255,0.4)' }}>Traditional</span>
+            <span className="text-[10px] md:text-xs font-semibold uppercase tracking-wider text-primary">Borna</span>
+            <span className="hidden md:inline text-xs font-semibold uppercase tracking-wider" style={{ color: 'rgba(255,255,255,0.4)' }}>Advantage</span>
           </div>
 
-          {/* Desktop rows */}
-          <div className="hidden md:block">
+          {/* Rows */}
+          <div>
             {rows.map((row, i) => (
               <div
                 key={row.capability}
-                className="grid grid-cols-4 gap-0 items-center"
+                className="grid grid-cols-3 md:grid-cols-4 gap-2 md:gap-0 items-center px-3 md:px-6 py-3 md:py-[18px]"
                 style={{
-                  padding: '18px 24px',
                   borderBottom: i < rows.length - 1 ? '0.5px solid rgba(255,255,255,0.06)' : 'none',
                 }}
               >
-                <span className="text-sm font-medium" style={{ color: 'rgba(255,255,255,0.85)' }}>{row.capability}</span>
-                <span className="flex items-center gap-2 text-sm" style={{ color: 'rgba(255,255,255,0.4)' }}>
-                  <X className="w-3.5 h-3.5 text-red-400/70 shrink-0" />
+                <span className="text-xs md:text-sm font-medium" style={{ color: 'rgba(255,255,255,0.85)' }}>{row.capability}</span>
+                <span className="flex items-center gap-1.5 md:gap-2 text-xs md:text-sm" style={{ color: 'rgba(255,255,255,0.4)' }}>
+                  <X className="w-3 h-3 md:w-3.5 md:h-3.5 text-red-400/70 shrink-0" />
                   {row.traditional}
                 </span>
-                <span className="flex items-center gap-2 text-sm font-medium text-primary">
-                  <Check className="w-3.5 h-3.5 shrink-0" />
+                <span className="flex items-center gap-1.5 md:gap-2 text-xs md:text-sm font-medium text-primary">
+                  <Check className="w-3 h-3 md:w-3.5 md:h-3.5 shrink-0" />
                   {row.borna}
                 </span>
-                <span className="text-sm" style={{ color: 'rgba(255,255,255,0.55)' }}>{row.advantage}</span>
-              </div>
-            ))}
-          </div>
-
-          {/* Mobile stacked cards */}
-          <div className="md:hidden divide-y divide-white/5">
-            {rows.map((row) => (
-              <div key={row.capability} className="p-4 space-y-2">
-                <div className="text-sm font-medium" style={{ color: 'rgba(255,255,255,0.85)' }}>{row.capability}</div>
-                <div className="flex items-center justify-between gap-3">
-                  <span className="flex items-center gap-1.5 text-xs" style={{ color: 'rgba(255,255,255,0.4)' }}>
-                    <X className="w-3 h-3 text-red-400/70 shrink-0" />
-                    {row.traditional}
-                  </span>
-                  <span className="flex items-center gap-1.5 text-xs font-medium text-primary">
-                    <Check className="w-3 h-3 shrink-0" />
-                    {row.borna}
-                  </span>
-                </div>
-                <div className="text-xs" style={{ color: 'rgba(255,255,255,0.45)' }}>{row.advantage}</div>
+                <span className="hidden md:inline text-sm" style={{ color: 'rgba(255,255,255,0.55)' }}>{row.advantage}</span>
               </div>
             ))}
           </div>
