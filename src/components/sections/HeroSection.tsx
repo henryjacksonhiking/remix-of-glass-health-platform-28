@@ -88,7 +88,7 @@ const HeroSection = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.3 }}
-          className="md:hidden text-center mb-6 mt-2"
+          className="md:hidden text-center mb-10 mt-2"
         >
           <p className="text-[12px] sm:text-[13px] text-foreground/80 leading-relaxed mb-4 max-w-sm mx-auto font-medium">
             Borna AI is a unified healthcare platform designed to help practices improve patient engagement, streamline communication, and automate operations through one intelligent system.
