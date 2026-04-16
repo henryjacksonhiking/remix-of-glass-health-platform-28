@@ -21,18 +21,15 @@ const cardStyle: React.CSSProperties = {
   padding: '28px',
 };
 
+const statClass = "text-[26px] md:text-[38px] font-medium bg-clip-text text-transparent";
 const statStyle: React.CSSProperties = {
-  fontSize: '38px',
-  fontWeight: 500,
   background: 'linear-gradient(90deg, #00DEC4, #6eb3ff)',
   WebkitBackgroundClip: 'text',
   WebkitTextFillColor: 'transparent',
   backgroundClip: 'text',
 };
 
-const suffixStyle: React.CSSProperties = {
-  fontSize: '30px',
-};
+const suffixClass = "text-[20px] md:text-[30px]";
 
 const ROISection = () => (
   <section className="py-10 md:py-16">
@@ -59,7 +56,7 @@ const ROISection = () => (
             transition={{ delay: i * 0.08, duration: 0.5 }}
             style={cardStyle}
           >
-            <div style={statStyle}>{item.stat}</div>
+            <div className={statClass} style={statStyle}>{item.stat}</div>
             <div style={{ fontSize: '12px', color: 'rgba(255,255,255,0.9)', fontWeight: 500, marginTop: '4px' }}>{item.label}</div>
             {item.desc && <p style={{ fontSize: '13px', color: 'rgba(255,255,255,0.45)', lineHeight: 1.6, marginTop: '8px' }}>{item.desc}</p>}
           </motion.div>
@@ -76,7 +73,7 @@ const ROISection = () => (
             transition={{ delay: i * 0.08, duration: 0.5 }}
             style={cardStyle}
           >
-            <div style={statStyle}>{'prefix' in item && item.prefix ? item.prefix : ''}{item.stat}{'suffix' in item && item.suffix ? <span style={suffixStyle}>{item.suffix}</span> : ''}</div>
+            <div className={statClass} style={statStyle}>{'prefix' in item && item.prefix ? item.prefix : ''}{item.stat}{'suffix' in item && item.suffix ? <span className={suffixClass}>{item.suffix}</span> : ''}</div>
             <div style={{ fontSize: '14px', color: 'rgba(255,255,255,0.9)', fontWeight: 500, marginTop: '4px' }}>{item.label}</div>
             {item.desc && <p style={{ fontSize: '13px', color: 'rgba(255,255,255,0.45)', lineHeight: 1.6, marginTop: '8px' }}>{item.desc}</p>}
           </motion.div>

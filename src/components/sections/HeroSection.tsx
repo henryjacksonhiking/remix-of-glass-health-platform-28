@@ -31,7 +31,7 @@ const HeroSection = () => {
           transition={{ duration: 0.6 }}
           className="text-center max-w-3xl mx-auto mb-3 md:mb-8 lg:mb-10"
         >
-          <span className="inline-block glass-panel px-3 py-1 text-[10px] md:text-[11px] lg:text-xs font-medium text-primary mb-3 md:mb-4 lg:mb-5">
+          <span className="hidden md:inline-block glass-panel px-3 py-1 text-[10px] md:text-[11px] lg:text-xs font-medium text-primary mb-3 md:mb-4 lg:mb-5">
             AI Healthcare Platform Designed for Automation, Integration, and Intelligence
           </span>
 
@@ -58,16 +58,26 @@ const HeroSection = () => {
           initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.9, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-          className="relative w-full mx-auto mb-6 md:mb-8 flex-1 min-h-0"
+          className="relative w-full mx-auto mb-2 md:mb-8 flex-1 min-h-0"
         >
+          {/* Mobile: clean admin dashboard only */}
+          <img
+            src="/images/Admin_Dashboard.webp"
+            alt="Borna Care admin dashboard"
+            className="md:hidden w-full h-auto object-contain object-top rounded-lg"
+            loading="eager"
+            width={1920}
+            height={1080}
+            style={{ minHeight: '220px' }}
+          />
+          {/* Desktop: full collage */}
           <img
             src="/images/admin-hero-collage.webp"
             alt="Borna Care platform — admin dashboard, payments, scheduling, forms, and patient management"
-            className="w-full h-auto md:h-full object-contain object-top"
+            className="hidden md:block w-full h-auto md:h-full object-contain object-top"
             loading="eager"
             width={1920}
             height={1527}
-            style={{ minHeight: '280px' }}
           />
           {/* Bottom fade to blend into page */}
           <div className="absolute bottom-0 left-0 right-0 h-24 md:h-32 bg-gradient-to-t from-background to-transparent pointer-events-none" />
@@ -78,7 +88,7 @@ const HeroSection = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.3 }}
-          className="md:hidden text-center mb-6"
+          className="md:hidden text-center mb-6 mt-2"
         >
           <p className="text-[12px] sm:text-[13px] text-foreground/80 leading-relaxed mb-4 max-w-sm mx-auto font-medium">
             Borna AI is a unified healthcare platform designed to help practices improve patient engagement, streamline communication, and automate operations through one intelligent system.
@@ -97,7 +107,7 @@ const HeroSection = () => {
           transition={{ duration: 0.7, delay: 0.4 }}
           className="shrink-0 max-w-5xl mx-auto w-full"
         >
-          <div className="grid grid-cols-3 gap-2 md:grid-cols-5 md:gap-3 w-full">
+          <div className="grid grid-cols-3 gap-2 md:grid-cols-5 md:gap-3 w-full justify-items-center mx-auto place-items-center">
             {products.map((product) => {
               const IconComp = iconMap[product.features[0]?.icon] || LucideIcons.Box;
               const isCare = product.id === 'care';
@@ -106,7 +116,7 @@ const HeroSection = () => {
                 <Link
                   key={product.id}
                   to={product.href}
-                  className="glass-panel-hover p-2 md:p-4 lg:p-3 xl:p-5 text-center group min-w-0"
+                  className="glass-panel-hover p-2 md:p-4 lg:p-3 xl:p-5 text-center group min-w-0 w-full max-w-[140px]"
                 >
                   <div
                     className="w-8 h-8 md:w-11 md:h-11 lg:w-9 lg:h-9 xl:w-12 xl:h-12 rounded-lg mx-auto mb-1 md:mb-2 flex items-center justify-center"

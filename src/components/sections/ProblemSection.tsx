@@ -22,7 +22,7 @@ const ProblemSection = () => (
         <span style={{ fontSize: '11px', textTransform: 'uppercase', letterSpacing: '1.5px', color: 'rgba(255,255,255,0.3)' }}>
           THE PROBLEM
         </span>
-        <h2 className="mt-4" style={{ fontSize: '36px', fontWeight: 500, color: 'rgba(255,255,255,0.95)' }}>
+        <h2 className="mt-4 text-[22px] md:text-[36px]" style={{ fontWeight: 500, color: 'rgba(255,255,255,0.95)' }}>
           Running a clinic shouldn't feel this hard
         </h2>
         <p className="mt-4 mx-auto max-w-xl" style={{ fontSize: '15px', color: 'rgba(255,255,255,0.45)' }}>
@@ -40,7 +40,9 @@ const ProblemSection = () => (
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.3 }}
               transition={{ delay: i * 0.08, duration: 0.5 }}
+              whileHover={{ y: -4, borderColor: 'rgba(0,222,196,0.35)', backgroundColor: 'rgba(255,255,255,0.06)' }}
               style={cardStyle}
+              className="transition-colors cursor-default"
             >
               <div className="w-10 h-10 rounded-lg flex items-center justify-center mb-4" style={{ backgroundColor: 'rgba(255,255,255,0.06)' }}>
                 <Icon className="w-5 h-5" style={{ color: 'rgba(255,255,255,0.5)' }} />
