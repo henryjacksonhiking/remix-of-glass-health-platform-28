@@ -107,7 +107,7 @@ const HeroSection = () => {
           transition={{ duration: 0.7, delay: 0.4 }}
           className="shrink-0 max-w-5xl mx-auto w-full"
         >
-          <div className="grid grid-cols-3 gap-2 md:grid-cols-5 md:gap-3 w-full justify-items-center mx-auto place-items-center">
+          <div className="flex flex-wrap md:grid md:grid-cols-5 justify-center gap-2 md:gap-3 w-full mx-auto">
             {products.map((product) => {
               const IconComp = iconMap[product.features[0]?.icon] || LucideIcons.Box;
               const isCare = product.id === 'care';
