@@ -108,9 +108,9 @@ const HeroSection = () => {
           </div>
         </motion.div>
 
-        {/* Product tile grid (3 + 2 layout, Care elevated) */}
+        {/* Product tile grid — flex-wrap so the last row is always centered */}
         <div className="mt-14 md:mt-20 max-w-5xl mx-auto">
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-3 md:gap-4">
+          <div className="flex flex-wrap justify-center gap-3 md:gap-4">
             {orderedProducts.map((p, i) => {
               const IconComp = iconMap[p.features[0]?.icon] || LucideIcons.Box;
               const isCare = p.id === "care";
@@ -121,7 +121,7 @@ const HeroSection = () => {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: i * 0.06 }}
-                  className={isCare ? "col-span-2 md:col-span-1" : ""}
+                  className="w-[calc(50%-0.375rem)] md:w-[calc(33.333%-0.667rem)]"
                 >
                   <Link
                     to={p.href}
@@ -341,14 +341,21 @@ const CareSpotlight = () => {
             <span className="block mb-3 text-[11px] font-semibold uppercase tracking-wider text-primary">
               Patient experience
             </span>
-            <div
+            <motion.div
+              initial={{ opacity: 0, y: 28, scale: 0.96, filter: "blur(8px)" }}
+              whileInView={{ opacity: 1, y: 0, scale: 1, filter: "blur(0px)" }}
+              viewport={{ once: true, amount: 0.3 }}
+              transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
+              whileHover={{ y: -6, scale: 1.015 }}
               style={{
                 background: "rgba(255,255,255,0.05)",
                 border: "0.5px solid rgba(255,255,255,0.12)",
                 borderRadius: 16,
                 padding: 14,
                 boxShadow: "0 0 40px 10px hsla(170, 100%, 43%, 0.06)",
+                transition: "box-shadow 300ms ease",
               }}
+              className="hover:shadow-[0_0_60px_16px_hsla(170,100%,43%,0.12)]"
             >
               <img
                 src="/images/Hero_-_patient_Dashboard__1_.webp"
@@ -356,7 +363,7 @@ const CareSpotlight = () => {
                 loading="lazy"
                 className="w-full h-auto rounded-xl block"
               />
-            </div>
+            </motion.div>
             <ul className="mt-5 space-y-2">
               {patientFeatures.map((f) => (
                 <li key={f} className="flex items-center gap-2 text-sm text-foreground/75">
@@ -377,14 +384,21 @@ const CareSpotlight = () => {
             <span className="block mb-3 text-[11px] font-semibold uppercase tracking-wider text-primary">
               Practice experience
             </span>
-            <div
+            <motion.div
+              initial={{ opacity: 0, y: 28, scale: 0.96, filter: "blur(8px)" }}
+              whileInView={{ opacity: 1, y: 0, scale: 1, filter: "blur(0px)" }}
+              viewport={{ once: true, amount: 0.3 }}
+              transition={{ duration: 0.9, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
+              whileHover={{ y: -6, scale: 1.015 }}
               style={{
                 background: "rgba(255,255,255,0.05)",
                 border: "0.5px solid rgba(255,255,255,0.12)",
                 borderRadius: 16,
                 padding: 14,
                 boxShadow: "0 0 40px 10px hsla(170, 100%, 43%, 0.06)",
+                transition: "box-shadow 300ms ease",
               }}
+              className="hover:shadow-[0_0_60px_16px_hsla(170,100%,43%,0.12)]"
             >
               <img
                 src="/images/Admin_Dashboard.webp"
@@ -392,7 +406,7 @@ const CareSpotlight = () => {
                 loading="lazy"
                 className="w-full h-auto rounded-xl block"
               />
-            </div>
+            </motion.div>
             <ul className="mt-5 space-y-2">
               {adminFeatures.map((f) => (
                 <li key={f} className="flex items-center gap-2 text-sm text-foreground/75">
