@@ -3,7 +3,7 @@ import { Helmet } from "react-helmet-async";
 import { motion } from "framer-motion";
 import {
   UserPlus, Heart, Zap, TrendingUp, MessageSquare, Phone, Mail, MessageCircle,
-  PhoneOff, AlertCircle, CalendarX, BarChart3, Funnel, Repeat, DollarSign,
+  PhoneOff, AlertCircle, CalendarX, BarChart3, Filter as Funnel, Repeat, DollarSign,
   Bell, CalendarCheck, Sparkles, ArrowRight, Bot, Activity, Target,
   CircleCheck, Layers, Database, ShieldCheck,
 } from "lucide-react";
