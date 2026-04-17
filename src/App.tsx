@@ -22,6 +22,7 @@ import TermsPage from "./pages/TermsPage.tsx";
 import SignUpPage from "./pages/SignUpPage.tsx";
 import CaseStudyPage from "./pages/CaseStudyPage.tsx";
 import RoadmapPage from "./pages/RoadmapPage.tsx";
+import IndustriesPage from "./pages/IndustriesPage.tsx";
 import NotFound from "./pages/NotFound.tsx";
 
 const queryClient = new QueryClient();
@@ -52,6 +53,7 @@ const App = () => (
           <Route path="/privacy" element={<PrivacyPage />} />
           <Route path="/terms" element={<TermsPage />} />
           <Route path="/sign-up" element={<SignUpPage />} />
+          <Route path="/industries" element={<IndustriesPage />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
