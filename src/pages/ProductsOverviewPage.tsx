@@ -519,16 +519,16 @@ const OtherProducts = () => {
 const ConceptDiagram = ({ slug, color }: { slug: string; color: string }) => {
   if (slug === "connect") {
     return (
-      <svg width="180" height="60" viewBox="0 0 180 60" fill="none">
-        {[15, 35, 55, 75].map((y, i) => (
+      <svg width="180" height="80" viewBox="0 0 180 80" fill="none">
+        {[18, 33, 48, 63].map((y, i) => (
           <g key={i}>
-            <circle cx="20" cy={y} r="3" fill={color} opacity="0.8" />
-            <line x1="23" y1={y} x2="90" y2="30" stroke={color} strokeOpacity="0.4" strokeWidth="0.8" />
+            <circle cx="22" cy={y} r="3.5" fill={color} opacity="0.85" />
+            <line x1="25" y1={y} x2="92" y2="40" stroke={color} strokeOpacity="0.4" strokeWidth="0.8" />
           </g>
         ))}
-        <circle cx="95" cy="30" r="6" fill={color} />
-        <line x1="101" y1="30" x2="160" y2="30" stroke={color} strokeOpacity="0.6" strokeWidth="1" strokeDasharray="2 3" />
-        <rect x="160" y="22" width="14" height="16" rx="2" fill={color} opacity="0.85" />
+        <circle cx="95" cy="40" r="6.5" fill={color} />
+        <line x1="102" y1="40" x2="158" y2="40" stroke={color} strokeOpacity="0.6" strokeWidth="1" strokeDasharray="2 3" />
+        <rect x="158" y="32" width="14" height="16" rx="2" fill={color} opacity="0.85" />
       </svg>
     );
   }
