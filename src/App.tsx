@@ -4,6 +4,7 @@ import { Toaster as Sonner } from "@/components/ui/sonner";
 import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import Index from "./pages/Index.tsx";
+import ProductsOverviewPage from "./pages/ProductsOverviewPage.tsx";
 import ProductPage from "./pages/ProductPage.tsx";
 import PlatformPage from "./pages/PlatformPage.tsx";
 import SolutionsPage from "./pages/SolutionsPage.tsx";
@@ -32,6 +33,7 @@ const App = () => (
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Index />} />
+          <Route path="/products" element={<ProductsOverviewPage />} />
           <Route path="/products/:slug" element={<ProductPage />} />
           <Route path="/platform" element={<PlatformPage />} />
           <Route path="/solutions" element={<SolutionsPage />} />

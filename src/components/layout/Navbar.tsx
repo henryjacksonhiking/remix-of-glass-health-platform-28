@@ -37,12 +37,15 @@ const Navbar = () => {
             onMouseEnter={() => setProductsOpen(true)}
             onMouseLeave={() => setProductsOpen(false)}
           >
-            <button className={cn(
-              "relative flex items-center gap-1 text-[13px] lg:text-sm transition-all duration-300 whitespace-nowrap py-1 px-2 rounded-md",
-              isProductActive ? "text-foreground font-medium nav-spotlight" : "text-muted-foreground hover:text-foreground"
-            )}>
+            <Link
+              to="/products"
+              className={cn(
+                "relative flex items-center gap-1 text-[13px] lg:text-sm transition-all duration-300 whitespace-nowrap py-1 px-2 rounded-md",
+                isProductActive ? "text-foreground font-medium nav-spotlight" : "text-muted-foreground hover:text-foreground"
+              )}
+            >
               Products <ChevronDown className="w-3.5 h-3.5" />
-            </button>
+            </Link>
             <AnimatePresence>
               {productsOpen && (
                 <motion.div
@@ -58,6 +61,17 @@ const Navbar = () => {
                     boxShadow: '0 8px 32px rgba(0, 0, 0, 0.4)',
                   }}
                 >
+                  <Link
+                    to="/products"
+                    className="flex items-center gap-3 px-3 py-2.5 rounded-lg transition-all duration-150 ease-in-out mb-1"
+                    style={{ background: "rgba(0, 222, 196, 0.08)", border: "1px solid rgba(0, 222, 196, 0.2)" }}
+                  >
+                    <div className="shrink-0 rounded-full" style={{ width: 8, height: 8, backgroundColor: "#00DEC4" }} />
+                    <div>
+                      <div className="text-sm font-medium" style={{ color: "#00DEC4" }}>All products</div>
+                      <div className="text-xs" style={{ color: "rgba(255, 255, 255, 0.65)" }}>Explore the full suite</div>
+                    </div>
+                  </Link>
                   {products.map((p) => (
                     <Link
                       key={p.id}
@@ -209,6 +223,14 @@ const Navbar = () => {
             <div className="px-4 py-6 space-y-4">
               <div className="space-y-1">
                 <p className="text-xs text-muted-foreground uppercase tracking-wider px-3 pb-2">Products</p>
+                <Link
+                  to="/products"
+                  onClick={() => setMobileOpen(false)}
+                  className="block px-3 py-2 text-sm font-medium rounded-lg"
+                  style={{ color: "#00DEC4", background: "rgba(0,222,196,0.08)" }}
+                >
+                  All products
+                </Link>
                 {products.map((p) => (
                   <Link
                     key={p.id}
