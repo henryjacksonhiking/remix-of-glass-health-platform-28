@@ -21,7 +21,7 @@ const HeroSection = () => {
       </div>
 
       {/* Content */}
-      <div className="container mx-auto px-4 md:px-6 relative z-10 flex flex-col flex-1 pt-4 md:pt-12 lg:pt-16 xl:pt-20 pb-2 md:pb-6">
+      <div className="container mx-auto px-4 md:px-6 relative z-10 flex flex-col flex-1 pt-12 md:pt-12 lg:pt-16 xl:pt-20 pb-2 md:pb-6">
         {/* Mobile: Title + badge only, then image, then description + CTAs */}
         {/* Desktop: everything together then image */}
 
