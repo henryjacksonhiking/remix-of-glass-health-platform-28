@@ -54,7 +54,11 @@ const DifferentiationSection = () => (
         })}
       </div>
 
-      <blockquote
+      <motion.blockquote
+        initial={{ opacity: 0, y: 16, scale: 0.98 }}
+        whileInView={{ opacity: 1, y: 0, scale: 1 }}
+        viewport={{ once: true, amount: 0.5 }}
+        transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
         className="mx-auto mt-10 text-[12px] md:text-base"
         style={{
           borderLeft: '3px solid #00DEC4',
@@ -66,7 +70,7 @@ const DifferentiationSection = () => (
         }}
       >
         Borna.ai is not a CRM. Not a booking tool. Not just another patient portal. It is a unified healthcare operations platform — built with AI at its core.
-      </blockquote>
+      </motion.blockquote>
     </div>
   </section>
 );
