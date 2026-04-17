@@ -460,30 +460,49 @@ const OtherProducts = () => {
                   to={p.href}
                   className="glass-panel-hover p-6 group block h-full relative"
                 >
-                  <div className="flex items-start justify-between gap-3 mb-4">
-                    <div
-                      className="w-11 h-11 rounded-lg flex items-center justify-center shrink-0"
-                      style={{ backgroundColor: `${p.accentColor}1F` }}
-                    >
-                      <IconComp className="w-5 h-5" style={{ color: p.accentColor }} />
-                    </div>
+                  {/* Status badge floats top-right */}
+                  <div className="absolute top-5 right-5">
                     <StatusBadge slug={p.slug} />
                   </div>
-                  <h3 className="text-base md:text-lg font-medium text-foreground mb-2">{p.name}</h3>
-                  <p className="text-sm text-muted-foreground leading-relaxed mb-4">{p.tagline}</p>
 
-                  {/* Conceptual diagram strip */}
+                  {/* Icon — larger, with halo, breathing room */}
                   <div
-                    className="rounded-lg h-[70px] flex items-center justify-center overflow-hidden relative"
+                    className="w-14 h-14 rounded-2xl flex items-center justify-center mb-5 transition-transform duration-300 group-hover:scale-110 group-hover:-rotate-3"
                     style={{
-                      background: `linear-gradient(135deg, ${p.accentColor}10, transparent)`,
-                      border: `0.5px solid ${p.accentColor}26`,
+                      background: `linear-gradient(135deg, ${p.accentColor}2E, ${p.accentColor}10)`,
+                      border: `1px solid ${p.accentColor}40`,
+                      boxShadow: `0 0 24px ${p.accentColor}26, inset 0 1px 0 rgba(255,255,255,0.08)`,
                     }}
                   >
-                    <ConceptDiagram slug={p.slug} color={p.accentColor} />
+                    <IconComp className="w-6 h-6" style={{ color: p.accentColor }} />
                   </div>
 
-                  <span className="inline-flex items-center gap-1 text-sm text-primary mt-4 group-hover:gap-2 transition-all">
+                  <h3 className="text-base md:text-lg font-medium text-foreground mb-2">{p.name}</h3>
+                  <p className="text-sm text-muted-foreground leading-relaxed mb-5">{p.tagline}</p>
+
+                  {/* Conceptual diagram — taller, centered, richer background */}
+                  <div
+                    className="rounded-xl h-[110px] flex items-center justify-center overflow-hidden relative"
+                    style={{
+                      background: `radial-gradient(ellipse at center, ${p.accentColor}1A 0%, ${p.accentColor}05 40%, transparent 75%)`,
+                      border: `0.5px solid ${p.accentColor}33`,
+                      boxShadow: `inset 0 0 32px ${p.accentColor}0D`,
+                    }}
+                  >
+                    {/* subtle grid backdrop */}
+                    <div
+                      className="absolute inset-0 opacity-[0.07] pointer-events-none"
+                      style={{
+                        backgroundImage: `linear-gradient(${p.accentColor} 1px, transparent 1px), linear-gradient(90deg, ${p.accentColor} 1px, transparent 1px)`,
+                        backgroundSize: "20px 20px",
+                      }}
+                    />
+                    <div className="relative z-10 transition-transform duration-500 group-hover:scale-105">
+                      <ConceptDiagram slug={p.slug} color={p.accentColor} />
+                    </div>
+                  </div>
+
+                  <span className="inline-flex items-center gap-1 text-sm text-primary mt-5 group-hover:gap-2 transition-all">
                     Learn more <ArrowRight className="w-3.5 h-3.5" />
                   </span>
                 </Link>
