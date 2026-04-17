@@ -228,38 +228,25 @@ const DefinitionSection = () => {
             const top = `calc(50% + ${Math.sin(angle) * 38}%)`;
             const Icon = n.icon;
             return (
-              <motion.div
+              <div
                 key={n.label}
                 className="absolute -translate-x-1/2 -translate-y-1/2"
                 style={{ left, top }}
-                initial={{ opacity: 0, scale: 0.6, filter: "blur(8px)" }}
-                whileInView={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
-                viewport={{ once: true, amount: 0.4 }}
-                transition={{ duration: 0.6, delay: 0.1 + i * 0.08, ease: [0.16, 1, 0.3, 1] }}
               >
-                <div className="flex flex-col items-center group cursor-pointer">
-                  <motion.div
-                    whileHover={{ scale: 1.15, y: -4 }}
-                    transition={{ type: "spring", stiffness: 300, damping: 18 }}
-                    className="w-12 h-12 rounded-full flex items-center justify-center backdrop-blur-md transition-shadow duration-300"
+                <div className="flex flex-col items-center">
+                  <div
+                    className="w-12 h-12 rounded-full flex items-center justify-center backdrop-blur-md"
                     style={{
                       background: "rgba(255,255,255,0.05)",
                       border: `1px solid ${n.color}55`,
                       boxShadow: `0 0 20px ${n.color}26`,
-                      ['--node-glow' as any]: `${n.color}66`,
-                    }}
-                    onMouseEnter={(e) => {
-                      (e.currentTarget as HTMLDivElement).style.boxShadow = `0 0 40px ${n.color}80, 0 0 12px ${n.color}66`;
-                    }}
-                    onMouseLeave={(e) => {
-                      (e.currentTarget as HTMLDivElement).style.boxShadow = `0 0 20px ${n.color}26`;
                     }}
                   >
-                    <Icon className="w-5 h-5 transition-transform duration-300 group-hover:scale-110" style={{ color: n.color }} />
-                  </motion.div>
+                    <Icon className="w-5 h-5" style={{ color: n.color }} />
+                  </div>
                   <span className="text-[11px] md:text-xs mt-2 text-foreground/80 whitespace-nowrap">{n.label}</span>
                 </div>
-              </motion.div>
+              </div>
             );
           })}
         </div>
@@ -368,25 +355,13 @@ const CareSpotlight = () => {
                 boxShadow: "0 0 40px 10px hsla(170, 100%, 43%, 0.06)",
                 transition: "box-shadow 300ms ease",
               }}
-              className="hover:shadow-[0_0_60px_16px_hsla(170,100%,43%,0.12)] relative"
+              className="hover:shadow-[0_0_60px_16px_hsla(170,100%,43%,0.12)]"
             >
               <img
                 src="/images/Hero_-_patient_Dashboard__1_.webp"
                 alt="Borna Care patient portal — booking, forms, payments, communication"
                 loading="lazy"
                 className="w-full h-auto rounded-xl block"
-              />
-              {/* Mask the in-image legacy logo at top-left */}
-              <div
-                aria-hidden
-                className="absolute pointer-events-none rounded-md"
-                style={{
-                  top: "5.5%",
-                  left: "2.2%",
-                  width: "9%",
-                  height: "9%",
-                  background: "#ffffff",
-                }}
               />
             </motion.div>
             <ul className="mt-5 space-y-2">
@@ -497,15 +472,15 @@ const OtherProducts = () => {
                   <h3 className="text-base md:text-lg font-medium text-foreground mb-2">{p.name}</h3>
                   <p className="text-sm text-muted-foreground leading-relaxed mb-4">{p.tagline}</p>
 
-                  {/* Conceptual icon strip — product-relevant */}
+                  {/* Conceptual diagram strip */}
                   <div
-                    className="rounded-lg h-[80px] flex items-center justify-center overflow-hidden relative px-4"
+                    className="rounded-lg h-[70px] flex items-center justify-center overflow-hidden relative"
                     style={{
                       background: `linear-gradient(135deg, ${p.accentColor}10, transparent)`,
                       border: `0.5px solid ${p.accentColor}26`,
                     }}
                   >
-                    <ConceptIcons slug={p.slug} color={p.accentColor} />
+                    <ConceptDiagram slug={p.slug} color={p.accentColor} />
                   </div>
 
                   <span className="inline-flex items-center gap-1 text-sm text-primary mt-4 group-hover:gap-2 transition-all">
@@ -521,57 +496,69 @@ const OtherProducts = () => {
   );
 };
 
-/* Product-relevant icon trios with hover animation */
-const ConceptIcons = ({ slug, color }: { slug: string; color: string }) => {
-  const sets: Record<string, { Icon: React.ComponentType<{ className?: string; style?: React.CSSProperties }>; label: string }[]> = {
-    connect: [
-      { Icon: LucideIcons.Phone, label: "Calls" },
-      { Icon: LucideIcons.MessageSquare, label: "SMS" },
-      { Icon: LucideIcons.Video, label: "Video" },
-    ],
-    engage: [
-      { Icon: LucideIcons.UserPlus, label: "Lead" },
-      { Icon: LucideIcons.Mail, label: "Nurture" },
-      { Icon: LucideIcons.Heart, label: "Retain" },
-    ],
-    insight: [
-      { Icon: LucideIcons.BarChart3, label: "Reports" },
-      { Icon: LucideIcons.TrendingUp, label: "Trends" },
-      { Icon: LucideIcons.LayoutDashboard, label: "Dashboards" },
-    ],
-    core: [
-      { Icon: LucideIcons.Cpu, label: "AI" },
-      { Icon: LucideIcons.Workflow, label: "Workflow" },
-      { Icon: LucideIcons.ShieldCheck, label: "Secure" },
-    ],
-  };
-  const items = sets[slug] || [];
-  return (
-    <div className="flex items-center justify-center gap-5 md:gap-7 w-full">
-      {items.map(({ Icon, label }, i) => (
-        <div key={label} className="flex flex-col items-center gap-1.5">
-          <motion.div
-            whileHover={{ scale: 1.18, y: -3, rotate: [0, -6, 6, 0] }}
-            transition={{ type: "spring", stiffness: 320, damping: 14 }}
-            className="w-10 h-10 rounded-lg flex items-center justify-center transition-shadow duration-300"
-            style={{
-              background: `${color}1A`,
-              border: `1px solid ${color}40`,
-            }}
-            onMouseEnter={(e) => {
-              (e.currentTarget as HTMLDivElement).style.boxShadow = `0 0 22px ${color}80`;
-            }}
-            onMouseLeave={(e) => {
-              (e.currentTarget as HTMLDivElement).style.boxShadow = `0 0 0 0 ${color}00`;
-            }}
-          >
-            <Icon className="w-4 h-4" style={{ color }} />
-          </motion.div>
-          <span className="text-[9px] uppercase tracking-wider" style={{ color: "rgba(255,255,255,0.45)" }}>{label}</span>
-        </div>
-      ))}
-    </div>
-  );
+/* Tiny abstract diagrams per product (no fake dashboards) */
+const ConceptDiagram = ({ slug, color }: { slug: string; color: string }) => {
+  if (slug === "connect") {
+    return (
+      <svg width="180" height="60" viewBox="0 0 180 60" fill="none">
+        {[15, 35, 55, 75].map((y, i) => (
+          <g key={i}>
+            <circle cx="20" cy={y} r="3" fill={color} opacity="0.8" />
+            <line x1="23" y1={y} x2="90" y2="30" stroke={color} strokeOpacity="0.4" strokeWidth="0.8" />
+          </g>
+        ))}
+        <circle cx="95" cy="30" r="6" fill={color} />
+        <line x1="101" y1="30" x2="160" y2="30" stroke={color} strokeOpacity="0.6" strokeWidth="1" strokeDasharray="2 3" />
+        <rect x="160" y="22" width="14" height="16" rx="2" fill={color} opacity="0.85" />
+      </svg>
+    );
+  }
+  if (slug === "engage") {
+    return (
+      <svg width="200" height="60" viewBox="0 0 200 60" fill="none">
+        <path d="M10 50 L60 30 L110 35 L160 15 L190 20" stroke={color} strokeWidth="1.4" fill="none" strokeOpacity="0.85" />
+        {[
+          { x: 10, y: 50, label: "Lead" },
+          { x: 60, y: 30, label: "Patient" },
+          { x: 110, y: 35, label: "Active" },
+          { x: 160, y: 15, label: "Retained" },
+        ].map((p, i) => (
+          <g key={i}>
+            <circle cx={p.x} cy={p.y} r="3" fill={color} />
+            <text x={p.x} y={p.y + 14} fontSize="6" fill="rgba(255,255,255,0.6)" textAnchor="middle">{p.label}</text>
+          </g>
+        ))}
+      </svg>
+    );
+  }
+  if (slug === "insight") {
+    return (
+      <svg width="160" height="60" viewBox="0 0 160 60" fill="none">
+        {[18, 28, 12, 35, 22, 40, 30].map((h, i) => (
+          <rect key={i} x={10 + i * 20} y={50 - h} width="10" height={h} rx="2" fill={color} opacity={0.4 + i * 0.08} />
+        ))}
+        <path d="M15 30 Q50 20 80 25 T150 12" stroke={color} strokeWidth="1.4" fill="none" strokeOpacity="0.9" />
+      </svg>
+    );
+  }
+  if (slug === "core") {
+    return (
+      <svg width="180" height="60" viewBox="0 0 180 60" fill="none">
+        {[
+          { x: 30, y: 20 }, { x: 60, y: 40 }, { x: 90, y: 15 }, { x: 120, y: 35 }, { x: 150, y: 25 },
+        ].map((n, i, arr) => (
+          <g key={i}>
+            {arr.slice(i + 1).map((m, j) => (
+              <line key={j} x1={n.x} y1={n.y} x2={m.x} y2={m.y} stroke={color} strokeOpacity="0.2" strokeWidth="0.6" />
+            ))}
+            <circle cx={n.x} cy={n.y} r="3.5" fill={color} />
+            <circle cx={n.x} cy={n.y} r="6" fill="none" stroke={color} strokeOpacity="0.4" />
+          </g>
+        ))}
+      </svg>
+    );
+  }
+  return null;
 };
 
 /* ============== Section 6: How products work together ============== */
@@ -595,20 +582,15 @@ const FlowSection = () => {
         </div>
 
         <div className="max-w-5xl mx-auto">
-          {/* Mobile: vertical stack with down arrows; Desktop: horizontal with right arrows */}
-          <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-2 md:gap-2">
+          {/* Mobile: vertical, Desktop: horizontal */}
+          <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-3 md:gap-2 relative">
             {flow.map((step, i) => {
               const product = products.find((p) => p.id === step.id)!;
               const IconComp = iconMap[product.features[0]?.icon] || LucideIcons.Box;
-              const isLast = i === flow.length - 1;
               return (
-                <div key={step.id} className="flex md:flex-col items-center md:flex-1 w-full md:w-auto gap-3 md:gap-0">
-                  <div className="flex md:flex-col items-center gap-3 md:gap-2 md:w-full">
-                    <motion.div
-                      initial={{ opacity: 0, scale: 0.6 }}
-                      whileInView={{ opacity: 1, scale: 1 }}
-                      viewport={{ once: true, amount: 0.3 }}
-                      transition={{ delay: i * 0.1, type: "spring", stiffness: 240, damping: 16 }}
+                <div key={step.id} className="flex md:flex-col items-center gap-3 md:gap-2 flex-1">
+                  <div className="flex md:flex-col items-center gap-3 md:gap-2">
+                    <div
                       className="w-12 h-12 md:w-14 md:h-14 rounded-full flex items-center justify-center shrink-0 backdrop-blur-md"
                       style={{
                         background: "rgba(255,255,255,0.05)",
@@ -617,48 +599,14 @@ const FlowSection = () => {
                       }}
                     >
                       <IconComp className="w-5 h-5 md:w-6 md:h-6" style={{ color: product.accentColor }} />
-                    </motion.div>
+                    </div>
                     <div className="md:text-center">
                       <div className="text-sm font-medium text-foreground">{step.name}</div>
                       <div className="text-[11px] md:text-xs text-muted-foreground">{step.desc}</div>
                     </div>
                   </div>
-
-                  {!isLast && (
-                    <>
-                      {/* Mobile: vertical down arrow */}
-                      <motion.div
-                        initial={{ opacity: 0, scale: 0.3 }}
-                        whileInView={{ opacity: 1, scale: 1 }}
-                        viewport={{ once: true, amount: 0.4 }}
-                        transition={{ delay: 0.15 + i * 0.12, duration: 0.4, type: "spring", stiffness: 260, damping: 14 }}
-                        className="md:hidden flex flex-col items-center w-full mt-1"
-                      >
-                        <div className="w-px h-3" style={{ background: "linear-gradient(180deg, transparent, hsl(var(--primary) / 0.5))" }} />
-                        <motion.div
-                          animate={{ scale: [1, 1.3, 1], opacity: [0.55, 1, 0.55] }}
-                          transition={{ duration: 1.6, repeat: Infinity, delay: i * 0.2, ease: "easeInOut" }}
-                        >
-                          <LucideIcons.ArrowDown className="w-4 h-4 text-primary" />
-                        </motion.div>
-                      </motion.div>
-
-                      {/* Desktop: horizontal right arrow */}
-                      <motion.div
-                        initial={{ opacity: 0, scale: 0.3 }}
-                        whileInView={{ opacity: 1, scale: 1 }}
-                        viewport={{ once: true, amount: 0.4 }}
-                        transition={{ delay: 0.15 + i * 0.12, duration: 0.4, type: "spring", stiffness: 260, damping: 14 }}
-                        className="hidden md:flex items-center justify-center px-1 mt-5"
-                      >
-                        <motion.div
-                          animate={{ x: [0, 4, 0], scale: [1, 1.25, 1], opacity: [0.55, 1, 0.55] }}
-                          transition={{ duration: 1.8, repeat: Infinity, delay: i * 0.25, ease: "easeInOut" }}
-                        >
-                          <ArrowRight className="w-5 h-5 text-primary" />
-                        </motion.div>
-                      </motion.div>
-                    </>
+                  {i < flow.length - 1 && (
+                    <ArrowRight className="hidden md:block w-4 h-4 text-primary/50 shrink-0 absolute" style={{ left: `${(i + 1) * 20 - 2}%`, top: "calc(50% - 32px)" }} />
                   )}
                 </div>
               );
