@@ -228,25 +228,38 @@ const DefinitionSection = () => {
             const top = `calc(50% + ${Math.sin(angle) * 38}%)`;
             const Icon = n.icon;
             return (
-              <div
+              <motion.div
                 key={n.label}
                 className="absolute -translate-x-1/2 -translate-y-1/2"
                 style={{ left, top }}
+                initial={{ opacity: 0, scale: 0.6, filter: "blur(8px)" }}
+                whileInView={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
+                viewport={{ once: true, amount: 0.4 }}
+                transition={{ duration: 0.6, delay: 0.1 + i * 0.08, ease: [0.16, 1, 0.3, 1] }}
               >
-                <div className="flex flex-col items-center">
-                  <div
-                    className="w-12 h-12 rounded-full flex items-center justify-center backdrop-blur-md"
+                <div className="flex flex-col items-center group cursor-pointer">
+                  <motion.div
+                    whileHover={{ scale: 1.15, y: -4 }}
+                    transition={{ type: "spring", stiffness: 300, damping: 18 }}
+                    className="w-12 h-12 rounded-full flex items-center justify-center backdrop-blur-md transition-shadow duration-300"
                     style={{
                       background: "rgba(255,255,255,0.05)",
                       border: `1px solid ${n.color}55`,
                       boxShadow: `0 0 20px ${n.color}26`,
+                      ['--node-glow' as any]: `${n.color}66`,
+                    }}
+                    onMouseEnter={(e) => {
+                      (e.currentTarget as HTMLDivElement).style.boxShadow = `0 0 40px ${n.color}80, 0 0 12px ${n.color}66`;
+                    }}
+                    onMouseLeave={(e) => {
+                      (e.currentTarget as HTMLDivElement).style.boxShadow = `0 0 20px ${n.color}26`;
                     }}
                   >
-                    <Icon className="w-5 h-5" style={{ color: n.color }} />
-                  </div>
+                    <Icon className="w-5 h-5 transition-transform duration-300 group-hover:scale-110" style={{ color: n.color }} />
+                  </motion.div>
                   <span className="text-[11px] md:text-xs mt-2 text-foreground/80 whitespace-nowrap">{n.label}</span>
                 </div>
-              </div>
+              </motion.div>
             );
           })}
         </div>
