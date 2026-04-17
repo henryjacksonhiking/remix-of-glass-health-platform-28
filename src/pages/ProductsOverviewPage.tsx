@@ -625,7 +625,20 @@ const FlowSection = () => {
                     </div>
                   </div>
                   {i < flow.length - 1 && (
-                    <ArrowRight className="hidden md:block w-4 h-4 text-primary/50 shrink-0 absolute" style={{ left: `${(i + 1) * 20 - 2}%`, top: "calc(50% - 32px)" }} />
+                    <motion.div
+                      initial={{ opacity: 0, scale: 0 }}
+                      whileInView={{ opacity: 1, scale: 1 }}
+                      viewport={{ once: true, amount: 0.4 }}
+                      transition={{
+                        delay: 0.3 + i * 0.25,
+                        duration: 0.5,
+                        ease: [0.34, 1.56, 0.64, 1],
+                      }}
+                      className="hidden md:block absolute"
+                      style={{ left: `${(i + 1) * 20 - 2}%`, top: "calc(50% - 32px)" }}
+                    >
+                      <ArrowRight className="w-4 h-4 text-primary/70" />
+                    </motion.div>
                   )}
                 </div>
               );
