@@ -95,6 +95,7 @@ const Navbar = () => {
             </AnimatePresence>
           </div>
           <NavLink to="/platform" className={navLinkClass}>Platform</NavLink>
+          <NavLink to="/ecosystem" className={navLinkClass}>Ecosystem</NavLink>
           <NavLink to="/solutions" className={navLinkClass}>Solutions</NavLink>
           <NavLink to="/pricing" className={navLinkClass}>Pricing</NavLink>
           <div
@@ -224,6 +225,7 @@ const Navbar = () => {
                 ))}
               </div>
               <Link to="/platform" onClick={() => setMobileOpen(false)} className="block px-3 py-2 text-sm text-foreground">Platform</Link>
+              <Link to="/ecosystem" onClick={() => setMobileOpen(false)} className="block px-3 py-2 text-sm text-foreground">Ecosystem</Link>
               <Link to="/solutions" onClick={() => setMobileOpen(false)} className="block px-3 py-2 text-sm text-foreground">Solutions</Link>
               <Link to="/pricing" onClick={() => setMobileOpen(false)} className="block px-3 py-2 text-sm text-foreground">Pricing</Link>
               <div className="space-y-1">
