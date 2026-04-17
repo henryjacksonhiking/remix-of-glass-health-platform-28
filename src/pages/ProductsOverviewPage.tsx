@@ -368,13 +368,25 @@ const CareSpotlight = () => {
                 boxShadow: "0 0 40px 10px hsla(170, 100%, 43%, 0.06)",
                 transition: "box-shadow 300ms ease",
               }}
-              className="hover:shadow-[0_0_60px_16px_hsla(170,100%,43%,0.12)]"
+              className="hover:shadow-[0_0_60px_16px_hsla(170,100%,43%,0.12)] relative"
             >
               <img
                 src="/images/Hero_-_patient_Dashboard__1_.webp"
                 alt="Borna Care patient portal — booking, forms, payments, communication"
                 loading="lazy"
                 className="w-full h-auto rounded-xl block"
+              />
+              {/* Mask the in-image legacy logo at top-left */}
+              <div
+                aria-hidden
+                className="absolute pointer-events-none rounded-md"
+                style={{
+                  top: "5.5%",
+                  left: "2.2%",
+                  width: "9%",
+                  height: "9%",
+                  background: "#ffffff",
+                }}
               />
             </motion.div>
             <ul className="mt-5 space-y-2">
