@@ -497,15 +497,15 @@ const OtherProducts = () => {
                   <h3 className="text-base md:text-lg font-medium text-foreground mb-2">{p.name}</h3>
                   <p className="text-sm text-muted-foreground leading-relaxed mb-4">{p.tagline}</p>
 
-                  {/* Conceptual diagram strip */}
+                  {/* Conceptual icon strip — product-relevant */}
                   <div
-                    className="rounded-lg h-[70px] flex items-center justify-center overflow-hidden relative"
+                    className="rounded-lg h-[80px] flex items-center justify-center overflow-hidden relative px-4"
                     style={{
                       background: `linear-gradient(135deg, ${p.accentColor}10, transparent)`,
                       border: `0.5px solid ${p.accentColor}26`,
                     }}
                   >
-                    <ConceptDiagram slug={p.slug} color={p.accentColor} />
+                    <ConceptIcons slug={p.slug} color={p.accentColor} />
                   </div>
 
                   <span className="inline-flex items-center gap-1 text-sm text-primary mt-4 group-hover:gap-2 transition-all">
