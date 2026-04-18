@@ -43,6 +43,7 @@ const Footer = () => {
       title: "Company",
       links: [
         { label: "About", href: "/about" },
+        { label: "Investors", href: "/investors" },
         { label: "Privacy policy", href: "/privacy" },
         { label: "Terms of service", href: "/terms" },
         { label: "Security & compliance", href: "/security" },
