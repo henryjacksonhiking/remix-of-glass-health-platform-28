@@ -21,7 +21,6 @@ import {
   CheckCircle2,
 } from "lucide-react";
 import PageWrapper from "@/components/layout/PageWrapper";
-import CTASection from "@/components/sections/CTASection";
 import {
   Accordion,
   AccordionContent,
@@ -1350,12 +1349,28 @@ const RoadmapPage = () => {
       </SectionShell>
 
       {/* Section 13 — Final CTA */}
-      <CTASection
-        title="Follow the journey of building a healthcare AI platform."
-        subtitle="Borna AI is evolving into a complete system for healthcare operations and patient engagement. Join us early — and be part of shaping what it becomes."
-        primaryCta={{ label: "Request Early Access", to: "/contact" }}
-        secondaryCta={{ label: "Contact Us", to: "/contact" }}
-      />
+      <section className="py-16 md:py-24 relative overflow-hidden">
+        <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+          <div className="w-[600px] h-[400px] rounded-full bg-primary/5 blur-[120px]" />
+        </div>
+        <div className="container mx-auto px-4 md:px-6 relative z-10 text-center max-w-2xl">
+          <h2 className="section-headline text-foreground mb-4">
+            Follow the journey of building a healthcare AI platform.
+          </h2>
+          <p className="body-text mx-auto mb-8">
+            Borna AI is evolving into a complete system for healthcare operations and
+            patient engagement. Join us early — and be part of shaping what it becomes.
+          </p>
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4">
+            <Link to="/contact" className="gradient-btn text-sm sm:text-base px-6 sm:px-8 py-3 sm:py-3.5">
+              Request Early Access
+            </Link>
+            <Link to="/contact" className="ghost-btn text-sm sm:text-base px-6 sm:px-8 py-3 sm:py-3.5">
+              Contact Us
+            </Link>
+          </div>
+        </div>
+      </section>
     </PageWrapper>
   );
 };
