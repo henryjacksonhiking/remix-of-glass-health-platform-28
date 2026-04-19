@@ -103,12 +103,15 @@ const Navbar = () => {
             onMouseEnter={() => setResourcesOpen(true)}
             onMouseLeave={() => setResourcesOpen(false)}
           >
-            <button className={cn(
-              "relative flex items-center gap-1 text-[13px] lg:text-sm transition-all duration-300 whitespace-nowrap py-1 px-2 rounded-md",
-              isResourcesActive ? "text-foreground font-medium nav-spotlight" : "text-muted-foreground hover:text-foreground"
-            )}>
+            <Link
+              to="/resources"
+              className={cn(
+                "relative flex items-center gap-1 text-[13px] lg:text-sm transition-all duration-300 whitespace-nowrap py-1 px-2 rounded-md",
+                isResourcesActive ? "text-foreground font-medium nav-spotlight" : "text-muted-foreground hover:text-foreground"
+              )}
+            >
               Resources <ChevronDown className="w-3.5 h-3.5" />
-            </button>
+            </Link>
             <AnimatePresence>
               {resourcesOpen && (
                 <motion.div
