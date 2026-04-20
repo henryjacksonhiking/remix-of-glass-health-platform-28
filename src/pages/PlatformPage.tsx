@@ -295,6 +295,327 @@ const jsonLd = [
   },
 ];
 
+/* ============== Platform Overview hub diagram (Change 5) ============== */
+const PlatformHubDiagram = () => {
+  // 4 surrounding nodes — radial on desktop, 2x2 grid on mobile
+  const outer = [
+    { label: "Communication", Icon: MessageSquare, angle: -90 },
+    { label: "CRM",           Icon: Users,         angle: 0 },
+    { label: "Analytics",     Icon: BarChart2,     angle: 90 },
+    { label: "Automation",    Icon: Zap,           angle: 180 },
+  ];
+
+  return (
+    <>
+      {/* ---- Desktop: 3D radial diagram ---- */}
+      <div className="hidden md:block relative w-full" style={{ aspectRatio: "360 / 280" }}>
+        <div className="absolute inset-0 borna-3d-tilt">
+          <svg viewBox="0 0 360 280" className="w-full h-full" role="img" aria-label="Hub and spoke diagram showing AI healthcare platform connecting Communication, CRM, Analytics, and Automation">
+            <defs>
+              <radialGradient id="plat-hub-glow" cx="50%" cy="50%" r="50%">
+                <stop offset="0%"  stopColor="hsl(var(--primary))" stopOpacity="0.55" />
+                <stop offset="60%" stopColor="hsl(var(--primary))" stopOpacity="0.18" />
+                <stop offset="100%" stopColor="hsl(var(--primary))" stopOpacity="0" />
+              </radialGradient>
+            </defs>
+
+            {/* Spokes — terminate at center node edge (r=44) */}
+            {outer.map((n, i) => {
+              const rad = (n.angle * Math.PI) / 180;
+              const cx = 180 + Math.cos(rad) * 110;
+              const cy = 140 + Math.sin(rad) * 80;
+              // shorten line so it ends at outer-node circumference (r=26) and center-node circumference (r=44)
+              const dx = cx - 180;
+              const dy = cy - 140;
+              const len = Math.hypot(dx, dy);
+              const ux = dx / len, uy = dy / len;
+              const x1 = 180 + ux * 44;
+              const y1 = 140 + uy * 44;
+              const x2 = cx - ux * 26;
+              const y2 = cy - uy * 26;
+              return (
+                <g key={`spoke-${i}`}>
+                  <line x1={x1} y1={y1} x2={x2} y2={y2} stroke="hsl(var(--primary))" strokeOpacity="0.35" strokeWidth="0.9" />
+                  {/* Traveling dot from outer → center */}
+                  <circle r="2" fill="hsl(var(--primary))" opacity="0.95" style={{
+                    offsetPath: `path('M ${x2} ${y2} L ${x1} ${y1}')`,
+                    animation: `borna-travel-dot 3.5s linear ${i * 0.5}s infinite`,
+                    filter: "drop-shadow(0 0 4px hsl(var(--primary)))",
+                  } as React.CSSProperties} />
+                </g>
+              );
+            })}
+
+            {/* Center halo */}
+            <circle cx="180" cy="140" r="56" fill="url(#plat-hub-glow)" />
+            {/* Center node */}
+            <circle cx="180" cy="140" r="44" fill="hsl(var(--primary))" fillOpacity="0.22" />
+            <circle cx="180" cy="140" r="44" fill="none" stroke="hsl(var(--primary))" strokeOpacity="0.85" strokeWidth="1" />
+            <text x="180" y="138" textAnchor="middle" fontSize="10" fontWeight="600" fill="rgba(255,255,255,0.95)">AI Healthcare</text>
+            <text x="180" y="150" textAnchor="middle" fontSize="10" fontWeight="600" fill="rgba(255,255,255,0.95)">Platform</text>
+
+            {/* Outer nodes */}
+            {outer.map(({ angle, label, Icon }) => {
+              const rad = (angle * Math.PI) / 180;
+              const x = 180 + Math.cos(rad) * 110;
+              const y = 140 + Math.sin(rad) * 80;
+              return (
+                <g key={label}>
+                  <circle cx={x} cy={y} r="26" fill="rgba(255,255,255,0.05)" stroke="hsl(var(--primary))" strokeOpacity="0.45" strokeWidth="0.8" />
+                  <foreignObject x={x - 9} y={y - 13} width="18" height="18">
+                    <Icon className="w-4 h-4 text-primary" />
+                  </foreignObject>
+                  <text x={x} y={y + 11} textAnchor="middle" fontSize="8" fill="rgba(255,255,255,0.78)">{label}</text>
+                </g>
+              );
+            })}
+          </svg>
+
+          {/* Heartbeat pulse rings around center hub */}
+          <span aria-hidden className="absolute pointer-events-none rounded-full borna-heartbeat-ring"
+            style={{
+              left: "50%", top: "50%",
+              width: "24.5%", height: "31.5%",
+              transform: "translate(-50%, -50%)",
+              border: "1.25px solid hsla(170, 100%, 43%, 0.55)",
+            }}
+          />
+          <span aria-hidden className="absolute pointer-events-none rounded-full borna-heartbeat-ring"
+            style={{
+              left: "50%", top: "50%",
+              width: "24.5%", height: "31.5%",
+              transform: "translate(-50%, -50%)",
+              border: "1.25px solid hsla(170, 100%, 43%, 0.55)",
+              animationDelay: "0.4s",
+            }}
+          />
+        </div>
+      </div>
+
+      {/* ---- Mobile: 2x2 grid below center node ---- */}
+      <div className="md:hidden flex flex-col items-center gap-6 py-2">
+        <div className="relative">
+          <div
+            className="rounded-full flex flex-col items-center justify-center"
+            style={{
+              width: 110, height: 110,
+              background: "hsl(var(--primary) / 0.22)",
+              border: "1px solid hsl(var(--primary) / 0.85)",
+              boxShadow: "0 0 60px hsl(var(--primary) / 0.25)",
+            }}
+          >
+            <span className="text-[10px] font-semibold text-foreground leading-tight text-center">AI Healthcare<br/>Platform</span>
+          </div>
+          <span aria-hidden className="absolute inset-0 rounded-full pointer-events-none borna-heartbeat-ring"
+            style={{ border: "1.25px solid hsla(170, 100%, 43%, 0.55)" }} />
+          <span aria-hidden className="absolute inset-0 rounded-full pointer-events-none borna-heartbeat-ring"
+            style={{ border: "1.25px solid hsla(170, 100%, 43%, 0.55)", animationDelay: "0.4s" }} />
+        </div>
+        <div className="grid grid-cols-2 gap-3 w-full max-w-xs">
+          {outer.map(({ label, Icon }) => (
+            <div key={label} className="flex flex-col items-center gap-1.5 rounded-xl py-3"
+              style={{ background: "rgba(255,255,255,0.04)", border: "0.5px solid hsl(var(--primary) / 0.35)" }}
+            >
+              <Icon className="w-4 h-4 text-primary" />
+              <span className="text-[11px]" style={{ color: "rgba(255,255,255,0.78)" }}>{label}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+    </>
+  );
+};
+
+/* ============== Why Borna · "Before" tools (Change 6 — 3+2 grid with broken lines) ============== */
+const FragmentedToolsDiagram = () => {
+  // Top row: Phone, Email, Calendar | Bottom row: Analytics, Document
+  const top = [
+    { Icon: Phone,    x: 50,  y: 38 },
+    { Icon: Mail,     x: 140, y: 38 },
+    { Icon: Calendar, x: 230, y: 38 },
+  ];
+  const bottom = [
+    { Icon: BarChart2, x: 95,  y: 102 },
+    { Icon: FileText,  x: 185, y: 102 },
+  ];
+  // broken connecting dashes (intentionally limited to avoid chaos; one prominent X mark)
+  const dashes: [number, number, number, number][] = [
+    [68,  38, 122, 38],   // phone-email (top)
+    [158, 38, 212, 38],   // email-calendar (top)
+    [113, 102, 167, 102], // analytics-document (bottom)
+    [50,  56, 95,  84],   // phone-analytics (diagonal)
+  ];
+  return (
+    <svg viewBox="0 0 280 140" className="w-full h-[140px]" aria-hidden="true">
+      {dashes.map(([x1, y1, x2, y2], i) => (
+        <line key={i} x1={x1} y1={y1} x2={x2} y2={y2}
+          stroke="rgba(255,255,255,0.22)" strokeDasharray="2 4" strokeWidth="0.7" />
+      ))}
+      {[...top, ...bottom].map(({ Icon, x, y }, i) => (
+        <g key={i}>
+          <rect x={x - 18} y={y - 18} width="36" height="36" rx="8"
+            fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.22)"
+            strokeDasharray="3 3" strokeWidth="0.6" />
+          <foreignObject x={x - 8} y={y - 8} width="16" height="16">
+            <Icon className="w-4 h-4" style={{ color: "rgba(255,255,255,0.42)" }} />
+          </foreignObject>
+        </g>
+      ))}
+      {/* Red X mark — broken connection signal */}
+      <g transform="translate(140 70)">
+        <circle r="9" fill="rgba(239, 68, 68, 0.12)" stroke="rgba(239, 68, 68, 0.55)" strokeWidth="0.8" />
+        <line x1="-4" y1="-4" x2="4"  y2="4"  stroke="rgb(248, 113, 113)" strokeWidth="1.2" strokeLinecap="round" />
+        <line x1="-4" y1="4"  x2="4"  y2="-4" stroke="rgb(248, 113, 113)" strokeWidth="1.2" strokeLinecap="round" />
+      </g>
+    </svg>
+  );
+};
+
+/* ============== Why Borna · "After" Borna platform (Change 6 — lines end at node edge) ============== */
+const UnifiedPlatformDiagram = () => {
+  const tools: { Icon: typeof Phone; x: number; y: number }[] = [
+    { Icon: Phone,     x: 40,  y: 30 },
+    { Icon: Mail,      x: 40,  y: 70 },
+    { Icon: Calendar,  x: 40,  y: 110 },
+    { Icon: BarChart2, x: 240, y: 50 },
+    { Icon: FileText,  x: 240, y: 100 },
+  ];
+  const cx = 140, cy = 70, hubR = 22;
+  return (
+    <svg viewBox="0 0 280 140" className="w-full h-[140px]" aria-hidden="true">
+      {tools.map(({ x, y }, i) => {
+        // start at the outer rect edge, end at the hub circumference (so line never crosses hub)
+        const startX = x + (x < cx ? 18 : -18);
+        const startY = y;
+        const dx = cx - startX;
+        const dy = cy - startY;
+        const len = Math.hypot(dx, dy);
+        const endX = cx - (dx / len) * hubR;
+        const endY = cy - (dy / len) * hubR;
+        return (
+          <line key={i} x1={startX} y1={startY} x2={endX} y2={endY}
+            stroke="hsl(var(--primary))" strokeOpacity="0.55" strokeWidth="0.9" />
+        );
+      })}
+      {tools.map(({ Icon, x, y }, i) => (
+        <g key={`t-${i}`}>
+          <rect x={x - 18} y={y - 18} width="36" height="36" rx="8"
+            fill="hsl(var(--primary))" fillOpacity="0.08"
+            stroke="hsl(var(--primary))" strokeOpacity="0.45" strokeWidth="0.7" />
+          <foreignObject x={x - 8} y={y - 8} width="16" height="16">
+            <Icon className="w-4 h-4 text-primary" />
+          </foreignObject>
+        </g>
+      ))}
+      {/* Hub */}
+      <circle cx={cx} cy={cy} r={hubR}
+        fill="hsl(var(--primary))" fillOpacity="0.22"
+        stroke="hsl(var(--primary))" strokeOpacity="0.85" strokeWidth="1" />
+      <text x={cx} y={cy + 3} textAnchor="middle" fontSize="9" fontWeight="600" fill="rgba(255,255,255,0.95)">Borna</text>
+    </svg>
+  );
+};
+
+/* ============== How It Works — animated arrow + sequenced cards (Change 7) ============== */
+const HowItWorksFlow = ({
+  steps,
+}: {
+  steps: { num: string; icon: typeof MessageSquare; label: string; sub: string }[];
+}) => {
+  const ref = useRef<HTMLDivElement>(null);
+  const [revealed, setRevealed] = useState(false);
+
+  useEffect(() => {
+    if (!ref.current || revealed) return;
+    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (reduce) { setRevealed(true); return; }
+    const obs = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setRevealed(true);
+          obs.disconnect();
+        }
+      },
+      { threshold: 0.25 }
+    );
+    obs.observe(ref.current);
+    return () => obs.disconnect();
+  }, [revealed]);
+
+  return (
+    <div ref={ref} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 relative">
+      {steps.map((s, i) => {
+        const Icon = s.icon;
+        return (
+          <div
+            key={s.num}
+            className="rounded-[14px] p-6 text-center relative transition-all duration-[400ms] ease-out"
+            style={{
+              ...cardStyle,
+              opacity: revealed ? 1 : 0,
+              transform: revealed ? "translateY(0)" : "translateY(20px)",
+              transitionDelay: `${i * 150}ms`,
+            }}
+          >
+            <div className="text-[11px] font-semibold tracking-[1.5px] text-primary mb-3">STEP {s.num}</div>
+            <div className="w-11 h-11 rounded-lg bg-primary/10 flex items-center justify-center mx-auto mb-4">
+              <Icon className="w-5 h-5 text-primary" />
+            </div>
+            <h3 className="text-base font-medium text-foreground mb-2">{s.label}</h3>
+            <p className="text-sm text-muted-foreground">{s.sub}</p>
+            {i < steps.length - 1 && (
+              <div
+                className="hidden lg:block absolute top-1/2 -translate-y-1/2 pointer-events-none"
+                style={{ right: "-22px", width: "30px", height: "12px" }}
+                aria-hidden
+              >
+                <svg viewBox="0 0 30 12" className="w-full h-full overflow-visible">
+                  <line x1="0" y1="6" x2="24" y2="6"
+                    stroke="hsl(var(--primary))" strokeOpacity="0.35" strokeWidth="1" />
+                  <path d="M22 2 L28 6 L22 10" fill="none"
+                    stroke="hsl(var(--primary))" strokeOpacity="0.55" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round" />
+                  {/* Traveling glowing dot */}
+                  <circle r="1.8" fill="hsl(var(--primary))"
+                    style={{
+                      offsetPath: "path('M 0 6 L 24 6')",
+                      animation: `borna-travel-dot 1.7s linear ${i * 0.5}s infinite`,
+                      filter: "drop-shadow(0 0 3px hsl(var(--primary)))",
+                    } as React.CSSProperties}
+                  />
+                </svg>
+              </div>
+            )}
+          </div>
+        );
+      })}
+    </div>
+  );
+};
+
+/* ============== Capability filled badge (Change 8) ============== */
+const CapabilityChip = ({ chip }: { chip: string }) => {
+  const iconMap: Record<string, typeof Activity> = {
+    "Omnichannel":   Radio,
+    "Full lifecycle": Repeat,
+    "Real-time":     Activity,
+    "Intelligent":   Cpu,
+  };
+  const Icon = iconMap[chip] ?? Sparkles;
+  return (
+    <span
+      className="inline-flex items-center gap-1.5 text-[11px] font-medium pl-2 pr-2.5 py-1 rounded-full"
+      style={{
+        background: "hsl(var(--primary) / 0.18)",
+        border: "0.75px solid hsl(var(--primary) / 0.6)",
+        color: "hsl(var(--primary))",
+      }}
+    >
+      <Icon className="w-3 h-3" />
+      {chip}
+    </span>
+  );
+};
+
 const PlatformPage = () => (
   <PageWrapper>
     <Helmet>
