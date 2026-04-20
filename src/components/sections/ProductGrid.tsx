@@ -107,20 +107,42 @@ const ProductGrid = () => {
               />
             </div>
 
-            {/* Center hub - Borna Core */}
+            {/* Center hub - Borna Core (with heartbeat pulse) */}
             <div
-              className="absolute z-20 flex flex-col items-center justify-center glass-panel"
+              className="absolute z-20"
               style={{
                 width: 130, height: 130,
                 top: '50%', left: '50%',
                 transform: 'translate(-50%, -50%)',
-                borderRadius: '50%',
-                boxShadow: '0 0 80px 20px hsla(170, 100%, 43%, 0.12)',
               }}
             >
-              <Cpu className="w-12 h-12 mb-1" style={{ color: coreProduct.accentColor }} />
-              <span className="text-[11px] font-semibold text-foreground">Borna Core</span>
-              <span className="text-[10px] font-medium text-muted-foreground">AI Engine</span>
+              {/* Heartbeat pulse rings */}
+              <span
+                aria-hidden
+                className="absolute inset-0 rounded-full pointer-events-none borna-heartbeat-ring"
+                style={{
+                  border: '1.25px solid hsla(170, 100%, 43%, 0.55)',
+                }}
+              />
+              <span
+                aria-hidden
+                className="absolute inset-0 rounded-full pointer-events-none borna-heartbeat-ring"
+                style={{
+                  border: '1.25px solid hsla(170, 100%, 43%, 0.55)',
+                  animationDelay: '0.4s',
+                }}
+              />
+              <div
+                className="relative flex flex-col items-center justify-center glass-panel w-full h-full"
+                style={{
+                  borderRadius: '50%',
+                  boxShadow: '0 0 80px 20px hsla(170, 100%, 43%, 0.12)',
+                }}
+              >
+                <Cpu className="w-12 h-12 mb-1" style={{ color: coreProduct.accentColor }} />
+                <span className="text-[11px] font-semibold text-foreground">Borna Core</span>
+                <span className="text-[10px] font-medium text-muted-foreground">AI Engine</span>
+              </div>
             </div>
 
             {/* Orbiting nodes */}
