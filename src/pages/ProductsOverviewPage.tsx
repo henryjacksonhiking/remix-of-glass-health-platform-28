@@ -515,63 +515,206 @@ const OtherProducts = () => {
   );
 };
 
-/* Tiny abstract diagrams per product (no fake dashboards) */
+/* Refined abstract diagrams per product — on-brand, no placeholder shapes */
 const ConceptDiagram = ({ slug, color }: { slug: string; color: string }) => {
   if (slug === "connect") {
+    // 4 channel icons (left) → converging lines → glowing hub (right)
+    const channels = [
+      { Icon: Phone, y: 14 },
+      { Icon: MessageSquare, y: 36 },
+      { Icon: Mail, y: 58 },
+      { Icon: Video, y: 80 },
+    ];
+    const hubX = 168;
+    const hubY = 47;
     return (
-      <svg width="180" height="80" viewBox="0 0 180 80" fill="none">
-        {[18, 33, 48, 63].map((y, i) => (
-          <g key={i}>
-            <circle cx="22" cy={y} r="3.5" fill={color} opacity="0.85" />
-            <line x1="25" y1={y} x2="92" y2="40" stroke={color} strokeOpacity="0.4" strokeWidth="0.8" />
-          </g>
+      <svg width="200" height="94" viewBox="0 0 200 94" fill="none" aria-hidden>
+        <defs>
+          <radialGradient id="connect-hub-glow" cx="50%" cy="50%" r="50%">
+            <stop offset="0%" stopColor={color} stopOpacity="0.55" />
+            <stop offset="60%" stopColor={color} stopOpacity="0.15" />
+            <stop offset="100%" stopColor={color} stopOpacity="0" />
+          </radialGradient>
+        </defs>
+        {channels.map((c, i) => (
+          <line
+            key={i}
+            x1="36"
+            y1={c.y}
+            x2={hubX}
+            y2={hubY}
+            stroke={color}
+            strokeOpacity="0.35"
+            strokeWidth="0.7"
+          />
         ))}
-        <circle cx="95" cy="40" r="6.5" fill={color} />
-        <line x1="102" y1="40" x2="158" y2="40" stroke={color} strokeOpacity="0.6" strokeWidth="1" strokeDasharray="2 3" />
-        <rect x="158" y="32" width="14" height="16" rx="2" fill={color} opacity="0.85" />
+        {/* Hub glow halo */}
+        <circle cx={hubX} cy={hubY} r="18" fill="url(#connect-hub-glow)" />
+        <circle cx={hubX} cy={hubY} r="6" fill={color} />
+        <circle cx={hubX} cy={hubY} r="6" fill="none" stroke={color} strokeOpacity="0.6" strokeWidth="0.8" />
+        {/* Channel icons via foreignObject */}
+        {channels.map(({ Icon, y }, i) => (
+          <foreignObject key={i} x="14" y={y - 8} width="20" height="20">
+            <Icon className="w-4 h-4" style={{ color, opacity: 0.9 }} />
+          </foreignObject>
+        ))}
       </svg>
     );
   }
-  if (slug === "engage") {
-    return (
-      <svg width="200" height="60" viewBox="0 0 200 60" fill="none">
-        <path d="M10 50 L60 30 L110 35 L160 15 L190 20" stroke={color} strokeWidth="1.4" fill="none" strokeOpacity="0.85" />
-        {[
-          { x: 10, y: 50, label: "Lead" },
-          { x: 60, y: 30, label: "Patient" },
-          { x: 110, y: 35, label: "Active" },
-          { x: 160, y: 15, label: "Retained" },
-        ].map((p, i) => (
-          <g key={i}>
-            <circle cx={p.x} cy={p.y} r="3" fill={color} />
-            <text x={p.x} y={p.y + 14} fontSize="6" fill="rgba(255,255,255,0.6)" textAnchor="middle">{p.label}</text>
-          </g>
-        ))}
-      </svg>
-    );
-  }
+
   if (slug === "insight") {
+    // Bar chart with sparkline overlay
+    const bars = [22, 34, 28, 46, 38, 56];
+    const maxH = 60;
     return (
-      <svg width="160" height="60" viewBox="0 0 160 60" fill="none">
-        {[18, 28, 12, 35, 22, 40, 30].map((h, i) => (
-          <rect key={i} x={10 + i * 20} y={50 - h} width="10" height={h} rx="2" fill={color} opacity={0.4 + i * 0.08} />
+      <svg width="200" height="94" viewBox="0 0 200 94" fill="none" aria-hidden>
+        <defs>
+          <linearGradient id="insight-bar" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stopColor={color} stopOpacity="0.85" />
+            <stop offset="100%" stopColor="#818CF8" stopOpacity="0.35" />
+          </linearGradient>
+          <filter id="insight-glow" x="-20%" y="-20%" width="140%" height="140%">
+            <feGaussianBlur stdDeviation="1.2" result="b" />
+            <feMerge>
+              <feMergeNode in="b" />
+              <feMergeNode in="SourceGraphic" />
+            </feMerge>
+          </filter>
+        </defs>
+        {bars.map((h, i) => (
+          <rect
+            key={i}
+            x={20 + i * 27}
+            y={maxH + 16 - h}
+            width="16"
+            height={h}
+            rx="3"
+            ry="3"
+            fill="url(#insight-bar)"
+          />
         ))}
-        <path d="M15 30 Q50 20 80 25 T150 12" stroke={color} strokeWidth="1.4" fill="none" strokeOpacity="0.9" />
+        {/* Sparkline trending up */}
+        <polyline
+          points={bars.map((h, i) => `${28 + i * 27},${maxH + 16 - h - 4}`).join(" ")}
+          fill="none"
+          stroke={color}
+          strokeWidth="1.4"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          opacity="0.95"
+          filter="url(#insight-glow)"
+        />
+        {/* Endpoint dot */}
+        <circle cx={28 + 5 * 27} cy={maxH + 16 - bars[5] - 4} r="2.4" fill={color} filter="url(#insight-glow)" />
       </svg>
     );
   }
-  if (slug === "core") {
+
+  if (slug === "engage") {
+    // Patient → Active → Retained on a curved path with arrow
+    const nodes = [
+      { x: 30, y: 56, label: "Patient" },
+      { x: 100, y: 30, label: "Active" },
+      { x: 170, y: 56, label: "Retained" },
+    ];
     return (
-      <svg width="180" height="60" viewBox="0 0 180 60" fill="none">
-        {[
-          { x: 30, y: 20 }, { x: 60, y: 40 }, { x: 90, y: 15 }, { x: 120, y: 35 }, { x: 150, y: 25 },
-        ].map((n, i, arr) => (
+      <svg width="200" height="94" viewBox="0 0 200 94" fill="none" aria-hidden>
+        <defs>
+          <filter id="engage-glow" x="-20%" y="-20%" width="140%" height="140%">
+            <feGaussianBlur stdDeviation="1.6" result="b" />
+            <feMerge>
+              <feMergeNode in="b" />
+              <feMergeNode in="SourceGraphic" />
+            </feMerge>
+          </filter>
+          <marker id="engage-arrow" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto">
+            <path d="M0,0 L6,3 L0,6 z" fill={color} />
+          </marker>
+        </defs>
+        <path
+          d={`M ${nodes[0].x} ${nodes[0].y} Q ${nodes[1].x} ${nodes[1].y - 18} ${nodes[2].x - 6} ${nodes[2].y - 2}`}
+          fill="none"
+          stroke={color}
+          strokeOpacity="0.85"
+          strokeWidth="1.2"
+          strokeLinecap="round"
+          markerEnd="url(#engage-arrow)"
+          filter="url(#engage-glow)"
+        />
+        {nodes.map((n) => (
+          <g key={n.label}>
+            <circle cx={n.x} cy={n.y} r="4" fill={color} filter="url(#engage-glow)" />
+            <text
+              x={n.x}
+              y={n.y + 16}
+              fontSize="8"
+              fill="rgba(255,255,255,0.78)"
+              textAnchor="middle"
+              fontWeight="500"
+            >
+              {n.label}
+            </text>
+          </g>
+        ))}
+      </svg>
+    );
+  }
+
+  if (slug === "core") {
+    // Sparse organic neural cluster — 6 nodes, varied sizes, partial links, 2 pulsing
+    const nodes = [
+      { x: 38, y: 30, r: 3 },
+      { x: 70, y: 60, r: 4.5, pulse: 0 },
+      { x: 102, y: 28, r: 3.5 },
+      { x: 130, y: 58, r: 5, pulse: 0.9 },
+      { x: 162, y: 34, r: 3.5 },
+      { x: 175, y: 64, r: 2.5 },
+    ];
+    // Curated, sparse edges
+    const edges: [number, number][] = [
+      [0, 1], [1, 2], [2, 3], [1, 3], [3, 4], [4, 5], [3, 5],
+    ];
+    return (
+      <svg width="200" height="94" viewBox="0 0 200 94" fill="none" aria-hidden>
+        <defs>
+          <filter id="core-glow" x="-50%" y="-50%" width="200%" height="200%">
+            <feGaussianBlur stdDeviation="1.8" result="b" />
+            <feMerge>
+              <feMergeNode in="b" />
+              <feMergeNode in="SourceGraphic" />
+            </feMerge>
+          </filter>
+        </defs>
+        {edges.map(([a, b], i) => (
+          <line
+            key={i}
+            x1={nodes[a].x}
+            y1={nodes[a].y}
+            x2={nodes[b].x}
+            y2={nodes[b].y}
+            stroke={color}
+            strokeOpacity="0.28"
+            strokeWidth="0.6"
+          />
+        ))}
+        {nodes.map((n, i) => (
           <g key={i}>
-            {arr.slice(i + 1).map((m, j) => (
-              <line key={j} x1={n.x} y1={n.y} x2={m.x} y2={m.y} stroke={color} strokeOpacity="0.2" strokeWidth="0.6" />
-            ))}
-            <circle cx={n.x} cy={n.y} r="3.5" fill={color} />
-            <circle cx={n.x} cy={n.y} r="6" fill="none" stroke={color} strokeOpacity="0.4" />
+            <circle
+              cx={n.x}
+              cy={n.y}
+              r={n.r}
+              fill={color}
+              opacity={0.9}
+              filter="url(#core-glow)"
+              style={
+                n.pulse !== undefined
+                  ? {
+                      transformOrigin: `${n.x}px ${n.y}px`,
+                      animation: `borna-core-pulse 2.8s ease-in-out ${n.pulse}s infinite`,
+                    }
+                  : undefined
+              }
+            />
           </g>
         ))}
       </svg>
