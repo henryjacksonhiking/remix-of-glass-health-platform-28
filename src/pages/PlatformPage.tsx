@@ -707,46 +707,13 @@ const PlatformPage = () => (
           {/* Before */}
           <div className="rounded-[14px] p-7" style={cardStyle}>
             <p className="text-[11px] uppercase tracking-[1.5px] mb-4" style={{ color: "rgba(255,255,255,0.4)" }}>Before · fragmented tools</p>
-            <svg viewBox="0 0 280 140" className="w-full h-[140px]" aria-hidden="true">
-              {[Phone, Mail, Calendar, BarChart2, FileText].map((Icon, i) => {
-                const positions = [[40, 30], [120, 25], [220, 40], [70, 100], [200, 105]];
-                const [x, y] = positions[i];
-                return (
-                  <g key={i}>
-                    <rect x={x - 18} y={y - 18} width="36" height="36" rx="8" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.2)" strokeDasharray="3 3" strokeWidth="0.6" />
-                    <foreignObject x={x - 8} y={y - 8} width="16" height="16">
-                      <Icon className="w-4 h-4" style={{ color: "rgba(255,255,255,0.4)" }} />
-                    </foreignObject>
-                  </g>
-                );
-              })}
-              {/* broken dashes */}
-              {[[58, 30, 102, 25], [138, 25, 202, 40], [88, 100, 182, 105], [40, 50, 70, 82]].map(([x1, y1, x2, y2], i) => (
-                <line key={i} x1={x1} y1={y1} x2={x2} y2={y2} stroke="rgba(255,255,255,0.2)" strokeDasharray="2 4" strokeWidth="0.6" />
-              ))}
-            </svg>
+            <FragmentedToolsDiagram />
           </div>
 
           {/* After */}
           <div className="rounded-[14px] p-7 relative overflow-hidden" style={cardStyle}>
             <p className="text-[11px] uppercase tracking-[1.5px] mb-4 text-primary">After · borna platform</p>
-            <svg viewBox="0 0 280 140" className="w-full h-[140px]" aria-hidden="true">
-              {[Phone, Mail, Calendar, BarChart2, FileText].map((Icon, i) => {
-                const positions = [[40, 30], [40, 70], [40, 110], [240, 50], [240, 100]];
-                const [x, y] = positions[i];
-                return (
-                  <g key={i}>
-                    <line x1={x + 18} y1={y} x2="140" y2="70" stroke="hsl(var(--primary))" strokeOpacity="0.5" strokeWidth="0.8" />
-                    <rect x={x - 18} y={y - 18} width="36" height="36" rx="8" fill="hsl(var(--primary))" fillOpacity="0.06" stroke="hsl(var(--primary))" strokeOpacity="0.4" strokeWidth="0.6" />
-                    <foreignObject x={x - 8} y={y - 8} width="16" height="16">
-                      <Icon className="w-4 h-4 text-primary" />
-                    </foreignObject>
-                  </g>
-                );
-              })}
-              <circle cx="140" cy="70" r="22" fill="hsl(var(--primary))" fillOpacity="0.18" stroke="hsl(var(--primary))" strokeOpacity="0.7" strokeWidth="1" />
-              <text x="140" y="73" textAnchor="middle" fontSize="9" fontWeight="600" fill="rgba(255,255,255,0.95)">Borna</text>
-            </svg>
+            <UnifiedPlatformDiagram />
           </div>
         </div>
       </div>
@@ -762,30 +729,7 @@ const PlatformPage = () => (
         </p>
       </div>
       <div className="container mx-auto px-4 md:px-6 max-w-6xl">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 relative">
-          {howItWorks.map((s, i) => {
-            const Icon = s.icon;
-            return (
-              <motion.div
-                key={s.num}
-                initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, amount: 0.3 }} transition={{ delay: i * 0.08, duration: 0.5 }}
-                className="rounded-[14px] p-6 text-center relative"
-                style={cardStyle}
-              >
-                <div className="text-[11px] font-semibold tracking-[1.5px] text-primary mb-3">STEP {s.num}</div>
-                <div className="w-11 h-11 rounded-lg bg-primary/10 flex items-center justify-center mx-auto mb-4">
-                  <Icon className="w-5 h-5 text-primary" />
-                </div>
-                <h3 className="text-base font-medium text-foreground mb-2">{s.label}</h3>
-                <p className="text-sm text-muted-foreground">{s.sub}</p>
-                {i < howItWorks.length - 1 && (
-                  <ArrowRight className="hidden lg:block absolute top-1/2 -right-4 -translate-y-1/2 w-4 h-4 text-primary/40" />
-                )}
-              </motion.div>
-            );
-          })}
-        </div>
+        <HowItWorksFlow steps={howItWorks} />
       </div>
     </section>
 
@@ -814,12 +758,7 @@ const PlatformPage = () => (
                   <div className="w-9 h-9 rounded-lg bg-primary/10 flex items-center justify-center">
                     <Icon className="w-4.5 h-4.5 text-primary" />
                   </div>
-                  <span
-                    className="text-[11px] font-medium px-2.5 py-0.5 rounded-full"
-                    style={{ background: "rgba(0,222,196,0.12)", color: "#00DEC4" }}
-                  >
-                    {c.chip}
-                  </span>
+                  <CapabilityChip chip={c.chip} />
                 </div>
                 <h3 className="text-base font-medium text-foreground mb-2">{c.title}</h3>
                 <p className="text-sm text-muted-foreground">{c.body}</p>
@@ -898,17 +837,23 @@ const PlatformPage = () => (
 
             {/* Borna core */}
             <div className="flex flex-col items-center justify-center py-4 md:py-0">
-              <div
-                className="relative w-32 h-32 md:w-40 md:h-40 rounded-2xl flex flex-col items-center justify-center"
-                style={{
-                  background: "radial-gradient(circle at center, rgba(0,222,196,0.25), rgba(0,222,196,0.05))",
-                  border: "1px solid rgba(0,222,196,0.4)",
-                  boxShadow: "0 0 40px rgba(0,222,196,0.2)",
-                }}
-              >
-                <Brain className="w-7 h-7 text-primary mb-2" />
-                <span className="text-sm font-semibold text-foreground">Borna AI</span>
-                <span className="text-[10px] uppercase tracking-wider mt-1" style={{ color: "rgba(255,255,255,0.5)" }}>Intelligence layer</span>
+              <div className="relative w-32 h-32 md:w-40 md:h-40 flex items-center justify-center">
+                {/* Ripple rings (Change 9) */}
+                <span aria-hidden className="borna-ripple-ring" style={{ animationDelay: "0s" }} />
+                <span aria-hidden className="borna-ripple-ring" style={{ animationDelay: "1s" }} />
+                <span aria-hidden className="borna-ripple-ring" style={{ animationDelay: "2s" }} />
+                <div
+                  className="relative z-10 w-full h-full rounded-2xl flex flex-col items-center justify-center"
+                  style={{
+                    background: "radial-gradient(circle at center, hsl(var(--primary) / 0.28), hsl(var(--primary) / 0.05) 70%, transparent 100%)",
+                    border: "1px solid hsl(var(--primary) / 0.45)",
+                    boxShadow: "0 0 40px hsl(var(--primary) / 0.22)",
+                  }}
+                >
+                  <Brain className="w-7 h-7 text-primary mb-2" />
+                  <span className="text-sm font-semibold text-foreground">Borna AI</span>
+                  <span className="text-[10px] uppercase tracking-wider mt-1" style={{ color: "rgba(255,255,255,0.5)" }}>Intelligence layer</span>
+                </div>
               </div>
             </div>
 
