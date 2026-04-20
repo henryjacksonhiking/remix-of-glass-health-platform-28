@@ -317,7 +317,9 @@ const PlatformPage = () => (
           initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.05 }}
           className="hero-headline text-foreground mt-4 mb-6"
         >
-          AI healthcare platform for patient engagement, CRM, and automation
+          AI healthcare platform
+          <br className="hidden md:inline" />{" "}
+          <span className="gradient-text">for patient engagement, CRM, and automation</span>
         </motion.h1>
         <motion.p
           initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.1 }}
