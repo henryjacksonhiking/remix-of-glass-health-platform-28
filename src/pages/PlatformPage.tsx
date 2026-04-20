@@ -359,32 +359,7 @@ const PlatformPage = () => (
             </p>
           </div>
           <div className="rounded-[14px] p-6 md:p-8" style={cardStyle}>
-            <svg viewBox="0 0 360 280" className="w-full h-auto" role="img" aria-label="Hub and spoke diagram showing AI healthcare platform connecting Communication, CRM, Analytics, and Automation">
-              {/* spokes */}
-              {[[180, 60], [300, 140], [180, 220], [60, 140]].map(([x, y], i) => (
-                <line key={i} x1="180" y1="140" x2={x} y2={y} stroke="hsl(var(--primary))" strokeOpacity="0.3" strokeWidth="0.8" />
-              ))}
-              {/* center */}
-              <circle cx="180" cy="140" r="44" fill="hsl(var(--primary))" fillOpacity="0.18" />
-              <circle cx="180" cy="140" r="44" fill="none" stroke="hsl(var(--primary))" strokeOpacity="0.7" strokeWidth="1" />
-              <text x="180" y="138" textAnchor="middle" fontSize="10" fontWeight="600" fill="rgba(255,255,255,0.95)">AI Healthcare</text>
-              <text x="180" y="150" textAnchor="middle" fontSize="10" fontWeight="600" fill="rgba(255,255,255,0.95)">Platform</text>
-              {/* outer nodes */}
-              {[
-                { x: 180, y: 60, label: "Communication", Icon: MessageSquare },
-                { x: 300, y: 140, label: "CRM", Icon: Users },
-                { x: 180, y: 220, label: "Analytics", Icon: BarChart2 },
-                { x: 60, y: 140, label: "Automation", Icon: Zap },
-              ].map(({ x, y, label, Icon }) => (
-                <g key={label}>
-                  <circle cx={x} cy={y} r="26" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.15)" strokeWidth="0.6" />
-                  <foreignObject x={x - 8} y={y - 12} width="16" height="16">
-                    <Icon className="w-4 h-4 text-primary" />
-                  </foreignObject>
-                  <text x={x} y={y + 10} textAnchor="middle" fontSize="8" fill="rgba(255,255,255,0.7)">{label}</text>
-                </g>
-              ))}
-            </svg>
+            <PlatformHubDiagram />
           </div>
         </div>
       </div>
