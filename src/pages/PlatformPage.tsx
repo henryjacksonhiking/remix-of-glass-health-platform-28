@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { useEffect, useRef, useState } from "react";
 import { Helmet } from "react-helmet-async";
 import { motion } from "framer-motion";
 import {
@@ -22,6 +23,10 @@ import {
   Layers,
   CheckCircle2,
   Globe,
+  Radio,
+  Repeat,
+  Activity,
+  Cpu,
 } from "lucide-react";
 import {
   Accordion,
