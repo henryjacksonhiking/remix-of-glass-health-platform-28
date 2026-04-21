@@ -378,10 +378,12 @@ const PlatformHubDiagram = () => {
               );
             })}
 
-            {/* Center ripple rings */}
+            {/* Center ripple rings (SVG-native animation) */}
             {[0, 1, 2].map(i => (
-              <circle key={`ripple-${i}`} cx="250" cy="200" r="65" fill="none" stroke="hsl(var(--primary))" strokeOpacity="0.4" strokeWidth="0.8"
-                className="borna-ripple-ring" style={{ animationDelay: `${i * 1}s`, position: 'static', top: 'auto', left: 'auto', width: 'auto', height: 'auto', transform: 'none', borderRadius: 0, border: 'none' } as React.CSSProperties} />
+              <circle key={`ripple-${i}`} cx="250" cy="200" r="55" fill="none" stroke="hsl(var(--primary))" strokeWidth="0.8">
+                <animate attributeName="r" from="55" to="90" dur="3s" begin={`${i * 1}s`} repeatCount="indefinite" />
+                <animate attributeName="opacity" from="0.5" to="0" dur="3s" begin={`${i * 1}s`} repeatCount="indefinite" />
+              </circle>
             ))}
 
             {/* Center halo */}
