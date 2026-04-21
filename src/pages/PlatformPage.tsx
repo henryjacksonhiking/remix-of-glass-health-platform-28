@@ -407,7 +407,7 @@ const PlatformHubDiagram = () => {
           <span aria-hidden className="absolute pointer-events-none rounded-full borna-heartbeat-ring"
             style={{
               left: "50%", top: "50%",
-              width: "24.5%", height: "31.5%",
+              width: "22%", height: "27.5%",
               transform: "translate(-50%, -50%)",
               border: "1.25px solid hsla(170, 100%, 43%, 0.55)",
             }}
@@ -415,7 +415,7 @@ const PlatformHubDiagram = () => {
           <span aria-hidden className="absolute pointer-events-none rounded-full borna-heartbeat-ring"
             style={{
               left: "50%", top: "50%",
-              width: "24.5%", height: "31.5%",
+              width: "22%", height: "27.5%",
               transform: "translate(-50%, -50%)",
               border: "1.25px solid hsla(170, 100%, 43%, 0.55)",
               animationDelay: "0.4s",
