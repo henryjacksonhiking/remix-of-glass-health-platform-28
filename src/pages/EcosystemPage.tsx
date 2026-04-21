@@ -406,9 +406,9 @@ const EcosystemPage = () => {
                 Unlike traditional healthcare software, Borna brings every system together — giving practices
                 full visibility across the entire patient journey.
               </p>
-              <div className="flex flex-row items-center gap-3">
-                <Link to="/demo" className="gradient-btn text-base px-7 py-3">Book a demo</Link>
-                <Link to="/platform" className="ghost-btn text-base px-5 py-3">
+              <div className="flex flex-row items-center gap-2 sm:gap-3">
+                <Link to="/demo" className="gradient-btn text-sm sm:text-base px-4 sm:px-7 py-2.5 sm:py-3 whitespace-nowrap">Book a demo</Link>
+                <Link to="/platform" className="ghost-btn text-sm sm:text-base px-4 sm:px-5 py-2.5 sm:py-3 whitespace-nowrap">
                   Explore platform <ArrowRight className="inline w-4 h-4 ml-1" />
                 </Link>
               </div>
@@ -685,9 +685,9 @@ const EcosystemPage = () => {
             Borna AI helps healthcare practices unify their systems, improve patient engagement, and scale
             efficiently — starting with a single product and growing into a complete AI-powered ecosystem.
           </p>
-          <div className="flex flex-row items-center justify-center gap-3">
-            <Link to="/demo" className="gradient-btn text-base px-7 py-3">Book a demo</Link>
-            <Link to="/platform" className="ghost-btn text-base px-5 py-3">
+          <div className="flex flex-row items-center justify-center gap-2 sm:gap-3">
+            <Link to="/demo" className="gradient-btn text-sm sm:text-base px-4 sm:px-7 py-2.5 sm:py-3 whitespace-nowrap">Book a demo</Link>
+            <Link to="/platform" className="ghost-btn text-sm sm:text-base px-4 sm:px-5 py-2.5 sm:py-3 whitespace-nowrap">
               Explore platform <ArrowRight className="inline w-4 h-4 ml-1" />
             </Link>
           </div>

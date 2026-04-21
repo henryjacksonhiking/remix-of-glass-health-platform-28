@@ -1029,12 +1029,12 @@ const RoadmapPage = () => {
                 This roadmap reflects our commitment to transparency while delivering
                 scalable solutions for healthcare practices.
               </p>
-              <div className="mt-8 flex flex-col sm:flex-row gap-3">
-                <Link to="/contact" className="gradient-btn text-sm px-6 py-3">
-                  Request Early Access
+              <div className="mt-8 flex flex-row items-center gap-2 sm:gap-3">
+                <Link to="/contact" className="gradient-btn text-sm sm:text-base px-4 sm:px-6 py-2.5 sm:py-3 whitespace-nowrap">
+                  Request early access
                 </Link>
-                <Link to="/platform" className="ghost-btn text-sm px-6 py-3">
-                  Explore Platform →
+                <Link to="/platform" className="ghost-btn text-sm sm:text-base px-4 sm:px-6 py-2.5 sm:py-3 whitespace-nowrap">
+                  Explore platform →
                 </Link>
               </div>
             </motion.div>
@@ -1361,12 +1361,12 @@ const RoadmapPage = () => {
             Borna AI is evolving into a complete system for healthcare operations and
             patient engagement. Join us early — and be part of shaping what it becomes.
           </p>
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4">
-            <Link to="/contact" className="gradient-btn text-sm sm:text-base px-6 sm:px-8 py-3 sm:py-3.5">
-              Request Early Access
+          <div className="flex flex-row items-center justify-center gap-2 sm:gap-4">
+            <Link to="/contact" className="gradient-btn text-sm sm:text-base px-4 sm:px-8 py-2.5 sm:py-3.5 whitespace-nowrap">
+              Request early access
             </Link>
-            <Link to="/contact" className="ghost-btn text-sm sm:text-base px-6 sm:px-8 py-3 sm:py-3.5">
-              Contact Us
+            <Link to="/contact" className="ghost-btn text-sm sm:text-base px-4 sm:px-8 py-2.5 sm:py-3.5 whitespace-nowrap">
+              Contact us
             </Link>
           </div>
         </div>

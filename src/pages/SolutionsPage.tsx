@@ -151,11 +151,11 @@ const Hero = () => (
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="flex flex-col sm:flex-row gap-3"
+            className="flex flex-row items-center gap-2 sm:gap-3"
           >
-            <Link to="/demo" className="gradient-btn text-base px-7 py-3.5 text-center">Book a Demo</Link>
-            <Link to="/platform" className="ghost-btn text-base px-7 py-3.5 inline-flex items-center justify-center gap-2">
-              Explore Platform <ArrowRight className="w-4 h-4" />
+            <Link to="/demo" className="gradient-btn text-sm sm:text-base px-4 sm:px-7 py-2.5 sm:py-3.5 text-center whitespace-nowrap">Book a demo</Link>
+            <Link to="/platform" className="ghost-btn text-sm sm:text-base px-4 sm:px-7 py-2.5 sm:py-3.5 inline-flex items-center justify-center gap-1.5 whitespace-nowrap">
+              Explore platform <ArrowRight className="w-4 h-4" />
             </Link>
           </motion.div>
         </div>
@@ -933,9 +933,9 @@ const FinalCTA = () => (
       <p className="text-muted-foreground mb-8 max-w-2xl mx-auto leading-relaxed">
         Borna AI helps healthcare practices grow efficiently — connecting patient acquisition, retention, communication, automation, and revenue optimization into one intelligent system.
       </p>
-      <div className="flex flex-col sm:flex-row items-center justify-center gap-3 mb-8">
-        <Link to="/demo" className="gradient-btn text-base px-8 py-3.5 sm:w-[220px] text-center">Book a Demo</Link>
-        <Link to="/contact" className="ghost-btn text-base px-8 py-3.5 sm:w-[220px] text-center">Talk to Sales</Link>
+      <div className="flex flex-row items-center justify-center gap-2 sm:gap-4 mb-8">
+        <Link to="/demo" className="gradient-btn text-sm sm:text-base px-4 sm:px-8 py-2.5 sm:py-3.5 whitespace-nowrap">Book a demo</Link>
+        <Link to="/contact" className="ghost-btn text-sm sm:text-base px-4 sm:px-8 py-2.5 sm:py-3.5 whitespace-nowrap">Talk to sales</Link>
       </div>
       <div className="relative w-full max-w-lg mx-auto h-32">
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-3/4 h-[2px] bg-gradient-to-r from-transparent via-primary to-transparent" />
