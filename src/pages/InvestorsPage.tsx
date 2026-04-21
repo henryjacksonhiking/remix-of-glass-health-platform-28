@@ -205,13 +205,13 @@ const Hero = () => (
           <div className="mt-8 flex flex-row items-center gap-2 sm:gap-4">
             <Link
               to="/contact?topic=investor-deck"
-              className="gradient-btn text-sm sm:text-base px-5 sm:px-7 py-3 whitespace-nowrap"
+              className="gradient-btn text-xs sm:text-base px-3 sm:px-7 py-2.5 sm:py-3 whitespace-nowrap"
             >
               Request investor deck
             </Link>
             <Link
               to="/contact?topic=investor-relations"
-              className="ghost-btn text-sm sm:text-base px-5 sm:px-7 py-3 whitespace-nowrap"
+              className="ghost-btn text-xs sm:text-base px-3 sm:px-7 py-2.5 sm:py-3 whitespace-nowrap"
             >
               Contact investor relations
             </Link>

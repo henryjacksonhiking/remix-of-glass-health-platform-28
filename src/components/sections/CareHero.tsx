@@ -26,16 +26,9 @@ const CareHero = () => {
           Streamline patient interactions, reduce administrative workload, and improve clinic efficiency with Borna Care — the online appointment scheduling and patient engagement platform built for dental and medical practices.
         </p>
 
-        <div className="flex flex-col sm:flex-row gap-4 justify-center mb-16">
-          <Link to="/demo" className="gradient-btn text-base px-8 py-3.5">
-            Book a demo
-          </Link>
-          <Link
-            to="/sign-up"
-            className="ghost-btn text-base px-8 py-3.5"
-          >
-            Start free trial
-          </Link>
+        <div className="flex flex-row items-center justify-center gap-2 sm:gap-4 mb-16">
+          <Link to="/demo" className="gradient-btn text-sm sm:text-base px-4 sm:px-8 py-2.5 sm:py-3.5 whitespace-nowrap">Book a demo</Link>
+          <Link to="/sign-up" className="ghost-btn text-sm sm:text-base px-4 sm:px-8 py-2.5 sm:py-3.5 whitespace-nowrap">Start free trial</Link>
         </div>
 
         <div className="relative w-full mx-auto">

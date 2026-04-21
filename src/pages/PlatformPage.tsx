@@ -674,10 +674,10 @@ const PlatformPage = () => (
         </motion.p>
         <motion.div
           initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.2 }}
-          className="flex flex-col sm:flex-row gap-4 justify-center"
+          className="flex flex-row items-center justify-center gap-2 sm:gap-4"
         >
-          <Link to="/demo" className="gradient-btn text-base px-8 py-3.5">Book a demo</Link>
-          <Link to="/products" className="ghost-btn text-base px-8 py-3.5">Explore ecosystem →</Link>
+          <Link to="/demo" className="gradient-btn text-sm sm:text-base px-4 sm:px-8 py-2.5 sm:py-3.5 whitespace-nowrap">Book a demo</Link>
+          <Link to="/products" className="ghost-btn text-sm sm:text-base px-4 sm:px-8 py-2.5 sm:py-3.5 whitespace-nowrap">Explore ecosystem →</Link>
         </motion.div>
       </div>
     </section>
@@ -1132,9 +1132,9 @@ const PlatformPage = () => (
         <p className="body-text mx-auto max-w-xl mb-8">
           Borna AI helps practices streamline operations, improve patient engagement, and grow sustainably — starting with a single product and scaling into a complete AI-powered system.
         </p>
-        <div className="flex flex-col sm:flex-row gap-4 justify-center">
-          <Link to="/demo" className="gradient-btn text-base px-8 py-3.5">Book a demo</Link>
-          <Link to="/contact" className="ghost-btn text-base px-8 py-3.5">Talk to sales</Link>
+        <div className="flex flex-row items-center justify-center gap-2 sm:gap-4">
+          <Link to="/demo" className="gradient-btn text-sm sm:text-base px-4 sm:px-8 py-2.5 sm:py-3.5 whitespace-nowrap">Book a demo</Link>
+          <Link to="/contact" className="ghost-btn text-sm sm:text-base px-4 sm:px-8 py-2.5 sm:py-3.5 whitespace-nowrap">Talk to sales</Link>
         </div>
       </div>
     </section>
