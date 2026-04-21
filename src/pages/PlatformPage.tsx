@@ -176,27 +176,34 @@ const Diagram = ({ kind }: { kind: (typeof capabilities)[number]["diagram"] }) =
   if (kind === "channels") {
     const icons = [Phone, MessageSquare, Mail, Video];
     return (
-      <svg viewBox="0 0 240 90" className="w-full h-[90px]" aria-hidden="true">
+      <svg viewBox="0 0 240 120" className="w-full h-[120px]" aria-hidden="true">
+        <defs>
+          <linearGradient id="chan-grad" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" stopColor="hsl(var(--primary))" stopOpacity="0.5" />
+            <stop offset="100%" stopColor="hsl(var(--primary))" stopOpacity="0.9" />
+          </linearGradient>
+          <radialGradient id="chan-hub-glow" cx="50%" cy="50%" r="50%">
+            <stop offset="0%" stopColor="hsl(var(--primary))" stopOpacity="0.4" />
+            <stop offset="100%" stopColor="hsl(var(--primary))" stopOpacity="0" />
+          </radialGradient>
+        </defs>
         {icons.map((_, i) => (
-          <line
-            key={i}
-            x1="40"
-            y1={15 + i * 20}
-            x2="180"
-            y2="45"
-            stroke="hsl(var(--primary))"
-            strokeOpacity="0.35"
-            strokeWidth="0.8"
-          />
+          <line key={i} x1="52" y1={18 + i * 28} x2="175" y2="60"
+            stroke="url(#chan-grad)" strokeWidth="1" />
         ))}
-        <circle cx="180" cy="45" r="14" fill="hsl(var(--primary))" fillOpacity="0.18" stroke="hsl(var(--primary))" strokeOpacity="0.6" />
+        {/* Hub glow */}
+        <circle cx="185" cy="60" r="28" fill="url(#chan-hub-glow)" />
+        <circle cx="185" cy="60" r="18" fill="hsl(var(--primary))" fillOpacity="0.22" stroke="hsl(var(--primary))" strokeOpacity="0.7" strokeWidth="1" />
         {icons.map((Icon, i) => (
-          <foreignObject key={i} x="22" y={5 + i * 20} width="20" height="20">
-            <Icon className="w-4 h-4 text-primary" />
-          </foreignObject>
+          <g key={i}>
+            <rect x="26" y={6 + i * 28} width="24" height="24" rx="6" fill="hsl(var(--primary))" fillOpacity="0.12" stroke="hsl(var(--primary))" strokeOpacity="0.35" strokeWidth="0.6" />
+            <foreignObject x="30" y={10 + i * 28} width="16" height="16">
+              <Icon className="w-4 h-4 text-primary" />
+            </foreignObject>
+          </g>
         ))}
-        <foreignObject x="170" y="35" width="20" height="20">
-          <Layers className="w-4 h-4 text-primary" />
+        <foreignObject x="178" y="53" width="14" height="14">
+          <Layers className="w-3.5 h-3.5 text-primary" />
         </foreignObject>
       </svg>
     );
@@ -204,51 +211,78 @@ const Diagram = ({ kind }: { kind: (typeof capabilities)[number]["diagram"] }) =
   if (kind === "funnel") {
     const stages = ["Lead", "Appt.", "Treatment", "Retention"];
     return (
-      <svg viewBox="0 0 240 90" className="w-full h-[90px]" aria-hidden="true">
-        {stages.map((s, i) => {
-          const x = 20 + i * 60;
-          return (
-            <g key={s}>
-              <rect x={x} y="32" width="50" height="26" rx="6" fill="hsl(var(--primary))" fillOpacity="0.08" stroke="hsl(var(--primary))" strokeOpacity="0.4" strokeWidth="0.6" />
-              <text x={x + 25} y="48" textAnchor="middle" fontSize="8" fill="rgba(255,255,255,0.75)">{s}</text>
-              {i < stages.length - 1 && (
-                <path d={`M${x + 50} 45 L${x + 60} 45`} stroke="hsl(var(--primary))" strokeOpacity="0.5" strokeWidth="0.8" markerEnd="url(#arr)" />
-              )}
-            </g>
-          );
-        })}
+      <svg viewBox="0 0 240 120" className="w-full h-[120px]" aria-hidden="true">
         <defs>
+          <linearGradient id="fun-grad" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" stopColor="hsl(var(--primary))" stopOpacity="0.15" />
+            <stop offset="100%" stopColor="hsl(var(--primary))" stopOpacity="0.35" />
+          </linearGradient>
           <marker id="arr" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto">
             <path d="M0,0 L6,3 L0,6 z" fill="hsl(var(--primary))" fillOpacity="0.6" />
           </marker>
         </defs>
+        {stages.map((s, i) => {
+          const x = 10 + i * 60;
+          return (
+            <g key={s}>
+              <rect x={x} y="42" width="52" height="30" rx="7" fill="url(#fun-grad)" stroke="hsl(var(--primary))" strokeOpacity="0.4" strokeWidth="0.6" />
+              <text x={x + 26} y="61" textAnchor="middle" fontSize="9" fill="rgba(255,255,255,0.8)">{s}</text>
+              {i < stages.length - 1 && (
+                <path d={`M${x + 52} 57 L${x + 60} 57`} stroke="hsl(var(--primary))" strokeOpacity="0.5" strokeWidth="0.8" markerEnd="url(#arr)" />
+              )}
+            </g>
+          );
+        })}
       </svg>
     );
   }
   if (kind === "chart") {
     const bars = [30, 55, 42, 68, 50, 78];
     return (
-      <svg viewBox="0 0 240 90" className="w-full h-[90px]" aria-hidden="true">
+      <svg viewBox="0 0 240 120" className="w-full h-[120px]" aria-hidden="true">
+        <defs>
+          <linearGradient id="bar-grad" x1="0%" y1="100%" x2="0%" y2="0%">
+            <stop offset="0%" stopColor="hsl(var(--primary))" stopOpacity="0.1" />
+            <stop offset="100%" stopColor="hsl(var(--primary))" stopOpacity="0.6" />
+          </linearGradient>
+        </defs>
         {bars.map((h, i) => (
-          <rect key={i} x={20 + i * 32} y={80 - h} width="18" height={h} rx="3" fill="hsl(var(--primary))" fillOpacity={0.15 + i * 0.08} />
+          <rect key={i} x={18 + i * 34} y={105 - h} width="22" height={h} rx="4" fill="url(#bar-grad)" stroke="hsl(var(--primary))" strokeOpacity="0.3" strokeWidth="0.5" />
         ))}
-        <polyline points={bars.map((h, i) => `${29 + i * 32},${80 - h}`).join(" ")} fill="none" stroke="hsl(var(--primary))" strokeOpacity="0.8" strokeWidth="1.2" />
+        <polyline points={bars.map((h, i) => `${29 + i * 34},${105 - h}`).join(" ")} fill="none" stroke="hsl(var(--primary))" strokeOpacity="0.85" strokeWidth="1.5" />
+        {bars.map((h, i) => (
+          <circle key={`d-${i}`} cx={29 + i * 34} cy={105 - h} r="2.5" fill="hsl(var(--primary))" fillOpacity="0.9" />
+        ))}
       </svg>
     );
   }
-  // network
-  const nodes = [
-    [40, 45], [90, 20], [90, 70], [140, 35], [140, 60], [190, 45],
+  // network — larger, gradient-filled nodes with glow
+  const nodes: [number, number][] = [
+    [45, 60], [100, 25], [100, 95], [155, 45], [155, 75], [210, 60],
   ];
   return (
-    <svg viewBox="0 0 240 90" className="w-full h-[90px]" aria-hidden="true">
+    <svg viewBox="0 0 240 120" className="w-full h-[120px]" aria-hidden="true">
+      <defs>
+        <radialGradient id="net-node-grad" cx="50%" cy="50%" r="50%">
+          <stop offset="0%" stopColor="hsl(var(--primary))" stopOpacity="0.7" />
+          <stop offset="100%" stopColor="hsl(var(--primary))" stopOpacity="0.25" />
+        </radialGradient>
+        <linearGradient id="net-line-grad" x1="0%" y1="0%" x2="100%" y2="0%">
+          <stop offset="0%" stopColor="hsl(var(--primary))" stopOpacity="0.15" />
+          <stop offset="50%" stopColor="hsl(var(--primary))" stopOpacity="0.35" />
+          <stop offset="100%" stopColor="hsl(var(--primary))" stopOpacity="0.15" />
+        </linearGradient>
+      </defs>
       {nodes.flatMap(([x1, y1], i) =>
         nodes.slice(i + 1).map(([x2, y2], j) => (
-          <line key={`${i}-${j}`} x1={x1} y1={y1} x2={x2} y2={y2} stroke="hsl(var(--primary))" strokeOpacity="0.18" strokeWidth="0.5" />
+          <line key={`${i}-${j}`} x1={x1} y1={y1} x2={x2} y2={y2} stroke="url(#net-line-grad)" strokeWidth="0.8" />
         ))
       )}
       {nodes.map(([x, y], i) => (
-        <circle key={i} cx={x} cy={y} r={i === 2 || i === 3 ? 4 : 3} fill="hsl(var(--primary))" fillOpacity={0.5 + (i % 3) * 0.15} />
+        <g key={i}>
+          <circle cx={x} cy={y} r={i === 0 || i === 5 ? 8 : 6} fill="url(#net-node-grad)" />
+          <circle cx={x} cy={y} r={i === 0 || i === 5 ? 8 : 6} fill="none" stroke="hsl(var(--primary))" strokeOpacity="0.5" strokeWidth="0.6" />
+        </g>
       ))}
     </svg>
   );
@@ -426,31 +460,20 @@ const PlatformHubDiagram = () => {
   );
 };
 
-/* ============== Why Borna · "Before" tools (Change 6 — 3+2 grid with broken lines) ============== */
+/* ============== Why Borna · "Before" tools (no dotted lines, centered X) ============== */
 const FragmentedToolsDiagram = () => {
-  // Top row: Phone, Email, Calendar | Bottom row: Analytics, Document
   const top = [
-    { Icon: Phone,    x: 50,  y: 38 },
-    { Icon: Mail,     x: 140, y: 38 },
-    { Icon: Calendar, x: 230, y: 38 },
+    { Icon: Phone,    x: 50,  y: 42 },
+    { Icon: Mail,     x: 140, y: 42 },
+    { Icon: Calendar, x: 230, y: 42 },
   ];
   const bottom = [
-    { Icon: BarChart2, x: 95,  y: 102 },
-    { Icon: FileText,  x: 185, y: 102 },
+    { Icon: BarChart2, x: 95,  y: 106 },
+    { Icon: FileText,  x: 185, y: 106 },
   ];
-  // broken connecting dashes (intentionally limited to avoid chaos; one prominent X mark)
-  const dashes: [number, number, number, number][] = [
-    [68,  38, 122, 38],   // phone-email (top)
-    [158, 38, 212, 38],   // email-calendar (top)
-    [113, 102, 167, 102], // analytics-document (bottom)
-    [50,  56, 95,  84],   // phone-analytics (diagonal)
-  ];
+  // Center X between rows: midpoint of y=42 and y=106 = 74
   return (
-    <svg viewBox="0 0 280 140" className="w-full h-[140px]" aria-hidden="true">
-      {dashes.map(([x1, y1, x2, y2], i) => (
-        <line key={i} x1={x1} y1={y1} x2={x2} y2={y2}
-          stroke="rgba(255,255,255,0.22)" strokeDasharray="2 4" strokeWidth="0.7" />
-      ))}
+    <svg viewBox="0 0 280 148" className="w-full h-[148px]" aria-hidden="true">
       {[...top, ...bottom].map(({ Icon, x, y }, i) => (
         <g key={i}>
           <rect x={x - 18} y={y - 18} width="36" height="36" rx="8"
@@ -461,11 +484,11 @@ const FragmentedToolsDiagram = () => {
           </foreignObject>
         </g>
       ))}
-      {/* Red X mark — broken connection signal */}
-      <g transform="translate(140 70)">
-        <circle r="9" fill="rgba(239, 68, 68, 0.12)" stroke="rgba(239, 68, 68, 0.55)" strokeWidth="0.8" />
-        <line x1="-4" y1="-4" x2="4"  y2="4"  stroke="rgb(248, 113, 113)" strokeWidth="1.2" strokeLinecap="round" />
-        <line x1="-4" y1="4"  x2="4"  y2="-4" stroke="rgb(248, 113, 113)" strokeWidth="1.2" strokeLinecap="round" />
+      {/* Red X mark — centered between the two rows */}
+      <g transform="translate(140 74)">
+        <circle r="10" fill="rgba(239, 68, 68, 0.12)" stroke="rgba(239, 68, 68, 0.55)" strokeWidth="0.8" />
+        <line x1="-4.5" y1="-4.5" x2="4.5"  y2="4.5"  stroke="rgb(248, 113, 113)" strokeWidth="1.4" strokeLinecap="round" />
+        <line x1="-4.5" y1="4.5"  x2="4.5"  y2="-4.5" stroke="rgb(248, 113, 113)" strokeWidth="1.4" strokeLinecap="round" />
       </g>
     </svg>
   );
