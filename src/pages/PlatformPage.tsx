@@ -342,9 +342,9 @@ const PlatformHubDiagram = () => {
   return (
     <>
       {/* ---- Desktop: 3D radial diagram ---- */}
-      <div className="hidden md:block relative w-full" style={{ aspectRatio: "360 / 280" }}>
+      <div className="hidden md:block relative w-full" style={{ aspectRatio: "500 / 400" }}>
         <div className="absolute inset-0 borna-3d-tilt">
-          <svg viewBox="0 0 360 280" className="w-full h-full" role="img" aria-label="Hub and spoke diagram showing AI healthcare platform connecting Communication, CRM, Analytics, and Automation">
+          <svg viewBox="0 0 500 400" className="w-full h-full" role="img" aria-label="Hub and spoke diagram showing AI healthcare platform connecting Communication, CRM, Analytics, and Automation">
             <defs>
               <radialGradient id="plat-hub-glow" cx="50%" cy="50%" r="50%">
                 <stop offset="0%"  stopColor="hsl(var(--primary))" stopOpacity="0.55" />
@@ -353,25 +353,23 @@ const PlatformHubDiagram = () => {
               </radialGradient>
             </defs>
 
-            {/* Spokes — terminate at center node edge (r=44) */}
+            {/* Spokes — terminate at center node edge (r=55) and outer node edge (r=40) */}
             {outer.map((n, i) => {
               const rad = (n.angle * Math.PI) / 180;
-              const cx = 180 + Math.cos(rad) * 110;
-              const cy = 140 + Math.sin(rad) * 80;
-              // shorten line so it ends at outer-node circumference (r=26) and center-node circumference (r=44)
-              const dx = cx - 180;
-              const dy = cy - 140;
+              const cx = 250 + Math.cos(rad) * 150;
+              const cy = 200 + Math.sin(rad) * 120;
+              const dx = cx - 250;
+              const dy = cy - 200;
               const len = Math.hypot(dx, dy);
               const ux = dx / len, uy = dy / len;
-              const x1 = 180 + ux * 44;
-              const y1 = 140 + uy * 44;
-              const x2 = cx - ux * 26;
-              const y2 = cy - uy * 26;
+              const x1 = 250 + ux * 55;
+              const y1 = 200 + uy * 55;
+              const x2 = cx - ux * 40;
+              const y2 = cy - uy * 40;
               return (
                 <g key={`spoke-${i}`}>
-                  <line x1={x1} y1={y1} x2={x2} y2={y2} stroke="hsl(var(--primary))" strokeOpacity="0.35" strokeWidth="0.9" />
-                  {/* Traveling dot from outer → center */}
-                  <circle r="2" fill="hsl(var(--primary))" opacity="0.95" style={{
+                  <line x1={x1} y1={y1} x2={x2} y2={y2} stroke="hsl(var(--primary))" strokeOpacity="0.35" strokeWidth="1" />
+                  <circle r="2.5" fill="hsl(var(--primary))" opacity="0.95" style={{
                     offsetPath: `path('M ${x2} ${y2} L ${x1} ${y1}')`,
                     animation: `borna-travel-dot 3.5s linear ${i * 0.5}s infinite`,
                     filter: "drop-shadow(0 0 4px hsl(var(--primary)))",
@@ -381,25 +379,25 @@ const PlatformHubDiagram = () => {
             })}
 
             {/* Center halo */}
-            <circle cx="180" cy="140" r="56" fill="url(#plat-hub-glow)" />
+            <circle cx="250" cy="200" r="72" fill="url(#plat-hub-glow)" />
             {/* Center node */}
-            <circle cx="180" cy="140" r="44" fill="hsl(var(--primary))" fillOpacity="0.22" />
-            <circle cx="180" cy="140" r="44" fill="none" stroke="hsl(var(--primary))" strokeOpacity="0.85" strokeWidth="1" />
-            <text x="180" y="138" textAnchor="middle" fontSize="10" fontWeight="600" fill="rgba(255,255,255,0.95)">AI Healthcare</text>
-            <text x="180" y="150" textAnchor="middle" fontSize="10" fontWeight="600" fill="rgba(255,255,255,0.95)">Platform</text>
+            <circle cx="250" cy="200" r="55" fill="hsl(var(--primary))" fillOpacity="0.22" />
+            <circle cx="250" cy="200" r="55" fill="none" stroke="hsl(var(--primary))" strokeOpacity="0.85" strokeWidth="1.2" />
+            <text x="250" y="196" textAnchor="middle" fontSize="13" fontWeight="600" fill="rgba(255,255,255,0.95)">AI Healthcare</text>
+            <text x="250" y="212" textAnchor="middle" fontSize="13" fontWeight="600" fill="rgba(255,255,255,0.95)">Platform</text>
 
             {/* Outer nodes */}
             {outer.map(({ angle, label, Icon }) => {
               const rad = (angle * Math.PI) / 180;
-              const x = 180 + Math.cos(rad) * 110;
-              const y = 140 + Math.sin(rad) * 80;
+              const x = 250 + Math.cos(rad) * 150;
+              const y = 200 + Math.sin(rad) * 120;
               return (
                 <g key={label}>
-                  <circle cx={x} cy={y} r="26" fill="rgba(255,255,255,0.05)" stroke="hsl(var(--primary))" strokeOpacity="0.45" strokeWidth="0.8" />
-                  <foreignObject x={x - 9} y={y - 13} width="18" height="18">
-                    <Icon className="w-4 h-4 text-primary" />
+                  <circle cx={x} cy={y} r="40" fill="rgba(255,255,255,0.05)" stroke="hsl(var(--primary))" strokeOpacity="0.45" strokeWidth="1" />
+                  <foreignObject x={x - 11} y={y - 15} width="22" height="22">
+                    <Icon className="w-[22px] h-[22px] text-primary" />
                   </foreignObject>
-                  <text x={x} y={y + 11} textAnchor="middle" fontSize="8" fill="rgba(255,255,255,0.78)">{label}</text>
+                  <text x={x} y={y + 16} textAnchor="middle" fontSize="11" fontWeight="500" fill="rgba(255,255,255,0.85)">{label}</text>
                 </g>
               );
             })}
