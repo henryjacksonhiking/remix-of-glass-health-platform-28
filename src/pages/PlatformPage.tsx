@@ -353,19 +353,20 @@ const PlatformHubDiagram = () => {
               </radialGradient>
             </defs>
 
-            {/* Spokes — terminate at center node edge (r=55) and outer node edge (r=50) */}
+            {/* Spokes — terminate at center node edge (r=65) and outer node edge (r=47) */}
             {outer.map((n, i) => {
               const rad = (n.angle * Math.PI) / 180;
-              const cx = 250 + Math.cos(rad) * 150;
-              const cy = 200 + Math.sin(rad) * 120;
+              const dist = 140;
+              const cx = 250 + Math.cos(rad) * dist;
+              const cy = 200 + Math.sin(rad) * dist;
               const dx = cx - 250;
               const dy = cy - 200;
               const len = Math.hypot(dx, dy);
               const ux = dx / len, uy = dy / len;
-              const x1 = 250 + ux * 55;
-              const y1 = 200 + uy * 55;
-              const x2 = cx - ux * 50;
-              const y2 = cy - uy * 50;
+              const x1 = 250 + ux * 65;
+              const y1 = 200 + uy * 65;
+              const x2 = cx - ux * 47;
+              const y2 = cy - uy * 47;
               return (
                 <g key={`spoke-${i}`}>
                   <line x1={x1} y1={y1} x2={x2} y2={y2} stroke="hsl(var(--primary))" strokeOpacity="0.35" strokeWidth="1" />
@@ -380,28 +381,29 @@ const PlatformHubDiagram = () => {
 
             {/* Center ripple rings (SVG-native animation) */}
             {[0, 1, 2].map(i => (
-              <circle key={`ripple-${i}`} cx="250" cy="200" r="55" fill="none" stroke="hsl(var(--primary))" strokeWidth="0.8">
-                <animate attributeName="r" from="55" to="90" dur="3s" begin={`${i * 1}s`} repeatCount="indefinite" />
+              <circle key={`ripple-${i}`} cx="250" cy="200" r="65" fill="none" stroke="hsl(var(--primary))" strokeWidth="0.8">
+                <animate attributeName="r" from="65" to="105" dur="3s" begin={`${i * 1}s`} repeatCount="indefinite" />
                 <animate attributeName="opacity" from="0.5" to="0" dur="3s" begin={`${i * 1}s`} repeatCount="indefinite" />
               </circle>
             ))}
 
             {/* Center halo */}
-            <circle cx="250" cy="200" r="72" fill="url(#plat-hub-glow)" />
+            <circle cx="250" cy="200" r="85" fill="url(#plat-hub-glow)" />
             {/* Center node */}
-            <circle cx="250" cy="200" r="55" fill="hsl(var(--primary))" fillOpacity="0.22" />
-            <circle cx="250" cy="200" r="55" fill="none" stroke="hsl(var(--primary))" strokeOpacity="0.85" strokeWidth="1.2" />
-            <text x="250" y="196" textAnchor="middle" fontSize="13" fontWeight="600" fill="rgba(255,255,255,0.95)">AI Healthcare</text>
-            <text x="250" y="212" textAnchor="middle" fontSize="13" fontWeight="600" fill="rgba(255,255,255,0.95)">Platform</text>
+            <circle cx="250" cy="200" r="65" fill="hsl(var(--primary))" fillOpacity="0.22" />
+            <circle cx="250" cy="200" r="65" fill="none" stroke="hsl(var(--primary))" strokeOpacity="0.85" strokeWidth="1.2" />
+            <text x="250" y="196" textAnchor="middle" fontSize="14" fontWeight="600" fill="rgba(255,255,255,0.95)">AI Healthcare</text>
+            <text x="250" y="214" textAnchor="middle" fontSize="14" fontWeight="600" fill="rgba(255,255,255,0.95)">Platform</text>
 
             {/* Outer nodes */}
             {outer.map(({ angle, label, Icon }) => {
               const rad = (angle * Math.PI) / 180;
-              const x = 250 + Math.cos(rad) * 150;
-              const y = 200 + Math.sin(rad) * 120;
+              const dist = 140;
+              const x = 250 + Math.cos(rad) * dist;
+              const y = 200 + Math.sin(rad) * dist;
               return (
                 <g key={label}>
-                  <circle cx={x} cy={y} r="50" fill="rgba(255,255,255,0.05)" stroke="hsl(var(--primary))" strokeOpacity="0.45" strokeWidth="1" />
+                  <circle cx={x} cy={y} r="47" fill="rgba(255,255,255,0.05)" stroke="hsl(var(--primary))" strokeOpacity="0.45" strokeWidth="1" />
                   <foreignObject x={x - 11} y={y - 15} width="22" height="22">
                     <Icon className="w-[22px] h-[22px] text-primary" />
                   </foreignObject>
