@@ -206,16 +206,36 @@ const DataFlowSection = () => {
                 transform: revealed ? "translateY(0) scale(1)" : "translateY(16px) scale(0.9)",
                 transition: `all 0.5s ease-out ${i * 0.18}s`,
               }}>
-              <div className="relative w-24 h-24 rounded-full flex flex-col items-center justify-center"
-                style={{ background: "hsla(170,100%,43%,0.08)", border: "1px solid hsla(170,100%,43%,0.2)" }}>
-                <span className="text-xs font-medium text-foreground">{step}</span>
-                <span className="text-[10px] font-bold text-primary mt-1">{i + 1}</span>
+              <div className="relative w-24 h-24 rounded-full flex flex-col items-center justify-center overflow-hidden"
+                style={{ border: "1px solid hsla(170,100%,43%,0.25)" }}>
+                {/* Gradient fill */}
+                <div className="absolute inset-0 rounded-full" style={{
+                  background: `radial-gradient(circle at 40% 35%, hsla(170,100%,43%,0.18), hsla(212,100%,30%,0.12) 60%, hsla(228,80%,42%,0.06) 100%)`,
+                }} />
+                <span className="relative text-xs font-medium text-foreground">{step}</span>
+                <span className="relative text-[10px] font-bold text-primary mt-1">{i + 1}</span>
               </div>
               {i < flowSteps.length - 1 && (
-                <div className="hidden sm:block w-8 h-px mx-1" style={{ background: "linear-gradient(90deg, hsl(170 100% 43% / 0.5), hsl(170 100% 43% / 0.1))" }} />
+                <div className="hidden sm:block relative w-10 h-[2px] mx-1 overflow-hidden">
+                  {/* Static track */}
+                  <div className="absolute inset-0" style={{ background: "hsla(170,100%,43%,0.12)" }} />
+                  {/* Animated light pulse */}
+                  <div className="absolute inset-y-0 w-6" style={{
+                    background: "linear-gradient(90deg, transparent, hsl(170 100% 43% / 0.7), transparent)",
+                    animation: revealed ? `flowLight 2.4s ease-in-out ${i * 0.5}s infinite` : "none",
+                  }} />
+                </div>
               )}
             </div>
           ))}
+          <style>{`
+            @keyframes flowLight {
+              0% { transform: translateX(-24px); opacity: 0; }
+              30% { opacity: 1; }
+              70% { opacity: 1; }
+              100% { transform: translateX(40px); opacity: 0; }
+            }
+          `}</style>
         </div>
       </div>
     </section>
