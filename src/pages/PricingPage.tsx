@@ -31,16 +31,16 @@ const HeroSection = () => {
           style={{ background: "radial-gradient(ellipse, hsla(170,100%,43%,0.06) 0%, transparent 70%)" }} />
       </div>
       <div className="container mx-auto px-4 md:px-6 text-center relative z-10">
-        <motion.h1 variants={fadeUp} className="hero-headline text-foreground mb-5 max-w-3xl mx-auto">
+        <motion.h1 variants={fadeUp} initial="hidden" animate="visible" className="hero-headline text-foreground mb-5 max-w-3xl mx-auto">
           Borna AI Pricing Plans
         </motion.h1>
-        <motion.p variants={fadeUp} transition={{ delay: 0.1, duration: 0.5 }} className="body-text mx-auto max-w-2xl mb-4">
+        <motion.p variants={fadeUp} initial="hidden" animate="visible" transition={{ delay: 0.1, duration: 0.5 }} className="body-text mx-auto max-w-2xl mb-4">
           Flexible pricing designed for healthcare practices, clinics, and multi-location organizations.
         </motion.p>
-        <motion.p variants={fadeUp} transition={{ delay: 0.15, duration: 0.5 }} className="body-text mx-auto max-w-2xl mb-8">
+        <motion.p variants={fadeUp} initial="hidden" animate="visible" transition={{ delay: 0.15, duration: 0.5 }} className="body-text mx-auto max-w-2xl mb-8">
           Choose a plan that fits your needs and scale with a unified platform for communication, patient engagement, analytics, and AI automation.
         </motion.p>
-        <motion.div variants={fadeUp} transition={{ delay: 0.2 }} className="flex flex-row items-center justify-center gap-3">
+        <motion.div variants={fadeUp} initial="hidden" animate="visible" transition={{ delay: 0.2 }} className="flex flex-row items-center justify-center gap-3">
           <button onClick={() => navigate("/demo")} className="gradient-btn text-sm sm:text-base px-5 sm:px-8 py-2.5 sm:py-3.5 whitespace-nowrap">Request Demo</button>
           <button onClick={() => navigate("/contact")} className="ghost-btn text-sm sm:text-base px-5 sm:px-8 py-2.5 sm:py-3.5 whitespace-nowrap">Talk to Sales</button>
         </motion.div>
