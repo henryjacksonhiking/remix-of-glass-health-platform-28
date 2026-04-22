@@ -1361,7 +1361,7 @@ const RoadmapPage = () => {
             Borna AI is evolving into a complete system for healthcare operations and
             patient engagement. Join us early — and be part of shaping what it becomes.
           </p>
-          <div className="flex flex-row items-center justify-center gap-2 sm:gap-4">
+          <div className="cta-row">
             <Link to="/contact" className="gradient-btn text-sm sm:text-base px-4 sm:px-8 py-2.5 sm:py-3.5 whitespace-nowrap">
               Request early access
             </Link>

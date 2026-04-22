@@ -225,7 +225,7 @@ const PracticeAutomationPage = () => (
       <div className="container mx-auto px-4 md:px-6 relative z-10 text-center">
         <h2 className="text-2xl md:text-4xl font-bold text-foreground mb-4">Automate your practice and focus on care.</h2>
         <p className="text-muted-foreground max-w-xl mx-auto mb-8">Borna AI helps healthcare practices streamline operations, eliminate manual work, and scale efficiently — through intelligent automation that runs continuously in the background.</p>
-        <div className="flex flex-row items-center justify-center gap-2 sm:gap-4">
+        <div className="cta-row">
           <Link to="/demo" className="gradient-btn whitespace-nowrap">Request Demo</Link>
           <Link to="/platform" className="ghost-btn whitespace-nowrap">Explore Platform →</Link>
         </div>

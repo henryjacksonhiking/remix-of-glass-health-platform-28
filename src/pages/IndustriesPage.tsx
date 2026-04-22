@@ -975,7 +975,7 @@ const FinalCTA = () => (
         communication, and growth — on one intelligent platform designed to adapt as
         you scale.
       </p>
-      <div className="flex flex-row items-center justify-center gap-3">
+      <div className="cta-row">
         <Link to="/demo" className="gradient-btn text-sm md:text-base px-6 py-3">
           Book a Demo
         </Link>

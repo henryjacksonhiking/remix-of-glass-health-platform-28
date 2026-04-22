@@ -810,7 +810,7 @@ const ResourcesPage = () => {
           <p className="body-text mb-8 max-w-xl mx-auto">
             Stay updated with the latest insights in healthcare technology and AI — and discover how Borna's platform turns knowledge into action.
           </p>
-          <div className="flex flex-row items-center justify-center gap-2 sm:gap-3">
+          <div className="cta-row">
             <Link to="/contact" className="gradient-btn text-sm sm:text-base px-4 sm:px-6 py-2.5 sm:py-3 whitespace-nowrap">Subscribe for updates</Link>
             <Link
               to="/contact"

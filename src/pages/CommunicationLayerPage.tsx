@@ -757,7 +757,7 @@ const CommunicationLayerPage = () => {
             <p className="text-foreground/80 max-w-xl mx-auto mb-8 leading-relaxed">
               Borna AI ensures that every patient interaction — across every channel — is captured, managed, and optimized. Never miss a patient connection again.
             </p>
-            <div className="flex flex-row items-center justify-center gap-2 sm:gap-3">
+            <div className="cta-row">
               <Link to="/demo" className="gradient-btn text-sm sm:text-base px-4 sm:px-7 py-2.5 sm:py-3 whitespace-nowrap">Request Demo</Link>
               <Link to="/products/borna-connect" className="ghost-btn text-sm sm:text-base px-4 sm:px-5 py-2.5 sm:py-3 whitespace-nowrap">
                 Explore Borna Connect <ArrowRight className="inline w-4 h-4 ml-1" />
