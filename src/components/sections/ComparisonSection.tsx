@@ -1,5 +1,4 @@
 import { motion } from "framer-motion";
-import { Check, X } from "lucide-react";
 
 const rows = [
   {
@@ -32,12 +31,8 @@ const ComparisonSection = () => (
   <section className="py-10 md:py-16">
     <div className="container mx-auto px-4 md:px-6">
       <div className="text-center mb-10 md:mb-16">
-        <span className="section-eyebrow">
-          How offices find Borna effective
-        </span>
-        <h2 className="section-title mt-4">
-          Borna vs traditional healthcare software
-        </h2>
+        <span className="section-eyebrow">How offices find Borna effective</span>
+        <h2 className="section-title mt-4">Borna vs traditional healthcare software</h2>
       </div>
 
       <div className="max-w-4xl mx-auto overflow-x-auto">
@@ -53,7 +48,7 @@ const ComparisonSection = () => (
             overflow: 'hidden',
           }}
         >
-          {/* Header — 3 cols on mobile, 4 cols on desktop */}
+          {/* Header */}
           <div
             className="grid grid-cols-3 md:grid-cols-4 gap-2 md:gap-0 px-3 md:px-6 py-3 md:py-4"
             style={{
@@ -67,7 +62,7 @@ const ComparisonSection = () => (
             <span className="hidden md:inline text-xs font-semibold uppercase tracking-wider" style={{ color: 'rgba(255,255,255,0.4)' }}>Advantage</span>
           </div>
 
-          {/* Rows */}
+          {/* Rows — no icon clutter */}
           <div>
             {rows.map((row, i) => (
               <div
@@ -78,12 +73,10 @@ const ComparisonSection = () => (
                 }}
               >
                 <span className="text-xs md:text-sm font-medium" style={{ color: 'rgba(255,255,255,0.85)' }}>{row.capability}</span>
-                <span className="flex items-center gap-1.5 md:gap-2 text-xs md:text-sm" style={{ color: 'rgba(255,255,255,0.4)' }}>
-                  <X className="w-3 h-3 md:w-3.5 md:h-3.5 text-red-400/70 shrink-0" />
+                <span className="text-xs md:text-sm" style={{ color: 'rgba(255,255,255,0.4)' }}>
                   {row.traditional}
                 </span>
-                <span className="flex items-center gap-1.5 md:gap-2 text-xs md:text-sm font-medium text-primary">
-                  <Check className="w-3 h-3 md:w-3.5 md:h-3.5 shrink-0" />
+                <span className="text-xs md:text-sm font-medium text-primary">
                   {row.borna}
                 </span>
                 <span className="hidden md:inline text-sm" style={{ color: 'rgba(255,255,255,0.55)' }}>{row.advantage}</span>
