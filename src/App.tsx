@@ -19,6 +19,10 @@ import PricingPage from "./pages/PricingPage.tsx";
 import SecurityPage from "./pages/SecurityPage.tsx";
 import ResourcesPage from "./pages/ResourcesPage.tsx";
 import AboutPage from "./pages/AboutPage.tsx";
+import CompanyPage from "./pages/CompanyPage.tsx";
+import VisionMissionPage from "./pages/VisionMissionPage.tsx";
+import LeadershipPage from "./pages/LeadershipPage.tsx";
+import CareersPage from "./pages/CareersPage.tsx";
 import DemoPage from "./pages/DemoPage.tsx";
 import BlogPage from "./pages/BlogPage.tsx";
 import BlogPostPage from "./pages/BlogPostPage.tsx";
@@ -89,6 +93,10 @@ const App = () => (
           <Route path="/resources/case-studies/:slug" element={<CaseStudyPage />} />
           <Route path="/roadmap" element={<RoadmapPage />} />
           <Route path="/about" element={<AboutPage />} />
+          <Route path="/company" element={<CompanyPage />} />
+          <Route path="/vision-mission" element={<VisionMissionPage />} />
+          <Route path="/leadership" element={<LeadershipPage />} />
+          <Route path="/careers" element={<CareersPage />} />
           <Route path="/demo" element={<DemoPage />} />
           <Route path="/blog" element={<BlogPage />} />
           <Route path="/blog/:slug" element={<BlogPostPage />} />

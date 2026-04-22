@@ -358,7 +358,7 @@ const Navbar = () => {
             </AnimatePresence>
           </div>
 
-          <NavLink to="/about" className={navLinkClass}>About</NavLink>
+          
         </div>
 
         {/* Desktop CTA */}
@@ -485,7 +485,7 @@ const Navbar = () => {
                 <Link to="/blog" onClick={() => setMobileOpen(false)} className="block px-3 py-2 text-sm text-foreground">Blog</Link>
                 <Link to="/roadmap" onClick={() => setMobileOpen(false)} className="block px-3 py-2 text-sm text-foreground">Roadmap</Link>
               </div>
-              <Link to="/about" onClick={() => setMobileOpen(false)} className="block px-3 py-2 text-sm text-foreground">About</Link>
+              
               <a
                 href="https://care.borna.ai"
                 target="_blank"
