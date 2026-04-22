@@ -1,10 +1,25 @@
-import { useState, useRef } from "react";
+import { useState } from "react";
 import { Link, NavLink, useLocation } from "react-router-dom";
-import { Menu, X, ChevronDown } from "lucide-react";
-import { products } from "@/lib/products";
+import { Menu, X, ChevronDown, ChevronRight } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import BornaLogo from "@/components/BornaLogo";
 import { cn } from "@/lib/utils";
+
+const productItems = [
+  {
+    name: "Borna Care",
+    href: "/products/care",
+    accentColor: "#00479B",
+    sub: "Patient engagement & portal software for healthcare",
+    children: [
+      { name: "Patient App", href: "/products/care/patient-app", sub: "Patient-facing scheduling, forms & payments" },
+    ],
+  },
+  { name: "Borna Connect", href: "/products/connect", accentColor: "#00DEC4", sub: "AI-powered omnichannel patient communication platform" },
+  { name: "Borna Engage", href: "/products/engage", accentColor: "#D6007F", sub: "Healthcare CRM & patient lifecycle management platform" },
+  { name: "Borna Insight", href: "/products/insight", accentColor: "#818CF8", sub: "Healthcare analytics & AI-powered intelligence platform" },
+  { name: "Borna Core", href: "/products/core", accentColor: "#4F6AFF", sub: "The AI engine powering every product in the Borna platform" },
+];
 
 const Navbar = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -12,6 +27,8 @@ const Navbar = () => {
   const [platformOpen, setPlatformOpen] = useState(false);
   const [ecosystemOpen, setEcosystemOpen] = useState(false);
   const [resourcesOpen, setResourcesOpen] = useState(false);
+  const [careSubOpen, setCareSubOpen] = useState(false);
+  const [mobileCareOpen, setMobileCareOpen] = useState(false);
   const location = useLocation();
   const isProductActive = location.pathname.startsWith("/products");
   const isPlatformActive = location.pathname.startsWith("/platform");
@@ -26,20 +43,32 @@ const Navbar = () => {
         : "text-muted-foreground hover:text-foreground"
     );
 
+  const dropdownStyle = {
+    background: 'rgba(10, 15, 40, 0.97)',
+    backdropFilter: 'blur(12px)',
+    border: '1px solid rgba(255, 255, 255, 0.12)',
+    boxShadow: '0 8px 32px rgba(0, 0, 0, 0.4)',
+  };
+
+  const handleLinkHover = (e: React.MouseEvent<HTMLAnchorElement>, enter: boolean) => {
+    e.currentTarget.style.background = enter ? 'rgba(255, 255, 255, 0.08)' : 'transparent';
+    e.currentTarget.style.color = enter ? '#00DEC4' : 'rgba(255, 255, 255, 0.85)';
+  };
+
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 border-b border-glass-border backdrop-blur-xl bg-background/70">
       <div className="container mx-auto flex flex-nowrap items-center justify-between h-16 px-4 md:px-6">
-        {/* Logo */}
         <Link to="/" className="flex shrink-0 items-center text-foreground">
           <BornaLogo className="h-7 w-auto" />
         </Link>
 
         {/* Desktop Nav */}
         <div className="hidden md:flex items-center gap-2 lg:gap-8">
+          {/* Products dropdown */}
           <div
             className="relative"
             onMouseEnter={() => setProductsOpen(true)}
-            onMouseLeave={() => setProductsOpen(false)}
+            onMouseLeave={() => { setProductsOpen(false); setCareSubOpen(false); }}
           >
             <Link
               to="/products"
@@ -58,46 +87,85 @@ const Navbar = () => {
                   exit={{ opacity: 0, y: 8 }}
                   transition={{ duration: 0.2 }}
                   className="absolute top-full left-0 mt-2 w-72 p-2 rounded-xl"
-                  style={{
-                    background: 'rgba(10, 15, 40, 0.97)',
-                    backdropFilter: 'blur(12px)',
-                    border: '1px solid rgba(255, 255, 255, 0.12)',
-                    boxShadow: '0 8px 32px rgba(0, 0, 0, 0.4)',
-                  }}
+                  style={dropdownStyle}
                 >
-                  {products.map((p) => (
-                    <Link
-                      key={p.id}
-                      to={p.href}
-                      className="flex items-center gap-3 px-3 py-2.5 rounded-lg transition-all duration-150 ease-in-out focus:outline-2 focus:outline-offset-2"
-                      style={{
-                        outlineColor: '#00DEC4',
-                      }}
-                      onMouseEnter={(e) => {
-                        e.currentTarget.style.background = 'rgba(255, 255, 255, 0.08)';
-                        const nameEl = e.currentTarget.querySelector('[data-name]') as HTMLElement;
-                        if (nameEl) nameEl.style.color = '#00DEC4';
-                      }}
-                      onMouseLeave={(e) => {
-                        e.currentTarget.style.background = 'transparent';
-                        const nameEl = e.currentTarget.querySelector('[data-name]') as HTMLElement;
-                        if (nameEl) nameEl.style.color = 'rgba(255, 255, 255, 1)';
-                      }}
+                  {productItems.map((p) => (
+                    <div
+                      key={p.name}
+                      className="relative"
+                      onMouseEnter={() => p.children && setCareSubOpen(true)}
+                      onMouseLeave={() => p.children && setCareSubOpen(false)}
                     >
-                      <div
-                        className="shrink-0 rounded-full"
-                        style={{ width: 8, height: 8, backgroundColor: p.accentColor, opacity: 1 }}
-                      />
-                      <div>
-                        <div data-name className="text-sm font-medium" style={{ color: 'rgba(255, 255, 255, 1)', fontWeight: 500, transition: 'color 150ms ease' }}>{p.name}</div>
-                        <div className="text-xs" style={{ color: 'rgba(255, 255, 255, 0.75)' }}>{p.tagline}</div>
-                      </div>
-                    </Link>
+                      <Link
+                        to={p.href}
+                        className="flex items-center gap-3 px-3 py-2.5 rounded-lg transition-all duration-150 ease-in-out"
+                        style={{ outline: 'none' }}
+                        onMouseEnter={(e) => {
+                          e.currentTarget.style.background = 'rgba(255, 255, 255, 0.08)';
+                          const nameEl = e.currentTarget.querySelector('[data-name]') as HTMLElement;
+                          if (nameEl) nameEl.style.color = '#00DEC4';
+                        }}
+                        onMouseLeave={(e) => {
+                          e.currentTarget.style.background = 'transparent';
+                          const nameEl = e.currentTarget.querySelector('[data-name]') as HTMLElement;
+                          if (nameEl) nameEl.style.color = 'rgba(255, 255, 255, 1)';
+                        }}
+                      >
+                        <div
+                          className="shrink-0 rounded-full"
+                          style={{ width: 8, height: 8, backgroundColor: p.accentColor, opacity: 1 }}
+                        />
+                        <div className="flex-1">
+                          <div data-name className="text-sm font-medium" style={{ color: 'rgba(255, 255, 255, 1)', fontWeight: 500, transition: 'color 150ms ease' }}>{p.name}</div>
+                          <div className="text-xs" style={{ color: 'rgba(255, 255, 255, 0.5)' }}>{p.sub}</div>
+                        </div>
+                        {p.children && <ChevronRight className="w-3.5 h-3.5 shrink-0" style={{ color: 'rgba(255,255,255,0.4)' }} />}
+                      </Link>
+                      {/* Nested flyout for Borna Care */}
+                      <AnimatePresence>
+                        {p.children && careSubOpen && (
+                          <motion.div
+                            initial={{ opacity: 0, x: -4 }}
+                            animate={{ opacity: 1, x: 0 }}
+                            exit={{ opacity: 0, x: -4 }}
+                            transition={{ duration: 0.15 }}
+                            className="absolute left-full top-0 ml-1 w-60 p-2 rounded-xl"
+                            style={dropdownStyle}
+                          >
+                            <Link
+                              to={p.href}
+                              className="block px-3 py-2 rounded-lg text-sm transition-all duration-150"
+                              style={{ color: 'rgba(255, 255, 255, 0.85)' }}
+                              onMouseEnter={(e) => handleLinkHover(e, true)}
+                              onMouseLeave={(e) => handleLinkHover(e, false)}
+                            >
+                              <div className="font-medium">Overview</div>
+                              <div className="text-xs mt-0.5" style={{ color: 'rgba(255,255,255,0.5)' }}>Borna Care overview</div>
+                            </Link>
+                            {p.children.map((child) => (
+                              <Link
+                                key={child.href}
+                                to={child.href}
+                                className="block px-3 py-2 rounded-lg text-sm transition-all duration-150"
+                                style={{ color: 'rgba(255, 255, 255, 0.85)' }}
+                                onMouseEnter={(e) => handleLinkHover(e, true)}
+                                onMouseLeave={(e) => handleLinkHover(e, false)}
+                              >
+                                <div className="font-medium">{child.name}</div>
+                                <div className="text-xs mt-0.5" style={{ color: 'rgba(255,255,255,0.5)' }}>{child.sub}</div>
+                              </Link>
+                            ))}
+                          </motion.div>
+                        )}
+                      </AnimatePresence>
+                    </div>
                   ))}
                 </motion.div>
               )}
             </AnimatePresence>
           </div>
+
+          {/* Platform dropdown */}
           <div
             className="relative"
             onMouseEnter={() => setPlatformOpen(true)}
@@ -120,12 +188,7 @@ const Navbar = () => {
                   exit={{ opacity: 0, y: 8 }}
                   transition={{ duration: 0.2 }}
                   className="absolute top-full left-0 mt-2 w-56 p-2 rounded-xl"
-                  style={{
-                    background: 'rgba(10, 15, 40, 0.97)',
-                    backdropFilter: 'blur(12px)',
-                    border: '1px solid rgba(255, 255, 255, 0.12)',
-                    boxShadow: '0 8px 32px rgba(0, 0, 0, 0.4)',
-                  }}
+                  style={dropdownStyle}
                 >
                   {[
                     { to: "/platform/architecture", label: "Architecture" },
@@ -137,14 +200,8 @@ const Navbar = () => {
                       to={item.to}
                       className="block px-3 py-2.5 rounded-lg text-sm transition-all duration-150"
                       style={{ color: 'rgba(255, 255, 255, 0.85)' }}
-                      onMouseEnter={(e) => {
-                        e.currentTarget.style.background = 'rgba(255, 255, 255, 0.08)';
-                        e.currentTarget.style.color = '#00DEC4';
-                      }}
-                      onMouseLeave={(e) => {
-                        e.currentTarget.style.background = 'transparent';
-                        e.currentTarget.style.color = 'rgba(255, 255, 255, 0.85)';
-                      }}
+                      onMouseEnter={(e) => handleLinkHover(e, true)}
+                      onMouseLeave={(e) => handleLinkHover(e, false)}
                     >
                       {item.label}
                     </Link>
@@ -153,6 +210,8 @@ const Navbar = () => {
               )}
             </AnimatePresence>
           </div>
+
+          {/* Ecosystem dropdown */}
           <div
             className="relative"
             onMouseEnter={() => setEcosystemOpen(true)}
@@ -175,12 +234,7 @@ const Navbar = () => {
                   exit={{ opacity: 0, y: 8 }}
                   transition={{ duration: 0.2 }}
                   className="absolute top-full left-0 mt-2 w-64 p-2 rounded-xl"
-                  style={{
-                    background: 'rgba(10, 15, 40, 0.97)',
-                    backdropFilter: 'blur(12px)',
-                    border: '1px solid rgba(255, 255, 255, 0.12)',
-                    boxShadow: '0 8px 32px rgba(0, 0, 0, 0.4)',
-                  }}
+                  style={dropdownStyle}
                 >
                   {[
                     { to: "/ecosystem/communication", label: "Communication Layer", sub: "Unified omnichannel patient communication" },
@@ -194,14 +248,8 @@ const Navbar = () => {
                       to={item.to}
                       className="block px-3 py-2.5 rounded-lg text-sm transition-all duration-150"
                       style={{ color: 'rgba(255, 255, 255, 0.85)' }}
-                      onMouseEnter={(e) => {
-                        e.currentTarget.style.background = 'rgba(255, 255, 255, 0.08)';
-                        e.currentTarget.style.color = '#00DEC4';
-                      }}
-                      onMouseLeave={(e) => {
-                        e.currentTarget.style.background = 'transparent';
-                        e.currentTarget.style.color = 'rgba(255, 255, 255, 0.85)';
-                      }}
+                      onMouseEnter={(e) => handleLinkHover(e, true)}
+                      onMouseLeave={(e) => handleLinkHover(e, false)}
                     >
                       <div className="font-medium">{item.label}</div>
                       <div className="text-xs mt-0.5" style={{ color: 'rgba(255,255,255,0.5)' }}>{item.sub}</div>
@@ -211,8 +259,11 @@ const Navbar = () => {
               )}
             </AnimatePresence>
           </div>
+
           <NavLink to="/solutions" className={navLinkClass}>Solutions</NavLink>
           <NavLink to="/pricing" className={navLinkClass}>Pricing</NavLink>
+
+          {/* Resources dropdown */}
           <div
             className="relative"
             onMouseEnter={() => setResourcesOpen(true)}
@@ -235,12 +286,7 @@ const Navbar = () => {
                   exit={{ opacity: 0, y: 8 }}
                   transition={{ duration: 0.2 }}
                   className="absolute top-full left-0 mt-2 w-56 p-2 rounded-xl"
-                  style={{
-                    background: 'rgba(10, 15, 40, 0.97)',
-                    backdropFilter: 'blur(12px)',
-                    border: '1px solid rgba(255, 255, 255, 0.12)',
-                    boxShadow: '0 8px 32px rgba(0, 0, 0, 0.4)',
-                  }}
+                  style={dropdownStyle}
                 >
                   {[
                     { to: "/resources", label: "Case Studies & Guides" },
@@ -252,14 +298,8 @@ const Navbar = () => {
                       to={item.to}
                       className="block px-3 py-2.5 rounded-lg text-sm transition-all duration-150"
                       style={{ color: 'rgba(255, 255, 255, 0.85)' }}
-                      onMouseEnter={(e) => {
-                        e.currentTarget.style.background = 'rgba(255, 255, 255, 0.08)';
-                        e.currentTarget.style.color = '#00DEC4';
-                      }}
-                      onMouseLeave={(e) => {
-                        e.currentTarget.style.background = 'transparent';
-                        e.currentTarget.style.color = 'rgba(255, 255, 255, 0.85)';
-                      }}
+                      onMouseEnter={(e) => handleLinkHover(e, true)}
+                      onMouseLeave={(e) => handleLinkHover(e, false)}
                     >
                       {item.label}
                     </Link>
@@ -268,6 +308,7 @@ const Navbar = () => {
               )}
             </AnimatePresence>
           </div>
+
           <NavLink to="/about" className={navLinkClass}>About</NavLink>
         </div>
 
@@ -331,9 +372,30 @@ const Navbar = () => {
             <div className="px-4 py-6 space-y-4">
               <div className="space-y-1">
                 <p className="text-xs text-muted-foreground uppercase tracking-wider px-3 pb-2">Products</p>
-                {products.map((p) => (
+                {/* Borna Care with expandable sub-items */}
+                <button
+                  onClick={() => setMobileCareOpen(!mobileCareOpen)}
+                  className="flex items-center justify-between w-full px-3 py-2 text-sm text-foreground hover:bg-glass-hover rounded-lg"
+                >
+                  <span>Borna Care</span>
+                  <ChevronDown className={cn("w-3.5 h-3.5 transition-transform", mobileCareOpen && "rotate-180")} />
+                </button>
+                <AnimatePresence>
+                  {mobileCareOpen && (
+                    <motion.div
+                      initial={{ height: 0, opacity: 0 }}
+                      animate={{ height: "auto", opacity: 1 }}
+                      exit={{ height: 0, opacity: 0 }}
+                      className="overflow-hidden pl-4"
+                    >
+                      <Link to="/products/care" onClick={() => setMobileOpen(false)} className="block px-3 py-2 text-sm text-muted-foreground hover:text-foreground">Overview</Link>
+                      <Link to="/products/care/patient-app" onClick={() => setMobileOpen(false)} className="block px-3 py-2 text-sm text-muted-foreground hover:text-foreground">Patient App</Link>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+                {productItems.filter(p => p.name !== "Borna Care").map((p) => (
                   <Link
-                    key={p.id}
+                    key={p.href}
                     to={p.href}
                     onClick={() => setMobileOpen(false)}
                     className="block px-3 py-2 text-sm text-foreground hover:bg-glass-hover rounded-lg"
