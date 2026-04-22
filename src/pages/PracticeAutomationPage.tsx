@@ -31,7 +31,7 @@ const PracticeAutomationPage = () => (
       <script type="application/ld+json">{JSON.stringify({ "@context": "https://schema.org", "@type": "BreadcrumbList", itemListElement: [{ "@type": "ListItem", position: 1, name: "Home", item: "https://borna.ai" }, { "@type": "ListItem", position: 2, name: "Solutions", item: "https://borna.ai/solutions" }, { "@type": "ListItem", position: 3, name: "Practice Automation", item: "https://borna.ai/solutions/practice-automation" }] })}</script>
     </Helmet>
 
-    <nav aria-label="breadcrumb" className="container mx-auto px-4 md:px-6 pt-24 pb-2"><p className="text-xs text-muted-foreground"><Link to="/" className="hover:text-foreground">Home</Link> / <Link to="/solutions" className="hover:text-foreground">Solutions</Link> / <span className="text-primary">Practice Automation</span></p></nav>
+    <nav aria-label="breadcrumb" className="container mx-auto px-4 md:px-6 pt-20 md:pt-24 pb-0 md:pb-2"><p className="text-xs text-muted-foreground"><Link to="/" className="hover:text-foreground">Home</Link> / <Link to="/solutions" className="hover:text-foreground">Solutions</Link> / <span className="text-primary">Practice Automation</span></p></nav>
 
     {/* Hero */}
     <section className="relative py-16 md:py-24 overflow-hidden">
@@ -47,18 +47,18 @@ const PracticeAutomationPage = () => (
             </div>
           </motion.div>
           <motion.div {...fadeUp} className="relative" aria-hidden="true">
-            <div className="space-y-4">
+            <div className="space-y-3">
               {[
                 { trigger: "Missed Call", action: "Follow-Up SMS Sent" },
                 { trigger: "Appointment Due", action: "Reminder Sent" },
                 { trigger: "Patient Inactive 90 Days", action: "Reactivation Started" },
               ].map((lane, i) => (
-                <div key={i} className="glass-panel rounded-xl p-3 flex items-center gap-3">
-                  <div className="glass-panel rounded-lg px-3 py-2 text-xs text-muted-foreground shrink-0">{lane.trigger}</div>
-                  <ArrowRight className="w-4 h-4 text-primary shrink-0" />
-                  <div className="w-8 h-8 rounded-full bg-primary/20 flex items-center justify-center shrink-0"><Cpu className="w-4 h-4 text-primary" /></div>
-                  <ArrowRight className="w-4 h-4 text-primary shrink-0" />
-                  <div className="glass-panel rounded-lg px-3 py-2 text-xs text-primary border-primary/20 shrink-0">{lane.action}</div>
+                <div key={i} className="glass-panel rounded-xl p-3 flex items-center gap-2 sm:gap-3 overflow-hidden">
+                  <div className="glass-panel rounded-lg px-2 sm:px-3 py-2 text-[11px] sm:text-xs text-muted-foreground shrink-0 min-w-0 truncate">{lane.trigger}</div>
+                  <ArrowRight className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-primary shrink-0" />
+                  <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-primary/20 flex items-center justify-center shrink-0"><Cpu className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-primary" /></div>
+                  <ArrowRight className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-primary shrink-0" />
+                  <div className="glass-panel rounded-lg px-2 sm:px-3 py-2 text-[11px] sm:text-xs text-primary border-primary/20 shrink-0 min-w-0 truncate">{lane.action}</div>
                 </div>
               ))}
             </div>
