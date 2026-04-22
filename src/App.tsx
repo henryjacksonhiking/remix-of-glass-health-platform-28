@@ -28,6 +28,10 @@ import ArchitecturePage from "./pages/ArchitecturePage.tsx";
 import IntegrationsPage from "./pages/IntegrationsPage.tsx";
 import SecurityCompliancePage from "./pages/SecurityCompliancePage.tsx";
 import CommunicationLayerPage from "./pages/CommunicationLayerPage.tsx";
+import CRMLifecyclePage from "./pages/CRMLifecyclePage.tsx";
+import DataIntegrationPage from "./pages/DataIntegrationPage.tsx";
+import AIIntelligencePage from "./pages/AIIntelligencePage.tsx";
+import DualExperiencePage from "./pages/DualExperiencePage.tsx";
 import NotFound from "./pages/NotFound.tsx";
 
 const queryClient = new QueryClient();
@@ -48,6 +52,10 @@ const App = () => (
           <Route path="/platform/security" element={<SecurityCompliancePage />} />
           <Route path="/ecosystem" element={<EcosystemPage />} />
           <Route path="/ecosystem/communication" element={<CommunicationLayerPage />} />
+          <Route path="/ecosystem/crm-lifecycle" element={<CRMLifecyclePage />} />
+          <Route path="/ecosystem/data-integration" element={<DataIntegrationPage />} />
+          <Route path="/ecosystem/ai-intelligence" element={<AIIntelligencePage />} />
+          <Route path="/ecosystem/dual-experience" element={<DualExperiencePage />} />
           <Route path="/solutions" element={<SolutionsPage />} />
           <Route path="/pricing" element={<PricingPage />} />
           <Route path="/security" element={<SecurityPage />} />
