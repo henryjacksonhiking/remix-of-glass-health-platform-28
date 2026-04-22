@@ -150,6 +150,7 @@ const Navbar = () => {
               )}
             </AnimatePresence>
           </div>
+          <NavLink to="/ecosystem" className={navLinkClass}>Ecosystem</NavLink>
           <NavLink to="/solutions" className={navLinkClass}>Solutions</NavLink>
           <NavLink to="/pricing" className={navLinkClass}>Pricing</NavLink>
           <div
