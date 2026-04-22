@@ -300,8 +300,8 @@ const IntegrationsPage = () => {
               <p className="text-muted-foreground text-base md:text-lg leading-relaxed mb-8 max-w-xl">
                 Borna AI integrates with leading healthcare systems, communication tools, and business platforms to create a unified ecosystem for patient engagement, operations, and analytics.
               </p>
-              <div className="flex flex-row gap-3 flex-wrap">
-                <Link to="/platform" className="text-sm font-medium rounded-lg px-4 sm:px-6 py-2.5 sm:py-3 border border-glass-border text-muted-foreground hover:text-foreground hover:border-white/30 transition-all whitespace-nowrap">
+              <div className="cta-row flex-wrap">
+                <Link to="/platform" className="ghost-btn text-sm whitespace-nowrap px-4 sm:px-6 py-2.5 sm:py-3">
                   Explore Platform →
                 </Link>
                 <Link to="/contact" className="gradient-btn text-sm whitespace-nowrap px-4 sm:px-6 py-2.5 sm:py-3">
