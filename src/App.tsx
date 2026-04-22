@@ -24,6 +24,7 @@ import CaseStudyPage from "./pages/CaseStudyPage.tsx";
 import RoadmapPage from "./pages/RoadmapPage.tsx";
 import IndustriesPage from "./pages/IndustriesPage.tsx";
 import InvestorsPage from "./pages/InvestorsPage.tsx";
+import ArchitecturePage from "./pages/ArchitecturePage.tsx";
 import NotFound from "./pages/NotFound.tsx";
 
 const queryClient = new QueryClient();
@@ -39,6 +40,7 @@ const App = () => (
           <Route path="/products" element={<ProductsOverviewPage />} />
           <Route path="/products/:slug" element={<ProductPage />} />
           <Route path="/platform" element={<PlatformPage />} />
+          <Route path="/platform/architecture" element={<ArchitecturePage />} />
           <Route path="/ecosystem" element={<EcosystemPage />} />
           <Route path="/solutions" element={<SolutionsPage />} />
           <Route path="/pricing" element={<PricingPage />} />
