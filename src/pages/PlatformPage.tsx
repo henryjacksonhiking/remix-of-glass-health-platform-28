@@ -465,21 +465,20 @@ const FragmentedToolsDiagram = () => {
     { Icon: Calendar, x: 230, y: 42, label: "Booking" },
   ];
   const bottom = [
-    { Icon: BarChart2, x: 95,  y: 106, label: "Analytics" },
-    { Icon: FileText,  x: 185, y: 106, label: "Forms" },
+    { Icon: BarChart2, x: 95,  y: 110, label: "Analytics" },
+    { Icon: FileText,  x: 185, y: 110, label: "Forms" },
   ];
   return (
-    <svg viewBox="0 0 280 148" className="w-full h-[148px]" aria-hidden="true">
+    <svg viewBox="0 0 280 155" className="w-full h-[155px]" aria-hidden="true">
       <defs>
-        <linearGradient id="frag-broken" x1="0%" y1="0%" x2="100%" y2="0%">
-          <stop offset="0%" stopColor="rgba(255,255,255,0.15)" />
-          <stop offset="50%" stopColor="rgba(255,255,255,0.04)" />
-          <stop offset="100%" stopColor="rgba(255,255,255,0.15)" />
-        </linearGradient>
+        <filter id="frag-x-glow">
+          <feGaussianBlur stdDeviation="3" result="blur" />
+          <feMerge><feMergeNode in="blur" /><feMergeNode in="SourceGraphic" /></feMerge>
+        </filter>
       </defs>
       {/* Broken connection lines */}
       {[...top, ...bottom].map(({ x, y }, i) => (
-        <line key={`line-${i}`} x1={x} y1={y} x2="140" y2="74"
+        <line key={`line-${i}`} x1={x} y1={y} x2="140" y2="76"
           stroke="rgba(239, 68, 68, 0.18)" strokeWidth="0.8" strokeDasharray="4 4">
           <animate attributeName="stroke-dashoffset" from="0" to="8" dur="2s" repeatCount="indefinite" />
         </line>
@@ -494,18 +493,19 @@ const FragmentedToolsDiagram = () => {
           <foreignObject x={x - 9} y={y - 9} width="18" height="18">
             <Icon className="w-[18px] h-[18px]" style={{ color: "rgba(255,255,255,0.55)" }} />
           </foreignObject>
-          <text x={x} y={y + 28} textAnchor="middle" fontSize="7" fill="rgba(255,255,255,0.35)">{label}</text>
+          <text x={x} y={y + 30} textAnchor="middle" fontSize="7" fill="rgba(255,255,255,0.35)">{label}</text>
         </g>
       ))}
-      {/* Red X mark — centered between the two rows */}
-      <g transform="translate(140 74)">
-        <circle r="12" fill="rgba(239, 68, 68, 0.15)" stroke="rgba(239, 68, 68, 0.6)" strokeWidth="1">
-          <animate attributeName="r" values="12;13;12" dur="2s" repeatCount="indefinite" />
+      {/* Red X mark — stronger animation with glow */}
+      <g transform="translate(140 76)" filter="url(#frag-x-glow)">
+        <circle r="14" fill="rgba(239, 68, 68, 0.2)" stroke="rgba(239, 68, 68, 0.7)" strokeWidth="1.2">
+          <animate attributeName="r" values="12;16;12" dur="1.8s" repeatCount="indefinite" />
+          <animate attributeName="opacity" values="0.6;1;0.6" dur="1.8s" repeatCount="indefinite" />
         </circle>
-        <line x1="-5" y1="-5" x2="5"  y2="5"  stroke="rgb(248, 113, 113)" strokeWidth="1.6" strokeLinecap="round" />
-        <line x1="-5" y1="5"  x2="5"  y2="-5" stroke="rgb(248, 113, 113)" strokeWidth="1.6" strokeLinecap="round" />
+        <line x1="-6" y1="-6" x2="6"  y2="6"  stroke="rgb(248, 113, 113)" strokeWidth="2" strokeLinecap="round" />
+        <line x1="-6" y1="6"  x2="6"  y2="-6" stroke="rgb(248, 113, 113)" strokeWidth="2" strokeLinecap="round" />
       </g>
-      <text x="140" y="142" textAnchor="middle" fontSize="7" fill="rgba(239, 68, 68, 0.6)">Disconnected</text>
+      <text x="140" y="150" textAnchor="middle" fontSize="7" fill="rgba(239, 68, 68, 0.6)">Disconnected</text>
     </svg>
   );
 };
@@ -983,7 +983,7 @@ const PlatformPage = () => (
               <span className="text-xs md:text-sm font-medium" style={{ color: "rgba(255,255,255,0.85)" }}>{row.capability}</span>
               <span className="text-xs md:text-sm" style={{ color: "rgba(255,255,255,0.5)" }}>{row.traditional}</span>
               <span className="flex items-center gap-1.5 md:gap-2 text-xs md:text-sm font-medium text-primary">
-                <CheckCircle2 className="w-3.5 h-3.5 shrink-0" />
+                <CheckCircle2 className="w-3.5 h-3.5 shrink-0 hidden md:block" />
                 <span>{row.borna}</span>
               </span>
             </div>
@@ -1040,11 +1040,11 @@ const PlatformPage = () => (
           </motion.div>
 
           {/* Connector */}
-          <div className="hidden md:flex flex-col items-center text-primary/50">
+          <div className="hidden md:flex flex-col items-center text-primary/50 mx-6">
             <div className="w-px h-10 bg-primary/30" />
             <ArrowRight className="w-4 h-4 my-1" />
             <div className="w-px h-10 bg-primary/30" />
-            <div className="text-[9px] uppercase tracking-[1.5px] mt-2 rotate-90 whitespace-nowrap">Live data sync</div>
+            <div className="text-[9px] uppercase tracking-[1.5px] mt-2 rotate-90 whitespace-nowrap text-primary/60">Live data sync</div>
           </div>
 
           {/* Admin desktop */}
