@@ -138,7 +138,7 @@ const DataIntegrationPage = () => {
       </Helmet>
 
       {/* Breadcrumb */}
-      <div className="container mx-auto px-4 md:px-6 pt-24 pb-2">
+      <div className="container mx-auto px-4 md:px-6 pt-20 md:pt-24 pb-0 md:pb-2">
         <Breadcrumb>
           <BreadcrumbList>
             <BreadcrumbItem><BreadcrumbLink href="/">Home</BreadcrumbLink></BreadcrumbItem>

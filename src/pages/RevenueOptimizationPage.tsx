@@ -31,7 +31,7 @@ const RevenueOptimizationPage = () => (
       <script type="application/ld+json">{JSON.stringify({ "@context": "https://schema.org", "@type": "BreadcrumbList", itemListElement: [{ "@type": "ListItem", position: 1, name: "Home", item: "https://borna.ai" }, { "@type": "ListItem", position: 2, name: "Solutions", item: "https://borna.ai/solutions" }, { "@type": "ListItem", position: 3, name: "Revenue Optimization", item: "https://borna.ai/solutions/revenue-optimization" }] })}</script>
     </Helmet>
 
-    <nav aria-label="breadcrumb" className="container mx-auto px-4 md:px-6 pt-24 pb-2"><p className="text-xs text-muted-foreground"><Link to="/" className="hover:text-foreground">Home</Link> / <Link to="/solutions" className="hover:text-foreground">Solutions</Link> / <span className="text-primary">Revenue Optimization</span></p></nav>
+    <nav aria-label="breadcrumb" className="container mx-auto px-4 md:px-6 pt-20 md:pt-24 pb-0 md:pb-2"><p className="text-xs text-muted-foreground"><Link to="/" className="hover:text-foreground">Home</Link> / <Link to="/solutions" className="hover:text-foreground">Solutions</Link> / <span className="text-primary">Revenue Optimization</span></p></nav>
 
     {/* Hero */}
     <section className="relative py-16 md:py-24 overflow-hidden">
@@ -41,7 +41,7 @@ const RevenueOptimizationPage = () => (
             <Eyebrow>Revenue Optimization</Eyebrow>
             <h1 className="text-3xl md:text-5xl font-bold text-foreground mb-6 leading-tight">Revenue optimization platform for healthcare practices</h1>
             <p className="text-muted-foreground text-lg leading-relaxed mb-8 max-w-lg">Borna AI helps healthcare practices increase revenue by optimizing patient acquisition, improving retention, and automating operations. From lead generation to long-term patient value, Borna ensures every opportunity contributes to growth.</p>
-            <div className="flex flex-wrap gap-3"><Link to="/demo" className="gradient-btn px-8 py-3">Request Demo</Link><a href="#revenue-drivers" className="ghost-btn px-8 py-3">See How It Works</a></div>
+            <div className="flex flex-row items-center gap-2 sm:gap-3"><Link to="/demo" className="gradient-btn whitespace-nowrap">Request Demo</Link><a href="#revenue-drivers" className="ghost-btn whitespace-nowrap">See How It Works</a></div>
           </motion.div>
           <motion.div {...fadeUp} className="relative" aria-hidden="true">
             <svg viewBox="0 0 400 280" className="w-full max-w-md mx-auto">
@@ -211,7 +211,7 @@ const RevenueOptimizationPage = () => (
       <div className="container mx-auto px-4 md:px-6 relative z-10 text-center">
         <h2 className="text-2xl md:text-4xl font-bold text-foreground mb-4">Turn every opportunity into revenue.</h2>
         <p className="text-muted-foreground max-w-xl mx-auto mb-8">Borna AI helps healthcare practices maximize revenue across acquisition, retention, and operations — through one connected platform.</p>
-        <div className="flex flex-wrap items-center justify-center gap-4"><Link to="/demo" className="gradient-btn px-8 py-3.5">Request Demo</Link><Link to="/platform" className="ghost-btn px-8 py-3.5">Explore Platform →</Link></div>
+        <div className="flex flex-row items-center justify-center gap-2 sm:gap-4"><Link to="/demo" className="gradient-btn whitespace-nowrap">Request Demo</Link><Link to="/platform" className="ghost-btn whitespace-nowrap">Explore Platform →</Link></div>
         <div className="relative w-full max-w-lg mx-auto h-40 mt-8"><div className="absolute top-0 left-1/2 -translate-x-1/2 w-3/4 h-[2px] bg-gradient-to-r from-transparent via-primary to-transparent" /><SparklesCore className="w-full h-full" background="transparent" particleColor="#ffffff" particleDensity={80} minSize={0.6} maxSize={1.4} speed={3} /></div>
       </div>
     </section>

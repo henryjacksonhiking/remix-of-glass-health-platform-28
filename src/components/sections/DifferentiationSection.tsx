@@ -1,10 +1,10 @@
 import { motion } from "framer-motion";
-import { Layers, Cpu, Building2 } from "lucide-react";
+import { Blocks, BrainCircuit, Stethoscope } from "lucide-react";
 
 const differentiators = [
-  { icon: Layers, title: "Modular by design", body: "Start with Borna Care today. Add communications, CRM, analytics, and AI automation as your clinic grows — without switching platforms." },
-  { icon: Cpu, title: "AI at the core", body: "Every module is powered by the same AI infrastructure — not bolted on as an afterthought. Automation, insights, and predictions built in from day one." },
-  { icon: Building2, title: "Built for real clinics", body: "Designed around how dental and medical practices actually operate — not generic software assumptions adapted for healthcare." },
+  { icon: Blocks, title: "Modular by design", body: "Start with Borna Care today. Add communications, CRM, analytics, and AI automation as your clinic grows — without switching platforms." },
+  { icon: BrainCircuit, title: "AI at the core", body: "Every module is powered by the same AI infrastructure — not bolted on as an afterthought. Automation, insights, and predictions built in from day one." },
+  { icon: Stethoscope, title: "Built for real clinics", body: "Designed around how dental and medical practices actually operate — not generic software assumptions adapted for healthcare." },
 ];
 
 const cardStyle: React.CSSProperties = {

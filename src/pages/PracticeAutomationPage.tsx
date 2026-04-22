@@ -31,7 +31,7 @@ const PracticeAutomationPage = () => (
       <script type="application/ld+json">{JSON.stringify({ "@context": "https://schema.org", "@type": "BreadcrumbList", itemListElement: [{ "@type": "ListItem", position: 1, name: "Home", item: "https://borna.ai" }, { "@type": "ListItem", position: 2, name: "Solutions", item: "https://borna.ai/solutions" }, { "@type": "ListItem", position: 3, name: "Practice Automation", item: "https://borna.ai/solutions/practice-automation" }] })}</script>
     </Helmet>
 
-    <nav aria-label="breadcrumb" className="container mx-auto px-4 md:px-6 pt-24 pb-2"><p className="text-xs text-muted-foreground"><Link to="/" className="hover:text-foreground">Home</Link> / <Link to="/solutions" className="hover:text-foreground">Solutions</Link> / <span className="text-primary">Practice Automation</span></p></nav>
+    <nav aria-label="breadcrumb" className="container mx-auto px-4 md:px-6 pt-20 md:pt-24 pb-0 md:pb-2"><p className="text-xs text-muted-foreground"><Link to="/" className="hover:text-foreground">Home</Link> / <Link to="/solutions" className="hover:text-foreground">Solutions</Link> / <span className="text-primary">Practice Automation</span></p></nav>
 
     {/* Hero */}
     <section className="relative py-16 md:py-24 overflow-hidden">
@@ -47,18 +47,18 @@ const PracticeAutomationPage = () => (
             </div>
           </motion.div>
           <motion.div {...fadeUp} className="relative" aria-hidden="true">
-            <div className="space-y-4">
+            <div className="space-y-3">
               {[
                 { trigger: "Missed Call", action: "Follow-Up SMS Sent" },
                 { trigger: "Appointment Due", action: "Reminder Sent" },
                 { trigger: "Patient Inactive 90 Days", action: "Reactivation Started" },
               ].map((lane, i) => (
-                <div key={i} className="glass-panel rounded-xl p-3 flex items-center gap-3">
-                  <div className="glass-panel rounded-lg px-3 py-2 text-xs text-muted-foreground shrink-0">{lane.trigger}</div>
-                  <ArrowRight className="w-4 h-4 text-primary shrink-0" />
-                  <div className="w-8 h-8 rounded-full bg-primary/20 flex items-center justify-center shrink-0"><Cpu className="w-4 h-4 text-primary" /></div>
-                  <ArrowRight className="w-4 h-4 text-primary shrink-0" />
-                  <div className="glass-panel rounded-lg px-3 py-2 text-xs text-primary border-primary/20 shrink-0">{lane.action}</div>
+                <div key={i} className="glass-panel rounded-xl p-3 flex items-center gap-2 sm:gap-3 overflow-hidden">
+                  <div className="glass-panel rounded-lg px-2 sm:px-3 py-2 text-[11px] sm:text-xs text-muted-foreground shrink-0 min-w-0 truncate">{lane.trigger}</div>
+                  <ArrowRight className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-primary shrink-0" />
+                  <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-primary/20 flex items-center justify-center shrink-0"><Cpu className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-primary" /></div>
+                  <ArrowRight className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-primary shrink-0" />
+                  <div className="glass-panel rounded-lg px-2 sm:px-3 py-2 text-[11px] sm:text-xs text-primary border-primary/20 shrink-0 min-w-0 truncate">{lane.action}</div>
                 </div>
               ))}
             </div>
@@ -118,7 +118,6 @@ const PracticeAutomationPage = () => (
       </div>
     </SectionDark>
 
-    {/* Before vs After */}
     <SectionDark>
       <motion.div {...fadeUp} className="text-center mb-12"><h2 className="text-2xl md:text-3xl font-bold text-foreground">Eliminate repetitive tasks</h2></motion.div>
       <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
@@ -129,9 +128,9 @@ const PracticeAutomationPage = () => (
           ))}
         </div>
         <div className="glass-panel rounded-2xl p-6 border-primary/20">
-          <p className="text-xs text-primary uppercase tracking-wider mb-4">Automated by Borna</p>
+          <p className="text-xs text-primary uppercase tracking-wider mb-4">Handled by Borna</p>
           {["Call Back Patient", "Send Reminder", "Update Record", "Schedule Follow-Up", "Process Form", "Enter Data"].map((t) => (
-            <div key={t} className="flex items-start gap-2 mb-2"><CheckCircle2 className="w-4 h-4 text-primary shrink-0 mt-0.5" /><span className="text-sm text-foreground">{t} — <span className="text-primary text-xs">Automated</span></span></div>
+            <div key={t} className="flex items-start gap-2 mb-2"><CheckCircle2 className="w-4 h-4 text-primary shrink-0 mt-0.5" /><span className="text-sm text-foreground">{t}</span></div>
           ))}
         </div>
       </div>
@@ -166,21 +165,39 @@ const PracticeAutomationPage = () => (
       </div>
     </SectionDark>
 
-    {/* How It Works */}
+    {/* How It Works - Sequential Card Animation */}
     <SectionDark>
       <motion.div {...fadeUp} className="text-center mb-12"><h2 className="text-2xl md:text-3xl font-bold text-foreground">How Borna automates your practice</h2></motion.div>
-      <div className="grid md:grid-cols-5 gap-4">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
         {[
           { n: 1, title: "Trigger", body: "An event occurs — missed call, appointment due, patient inactive, form submitted" },
           { n: 2, title: "Analyze", body: "Borna AI evaluates the event and selects the appropriate automated response" },
           { n: 3, title: "Execute", body: "The automation fires — message sent, record updated, alert dispatched — instantly" },
           { n: 4, title: "Monitor", body: "Outcomes are tracked — did the message reach the patient? Was the action completed?" },
           { n: 5, title: "Optimize", body: "AI analyzes performance and continuously refines workflows for better outcomes" },
-        ].map((step) => (
-          <motion.div key={step.n} {...fadeUp} className="glass-panel rounded-xl p-5 text-center">
+        ].map((step, i) => (
+          <motion.div
+            key={step.n}
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ duration: 0.5, delay: i * 0.15, ease: [0.16, 1, 0.3, 1] }}
+            className="glass-panel rounded-xl p-5 text-center relative"
+          >
             <div className="w-8 h-8 rounded-full bg-primary/20 flex items-center justify-center text-primary text-sm font-bold mx-auto mb-3">{step.n}</div>
             <h3 className="text-sm font-semibold text-foreground mb-2">{step.title}</h3>
             <p className="text-xs text-muted-foreground">{step.body}</p>
+            {i < 4 && (
+              <div className="hidden lg:block absolute top-1/2 -translate-y-1/2 -right-3 z-10" aria-hidden>
+                <svg viewBox="0 0 24 12" className="w-6 h-3">
+                  <line x1="0" y1="6" x2="18" y2="6" stroke="hsl(var(--primary))" strokeOpacity="0.4" strokeWidth="1" />
+                  <path d="M16 2 L22 6 L16 10" fill="none" stroke="hsl(var(--primary))" strokeOpacity="0.6" strokeWidth="1" strokeLinecap="round" />
+                  <circle r="1.5" fill="hsl(var(--primary))">
+                    <animateMotion dur="1.5s" repeatCount="indefinite" begin={`${i * 0.3}s`} path="M0,6 L18,6" />
+                  </circle>
+                </svg>
+              </div>
+            )}
           </motion.div>
         ))}
       </div>
@@ -204,12 +221,15 @@ const PracticeAutomationPage = () => (
     </SectionDark>
 
     {/* CTA */}
-    <section className="py-24 relative overflow-hidden">
+    <section className="py-16 md:py-24 relative overflow-hidden">
       <div className="container mx-auto px-4 md:px-6 relative z-10 text-center">
         <h2 className="text-2xl md:text-4xl font-bold text-foreground mb-4">Automate your practice and focus on care.</h2>
         <p className="text-muted-foreground max-w-xl mx-auto mb-8">Borna AI helps healthcare practices streamline operations, eliminate manual work, and scale efficiently — through intelligent automation that runs continuously in the background.</p>
-        <div className="flex flex-wrap items-center justify-center gap-4"><Link to="/demo" className="gradient-btn px-8 py-3.5">Request Demo</Link><Link to="/platform" className="ghost-btn px-8 py-3.5">Explore Platform →</Link></div>
-        <div className="relative w-full max-w-lg mx-auto h-40 mt-8"><div className="absolute top-0 left-1/2 -translate-x-1/2 w-3/4 h-[2px] bg-gradient-to-r from-transparent via-primary to-transparent" /><SparklesCore className="w-full h-full" background="transparent" particleColor="#ffffff" particleDensity={80} minSize={0.6} maxSize={1.4} speed={3} /></div>
+        <div className="flex flex-row items-center justify-center gap-2 sm:gap-4">
+          <Link to="/demo" className="gradient-btn whitespace-nowrap">Request Demo</Link>
+          <Link to="/platform" className="ghost-btn whitespace-nowrap">Explore Platform →</Link>
+        </div>
+        <div className="relative w-full max-w-lg mx-auto h-32 sm:h-40 mt-6 sm:mt-8"><div className="absolute top-0 left-1/2 -translate-x-1/2 w-3/4 h-[2px] bg-gradient-to-r from-transparent via-primary to-transparent" /><SparklesCore className="w-full h-full" background="transparent" particleColor="#ffffff" particleDensity={80} minSize={0.6} maxSize={1.4} speed={3} /></div>
       </div>
     </section>
   </PageWrapper>

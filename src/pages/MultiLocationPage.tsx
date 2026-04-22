@@ -31,7 +31,7 @@ const MultiLocationPage = () => (
       <script type="application/ld+json">{JSON.stringify({ "@context": "https://schema.org", "@type": "BreadcrumbList", itemListElement: [{ "@type": "ListItem", position: 1, name: "Home", item: "https://borna.ai" }, { "@type": "ListItem", position: 2, name: "Solutions", item: "https://borna.ai/solutions" }, { "@type": "ListItem", position: 3, name: "Multi-Location Management", item: "https://borna.ai/solutions/multi-location" }] })}</script>
     </Helmet>
 
-    <nav aria-label="breadcrumb" className="container mx-auto px-4 md:px-6 pt-24 pb-2"><p className="text-xs text-muted-foreground"><Link to="/" className="hover:text-foreground">Home</Link> / <Link to="/solutions" className="hover:text-foreground">Solutions</Link> / <span className="text-primary">Multi-Location Management</span></p></nav>
+    <nav aria-label="breadcrumb" className="container mx-auto px-4 md:px-6 pt-20 md:pt-24 pb-0 md:pb-2"><p className="text-xs text-muted-foreground"><Link to="/" className="hover:text-foreground">Home</Link> / <Link to="/solutions" className="hover:text-foreground">Solutions</Link> / <span className="text-primary">Multi-Location Management</span></p></nav>
 
     {/* Hero */}
     <section className="relative py-16 md:py-24 overflow-hidden">
@@ -41,7 +41,7 @@ const MultiLocationPage = () => (
             <Eyebrow>Multi-Location Management</Eyebrow>
             <h1 className="text-3xl md:text-5xl font-bold text-foreground mb-6 leading-tight">Multi-location healthcare management platform</h1>
             <p className="text-muted-foreground text-lg leading-relaxed mb-8 max-w-lg">Borna AI enables healthcare organizations to manage multiple locations from one unified platform. Centralize operations, monitor performance, and optimize workflows across all branches.</p>
-            <div className="flex flex-wrap gap-3"><Link to="/demo" className="gradient-btn px-8 py-3">Request Demo</Link><a href="#centralized-control" className="ghost-btn px-8 py-3">See How It Works</a></div>
+            <div className="flex flex-row items-center gap-2 sm:gap-3"><Link to="/demo" className="gradient-btn whitespace-nowrap">Request Demo</Link><a href="#centralized-control" className="ghost-btn whitespace-nowrap">See How It Works</a></div>
           </motion.div>
           <motion.div {...fadeUp} className="relative flex items-center justify-center" aria-hidden="true">
             <svg viewBox="0 0 300 300" className="w-64 h-64 md:w-80 md:h-80">
@@ -216,7 +216,7 @@ const MultiLocationPage = () => (
       <div className="container mx-auto px-4 md:px-6 relative z-10 text-center">
         <h2 className="text-2xl md:text-4xl font-bold text-foreground mb-4">Manage and scale all your locations in one platform.</h2>
         <p className="text-muted-foreground max-w-xl mx-auto mb-8">Borna AI helps you unify operations, maintain consistency, and grow your healthcare organization — with full control from one centralized platform.</p>
-        <div className="flex flex-wrap items-center justify-center gap-4"><Link to="/demo" className="gradient-btn px-8 py-3.5">Request Demo</Link><Link to="/platform" className="ghost-btn px-8 py-3.5">Explore Platform →</Link></div>
+        <div className="flex flex-row items-center justify-center gap-2 sm:gap-4"><Link to="/demo" className="gradient-btn whitespace-nowrap">Request Demo</Link><Link to="/platform" className="ghost-btn whitespace-nowrap">Explore Platform →</Link></div>
         <div className="relative w-full max-w-lg mx-auto h-40 mt-8"><div className="absolute top-0 left-1/2 -translate-x-1/2 w-3/4 h-[2px] bg-gradient-to-r from-transparent via-primary to-transparent" /><SparklesCore className="w-full h-full" background="transparent" particleColor="#ffffff" particleDensity={80} minSize={0.6} maxSize={1.4} speed={3} /></div>
       </div>
     </section>

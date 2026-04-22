@@ -1,24 +1,24 @@
 import { motion } from "framer-motion";
-import { MessageSquare, Users, BarChart3, Zap } from "lucide-react";
+import { Phone, HeartPulse, LineChart, Workflow } from "lucide-react";
 
 const benefits = [
   {
-    icon: MessageSquare,
+    icon: Phone,
     title: "Improve patient engagement",
     description: "Communicate with patients across all channels",
   },
   {
-    icon: Users,
+    icon: HeartPulse,
     title: "Manage patient relationships",
     description: "Keep track of patients from lead to leave.",
   },
   {
-    icon: BarChart3,
+    icon: LineChart,
     title: "Analyse performance",
     description: "Get accurate and real-time insight from data all around your business.",
   },
   {
-    icon: Zap,
+    icon: Workflow,
     title: "Automate workflow",
     description: "Reduce manual tasks and improve efficiency",
   },
@@ -34,7 +34,7 @@ const cardStyle: React.CSSProperties = {
 const BenefitsSection = () => (
   <section className="py-10 md:py-16">
     <div className="container mx-auto px-4 md:px-6">
-      <div className="text-center mb-16">
+      <div className="text-center mb-10 md:mb-16">
         <span className="section-eyebrow">
           Explore the Benefits
         </span>
@@ -43,7 +43,7 @@ const BenefitsSection = () => (
         </h2>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-5 max-w-4xl mx-auto">
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-5 max-w-4xl mx-auto">
         {benefits.map((item, i) => {
           const Icon = item.icon;
           return (

@@ -61,7 +61,7 @@ const PatientAcquisitionPage = () => (
     </Helmet>
 
     {/* Breadcrumb */}
-    <nav aria-label="breadcrumb" className="container mx-auto px-4 md:px-6 pt-24 pb-2">
+    <nav aria-label="breadcrumb" className="container mx-auto px-4 md:px-6 pt-20 md:pt-24 pb-0 md:pb-2">
       <p className="text-xs text-muted-foreground">
         <Link to="/" className="hover:text-foreground">Home</Link> / <Link to="/solutions" className="hover:text-foreground">Solutions</Link> / <span className="text-primary">Patient Acquisition</span>
       </p>
@@ -75,9 +75,9 @@ const PatientAcquisitionPage = () => (
             <Eyebrow>Patient Acquisition</Eyebrow>
             <h1 className="text-3xl md:text-5xl font-bold text-foreground mb-6 leading-tight">Patient acquisition platform for healthcare practices</h1>
             <p className="text-muted-foreground text-lg leading-relaxed mb-8 max-w-lg">Borna AI helps healthcare practices attract, capture, and convert more patients through a unified platform that connects marketing, communication, and CRM. From first click to confirmed appointment, every step is tracked, optimized, and improved.</p>
-            <div className="flex flex-wrap gap-3">
-              <Link to="/demo" className="gradient-btn px-8 py-3">Request Demo</Link>
-              <a href="#journey" className="ghost-btn px-8 py-3">See How It Works</a>
+            <div className="flex flex-row items-center gap-2 sm:gap-3">
+              <Link to="/demo" className="gradient-btn whitespace-nowrap">Request Demo</Link>
+              <a href="#journey" className="ghost-btn whitespace-nowrap">See How It Works</a>
             </div>
           </motion.div>
           <motion.div {...fadeUp} className="relative" aria-hidden="true">
@@ -334,9 +334,9 @@ const PatientAcquisitionPage = () => (
       <div className="container mx-auto px-4 md:px-6 relative z-10 text-center">
         <h2 className="text-2xl md:text-4xl font-bold text-foreground mb-4">Get more patients with a smarter system.</h2>
         <p className="text-muted-foreground max-w-xl mx-auto mb-8">Borna AI helps healthcare practices capture, convert, and grow their patient base — through a unified system that connects every step from first contact to confirmed appointment.</p>
-        <div className="flex flex-wrap items-center justify-center gap-4">
-          <Link to="/demo" className="gradient-btn px-8 py-3.5">Request Demo</Link>
-          <Link to="/platform" className="ghost-btn px-8 py-3.5">Explore Platform →</Link>
+        <div className="flex flex-row items-center justify-center gap-2 sm:gap-4">
+          <Link to="/demo" className="gradient-btn whitespace-nowrap">Request Demo</Link>
+          <Link to="/platform" className="ghost-btn whitespace-nowrap">Explore Platform →</Link>
         </div>
         <div className="relative w-full max-w-lg mx-auto h-40 mt-8">
           <div className="absolute top-0 left-1/2 -translate-x-1/2 w-3/4 h-[2px] bg-gradient-to-r from-transparent via-primary to-transparent" />
