@@ -1,7 +1,9 @@
 import { Link, useNavigate } from "react-router-dom";
+import { useRef, useState, useEffect } from "react";
 import { Helmet } from "react-helmet-async";
 import { motion } from "framer-motion";
 import PageWrapper from "@/components/layout/PageWrapper";
+import SpotlightCard from "@/components/ui/spotlight-card";
 import {
   Accordion,
   AccordionContent,
@@ -107,13 +109,14 @@ const PrinciplesSection = () => (
       </motion.p>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4 md:gap-5">
         {principles.map((p, i) => (
-          <motion.div key={p.title} variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }} transition={{ delay: i * 0.08 }}
-            className="glass-panel-hover p-6 text-center">
-            <div className="w-10 h-10 mx-auto mb-4 rounded-xl flex items-center justify-center" style={{ background: "hsla(170,100%,43%,0.1)" }}>
-              <p.icon className="w-5 h-5 text-primary" />
-            </div>
-            <h3 className="text-sm font-medium text-foreground mb-2">{p.title}</h3>
-            <p className="text-xs text-muted-foreground leading-relaxed">{p.desc}</p>
+          <motion.div key={p.title} variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }} transition={{ delay: i * 0.08 }}>
+            <SpotlightCard className="glass-panel-hover p-6 text-center rounded-2xl h-full">
+              <div className="w-10 h-10 mx-auto mb-4 rounded-xl flex items-center justify-center" style={{ background: "hsla(170,100%,43%,0.1)" }}>
+                <p.icon className="w-5 h-5 text-primary" />
+              </div>
+              <h3 className="text-sm font-medium text-foreground mb-2">{p.title}</h3>
+              <p className="text-xs text-muted-foreground leading-relaxed">{p.desc}</p>
+            </SpotlightCard>
           </motion.div>
         ))}
       </div>
@@ -170,36 +173,54 @@ const SystemOverviewSection = () => (
 /* ------------------------------------------------------------------ */
 const flowSteps = ["Capture", "Centralize", "Analyze", "Automate", "Feedback"];
 
-const DataFlowSection = () => (
-  <section className="py-20 md:py-28 overflow-hidden" role="region" aria-label="Data flow">
-    <div className="container mx-auto px-4 md:px-6 text-center">
-      <motion.h2 variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }} className="section-headline text-foreground mb-4">
-        How data flows through the platform
-      </motion.h2>
-      <motion.p variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }} transition={{ delay: 0.1 }} className="body-text mx-auto mb-14">
-        From capture to continuous improvement — every data point is connected.
-      </motion.p>
+const DataFlowSection = () => {
+  const ref = useRef<HTMLDivElement>(null);
+  const [revealed, setRevealed] = useState(false);
 
-      {/* Flow diagram */}
-      <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-0">
-        {flowSteps.map((step, i) => (
-          <motion.div key={step} variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }} transition={{ delay: i * 0.1 }}
-            className="flex items-center gap-3 sm:gap-0">
-            <div className="relative w-24 h-24 rounded-full flex items-center justify-center"
-              style={{ background: "hsla(170,100%,43%,0.08)", border: "1px solid hsla(170,100%,43%,0.2)" }}>
-              <span className="text-xs font-medium text-foreground">{step}</span>
-              {/* step number */}
-              <span className="absolute -top-1 -right-1 w-5 h-5 rounded-full bg-primary text-primary-foreground text-[10px] font-bold flex items-center justify-center">{i + 1}</span>
+  useEffect(() => {
+    if (!ref.current || revealed) return;
+    const obs = new IntersectionObserver(
+      ([entry]) => { if (entry.isIntersecting) { setRevealed(true); obs.disconnect(); } },
+      { threshold: 0.25 }
+    );
+    obs.observe(ref.current);
+    return () => obs.disconnect();
+  }, [revealed]);
+
+  return (
+    <section className="py-20 md:py-28 overflow-hidden" role="region" aria-label="Data flow">
+      <div className="container mx-auto px-4 md:px-6 text-center">
+        <motion.h2 variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }} className="section-headline text-foreground mb-4">
+          How data flows through the platform
+        </motion.h2>
+        <motion.p variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }} transition={{ delay: 0.1 }} className="body-text mx-auto mb-14">
+          From capture to continuous improvement — every data point is connected.
+        </motion.p>
+
+        {/* Flow diagram */}
+        <div ref={ref} className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-0">
+          {flowSteps.map((step, i) => (
+            <div key={step} className="flex items-center gap-3 sm:gap-0"
+              style={{
+                opacity: revealed ? 1 : 0,
+                transform: revealed ? "translateY(0) scale(1)" : "translateY(16px) scale(0.9)",
+                transition: `all 0.5s ease-out ${i * 0.18}s`,
+              }}>
+              <div className="relative w-24 h-24 rounded-full flex flex-col items-center justify-center"
+                style={{ background: "hsla(170,100%,43%,0.08)", border: "1px solid hsla(170,100%,43%,0.2)" }}>
+                <span className="text-xs font-medium text-foreground">{step}</span>
+                <span className="text-[10px] font-bold text-primary mt-1">{i + 1}</span>
+              </div>
+              {i < flowSteps.length - 1 && (
+                <div className="hidden sm:block w-8 h-px mx-1" style={{ background: "linear-gradient(90deg, hsl(170 100% 43% / 0.5), hsl(170 100% 43% / 0.1))" }} />
+              )}
             </div>
-            {i < flowSteps.length - 1 && (
-              <div className="hidden sm:block w-8 h-px mx-1" style={{ background: "linear-gradient(90deg, hsl(170 100% 43% / 0.5), hsl(170 100% 43% / 0.1))" }} />
-            )}
-          </motion.div>
-        ))}
+          ))}
+        </div>
       </div>
-    </div>
-  </section>
-);
+    </section>
+  );
+};
 
 /* ------------------------------------------------------------------ */
 /*  6. INTEGRATION ARCHITECTURE                                        */
@@ -270,10 +291,28 @@ const CommArchSection = () => (
         ))}
       </div>
 
-      {/* Arrow merging into unified */}
-      <motion.div variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }} transition={{ delay: 0.5 }} className="mt-8 flex flex-col items-center gap-3">
-        <div className="w-px h-8" style={{ background: "linear-gradient(180deg, hsl(170 100% 43% / 0.4), hsl(170 100% 43% / 0.1))" }} />
-        <div className="glass-panel px-6 py-3 inline-flex items-center gap-2" style={{ border: "1px solid hsla(170,100%,43%,0.25)" }}>
+      {/* Arrow merging into unified — with lightning animation */}
+      <motion.div variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }} transition={{ delay: 0.5 }} className="mt-8 flex flex-col items-center gap-0">
+        <div className="relative w-px h-12">
+          <div className="absolute inset-0" style={{ background: "linear-gradient(180deg, hsl(170 100% 43% / 0.4), hsl(170 100% 43% / 0.1))" }} />
+          {/* Lightning pulse traveling down */}
+          <div className="absolute left-1/2 -translate-x-1/2 w-1.5 h-3 rounded-full"
+            style={{
+              background: "hsl(170 100% 60%)",
+              boxShadow: "0 0 8px hsl(170 100% 43% / 0.8), 0 0 16px hsl(170 100% 43% / 0.4)",
+              animation: "comm-lightning-pulse 2s ease-in-out infinite",
+            }}
+          />
+          <style>{`
+            @keyframes comm-lightning-pulse {
+              0% { top: -6px; opacity: 0; }
+              20% { opacity: 1; }
+              80% { opacity: 1; }
+              100% { top: calc(100% + 6px); opacity: 0; }
+            }
+          `}</style>
+        </div>
+        <div className="glass-panel px-6 py-3 inline-flex items-center gap-2 mt-3" style={{ border: "1px solid hsla(170,100%,43%,0.25)" }}>
           <Activity className="w-4 h-4 text-primary" />
           <span className="text-sm font-medium text-foreground">Unified Stream</span>
         </div>
