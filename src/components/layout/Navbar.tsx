@@ -128,6 +128,7 @@ const Navbar = () => {
                   {[
                     { to: "/platform/architecture", label: "Architecture" },
                     { to: "/platform/integrations", label: "Integrations" },
+                    { to: "/platform/security", label: "Security & Compliance" },
                   ].map((item) => (
                     <Link
                       key={item.to}
@@ -287,6 +288,7 @@ const Navbar = () => {
                 <Link to="/platform" onClick={() => setMobileOpen(false)} className="block px-3 py-2 text-sm text-foreground">Platform</Link>
                 <Link to="/platform/architecture" onClick={() => setMobileOpen(false)} className="block px-3 py-2 text-sm text-foreground">Architecture</Link>
                 <Link to="/platform/integrations" onClick={() => setMobileOpen(false)} className="block px-3 py-2 text-sm text-foreground">Integrations</Link>
+                <Link to="/platform/security" onClick={() => setMobileOpen(false)} className="block px-3 py-2 text-sm text-foreground">Security & Compliance</Link>
               </div>
               <Link to="/ecosystem" onClick={() => setMobileOpen(false)} className="block px-3 py-2 text-sm text-foreground">Ecosystem</Link>
               <Link to="/solutions" onClick={() => setMobileOpen(false)} className="block px-3 py-2 text-sm text-foreground">Solutions</Link>
