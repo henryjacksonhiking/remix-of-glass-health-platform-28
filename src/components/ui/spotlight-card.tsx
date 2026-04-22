@@ -25,6 +25,7 @@ const SpotlightCard = ({ children, className, style }: SpotlightCardProps) => {
       onMouseEnter={() => setOpacity(1)}
       onMouseLeave={() => setOpacity(0)}
       className={cn("relative overflow-hidden", className)}
+      style={style}
     >
       {/* Spotlight overlay */}
       <div
