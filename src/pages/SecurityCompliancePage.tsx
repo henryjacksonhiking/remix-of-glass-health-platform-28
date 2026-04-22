@@ -20,62 +20,62 @@ const fadeUp = {
 };
 
 const SectionWrap = ({ children, className = "" }: { children: React.ReactNode; className?: string }) => (
-  <section className={cn("relative py-20 md:py-28 overflow-hidden", className)}>
+  <section className={cn("relative py-14 md:py-20 overflow-hidden", className)}>
     <div className="container mx-auto px-4 md:px-6">{children}</div>
   </section>
 );
 
-/* ─── Hero Visual: Protected System Core ─── */
+/* ─── SC1: Hero Visual: Protected System Core ─── */
 const ProtectedCore = () => {
   const prefersReduced = typeof window !== "undefined" && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   return (
-    <svg viewBox="0 0 300 300" className="w-full max-w-[380px] mx-auto" aria-label="Protected system core with concentric security boundary rings around Borna AI">
+    <svg viewBox="0 0 300 300" className="w-full max-w-[420px] mx-auto" aria-label="Protected system core with concentric security boundary rings around Borna AI">
       <defs>
         <radialGradient id="secCoreGlow" cx="50%" cy="50%" r="50%">
-          <stop offset="0%" stopColor="hsl(170 100% 43%)" stopOpacity="0.25" />
+          <stop offset="0%" stopColor="hsl(170 100% 43%)" stopOpacity="0.3" />
           <stop offset="100%" stopColor="hsl(170 100% 43%)" stopOpacity="0" />
         </radialGradient>
       </defs>
 
       {/* Ring 3 (outermost) */}
-      <circle cx="150" cy="150" r="120" fill="none" stroke="hsl(170 100% 43% / 0.2)" strokeWidth="1.5" className="hidden sm:block" />
+      <circle cx="150" cy="150" r="120" fill="none" stroke="hsl(170 100% 43% / 0.25)" strokeWidth="2" className="hidden sm:block" />
       {/* Ring 2 */}
-      <circle cx="150" cy="150" r="88" fill="none" stroke="hsl(170 100% 43% / 0.3)" strokeWidth="1.5" className="hidden sm:block" />
+      <circle cx="150" cy="150" r="88" fill="none" stroke="hsl(170 100% 43% / 0.35)" strokeWidth="2" className="hidden sm:block" />
       {/* Ring 1 */}
-      <circle cx="150" cy="150" r="60" fill="none" stroke="hsl(170 100% 43% / 0.4)" strokeWidth="1.5" />
+      <circle cx="150" cy="150" r="60" fill="none" stroke="hsl(170 100% 43% / 0.45)" strokeWidth="2" />
 
       {/* Slow pulse rings */}
       {[1, 2].map(i => (
-        <circle key={i} cx="150" cy="150" r="35" fill="none" stroke="hsl(170 100% 43%)" strokeWidth="1" opacity="0">
+        <circle key={i} cx="150" cy="150" r="40" fill="none" stroke="hsl(170 100% 43%)" strokeWidth="1.5" opacity="0">
           {!prefersReduced && (
             <>
-              <animate attributeName="r" from="35" to="65" dur="6s" begin={`${i * 3}s`} repeatCount="indefinite" />
-              <animate attributeName="opacity" from="0.4" to="0" dur="6s" begin={`${i * 3}s`} repeatCount="indefinite" />
+              <animate attributeName="r" from="40" to="75" dur="6s" begin={`${i * 3}s`} repeatCount="indefinite" />
+              <animate attributeName="opacity" from="0.5" to="0" dur="6s" begin={`${i * 3}s`} repeatCount="indefinite" />
             </>
           )}
         </circle>
       ))}
 
-      {/* Core node — larger */}
-      <circle cx="150" cy="150" r="35" fill="hsl(170 100% 43% / 0.1)" stroke="hsl(170 100% 43% / 0.7)" strokeWidth="1.5" />
-      <circle cx="150" cy="150" r="52" fill="url(#secCoreGlow)" />
-      <text x="150" y="147" textAnchor="middle" fill="hsl(170 100% 43%)" fontSize="12" fontWeight="600">Borna AI</text>
-      <text x="150" y="162" textAnchor="middle" fill="hsl(170 100% 60%)" fontSize="9" opacity="0.8">Secure Core</text>
+      {/* Core node */}
+      <circle cx="150" cy="150" r="40" fill="hsl(170 100% 43% / 0.12)" stroke="hsl(170 100% 43% / 0.8)" strokeWidth="2" />
+      <circle cx="150" cy="150" r="56" fill="url(#secCoreGlow)" />
+      <text x="150" y="146" textAnchor="middle" fill="hsl(170 100% 43%)" fontSize="14" fontWeight="700">Borna AI</text>
+      <text x="150" y="163" textAnchor="middle" fill="hsl(170 100% 60%)" fontSize="10" opacity="0.85">Secure Core</text>
 
       {/* Floating labels (desktop only) */}
       {[
-        { label: "Encrypted", x: 150, y: 20 },
-        { label: "Access Controlled", x: 280, y: 150 },
-        { label: "Monitored", x: 150, y: 284 },
-        { label: "Compliant", x: 20, y: 150 },
+        { label: "Encrypted", x: 150, y: 18 },
+        { label: "Access Controlled", x: 282, y: 150 },
+        { label: "Monitored", x: 150, y: 286 },
+        { label: "Compliant", x: 18, y: 150 },
       ].map(l => (
-        <text key={l.label} x={l.x} y={l.y} textAnchor="middle" fill="hsl(170 100% 43% / 0.55)" fontSize="9" fontWeight="500" className="hidden sm:block">{l.label}</text>
+        <text key={l.label} x={l.x} y={l.y} textAnchor="middle" fill="hsl(170 100% 43% / 0.7)" fontSize="11" fontWeight="500" className="hidden sm:block">{l.label}</text>
       ))}
     </svg>
   );
 };
 
-/* ─── Data Flow Through Secure Layers (Section 4) ─── */
+/* ─── SC1 (Data Flow): Data Flow Through Secure Layers ─── */
 const SecureDataFlow = () => {
   const [time, setTime] = useState(0);
   const prefersReduced = typeof window !== "undefined" && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -88,36 +88,36 @@ const SecureDataFlow = () => {
   }, [prefersReduced]);
 
   const stages = [
-    { label: "Data Input", y: 20, glow: 0.4 },
-    { label: "Encryption Layer", y: 70, glow: 1.0 },
-    { label: "Secure Storage", y: 120, glow: 0.4 },
-    { label: "Access Control", y: 170, glow: 0.4 },
-    { label: "Authorized Output", y: 220, glow: 0.4 },
+    { label: "Data Input", y: 30, glow: 0.4 },
+    { label: "Encryption Layer", y: 90, glow: 1.0 },
+    { label: "Secure Storage", y: 150, glow: 0.4 },
+    { label: "Access Control", y: 210, glow: 0.4 },
+    { label: "Authorized Output", y: 270, glow: 0.4 },
   ];
-  const particleY = prefersReduced ? 120 : 20 + ((time * 0.25) % 1) * 200;
+  const particleY = prefersReduced ? 150 : 30 + ((time * 0.25) % 1) * 240;
 
   return (
-    <svg viewBox="0 0 200 250" className="w-full max-w-[200px] mx-auto" aria-hidden="true">
+    <svg viewBox="0 0 260 300" className="w-full max-w-[280px] mx-auto" aria-hidden="true">
       {/* Vertical line */}
-      <line x1="100" y1="20" x2="100" y2="220" stroke="hsl(170 100% 43% / 0.2)" strokeWidth="1" />
+      <line x1="130" y1="30" x2="130" y2="270" stroke="hsl(170 100% 43% / 0.3)" strokeWidth="1.5" />
       {/* Particle */}
       {!prefersReduced && (
-        <circle cx="100" cy={particleY} r="3" fill="hsl(170 100% 43%)" opacity="0.7" />
+        <circle cx="130" cy={particleY} r="4" fill="hsl(170 100% 43%)" opacity="0.8" />
       )}
       {/* Stages */}
       {stages.map(s => (
         <g key={s.label}>
-          <rect x="30" y={s.y - 10} width="140" height="20" rx="4"
-            fill={`hsl(170 100% 43% / ${s.glow * 0.08})`}
-            stroke={`hsl(170 100% 43% / ${s.glow * 0.4})`} strokeWidth="0.8" />
-          <text x="100" y={s.y + 4} textAnchor="middle" fill={`hsl(170 100% 43% / ${0.5 + s.glow * 0.5})`} fontSize="8" fontWeight={s.glow > 0.5 ? "600" : "400"}>{s.label}</text>
+          <rect x="30" y={s.y - 14} width="200" height="28" rx="6"
+            fill={`hsl(170 100% 43% / ${s.glow * 0.1})`}
+            stroke={`hsl(170 100% 43% / ${s.glow * 0.5})`} strokeWidth="1.2" />
+          <text x="130" y={s.y + 5} textAnchor="middle" fill={`hsl(170 100% 43% / ${0.6 + s.glow * 0.4})`} fontSize="11" fontWeight={s.glow > 0.5 ? "600" : "400"}>{s.label}</text>
         </g>
       ))}
     </svg>
   );
 };
 
-/* ─── Permission Tiers (Section 5) ─── */
+/* ─── SC2: Permission Tiers ─── */
 const PermissionTiers = () => {
   const tiers = [
     { role: "Practice Owner", access: [true, true, true, true, true] },
@@ -128,14 +128,19 @@ const PermissionTiers = () => {
   return (
     <div className="max-w-lg mx-auto space-y-3" role="img" aria-label="Role-based access control showing Practice Owner with full access, Clinical Staff with partial access, and Front Desk with limited access">
       {tiers.map((tier, i) => (
-        <div key={tier.role} className="rounded-xl border border-glass-border bg-glass-bg backdrop-blur-md px-5 py-3 flex items-center justify-between"
+        <div key={tier.role} className="rounded-xl border border-glass-border bg-glass-bg backdrop-blur-md px-4 sm:px-5 py-3 flex items-center justify-between"
           style={{ opacity: 1 - i * 0.15 }}>
-          <span className="text-sm text-foreground font-medium">{tier.role}</span>
-          <div className="flex gap-2">
+          <span className="text-sm sm:text-base text-foreground font-medium">{tier.role}</span>
+          <div className="flex gap-2 sm:gap-3">
             {capabilities.map((cap, ci) => (
-              <div key={cap} className="flex flex-col items-center gap-0.5">
-                <div className={cn("w-4 h-4 rounded-full border", tier.access[ci] ? "bg-primary/20 border-primary/40" : "bg-transparent border-white/10")} />
-                <span className="text-[7px] text-muted-foreground hidden sm:block">{cap}</span>
+              <div key={cap} className="flex flex-col items-center gap-1">
+                <div className={cn(
+                  "w-6 h-6 sm:w-7 sm:h-7 rounded-full border-2",
+                  tier.access[ci]
+                    ? "bg-primary/25 border-primary/60"
+                    : "bg-transparent border-muted-foreground/40"
+                )} />
+                <span className="text-[8px] sm:text-[9px] text-muted-foreground">{cap}</span>
               </div>
             ))}
           </div>
@@ -247,12 +252,12 @@ const SecurityCompliancePage = () => {
       </div>
 
       {/* ── SECTION 1: HERO ── */}
-      <section ref={heroRef} className="relative pt-8 pb-20 md:pb-28 overflow-hidden">
+      <section ref={heroRef} className="relative pt-6 pb-14 md:pb-24 overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-b from-background via-background to-transparent" />
         <div className="absolute top-1/3 left-1/2 -translate-x-1/2 w-[500px] h-[500px] rounded-full bg-primary/[0.03] blur-[120px]" aria-hidden="true" />
         <div className="container mx-auto px-4 md:px-6 relative z-10">
-          <div className="grid md:grid-cols-2 gap-12 items-center">
-            <motion.div initial="hidden" animate={heroInView ? "visible" : "hidden"} variants={fadeUp}>
+          <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-center">
+            <motion.div initial="hidden" animate={heroInView ? "visible" : "hidden"} variants={fadeUp} className="order-2 md:order-1">
               <span className="text-primary text-xs uppercase tracking-[0.2em] font-semibold">Security & Compliance</span>
               <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground mt-4 mb-6 leading-tight">
                 Healthcare data security and compliance at Borna AI
@@ -260,7 +265,7 @@ const SecurityCompliancePage = () => {
               <p className="text-muted-foreground text-base md:text-lg leading-relaxed mb-8 max-w-xl">
                 Borna AI is designed with security, privacy, and compliance at its core. Our platform protects sensitive healthcare data while enabling secure communication, integration, and automation across systems.
               </p>
-              <div className="flex flex-row gap-3">
+              <div className="flex flex-wrap gap-3">
                 <Link to="/contact" className="gradient-btn text-sm whitespace-nowrap px-4 sm:px-6 py-2.5 sm:py-3">
                   Contact Security Team
                 </Link>
@@ -269,7 +274,7 @@ const SecurityCompliancePage = () => {
                 </Link>
               </div>
             </motion.div>
-            <motion.div initial={{ opacity: 0, scale: 0.95 }} animate={heroInView ? { opacity: 1, scale: 1 } : {}} transition={{ duration: 0.8, delay: 0.2 }}>
+            <motion.div initial={{ opacity: 0, scale: 0.95 }} animate={heroInView ? { opacity: 1, scale: 1 } : {}} transition={{ duration: 0.8, delay: 0.2 }} className="order-1 md:order-2 flex justify-center">
               <ProtectedCore />
             </motion.div>
           </div>
@@ -312,9 +317,9 @@ const SecurityCompliancePage = () => {
         </div>
       </SectionWrap>
 
-      {/* ── SECTION 4: DATA PROTECTION ── */}
+      {/* ── SECTION 4: DATA PROTECTION (SC1 diagram) ── */}
       <SectionWrap>
-        <div className="grid md:grid-cols-2 gap-12 items-center max-w-4xl mx-auto">
+        <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-center max-w-4xl mx-auto">
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp}>
             <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-6">Data protection and encryption</h2>
             <p className="text-muted-foreground leading-relaxed mb-8">
@@ -342,9 +347,9 @@ const SecurityCompliancePage = () => {
         </div>
       </SectionWrap>
 
-      {/* ── SECTION 5: ACCESS CONTROL ── */}
+      {/* ── SECTION 5: ACCESS CONTROL (SC2) ── */}
       <SectionWrap>
-        <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} className="text-center mb-12">
+        <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} className="text-center mb-10">
           <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-6">Role-based access and authentication</h2>
           <p className="text-muted-foreground leading-relaxed max-w-2xl mx-auto">
             Not all users see all data. Borna's access control system ensures that each user has access only to the system functions and data appropriate for their role.
@@ -366,47 +371,46 @@ const SecurityCompliancePage = () => {
         <PermissionTiers />
       </SectionWrap>
 
-      {/* ── SECTION 6: COMMUNICATION SECURITY ── */}
+      {/* ── SECTION 6: COMMUNICATION SECURITY (SC3) ── */}
       <SectionWrap>
-        <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} className="text-center mb-12">
+        <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} className="text-center mb-10">
           <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-6">Secure patient communication</h2>
           <p className="text-muted-foreground leading-relaxed max-w-2xl mx-auto mb-4">
             Borna Connect enables patient communication across multiple channels — and every channel operates through a controlled, secure infrastructure.
           </p>
           <Link to="/products/borna-connect" className="text-sm text-primary hover:underline">Learn about Borna Connect →</Link>
         </motion.div>
-        {/* Protected channels visual */}
         <div className="flex justify-center">
-          <svg viewBox="0 0 400 100" className="w-full max-w-lg" aria-hidden="true">
-            {/* Channel icons */}
+          <svg viewBox="0 0 420 140" className="w-full max-w-xl" aria-hidden="true">
+            {/* Channel labels */}
             {[
-              { label: "Phone", x: 30, y: 20 },
-              { label: "SMS", x: 30, y: 45 },
-              { label: "Email", x: 30, y: 70 },
-              { label: "Chat", x: 30, y: 95 },
-            ].map((ch, i) => (
+              { label: "Phone", x: 40, y: 30 },
+              { label: "SMS", x: 40, y: 58 },
+              { label: "Email", x: 40, y: 86 },
+              { label: "Chat", x: 40, y: 114 },
+            ].map((ch) => (
               <g key={ch.label}>
-                <text x={ch.x} y={ch.y} fill="hsl(210 40% 80%)" fontSize="9">{ch.label}</text>
-                <line x1="65" y1={ch.y - 3} x2="170" y2="50" stroke="hsl(170 100% 43% / 0.2)" strokeWidth="0.8" />
+                <text x={ch.x} y={ch.y} fill="hsl(210 40% 85%)" fontSize="13" fontWeight="500">{ch.label}</text>
+                <line x1="85" y1={ch.y - 4} x2="180" y2="70" stroke="hsl(170 100% 43% / 0.3)" strokeWidth="1.2" />
               </g>
             ))}
             {/* Gateway band */}
-            <rect x="170" y="25" width="20" height="50" rx="4" fill="hsl(170 100% 43% / 0.06)" stroke="hsl(170 100% 43% / 0.25)" strokeWidth="0.8">
+            <rect x="180" y="35" width="28" height="70" rx="6" fill="hsl(170 100% 43% / 0.08)" stroke="hsl(170 100% 43% / 0.4)" strokeWidth="1.2">
               <animate attributeName="opacity" values="0.6;1;0.6" dur="6s" repeatCount="indefinite" />
             </rect>
-            <text x="180" y="53" textAnchor="middle" fill="hsl(170 100% 43% / 0.5)" fontSize="8">🔒</text>
+            <text x="194" y="74" textAnchor="middle" fill="hsl(170 100% 43% / 0.7)" fontSize="12">🔒</text>
             {/* Post-gateway */}
-            <line x1="190" y1="50" x2="320" y2="50" stroke="hsl(170 100% 43% / 0.3)" strokeWidth="1" />
-            <circle cx="330" cy="50" r="16" fill="hsl(170 100% 43% / 0.08)" stroke="hsl(170 100% 43% / 0.4)" strokeWidth="1" />
-            <text x="330" y="48" textAnchor="middle" fill="hsl(170 100% 43%)" fontSize="7" fontWeight="600">Secure</text>
-            <text x="330" y="57" textAnchor="middle" fill="hsl(170 100% 43% / 0.6)" fontSize="6">Stream</text>
+            <line x1="208" y1="70" x2="330" y2="70" stroke="hsl(170 100% 43% / 0.4)" strokeWidth="1.5" />
+            <circle cx="350" cy="70" r="22" fill="hsl(170 100% 43% / 0.1)" stroke="hsl(170 100% 43% / 0.5)" strokeWidth="1.5" />
+            <text x="350" y="67" textAnchor="middle" fill="hsl(170 100% 43%)" fontSize="10" fontWeight="600">Secure</text>
+            <text x="350" y="79" textAnchor="middle" fill="hsl(170 100% 43% / 0.7)" fontSize="8">Stream</text>
           </svg>
         </div>
       </SectionWrap>
 
-      {/* ── SECTION 7: INTEGRATION SECURITY ── */}
+      {/* ── SECTION 7: INTEGRATION SECURITY (SC4) ── */}
       <SectionWrap>
-        <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} className="text-center mb-12">
+        <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} className="text-center mb-10">
           <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-6">Secure integrations and data exchange</h2>
           <p className="text-muted-foreground leading-relaxed max-w-2xl mx-auto mb-4">
             Every external system connection operates through controlled data exchange with authentication requirements and validation applied at the connection boundary.
@@ -414,27 +418,27 @@ const SecurityCompliancePage = () => {
           <Link to="/platform/integrations" className="text-sm text-primary hover:underline">Explore integrations →</Link>
         </motion.div>
         <div className="flex justify-center">
-          <svg viewBox="0 0 360 160" className="w-full max-w-md" aria-hidden="true">
+          <svg viewBox="0 0 400 200" className="w-full max-w-lg" aria-hidden="true">
             {/* Borna center */}
-            <circle cx="180" cy="80" r="22" fill="hsl(170 100% 43% / 0.08)" stroke="hsl(170 100% 43%)" strokeWidth="1" />
-            <text x="180" y="84" textAnchor="middle" fill="hsl(170 100% 43%)" fontSize="9" fontWeight="600">Borna</text>
+            <circle cx="200" cy="100" r="32" fill="hsl(170 100% 43% / 0.1)" stroke="hsl(170 100% 43% / 0.7)" strokeWidth="1.8" />
+            <text x="200" y="104" textAnchor="middle" fill="hsl(170 100% 43%)" fontSize="13" fontWeight="700">Borna</text>
             {/* External nodes with validation checkpoints */}
             {[
-              { label: "PMS", x: 40, y: 40 },
-              { label: "EHR", x: 40, y: 120 },
-              { label: "Marketing", x: 320, y: 80 },
+              { label: "PMS", x: 50, y: 50 },
+              { label: "EHR", x: 50, y: 150 },
+              { label: "Marketing", x: 350, y: 100 },
             ].map(n => {
-              const mx = (n.x + 180) / 2;
-              const my = (n.y + 80) / 2;
+              const mx = (n.x + 200) / 2;
+              const my = (n.y + 100) / 2;
               return (
                 <g key={n.label}>
-                  <line x1={n.x} y1={n.y} x2="180" y2="80" stroke="hsl(170 100% 43% / 0.2)" strokeWidth="0.8" />
+                  <line x1={n.x} y1={n.y} x2="200" y2="100" stroke="hsl(170 100% 43% / 0.3)" strokeWidth="1.2" />
                   {/* Validation checkpoint */}
-                  <circle cx={mx} cy={my} r="8" fill="none" stroke="hsl(170 100% 43% / 0.25)" strokeWidth="0.8" />
-                  <text x={mx} y={my + 3} textAnchor="middle" fill="hsl(170 100% 43% / 0.4)" fontSize="5">✓</text>
+                  <circle cx={mx} cy={my} r="12" fill="hsl(170 100% 43% / 0.06)" stroke="hsl(170 100% 43% / 0.4)" strokeWidth="1.2" />
+                  <text x={mx} y={my + 5} textAnchor="middle" fill="hsl(170 100% 43% / 0.8)" fontSize="10" fontWeight="600">✓</text>
                   {/* External node */}
-                  <circle cx={n.x} cy={n.y} r="18" fill="hsl(226 60% 14% / 0.9)" stroke="hsl(170 100% 43% / 0.3)" strokeWidth="0.8" />
-                  <text x={n.x} y={n.y + 4} textAnchor="middle" fill="hsl(210 40% 80%)" fontSize="8">{n.label}</text>
+                  <circle cx={n.x} cy={n.y} r="26" fill="hsl(226 60% 14% / 0.9)" stroke="hsl(170 100% 43% / 0.4)" strokeWidth="1.2" />
+                  <text x={n.x} y={n.y + 5} textAnchor="middle" fill="hsl(210 40% 85%)" fontSize="12" fontWeight="500">{n.label}</text>
                 </g>
               );
             })}
@@ -474,7 +478,7 @@ const SecurityCompliancePage = () => {
 
       {/* ── SECTION 9: INFRASTRUCTURE SECURITY ── */}
       <SectionWrap>
-        <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} className="text-center mb-12">
+        <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} className="text-center mb-10">
           <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-6">Secure platform infrastructure</h2>
           <p className="text-muted-foreground leading-relaxed max-w-2xl mx-auto">
             The Borna platform is hosted in secure environments designed for reliability, uptime, and protection against unauthorized access.
@@ -498,7 +502,7 @@ const SecurityCompliancePage = () => {
 
       {/* ── SECTION 10: MONITORING & RISK ── */}
       <SectionWrap>
-        <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} className="text-center mb-12">
+        <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} className="text-center mb-10">
           <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-6">Monitoring and risk management</h2>
           <p className="text-muted-foreground leading-relaxed max-w-2xl mx-auto">
             System activity is actively monitored — with anomaly detection processes designed to surface irregular patterns before they become incidents.
@@ -535,7 +539,6 @@ const SecurityCompliancePage = () => {
                 )}
               </g>
             ))}
-            {/* Some connection lines */}
             {[[0,1],[1,2],[0,3],[3,4],[4,5],[6,7],[7,4]].map(([a,b], i) => {
               const nodes = [
                 { x: 60, y: 40 }, { x: 140, y: 30 }, { x: 220, y: 50 }, { x: 80, y: 100 },
@@ -547,9 +550,9 @@ const SecurityCompliancePage = () => {
         </div>
       </SectionWrap>
 
-      {/* ── SECTION 11: DATA GOVERNANCE ── */}
+      {/* ── SECTION 11: DATA GOVERNANCE (SC5) ── */}
       <SectionWrap>
-        <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} className="text-center mb-12">
+        <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} className="text-center mb-10">
           <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-6">Data governance and control</h2>
           <p className="text-muted-foreground leading-relaxed max-w-2xl mx-auto">
             Borna provides structured data governance — ensuring that data is not just stored, but managed. Access to data is controlled, usage is bounded, and activity is visible to authorized administrators.
@@ -568,26 +571,47 @@ const SecurityCompliancePage = () => {
             </motion.div>
           ))}
         </div>
-        {/* Controlled data diagram - static */}
-        <div className="flex justify-center">
-          <svg viewBox="0 0 240 160" className="w-full max-w-[240px]" role="img" aria-label="Data governance diagram showing categorized data types around a central hub, each with access controls">
-            <circle cx="120" cy="80" r="20" fill="hsl(170 100% 43% / 0.08)" stroke="hsl(170 100% 43% / 0.4)" strokeWidth="1" />
-            <text x="120" y="84" textAnchor="middle" fill="hsl(170 100% 43%)" fontSize="8" fontWeight="600">Borna</text>
+        {/* SC5: Data governance diagram with revealing animation */}
+        <motion.div
+          className="flex justify-center"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.4 }}
+          variants={{
+            hidden: {},
+            visible: { transition: { staggerChildren: 0.15 } },
+          }}
+        >
+          <svg viewBox="0 0 320 210" className="w-full max-w-[340px]" role="img" aria-label="Data governance diagram showing categorized data types around a central hub, each with access controls">
+            <defs>
+              <radialGradient id="govGlow" cx="50%" cy="50%" r="50%">
+                <stop offset="0%" stopColor="hsl(170 100% 43%)" stopOpacity="0.15" />
+                <stop offset="100%" stopColor="hsl(170 100% 43%)" stopOpacity="0" />
+              </radialGradient>
+            </defs>
+            <circle cx="160" cy="105" r="50" fill="url(#govGlow)" />
+            {/* Center hub */}
+            <motion.g variants={{ hidden: { opacity: 0, scale: 0.5 }, visible: { opacity: 1, scale: 1, transition: { duration: 0.5 } } }}>
+              <circle cx="160" cy="105" r="30" fill="hsl(170 100% 43% / 0.1)" stroke="hsl(170 100% 43% / 0.6)" strokeWidth="1.8" />
+              <text x="160" y="110" textAnchor="middle" fill="hsl(170 100% 43%)" fontSize="13" fontWeight="700">Borna</text>
+            </motion.g>
+            {/* Outer nodes */}
             {[
-              { label: "Patient Records", x: 40, y: 30 },
-              { label: "Comms Logs", x: 200, y: 30 },
-              { label: "Clinical Data", x: 40, y: 130 },
-              { label: "Operations", x: 200, y: 130 },
-            ].map(n => (
-              <g key={n.label}>
-                <line x1="120" y1="80" x2={n.x} y2={n.y} stroke="hsl(170 100% 43% / 0.2)" strokeWidth="0.6" />
-                <circle cx={n.x} cy={n.y} r="12" fill="hsl(226 60% 14% / 0.9)" stroke="hsl(170 100% 43% / 0.25)" strokeWidth="0.6" />
-                <text x={n.x} y={n.y + 3} textAnchor="middle" fill="hsl(210 40% 80%)" fontSize="5.5">{n.label}</text>
-                <text x={n.x + 10} y={n.y - 8} fill="hsl(170 100% 43% / 0.3)" fontSize="6">🔒</text>
-              </g>
+              { label: "Patient", label2: "Records", x: 60, y: 35 },
+              { label: "Comms", label2: "Logs", x: 260, y: 35 },
+              { label: "Clinical", label2: "Data", x: 60, y: 175 },
+              { label: "Operations", label2: "", x: 260, y: 175 },
+            ].map((n, i) => (
+              <motion.g key={n.label} variants={{ hidden: { opacity: 0, scale: 0.3 }, visible: { opacity: 1, scale: 1, transition: { duration: 0.5 } } }}>
+                <line x1="160" y1="105" x2={n.x} y2={n.y} stroke="hsl(170 100% 43% / 0.3)" strokeWidth="1.2" />
+                <circle cx={n.x} cy={n.y} r="24" fill="hsl(226 60% 14% / 0.9)" stroke="hsl(170 100% 43% / 0.4)" strokeWidth="1.2" />
+                <text x={n.x} y={n.label2 ? n.y - 2 : n.y + 4} textAnchor="middle" fill="hsl(210 40% 85%)" fontSize="10" fontWeight="500">{n.label}</text>
+                {n.label2 && <text x={n.x} y={n.y + 10} textAnchor="middle" fill="hsl(210 40% 85%)" fontSize="10" fontWeight="500">{n.label2}</text>}
+                <text x={n.x + 18} y={n.y - 16} fill="hsl(170 100% 43% / 0.5)" fontSize="10">🔒</text>
+              </motion.g>
             ))}
           </svg>
-        </div>
+        </motion.div>
       </SectionWrap>
 
       {/* ── SECTION 12: PLATFORM CONNECTION ── */}
@@ -604,13 +628,13 @@ const SecurityCompliancePage = () => {
 
       {/* ── SECTION 13: BUSINESS VALUE ── */}
       <SectionWrap>
-        <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} className="text-center mb-12">
+        <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} className="text-center mb-10">
           <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-6">Security enables trust. Trust enables growth.</h2>
           <p className="text-muted-foreground leading-relaxed max-w-2xl mx-auto">
             For healthcare practices, security is not just a technical requirement — it is a business requirement. Patients trust practices with their most sensitive information. That trust is the foundation of every patient relationship.
           </p>
         </motion.div>
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-4xl mx-auto">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 max-w-4xl mx-auto">
           {[
             { icon: Shield, title: "Security", desc: "Platform secured at every layer" },
             { icon: Handshake, title: "Trust", desc: "Practices and patients trust the system" },
@@ -630,10 +654,10 @@ const SecurityCompliancePage = () => {
 
       {/* ── SECTION 14: KEY TAKEAWAYS ── */}
       <SectionWrap>
-        <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} className="text-center mb-10">
+        <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} className="text-center mb-8">
           <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-8">Key takeaways</h2>
         </motion.div>
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-5xl mx-auto">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 max-w-5xl mx-auto">
           {[
             "Borna is built with security-first architecture across every platform layer",
             "Data is protected through encryption in transit and at rest, with role-based access control",
@@ -650,7 +674,7 @@ const SecurityCompliancePage = () => {
 
       {/* ── SECTION 15: FAQ ── */}
       <SectionWrap>
-        <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} className="text-center mb-10">
+        <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} className="text-center mb-8">
           <h2 className="text-2xl md:text-3xl font-bold text-foreground">Frequently asked questions</h2>
         </motion.div>
         <div className="max-w-2xl mx-auto space-y-3">
@@ -663,7 +687,7 @@ const SecurityCompliancePage = () => {
       </SectionWrap>
 
       {/* ── SECTION 16: FINAL CTA ── */}
-      <section className="relative py-24 md:py-32 overflow-hidden">
+      <section className="relative py-16 md:py-24 overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-t from-primary/[0.03] via-transparent to-transparent" />
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] rounded-full bg-primary/[0.03] blur-[100px]" aria-hidden="true" />
         <div className="container mx-auto px-4 md:px-6 relative z-10 text-center">
@@ -672,7 +696,7 @@ const SecurityCompliancePage = () => {
             <p className="text-muted-foreground text-base md:text-lg leading-relaxed max-w-xl mx-auto mb-8">
               Borna AI ensures that your data, systems, and communications are protected — so your practice can operate with confidence, and your patients can engage with trust.
             </p>
-            <div className="flex flex-row justify-center gap-3">
+            <div className="flex flex-wrap justify-center gap-3">
               <Link to="/contact" className="gradient-btn text-sm whitespace-nowrap px-4 sm:px-8 py-2.5 sm:py-3.5">Contact Security Team</Link>
               <Link to="/demo" className="text-sm font-medium rounded-lg px-4 sm:px-8 py-2.5 sm:py-3.5 border border-glass-border text-muted-foreground hover:text-foreground hover:border-white/30 transition-all whitespace-nowrap">
                 Request Demo
