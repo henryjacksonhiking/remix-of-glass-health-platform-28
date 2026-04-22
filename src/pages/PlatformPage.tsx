@@ -827,14 +827,16 @@ const PlatformPage = () => (
                 key={p.title}
                 initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, amount: 0.3 }} transition={{ delay: i * 0.08, duration: 0.5 }}
-                className="rounded-[14px] p-7"
-                style={cardStyle}
               >
-                <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center mb-4">
-                  <Icon className="w-5 h-5 text-primary" />
-                </div>
-                <h3 className="text-base font-medium text-foreground mb-2">{p.title}</h3>
-                <p className="text-sm text-muted-foreground">{p.body}</p>
+                <SpotlightCard className="rounded-[14px] h-full" style={cardStyle}>
+                  <div className="p-7">
+                    <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center mb-4">
+                      <Icon className="w-5 h-5 text-primary" />
+                    </div>
+                    <h3 className="text-base font-medium text-foreground mb-2">{p.title}</h3>
+                    <p className="text-sm text-muted-foreground">{p.body}</p>
+                  </div>
+                </SpotlightCard>
               </motion.div>
             );
           })}
