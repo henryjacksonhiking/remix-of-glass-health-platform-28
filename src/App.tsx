@@ -5,6 +5,12 @@ import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import Index from "./pages/Index.tsx";
 import ProductsOverviewPage from "./pages/ProductsOverviewPage.tsx";
+import BornaCarePage from "./pages/BornaCarePage.tsx";
+import PatientAppPage from "./pages/PatientAppPage.tsx";
+import BornaConnectPage from "./pages/BornaConnectPage.tsx";
+import BornaEngagePage from "./pages/BornaEngagePage.tsx";
+import BornaInsightPage from "./pages/BornaInsightPage.tsx";
+import BornaCorePage from "./pages/BornaCorePage.tsx";
 import ProductPage from "./pages/ProductPage.tsx";
 import PlatformPage from "./pages/PlatformPage.tsx";
 import EcosystemPage from "./pages/EcosystemPage.tsx";
@@ -45,6 +51,12 @@ const App = () => (
         <Routes>
           <Route path="/" element={<Index />} />
           <Route path="/products" element={<ProductsOverviewPage />} />
+          <Route path="/products/care" element={<BornaCarePage />} />
+          <Route path="/products/care/patient-app" element={<PatientAppPage />} />
+          <Route path="/products/connect" element={<BornaConnectPage />} />
+          <Route path="/products/engage" element={<BornaEngagePage />} />
+          <Route path="/products/insight" element={<BornaInsightPage />} />
+          <Route path="/products/core" element={<BornaCorePage />} />
           <Route path="/products/:slug" element={<ProductPage />} />
           <Route path="/platform" element={<PlatformPage />} />
           <Route path="/platform/architecture" element={<ArchitecturePage />} />
