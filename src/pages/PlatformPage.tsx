@@ -1043,7 +1043,7 @@ const PlatformPage = () => (
           </motion.div>
 
           {/* Connector */}
-          <div className="hidden md:flex flex-col items-center text-primary/50 mx-6">
+          <div className="hidden md:flex flex-col items-center justify-center self-center text-primary/50 mx-6">
             <div className="w-px h-10 bg-primary/30" />
             <ArrowRight className="w-4 h-4 my-1" />
             <div className="w-px h-10 bg-primary/30" />
