@@ -10,6 +10,7 @@ import {
 } from "lucide-react";
 import PageWrapper from "@/components/layout/PageWrapper";
 import { cn } from "@/lib/utils";
+import DataStreamVisual from "@/components/ui/data-stream-visual";
 
 /* ─── helpers ─── */
 const fadeUp = {
