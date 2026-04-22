@@ -234,7 +234,7 @@ const PatientRetentionPage = () => (
       <div className="container mx-auto px-4 md:px-6 relative z-10 text-center">
         <h2 className="text-2xl md:text-4xl font-bold text-foreground mb-4">Keep your patients engaged and coming back.</h2>
         <p className="text-muted-foreground max-w-xl mx-auto mb-8">Borna AI helps healthcare practices build lasting patient relationships through automated engagement, intelligent communication, and AI-powered retention strategies — creating a cycle of care that never stops.</p>
-        <div className="flex flex-row items-center justify-center gap-2 sm:gap-4">
+        <div className="cta-row">
           <Link to="/demo" className="gradient-btn whitespace-nowrap">Request Demo</Link>
           <Link to="/platform" className="ghost-btn whitespace-nowrap">Explore Platform →</Link>
         </div>

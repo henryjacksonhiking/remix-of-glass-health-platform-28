@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import SpotlightCard from "@/components/ui/spotlight-card";
 
 const outcomes = [
   { stat: "38%", label: "Reduction in no-show rates with automated SMS appointment reminders", desc: "" },
@@ -18,7 +19,6 @@ const cardStyle: React.CSSProperties = {
   background: 'rgba(255,255,255,0.04)',
   border: '0.5px solid rgba(255,255,255,0.08)',
   borderRadius: '14px',
-  padding: '28px',
 };
 
 const statClass = "text-[26px] md:text-[38px] font-medium bg-clip-text text-transparent";
@@ -35,12 +35,8 @@ const ROISection = () => (
   <section className="py-10 md:py-16">
     <div className="container mx-auto px-4 md:px-6">
       <div className="text-center mb-16">
-        <span className="section-eyebrow">
-          WHAT YOU GET
-        </span>
-        <h2 className="section-title mt-4">
-          Built to drive measurable growth
-        </h2>
+        <span className="section-eyebrow">WHAT YOU GET</span>
+        <h2 className="section-title mt-4">Built to drive measurable growth</h2>
         <p className="mt-4 mx-auto" style={{ fontSize: '15px', color: 'rgba(255,255,255,0.45)', maxWidth: '520px' }}>
           Clinics using Borna Care report real, measurable improvements across every part of their operations.
         </p>
@@ -53,12 +49,14 @@ const ROISection = () => (
             initial={{ opacity: 0, y: 16 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.3 }}
-            transition={{ delay: i * 0.08, duration: 0.5 }}
-            style={cardStyle}
+            transition={{ delay: i * 0.1, duration: 0.5 }}
           >
-            <div className={statClass} style={statStyle}>{item.stat}</div>
-            <div style={{ fontSize: '12px', color: 'rgba(255,255,255,0.9)', fontWeight: 500, marginTop: '4px' }}>{item.label}</div>
-            {item.desc && <p style={{ fontSize: '13px', color: 'rgba(255,255,255,0.45)', lineHeight: 1.6, marginTop: '8px' }}>{item.desc}</p>}
+            <SpotlightCard className="rounded-[14px] h-full" style={cardStyle}>
+              <div className="p-7">
+                <div className={statClass} style={statStyle}>{item.stat}</div>
+                <div style={{ fontSize: '12px', color: 'rgba(255,255,255,0.9)', fontWeight: 500, marginTop: '4px' }}>{item.label}</div>
+              </div>
+            </SpotlightCard>
           </motion.div>
         ))}
       </div>
@@ -70,12 +68,14 @@ const ROISection = () => (
             initial={{ opacity: 0, y: 16 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.3 }}
-            transition={{ delay: i * 0.08, duration: 0.5 }}
-            style={cardStyle}
+            transition={{ delay: i * 0.1, duration: 0.5 }}
           >
-            <div className={statClass} style={statStyle}>{'prefix' in item && item.prefix ? item.prefix : ''}{item.stat}{'suffix' in item && item.suffix ? <span className={suffixClass}>{item.suffix}</span> : ''}</div>
-            <div style={{ fontSize: '14px', color: 'rgba(255,255,255,0.9)', fontWeight: 500, marginTop: '4px' }}>{item.label}</div>
-            {item.desc && <p style={{ fontSize: '13px', color: 'rgba(255,255,255,0.45)', lineHeight: 1.6, marginTop: '8px' }}>{item.desc}</p>}
+            <SpotlightCard className="rounded-[14px] h-full" style={cardStyle}>
+              <div className="p-7">
+                <div className={statClass} style={statStyle}>{'prefix' in item && item.prefix ? item.prefix : ''}{item.stat}{'suffix' in item && item.suffix ? <span className={suffixClass}>{item.suffix}</span> : ''}</div>
+                <div style={{ fontSize: '14px', color: 'rgba(255,255,255,0.9)', fontWeight: 500, marginTop: '4px' }}>{item.label}</div>
+              </div>
+            </SpotlightCard>
           </motion.div>
         ))}
       </div>

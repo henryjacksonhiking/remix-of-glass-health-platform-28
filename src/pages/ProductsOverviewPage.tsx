@@ -1008,7 +1008,7 @@ const FinalCTA = () => (
       <p className="text-[15px] md:text-base text-foreground/70 max-w-2xl mx-auto mb-8 leading-relaxed">
         Borna AI lets you adopt what you need today and expand into a fully integrated healthcare system over time.
       </p>
-      <div className="flex flex-row items-center justify-center gap-2 sm:gap-4">
+      <div className="cta-row">
         <Link to="/demo" className="gradient-btn text-sm sm:text-base px-6 sm:px-8 py-2.5 sm:py-3 whitespace-nowrap">Book a demo</Link>
         <Link to="/contact" className="ghost-btn text-sm sm:text-base px-6 sm:px-8 py-2.5 sm:py-3 whitespace-nowrap">Talk to sales</Link>
       </div>

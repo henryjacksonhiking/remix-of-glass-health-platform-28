@@ -36,6 +36,7 @@ import {
 } from "@/components/ui/accordion";
 import { BeamsBackground } from "@/components/ui/beams-background";
 import PageWrapper from "@/components/layout/PageWrapper";
+import SpotlightCard from "@/components/ui/spotlight-card";
 
 /* ----------------------------- Data ----------------------------- */
 
@@ -701,7 +702,7 @@ const PlatformPage = () => (
         </motion.p>
         <motion.div
           initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.2 }}
-          className="flex flex-row items-center justify-center gap-2 sm:gap-4"
+          className="cta-row"
         >
           <Link to="/demo" className="gradient-btn text-sm sm:text-base px-4 sm:px-8 py-2.5 sm:py-3.5 whitespace-nowrap">Book a demo</Link>
           <Link to="/products" className="ghost-btn text-sm sm:text-base px-4 sm:px-8 py-2.5 sm:py-3.5 whitespace-nowrap">Explore ecosystem →</Link>
@@ -826,14 +827,16 @@ const PlatformPage = () => (
                 key={p.title}
                 initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, amount: 0.3 }} transition={{ delay: i * 0.08, duration: 0.5 }}
-                className="rounded-[14px] p-7"
-                style={cardStyle}
               >
-                <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center mb-4">
-                  <Icon className="w-5 h-5 text-primary" />
-                </div>
-                <h3 className="text-base font-medium text-foreground mb-2">{p.title}</h3>
-                <p className="text-sm text-muted-foreground">{p.body}</p>
+                <SpotlightCard className="rounded-[14px] h-full" style={cardStyle}>
+                  <div className="p-7">
+                    <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center mb-4">
+                      <Icon className="w-5 h-5 text-primary" />
+                    </div>
+                    <h3 className="text-base font-medium text-foreground mb-2">{p.title}</h3>
+                    <p className="text-sm text-muted-foreground">{p.body}</p>
+                  </div>
+                </SpotlightCard>
               </motion.div>
             );
           })}
@@ -1159,7 +1162,7 @@ const PlatformPage = () => (
         <p className="body-text mx-auto max-w-xl mb-8">
           Borna AI helps practices streamline operations, improve patient engagement, and grow sustainably — starting with a single product and scaling into a complete AI-powered system.
         </p>
-        <div className="flex flex-row items-center justify-center gap-2 sm:gap-4">
+        <div className="cta-row">
           <Link to="/demo" className="gradient-btn text-sm sm:text-base px-4 sm:px-8 py-2.5 sm:py-3.5 whitespace-nowrap">Book a demo</Link>
           <Link to="/contact" className="ghost-btn text-sm sm:text-base px-4 sm:px-8 py-2.5 sm:py-3.5 whitespace-nowrap">Talk to sales</Link>
         </div>

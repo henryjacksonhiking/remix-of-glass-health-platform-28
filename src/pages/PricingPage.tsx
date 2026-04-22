@@ -40,7 +40,7 @@ const HeroSection = () => {
         <motion.p variants={fadeUp} initial="hidden" animate="visible" transition={{ delay: 0.15, duration: 0.5 }} className="body-text mx-auto max-w-2xl mb-8">
           Choose a plan that fits your needs and scale with a unified platform for communication, patient engagement, analytics, and AI automation.
         </motion.p>
-        <motion.div variants={fadeUp} initial="hidden" animate="visible" transition={{ delay: 0.2 }} className="flex flex-row items-center justify-center gap-3">
+        <motion.div variants={fadeUp} initial="hidden" animate="visible" transition={{ delay: 0.2 }} className="cta-row">
           <button onClick={() => navigate("/demo")} className="gradient-btn text-sm sm:text-base px-5 sm:px-8 py-2.5 sm:py-3.5 whitespace-nowrap">Request Demo</button>
           <button onClick={() => navigate("/contact")} className="ghost-btn text-sm sm:text-base px-5 sm:px-8 py-2.5 sm:py-3.5 whitespace-nowrap">Talk to Sales</button>
         </motion.div>
@@ -666,7 +666,7 @@ const FinalCTASection = () => {
           Borna AI pricing is designed to grow with your organization — from a single clinic to a multi-location healthcare network.
         </motion.p>
         <motion.div variants={fadeUp} viewport={{ once: true }} whileInView="visible" initial="hidden" transition={{ delay: 0.15 }}
-          className="flex flex-row items-center justify-center gap-3">
+          className="cta-row">
           <button onClick={() => navigate("/demo")} className="gradient-btn text-sm sm:text-base px-5 sm:px-8 py-2.5 sm:py-3.5 whitespace-nowrap">Request Demo</button>
           <button onClick={() => navigate("/contact")} className="ghost-btn text-sm sm:text-base px-5 sm:px-8 py-2.5 sm:py-3.5 whitespace-nowrap">Talk to Sales</button>
         </motion.div>
