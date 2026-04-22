@@ -246,13 +246,14 @@ const IntegrationSection = () => (
 
       <div className="max-w-2xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-4">
         {integrations.map((item, i) => (
-          <motion.div key={item.label} variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }} transition={{ delay: i * 0.08 }}
-            className="glass-panel-hover p-5 text-center">
-            <div className="w-10 h-10 mx-auto mb-3 rounded-full flex items-center justify-center" style={{ background: "hsla(228,80%,42%,0.15)" }}>
-              <Network className="w-4 h-4 text-secondary" />
-            </div>
-            <h3 className="text-sm font-medium text-foreground mb-1">{item.label}</h3>
-            <p className="text-[11px] text-muted-foreground">{item.desc}</p>
+          <motion.div key={item.label} variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }} transition={{ delay: i * 0.08 }}>
+            <SpotlightCard className="glass-panel-hover p-5 text-center rounded-2xl h-full">
+              <div className="w-10 h-10 mx-auto mb-3 rounded-full flex items-center justify-center" style={{ background: "hsla(228,80%,42%,0.15)" }}>
+                <Network className="w-4 h-4 text-secondary" />
+              </div>
+              <h3 className="text-sm font-medium text-foreground mb-1">{item.label}</h3>
+              <p className="text-[11px] text-muted-foreground">{item.desc}</p>
+            </SpotlightCard>
           </motion.div>
         ))}
       </div>
