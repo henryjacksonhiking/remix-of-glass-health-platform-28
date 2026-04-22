@@ -118,7 +118,6 @@ const PracticeAutomationPage = () => (
       </div>
     </SectionDark>
 
-    {/* Before vs After */}
     <SectionDark>
       <motion.div {...fadeUp} className="text-center mb-12"><h2 className="text-2xl md:text-3xl font-bold text-foreground">Eliminate repetitive tasks</h2></motion.div>
       <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
@@ -129,9 +128,9 @@ const PracticeAutomationPage = () => (
           ))}
         </div>
         <div className="glass-panel rounded-2xl p-6 border-primary/20">
-          <p className="text-xs text-primary uppercase tracking-wider mb-4">Automated by Borna</p>
+          <p className="text-xs text-primary uppercase tracking-wider mb-4">Handled by Borna</p>
           {["Call Back Patient", "Send Reminder", "Update Record", "Schedule Follow-Up", "Process Form", "Enter Data"].map((t) => (
-            <div key={t} className="flex items-start gap-2 mb-2"><CheckCircle2 className="w-4 h-4 text-primary shrink-0 mt-0.5" /><span className="text-sm text-foreground">{t} — <span className="text-primary text-xs">Automated</span></span></div>
+            <div key={t} className="flex items-start gap-2 mb-2"><CheckCircle2 className="w-4 h-4 text-primary shrink-0 mt-0.5" /><span className="text-sm text-foreground">{t}</span></div>
           ))}
         </div>
       </div>

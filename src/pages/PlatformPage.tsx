@@ -331,7 +331,6 @@ const jsonLd = [
 
 /* ============== Platform Overview hub diagram (Change 5) ============== */
 const PlatformHubDiagram = () => {
-  // 4 surrounding nodes — radial on desktop, 2x2 grid on mobile
   const outer = [
     { label: "Communication", Icon: MessageSquare, angle: -90 },
     { label: "CRM",           Icon: Users,         angle: 0 },
@@ -347,13 +346,22 @@ const PlatformHubDiagram = () => {
           <svg viewBox="0 0 500 400" className="w-full h-full" role="img" aria-label="Hub and spoke diagram showing AI healthcare platform connecting Communication, CRM, Analytics, and Automation">
             <defs>
               <radialGradient id="plat-hub-glow" cx="50%" cy="50%" r="50%">
-                <stop offset="0%"  stopColor="hsl(var(--primary))" stopOpacity="0.55" />
-                <stop offset="60%" stopColor="hsl(var(--primary))" stopOpacity="0.18" />
+                <stop offset="0%"  stopColor="hsl(var(--primary))" stopOpacity="0.6" />
+                <stop offset="40%" stopColor="hsl(var(--primary))" stopOpacity="0.25" />
+                <stop offset="70%" stopColor="hsl(var(--deep-blue))" stopOpacity="0.12" />
                 <stop offset="100%" stopColor="hsl(var(--primary))" stopOpacity="0" />
               </radialGradient>
+              <radialGradient id="plat-outer-glow" cx="50%" cy="50%" r="50%">
+                <stop offset="0%" stopColor="hsl(var(--primary))" stopOpacity="0.18" />
+                <stop offset="100%" stopColor="hsl(var(--primary))" stopOpacity="0" />
+              </radialGradient>
+              <filter id="hub-glow-filter">
+                <feGaussianBlur stdDeviation="4" result="blur" />
+                <feMerge><feMergeNode in="blur" /><feMergeNode in="SourceGraphic" /></feMerge>
+              </filter>
             </defs>
 
-            {/* Spokes — terminate at center node edge (r=65) and outer node edge (r=47) */}
+            {/* Spokes with gradient */}
             {outer.map((n, i) => {
               const rad = (n.angle * Math.PI) / 180;
               const dist = 140;
@@ -363,39 +371,38 @@ const PlatformHubDiagram = () => {
               const dy = cy - 200;
               const len = Math.hypot(dx, dy);
               const ux = dx / len, uy = dy / len;
-              const x1 = 250 + ux * 65;
-              const y1 = 200 + uy * 65;
-              const x2 = cx - ux * 47;
-              const y2 = cy - uy * 47;
+              const x1 = 250 + ux * 68;
+              const y1 = 200 + uy * 68;
+              const x2 = cx - ux * 50;
+              const y2 = cy - uy * 50;
               return (
                 <g key={`spoke-${i}`}>
-                  <line x1={x1} y1={y1} x2={x2} y2={y2} stroke="hsl(var(--primary))" strokeOpacity="0.35" strokeWidth="1" />
-                  <circle r="2.5" fill="hsl(var(--primary))" opacity="0.95" style={{
+                  <line x1={x1} y1={y1} x2={x2} y2={y2} stroke="hsl(var(--primary))" strokeOpacity="0.4" strokeWidth="1.2" />
+                  <circle r="3" fill="hsl(var(--primary))" filter="url(#hub-glow-filter)" style={{
                     offsetPath: `path('M ${x2} ${y2} L ${x1} ${y1}')`,
                     animation: `borna-travel-dot 3.5s linear ${i * 0.5}s infinite`,
-                    filter: "drop-shadow(0 0 4px hsl(var(--primary)))",
                   } as React.CSSProperties} />
                 </g>
               );
             })}
 
-            {/* Center ripple rings (SVG-native animation) */}
+            {/* Center ripple rings */}
             {[0, 1, 2].map(i => (
-              <circle key={`ripple-${i}`} cx="250" cy="200" r="65" fill="none" stroke="hsl(var(--primary))" strokeWidth="0.8">
-                <animate attributeName="r" from="65" to="105" dur="3s" begin={`${i * 1}s`} repeatCount="indefinite" />
+              <circle key={`ripple-${i}`} cx="250" cy="200" r="68" fill="none" stroke="hsl(var(--primary))" strokeWidth="0.8">
+                <animate attributeName="r" from="68" to="110" dur="3s" begin={`${i * 1}s`} repeatCount="indefinite" />
                 <animate attributeName="opacity" from="0.5" to="0" dur="3s" begin={`${i * 1}s`} repeatCount="indefinite" />
               </circle>
             ))}
 
-            {/* Center halo */}
-            <circle cx="250" cy="200" r="85" fill="url(#plat-hub-glow)" />
-            {/* Center node */}
-            <circle cx="250" cy="200" r="65" fill="hsl(var(--primary))" fillOpacity="0.22" />
-            <circle cx="250" cy="200" r="65" fill="none" stroke="hsl(var(--primary))" strokeOpacity="0.85" strokeWidth="1.2" />
-            <text x="250" y="196" textAnchor="middle" fontSize="14" fontWeight="600" fill="rgba(255,255,255,0.95)">AI Healthcare</text>
-            <text x="250" y="214" textAnchor="middle" fontSize="14" fontWeight="600" fill="rgba(255,255,255,0.95)">Platform</text>
+            {/* Center halo — larger with more gradient depth */}
+            <circle cx="250" cy="200" r="95" fill="url(#plat-hub-glow)" />
+            {/* Center node — stronger */}
+            <circle cx="250" cy="200" r="68" fill="hsl(var(--primary))" fillOpacity="0.25" />
+            <circle cx="250" cy="200" r="68" fill="none" stroke="hsl(var(--primary))" strokeOpacity="0.9" strokeWidth="1.4" filter="url(#hub-glow-filter)" />
+            <text x="250" y="196" textAnchor="middle" fontSize="15" fontWeight="600" fill="rgba(255,255,255,0.95)">AI Healthcare</text>
+            <text x="250" y="214" textAnchor="middle" fontSize="15" fontWeight="600" fill="rgba(255,255,255,0.95)">Platform</text>
 
-            {/* Outer nodes */}
+            {/* Outer nodes — equal size, with glow */}
             {outer.map(({ angle, label, Icon }) => {
               const rad = (angle * Math.PI) / 180;
               const dist = 140;
@@ -403,11 +410,12 @@ const PlatformHubDiagram = () => {
               const y = 200 + Math.sin(rad) * dist;
               return (
                 <g key={label}>
-                  <circle cx={x} cy={y} r="47" fill="rgba(255,255,255,0.05)" stroke="hsl(var(--primary))" strokeOpacity="0.45" strokeWidth="1" />
-                  <foreignObject x={x - 11} y={y - 15} width="22" height="22">
-                    <Icon className="w-[22px] h-[22px] text-primary" />
+                  <circle cx={x} cy={y} r="58" fill="url(#plat-outer-glow)" />
+                  <circle cx={x} cy={y} r="50" fill="rgba(255,255,255,0.06)" stroke="hsl(var(--primary))" strokeOpacity="0.5" strokeWidth="1.2" />
+                  <foreignObject x={x - 12} y={y - 16} width="24" height="24">
+                    <Icon className="w-6 h-6 text-primary" />
                   </foreignObject>
-                  <text x={x} y={y + 18} textAnchor="middle" fontSize="11" fontWeight="500" fill="rgba(255,255,255,0.85)">{label}</text>
+                  <text x={x} y={y + 20} textAnchor="middle" fontSize="11" fontWeight="500" fill="rgba(255,255,255,0.9)">{label}</text>
                 </g>
               );
             })}
@@ -416,7 +424,7 @@ const PlatformHubDiagram = () => {
       </div>
 
       {/* ---- Mobile: 2x2 grid below center node ---- */}
-      <div className="md:hidden flex flex-col items-center gap-6 py-2">
+      <div className="md:hidden flex flex-col items-center gap-5 py-2">
         <div className="relative">
           <div
             className="rounded-full flex flex-col items-center justify-center"
@@ -449,36 +457,55 @@ const PlatformHubDiagram = () => {
   );
 };
 
-/* ============== Why Borna · "Before" tools (no dotted lines, centered X) ============== */
+/* ============== Why Borna · "Before" tools (improved contrast + subtle animation) ============== */
 const FragmentedToolsDiagram = () => {
   const top = [
-    { Icon: Phone,    x: 50,  y: 42 },
-    { Icon: Mail,     x: 140, y: 42 },
-    { Icon: Calendar, x: 230, y: 42 },
+    { Icon: Phone,    x: 50,  y: 42, label: "Calls" },
+    { Icon: Mail,     x: 140, y: 42, label: "Email" },
+    { Icon: Calendar, x: 230, y: 42, label: "Booking" },
   ];
   const bottom = [
-    { Icon: BarChart2, x: 95,  y: 106 },
-    { Icon: FileText,  x: 185, y: 106 },
+    { Icon: BarChart2, x: 95,  y: 106, label: "Analytics" },
+    { Icon: FileText,  x: 185, y: 106, label: "Forms" },
   ];
-  // Center X between rows: midpoint of y=42 and y=106 = 74
   return (
     <svg viewBox="0 0 280 148" className="w-full h-[148px]" aria-hidden="true">
-      {[...top, ...bottom].map(({ Icon, x, y }, i) => (
+      <defs>
+        <linearGradient id="frag-broken" x1="0%" y1="0%" x2="100%" y2="0%">
+          <stop offset="0%" stopColor="rgba(255,255,255,0.15)" />
+          <stop offset="50%" stopColor="rgba(255,255,255,0.04)" />
+          <stop offset="100%" stopColor="rgba(255,255,255,0.15)" />
+        </linearGradient>
+      </defs>
+      {/* Broken connection lines */}
+      {[...top, ...bottom].map(({ x, y }, i) => (
+        <line key={`line-${i}`} x1={x} y1={y} x2="140" y2="74"
+          stroke="rgba(239, 68, 68, 0.18)" strokeWidth="0.8" strokeDasharray="4 4">
+          <animate attributeName="stroke-dashoffset" from="0" to="8" dur="2s" repeatCount="indefinite" />
+        </line>
+      ))}
+      {[...top, ...bottom].map(({ Icon, x, y, label }, i) => (
         <g key={i}>
-          <rect x={x - 18} y={y - 18} width="36" height="36" rx="8"
-            fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.22)"
-            strokeDasharray="3 3" strokeWidth="0.6" />
-          <foreignObject x={x - 8} y={y - 8} width="16" height="16">
-            <Icon className="w-4 h-4" style={{ color: "rgba(255,255,255,0.42)" }} />
+          <rect x={x - 20} y={y - 20} width="40" height="40" rx="10"
+            fill="rgba(255,255,255,0.06)" stroke="rgba(255,255,255,0.25)"
+            strokeDasharray="3 3" strokeWidth="0.8">
+            <animate attributeName="opacity" values="0.5;0.85;0.5" dur={`${2.5 + i * 0.3}s`} repeatCount="indefinite" />
+          </rect>
+          <foreignObject x={x - 9} y={y - 9} width="18" height="18">
+            <Icon className="w-[18px] h-[18px]" style={{ color: "rgba(255,255,255,0.55)" }} />
           </foreignObject>
+          <text x={x} y={y + 28} textAnchor="middle" fontSize="7" fill="rgba(255,255,255,0.35)">{label}</text>
         </g>
       ))}
       {/* Red X mark — centered between the two rows */}
       <g transform="translate(140 74)">
-        <circle r="10" fill="rgba(239, 68, 68, 0.12)" stroke="rgba(239, 68, 68, 0.55)" strokeWidth="0.8" />
-        <line x1="-4.5" y1="-4.5" x2="4.5"  y2="4.5"  stroke="rgb(248, 113, 113)" strokeWidth="1.4" strokeLinecap="round" />
-        <line x1="-4.5" y1="4.5"  x2="4.5"  y2="-4.5" stroke="rgb(248, 113, 113)" strokeWidth="1.4" strokeLinecap="round" />
+        <circle r="12" fill="rgba(239, 68, 68, 0.15)" stroke="rgba(239, 68, 68, 0.6)" strokeWidth="1">
+          <animate attributeName="r" values="12;13;12" dur="2s" repeatCount="indefinite" />
+        </circle>
+        <line x1="-5" y1="-5" x2="5"  y2="5"  stroke="rgb(248, 113, 113)" strokeWidth="1.6" strokeLinecap="round" />
+        <line x1="-5" y1="5"  x2="5"  y2="-5" stroke="rgb(248, 113, 113)" strokeWidth="1.6" strokeLinecap="round" />
       </g>
+      <text x="140" y="142" textAnchor="middle" fontSize="7" fill="rgba(239, 68, 68, 0.6)">Disconnected</text>
     </svg>
   );
 };
