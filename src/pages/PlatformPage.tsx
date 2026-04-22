@@ -461,9 +461,9 @@ const PlatformHubDiagram = () => {
 /* ============== Why Borna · "Before" tools (improved contrast + subtle animation) ============== */
 const FragmentedToolsDiagram = () => {
   const top = [
-    { Icon: Phone,    x: 50,  y: 42, label: "Calls" },
-    { Icon: Mail,     x: 140, y: 42, label: "Email" },
-    { Icon: Calendar, x: 230, y: 42, label: "Booking" },
+    { Icon: Phone,    x: 50,  y: 28, label: "Calls" },
+    { Icon: Mail,     x: 140, y: 28, label: "Email" },
+    { Icon: Calendar, x: 230, y: 28, label: "Booking" },
   ];
   const bottom = [
     { Icon: BarChart2, x: 95,  y: 110, label: "Analytics" },
