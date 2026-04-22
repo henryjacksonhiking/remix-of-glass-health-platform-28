@@ -484,27 +484,27 @@ const IntegrationsPage = () => {
           ))}
         </div>
         <div className="flex justify-center">
-          <svg viewBox="0 0 360 200" className="w-full max-w-md" aria-label="API extensibility diagram showing existing and potential integration points">
-            <circle cx="180" cy="100" r="28" fill="hsl(170 100% 43% / 0.1)" stroke="hsl(170 100% 43%)" strokeWidth="1.5" />
-            <text x="180" y="104" textAnchor="middle" fill="hsl(170 100% 43%)" fontSize="10" fontWeight="600">Borna</text>
+          <svg viewBox="0 0 400 260" className="w-full max-w-xl" aria-label="API extensibility diagram showing existing and potential integration points">
+            <circle cx="200" cy="130" r="38" fill="hsl(170 100% 43% / 0.12)" stroke="hsl(170 100% 43%)" strokeWidth="1.8" />
+            <text x="200" y="134" textAnchor="middle" fill="hsl(170 100% 43%)" fontSize="12" fontWeight="600">Borna</text>
             {[
-              { label: "PMS", x: 60, y: 50 }, { label: "EHR", x: 300, y: 50 },
-              { label: "Comms", x: 60, y: 150 }, { label: "Payments", x: 300, y: 150 },
+              { label: "PMS", x: 60, y: 55 }, { label: "EHR", x: 340, y: 55 },
+              { label: "Comms", x: 60, y: 205 }, { label: "Payments", x: 340, y: 205 },
             ].map(n => (
               <g key={n.label}>
-                <line x1="180" y1="100" x2={n.x} y2={n.y} stroke="hsl(170 100% 43% / 0.3)" strokeWidth="1" />
-                <circle cx={n.x} cy={n.y} r="20" fill="hsl(226 60% 14% / 0.9)" stroke="hsl(170 100% 43% / 0.4)" strokeWidth="1" />
-                <text x={n.x} y={n.y + 4} textAnchor="middle" fill="hsl(210 40% 92%)" fontSize="9">{n.label}</text>
+                <line x1="200" y1="130" x2={n.x} y2={n.y} stroke="hsl(170 100% 43% / 0.45)" strokeWidth="1.5" />
+                <circle cx={n.x} cy={n.y} r="28" fill="hsl(226 60% 14% / 0.9)" stroke="hsl(170 100% 43% / 0.55)" strokeWidth="1.3" />
+                <text x={n.x} y={n.y + 4} textAnchor="middle" fill="hsl(210 40% 92%)" fontSize="11" fontWeight="500">{n.label}</text>
               </g>
             ))}
             {[
-              { label: "Custom", x: 180, y: 20 }, { label: "Partner", x: 40, y: 100 }, { label: "API", x: 320, y: 100 },
+              { label: "Custom", x: 200, y: 22 }, { label: "Partner", x: 40, y: 130 }, { label: "API", x: 360, y: 130 },
             ].map(n => (
               <g key={n.label} aria-label="Available integration connection point">
-                <line x1="180" y1="100" x2={n.x} y2={n.y} stroke="hsl(170 100% 43% / 0.12)" strokeWidth="1" strokeDasharray="4 3" />
-                <circle cx={n.x} cy={n.y} r="16" fill="none" stroke="hsl(170 100% 43% / 0.2)" strokeWidth="1" strokeDasharray="3 2" />
-                <text x={n.x} y={n.y - 2} textAnchor="middle" fill="hsl(170 100% 43% / 0.4)" fontSize="12">+</text>
-                <text x={n.x} y={n.y + 10} textAnchor="middle" fill="hsl(170 100% 43% / 0.35)" fontSize="7">{n.label}</text>
+                <line x1="200" y1="130" x2={n.x} y2={n.y} stroke="hsl(170 100% 43% / 0.25)" strokeWidth="1.3" strokeDasharray="5 4" />
+                <circle cx={n.x} cy={n.y} r="22" fill="none" stroke="hsl(170 100% 43% / 0.35)" strokeWidth="1.2" strokeDasharray="4 3" />
+                <text x={n.x} y={n.y - 2} textAnchor="middle" fill="hsl(170 100% 43% / 0.6)" fontSize="14">+</text>
+                <text x={n.x} y={n.y + 12} textAnchor="middle" fill="hsl(170 100% 43% / 0.5)" fontSize="8">{n.label}</text>
               </g>
             ))}
           </svg>
