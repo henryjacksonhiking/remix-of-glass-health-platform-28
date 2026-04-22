@@ -45,34 +45,35 @@ const HubSpokeDiagram = () => {
     return () => cancelAnimationFrame(raf);
   }, [prefersReduced]);
 
-  const cx = 200, cy = 200, orbitR = 130, nodeR = 28;
+  const cx = 250, cy = 250, orbitR = 160, nodeR = 40;
   const rotationOffset = prefersReduced ? 0 : (time / 35) * 360;
 
   return (
-    <svg ref={svgRef} viewBox="0 0 400 400" className="w-full max-w-[400px] mx-auto" aria-label="Hub and spoke integration diagram showing Borna AI connected to PMS, EHR, Communication, Payments, and Marketing systems">
+    <svg ref={svgRef} viewBox="0 0 500 500" className="w-full max-w-[500px] mx-auto" aria-label="Hub and spoke integration diagram showing Borna AI connected to PMS, EHR, Communication, Payments, and Marketing systems">
       <defs>
         <radialGradient id="hubGlow" cx="50%" cy="50%" r="50%">
-          <stop offset="0%" stopColor="hsl(170 100% 43%)" stopOpacity="0.3" />
+          <stop offset="0%" stopColor="hsl(170 100% 43%)" stopOpacity="0.35" />
+          <stop offset="60%" stopColor="hsl(170 100% 43%)" stopOpacity="0.1" />
           <stop offset="100%" stopColor="hsl(170 100% 43%)" stopOpacity="0" />
         </radialGradient>
-        <filter id="glowF"><feGaussianBlur stdDeviation="3" result="blur" /><feMerge><feMergeNode in="blur" /><feMergeNode in="SourceGraphic" /></feMerge></filter>
+        <filter id="glowF"><feGaussianBlur stdDeviation="4" result="blur" /><feMerge><feMergeNode in="blur" /><feMergeNode in="SourceGraphic" /></feMerge></filter>
       </defs>
 
       {[1, 2].map(i => (
-        <circle key={i} cx={cx} cy={cy} r={30} fill="none" stroke="hsl(170 100% 43%)" strokeWidth="1" opacity={0}>
+        <circle key={i} cx={cx} cy={cy} r={50} fill="none" stroke="hsl(170 100% 43%)" strokeWidth="1" opacity={0}>
           {!prefersReduced && (
             <>
-              <animate attributeName="r" from="30" to="70" dur="3s" begin={`${i * 1.5}s`} repeatCount="indefinite" />
+              <animate attributeName="r" from="50" to="100" dur="3s" begin={`${i * 1.5}s`} repeatCount="indefinite" />
               <animate attributeName="opacity" from="0.5" to="0" dur="3s" begin={`${i * 1.5}s`} repeatCount="indefinite" />
             </>
           )}
         </circle>
       ))}
 
-      <circle cx={cx} cy={cy} r={40} fill="hsl(170 100% 43% / 0.12)" stroke="hsl(170 100% 43%)" strokeWidth="1.5" filter="url(#glowF)" />
-      <circle cx={cx} cy={cy} r={60} fill="url(#hubGlow)" />
-      <text x={cx} y={cy - 6} textAnchor="middle" fill="hsl(170 100% 43%)" fontSize="11" fontWeight="600">Borna AI</text>
-      <text x={cx} y={cy + 10} textAnchor="middle" fill="hsl(170 100% 60%)" fontSize="8" opacity="0.8">Integration Hub</text>
+      <circle cx={cx} cy={cy} r={90} fill="url(#hubGlow)" />
+      <circle cx={cx} cy={cy} r={60} fill="hsl(170 100% 43% / 0.15)" stroke="hsl(170 100% 43%)" strokeWidth="1.8" filter="url(#glowF)" />
+      <text x={cx} y={cy - 8} textAnchor="middle" fill="hsl(170 100% 43%)" fontSize="14" fontWeight="700">Borna AI</text>
+      <text x={cx} y={cy + 10} textAnchor="middle" fill="hsl(170 100% 60%)" fontSize="10" fontWeight="500" opacity="0.9">Integration Hub</text>
 
       {hubNodes.map((node, i) => {
         const a = ((node.angle + rotationOffset) * Math.PI) / 180;
@@ -91,8 +92,8 @@ const HubSpokeDiagram = () => {
                 <circle cx={cx + (nx - cx) * p2} cy={cy + (ny - cy) * p2} r="2" fill="hsl(170 100% 80%)" opacity="0.6" />
               </>
             )}
-            <circle cx={nx} cy={ny} r={nodeR} fill="hsl(226 60% 12% / 0.9)" stroke="hsl(170 100% 43% / 0.5)" strokeWidth="1" />
-            <text x={nx} y={ny + 4} textAnchor="middle" fill="hsl(210 40% 92%)" fontSize="9" fontWeight="500">{node.label}</text>
+            <circle cx={nx} cy={ny} r={nodeR} fill="hsl(226 60% 12% / 0.9)" stroke="hsl(170 100% 43% / 0.5)" strokeWidth="1.2" />
+            <text x={nx} y={ny + 4} textAnchor="middle" fill="hsl(210 40% 92%)" fontSize="10" fontWeight="500">{node.label}</text>
           </g>
         );
       })}
@@ -103,31 +104,40 @@ const HubSpokeDiagram = () => {
 /* ─── Broken Network (Section 3) ─── */
 const BrokenNetwork = () => {
   const nodes = [
-    { label: "PMS", x: 60, y: 40 }, { label: "EHR", x: 220, y: 30 },
-    { label: "Billing", x: 310, y: 100 }, { label: "Comms", x: 50, y: 150 },
-    { label: "Marketing", x: 180, y: 160 }, { label: "Analytics", x: 300, y: 180 },
+    { label: "PMS", x: 70, y: 50 }, { label: "EHR", x: 230, y: 40 },
+    { label: "Billing", x: 320, y: 110 }, { label: "Comms", x: 60, y: 160 },
+    { label: "Marketing", x: 190, y: 170 }, { label: "Analytics", x: 310, y: 185 },
   ];
   const brokenLinks = [
     [0, 1], [1, 2], [3, 4], [4, 5], [0, 3]
   ];
   return (
-    <svg viewBox="0 0 370 220" className="w-full max-w-lg mx-auto" aria-hidden="true">
+    <svg viewBox="0 0 380 230" className="w-full max-w-lg mx-auto" aria-hidden="true">
+      <defs>
+        <filter id="broken-glow"><feGaussianBlur stdDeviation="2" result="blur" /><feMerge><feMergeNode in="blur" /><feMergeNode in="SourceGraphic" /></feMerge></filter>
+      </defs>
       {brokenLinks.map(([a, b], i) => (
         <line key={i} x1={nodes[a].x} y1={nodes[a].y} x2={nodes[b].x} y2={nodes[b].y}
-          stroke="hsl(0 0% 50% / 0.25)" strokeWidth="1" strokeDasharray="6 4" />
+          stroke="hsl(0 0% 50% / 0.3)" strokeWidth="1.2" strokeDasharray="6 4">
+          <animate attributeName="stroke-dashoffset" from="0" to="10" dur="3s" repeatCount="indefinite" />
+        </line>
       ))}
       {[0, 3].map(idx => {
         const [a, b] = brokenLinks[idx];
         const mx = (nodes[a].x + nodes[b].x) / 2;
         const my = (nodes[a].y + nodes[b].y) / 2;
-        return <text key={idx} x={mx} y={my + 4} textAnchor="middle" fill="hsl(0 60% 55%)" fontSize="12" fontWeight="bold">✕</text>;
+        return (
+          <g key={idx} filter="url(#broken-glow)">
+            <text x={mx} y={my + 5} textAnchor="middle" fill="hsl(0 60% 60%)" fontSize="14" fontWeight="bold">✕</text>
+          </g>
+        );
       })}
       {nodes.map((n, i) => (
         <g key={i}>
-          <circle cx={n.x} cy={n.y} r="22" fill="hsl(226 60% 12% / 0.6)" stroke="hsl(0 0% 50% / 0.2)" strokeWidth="1">
-            <animate attributeName="opacity" values="0.5;0.35;0.5" dur="4.5s" repeatCount="indefinite" />
+          <circle cx={n.x} cy={n.y} r="28" fill="hsl(226 60% 14% / 0.7)" stroke="hsl(0 0% 50% / 0.3)" strokeWidth="1.2">
+            <animate attributeName="opacity" values="0.6;0.4;0.6" dur="4s" repeatCount="indefinite" />
           </circle>
-          <text x={n.x} y={n.y + 4} textAnchor="middle" fill="hsl(0 0% 60%)" fontSize="9">{n.label}</text>
+          <text x={n.x} y={n.y + 4} textAnchor="middle" fill="hsl(0 0% 70%)" fontSize="10" fontWeight="500">{n.label}</text>
         </g>
       ))}
     </svg>
@@ -287,7 +297,7 @@ const IntegrationsPage = () => {
               <p className="text-muted-foreground text-base md:text-lg leading-relaxed mb-8 max-w-xl">
                 Borna AI integrates with leading healthcare systems, communication tools, and business platforms to create a unified ecosystem for patient engagement, operations, and analytics.
               </p>
-              <div className="flex flex-row gap-3">
+              <div className="flex flex-row gap-3 flex-wrap">
                 <Link to="/platform" className="text-sm font-medium rounded-lg px-4 sm:px-6 py-2.5 sm:py-3 border border-glass-border text-muted-foreground hover:text-foreground hover:border-white/30 transition-all whitespace-nowrap">
                   Explore Platform →
                 </Link>
