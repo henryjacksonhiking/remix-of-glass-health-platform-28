@@ -10,6 +10,7 @@ import {
 } from "lucide-react";
 import PageWrapper from "@/components/layout/PageWrapper";
 import { cn } from "@/lib/utils";
+import DataStreamVisual from "@/components/ui/data-stream-visual";
 
 /* ─── helpers ─── */
 const fadeUp = {
@@ -483,32 +484,7 @@ const IntegrationsPage = () => {
             </motion.div>
           ))}
         </div>
-        <div className="flex justify-center">
-          <svg viewBox="0 0 400 260" className="w-full max-w-xl" aria-label="API extensibility diagram showing existing and potential integration points">
-            <circle cx="200" cy="130" r="38" fill="hsl(170 100% 43% / 0.12)" stroke="hsl(170 100% 43%)" strokeWidth="1.8" />
-            <text x="200" y="134" textAnchor="middle" fill="hsl(170 100% 43%)" fontSize="12" fontWeight="600">Borna</text>
-            {[
-              { label: "PMS", x: 60, y: 55 }, { label: "EHR", x: 340, y: 55 },
-              { label: "Comms", x: 60, y: 205 }, { label: "Payments", x: 340, y: 205 },
-            ].map(n => (
-              <g key={n.label}>
-                <line x1="200" y1="130" x2={n.x} y2={n.y} stroke="hsl(170 100% 43% / 0.45)" strokeWidth="1.5" />
-                <circle cx={n.x} cy={n.y} r="28" fill="hsl(226 60% 14% / 0.9)" stroke="hsl(170 100% 43% / 0.55)" strokeWidth="1.3" />
-                <text x={n.x} y={n.y + 4} textAnchor="middle" fill="hsl(210 40% 92%)" fontSize="11" fontWeight="500">{n.label}</text>
-              </g>
-            ))}
-            {[
-              { label: "Custom", x: 200, y: 22 }, { label: "Partner", x: 40, y: 130 }, { label: "API", x: 360, y: 130 },
-            ].map(n => (
-              <g key={n.label} aria-label="Available integration connection point">
-                <line x1="200" y1="130" x2={n.x} y2={n.y} stroke="hsl(170 100% 43% / 0.25)" strokeWidth="1.3" strokeDasharray="5 4" />
-                <circle cx={n.x} cy={n.y} r="22" fill="none" stroke="hsl(170 100% 43% / 0.35)" strokeWidth="1.2" strokeDasharray="4 3" />
-                <text x={n.x} y={n.y - 2} textAnchor="middle" fill="hsl(170 100% 43% / 0.6)" fontSize="14">+</text>
-                <text x={n.x} y={n.y + 12} textAnchor="middle" fill="hsl(170 100% 43% / 0.5)" fontSize="8">{n.label}</text>
-              </g>
-            ))}
-          </svg>
-        </div>
+        <DataStreamVisual className="max-w-2xl mx-auto" />
       </SectionWrap>
 
       <SectionWrap>
