@@ -41,7 +41,7 @@ const MultiLocationPage = () => (
             <Eyebrow>Multi-Location Management</Eyebrow>
             <h1 className="text-3xl md:text-5xl font-bold text-foreground mb-6 leading-tight">Multi-location healthcare management platform</h1>
             <p className="text-muted-foreground text-lg leading-relaxed mb-8 max-w-lg">Borna AI enables healthcare organizations to manage multiple locations from one unified platform. Centralize operations, monitor performance, and optimize workflows across all branches.</p>
-            <div className="flex flex-wrap gap-3"><Link to="/demo" className="gradient-btn px-8 py-3">Request Demo</Link><a href="#centralized-control" className="ghost-btn px-8 py-3">See How It Works</a></div>
+            <div className="flex flex-row items-center gap-2 sm:gap-3"><Link to="/demo" className="gradient-btn whitespace-nowrap">Request Demo</Link><a href="#centralized-control" className="ghost-btn whitespace-nowrap">See How It Works</a></div>
           </motion.div>
           <motion.div {...fadeUp} className="relative flex items-center justify-center" aria-hidden="true">
             <svg viewBox="0 0 300 300" className="w-64 h-64 md:w-80 md:h-80">

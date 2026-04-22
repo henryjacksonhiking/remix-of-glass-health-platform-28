@@ -46,9 +46,9 @@ const PatientRetentionPage = () => (
             <Eyebrow>Patient Retention</Eyebrow>
             <h1 className="text-3xl md:text-5xl font-bold text-foreground mb-6 leading-tight">Patient retention platform for healthcare practices</h1>
             <p className="text-muted-foreground text-lg leading-relaxed mb-8 max-w-lg">Borna AI helps healthcare practices retain patients, improve engagement, and increase lifetime value through intelligent communication, automation, and data-driven insights. From follow-ups to reactivation, Borna ensures every patient stays connected to your practice.</p>
-            <div className="flex flex-wrap gap-3">
-              <Link to="/demo" className="gradient-btn px-8 py-3">Request Demo</Link>
-              <a href="#retention-journey" className="ghost-btn px-8 py-3">See Retention Strategies</a>
+            <div className="flex flex-row items-center gap-2 sm:gap-3">
+              <Link to="/demo" className="gradient-btn whitespace-nowrap">Request Demo</Link>
+              <a href="#retention-journey" className="ghost-btn whitespace-nowrap">See Retention Strategies</a>
             </div>
           </motion.div>
           <motion.div {...fadeUp} className="relative flex items-center justify-center" aria-hidden="true">

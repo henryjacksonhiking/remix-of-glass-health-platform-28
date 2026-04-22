@@ -41,7 +41,7 @@ const RevenueOptimizationPage = () => (
             <Eyebrow>Revenue Optimization</Eyebrow>
             <h1 className="text-3xl md:text-5xl font-bold text-foreground mb-6 leading-tight">Revenue optimization platform for healthcare practices</h1>
             <p className="text-muted-foreground text-lg leading-relaxed mb-8 max-w-lg">Borna AI helps healthcare practices increase revenue by optimizing patient acquisition, improving retention, and automating operations. From lead generation to long-term patient value, Borna ensures every opportunity contributes to growth.</p>
-            <div className="flex flex-wrap gap-3"><Link to="/demo" className="gradient-btn px-8 py-3">Request Demo</Link><a href="#revenue-drivers" className="ghost-btn px-8 py-3">See How It Works</a></div>
+            <div className="flex flex-row items-center gap-2 sm:gap-3"><Link to="/demo" className="gradient-btn whitespace-nowrap">Request Demo</Link><a href="#revenue-drivers" className="ghost-btn whitespace-nowrap">See How It Works</a></div>
           </motion.div>
           <motion.div {...fadeUp} className="relative" aria-hidden="true">
             <svg viewBox="0 0 400 280" className="w-full max-w-md mx-auto">

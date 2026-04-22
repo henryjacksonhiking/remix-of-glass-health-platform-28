@@ -35,7 +35,7 @@ const DentalPracticesPage = () => (
             <Eyebrow>Dental Practices</Eyebrow>
             <h1 className="text-3xl md:text-5xl font-bold text-foreground mb-6 leading-tight">AI-powered platform for dental practices</h1>
             <p className="text-muted-foreground text-lg leading-relaxed mb-8 max-w-lg">Borna AI helps dental practices attract more patients, improve retention, streamline operations, and increase production. From patient acquisition to long-term engagement, Borna connects every part of your dental practice into one intelligent system.</p>
-            <div className="flex flex-wrap gap-3"><Link to="/demo" className="gradient-btn px-8 py-3">Request Demo</Link><a href="#use-cases" className="ghost-btn px-8 py-3">See Dental Solutions</a></div>
+            <div className="flex flex-row items-center gap-2 sm:gap-3"><Link to="/demo" className="gradient-btn whitespace-nowrap">Request Demo</Link><a href="#use-cases" className="ghost-btn whitespace-nowrap">See Dental Solutions</a></div>
           </motion.div>
           <motion.div {...fadeUp} aria-hidden="true">
             <svg viewBox="0 0 400 180" className="w-full max-w-md mx-auto">

@@ -35,7 +35,7 @@ const DsoMsoPage = () => (
             <Eyebrow>Enterprise Healthcare</Eyebrow>
             <h1 className="text-3xl md:text-5xl font-bold text-foreground mb-6 leading-tight">Platform for multi-location healthcare groups (DSOs & MSOs)</h1>
             <p className="text-muted-foreground text-lg leading-relaxed mb-8 max-w-lg">Borna AI enables DSOs, MSOs, and multi-location healthcare groups to centralize operations, optimize performance, and scale efficiently. Unify communication, data, and workflows across all locations.</p>
-            <div className="flex flex-wrap gap-3"><Link to="/demo" className="gradient-btn px-8 py-3">Request Enterprise Demo</Link><Link to="/platform" className="ghost-btn px-8 py-3">Explore Platform</Link></div>
+            <div className="flex flex-row items-center gap-2 sm:gap-3"><Link to="/demo" className="gradient-btn whitespace-nowrap">Request Enterprise Demo</Link><Link to="/platform" className="ghost-btn whitespace-nowrap">Explore Platform</Link></div>
           </motion.div>
           <motion.div {...fadeUp} className="flex items-center justify-center" aria-hidden="true">
             <svg viewBox="0 0 340 340" className="w-72 h-72 md:w-80 md:h-80">

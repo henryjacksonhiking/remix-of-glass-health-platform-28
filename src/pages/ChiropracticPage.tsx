@@ -35,7 +35,7 @@ const ChiropracticPage = () => (
             <Eyebrow>Chiropractic Clinics</Eyebrow>
             <h1 className="text-3xl md:text-5xl font-bold text-foreground mb-6 leading-tight">AI platform for chiropractic clinics</h1>
             <p className="text-muted-foreground text-lg leading-relaxed mb-8 max-w-lg">Borna AI helps chiropractic clinics attract new patients, improve retention, and manage recurring care plans through intelligent automation and communication.</p>
-            <div className="flex flex-wrap gap-3"><Link to="/demo" className="gradient-btn px-8 py-3">Request Demo</Link><a href="#use-cases" className="ghost-btn px-8 py-3">See Chiropractic Solutions</a></div>
+            <div className="flex flex-row items-center gap-2 sm:gap-3"><Link to="/demo" className="gradient-btn whitespace-nowrap">Request Demo</Link><a href="#use-cases" className="ghost-btn whitespace-nowrap">See Chiropractic Solutions</a></div>
           </motion.div>
           <motion.div {...fadeUp} className="flex items-center justify-center" aria-hidden="true">
             <svg viewBox="0 0 300 300" className="w-64 h-64 md:w-72 md:h-72">
