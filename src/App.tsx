@@ -25,6 +25,7 @@ import RoadmapPage from "./pages/RoadmapPage.tsx";
 import IndustriesPage from "./pages/IndustriesPage.tsx";
 import InvestorsPage from "./pages/InvestorsPage.tsx";
 import ArchitecturePage from "./pages/ArchitecturePage.tsx";
+import IntegrationsPage from "./pages/IntegrationsPage.tsx";
 import NotFound from "./pages/NotFound.tsx";
 
 const queryClient = new QueryClient();
@@ -41,6 +42,7 @@ const App = () => (
           <Route path="/products/:slug" element={<ProductPage />} />
           <Route path="/platform" element={<PlatformPage />} />
           <Route path="/platform/architecture" element={<ArchitecturePage />} />
+          <Route path="/platform/integrations" element={<IntegrationsPage />} />
           <Route path="/ecosystem" element={<EcosystemPage />} />
           <Route path="/solutions" element={<SolutionsPage />} />
           <Route path="/pricing" element={<PricingPage />} />

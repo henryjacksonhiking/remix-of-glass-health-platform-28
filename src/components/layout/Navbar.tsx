@@ -126,8 +126,8 @@ const Navbar = () => {
                   }}
                 >
                   {[
-                    { to: "/platform", label: "Platform Overview" },
                     { to: "/platform/architecture", label: "Architecture" },
+                    { to: "/platform/integrations", label: "Integrations" },
                   ].map((item) => (
                     <Link
                       key={item.to}
@@ -284,8 +284,9 @@ const Navbar = () => {
               </div>
               <div className="space-y-1">
                 <p className="text-xs text-muted-foreground uppercase tracking-wider px-3 pb-2 pt-3">Platform</p>
-                <Link to="/platform" onClick={() => setMobileOpen(false)} className="block px-3 py-2 text-sm text-foreground">Platform Overview</Link>
+                <Link to="/platform" onClick={() => setMobileOpen(false)} className="block px-3 py-2 text-sm text-foreground">Platform</Link>
                 <Link to="/platform/architecture" onClick={() => setMobileOpen(false)} className="block px-3 py-2 text-sm text-foreground">Architecture</Link>
+                <Link to="/platform/integrations" onClick={() => setMobileOpen(false)} className="block px-3 py-2 text-sm text-foreground">Integrations</Link>
               </div>
               <Link to="/ecosystem" onClick={() => setMobileOpen(false)} className="block px-3 py-2 text-sm text-foreground">Ecosystem</Link>
               <Link to="/solutions" onClick={() => setMobileOpen(false)} className="block px-3 py-2 text-sm text-foreground">Solutions</Link>
