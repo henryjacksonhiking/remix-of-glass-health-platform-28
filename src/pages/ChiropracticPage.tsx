@@ -26,7 +26,7 @@ const ChiropracticPage = () => (
       <link rel="canonical" href="https://borna.ai/industries/chiropractic" />
       <script type="application/ld+json">{JSON.stringify({ "@context": "https://schema.org", "@type": "BreadcrumbList", itemListElement: [{ "@type": "ListItem", position: 1, name: "Home", item: "https://borna.ai" }, { "@type": "ListItem", position: 2, name: "Industries", item: "https://borna.ai/industries" }, { "@type": "ListItem", position: 3, name: "Chiropractic Clinics", item: "https://borna.ai/industries/chiropractic" }] })}</script>
     </Helmet>
-    <nav aria-label="breadcrumb" className="container mx-auto px-4 md:px-6 pt-24 pb-2"><p className="text-xs text-muted-foreground"><Link to="/" className="hover:text-foreground">Home</Link> / <Link to="/industries" className="hover:text-foreground">Industries</Link> / <span className="text-primary">Chiropractic Clinics</span></p></nav>
+    <nav aria-label="breadcrumb" className="container mx-auto px-4 md:px-6 pt-20 md:pt-24 pb-0 md:pb-2"><p className="text-xs text-muted-foreground"><Link to="/" className="hover:text-foreground">Home</Link> / <Link to="/industries" className="hover:text-foreground">Industries</Link> / <span className="text-primary">Chiropractic Clinics</span></p></nav>
 
     <section className="relative py-16 md:py-24 overflow-hidden">
       <div className="container mx-auto px-4 md:px-6 relative z-10">

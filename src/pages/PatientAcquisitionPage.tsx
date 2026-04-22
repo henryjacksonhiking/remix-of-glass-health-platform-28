@@ -61,7 +61,7 @@ const PatientAcquisitionPage = () => (
     </Helmet>
 
     {/* Breadcrumb */}
-    <nav aria-label="breadcrumb" className="container mx-auto px-4 md:px-6 pt-24 pb-2">
+    <nav aria-label="breadcrumb" className="container mx-auto px-4 md:px-6 pt-20 md:pt-24 pb-0 md:pb-2">
       <p className="text-xs text-muted-foreground">
         <Link to="/" className="hover:text-foreground">Home</Link> / <Link to="/solutions" className="hover:text-foreground">Solutions</Link> / <span className="text-primary">Patient Acquisition</span>
       </p>
