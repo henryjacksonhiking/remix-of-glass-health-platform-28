@@ -31,16 +31,16 @@ const HeroSection = () => {
           style={{ background: "radial-gradient(ellipse, hsla(170,100%,43%,0.06) 0%, transparent 70%)" }} />
       </div>
       <div className="container mx-auto px-4 md:px-6 text-center relative z-10">
-        <motion.h1 {...fadeUp} className="hero-headline text-foreground mb-5 max-w-3xl mx-auto">
+        <motion.h1 variants={fadeUp} className="hero-headline text-foreground mb-5 max-w-3xl mx-auto">
           Borna AI Pricing Plans
         </motion.h1>
-        <motion.p {...fadeUp} transition={{ delay: 0.1, duration: 0.5 }} className="body-text mx-auto max-w-2xl mb-4">
+        <motion.p variants={fadeUp} transition={{ delay: 0.1, duration: 0.5 }} className="body-text mx-auto max-w-2xl mb-4">
           Flexible pricing designed for healthcare practices, clinics, and multi-location organizations.
         </motion.p>
-        <motion.p {...fadeUp} transition={{ delay: 0.15, duration: 0.5 }} className="body-text mx-auto max-w-2xl mb-8">
+        <motion.p variants={fadeUp} transition={{ delay: 0.15, duration: 0.5 }} className="body-text mx-auto max-w-2xl mb-8">
           Choose a plan that fits your needs and scale with a unified platform for communication, patient engagement, analytics, and AI automation.
         </motion.p>
-        <motion.div {...fadeUp} transition={{ delay: 0.2 }} className="flex flex-row items-center justify-center gap-3">
+        <motion.div variants={fadeUp} transition={{ delay: 0.2 }} className="flex flex-row items-center justify-center gap-3">
           <button onClick={() => navigate("/demo")} className="gradient-btn text-sm sm:text-base px-5 sm:px-8 py-2.5 sm:py-3.5 whitespace-nowrap">Request Demo</button>
           <button onClick={() => navigate("/contact")} className="ghost-btn text-sm sm:text-base px-5 sm:px-8 py-2.5 sm:py-3.5 whitespace-nowrap">Talk to Sales</button>
         </motion.div>
@@ -55,25 +55,25 @@ const HeroSection = () => {
 const PositioningSection = () => (
   <section className="py-16 md:py-20" role="region" aria-label="Pricing positioning">
     <div className="container mx-auto px-4 md:px-6 max-w-3xl text-center">
-      <motion.h2 {...fadeUp} viewport={{ once: true }} whileInView="visible" initial="hidden" className="section-headline text-foreground mb-5">
+      <motion.h2 variants={fadeUp} viewport={{ once: true }} whileInView="visible" initial="hidden" className="section-headline text-foreground mb-5">
         Simple, scalable, and built for growth
       </motion.h2>
-      <motion.p {...fadeUp} viewport={{ once: true }} whileInView="visible" initial="hidden" transition={{ delay: 0.1, duration: 0.5 }}
+      <motion.p variants={fadeUp} viewport={{ once: true }} whileInView="visible" initial="hidden" transition={{ delay: 0.1, duration: 0.5 }}
         className="body-text mx-auto mb-4">
         Borna AI pricing is designed to support practices of all sizes — from a single-location clinic to a multi-site DSO — and scale with your growth.
       </motion.p>
-      <motion.p {...fadeUp} viewport={{ once: true }} whileInView="visible" initial="hidden" transition={{ delay: 0.15, duration: 0.5 }}
+      <motion.p variants={fadeUp} viewport={{ once: true }} whileInView="visible" initial="hidden" transition={{ delay: 0.15, duration: 0.5 }}
         className="body-text mx-auto mb-6">
         Unlike standalone tools that solve one problem, Borna combines communication, CRM, analytics, and AI automation into one unified platform. You are not buying a feature. You are investing in infrastructure.
       </motion.p>
-      <motion.div {...fadeUp} viewport={{ once: true }} whileInView="visible" initial="hidden" transition={{ delay: 0.2 }}>
+      <motion.div variants={fadeUp} viewport={{ once: true }} whileInView="visible" initial="hidden" transition={{ delay: 0.2 }}>
         <Link to="/platform" className="text-sm font-medium text-primary hover:opacity-80 transition-opacity inline-flex items-center gap-1">
           Explore the Borna Platform <ArrowUpRight className="w-3.5 h-3.5" />
         </Link>
       </motion.div>
 
       {/* Value chips */}
-      <motion.div {...fadeUp} viewport={{ once: true }} whileInView="visible" initial="hidden" transition={{ delay: 0.25 }}
+      <motion.div variants={fadeUp} viewport={{ once: true }} whileInView="visible" initial="hidden" transition={{ delay: 0.25 }}
         className="flex flex-wrap items-center justify-center gap-3 mt-10 mb-6">
         {["All-in-one platform", "Scales with you", "No fragmented tools"].map((chip) => (
           <span key={chip} className="px-4 py-1.5 text-xs font-medium rounded-full border"
@@ -274,7 +274,7 @@ const PricingCard = ({ plan }: { plan: PlanData }) => {
 const PricingCardsSection = () => (
   <section className="py-20 md:py-28" role="region" aria-label="Pricing plans">
     <div className="container mx-auto px-4 md:px-6">
-      <motion.h2 {...fadeUp} viewport={{ once: true }} whileInView="visible" initial="hidden"
+      <motion.h2 variants={fadeUp} viewport={{ once: true }} whileInView="visible" initial="hidden"
         className="section-headline text-foreground text-center mb-14">
         Choose the right plan for your practice
       </motion.h2>
@@ -321,17 +321,17 @@ const renderCellContent = (val: string) => {
 const ComparisonSection = () => (
   <section className="py-16 md:py-24" role="region" aria-label="Feature comparison">
     <div className="container mx-auto px-4 md:px-6">
-      <motion.h2 {...fadeUp} viewport={{ once: true }} whileInView="visible" initial="hidden"
+      <motion.h2 variants={fadeUp} viewport={{ once: true }} whileInView="visible" initial="hidden"
         className="section-headline text-foreground text-center mb-4">
         Compare features across plans
       </motion.h2>
-      <motion.p {...fadeUp} viewport={{ once: true }} whileInView="visible" initial="hidden" transition={{ delay: 0.1 }}
+      <motion.p variants={fadeUp} viewport={{ once: true }} whileInView="visible" initial="hidden" transition={{ delay: 0.1 }}
         className="body-text mx-auto text-center mb-12">
         A quick-scan reference showing which capabilities are included in each plan.
       </motion.p>
 
       <div className="max-w-4xl mx-auto overflow-x-auto">
-        <motion.table {...fadeUp} viewport={{ once: true }} whileInView="visible" initial="hidden" transition={{ delay: 0.15 }}
+        <motion.table variants={fadeUp} viewport={{ once: true }} whileInView="visible" initial="hidden" transition={{ delay: 0.15 }}
           className="w-full text-sm min-w-[600px]">
           <thead>
             <tr style={{ borderBottom: "1px solid rgba(0,222,196,0.15)" }}>
@@ -379,17 +379,17 @@ const convergenceNodes = [
 const ValueSection = () => (
   <section className="py-16 md:py-24" role="region" aria-label="Platform value">
     <div className="container mx-auto px-4 md:px-6 max-w-4xl">
-      <motion.h2 {...fadeUp} viewport={{ once: true }} whileInView="visible" initial="hidden"
+      <motion.h2 variants={fadeUp} viewport={{ once: true }} whileInView="visible" initial="hidden"
         className="section-headline text-foreground text-center mb-5">
         Everything you need in one platform
       </motion.h2>
-      <motion.p {...fadeUp} viewport={{ once: true }} whileInView="visible" initial="hidden" transition={{ delay: 0.1 }}
+      <motion.p variants={fadeUp} viewport={{ once: true }} whileInView="visible" initial="hidden" transition={{ delay: 0.1 }}
         className="body-text mx-auto text-center mb-10">
         All Borna AI plans include a unified communication system, patient lifecycle management, secure data handling, and scalable infrastructure. You are not assembling a stack — you are deploying a platform.
       </motion.p>
 
       {/* All plans include strip */}
-      <motion.div {...fadeUp} viewport={{ once: true }} whileInView="visible" initial="hidden" transition={{ delay: 0.15 }}>
+      <motion.div variants={fadeUp} viewport={{ once: true }} whileInView="visible" initial="hidden" transition={{ delay: 0.15 }}>
         <p className="text-xs font-medium uppercase tracking-wider text-muted-foreground text-center mb-4">All plans include:</p>
         <div className="flex flex-col sm:flex-row flex-wrap items-center justify-center gap-4 sm:gap-6 mb-6">
           {universalInclusions.map((item) => (
@@ -407,7 +407,7 @@ const ValueSection = () => (
       </motion.div>
 
       {/* Convergence diagram */}
-      <motion.div {...fadeUp} viewport={{ once: true }} whileInView="visible" initial="hidden" transition={{ delay: 0.25 }}
+      <motion.div variants={fadeUp} viewport={{ once: true }} whileInView="visible" initial="hidden" transition={{ delay: 0.25 }}
         className="mt-14 flex flex-col md:flex-row items-center justify-center gap-6 md:gap-10">
         {/* Left — scattered tools */}
         <div className="flex flex-col gap-3">
@@ -457,18 +457,18 @@ const flexPoints = [
 const CustomizationSection = () => (
   <section className="py-16 md:py-24" role="region" aria-label="Enterprise customization">
     <div className="container mx-auto px-4 md:px-6 max-w-3xl">
-      <motion.h2 {...fadeUp} viewport={{ once: true }} whileInView="visible" initial="hidden"
+      <motion.h2 variants={fadeUp} viewport={{ once: true }} whileInView="visible" initial="hidden"
         className="section-headline text-foreground text-center mb-5">
         Flexible pricing for every organization
       </motion.h2>
-      <motion.div {...fadeUp} viewport={{ once: true }} whileInView="visible" initial="hidden" transition={{ delay: 0.1 }}
+      <motion.div variants={fadeUp} viewport={{ once: true }} whileInView="visible" initial="hidden" transition={{ delay: 0.1 }}
         className="relative pl-5 mb-8" style={{ borderLeft: "2px solid rgba(0,222,196,0.3)" }}>
         <p className="body-text">
           Borna AI offers custom pricing for DSOs, MSOs, and multi-location healthcare organizations. Every enterprise deployment is configured to the organization's specific needs — location count, user seats, integration requirements, and platform modules.
         </p>
       </motion.div>
 
-      <motion.div {...fadeUp} viewport={{ once: true }} whileInView="visible" initial="hidden" transition={{ delay: 0.15 }}
+      <motion.div variants={fadeUp} viewport={{ once: true }} whileInView="visible" initial="hidden" transition={{ delay: 0.15 }}
         className="flex flex-col sm:flex-row flex-wrap items-center justify-center gap-3 sm:gap-5 mb-8">
         {flexPoints.map((point) => (
           <span key={point} className="px-4 py-1.5 text-xs font-medium rounded-full border"
@@ -478,7 +478,7 @@ const CustomizationSection = () => (
         ))}
       </motion.div>
 
-      <motion.div {...fadeUp} viewport={{ once: true }} whileInView="visible" initial="hidden" transition={{ delay: 0.2 }}
+      <motion.div variants={fadeUp} viewport={{ once: true }} whileInView="visible" initial="hidden" transition={{ delay: 0.2 }}
         className="text-center">
         <Link to="/contact" className="text-sm text-muted-foreground hover:text-primary transition-colors inline-flex items-center gap-1">
           Talk to Enterprise Sales <ArrowUpRight className="w-3.5 h-3.5" />
@@ -496,21 +496,21 @@ const standaloneTools = ["Scheduling Tool", "CRM Platform", "Analytics Software"
 const ROISection = () => (
   <section className="py-16 md:py-24" role="region" aria-label="ROI comparison">
     <div className="container mx-auto px-4 md:px-6 max-w-4xl">
-      <motion.h2 {...fadeUp} viewport={{ once: true }} whileInView="visible" initial="hidden"
+      <motion.h2 variants={fadeUp} viewport={{ once: true }} whileInView="visible" initial="hidden"
         className="section-headline text-foreground text-center mb-5">
         Why Borna delivers more value
       </motion.h2>
-      <motion.p {...fadeUp} viewport={{ once: true }} whileInView="visible" initial="hidden" transition={{ delay: 0.1 }}
+      <motion.p variants={fadeUp} viewport={{ once: true }} whileInView="visible" initial="hidden" transition={{ delay: 0.1 }}
         className="body-text mx-auto text-center mb-4">
         Most healthcare practices pay for 4–6 separate tools that only partially solve the same problems Borna addresses in one platform. A separate scheduling system. A separate communication tool. A separate CRM. A separate analytics platform.
       </motion.p>
-      <motion.p {...fadeUp} viewport={{ once: true }} whileInView="visible" initial="hidden" transition={{ delay: 0.15 }}
+      <motion.p variants={fadeUp} viewport={{ once: true }} whileInView="visible" initial="hidden" transition={{ delay: 0.15 }}
         className="text-base md:text-lg font-medium text-foreground text-center mb-12 max-w-2xl mx-auto">
         The question is not whether Borna costs too much. It is whether running 4 separate systems costs less.
       </motion.p>
 
       {/* Comparison panels */}
-      <motion.div {...fadeUp} viewport={{ once: true }} whileInView="visible" initial="hidden" transition={{ delay: 0.2 }}
+      <motion.div variants={fadeUp} viewport={{ once: true }} whileInView="visible" initial="hidden" transition={{ delay: 0.2 }}
         className="flex flex-col md:flex-row items-stretch gap-6 md:gap-0">
         {/* Left — standalone tools */}
         <div className="flex-1 glass-panel p-6 md:rounded-r-none">
@@ -544,7 +544,7 @@ const ROISection = () => (
         </div>
       </motion.div>
 
-      <motion.p {...fadeUp} viewport={{ once: true }} whileInView="visible" initial="hidden" transition={{ delay: 0.3 }}
+      <motion.p variants={fadeUp} viewport={{ once: true }} whileInView="visible" initial="hidden" transition={{ delay: 0.3 }}
         className="text-xs text-muted-foreground/50 text-center mt-6">
         Plus: AI intelligence, continuous optimization, and platform-level scalability.
       </motion.p>
@@ -566,7 +566,7 @@ const faqs = [
 const FAQSection = () => (
   <section className="py-16 md:py-24" role="region" aria-label="Pricing FAQs">
     <div className="container mx-auto px-4 md:px-6 max-w-3xl">
-      <motion.h2 {...fadeUp} viewport={{ once: true }} whileInView="visible" initial="hidden"
+      <motion.h2 variants={fadeUp} viewport={{ once: true }} whileInView="visible" initial="hidden"
         className="section-headline text-foreground text-center mb-12">
         Pricing FAQs
       </motion.h2>
@@ -616,11 +616,11 @@ const trustSignals = [
 const TrustSection = () => (
   <section className="py-16 md:py-24" role="region" aria-label="Trust and transparency">
     <div className="container mx-auto px-4 md:px-6 max-w-4xl">
-      <motion.h2 {...fadeUp} viewport={{ once: true }} whileInView="visible" initial="hidden"
+      <motion.h2 variants={fadeUp} viewport={{ once: true }} whileInView="visible" initial="hidden"
         className="section-headline text-foreground text-center mb-12">
         Transparent and scalable pricing
       </motion.h2>
-      <motion.p {...fadeUp} viewport={{ once: true }} whileInView="visible" initial="hidden" transition={{ delay: 0.1 }}
+      <motion.p variants={fadeUp} viewport={{ once: true }} whileInView="visible" initial="hidden" transition={{ delay: 0.1 }}
         className="body-text mx-auto text-center mb-14">
         Borna AI pricing is designed to remove hesitation — not add to it. No hidden fees, no surprise charges, no lock-in that prevents you from adjusting as your organization evolves.
       </motion.p>
@@ -657,15 +657,15 @@ const FinalCTASection = () => {
   return (
     <section className="py-20 md:py-28" role="region" aria-label="Final call to action">
       <div className="container mx-auto px-4 md:px-6 text-center">
-        <motion.h2 {...fadeUp} viewport={{ once: true }} whileInView="visible" initial="hidden"
+        <motion.h2 variants={fadeUp} viewport={{ once: true }} whileInView="visible" initial="hidden"
           className="section-headline text-foreground mb-5 max-w-2xl mx-auto">
           Find the right plan for your practice
         </motion.h2>
-        <motion.p {...fadeUp} viewport={{ once: true }} whileInView="visible" initial="hidden" transition={{ delay: 0.1 }}
+        <motion.p variants={fadeUp} viewport={{ once: true }} whileInView="visible" initial="hidden" transition={{ delay: 0.1 }}
           className="body-text mx-auto mb-8">
           Borna AI pricing is designed to grow with your organization — from a single clinic to a multi-location healthcare network.
         </motion.p>
-        <motion.div {...fadeUp} viewport={{ once: true }} whileInView="visible" initial="hidden" transition={{ delay: 0.15 }}
+        <motion.div variants={fadeUp} viewport={{ once: true }} whileInView="visible" initial="hidden" transition={{ delay: 0.15 }}
           className="flex flex-row items-center justify-center gap-3">
           <button onClick={() => navigate("/demo")} className="gradient-btn text-sm sm:text-base px-5 sm:px-8 py-2.5 sm:py-3.5 whitespace-nowrap">Request Demo</button>
           <button onClick={() => navigate("/contact")} className="ghost-btn text-sm sm:text-base px-5 sm:px-8 py-2.5 sm:py-3.5 whitespace-nowrap">Talk to Sales</button>
