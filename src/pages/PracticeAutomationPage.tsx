@@ -165,21 +165,39 @@ const PracticeAutomationPage = () => (
       </div>
     </SectionDark>
 
-    {/* How It Works */}
+    {/* How It Works - Sequential Card Animation */}
     <SectionDark>
       <motion.div {...fadeUp} className="text-center mb-12"><h2 className="text-2xl md:text-3xl font-bold text-foreground">How Borna automates your practice</h2></motion.div>
-      <div className="grid md:grid-cols-5 gap-4">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
         {[
           { n: 1, title: "Trigger", body: "An event occurs — missed call, appointment due, patient inactive, form submitted" },
           { n: 2, title: "Analyze", body: "Borna AI evaluates the event and selects the appropriate automated response" },
           { n: 3, title: "Execute", body: "The automation fires — message sent, record updated, alert dispatched — instantly" },
           { n: 4, title: "Monitor", body: "Outcomes are tracked — did the message reach the patient? Was the action completed?" },
           { n: 5, title: "Optimize", body: "AI analyzes performance and continuously refines workflows for better outcomes" },
-        ].map((step) => (
-          <motion.div key={step.n} {...fadeUp} className="glass-panel rounded-xl p-5 text-center">
+        ].map((step, i) => (
+          <motion.div
+            key={step.n}
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ duration: 0.5, delay: i * 0.15, ease: [0.16, 1, 0.3, 1] }}
+            className="glass-panel rounded-xl p-5 text-center relative"
+          >
             <div className="w-8 h-8 rounded-full bg-primary/20 flex items-center justify-center text-primary text-sm font-bold mx-auto mb-3">{step.n}</div>
             <h3 className="text-sm font-semibold text-foreground mb-2">{step.title}</h3>
             <p className="text-xs text-muted-foreground">{step.body}</p>
+            {i < 4 && (
+              <div className="hidden lg:block absolute top-1/2 -translate-y-1/2 -right-3 z-10" aria-hidden>
+                <svg viewBox="0 0 24 12" className="w-6 h-3">
+                  <line x1="0" y1="6" x2="18" y2="6" stroke="hsl(var(--primary))" strokeOpacity="0.4" strokeWidth="1" />
+                  <path d="M16 2 L22 6 L16 10" fill="none" stroke="hsl(var(--primary))" strokeOpacity="0.6" strokeWidth="1" strokeLinecap="round" />
+                  <circle r="1.5" fill="hsl(var(--primary))">
+                    <animateMotion dur="1.5s" repeatCount="indefinite" begin={`${i * 0.3}s`} path="M0,6 L18,6" />
+                  </circle>
+                </svg>
+              </div>
+            )}
           </motion.div>
         ))}
       </div>
