@@ -10,10 +10,12 @@ const Navbar = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [productsOpen, setProductsOpen] = useState(false);
   const [platformOpen, setPlatformOpen] = useState(false);
+  const [ecosystemOpen, setEcosystemOpen] = useState(false);
   const [resourcesOpen, setResourcesOpen] = useState(false);
   const location = useLocation();
   const isProductActive = location.pathname.startsWith("/products");
   const isPlatformActive = location.pathname.startsWith("/platform");
+  const isEcosystemActive = location.pathname.startsWith("/ecosystem");
   const isResourcesActive = location.pathname.startsWith("/resources") || location.pathname.startsWith("/roadmap");
 
   const navLinkClass = ({ isActive }: { isActive: boolean }) =>
@@ -151,7 +153,60 @@ const Navbar = () => {
               )}
             </AnimatePresence>
           </div>
-          <NavLink to="/ecosystem" className={navLinkClass}>Ecosystem</NavLink>
+          <div
+            className="relative"
+            onMouseEnter={() => setEcosystemOpen(true)}
+            onMouseLeave={() => setEcosystemOpen(false)}
+          >
+            <Link
+              to="/ecosystem"
+              className={cn(
+                "relative flex items-center gap-1 text-[13px] lg:text-sm transition-all duration-300 whitespace-nowrap py-1 px-2 rounded-md",
+                isEcosystemActive ? "text-foreground font-medium nav-spotlight" : "text-muted-foreground hover:text-foreground"
+              )}
+            >
+              Ecosystem <ChevronDown className="w-3.5 h-3.5" />
+            </Link>
+            <AnimatePresence>
+              {ecosystemOpen && (
+                <motion.div
+                  initial={{ opacity: 0, y: 8 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: 8 }}
+                  transition={{ duration: 0.2 }}
+                  className="absolute top-full left-0 mt-2 w-64 p-2 rounded-xl"
+                  style={{
+                    background: 'rgba(10, 15, 40, 0.97)',
+                    backdropFilter: 'blur(12px)',
+                    border: '1px solid rgba(255, 255, 255, 0.12)',
+                    boxShadow: '0 8px 32px rgba(0, 0, 0, 0.4)',
+                  }}
+                >
+                  {[
+                    { to: "/ecosystem/communication", label: "Communication Layer", sub: "Unified omnichannel patient communication" },
+                  ].map((item) => (
+                    <Link
+                      key={item.to}
+                      to={item.to}
+                      className="block px-3 py-2.5 rounded-lg text-sm transition-all duration-150"
+                      style={{ color: 'rgba(255, 255, 255, 0.85)' }}
+                      onMouseEnter={(e) => {
+                        e.currentTarget.style.background = 'rgba(255, 255, 255, 0.08)';
+                        e.currentTarget.style.color = '#00DEC4';
+                      }}
+                      onMouseLeave={(e) => {
+                        e.currentTarget.style.background = 'transparent';
+                        e.currentTarget.style.color = 'rgba(255, 255, 255, 0.85)';
+                      }}
+                    >
+                      <div className="font-medium">{item.label}</div>
+                      <div className="text-xs mt-0.5" style={{ color: 'rgba(255,255,255,0.5)' }}>{item.sub}</div>
+                    </Link>
+                  ))}
+                </motion.div>
+              )}
+            </AnimatePresence>
+          </div>
           <NavLink to="/solutions" className={navLinkClass}>Solutions</NavLink>
           <NavLink to="/pricing" className={navLinkClass}>Pricing</NavLink>
           <div
@@ -290,7 +345,11 @@ const Navbar = () => {
                 <Link to="/platform/integrations" onClick={() => setMobileOpen(false)} className="block px-3 py-2 text-sm text-foreground">Integrations</Link>
                 <Link to="/platform/security" onClick={() => setMobileOpen(false)} className="block px-3 py-2 text-sm text-foreground">Security & Compliance</Link>
               </div>
-              <Link to="/ecosystem" onClick={() => setMobileOpen(false)} className="block px-3 py-2 text-sm text-foreground">Ecosystem</Link>
+              <div className="space-y-1">
+                <p className="text-xs text-muted-foreground uppercase tracking-wider px-3 pb-2 pt-3">Ecosystem</p>
+                <Link to="/ecosystem" onClick={() => setMobileOpen(false)} className="block px-3 py-2 text-sm text-foreground">Ecosystem</Link>
+                <Link to="/ecosystem/communication" onClick={() => setMobileOpen(false)} className="block px-3 py-2 text-sm text-foreground">Communication Layer</Link>
+              </div>
               <Link to="/solutions" onClick={() => setMobileOpen(false)} className="block px-3 py-2 text-sm text-foreground">Solutions</Link>
               <Link to="/pricing" onClick={() => setMobileOpen(false)} className="block px-3 py-2 text-sm text-foreground">Pricing</Link>
               <div className="space-y-1">

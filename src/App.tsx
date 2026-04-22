@@ -27,6 +27,7 @@ import InvestorsPage from "./pages/InvestorsPage.tsx";
 import ArchitecturePage from "./pages/ArchitecturePage.tsx";
 import IntegrationsPage from "./pages/IntegrationsPage.tsx";
 import SecurityCompliancePage from "./pages/SecurityCompliancePage.tsx";
+import CommunicationLayerPage from "./pages/CommunicationLayerPage.tsx";
 import NotFound from "./pages/NotFound.tsx";
 
 const queryClient = new QueryClient();
@@ -46,6 +47,7 @@ const App = () => (
           <Route path="/platform/integrations" element={<IntegrationsPage />} />
           <Route path="/platform/security" element={<SecurityCompliancePage />} />
           <Route path="/ecosystem" element={<EcosystemPage />} />
+          <Route path="/ecosystem/communication" element={<CommunicationLayerPage />} />
           <Route path="/solutions" element={<SolutionsPage />} />
           <Route path="/pricing" element={<PricingPage />} />
           <Route path="/security" element={<SecurityPage />} />
