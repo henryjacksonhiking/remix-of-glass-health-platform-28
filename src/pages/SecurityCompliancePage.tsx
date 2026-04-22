@@ -29,47 +29,47 @@ const SectionWrap = ({ children, className = "" }: { children: React.ReactNode; 
 const ProtectedCore = () => {
   const prefersReduced = typeof window !== "undefined" && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   return (
-    <svg viewBox="0 0 300 300" className="w-full max-w-[320px] mx-auto" aria-label="Protected system core with concentric security boundary rings around Borna AI">
+    <svg viewBox="0 0 300 300" className="w-full max-w-[380px] mx-auto" aria-label="Protected system core with concentric security boundary rings around Borna AI">
       <defs>
         <radialGradient id="secCoreGlow" cx="50%" cy="50%" r="50%">
-          <stop offset="0%" stopColor="hsl(170 100% 43%)" stopOpacity="0.18" />
+          <stop offset="0%" stopColor="hsl(170 100% 43%)" stopOpacity="0.25" />
           <stop offset="100%" stopColor="hsl(170 100% 43%)" stopOpacity="0" />
         </radialGradient>
       </defs>
 
-      {/* Ring 3 (outermost) - desktop only */}
-      <circle cx="150" cy="150" r="120" fill="none" stroke="hsl(170 100% 43% / 0.12)" strokeWidth="1" className="hidden sm:block" />
+      {/* Ring 3 (outermost) */}
+      <circle cx="150" cy="150" r="120" fill="none" stroke="hsl(170 100% 43% / 0.2)" strokeWidth="1.5" className="hidden sm:block" />
       {/* Ring 2 */}
-      <circle cx="150" cy="150" r="88" fill="none" stroke="hsl(170 100% 43% / 0.2)" strokeWidth="1" className="hidden sm:block" />
+      <circle cx="150" cy="150" r="88" fill="none" stroke="hsl(170 100% 43% / 0.3)" strokeWidth="1.5" className="hidden sm:block" />
       {/* Ring 1 */}
-      <circle cx="150" cy="150" r="60" fill="none" stroke="hsl(170 100% 43% / 0.3)" strokeWidth="1" />
+      <circle cx="150" cy="150" r="60" fill="none" stroke="hsl(170 100% 43% / 0.4)" strokeWidth="1.5" />
 
       {/* Slow pulse rings */}
       {[1, 2].map(i => (
-        <circle key={i} cx="150" cy="150" r="25" fill="none" stroke="hsl(170 100% 43%)" strokeWidth="0.8" opacity="0">
+        <circle key={i} cx="150" cy="150" r="35" fill="none" stroke="hsl(170 100% 43%)" strokeWidth="1" opacity="0">
           {!prefersReduced && (
             <>
-              <animate attributeName="r" from="25" to="55" dur="6s" begin={`${i * 3}s`} repeatCount="indefinite" />
-              <animate attributeName="opacity" from="0.35" to="0" dur="6s" begin={`${i * 3}s`} repeatCount="indefinite" />
+              <animate attributeName="r" from="35" to="65" dur="6s" begin={`${i * 3}s`} repeatCount="indefinite" />
+              <animate attributeName="opacity" from="0.4" to="0" dur="6s" begin={`${i * 3}s`} repeatCount="indefinite" />
             </>
           )}
         </circle>
       ))}
 
-      {/* Core node */}
-      <circle cx="150" cy="150" r="25" fill="hsl(170 100% 43% / 0.08)" stroke="hsl(170 100% 43% / 0.6)" strokeWidth="1.2" />
-      <circle cx="150" cy="150" r="40" fill="url(#secCoreGlow)" />
-      <text x="150" y="148" textAnchor="middle" fill="hsl(170 100% 43%)" fontSize="9" fontWeight="600">Borna AI</text>
-      <text x="150" y="160" textAnchor="middle" fill="hsl(170 100% 60%)" fontSize="7" opacity="0.7">Secure Core</text>
+      {/* Core node — larger */}
+      <circle cx="150" cy="150" r="35" fill="hsl(170 100% 43% / 0.1)" stroke="hsl(170 100% 43% / 0.7)" strokeWidth="1.5" />
+      <circle cx="150" cy="150" r="52" fill="url(#secCoreGlow)" />
+      <text x="150" y="147" textAnchor="middle" fill="hsl(170 100% 43%)" fontSize="12" fontWeight="600">Borna AI</text>
+      <text x="150" y="162" textAnchor="middle" fill="hsl(170 100% 60%)" fontSize="9" opacity="0.8">Secure Core</text>
 
       {/* Floating labels (desktop only) */}
       {[
-        { label: "Encrypted", x: 150, y: 22 },
-        { label: "Access Controlled", x: 278, y: 150 },
-        { label: "Monitored", x: 150, y: 282 },
-        { label: "Compliant", x: 22, y: 150 },
+        { label: "Encrypted", x: 150, y: 20 },
+        { label: "Access Controlled", x: 280, y: 150 },
+        { label: "Monitored", x: 150, y: 284 },
+        { label: "Compliant", x: 20, y: 150 },
       ].map(l => (
-        <text key={l.label} x={l.x} y={l.y} textAnchor="middle" fill="hsl(170 100% 43% / 0.4)" fontSize="7" className="hidden sm:block">{l.label}</text>
+        <text key={l.label} x={l.x} y={l.y} textAnchor="middle" fill="hsl(170 100% 43% / 0.55)" fontSize="9" fontWeight="500" className="hidden sm:block">{l.label}</text>
       ))}
     </svg>
   );
