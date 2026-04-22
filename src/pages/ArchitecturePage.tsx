@@ -363,7 +363,7 @@ const SecuritySection = () => (
         <p className="body-text mx-auto mb-6">
           Secure data handling, role-based access control, and compliance considerations for healthcare data — built into every layer.
         </p>
-        <Link to="/security" className="text-sm text-primary hover:opacity-80 transition-opacity inline-flex items-center gap-1">
+        <Link to="/platform/security" className="text-sm text-primary hover:opacity-80 transition-opacity inline-flex items-center gap-1">
           Learn more about security <ArrowRight className="w-3.5 h-3.5" />
         </Link>
       </motion.div>
@@ -454,9 +454,11 @@ const TakeawaysSection = () => (
 /*  14. FAQ                                                            */
 /* ------------------------------------------------------------------ */
 const faqs = [
-  { q: "What is healthcare platform architecture?", a: "It is the system design that connects healthcare data, applications, and workflows into a unified platform." },
-  { q: "Why is modular architecture important?", a: "It allows systems to scale and evolve without disrupting existing functionality." },
-  { q: "How does AI fit into platform architecture?", a: "AI analyzes data, generates insights, and automates processes across the system." },
+  { q: "What is healthcare platform architecture?", a: "Healthcare platform architecture is the underlying system design that connects data, communication, workflows, and applications into a unified structure — enabling scalability, interoperability, and real-time processing across healthcare systems." },
+  { q: "Why is modular architecture important in healthcare software?", a: "Modular architecture allows each component of the platform to be developed, improved, and scaled independently — without disrupting existing functionality. It means the platform can grow with a practice's needs over time." },
+  { q: "How does AI fit into the platform architecture?", a: "AI operates as a dedicated layer within the Borna platform — the Borna Core. It continuously processes communication data, performs sentiment analysis, generates insights, and triggers automated workflows across every connected module." },
+  { q: "How does Borna integrate with existing healthcare systems?", a: "Borna integrates with PMS, EHR, marketing platforms, and payment systems through its integration layer — enabling full data flow from external systems into the Borna platform without requiring practices to replace their existing tools." },
+  { q: "Is Borna's architecture secure?", a: "Borna is designed with secure data handling practices, access control mechanisms, and compliance considerations appropriate for healthcare environments — including role-based access and structured data boundaries." },
 ];
 
 const FAQSection = () => (
@@ -517,6 +519,13 @@ const ArchitecturePage = () => {
     headline: "Healthcare AI Platform Architecture",
     description: "Overview of Borna AI system architecture, data flow, and integrations.",
   };
+  const schemaSoftware = {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    name: "Borna AI Platform",
+    applicationCategory: "HealthApplication",
+    description: "Modular healthcare platform with AI-driven architecture.",
+  };
   const schemaFAQ = {
     "@context": "https://schema.org",
     "@type": "FAQPage",
@@ -525,6 +534,15 @@ const ArchitecturePage = () => {
       name: f.q,
       acceptedAnswer: { "@type": "Answer", text: f.a },
     })),
+  };
+  const schemaBreadcrumb = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Home", item: "https://borna.ai" },
+      { "@type": "ListItem", position: 2, name: "Platform", item: "https://borna.ai/platform" },
+      { "@type": "ListItem", position: 3, name: "Architecture", item: "https://borna.ai/platform/architecture" },
+    ],
   };
 
   return (
@@ -535,8 +553,21 @@ const ArchitecturePage = () => {
         <link rel="canonical" href="https://borna.ai/platform/architecture" />
         <script type="application/ld+json">{JSON.stringify(schemaWebPage)}</script>
         <script type="application/ld+json">{JSON.stringify(schemaTechArticle)}</script>
+        <script type="application/ld+json">{JSON.stringify(schemaSoftware)}</script>
         <script type="application/ld+json">{JSON.stringify(schemaFAQ)}</script>
+        <script type="application/ld+json">{JSON.stringify(schemaBreadcrumb)}</script>
       </Helmet>
+
+      {/* Breadcrumb */}
+      <div className="container mx-auto px-4 md:px-6 pt-24 pb-0">
+        <nav aria-label="breadcrumb" className="text-sm text-muted-foreground">
+          <Link to="/" className="hover:text-foreground transition-colors">Home</Link>
+          <span className="mx-2 opacity-50">/</span>
+          <Link to="/platform" className="hover:text-foreground transition-colors">Platform</Link>
+          <span className="mx-2 opacity-50">/</span>
+          <span className="text-primary font-medium">Architecture</span>
+        </nav>
+      </div>
 
       <HeroSection />
       <DefinitionSection />
