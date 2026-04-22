@@ -334,9 +334,9 @@ const PatientAcquisitionPage = () => (
       <div className="container mx-auto px-4 md:px-6 relative z-10 text-center">
         <h2 className="text-2xl md:text-4xl font-bold text-foreground mb-4">Get more patients with a smarter system.</h2>
         <p className="text-muted-foreground max-w-xl mx-auto mb-8">Borna AI helps healthcare practices capture, convert, and grow their patient base — through a unified system that connects every step from first contact to confirmed appointment.</p>
-        <div className="flex flex-wrap items-center justify-center gap-4">
-          <Link to="/demo" className="gradient-btn px-8 py-3.5">Request Demo</Link>
-          <Link to="/platform" className="ghost-btn px-8 py-3.5">Explore Platform →</Link>
+        <div className="flex flex-row items-center justify-center gap-2 sm:gap-4">
+          <Link to="/demo" className="gradient-btn whitespace-nowrap">Request Demo</Link>
+          <Link to="/platform" className="ghost-btn whitespace-nowrap">Explore Platform →</Link>
         </div>
         <div className="relative w-full max-w-lg mx-auto h-40 mt-8">
           <div className="absolute top-0 left-1/2 -translate-x-1/2 w-3/4 h-[2px] bg-gradient-to-r from-transparent via-primary to-transparent" />
