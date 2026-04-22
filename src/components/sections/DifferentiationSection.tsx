@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { Blocks, BrainCircuit, Stethoscope } from "lucide-react";
+import SpotlightCard from "@/components/ui/spotlight-card";
 
 const differentiators = [
   { icon: Blocks, title: "Modular by design", body: "Start with Borna Care today. Add communications, CRM, analytics, and AI automation as your clinic grows — without switching platforms." },
@@ -7,23 +8,12 @@ const differentiators = [
   { icon: Stethoscope, title: "Built for real clinics", body: "Designed around how dental and medical practices actually operate — not generic software assumptions adapted for healthcare." },
 ];
 
-const cardStyle: React.CSSProperties = {
-  background: 'rgba(255,255,255,0.04)',
-  border: '0.5px solid rgba(255,255,255,0.08)',
-  borderRadius: '14px',
-  padding: '28px',
-};
-
 const DifferentiationSection = () => (
   <section className="py-10 md:py-16">
     <div className="container mx-auto px-4 md:px-6">
       <div className="text-center mb-16">
-        <span className="section-eyebrow">
-          WHY BORNA
-        </span>
-        <h2 className="section-title mt-4">
-          Why healthcare practices struggle with fragmented systems
-        </h2>
+        <span className="section-eyebrow">WHY BORNA</span>
+        <h2 className="section-title mt-4">Why healthcare practices struggle with fragmented systems</h2>
         <p className="mt-4 mx-auto max-w-2xl" style={{ fontSize: '15px', color: 'rgba(255,255,255,0.45)' }}>
           Most practices rely on multiple disconnected tools: patient communication software, healthcare CRM systems, scheduling platforms, and analytics dashboards.
         </p>
@@ -41,14 +31,20 @@ const DifferentiationSection = () => (
               initial={{ opacity: 0, y: 16 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.3 }}
-              transition={{ delay: i * 0.08, duration: 0.5 }}
-              style={cardStyle}
+              transition={{ delay: i * 0.1, duration: 0.5 }}
             >
-              <div className="w-10 h-10 rounded-lg flex items-center justify-center mb-4" style={{ backgroundColor: 'rgba(255,255,255,0.06)' }}>
-                <Icon className="w-5 h-5" style={{ color: 'rgba(255,255,255,0.5)' }} />
-              </div>
-              <h3 className="text-base font-medium mb-2" style={{ color: 'rgba(255,255,255,0.9)' }}>{item.title}</h3>
-              <p className="text-sm leading-relaxed" style={{ color: 'rgba(255,255,255,0.45)' }}>{item.body}</p>
+              <SpotlightCard className="rounded-[14px] h-full" style={{
+                background: 'rgba(255,255,255,0.04)',
+                border: '0.5px solid rgba(255,255,255,0.08)',
+              }}>
+                <div className="p-7">
+                  <div className="w-10 h-10 rounded-lg flex items-center justify-center mb-4" style={{ backgroundColor: 'rgba(255,255,255,0.06)' }}>
+                    <Icon className="w-5 h-5" style={{ color: 'rgba(255,255,255,0.5)' }} />
+                  </div>
+                  <h3 className="text-base font-medium mb-2" style={{ color: 'rgba(255,255,255,0.9)' }}>{item.title}</h3>
+                  <p className="text-sm leading-relaxed" style={{ color: 'rgba(255,255,255,0.45)' }}>{item.body}</p>
+                </div>
+              </SpotlightCard>
             </motion.div>
           );
         })}
