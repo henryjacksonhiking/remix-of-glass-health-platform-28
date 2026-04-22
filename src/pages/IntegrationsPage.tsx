@@ -369,7 +369,7 @@ const IntegrationsPage = () => {
               ))}
             </div>
           </motion.div>
-          <div className="hidden md:flex absolute left-1/2 -translate-x-1/2 z-10">
+          <div className="flex items-center justify-center my-4 md:hidden">
             <ArrowRight className="w-6 h-6 text-primary" />
           </div>
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} custom={1} variants={fadeUp}
@@ -611,10 +611,10 @@ const IntegrationsPage = () => {
             <p className="text-muted-foreground text-base md:text-lg leading-relaxed max-w-xl mx-auto mb-8">
               Borna AI brings your practice tools together into one unified platform — so data flows freely, teams work efficiently, and insights are always within reach.
             </p>
-            <div className="flex flex-row justify-center gap-3">
+            <div className="cta-row">
               <Link to="/demo" className="gradient-btn text-sm whitespace-nowrap px-4 sm:px-8 py-2.5 sm:py-3.5">Request Demo</Link>
-              <Link to="/contact" className="text-sm font-medium rounded-lg px-4 sm:px-8 py-2.5 sm:py-3.5 border border-glass-border text-muted-foreground hover:text-foreground hover:border-white/30 transition-all whitespace-nowrap">
-                Contact Integrations Team
+              <Link to="/contact" className="ghost-btn text-sm whitespace-nowrap px-4 sm:px-8 py-2.5 sm:py-3.5">
+                Contact Team
               </Link>
             </div>
           </motion.div>
