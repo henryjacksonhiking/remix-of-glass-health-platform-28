@@ -4,9 +4,10 @@ import { cn } from "@/lib/utils";
 interface SpotlightCardProps {
   children: React.ReactNode;
   className?: string;
+  style?: React.CSSProperties;
 }
 
-const SpotlightCard = ({ children, className }: SpotlightCardProps) => {
+const SpotlightCard = ({ children, className, style }: SpotlightCardProps) => {
   const ref = useRef<HTMLDivElement>(null);
   const [pos, setPos] = useState({ x: 0, y: 0 });
   const [opacity, setOpacity] = useState(0);
