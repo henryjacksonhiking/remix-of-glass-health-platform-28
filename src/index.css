@@ -114,7 +114,19 @@
     .gradient-btn,
     .ghost-btn {
       @apply text-sm px-4 py-2.5;
+      min-width: 0;
+      flex: 1 1 0%;
+      max-width: 180px;
+      text-align: center;
     }
+  }
+
+  /* CTA row: always horizontal, equal width on mobile */
+  .cta-row {
+    @apply flex flex-row items-center justify-center gap-2 sm:gap-3;
+  }
+  .cta-row > * {
+    @apply whitespace-nowrap;
   }
 
   .gradient-btn:hover {
@@ -177,6 +189,10 @@
   max-width: 100vw;
 }
 
+html, body, #root {
+  overflow-x: hidden;
+}
+
 img, svg, video, canvas {
   max-width: 100%;
   height: auto;
@@ -185,8 +201,14 @@ img, svg, video, canvas {
 /* Reduce section padding on mobile */
 @media (max-width: 639px) {
   section {
-    padding-top: clamp(2rem, 5vw, 3rem);
-    padding-bottom: clamp(2rem, 5vw, 3rem);
+    padding-top: clamp(1.5rem, 4vw, 2.5rem);
+    padding-bottom: clamp(1.5rem, 4vw, 2.5rem);
+  }
+  
+  /* Tighten breadcrumb-to-hero gap */
+  .container + section,
+  nav[aria-label="breadcrumb"] + section {
+    padding-top: 1rem !important;
   }
 }
 
