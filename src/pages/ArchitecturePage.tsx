@@ -58,7 +58,7 @@ const HeroSection = () => {
         <motion.p variants={fadeUp} initial="hidden" animate="visible" transition={{ delay: 0.15 }} className="body-text mx-auto max-w-2xl mb-8">
           Seamless data flow, real-time insights, and intelligent automation across the entire patient lifecycle.
         </motion.p>
-        <motion.div variants={fadeUp} initial="hidden" animate="visible" transition={{ delay: 0.2 }} className="flex flex-row items-center justify-center gap-3">
+        <motion.div variants={fadeUp} initial="hidden" animate="visible" transition={{ delay: 0.2 }} className="cta-row">
           <button onClick={() => navigate("/platform")} className="gradient-btn text-sm sm:text-base px-5 sm:px-8 py-2.5 sm:py-3.5 whitespace-nowrap">Explore Platform</button>
           <button onClick={() => navigate("/roadmap")} className="ghost-btn text-sm sm:text-base px-5 sm:px-8 py-2.5 sm:py-3.5 whitespace-nowrap">View Roadmap</button>
         </motion.div>
@@ -534,7 +534,7 @@ const FinalCTA = () => {
           Borna AI is designed with a future-ready architecture to support healthcare innovation.
         </motion.p>
         <motion.div variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }} transition={{ delay: 0.15 }}
-          className="flex flex-row items-center justify-center gap-3">
+          className="cta-row">
           <button onClick={() => navigate("/demo")} className="gradient-btn text-sm sm:text-base px-5 sm:px-8 py-2.5 sm:py-3.5 whitespace-nowrap">Request Demo</button>
           <button onClick={() => navigate("/contact")} className="ghost-btn text-sm sm:text-base px-5 sm:px-8 py-2.5 sm:py-3.5 whitespace-nowrap">Contact Us</button>
         </motion.div>

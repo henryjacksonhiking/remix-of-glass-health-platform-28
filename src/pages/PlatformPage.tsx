@@ -1159,7 +1159,7 @@ const PlatformPage = () => (
         <p className="body-text mx-auto max-w-xl mb-8">
           Borna AI helps practices streamline operations, improve patient engagement, and grow sustainably — starting with a single product and scaling into a complete AI-powered system.
         </p>
-        <div className="flex flex-row items-center justify-center gap-2 sm:gap-4">
+        <div className="cta-row">
           <Link to="/demo" className="gradient-btn text-sm sm:text-base px-4 sm:px-8 py-2.5 sm:py-3.5 whitespace-nowrap">Book a demo</Link>
           <Link to="/contact" className="ghost-btn text-sm sm:text-base px-4 sm:px-8 py-2.5 sm:py-3.5 whitespace-nowrap">Talk to sales</Link>
         </div>
