@@ -110,6 +110,13 @@
     @apply text-primary-foreground font-medium rounded-lg px-6 py-3 transition-all duration-300;
   }
 
+  @media (max-width: 639px) {
+    .gradient-btn,
+    .ghost-btn {
+      @apply text-sm px-4 py-2.5;
+    }
+  }
+
   .gradient-btn:hover {
     box-shadow: 0 0 24px hsla(170, 100%, 43%, 0.3);
     transform: translateY(-1px);
@@ -157,6 +164,29 @@
   .body-text {
     @apply text-base md:text-[17px] text-muted-foreground leading-relaxed;
     max-width: 65ch;
+  }
+
+  /* Global mobile spacing reduction for breadcrumb → hero gap */
+  .breadcrumb-compact + section {
+    @apply pt-6 md:pt-16;
+  }
+}
+
+/* Global overflow guard */
+*, *::before, *::after {
+  max-width: 100vw;
+}
+
+img, svg, video, canvas {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Reduce section padding on mobile */
+@media (max-width: 639px) {
+  section {
+    padding-top: clamp(2rem, 5vw, 3rem);
+    padding-bottom: clamp(2rem, 5vw, 3rem);
   }
 }
 
