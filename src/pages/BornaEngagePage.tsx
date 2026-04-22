@@ -16,7 +16,7 @@ const lifecycleStages = [
 ];
 
 const capabilities = [
-  { icon: Funnel, title: "Patient pipeline", desc: "Track every lead from first inquiry through conversion. Visual pipeline with drag-and-drop stage management." },
+  { icon: Filter, title: "Patient pipeline", desc: "Track every lead from first inquiry through conversion. Visual pipeline with drag-and-drop stage management." },
   { icon: Bell, title: "Automated follow-ups", desc: "Triggered messages for recalls, no-shows, check-ins, and reactivation — running on autopilot." },
   { icon: Mail, title: "SMS & email campaigns", desc: "Targeted campaigns with patient segmentation, tagging, and performance tracking." },
   { icon: Share2, title: "Referral tracking", desc: "Track and reward patient referral sources. Know which channels bring the highest-value patients." },
