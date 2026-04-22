@@ -1,7 +1,7 @@
 import { Helmet } from "react-helmet-async";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import { Users, Bell, Mail, Share2, Star, Route, ArrowRight, ChevronDown, Funnel, Bot } from "lucide-react";
+import { Users, Bell, Mail, Share2, Star, Route, ArrowRight, ChevronDown, Filter, Bot } from "lucide-react";
 import PageWrapper from "@/components/layout/PageWrapper";
 import { SparklesCore } from "@/components/ui/sparkles-core";
 import { useState } from "react";
