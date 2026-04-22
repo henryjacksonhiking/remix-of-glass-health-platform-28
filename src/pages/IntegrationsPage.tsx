@@ -6,7 +6,7 @@ import {
   CalendarDays, FileHeart, MessageSquare, CreditCard, BarChart3,
   Plug, RefreshCw, Database, Sparkles, ArrowRight, Shield, KeyRound,
   CheckCircle2, Network, Layers, Zap, Eye, Brain, Link2, Activity,
-  Code, Users, ChevronDown, ChevronUp
+  Code, Users, TrendingUp, Lock as LockIcon, ChevronDown, ChevronUp
 } from "lucide-react";
 import PageWrapper from "@/components/layout/PageWrapper";
 import { cn } from "@/lib/utils";
@@ -522,7 +522,7 @@ const IntegrationsPage = () => {
             <rect x="170" y="15" width="60" height="30" rx="6" fill="hsl(170 100% 43% / 0.06)" stroke="hsl(170 100% 43% / 0.25)" strokeWidth="1">
               <animate attributeName="opacity" values="0.6;1;0.6" dur="3s" repeatCount="indefinite" />
             </rect>
-            <Lock x="192" y="22" className="text-primary" width="16" height="16" />
+            <text x="200" y="34" textAnchor="middle" fill="hsl(170 100% 43%)" fontSize="10">🔒</text>
             <line x1="230" y1="30" x2="340" y2="30" stroke="hsl(170 100% 43% / 0.3)" strokeWidth="1" />
             <text x="370" y="35" fill="hsl(170 100% 43%)" fontSize="9" textAnchor="middle">Borna</text>
           </svg>
