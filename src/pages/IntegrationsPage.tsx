@@ -105,8 +105,8 @@ const HubSpokeDiagram = () => {
 const BrokenNetwork = () => {
   const nodes = [
     { label: "PMS", x: 80, y: 55 }, { label: "EHR", x: 230, y: 45 },
-    { label: "Billing", x: 320, y: 115 }, { label: "Comms", x: 70, y: 160 },
-    { label: "Marketing", x: 200, y: 175 }, { label: "Analytics", x: 310, y: 190 },
+    { label: "Billing", x: 320, y: 100 }, { label: "Comms", x: 70, y: 160 },
+    { label: "Marketing", x: 200, y: 175 }, { label: "Analytics", x: 310, y: 165 },
   ];
   const brokenLinks: [number, number][] = [
     [0, 1], [1, 2], [3, 4], [4, 5], [0, 3]
@@ -114,7 +114,8 @@ const BrokenNetwork = () => {
   return (
     <svg viewBox="0 0 400 240" className="w-full max-w-lg mx-auto" aria-hidden="true">
       <defs>
-        <filter id="broken-glow"><feGaussianBlur stdDeviation="3" result="blur" /><feMerge><feMergeNode in="blur" /><feMergeNode in="SourceGraphic" /></feMerge></filter>
+        <filter id="broken-glow"><feGaussianBlur stdDeviation="4" result="blur" /><feMerge><feMergeNode in="blur" /><feMergeNode in="SourceGraphic" /></feMerge></filter>
+        <radialGradient id="x-pulse-grad"><stop offset="0%" stopColor="hsl(0 70% 55%)" stopOpacity="0.35" /><stop offset="100%" stopColor="hsl(0 70% 55%)" stopOpacity="0" /></radialGradient>
       </defs>
       {brokenLinks.map(([a, b], i) => {
         const mx = (nodes[a].x + nodes[b].x) / 2;
@@ -122,15 +123,20 @@ const BrokenNetwork = () => {
         return (
           <g key={i}>
             <line x1={nodes[a].x} y1={nodes[a].y} x2={mx - 8} y2={my - 4}
-              stroke="hsl(0 0% 45% / 0.35)" strokeWidth="1.2" strokeDasharray="5 4">
+              stroke="hsl(0 0% 55% / 0.5)" strokeWidth="1.5" strokeDasharray="5 4">
               <animate attributeName="stroke-dashoffset" from="0" to="9" dur="3s" repeatCount="indefinite" />
             </line>
             <line x1={mx + 8} y1={my + 4} x2={nodes[b].x} y2={nodes[b].y}
-              stroke="hsl(0 0% 45% / 0.35)" strokeWidth="1.2" strokeDasharray="5 4">
+              stroke="hsl(0 0% 55% / 0.5)" strokeWidth="1.5" strokeDasharray="5 4">
               <animate attributeName="stroke-dashoffset" from="0" to="9" dur="3s" repeatCount="indefinite" />
             </line>
+            {/* Cross with pulse glow */}
             <g filter="url(#broken-glow)">
-              <text x={mx} y={my + 5} textAnchor="middle" fill="hsl(0 55% 55%)" fontSize="16" fontWeight="bold">✕</text>
+              <circle cx={mx} cy={my} r="12" fill="url(#x-pulse-grad)">
+                <animate attributeName="r" values="10;15;10" dur="2s" repeatCount="indefinite" />
+                <animate attributeName="opacity" values="0.6;1;0.6" dur="2s" repeatCount="indefinite" />
+              </circle>
+              <text x={mx} y={my + 5} textAnchor="middle" fill="hsl(0 65% 60%)" fontSize="16" fontWeight="bold">✕</text>
             </g>
           </g>
         );
