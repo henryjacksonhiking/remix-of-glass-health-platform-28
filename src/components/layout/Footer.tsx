@@ -24,10 +24,18 @@ const Footer = () => {
       links: [
         { label: "Overview", href: "/platform" },
         { label: "Ecosystem", href: "/ecosystem" },
-        { label: "Industries", href: "/industries" },
         { label: "Solutions", href: "/solutions" },
         { label: "Pricing", href: "/pricing" },
         { label: "Roadmap", href: "/roadmap" },
+      ],
+    },
+    {
+      title: "Industries",
+      links: [
+        { label: "Dental Practices", href: "/industries/dental" },
+        { label: "Chiropractic Clinics", href: "/industries/chiropractic" },
+        { label: "Medical Practices", href: "/industries/medical" },
+        { label: "DSO / MSO Groups", href: "/industries/dso-mso" },
       ],
     },
     {
