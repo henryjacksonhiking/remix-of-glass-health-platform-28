@@ -9,9 +9,11 @@ import { cn } from "@/lib/utils";
 const Navbar = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [productsOpen, setProductsOpen] = useState(false);
+  const [platformOpen, setPlatformOpen] = useState(false);
   const [resourcesOpen, setResourcesOpen] = useState(false);
   const location = useLocation();
   const isProductActive = location.pathname.startsWith("/products");
+  const isPlatformActive = location.pathname.startsWith("/platform");
   const isResourcesActive = location.pathname.startsWith("/resources") || location.pathname.startsWith("/roadmap");
 
   const navLinkClass = ({ isActive }: { isActive: boolean }) =>
@@ -94,8 +96,60 @@ const Navbar = () => {
               )}
             </AnimatePresence>
           </div>
-          <NavLink to="/platform" className={navLinkClass}>Platform</NavLink>
-          <NavLink to="/ecosystem" className={navLinkClass}>Ecosystem</NavLink>
+          <div
+            className="relative"
+            onMouseEnter={() => setPlatformOpen(true)}
+            onMouseLeave={() => setPlatformOpen(false)}
+          >
+            <Link
+              to="/platform"
+              className={cn(
+                "relative flex items-center gap-1 text-[13px] lg:text-sm transition-all duration-300 whitespace-nowrap py-1 px-2 rounded-md",
+                isPlatformActive ? "text-foreground font-medium nav-spotlight" : "text-muted-foreground hover:text-foreground"
+              )}
+            >
+              Platform <ChevronDown className="w-3.5 h-3.5" />
+            </Link>
+            <AnimatePresence>
+              {platformOpen && (
+                <motion.div
+                  initial={{ opacity: 0, y: 8 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: 8 }}
+                  transition={{ duration: 0.2 }}
+                  className="absolute top-full left-0 mt-2 w-56 p-2 rounded-xl"
+                  style={{
+                    background: 'rgba(10, 15, 40, 0.97)',
+                    backdropFilter: 'blur(12px)',
+                    border: '1px solid rgba(255, 255, 255, 0.12)',
+                    boxShadow: '0 8px 32px rgba(0, 0, 0, 0.4)',
+                  }}
+                >
+                  {[
+                    { to: "/platform", label: "Platform Overview" },
+                    { to: "/platform/architecture", label: "Architecture" },
+                  ].map((item) => (
+                    <Link
+                      key={item.to}
+                      to={item.to}
+                      className="block px-3 py-2.5 rounded-lg text-sm transition-all duration-150"
+                      style={{ color: 'rgba(255, 255, 255, 0.85)' }}
+                      onMouseEnter={(e) => {
+                        e.currentTarget.style.background = 'rgba(255, 255, 255, 0.08)';
+                        e.currentTarget.style.color = '#00DEC4';
+                      }}
+                      onMouseLeave={(e) => {
+                        e.currentTarget.style.background = 'transparent';
+                        e.currentTarget.style.color = 'rgba(255, 255, 255, 0.85)';
+                      }}
+                    >
+                      {item.label}
+                    </Link>
+                  ))}
+                </motion.div>
+              )}
+            </AnimatePresence>
+          </div>
           <NavLink to="/solutions" className={navLinkClass}>Solutions</NavLink>
           <NavLink to="/pricing" className={navLinkClass}>Pricing</NavLink>
           <div
