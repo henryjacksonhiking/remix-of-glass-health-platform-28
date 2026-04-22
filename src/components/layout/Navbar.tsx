@@ -25,6 +25,7 @@ const Navbar = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [productsOpen, setProductsOpen] = useState(false);
   const [platformOpen, setPlatformOpen] = useState(false);
+  const [solutionsOpen, setSolutionsOpen] = useState(false);
   const [ecosystemOpen, setEcosystemOpen] = useState(false);
   const [resourcesOpen, setResourcesOpen] = useState(false);
   const [careSubOpen, setCareSubOpen] = useState(false);
@@ -33,6 +34,7 @@ const Navbar = () => {
   const isProductActive = location.pathname.startsWith("/products");
   const isPlatformActive = location.pathname.startsWith("/platform");
   const isEcosystemActive = location.pathname.startsWith("/ecosystem");
+  const isSolutionsActive = location.pathname.startsWith("/solutions");
   const isResourcesActive = location.pathname.startsWith("/resources") || location.pathname.startsWith("/roadmap");
 
   const navLinkClass = ({ isActive }: { isActive: boolean }) =>
@@ -260,7 +262,54 @@ const Navbar = () => {
             </AnimatePresence>
           </div>
 
-          <NavLink to="/solutions" className={navLinkClass}>Solutions</NavLink>
+          {/* Solutions dropdown */}
+          <div
+            className="relative"
+            onMouseEnter={() => setSolutionsOpen(true)}
+            onMouseLeave={() => setSolutionsOpen(false)}
+          >
+            <Link
+              to="/solutions"
+              className={cn(
+                "relative flex items-center gap-1 text-[13px] lg:text-sm transition-all duration-300 whitespace-nowrap py-1 px-2 rounded-md",
+                isSolutionsActive ? "text-foreground font-medium nav-spotlight" : "text-muted-foreground hover:text-foreground"
+              )}
+            >
+              Solutions <ChevronDown className="w-3.5 h-3.5" />
+            </Link>
+            <AnimatePresence>
+              {solutionsOpen && (
+                <motion.div
+                  initial={{ opacity: 0, y: 8 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: 8 }}
+                  transition={{ duration: 0.2 }}
+                  className="absolute top-full left-0 mt-2 w-64 p-2 rounded-xl"
+                  style={dropdownStyle}
+                >
+                  {[
+                    { to: "/solutions/patient-acquisition", label: "Patient Acquisition", sub: "Attract & convert new patients at scale" },
+                    { to: "/solutions/patient-retention", label: "Patient Retention", sub: "Keep patients engaged & returning" },
+                    { to: "/solutions/practice-automation", label: "Practice Automation", sub: "Eliminate manual tasks & streamline ops" },
+                    { to: "/solutions/revenue-optimization", label: "Revenue Optimization", sub: "Maximize revenue per patient visit" },
+                    { to: "/solutions/multi-location", label: "Multi-location Management", sub: "Centralized control across all locations" },
+                  ].map((item) => (
+                    <Link
+                      key={item.to}
+                      to={item.to}
+                      className="block px-3 py-2.5 rounded-lg text-sm transition-all duration-150"
+                      style={{ color: 'rgba(255, 255, 255, 0.85)' }}
+                      onMouseEnter={(e) => handleLinkHover(e, true)}
+                      onMouseLeave={(e) => handleLinkHover(e, false)}
+                    >
+                      <div className="font-medium">{item.label}</div>
+                      <div className="text-xs mt-0.5" style={{ color: 'rgba(255,255,255,0.5)' }}>{item.sub}</div>
+                    </Link>
+                  ))}
+                </motion.div>
+              )}
+            </AnimatePresence>
+          </div>
           <NavLink to="/pricing" className={navLinkClass}>Pricing</NavLink>
 
           {/* Resources dropdown */}
@@ -420,7 +469,15 @@ const Navbar = () => {
                 <Link to="/ecosystem/ai-intelligence" onClick={() => setMobileOpen(false)} className="block px-3 py-2 text-sm text-foreground">AI Intelligence Layer</Link>
                 <Link to="/ecosystem/dual-experience" onClick={() => setMobileOpen(false)} className="block px-3 py-2 text-sm text-foreground">Patient vs Office Experience</Link>
               </div>
-              <Link to="/solutions" onClick={() => setMobileOpen(false)} className="block px-3 py-2 text-sm text-foreground">Solutions</Link>
+              <div className="space-y-1">
+                <p className="text-xs text-muted-foreground uppercase tracking-wider px-3 pb-2 pt-3">Solutions</p>
+                <Link to="/solutions" onClick={() => setMobileOpen(false)} className="block px-3 py-2 text-sm text-foreground">Overview</Link>
+                <Link to="/solutions/patient-acquisition" onClick={() => setMobileOpen(false)} className="block px-3 py-2 text-sm text-foreground">Patient Acquisition</Link>
+                <Link to="/solutions/patient-retention" onClick={() => setMobileOpen(false)} className="block px-3 py-2 text-sm text-foreground">Patient Retention</Link>
+                <Link to="/solutions/practice-automation" onClick={() => setMobileOpen(false)} className="block px-3 py-2 text-sm text-foreground">Practice Automation</Link>
+                <Link to="/solutions/revenue-optimization" onClick={() => setMobileOpen(false)} className="block px-3 py-2 text-sm text-foreground">Revenue Optimization</Link>
+                <Link to="/solutions/multi-location" onClick={() => setMobileOpen(false)} className="block px-3 py-2 text-sm text-foreground">Multi-location Management</Link>
+              </div>
               <Link to="/pricing" onClick={() => setMobileOpen(false)} className="block px-3 py-2 text-sm text-foreground">Pricing</Link>
               <div className="space-y-1">
                 <p className="text-xs text-muted-foreground uppercase tracking-wider px-3 pb-2 pt-3">Resources</p>

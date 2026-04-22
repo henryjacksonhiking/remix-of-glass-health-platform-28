@@ -38,6 +38,15 @@ import CRMLifecyclePage from "./pages/CRMLifecyclePage.tsx";
 import DataIntegrationPage from "./pages/DataIntegrationPage.tsx";
 import AIIntelligencePage from "./pages/AIIntelligencePage.tsx";
 import DualExperiencePage from "./pages/DualExperiencePage.tsx";
+import PatientAcquisitionPage from "./pages/PatientAcquisitionPage.tsx";
+import PatientRetentionPage from "./pages/PatientRetentionPage.tsx";
+import PracticeAutomationPage from "./pages/PracticeAutomationPage.tsx";
+import RevenueOptimizationPage from "./pages/RevenueOptimizationPage.tsx";
+import MultiLocationPage from "./pages/MultiLocationPage.tsx";
+import DentalPracticesPage from "./pages/DentalPracticesPage.tsx";
+import ChiropracticPage from "./pages/ChiropracticPage.tsx";
+import MedicalPracticesPage from "./pages/MedicalPracticesPage.tsx";
+import DsoMsoPage from "./pages/DsoMsoPage.tsx";
 import NotFound from "./pages/NotFound.tsx";
 
 const queryClient = new QueryClient();
@@ -69,6 +78,11 @@ const App = () => (
           <Route path="/ecosystem/ai-intelligence" element={<AIIntelligencePage />} />
           <Route path="/ecosystem/dual-experience" element={<DualExperiencePage />} />
           <Route path="/solutions" element={<SolutionsPage />} />
+          <Route path="/solutions/patient-acquisition" element={<PatientAcquisitionPage />} />
+          <Route path="/solutions/patient-retention" element={<PatientRetentionPage />} />
+          <Route path="/solutions/practice-automation" element={<PracticeAutomationPage />} />
+          <Route path="/solutions/revenue-optimization" element={<RevenueOptimizationPage />} />
+          <Route path="/solutions/multi-location" element={<MultiLocationPage />} />
           <Route path="/pricing" element={<PricingPage />} />
           <Route path="/security" element={<SecurityPage />} />
           <Route path="/resources" element={<ResourcesPage />} />
@@ -83,6 +97,10 @@ const App = () => (
           <Route path="/terms" element={<TermsPage />} />
           <Route path="/sign-up" element={<SignUpPage />} />
           <Route path="/industries" element={<IndustriesPage />} />
+          <Route path="/industries/dental" element={<DentalPracticesPage />} />
+          <Route path="/industries/chiropractic" element={<ChiropracticPage />} />
+          <Route path="/industries/medical" element={<MedicalPracticesPage />} />
+          <Route path="/industries/dso-mso" element={<DsoMsoPage />} />
           <Route path="/investors" element={<InvestorsPage />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
