@@ -219,8 +219,13 @@ const PracticeAutomationPage = () => (
     <SectionDark>
       <motion.div {...fadeUp} className="text-center mb-8"><h2 className="text-2xl md:text-3xl font-bold text-foreground">Key takeaways</h2></motion.div>
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-        {["Borna automates communication, scheduling, lifecycle management, and administrative workflows", "AI-driven automation selects the optimal response for each event and adapts over time", "Manual repetitive tasks are eliminated — freeing staff to focus on patient care", "Automation enables practices to scale capacity without proportionally increasing headcount"].map((t, i) => (
-          <motion.div key={i} {...fadeUp} className="glass-panel rounded-xl p-4 text-center"><Sparkles className="w-5 h-5 text-primary mx-auto mb-2" /><p className="text-xs text-muted-foreground">{t}</p></motion.div>
+        {[
+          { icon: Layers, t: "Borna automates communication, scheduling, lifecycle management, and administrative workflows" },
+          { icon: Target, t: "AI-driven automation selects the optimal response for each event and adapts over time" },
+          { icon: Zap, t: "Manual repetitive tasks are eliminated — freeing staff to focus on patient care" },
+          { icon: LineChart, t: "Automation enables practices to scale capacity without proportionally increasing headcount" },
+        ].map((item, i) => (
+          <motion.div key={i} {...fadeUp} className="glass-panel rounded-xl p-4 text-center"><item.icon className="w-5 h-5 text-primary mx-auto mb-2" /><p className="text-xs text-muted-foreground">{item.t}</p></motion.div>
         ))}
       </div>
     </SectionDark>
