@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { Layers, Cpu, Workflow, Database, Network, Zap, Brain, MessageSquare, Users, BarChart3, Settings, Rocket, RefreshCw, GitBranch, Heart, LineChart, Shield, TrendingUp } from "lucide-react";
 import { BeamsBackground } from "@/components/ui/beams-background";
 import PageWrapper from "@/components/layout/PageWrapper";
+import StandardFAQ from "@/components/sections/StandardFAQ";
 import CTASection from "@/components/sections/CTASection";
 
 const fadeIn = { hidden: { opacity: 0, y: 16 }, visible: (i: number) => ({ opacity: 1, y: 0, transition: { delay: i * 0.1, duration: 0.5 } }) };
@@ -297,22 +298,7 @@ const CompanyPage = () => (
     </section>
 
     {/* FAQ */}
-    <section className="py-12 md:py-20 border-t border-glass-border">
-      <div className="container mx-auto px-4 md:px-6 max-w-3xl">
-        <h2 className="section-headline text-foreground text-center mb-12">Frequently asked questions</h2>
-        <div className="space-y-3">
-          {faqItems.map((item, i) => (
-            <details key={i} className="glass-panel group">
-              <summary className="px-6 py-4 cursor-pointer text-sm font-medium text-foreground flex justify-between items-center">
-                {item.q}
-                <span className="text-primary ml-2 group-open:rotate-45 transition-transform">+</span>
-              </summary>
-              <div className="px-6 pb-4 text-sm text-muted-foreground">{item.a}</div>
-            </details>
-          ))}
-        </div>
-      </div>
-    </section>
+    <StandardFAQ items={faqItems} />
 
     <CTASection />
   </PageWrapper>

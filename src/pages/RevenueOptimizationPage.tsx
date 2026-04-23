@@ -7,6 +7,7 @@ import {
   Percent, Users, Layers,
 } from "lucide-react";
 import PageWrapper from "@/components/layout/PageWrapper";
+import StandardFAQ from "@/components/sections/StandardFAQ";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { SparklesCore } from "@/components/ui/sparkles-core";
 
@@ -212,11 +213,7 @@ const RevenueOptimizationPage = () => (
     </SectionDark>
 
     {/* FAQ */}
-    <SectionDark>
-      <motion.div {...fadeUp} className="max-w-3xl mx-auto"><h2 className="text-2xl md:text-3xl font-bold text-foreground text-center mb-8">Frequently asked questions</h2>
-        <Accordion type="single" collapsible>{faqData.map((f, i) => (<AccordionItem key={i} value={`faq-${i}`}><AccordionTrigger>{f.q}</AccordionTrigger><AccordionContent>{f.a}</AccordionContent></AccordionItem>))}</Accordion>
-      </motion.div>
-    </SectionDark>
+    <StandardFAQ items={faqData} />
 
     {/* CTA */}
     <section className="py-12 md:py-20 relative overflow-hidden">

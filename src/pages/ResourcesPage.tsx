@@ -25,6 +25,7 @@ import {
   ChevronDown,
 } from "lucide-react";
 import PageWrapper from "@/components/layout/PageWrapper";
+import StandardFAQ from "@/components/sections/StandardFAQ";
 
 /* ------------------------------- Hero Visual ------------------------------- */
 
@@ -793,12 +794,7 @@ const ResourcesPage = () => {
       </section>
 
       {/* SECTION 11 — FAQ */}
-      <section className="py-12 md:py-20">
-        <div className="container mx-auto px-4 md:px-6 max-w-3xl">
-          <h2 className="section-headline text-foreground text-center mb-12">Frequently asked questions</h2>
-          <FAQ />
-        </div>
-      </section>
+      <StandardFAQ items={faqs} />
 
       {/* SECTION 12 — FINAL CTA */}
       <section className="py-12 md:py-20 relative overflow-hidden">

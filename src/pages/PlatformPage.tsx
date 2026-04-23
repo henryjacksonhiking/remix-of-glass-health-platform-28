@@ -36,6 +36,7 @@ import {
 } from "@/components/ui/accordion";
 import { BeamsBackground } from "@/components/ui/beams-background";
 import PageWrapper from "@/components/layout/PageWrapper";
+import StandardFAQ from "@/components/sections/StandardFAQ";
 import SpotlightCard from "@/components/ui/spotlight-card";
 
 /* ----------------------------- Data ----------------------------- */
@@ -1118,39 +1119,7 @@ const PlatformPage = () => (
     </section>
 
     {/* ============== 12. FAQ ============== */}
-    <section className="py-24 border-t border-glass-border">
-      <div className="container mx-auto px-4 md:px-6 max-w-3xl text-center mb-12">
-        <span className="section-eyebrow">What people ask</span>
-        <h2 className="section-headline text-foreground mt-4">Frequently asked questions</h2>
-      </div>
-      <div className="container mx-auto px-4 md:px-6 max-w-3xl">
-        <Accordion type="single" collapsible className="space-y-3">
-          {faqs.map((faq, i) => (
-            <motion.div
-              key={i}
-              initial={{ opacity: 0, y: 12 }} whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }} transition={{ delay: i * 0.06, duration: 0.4 }}
-            >
-              <AccordionItem
-                value={`faq-${i}`}
-                className="border-none"
-                style={{ ...cardStyle, borderRadius: "14px", overflow: "hidden" }}
-              >
-                <AccordionTrigger
-                  className="px-6 py-5 text-left text-[15px] font-medium hover:no-underline"
-                  style={{ color: "rgba(255,255,255,0.9)" }}
-                >
-                  {faq.q}
-                </AccordionTrigger>
-                <AccordionContent className="px-6 pb-5 text-sm leading-relaxed" style={{ color: "rgba(255,255,255,0.55)" }}>
-                  {faq.a}
-                </AccordionContent>
-              </AccordionItem>
-            </motion.div>
-          ))}
-        </Accordion>
-      </div>
-    </section>
+    <StandardFAQ items={faqs} />
 
     {/* ============== 13. FINAL CTA ============== */}
     <section className="relative overflow-hidden py-24 border-t border-glass-border">

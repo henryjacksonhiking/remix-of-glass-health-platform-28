@@ -9,6 +9,7 @@ import {
   Code, Users, TrendingUp, Lock as LockIcon, ChevronDown, ChevronUp
 } from "lucide-react";
 import PageWrapper from "@/components/layout/PageWrapper";
+import StandardFAQ from "@/components/sections/StandardFAQ";
 import { cn } from "@/lib/utils";
 import DataStreamVisual from "@/components/ui/data-stream-visual";
 
@@ -571,18 +572,7 @@ const IntegrationsPage = () => {
         </div>
       </SectionWrap>
 
-      <SectionWrap>
-        <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} className="text-center mb-10">
-          <h2 className="text-2xl md:text-3xl font-bold text-foreground">Frequently asked questions</h2>
-        </motion.div>
-        <div className="max-w-2xl mx-auto space-y-3">
-          {faqItems.map((item, i) => (
-            <motion.div key={i} initial="hidden" whileInView="visible" viewport={{ once: true }} custom={i * 0.2} variants={fadeUp}>
-              <FAQItem item={item} />
-            </motion.div>
-          ))}
-        </div>
-      </SectionWrap>
+      <StandardFAQ items={faqItems} />
 
       <section className="relative py-24 md:py-32 overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-t from-primary/5 via-transparent to-transparent" />

@@ -1,10 +1,4 @@
-import { motion } from "framer-motion";
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from "@/components/ui/accordion";
+import StandardFAQ from "./StandardFAQ";
 
 const faqs = [
   {
@@ -29,57 +23,6 @@ const faqs = [
   },
 ];
 
-const FAQSection = () => (
-  <section className="py-10 md:py-16">
-    <div className="container mx-auto px-4 md:px-6">
-      <div className="text-center mb-16">
-        <span className="section-eyebrow">
-          What people ask
-        </span>
-        <h2 className="section-title mt-4">
-          FAQ
-        </h2>
-      </div>
-
-      <div className="max-w-3xl mx-auto">
-        <Accordion type="single" collapsible className="space-y-3">
-          {faqs.map((faq, i) => (
-            <motion.div
-              key={i}
-              initial={{ opacity: 0, y: 12 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: i * 0.06, duration: 0.4 }}
-            >
-              <AccordionItem
-                value={`faq-${i}`}
-                className="border-none"
-                style={{
-                  background: 'rgba(255,255,255,0.04)',
-                  border: '0.5px solid rgba(255,255,255,0.08)',
-                  borderRadius: '14px',
-                  overflow: 'hidden',
-                }}
-              >
-                <AccordionTrigger
-                  className="px-6 py-5 text-left text-[15px] font-medium hover:no-underline"
-                  style={{ color: 'rgba(255,255,255,0.9)' }}
-                >
-                  {faq.q}
-                </AccordionTrigger>
-                <AccordionContent
-                  className="px-6 pb-5 text-sm leading-relaxed"
-                  style={{ color: 'rgba(255,255,255,0.5)' }}
-                >
-                  {faq.a}
-                </AccordionContent>
-              </AccordionItem>
-            </motion.div>
-          ))}
-        </Accordion>
-      </div>
-    </div>
-  </section>
-);
+const FAQSection = () => <StandardFAQ items={faqs} />;
 
 export default FAQSection;

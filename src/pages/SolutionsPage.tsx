@@ -9,6 +9,7 @@ import {
 } from "lucide-react";
 import { BeamsBackground } from "@/components/ui/beams-background";
 import PageWrapper from "@/components/layout/PageWrapper";
+import StandardFAQ from "@/components/sections/StandardFAQ";
 import {
   Accordion, AccordionContent, AccordionItem, AccordionTrigger,
 } from "@/components/ui/accordion";
@@ -1003,44 +1004,7 @@ const faqs = [
   { q: "Do Borna solutions work together or separately?", a: "Together. Every Borna solution shares the same data layer and platform infrastructure — meaning acquisition, retention, communication, automation, and revenue optimization all reinforce each other rather than operating in isolation." },
 ];
 
-const FAQ = () => (
-  <SectionLight id="faq">
-    <div className="text-center mb-12">
-      <h2 className="text-3xl md:text-4xl font-semibold text-foreground tracking-tight">Frequently asked questions</h2>
-    </div>
-    <div className="max-w-3xl mx-auto">
-      <Accordion type="single" collapsible className="space-y-3">
-        {faqs.map((faq, i) => (
-          <motion.div
-            key={i}
-            initial={{ opacity: 0, y: 10 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: i * 0.05, duration: 0.4 }}
-          >
-            <AccordionItem
-              value={`faq-${i}`}
-              className="border-none"
-              style={{
-                background: "rgba(255,255,255,0.04)",
-                border: "0.5px solid rgba(255,255,255,0.08)",
-                borderRadius: "14px",
-                overflow: "hidden",
-              }}
-            >
-              <AccordionTrigger className="px-6 py-5 text-left text-[15px] font-medium hover:no-underline" style={{ color: "rgba(255,255,255,0.9)" }}>
-                {faq.q}
-              </AccordionTrigger>
-              <AccordionContent className="px-6 pb-5 text-sm leading-relaxed" style={{ color: "rgba(255,255,255,0.6)" }}>
-                {faq.a}
-              </AccordionContent>
-            </AccordionItem>
-          </motion.div>
-        ))}
-      </Accordion>
-    </div>
-  </SectionLight>
-);
+const FAQ = () => <StandardFAQ items={faqs} />;
 
 /* ─────────────────────────────────────────────
    SECTION 15 — Final CTA (dark gradient)

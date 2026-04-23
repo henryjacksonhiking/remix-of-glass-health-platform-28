@@ -21,6 +21,7 @@ import {
   CheckCircle2,
 } from "lucide-react";
 import PageWrapper from "@/components/layout/PageWrapper";
+import StandardFAQ from "@/components/sections/StandardFAQ";
 import {
   Accordion,
   AccordionContent,
@@ -1325,28 +1326,7 @@ const RoadmapPage = () => {
       </SectionShell>
 
       {/* Section 12 — FAQ */}
-      <SectionShell>
-        <div className="container mx-auto px-4 md:px-6 max-w-3xl">
-          <div className="text-center mb-10">
-            <Eyebrow>FAQ</Eyebrow>
-            <h2 className="section-headline text-foreground mt-3">
-              Frequently asked questions
-            </h2>
-          </div>
-          <Accordion type="single" collapsible className="w-full">
-            {faqs.map((f, i) => (
-              <AccordionItem key={i} value={`item-${i}`} className="border-glass-border">
-                <AccordionTrigger className="text-left text-base text-foreground hover:no-underline">
-                  {f.q}
-                </AccordionTrigger>
-                <AccordionContent className="text-sm text-muted-foreground leading-relaxed">
-                  {f.a}
-                </AccordionContent>
-              </AccordionItem>
-            ))}
-          </Accordion>
-        </div>
-      </SectionShell>
+      <StandardFAQ items={faqs} eyebrow="FAQ" />
 
       {/* Section 13 — Final CTA */}
       <section className="py-12 md:py-20 relative overflow-hidden">
