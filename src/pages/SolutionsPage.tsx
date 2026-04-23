@@ -731,39 +731,47 @@ const PlatformDiagram = () => {
     { label: "Patient Experience", icon: UserPlus },
   ];
   return (
-    <div className="relative w-full max-w-md mx-auto aspect-square">
+    <div className="relative w-full max-w-md mx-auto aspect-square px-4 sm:px-6">
       <svg viewBox="0 0 400 400" className="absolute inset-0 w-full h-full" preserveAspectRatio="xMidYMid meet">
         <defs>
-          <radialGradient id="sol-platform-hub" cx="40%" cy="35%">
-            <stop offset="0%" stopColor="hsl(var(--primary))" stopOpacity="0.5" />
-            <stop offset="100%" stopColor="hsl(var(--primary))" stopOpacity="0.1" />
+          <radialGradient id="sol-platform-hub" cx="50%" cy="50%">
+            <stop offset="0%" stopColor="hsl(var(--primary))" stopOpacity="0.9" />
+            <stop offset="55%" stopColor="hsl(var(--primary))" stopOpacity="0.25" />
+            <stop offset="100%" stopColor="hsl(var(--primary))" stopOpacity="0" />
           </radialGradient>
         </defs>
         {modules.map((_, i) => {
           const angle = (i / modules.length) * Math.PI * 2 - Math.PI / 2;
-          const x = 200 + Math.cos(angle) * 150;
-          const y = 200 + Math.sin(angle) * 150;
+          const x = 200 + Math.cos(angle) * 130;
+          const y = 200 + Math.sin(angle) * 130;
           return (
-            <line
-              key={i}
-              x1="200" y1="200" x2={x} y2={y}
-              stroke="hsl(var(--primary))" strokeOpacity="0.35" strokeWidth="1"
-              strokeDasharray="3 4"
-            />
+            <g key={i}>
+              <line
+                x1="200" y1="200" x2={x} y2={y}
+                stroke="hsl(var(--primary))" strokeOpacity="0.4" strokeWidth="1"
+                strokeDasharray="3 4"
+              />
+              <circle r="2.5" fill="hsl(var(--primary))" opacity="0.8">
+                <animateMotion dur={`${4 + i * 0.4}s`} repeatCount="indefinite"
+                  path={`M200,200 L${x},${y}`} />
+                <animate attributeName="opacity" values="0;1;0" dur={`${4 + i * 0.4}s`} repeatCount="indefinite" />
+              </circle>
+            </g>
           );
         })}
-        <circle cx="200" cy="200" r="44" fill="url(#sol-platform-hub)" stroke="hsl(var(--primary))" strokeWidth="1.5">
-          <animate attributeName="r" values="44;48;44" dur="3s" repeatCount="indefinite" />
+        <circle cx="200" cy="200" r="60" fill="url(#sol-platform-hub)" />
+        <circle cx="200" cy="200" r="26" fill="hsl(var(--primary) / 0.3)" stroke="hsl(var(--primary))" strokeWidth="1.5">
+          <animate attributeName="r" values="26;30;26" dur="3s" repeatCount="indefinite" />
         </circle>
-        <circle cx="200" cy="200" r="28" fill="hsl(var(--primary) / 0.3)" />
-        <circle cx="200" cy="200" r="12" fill="hsl(var(--primary))" />
-        <text x="200" y="260" textAnchor="middle" className="fill-foreground" fontSize="13" fontWeight="600">Borna</text>
+        <circle cx="200" cy="200" r="11" fill="hsl(var(--primary))" />
+        <text x="200" y="252" textAnchor="middle" className="fill-foreground" fontSize="14" fontWeight="600">Borna</text>
       </svg>
       {modules.map((m, i) => {
         const Icon = m.icon;
         const angle = (i / modules.length) * Math.PI * 2 - Math.PI / 2;
-        const x = 50 + Math.cos(angle) * 37.5;
-        const y = 50 + Math.sin(angle) * 37.5;
+        // Reduced radius from 37.5 to 32.5 to keep labels fully inside container
+        const x = 50 + Math.cos(angle) * 32.5;
+        const y = 50 + Math.sin(angle) * 32.5;
         return (
           <motion.div
             key={m.label}
@@ -771,10 +779,12 @@ const PlatformDiagram = () => {
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
             transition={{ delay: i * 0.1 }}
-            className="absolute -translate-x-1/2 -translate-y-1/2 glass-panel px-2.5 py-1.5 flex items-center gap-1.5"
+            className="absolute -translate-x-1/2 -translate-y-1/2 glass-panel px-2.5 py-1.5 flex items-center gap-1.5 shadow-[0_4px_16px_hsla(170,100%,43%,0.15)]"
             style={{ left: `${x}%`, top: `${y}%` }}
           >
-            <Icon className="w-3 h-3 text-primary" strokeWidth={1.5} />
+            <span className="w-5 h-5 rounded-md flex items-center justify-center bg-gradient-to-br from-primary/35 to-primary/10 ring-1 ring-primary/30">
+              <Icon className="w-3 h-3 text-primary" strokeWidth={1.75} />
+            </span>
             <span className="text-[10px] font-medium text-foreground whitespace-nowrap">{m.label}</span>
           </motion.div>
         );
