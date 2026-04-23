@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { BarChart2, TrendingUp, Activity, UserCheck, FileBarChart, LayoutDashboard, ArrowRight, ChevronDown, Bot, Database } from "lucide-react";
 import PageWrapper from "@/components/layout/PageWrapper";
+import StandardFAQ from "@/components/sections/StandardFAQ";
 import { SparklesCore } from "@/components/ui/sparkles-core";
 import { useState } from "react";
 

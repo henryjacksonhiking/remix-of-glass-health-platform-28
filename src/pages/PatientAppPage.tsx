@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { Smartphone, Calendar, MessageSquare, FileText, CreditCard, RotateCcw, ArrowRight, ChevronDown } from "lucide-react";
 import PageWrapper from "@/components/layout/PageWrapper";
+import StandardFAQ from "@/components/sections/StandardFAQ";
 import { SparklesCore } from "@/components/ui/sparkles-core";
 import { useState } from "react";
 

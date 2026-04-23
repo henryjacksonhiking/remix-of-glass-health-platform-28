@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { Layers, Brain, Heart, TrendingUp, User, Linkedin, Target, Lightbulb, Shield, Network } from "lucide-react";
 import { BeamsBackground } from "@/components/ui/beams-background";
 import PageWrapper from "@/components/layout/PageWrapper";
+import StandardFAQ from "@/components/sections/StandardFAQ";
 import CTASection from "@/components/sections/CTASection";
 
 const fadeIn = { hidden: { opacity: 0, y: 16 }, visible: (i: number) => ({ opacity: 1, y: 0, transition: { delay: i * 0.1, duration: 0.5 } }) };
