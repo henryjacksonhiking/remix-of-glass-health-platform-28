@@ -737,10 +737,10 @@ const PlatformDiagram = () => {
         </defs>
         {modules.map((_, i) => {
           const angle = (i / modules.length) * Math.PI * 2 - Math.PI / 2;
-          // Line stops short of label pill (radius ~108) so it visibly connects into the label center
-          const lineEndR = 108;
+          // Line ends well before the label pill so dotted line is fully visible and doesn't overlap the pill
+          const lineEndR = 88;
           // Start line just outside the central hub glow
-          const lineStartR = 32;
+          const lineStartR = 38;
           const x1 = 200 + Math.cos(angle) * lineStartR;
           const y1 = 200 + Math.sin(angle) * lineStartR;
           const x2 = 200 + Math.cos(angle) * lineEndR;
