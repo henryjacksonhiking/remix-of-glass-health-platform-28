@@ -52,26 +52,32 @@ const PatientRetentionPage = () => (
             </div>
           </motion.div>
           <motion.div {...fadeUp} className="relative flex items-center justify-center" aria-hidden="true">
-            <svg viewBox="0 0 300 300" className="w-64 h-64 md:w-80 md:h-80">
-              <ellipse cx="150" cy="150" rx="110" ry="110" fill="none" className="stroke-primary/30" strokeWidth="1.5" />
-              {[{ a: 270, l: "Visit", icon: "📅" }, { a: 0, l: "Follow-Up", icon: "💬" }, { a: 90, l: "Engagement", icon: "❤️" }, { a: 180, l: "Return", icon: "🔄" }].map((node) => {
+            <svg viewBox="0 0 320 320" className="w-full max-w-sm md:max-w-md mx-auto h-auto" preserveAspectRatio="xMidYMid meet">
+              <defs>
+                <radialGradient id="ret-node-grad" cx="40%" cy="35%">
+                  <stop offset="0%" stopColor="hsl(var(--primary))" stopOpacity="0.3" />
+                  <stop offset="100%" stopColor="hsl(var(--primary))" stopOpacity="0.05" />
+                </radialGradient>
+              </defs>
+              <ellipse cx="160" cy="160" rx="115" ry="115" fill="none" stroke="hsl(var(--primary))" strokeOpacity="0.3" strokeWidth="1.5" strokeDasharray="3 5" />
+              {[{ a: 270, l: "Visit" }, { a: 0, l: "Follow-Up" }, { a: 90, l: "Engagement" }, { a: 180, l: "Return" }].map((node) => {
                 const rad = (node.a * Math.PI) / 180;
-                const x = 150 + 110 * Math.cos(rad);
-                const y = 150 + 110 * Math.sin(rad);
+                const x = 160 + 115 * Math.cos(rad);
+                const y = 160 + 115 * Math.sin(rad);
                 return (
                   <g key={node.l}>
-                    <circle cx={x} cy={y} r="18" className="fill-primary/10 stroke-primary/50" strokeWidth="1" />
-                    <text x={x} y={y + 4} textAnchor="middle" className="fill-foreground" fontSize="8" fontWeight="500">{node.l}</text>
+                    <circle cx={x} cy={y} r="22" fill="url(#ret-node-grad)" stroke="hsl(var(--primary))" strokeOpacity="0.6" strokeWidth="1.25" />
+                    <text x={x} y={y + 4} textAnchor="middle" className="fill-foreground" fontSize="10" fontWeight="500">{node.l}</text>
                   </g>
                 );
               })}
-              <circle r="5" className="fill-primary">
-                <animateMotion dur="5s" repeatCount="indefinite" path="M150,40 A110,110 0 1,1 149.9,40" />
+              <circle r="6" fill="hsl(var(--primary))">
+                <animateMotion dur="6s" repeatCount="indefinite" path="M160,45 A115,115 0 1,1 159.9,45" />
               </circle>
-              <circle r="4" className="fill-primary/70">
-                <animateMotion dur="5s" repeatCount="indefinite" begin="2.5s" path="M150,40 A110,110 0 1,1 149.9,40" />
+              <circle r="5" fill="hsl(var(--primary))" fillOpacity="0.7">
+                <animateMotion dur="6s" repeatCount="indefinite" begin="3s" path="M160,45 A115,115 0 1,1 159.9,45" />
               </circle>
-              <text x="150" y="154" textAnchor="middle" className="fill-muted-foreground" fontSize="7">Always Connected</text>
+              <text x="160" y="164" textAnchor="middle" className="fill-muted-foreground" fontSize="10" fontWeight="500">Always Connected</text>
             </svg>
           </motion.div>
         </div>
