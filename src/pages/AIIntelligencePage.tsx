@@ -110,7 +110,7 @@ const AITransformationHero = () => {
 };
 
 const Section = ({ children, id, className = "" }: { children: React.ReactNode; id?: string; className?: string }) => (
-  <section id={id} className={`py-12 md:py-20 md:py-12 md:py-12 md:py-20 ${className}`}>
+  <section id={id} className={`py-12 md:py-20 ${className}`}>
     <div className="container mx-auto px-4 md:px-6">{children}</div>
   </section>
 );
