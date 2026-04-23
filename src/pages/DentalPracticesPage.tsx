@@ -1,9 +1,10 @@
 import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 import { motion } from "framer-motion";
-import { CalendarCheck, MessageSquare, RefreshCw, ArrowRight, Bot, BarChart3, Sparkles, CheckCircle2, XCircle, Users, TrendingUp, Network, Phone, Filter, Zap, Heart } from "lucide-react";
+import { CalendarCheck, MessageSquare, RefreshCw, ArrowRight, Bot, BarChart3, Sparkles, CheckCircle2, XCircle, Users, TrendingUp, Network, Phone, Filter, Zap, Heart, Workflow, Building2 } from "lucide-react";
 import PageWrapper from "@/components/layout/PageWrapper";
 import StandardFAQ from "@/components/sections/StandardFAQ";
+import KeyTakeaways from "@/components/sections/KeyTakeaways";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { SparklesCore } from "@/components/ui/sparkles-core";
 
@@ -94,7 +95,14 @@ const DentalPracticesPage = () => (
       <p className="text-center text-foreground font-semibold mt-8">More patients. More production. Smoother operations.</p>
     </SectionDark>
 
-    <SectionDark><motion.div {...fadeUp} className="text-center mb-8"><h2 className="text-2xl md:text-3xl font-bold text-foreground">Key takeaways</h2></motion.div><div className="grid grid-cols-2 md:grid-cols-4 gap-4">{["Borna connects acquisition, communication, scheduling, retention, and automation for dental practices", "Automated workflows reduce front desk workload", "AI continuously analyzes patient behavior and practice performance", "From single offices to DSOs, Borna scales without adding complexity"].map((t, i) => (<motion.div key={i} {...fadeUp} className="glass-panel rounded-xl p-4 text-center"><Sparkles className="w-5 h-5 text-primary mx-auto mb-2" /><p className="text-xs text-muted-foreground">{t}</p></motion.div>))}</div></SectionDark>
+    <KeyTakeaways
+      items={[
+        { icon: Network, text: "Borna connects acquisition, communication, scheduling, retention, and automation for dental practices" },
+        { icon: Workflow, text: "Automated workflows reduce front desk workload" },
+        { icon: Bot, text: "AI continuously analyzes patient behavior and practice performance" },
+        { icon: Building2, text: "From single offices to DSOs, Borna scales without adding complexity" },
+      ]}
+    />
 
     <StandardFAQ items={faqData} />
 

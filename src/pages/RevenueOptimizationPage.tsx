@@ -4,10 +4,11 @@ import { motion } from "framer-motion";
 import {
   TrendingUp, DollarSign, BarChart3, ArrowRight, Bot, Target, UserPlus,
   Heart, Zap, CalendarCheck, Sparkles, CheckCircle2, XCircle, Activity,
-  Percent, Users, Layers,
+  Percent, Users, Layers, Wand2, ShieldCheck, LineChart,
 } from "lucide-react";
 import PageWrapper from "@/components/layout/PageWrapper";
 import StandardFAQ from "@/components/sections/StandardFAQ";
+import KeyTakeaways from "@/components/sections/KeyTakeaways";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { SparklesCore } from "@/components/ui/sparkles-core";
 
@@ -192,8 +193,8 @@ const RevenueOptimizationPage = () => (
           { n: 3, title: "Optimize", body: "AI optimizes acquisition, retention, and automation strategies based on analyzed performance" },
           { n: 4, title: "Execute", body: "Optimized workflows execute automatically — follow-ups sent, schedules filled, capacity maximized" },
           { n: 5, title: "Grow", body: "Revenue compounds as the optimized system continuously captures more value" },
-        ].map((step) => (
-          <motion.div key={step.n} {...fadeUp} className="glass-panel rounded-xl p-5 text-center" style={{ opacity: 0.7 + step.n * 0.06 }}>
+        ].map((step, i) => (
+          <motion.div key={step.n} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.2 }} transition={{ duration: 0.5, delay: i * 0.12, ease: "easeOut" }} className="glass-panel rounded-xl p-5 text-center">
             <div className="w-8 h-8 rounded-full bg-primary/20 flex items-center justify-center text-primary text-sm font-bold mx-auto mb-3">{step.n}</div>
             <h3 className="text-sm font-semibold text-foreground mb-2">{step.title}</h3>
             <p className="text-xs text-muted-foreground">{step.body}</p>
@@ -203,14 +204,14 @@ const RevenueOptimizationPage = () => (
     </SectionDark>
 
     {/* Key Takeaways */}
-    <SectionDark>
-      <motion.div {...fadeUp} className="text-center mb-8"><h2 className="text-2xl md:text-3xl font-bold text-foreground">Key takeaways</h2></motion.div>
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-        {["Borna connects patient acquisition, retention, automation, and data into one unified revenue system", "AI continuously identifies revenue gaps and optimizes strategies across all performance dimensions", "Automation prevents revenue loss and increases capacity — allowing practices to grow efficiently", "Full performance tracking connects every practice activity to measurable financial outcomes"].map((t, i) => (
-          <motion.div key={i} {...fadeUp} className="glass-panel rounded-xl p-4 text-center"><Sparkles className="w-5 h-5 text-primary mx-auto mb-2" /><p className="text-xs text-muted-foreground">{t}</p></motion.div>
-        ))}
-      </div>
-    </SectionDark>
+    <KeyTakeaways
+      items={[
+        { icon: DollarSign, text: "Borna connects patient acquisition, retention, automation, and data into one unified revenue system" },
+        { icon: Bot, text: "AI continuously identifies revenue gaps and optimizes strategies across all performance dimensions" },
+        { icon: Wand2, text: "Automation prevents revenue loss and increases capacity — allowing practices to grow efficiently" },
+        { icon: LineChart, text: "Full performance tracking connects every practice activity to measurable financial outcomes" },
+      ]}
+    />
 
     {/* FAQ */}
     <StandardFAQ items={faqData} />

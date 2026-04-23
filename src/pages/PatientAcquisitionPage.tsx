@@ -4,10 +4,11 @@ import { motion } from "framer-motion";
 import {
   Filter, UserPlus, Phone, Globe, MessageSquare, MessageCircle, Mail, Zap, BarChart3,
   CalendarCheck, Target, TrendingUp, ArrowRight, Bot, Search, DollarSign,
-  CheckCircle2, XCircle, Sparkles, Layers, Send,
+  CheckCircle2, XCircle, Sparkles, Layers, Send, Workflow, Database, LineChart, Compass,
 } from "lucide-react";
 import PageWrapper from "@/components/layout/PageWrapper";
 import StandardFAQ from "@/components/sections/StandardFAQ";
+import KeyTakeaways from "@/components/sections/KeyTakeaways";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { SparklesCore } from "@/components/ui/sparkles-core";
 
@@ -315,8 +316,8 @@ const PatientAcquisitionPage = () => (
           { n: 3, title: "Engage", body: "Respond immediately through the lead's preferred channel — automated and personalized" },
           { n: 4, title: "Convert", body: "Guide leads to book — through scheduling prompts, follow-ups, and frictionless booking" },
           { n: 5, title: "Optimize", body: "AI analyzes performance and surfaces improvements — continuously increasing conversion" },
-        ].map((step) => (
-          <motion.div key={step.n} {...fadeUp} className="glass-panel rounded-xl p-5 text-center">
+        ].map((step, i) => (
+          <motion.div key={step.n} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.2 }} transition={{ duration: 0.5, delay: i * 0.12, ease: "easeOut" }} className="glass-panel rounded-xl p-5 text-center">
             <div className="w-8 h-8 rounded-full bg-primary/20 flex items-center justify-center text-primary text-sm font-bold mx-auto mb-3">{step.n}</div>
             <h3 className="text-sm font-semibold text-foreground mb-2">{step.title}</h3>
             <p className="text-xs text-muted-foreground">{step.body}</p>
@@ -326,23 +327,14 @@ const PatientAcquisitionPage = () => (
     </SectionDark>
 
     {/* Key Takeaways */}
-    <SectionDark>
-      <motion.div {...fadeUp} className="text-center mb-8">
-        <h2 className="text-2xl md:text-3xl font-bold text-foreground">Key takeaways</h2>
-      </motion.div>
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-        {[
-          "Borna connects the full patient acquisition journey from first click to confirmed appointment",
-          "Every lead from every channel is captured, tracked, and entered into the system automatically",
-          "AI continuously analyzes and improves conversion performance across the entire funnel",
-          "Full ROI tracking connects marketing spend to real patient growth",
-        ].map((t, i) => (
-          <motion.div key={i} {...fadeUp} className="glass-panel rounded-xl p-4 text-center">
-            <Sparkles className="w-5 h-5 text-primary mx-auto mb-2" /><p className="text-xs text-muted-foreground">{t}</p>
-          </motion.div>
-        ))}
-      </div>
-    </SectionDark>
+    <KeyTakeaways
+      items={[
+        { icon: Compass, text: "Borna connects the full patient acquisition journey from first click to confirmed appointment" },
+        { icon: Database, text: "Every lead from every channel is captured, tracked, and entered into the system automatically" },
+        { icon: Bot, text: "AI continuously analyzes and improves conversion performance across the entire funnel" },
+        { icon: LineChart, text: "Full ROI tracking connects marketing spend to real patient growth" },
+      ]}
+    />
 
     {/* FAQ */}
     <StandardFAQ items={faqData} />

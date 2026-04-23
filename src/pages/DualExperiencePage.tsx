@@ -22,6 +22,7 @@ import {
 } from "lucide-react";
 import PageWrapper from "@/components/layout/PageWrapper";
 import StandardFAQ from "@/components/sections/StandardFAQ";
+import KeyTakeaways from "@/components/sections/KeyTakeaways";
 import {
   Breadcrumb,
   BreadcrumbList,
@@ -427,42 +428,15 @@ const DualExperiencePage = () => {
       </Section>
 
       {/* KEY TAKEAWAYS */}
-      <Section>
-        <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} className="text-center mb-10">
-          <h2 className="text-2xl md:text-3xl font-bold">Key takeaways</h2>
-        </motion.div>
-        <div className="grid md:grid-cols-[1fr_auto_1fr] gap-8 max-w-4xl mx-auto mb-6">
-          <div className="space-y-4">
-            <div className="flex items-start gap-3">
-              <CheckCircle2 className="w-5 h-5 text-primary shrink-0 mt-0.5" />
-              <p className="text-sm font-medium">Patients enjoy seamless digital access to booking, communication, forms, and payments</p>
-            </div>
-            <div className="flex items-start gap-3">
-              <CheckCircle2 className="w-5 h-5 text-primary shrink-0 mt-0.5" />
-              <p className="text-sm font-medium">A branded, consistent experience that reflects the practice's identity</p>
-            </div>
-          </div>
-          <div className="hidden md:flex items-center">
-            <div className="w-px h-full bg-primary/20" />
-          </div>
-          <div className="space-y-4">
-            <div className="flex items-start gap-3">
-              <CheckCircle2 className="w-5 h-5 text-primary shrink-0 mt-0.5" />
-              <p className="text-sm font-medium">Staff gain full visibility and control over scheduling, communication, and workflows</p>
-            </div>
-            <div className="flex items-start gap-3">
-              <CheckCircle2 className="w-5 h-5 text-primary shrink-0 mt-0.5" />
-              <p className="text-sm font-medium">Real-time synchronization ensures office systems always reflect patient activity</p>
-            </div>
-          </div>
-        </div>
-        <div className="flex justify-center">
-          <div className="flex items-start gap-3 max-w-md">
-            <CheckCircle2 className="w-5 h-5 text-primary shrink-0 mt-0.5" />
-            <p className="text-sm font-medium">Both sides operate within one unified system — improving engagement and efficiency for everyone</p>
-          </div>
-        </div>
-      </Section>
+      <KeyTakeaways
+        items={[
+          { icon: Smartphone, text: "Patients enjoy seamless digital access to booking, communication, forms, and payments" },
+          { icon: Star, text: "A branded, consistent experience that reflects the practice's identity" },
+          { icon: Monitor, text: "Staff gain full visibility and control over scheduling, communication, and workflows" },
+          { icon: RefreshCcw, text: "Real-time synchronization ensures office systems always reflect patient activity" },
+        ]}
+        variant="spacious"
+      />
 
       {/* FAQ */}
       <StandardFAQ items={[

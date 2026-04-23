@@ -1,9 +1,10 @@
 import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 import { motion } from "framer-motion";
-import { CalendarCheck, MessageSquare, RefreshCw, ArrowRight, Bot, Sparkles, CheckCircle2, XCircle, Filter, Zap, Heart, Activity } from "lucide-react";
+import { CalendarCheck, MessageSquare, RefreshCw, ArrowRight, Bot, Sparkles, CheckCircle2, XCircle, Filter, Zap, Heart, Activity, Repeat, Radar, Building2 } from "lucide-react";
 import PageWrapper from "@/components/layout/PageWrapper";
 import StandardFAQ from "@/components/sections/StandardFAQ";
+import KeyTakeaways from "@/components/sections/KeyTakeaways";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { SparklesCore } from "@/components/ui/sparkles-core";
 
@@ -84,7 +85,14 @@ const ChiropracticPage = () => (
       </div>
     </SectionDark>
 
-    <SectionDark><motion.div {...fadeUp} className="text-center mb-8"><h2 className="text-2xl md:text-3xl font-bold text-foreground">Key takeaways</h2></motion.div><div className="grid grid-cols-2 md:grid-cols-4 gap-4">{["Borna manages the recurring care cycle for chiropractic clinics", "Automated follow-ups keep patients on schedule", "AI identifies patients at risk of dropping off care plans", "From single clinics to multi-location groups, Borna scales"].map((t, i) => (<motion.div key={i} {...fadeUp} className="glass-panel rounded-xl p-4 text-center"><Sparkles className="w-5 h-5 text-primary mx-auto mb-2" /><p className="text-xs text-muted-foreground">{t}</p></motion.div>))}</div></SectionDark>
+    <KeyTakeaways
+      items={[
+        { icon: Repeat, text: "Borna manages the recurring care cycle for chiropractic clinics" },
+        { icon: CalendarCheck, text: "Automated follow-ups keep patients on schedule" },
+        { icon: Radar, text: "AI identifies patients at risk of dropping off care plans" },
+        { icon: Building2, text: "From single clinics to multi-location groups, Borna scales" },
+      ]}
+    />
 
     <StandardFAQ items={faqData} />
 

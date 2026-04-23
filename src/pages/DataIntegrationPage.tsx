@@ -24,6 +24,7 @@ import {
 } from "lucide-react";
 import PageWrapper from "@/components/layout/PageWrapper";
 import StandardFAQ from "@/components/sections/StandardFAQ";
+import KeyTakeaways from "@/components/sections/KeyTakeaways";
 import {
   Breadcrumb,
   BreadcrumbList,
@@ -471,26 +472,14 @@ const DataIntegrationPage = () => {
       </Section>
 
       {/* KEY TAKEAWAYS */}
-      <Section>
-        <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} className="text-center mb-10">
-          <h2 className="text-2xl md:text-3xl font-bold">Key takeaways</h2>
-        </motion.div>
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-5xl mx-auto">
-          {[
-            "Borna unifies healthcare data from PMS, EHR, communication, marketing, and financial systems",
-            "Real-time data synchronization keeps every connected system accurate and consistent",
-            "Centralized, structured data is the foundation that makes AI and analytics possible",
-            "API-driven architecture enables scalable expansion as the platform and practice grow",
-          ].map((text, i) => (
-            <motion.div key={i} initial="hidden" whileInView="visible" viewport={{ once: true }}
-              variants={{ ...fadeUp, visible: { ...fadeUp.visible, transition: { ...fadeUp.visible.transition, delay: i * 0.08 } } }}
-              className="flex items-start gap-3">
-              <CheckCircle2 className="w-5 h-5 text-primary shrink-0 mt-0.5" />
-              <p className="text-sm font-medium leading-relaxed">{text}</p>
-            </motion.div>
-          ))}
-        </div>
-      </Section>
+      <KeyTakeaways
+        items={[
+          { icon: Network, text: "Borna unifies healthcare data from PMS, EHR, communication, marketing, and financial systems" },
+          { icon: RefreshCcw, text: "Real-time data synchronization keeps every connected system accurate and consistent" },
+          { icon: Brain, text: "Centralized, structured data is the foundation that makes AI and analytics possible" },
+          { icon: Code, text: "API-driven architecture enables scalable expansion as the platform and practice grow" },
+        ]}
+      />
 
       {/* FAQ */}
       <StandardFAQ items={[

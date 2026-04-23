@@ -4,10 +4,11 @@ import { motion } from "framer-motion";
 import {
   Network, BarChart3, ArrowRight, Bot, Target, CheckCircle2, Sparkles,
   Building, Users, TrendingUp, MessageSquare, Shield, Workflow, Settings,
-  Plus, Activity, Layers,
+  Plus, Activity, Layers, Globe2, Eye, Rocket,
 } from "lucide-react";
 import PageWrapper from "@/components/layout/PageWrapper";
 import StandardFAQ from "@/components/sections/StandardFAQ";
+import KeyTakeaways from "@/components/sections/KeyTakeaways";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { SparklesCore } from "@/components/ui/sparkles-core";
 
@@ -206,8 +207,8 @@ const MultiLocationPage = () => (
           { n: 3, title: "Monitor", body: "Real-time visibility into every location's performance" },
           { n: 4, title: "Optimize", body: "AI identifies gaps and opportunities across the network" },
           { n: 5, title: "Scale", body: "New locations added to the existing network immediately" },
-        ].map((step) => (
-          <motion.div key={step.n} {...fadeUp} className="glass-panel rounded-xl p-5 text-center">
+        ].map((step, i) => (
+          <motion.div key={step.n} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.2 }} transition={{ duration: 0.5, delay: i * 0.12, ease: "easeOut" }} className="glass-panel rounded-xl p-5 text-center">
             <div className="w-8 h-8 rounded-full bg-primary/20 flex items-center justify-center text-primary text-sm font-bold mx-auto mb-3">{step.n}</div>
             <h3 className="text-sm font-semibold text-foreground mb-2">{step.title}</h3>
             <p className="text-xs text-muted-foreground">{step.body}</p>
@@ -217,14 +218,14 @@ const MultiLocationPage = () => (
     </SectionDark>
 
     {/* Key Takeaways */}
-    <SectionDark>
-      <motion.div {...fadeUp} className="text-center mb-8"><h2 className="text-2xl md:text-3xl font-bold text-foreground">Key takeaways</h2></motion.div>
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-        {["Borna centralizes management of all locations into one platform", "Full visibility at every level — individual and organizational metrics", "AI identifies gaps and growth opportunities across the entire network", "Scalable architecture — new locations are operational immediately"].map((t, i) => (
-          <motion.div key={i} {...fadeUp} className="glass-panel rounded-xl p-4 text-center"><Sparkles className="w-5 h-5 text-primary mx-auto mb-2" /><p className="text-xs text-muted-foreground">{t}</p></motion.div>
-        ))}
-      </div>
-    </SectionDark>
+    <KeyTakeaways
+      items={[
+        { icon: Globe2, text: "Borna centralizes management of all locations into one platform" },
+        { icon: Eye, text: "Full visibility at every level — individual and organizational metrics" },
+        { icon: Bot, text: "AI identifies gaps and growth opportunities across the entire network" },
+        { icon: Rocket, text: "Scalable architecture — new locations are operational immediately" },
+      ]}
+    />
 
     {/* FAQ */}
     <StandardFAQ items={faqData} />

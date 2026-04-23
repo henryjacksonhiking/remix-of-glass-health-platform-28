@@ -10,6 +10,7 @@ import {
 } from "lucide-react";
 import PageWrapper from "@/components/layout/PageWrapper";
 import StandardFAQ from "@/components/sections/StandardFAQ";
+import KeyTakeaways from "@/components/sections/KeyTakeaways";
 import { cn } from "@/lib/utils";
 
 const fadeUp = {
@@ -654,24 +655,15 @@ const SecurityCompliancePage = () => {
       </SectionWrap>
 
       {/* ── SECTION 14: KEY TAKEAWAYS ── */}
-      <SectionWrap>
-        <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} className="text-center mb-8">
-          <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-8">Key takeaways</h2>
-        </motion.div>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 max-w-5xl mx-auto">
-          {[
-            "Borna is built with security-first architecture across every platform layer",
-            "Data is protected through encryption in transit and at rest, with role-based access control",
-            "All integrations operate through controlled, validated connection boundaries",
-            "The platform is designed to align with HIPAA and healthcare compliance principles",
-          ].map((t, i) => (
-            <motion.div key={i} initial="hidden" whileInView="visible" viewport={{ once: true }} custom={i * 0.3} variants={fadeUp} className="flex items-start gap-3">
-              <CheckCircle2 className="w-5 h-5 text-primary/60 shrink-0 mt-0.5" />
-              <p className="text-foreground text-sm font-medium leading-snug">{t}</p>
-            </motion.div>
-          ))}
-        </div>
-      </SectionWrap>
+      <KeyTakeaways
+        items={[
+          { icon: Shield, text: "Borna is built with security-first architecture across every platform layer" },
+          { icon: Lock, text: "Data is protected through encryption in transit and at rest, with role-based access control" },
+          { icon: Network, text: "All integrations operate through controlled, validated connection boundaries" },
+          { icon: FileText, text: "The platform is designed to align with HIPAA and healthcare compliance principles" },
+        ]}
+        variant="spacious"
+      />
 
       {/* ── SECTION 15: FAQ ── */}
       <StandardFAQ items={faqItems} />

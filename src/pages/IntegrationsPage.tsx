@@ -10,6 +10,7 @@ import {
 } from "lucide-react";
 import PageWrapper from "@/components/layout/PageWrapper";
 import StandardFAQ from "@/components/sections/StandardFAQ";
+import KeyTakeaways from "@/components/sections/KeyTakeaways";
 import { cn } from "@/lib/utils";
 import DataStreamVisual from "@/components/ui/data-stream-visual";
 
@@ -255,11 +256,11 @@ const IntegrationsPage = () => {
     { icon: Brain, title: "Enhance Decision-Making", body: "Unified data enables AI-powered insights — from marketing ROI to patient behavior patterns — that isolated systems could never surface." },
   ];
 
-  const takeaways = [
-    "Borna integrates with PMS, EHR, communication, payment, and marketing systems",
-    "Data flows seamlessly and in real time across all connected platforms",
-    "API-driven architecture enables custom and scalable integrations",
-    "Unified data powers AI insights, automation, and complete patient visibility",
+  const takeawayItems = [
+    { icon: Plug, text: "Borna integrates with PMS, EHR, communication, payment, and marketing systems" },
+    { icon: RefreshCw, text: "Data flows seamlessly and in real time across all connected platforms" },
+    { icon: Code, text: "API-driven architecture enables custom and scalable integrations" },
+    { icon: Brain, text: "Unified data powers AI insights, automation, and complete patient visibility" },
   ];
 
   const jsonLd = [
@@ -558,19 +559,7 @@ const IntegrationsPage = () => {
         </div>
       </SectionWrap>
 
-      <SectionWrap>
-        <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} className="text-center mb-10">
-          <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-8">Key takeaways</h2>
-        </motion.div>
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-5xl mx-auto">
-          {takeaways.map((t, i) => (
-            <motion.div key={i} initial="hidden" whileInView="visible" viewport={{ once: true }} custom={i * 0.3} variants={fadeUp} className="flex items-start gap-3">
-              <CheckCircle2 className="w-5 h-5 text-primary shrink-0 mt-0.5" />
-              <p className="text-foreground text-sm font-medium leading-snug">{t}</p>
-            </motion.div>
-          ))}
-        </div>
-      </SectionWrap>
+      <KeyTakeaways items={takeawayItems} variant="spacious" />
 
       <StandardFAQ items={faqItems} />
 

@@ -5,6 +5,7 @@ import { MessageSquare, Users, Database, Brain, Workflow, BarChart3, Zap, Target
 import { BeamsBackground } from "@/components/ui/beams-background";
 import PageWrapper from "@/components/layout/PageWrapper";
 import StandardFAQ from "@/components/sections/StandardFAQ";
+import KeyTakeaways from "@/components/sections/KeyTakeaways";
 import CTASection from "@/components/sections/CTASection";
 
 const fadeIn = { hidden: { opacity: 0, y: 16 }, visible: (i: number) => ({ opacity: 1, y: 0, transition: { delay: i * 0.1, duration: 0.5 } }) };
@@ -259,24 +260,14 @@ const VisionMissionPage = () => (
     </section>
 
     {/* Key Takeaways */}
-    <section className="py-12 md:py-20 border-t border-glass-border">
-      <div className="container mx-auto px-4 md:px-6">
-        <h2 className="section-headline text-foreground text-center mb-12">Key takeaways</h2>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-5xl mx-auto">
-          {[
-            "Borna AI's vision is to become the unified operating system for healthcare",
-            "The mission focuses on practical, measurable outcomes across four pillars",
-            "The transformation from fragmented to optimized is architectural — value compounds over time",
-            "AI capabilities, integrations, and modules are in active development with no endpoint",
-          ].map((text, i) => (
-            <motion.div key={i} custom={i} initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeIn} className="text-center">
-              <Brain className="w-6 h-6 text-primary mx-auto mb-3" />
-              <p className="text-sm text-muted-foreground">{text}</p>
-            </motion.div>
-          ))}
-        </div>
-      </div>
-    </section>
+    <KeyTakeaways
+      items={[
+        { icon: Target, text: "Borna AI's vision is to become the unified operating system for healthcare" },
+        { icon: Heart, text: "The mission focuses on practical, measurable outcomes across four pillars" },
+        { icon: TrendingUp, text: "The transformation from fragmented to optimized is architectural — value compounds over time" },
+        { icon: Lightbulb, text: "AI capabilities, integrations, and modules are in active development with no endpoint" },
+      ]}
+    />
 
     {/* FAQ */}
     <StandardFAQ items={faqItems} />

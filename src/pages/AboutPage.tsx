@@ -5,6 +5,7 @@ import { Layers, Brain, Zap, Network, Users, MessageSquare, BarChart3, Heart, Sh
 import { BeamsBackground } from "@/components/ui/beams-background";
 import PageWrapper from "@/components/layout/PageWrapper";
 import StandardFAQ from "@/components/sections/StandardFAQ";
+import KeyTakeaways from "@/components/sections/KeyTakeaways";
 import CTASection from "@/components/sections/CTASection";
 
 const fadeIn = { hidden: { opacity: 0, y: 16 }, visible: (i: number) => ({ opacity: 1, y: 0, transition: { delay: i * 0.1, duration: 0.5 } }) };
@@ -285,24 +286,14 @@ const AboutPage = () => (
     </section>
 
     {/* Key Takeaways */}
-    <section className="py-12 md:py-20 border-t border-glass-border">
-      <div className="container mx-auto px-4 md:px-6">
-        <h2 className="section-headline text-foreground text-center mb-12">Key takeaways</h2>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-5xl mx-auto">
-          {[
-            "Borna is a unified healthcare platform built on four integrated layers that amplify each other",
-            "Every layer connects — communication informs CRM, CRM drives automation, automation generates analytics",
-            "Built for every scale from single-location practices to enterprise DSOs and MSOs",
-            "Designed for continuous evolution — new capabilities add without disrupting existing operations",
-          ].map((text, i) => (
-            <motion.div key={i} custom={i} initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeIn} className="text-center">
-              <Layers className="w-6 h-6 text-primary mx-auto mb-3" />
-              <p className="text-sm text-muted-foreground">{text}</p>
-            </motion.div>
-          ))}
-        </div>
-      </div>
-    </section>
+    <KeyTakeaways
+      items={[
+        { icon: Layers, text: "Borna is a unified healthcare platform built on four integrated layers that amplify each other" },
+        { icon: Network, text: "Every layer connects — communication informs CRM, CRM drives automation, automation generates analytics" },
+        { icon: TrendingUp, text: "Built for every scale from single-location practices to enterprise DSOs and MSOs" },
+        { icon: Lightbulb, text: "Designed for continuous evolution — new capabilities add without disrupting existing operations" },
+      ]}
+    />
 
     {/* FAQ */}
     <StandardFAQ items={faqItems} />

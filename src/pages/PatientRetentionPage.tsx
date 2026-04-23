@@ -4,9 +4,11 @@ import { motion } from "framer-motion";
 import {
   Heart, Bell, CalendarCheck, MessageSquare, RefreshCw, ArrowRight,
   Bot, Users, TrendingUp, Sparkles, CheckCircle2, XCircle, Shield, Activity,
+  Repeat, UserCheck, Radar, Coins,
 } from "lucide-react";
 import PageWrapper from "@/components/layout/PageWrapper";
 import StandardFAQ from "@/components/sections/StandardFAQ";
+import KeyTakeaways from "@/components/sections/KeyTakeaways";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { SparklesCore } from "@/components/ui/sparkles-core";
 
@@ -240,8 +242,8 @@ const PatientRetentionPage = () => (
           { n: 3, title: "Retain", body: "Identify engagement gaps and prevent drop-off before patients disengage" },
           { n: 4, title: "Reactivate", body: "Re-engage inactive patients through targeted campaigns" },
           { n: 5, title: "Optimize", body: "AI continuously analyzes retention performance and refines strategies" },
-        ].map((step) => (
-          <motion.div key={step.n} {...fadeUp} className="glass-panel rounded-xl p-5 text-center">
+        ].map((step, i) => (
+          <motion.div key={step.n} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.2 }} transition={{ duration: 0.5, delay: i * 0.12, ease: "easeOut" }} className="glass-panel rounded-xl p-5 text-center">
             <div className="w-8 h-8 rounded-full bg-primary/20 flex items-center justify-center text-primary text-sm font-bold mx-auto mb-3">{step.n}</div>
             <h3 className="text-sm font-semibold text-foreground mb-2">{step.title}</h3>
             <p className="text-xs text-muted-foreground">{step.body}</p>
@@ -251,14 +253,14 @@ const PatientRetentionPage = () => (
     </SectionDark>
 
     {/* Key Takeaways */}
-    <SectionDark>
-      <motion.div {...fadeUp} className="text-center mb-8"><h2 className="text-2xl md:text-3xl font-bold text-foreground">Key takeaways</h2></motion.div>
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-        {["Borna improves patient retention through automated communication, follow-ups, and reactivation", "The CRM tracks the full patient lifecycle — making personalized retention possible at scale", "AI predicts patient drop-off before it happens and triggers proactive interventions automatically", "Patient retention increases lifetime value, reduces churn, and builds a stable revenue foundation"].map((t, i) => (
-          <motion.div key={i} {...fadeUp} className="glass-panel rounded-xl p-4 text-center"><Sparkles className="w-5 h-5 text-primary mx-auto mb-2" /><p className="text-xs text-muted-foreground">{t}</p></motion.div>
-        ))}
-      </div>
-    </SectionDark>
+    <KeyTakeaways
+      items={[
+        { icon: Repeat, text: "Borna improves patient retention through automated communication, follow-ups, and reactivation" },
+        { icon: UserCheck, text: "The CRM tracks the full patient lifecycle — making personalized retention possible at scale" },
+        { icon: Radar, text: "AI predicts patient drop-off before it happens and triggers proactive interventions automatically" },
+        { icon: Coins, text: "Patient retention increases lifetime value, reduces churn, and builds a stable revenue foundation" },
+      ]}
+    />
 
     {/* FAQ */}
     <StandardFAQ items={faqData} />
