@@ -20,7 +20,7 @@ import { SparklesCore } from "@/components/ui/sparkles-core";
    "light" = brighter glass panel surface.
 ───────────────────────────────────────────────*/
 const SectionDark = ({ id, children, className = "" }: { id?: string; children: React.ReactNode; className?: string }) => (
-  <section id={id} className={`relative py-12 md:py-20 md:py-12 md:py-12 md:py-20 border-t border-glass-border ${className}`}>
+  <section id={id} className={`relative py-12 md:py-20 border-t border-glass-border ${className}`}>
     <div className="container mx-auto px-4 md:px-6 relative z-10">{children}</div>
   </section>
 );
@@ -28,7 +28,7 @@ const SectionDark = ({ id, children, className = "" }: { id?: string; children: 
 const SectionLight = ({ id, children, className = "" }: { id?: string; children: React.ReactNode; className?: string }) => (
   <section
     id={id}
-    className={`relative py-12 md:py-20 md:py-12 md:py-12 md:py-20 border-t border-glass-border ${className}`}
+    className={`relative py-12 md:py-20 border-t border-glass-border ${className}`}
     style={{
       background:
         "linear-gradient(180deg, hsla(0,0%,100%,0.04) 0%, hsla(0,0%,100%,0.02) 100%)",
