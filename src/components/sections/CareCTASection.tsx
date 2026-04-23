@@ -3,7 +3,7 @@ import { SparklesCore } from "@/components/ui/sparkles-core";
 
 const CareCTASection = () => {
   return (
-    <section className="py-12 md:py-12 md:py-20 relative overflow-hidden">
+    <section className="py-12 md:py-20 relative overflow-hidden">
       <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
         <div className="w-[600px] h-[400px] rounded-full bg-primary/5 blur-[120px]" />
       </div>

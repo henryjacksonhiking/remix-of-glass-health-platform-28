@@ -12,7 +12,7 @@ import { SparklesCore } from "@/components/ui/sparkles-core";
 
 const Eyebrow = ({ children }: { children: React.ReactNode }) => (<span className="inline-block text-[11px] tracking-[0.18em] uppercase font-semibold text-primary mb-3">{children}</span>);
 const fadeUp = { initial: { opacity: 0, y: 16 }, whileInView: { opacity: 1, y: 0 }, viewport: { once: true, amount: 0.3 }, transition: { duration: 0.5 } };
-const SectionDark = ({ id, children, className = "" }: { id?: string; children: React.ReactNode; className?: string }) => (<section id={id} className={`relative py-12 md:py-20 md:py-12 md:py-12 md:py-20 border-t border-glass-border ${className}`}><div className="container mx-auto px-4 md:px-6 relative z-10">{children}</div></section>);
+const SectionDark = ({ id, children, className = "" }: { id?: string; children: React.ReactNode; className?: string }) => (<section id={id} className={`relative py-12 md:py-20 border-t border-glass-border ${className}`}><div className="container mx-auto px-4 md:px-6 relative z-10">{children}</div></section>);
 
 const faqData = [
   { q: "What is revenue optimization in healthcare?", a: "Revenue optimization in healthcare refers to improving financial performance by increasing patient acquisition, maximizing retention, and enhancing operational efficiency — using data, automation, and AI insights." },
@@ -31,10 +31,10 @@ const RevenueOptimizationPage = () => (
       <script type="application/ld+json">{JSON.stringify({ "@context": "https://schema.org", "@type": "BreadcrumbList", itemListElement: [{ "@type": "ListItem", position: 1, name: "Home", item: "https://borna.ai" }, { "@type": "ListItem", position: 2, name: "Solutions", item: "https://borna.ai/solutions" }, { "@type": "ListItem", position: 3, name: "Revenue Optimization", item: "https://borna.ai/solutions/revenue-optimization" }] })}</script>
     </Helmet>
 
-    <nav aria-label="breadcrumb" className="container mx-auto px-4 md:px-6 pt-20 md:pt-20 md:pt-24 pb-0 md:pb-2"><p className="text-xs text-muted-foreground"><Link to="/" className="hover:text-foreground">Home</Link> / <Link to="/solutions" className="hover:text-foreground">Solutions</Link> / <span className="text-primary">Revenue Optimization</span></p></nav>
+    <nav aria-label="breadcrumb" className="container mx-auto px-4 md:px-6 pt-20 md:pt-20 pb-0 md:pb-2"><p className="text-xs text-muted-foreground"><Link to="/" className="hover:text-foreground">Home</Link> / <Link to="/solutions" className="hover:text-foreground">Solutions</Link> / <span className="text-primary">Revenue Optimization</span></p></nav>
 
     {/* Hero */}
-    <section className="relative py-16 md:py-12 md:py-12 md:py-20 overflow-hidden">
+    <section className="relative py-12 md:py-20 overflow-hidden">
       <div className="container mx-auto px-4 md:px-6 relative z-10">
         <div className="grid md:grid-cols-2 gap-12 items-center">
           <motion.div {...fadeUp}>
@@ -44,24 +44,36 @@ const RevenueOptimizationPage = () => (
             <div className="flex flex-row items-center gap-2 sm:gap-3"><Link to="/demo" className="gradient-btn whitespace-nowrap">Request Demo</Link><a href="#revenue-drivers" className="ghost-btn whitespace-nowrap">See How It Works</a></div>
           </motion.div>
           <motion.div {...fadeUp} className="relative" aria-hidden="true">
-            <svg viewBox="0 0 400 280" className="w-full max-w-md mx-auto">
+            <svg viewBox="0 0 420 300" className="w-full max-w-md mx-auto h-auto" preserveAspectRatio="xMidYMid meet">
+              <defs>
+                <radialGradient id="rev-node-grad" cx="40%" cy="35%">
+                  <stop offset="0%" stopColor="hsl(var(--primary))" stopOpacity="0.3" />
+                  <stop offset="100%" stopColor="hsl(var(--primary))" stopOpacity="0.05" />
+                </radialGradient>
+                <radialGradient id="rev-hub-grad" cx="40%" cy="35%">
+                  <stop offset="0%" stopColor="hsl(var(--primary))" stopOpacity="0.5" />
+                  <stop offset="100%" stopColor="hsl(var(--primary))" stopOpacity="0.1" />
+                </radialGradient>
+              </defs>
               {[{ y: 60, l: "Patient Acquisition" }, { y: 120, l: "Patient Retention" }, { y: 180, l: "Practice Automation" }, { y: 240, l: "Performance Data" }].map((input, i) => (
                 <g key={i}>
-                  <circle cx="40" cy={input.y} r="10" className="fill-primary/10 stroke-primary/40" strokeWidth="1" />
-                  <text x="56" y={input.y + 4} className="fill-muted-foreground" fontSize="8">{input.l}</text>
-                  <line x1="160" y1={input.y} x2="200" y2="150" className="stroke-primary/30" strokeWidth="1" />
+                  <circle cx="50" cy={input.y} r="12" fill="url(#rev-node-grad)" stroke="hsl(var(--primary))" strokeOpacity="0.5" strokeWidth="1" />
+                  <text x="70" y={input.y + 4} className="fill-foreground" fontSize="11" fontWeight="500">{input.l}</text>
+                  <line x1="200" y1={input.y} x2="220" y2="150" stroke="hsl(var(--primary))" strokeOpacity="0.3" strokeWidth="1">
+                    <animate attributeName="stroke-opacity" values="0.15;0.5;0.15" dur="3s" begin={`${i * 0.3}s`} repeatCount="indefinite" />
+                  </line>
                 </g>
               ))}
-              <circle cx="210" cy="150" r="20" className="fill-primary/15 stroke-primary" strokeWidth="1.5">
-                <animate attributeName="r" values="20;22;20" dur="3s" repeatCount="indefinite" />
+              <circle cx="230" cy="150" r="26" fill="url(#rev-hub-grad)" stroke="hsl(var(--primary))" strokeWidth="1.5">
+                <animate attributeName="r" values="26;30;26" dur="3s" repeatCount="indefinite" />
               </circle>
-              <text x="210" y="148" textAnchor="middle" className="fill-primary" fontSize="7" fontWeight="600">Borna AI</text>
-              <text x="210" y="157" textAnchor="middle" className="fill-muted-foreground" fontSize="5">Revenue Engine</text>
-              <line x1="230" y1="140" x2="370" y2="40" className="stroke-primary" strokeWidth="1.5" />
-              <circle cx="375" cy="35" r="8" className="fill-primary/20 stroke-primary" strokeWidth="1.5">
-                <animate attributeName="r" values="8;10;8" dur="2.5s" repeatCount="indefinite" />
+              <text x="230" y="148" textAnchor="middle" className="fill-foreground" fontSize="10" fontWeight="700">Borna AI</text>
+              <text x="230" y="160" textAnchor="middle" className="fill-muted-foreground" fontSize="7">Revenue Engine</text>
+              <line x1="256" y1="142" x2="370" y2="60" stroke="hsl(var(--primary))" strokeWidth="1.5" />
+              <circle cx="378" cy="54" r="11" fill="url(#rev-hub-grad)" stroke="hsl(var(--primary))" strokeWidth="1.5">
+                <animate attributeName="r" values="11;14;11" dur="2.5s" repeatCount="indefinite" />
               </circle>
-              <text x="375" y="55" textAnchor="middle" className="fill-primary" fontSize="8" fontWeight="600">Revenue Growth ↑</text>
+              <text x="378" y="80" textAnchor="middle" className="fill-primary" fontSize="11" fontWeight="600">Revenue ↑</text>
             </svg>
           </motion.div>
         </div>
@@ -207,7 +219,7 @@ const RevenueOptimizationPage = () => (
     </SectionDark>
 
     {/* CTA */}
-    <section className="py-12 md:py-12 md:py-20 relative overflow-hidden">
+    <section className="py-12 md:py-20 relative overflow-hidden">
       <div className="container mx-auto px-4 md:px-6 relative z-10 text-center">
         <h2 className="text-2xl md:text-4xl font-bold text-foreground mb-4">Turn every opportunity into revenue.</h2>
         <p className="text-muted-foreground max-w-xl mx-auto mb-8">Borna AI helps healthcare practices maximize revenue across acquisition, retention, and operations — through one connected platform.</p>

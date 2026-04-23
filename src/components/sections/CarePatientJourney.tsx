@@ -11,7 +11,7 @@ const steps = [
 
 const CarePatientJourney = () => {
   return (
-    <section className="py-12 md:py-12 md:py-20 border-t border-glass-border">
+    <section className="py-12 md:py-20 border-t border-glass-border">
       <div className="container mx-auto px-4 md:px-6">
         <h2 className="section-headline text-foreground text-center mb-16">
           The patient experience, reimagined

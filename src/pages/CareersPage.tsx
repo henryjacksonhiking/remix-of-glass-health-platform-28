@@ -70,7 +70,7 @@ const CareersPage = () => (
     </div>
 
     {/* Hero */}
-    <section className="relative overflow-hidden py-12 md:py-12 md:py-20 md:py-16 md:py-12 md:py-12 md:py-20">
+    <section className="relative overflow-hidden py-12 md:py-20">
       <div className="absolute inset-0 opacity-40"><BeamsBackground intensity="medium" /></div>
       <div className="container mx-auto px-4 md:px-6 relative z-10 max-w-5xl">
         <div className="grid md:grid-cols-2 gap-12 items-center">
@@ -115,7 +115,7 @@ const CareersPage = () => (
     </section>
 
     {/* Why Borna */}
-    <section className="py-12 md:py-12 md:py-20 border-t border-glass-border">
+    <section className="py-12 md:py-20 border-t border-glass-border">
       <div className="container mx-auto px-4 md:px-6">
         <h2 className="section-headline text-foreground text-center mb-12">Why work at Borna AI</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
@@ -135,7 +135,7 @@ const CareersPage = () => (
     </section>
 
     {/* What you'll build */}
-    <section className="py-12 md:py-12 md:py-20 border-t border-glass-border">
+    <section className="py-12 md:py-20 border-t border-glass-border">
       <div className="container mx-auto px-4 md:px-6 max-w-3xl">
         <h2 className="section-headline text-foreground text-center mb-4">What you'll be building</h2>
         <p className="body-text text-center mx-auto mb-10">
@@ -160,7 +160,7 @@ const CareersPage = () => (
     </section>
 
     {/* How we work */}
-    <section className="py-12 md:py-12 md:py-20 border-t border-glass-border">
+    <section className="py-12 md:py-20 border-t border-glass-border">
       <div className="container mx-auto px-4 md:px-6">
         <h2 className="section-headline text-foreground text-center mb-12">Our work environment</h2>
         <div className="grid grid-cols-2 md:grid-cols-5 gap-4 max-w-5xl mx-auto">
@@ -180,7 +180,7 @@ const CareersPage = () => (
     </section>
 
     {/* Who thrives */}
-    <section className="py-12 md:py-12 md:py-20 border-t border-glass-border">
+    <section className="py-12 md:py-20 border-t border-glass-border">
       <div className="container mx-auto px-4 md:px-6 max-w-3xl">
         <h2 className="section-headline text-foreground text-center mb-12">Who thrives at Borna</h2>
         <div className="glass-panel p-6 space-y-0">
@@ -196,7 +196,7 @@ const CareersPage = () => (
     </section>
 
     {/* Open Roles */}
-    <section id="open-roles" className="py-12 md:py-12 md:py-20 border-t border-glass-border">
+    <section id="open-roles" className="py-12 md:py-20 border-t border-glass-border">
       <div className="container mx-auto px-4 md:px-6">
         <h2 className="section-headline text-foreground text-center mb-4">Open positions</h2>
         <p className="body-text text-center mx-auto max-w-xl mb-12">Every role contributes to the whole system — not to a siloed function.</p>
@@ -219,7 +219,7 @@ const CareersPage = () => (
     </section>
 
     {/* Hiring Process */}
-    <section className="py-12 md:py-12 md:py-20 border-t border-glass-border">
+    <section className="py-12 md:py-20 border-t border-glass-border">
       <div className="container mx-auto px-4 md:px-6 max-w-4xl">
         <h2 className="section-headline text-foreground text-center mb-12">Our hiring process</h2>
         <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-6 relative">
@@ -239,7 +239,7 @@ const CareersPage = () => (
     </section>
 
     {/* FAQ */}
-    <section className="py-12 md:py-12 md:py-20 border-t border-glass-border">
+    <section className="py-12 md:py-20 border-t border-glass-border">
       <div className="container mx-auto px-4 md:px-6 max-w-3xl">
         <h2 className="section-headline text-foreground text-center mb-12">Careers at Borna — FAQs</h2>
         <div className="space-y-3">

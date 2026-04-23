@@ -400,7 +400,7 @@ const CommunicationLayerPage = () => {
       </div>
 
       {/* SECTION 1 — HERO */}
-      <section className="relative overflow-hidden py-16 md:py-12 md:py-12 md:py-20">
+      <section className="relative overflow-hidden py-12 md:py-20">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,hsla(170,100%,43%,0.14),transparent_60%)]" />
         <div className="container mx-auto px-4 md:px-6 relative">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
@@ -434,7 +434,7 @@ const CommunicationLayerPage = () => {
       </section>
 
       {/* SECTION 2 — DEFINITION */}
-      <section className="py-16 md:py-12 md:py-20">
+      <section className="py-12 md:py-20">
         <div className="container mx-auto px-4 md:px-6 max-w-3xl text-center">
           <motion.div initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5 }}>
             <h2 className="text-2xl md:text-3xl font-medium text-foreground mb-5">What is a healthcare communication platform?</h2>
@@ -464,7 +464,7 @@ const CommunicationLayerPage = () => {
       </section>
 
       {/* SECTION 3 — PROBLEM */}
-      <section className="py-16 md:py-12 md:py-20">
+      <section className="py-12 md:py-20">
         <div className="container mx-auto px-4 md:px-6">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <motion.div initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5 }}>
@@ -498,7 +498,7 @@ const CommunicationLayerPage = () => {
       </section>
 
       {/* SECTION 4 — UNIFIED COMMUNICATION */}
-      <section className="py-16 md:py-12 md:py-20">
+      <section className="py-12 md:py-20">
         <div className="container mx-auto px-4 md:px-6 max-w-4xl">
           <motion.div initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5 }} className="text-center mb-12">
             <h2 className="text-2xl md:text-3xl font-medium text-foreground mb-4">A unified communication layer for healthcare</h2>
@@ -511,7 +511,7 @@ const CommunicationLayerPage = () => {
       </section>
 
       {/* SECTION 5 — CHANNELS SUPPORTED */}
-      <section className="py-16 md:py-12 md:py-12 md:py-20">
+      <section className="py-12 md:py-20">
         <div className="container mx-auto px-4 md:px-6">
           <motion.div initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5 }} className="text-center mb-12">
             <h2 className="text-2xl md:text-3xl font-medium text-foreground mb-4">Communication channels unified in one platform</h2>
@@ -531,7 +531,7 @@ const CommunicationLayerPage = () => {
       </section>
 
       {/* SECTION 6 — AI COMMUNICATION */}
-      <section className="py-16 md:py-12 md:py-20 relative">
+      <section className="py-12 md:py-20 relative">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,hsla(170,100%,43%,0.06),transparent_60%)]" />
         <div className="container mx-auto px-4 md:px-6 relative">
           <motion.div initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5 }} className="text-center mb-12">
@@ -557,7 +557,7 @@ const CommunicationLayerPage = () => {
       </section>
 
       {/* SECTION 7 — DATA & INSIGHTS */}
-      <section className="py-16 md:py-12 md:py-20">
+      <section className="py-12 md:py-20">
         <div className="container mx-auto px-4 md:px-6">
           <motion.div initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5 }} className="text-center mb-12">
             <h2 className="text-2xl md:text-3xl font-medium text-foreground mb-4">Turning conversations into insights</h2>
@@ -582,7 +582,7 @@ const CommunicationLayerPage = () => {
       </section>
 
       {/* SECTION 8 — WORKFLOW INTEGRATION */}
-      <section className="py-16 md:py-12 md:py-20">
+      <section className="py-12 md:py-20">
         <div className="container mx-auto px-4 md:px-6">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <motion.div initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5 }}>
@@ -617,7 +617,7 @@ const CommunicationLayerPage = () => {
       </section>
 
       {/* SECTION 9 — REAL-TIME OPERATIONS */}
-      <section className="py-16 md:py-12 md:py-20">
+      <section className="py-12 md:py-20">
         <div className="container mx-auto px-4 md:px-6">
           <motion.div initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5 }} className="text-center mb-12">
             <h2 className="text-2xl md:text-3xl font-medium text-foreground mb-4">Real-time communication management</h2>
@@ -647,7 +647,7 @@ const CommunicationLayerPage = () => {
       </section>
 
       {/* SECTION 10 — BUSINESS VALUE */}
-      <section className="py-16 md:py-12 md:py-20">
+      <section className="py-12 md:py-20">
         <div className="container mx-auto px-4 md:px-6 max-w-4xl">
           <motion.div initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5 }} className="text-center mb-12">
             <h2 className="text-2xl md:text-3xl font-medium text-foreground mb-4">Why unified communication matters</h2>
@@ -680,7 +680,7 @@ const CommunicationLayerPage = () => {
       </section>
 
       {/* SECTION 11 — HOW IT WORKS */}
-      <section className="py-16 md:py-12 md:py-20">
+      <section className="py-12 md:py-20">
         <div className="container mx-auto px-4 md:px-6">
           <motion.div initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5 }} className="text-center mb-12">
             <h2 className="text-2xl md:text-3xl font-medium text-foreground mb-4">How the communication layer works</h2>
@@ -707,7 +707,7 @@ const CommunicationLayerPage = () => {
       </section>
 
       {/* SECTION 12 — KEY TAKEAWAYS */}
-      <section className="py-16 md:py-12 md:py-20">
+      <section className="py-12 md:py-20">
         <div className="container mx-auto px-4 md:px-6">
           <h2 className="text-2xl md:text-3xl font-medium text-foreground mb-10 text-center">Key takeaways</h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 max-w-5xl mx-auto">
@@ -724,7 +724,7 @@ const CommunicationLayerPage = () => {
       </section>
 
       {/* SECTION 13 — FAQ */}
-      <section className="py-16 md:py-12 md:py-20">
+      <section className="py-12 md:py-20">
         <div className="container mx-auto px-4 md:px-6">
           <h2 className="text-2xl md:text-3xl font-medium text-foreground mb-10 text-center">Frequently asked questions</h2>
           <div className="max-w-3xl mx-auto">
@@ -747,7 +747,7 @@ const CommunicationLayerPage = () => {
       </section>
 
       {/* SECTION 14 — FINAL CTA */}
-      <section className="relative py-12 md:py-20 md:py-12 md:py-12 md:py-20 overflow-hidden">
+      <section className="relative py-12 md:py-20 overflow-hidden">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,hsla(170,100%,43%,0.12),transparent_60%)]" />
         <div className="container mx-auto px-4 md:px-6 relative text-center">
           <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }}>

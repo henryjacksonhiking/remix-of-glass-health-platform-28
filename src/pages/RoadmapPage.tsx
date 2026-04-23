@@ -45,7 +45,7 @@ const SectionShell = ({
 }) => (
   <section
     id={id}
-    className={`relative py-16 md:py-12 md:py-12 md:py-20 overflow-hidden ${className}`}
+    className={`relative py-12 md:py-20 md:py-20 md:py-20 overflow-hidden ${className}`}
   >
     {children}
   </section>
@@ -1008,7 +1008,7 @@ const RoadmapPage = () => {
       </Helmet>
 
       {/* Hero */}
-      <SectionShell className="pt-20 md:pt-24 md:pt-20 md:pt-20 md:pt-24">
+      <SectionShell className="pt-20 md:pt-24">
         <div className="container mx-auto px-4 md:px-6">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <motion.div
@@ -1125,7 +1125,7 @@ const RoadmapPage = () => {
       </SectionShell>
 
       {/* Section 5 — Phased Roadmap (centrepiece) */}
-      <SectionShell className="py-12 md:py-12 md:py-20 md:py-16 md:py-12 md:py-12 md:py-20">
+      <SectionShell className="py-12 md:py-20">
         <div className="container mx-auto px-4 md:px-6 max-w-7xl">
           <div className="text-center mb-16 max-w-2xl mx-auto">
             <Eyebrow>The journey</Eyebrow>
@@ -1161,7 +1161,7 @@ const RoadmapPage = () => {
       </SectionShell>
 
       {/* Section 7 — Long-term vision */}
-      <SectionShell className="py-12 md:py-12 md:py-20 md:py-16 md:py-12 md:py-12 md:py-20">
+      <SectionShell className="py-12 md:py-20">
         <div className="container mx-auto px-4 md:px-6 max-w-5xl">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div>
@@ -1349,7 +1349,7 @@ const RoadmapPage = () => {
       </SectionShell>
 
       {/* Section 13 — Final CTA */}
-      <section className="py-16 md:py-12 md:py-12 md:py-20 relative overflow-hidden">
+      <section className="py-12 md:py-20 relative overflow-hidden">
         <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
           <div className="w-[600px] h-[400px] rounded-full bg-primary/5 blur-[120px]" />
         </div>

@@ -2,9 +2,9 @@ import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 import { motion } from "framer-motion";
 import {
-  Filter, UserPlus, Phone, Globe, MessageSquare, Mail, Zap, BarChart3,
+  Filter, UserPlus, Phone, Globe, MessageSquare, MessageCircle, Mail, Zap, BarChart3,
   CalendarCheck, Target, TrendingUp, ArrowRight, Bot, Search, DollarSign,
-  CheckCircle2, XCircle, Sparkles, Layers,
+  CheckCircle2, XCircle, Sparkles, Layers, Send,
 } from "lucide-react";
 import PageWrapper from "@/components/layout/PageWrapper";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
@@ -22,7 +22,7 @@ const fadeUp = {
 };
 
 const SectionDark = ({ id, children, className = "" }: { id?: string; children: React.ReactNode; className?: string }) => (
-  <section id={id} className={`relative py-12 md:py-20 md:py-12 md:py-12 md:py-20 border-t border-glass-border ${className}`}>
+  <section id={id} className={`relative py-12 md:py-20 border-t border-glass-border ${className}`}>
     <div className="container mx-auto px-4 md:px-6 relative z-10">{children}</div>
   </section>
 );
@@ -61,14 +61,14 @@ const PatientAcquisitionPage = () => (
     </Helmet>
 
     {/* Breadcrumb */}
-    <nav aria-label="breadcrumb" className="container mx-auto px-4 md:px-6 pt-20 md:pt-20 md:pt-24 pb-0 md:pb-2">
+    <nav aria-label="breadcrumb" className="container mx-auto px-4 md:px-6 pt-20 md:pt-20 pb-0 md:pb-2">
       <p className="text-xs text-muted-foreground">
         <Link to="/" className="hover:text-foreground">Home</Link> / <Link to="/solutions" className="hover:text-foreground">Solutions</Link> / <span className="text-primary">Patient Acquisition</span>
       </p>
     </nav>
 
     {/* Hero */}
-    <section className="relative py-16 md:py-12 md:py-12 md:py-20 overflow-hidden">
+    <section className="relative py-12 md:py-20 overflow-hidden">
       <div className="container mx-auto px-4 md:px-6 relative z-10">
         <div className="grid md:grid-cols-2 gap-12 items-center">
           <motion.div {...fadeUp}>
@@ -81,32 +81,44 @@ const PatientAcquisitionPage = () => (
             </div>
           </motion.div>
           <motion.div {...fadeUp} className="relative" aria-hidden="true">
-            <svg viewBox="0 0 500 320" className="w-full max-w-lg mx-auto">
-              {/* 5 channels */}
-              {["Google Ads", "Phone Calls", "Website Forms", "SMS", "Referrals"].map((label, i) => (
-                <g key={label}>
-                  <circle cx="40" cy={40 + i * 60} r="12" className="fill-primary/10 stroke-primary" strokeWidth="1" />
-                  <text x="58" y={44 + i * 60} className="fill-muted-foreground" fontSize="9">{label}</text>
-                  <line x1="90" y1={40 + i * 60} x2="200" y2={120 + (i - 2) * 15} className="stroke-primary/40" strokeWidth="1">
-                    <animate attributeName="stroke-opacity" values="0.2;0.6;0.2" dur="3s" begin={`${i * 0.3}s`} repeatCount="indefinite" />
-                  </line>
-                </g>
-              ))}
-              {/* Stages */}
-              {[{ x: 210, l: "Captured" }, { x: 310, l: "Engaged" }, { x: 400, l: "Converting" }].map((s, i) => (
-                <g key={s.l}>
-                  <rect x={s.x - 32} y={108} rx="12" ry="12" width="64" height="24" className="fill-primary/10 stroke-primary/30" strokeWidth="1" />
-                  <text x={s.x} y={124} textAnchor="middle" className="fill-foreground" fontSize="9" fontWeight="500">{s.l}</text>
-                  {i < 2 && <line x1={s.x + 32} y1={120} x2={s.x + 68} y2={120} className="stroke-primary/30" strokeWidth="1" />}
-                </g>
-              ))}
-              {/* Output */}
-              <line x1="432" y1="120" x2="480" y2="120" className="stroke-primary" strokeWidth="1.5" />
-              <circle cx="490" cy="120" r="8" className="fill-primary/20 stroke-primary" strokeWidth="1.5">
-                <animate attributeName="r" values="8;10;8" dur="2s" repeatCount="indefinite" />
-              </circle>
-              <text x="490" y="140" textAnchor="middle" className="fill-primary" fontSize="8" fontWeight="600">Confirmed</text>
-            </svg>
+            <div className="w-full max-w-lg mx-auto overflow-hidden">
+              <svg viewBox="0 0 500 340" className="w-full h-auto" preserveAspectRatio="xMidYMid meet">
+                <defs>
+                  <radialGradient id="acq-node-grad" cx="40%" cy="35%">
+                    <stop offset="0%" stopColor="hsl(var(--primary))" stopOpacity="0.3" />
+                    <stop offset="100%" stopColor="hsl(var(--primary))" stopOpacity="0.06" />
+                  </radialGradient>
+                  <radialGradient id="acq-hub-grad" cx="40%" cy="35%">
+                    <stop offset="0%" stopColor="hsl(var(--primary))" stopOpacity="0.5" />
+                    <stop offset="100%" stopColor="hsl(var(--primary))" stopOpacity="0.1" />
+                  </radialGradient>
+                </defs>
+                {/* 5 channels */}
+                {["Google Ads", "Phone Calls", "Website Forms", "SMS", "Referrals"].map((label, i) => (
+                  <g key={label}>
+                    <circle cx="50" cy={40 + i * 60} r="14" fill="url(#acq-node-grad)" stroke="hsl(var(--primary))" strokeOpacity="0.6" strokeWidth="1" />
+                    <text x="74" y={45 + i * 60} className="fill-foreground" fontSize="11" fontWeight="500">{label}</text>
+                    <line x1="170" y1={40 + i * 60} x2="220" y2={150 + (i - 2) * 8} stroke="hsl(var(--primary))" strokeOpacity="0.35" strokeWidth="1">
+                      <animate attributeName="stroke-opacity" values="0.2;0.6;0.2" dur="3s" begin={`${i * 0.3}s`} repeatCount="indefinite" />
+                    </line>
+                  </g>
+                ))}
+                {/* Stages */}
+                {[{ x: 240, l: "Captured" }, { x: 330, l: "Engaged" }, { x: 420, l: "Converting" }].map((s, i) => (
+                  <g key={s.l}>
+                    <rect x={s.x - 38} y={138} rx="14" ry="14" width="76" height="28" fill="url(#acq-node-grad)" stroke="hsl(var(--primary))" strokeOpacity="0.45" strokeWidth="1" />
+                    <text x={s.x} y={156} textAnchor="middle" className="fill-foreground" fontSize="11" fontWeight="500">{s.l}</text>
+                    {i < 2 && <line x1={s.x + 38} y1={152} x2={s.x + 52} y2={152} stroke="hsl(var(--primary))" strokeOpacity="0.5" strokeWidth="1" />}
+                  </g>
+                ))}
+                {/* Output */}
+                <line x1="458" y1="152" x2="478" y2="152" stroke="hsl(var(--primary))" strokeWidth="1.5" />
+                <circle cx="488" cy="152" r="10" fill="url(#acq-hub-grad)" stroke="hsl(var(--primary))" strokeWidth="1.5">
+                  <animate attributeName="r" values="10;13;10" dur="2s" repeatCount="indefinite" />
+                </circle>
+                <text x="488" y="180" textAnchor="middle" className="fill-primary" fontSize="11" fontWeight="600">Confirmed</text>
+              </svg>
+            </div>
           </motion.div>
         </div>
       </div>
@@ -164,16 +176,16 @@ const PatientAcquisitionPage = () => (
         <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-4">Capture every lead across all channels</h2>
         <p className="text-muted-foreground max-w-2xl mx-auto">A lead can come from anywhere. Borna captures every inquiry regardless of channel and brings it into one unified acquisition system.</p>
       </motion.div>
-      <div className="grid md:grid-cols-5 gap-6">
+      <div className="grid grid-cols-2 md:grid-cols-5 gap-4 md:gap-6">
         {[
           { icon: Phone, title: "Phone Calls", body: "Every inbound call logged, tracked, and connected to its source." },
-          { icon: MessageSquare, title: "SMS Inquiries", body: "Text inquiries captured and entered into the lead pipeline automatically." },
+          { icon: Send, title: "SMS Inquiries", body: "Text inquiries captured and entered into the lead pipeline automatically." },
           { icon: Globe, title: "Website Forms", body: "Form submissions captured in real time from any page." },
-          { icon: MessageSquare, title: "Live Chat", body: "Web chat inquiries routed into the unified lead system instantly." },
+          { icon: MessageCircle, title: "Live Chat", body: "Web chat inquiries routed into the unified lead system instantly." },
           { icon: Mail, title: "Email", body: "Email inquiries captured, logged, and associated with their campaign." },
         ].map((item, i) => (
           <motion.div key={i} {...fadeUp} className="text-center glass-panel rounded-xl p-5">
-            <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center text-primary mx-auto mb-3"><item.icon className="w-5 h-5" /></div>
+            <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center text-primary mx-auto mb-3"><item.icon className="w-5 h-5" strokeWidth={1.5} /></div>
             <h3 className="text-sm font-semibold text-foreground mb-1">{item.title}</h3>
             <p className="text-xs text-muted-foreground">{item.body}</p>
           </motion.div>
@@ -330,7 +342,7 @@ const PatientAcquisitionPage = () => (
     </SectionDark>
 
     {/* CTA */}
-    <section className="py-12 md:py-12 md:py-20 relative overflow-hidden">
+    <section className="py-12 md:py-20 relative overflow-hidden">
       <div className="container mx-auto px-4 md:px-6 relative z-10 text-center">
         <h2 className="text-2xl md:text-4xl font-bold text-foreground mb-4">Get more patients with a smarter system.</h2>
         <p className="text-muted-foreground max-w-xl mx-auto mb-8">Borna AI helps healthcare practices capture, convert, and grow their patient base — through a unified system that connects every step from first contact to confirmed appointment.</p>

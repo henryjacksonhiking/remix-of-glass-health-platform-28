@@ -159,7 +159,7 @@ const BornaCorePage = () => {
       </section>
 
       {/* Core Capabilities */}
-      <section className="py-12 md:py-12 md:py-20 border-t border-glass-border">
+      <section className="py-12 md:py-20 border-t border-glass-border">
         <div className="container mx-auto px-4 md:px-6">
           <h2 className="section-headline text-foreground text-center mb-16">What Borna Core enables</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 max-w-5xl mx-auto">
@@ -177,7 +177,7 @@ const BornaCorePage = () => {
       </section>
 
       {/* Platform Integration — Ecosystem */}
-      <section className="py-12 md:py-12 md:py-20 border-t border-glass-border">
+      <section className="py-12 md:py-20 border-t border-glass-border">
         <div className="container mx-auto px-4 md:px-6">
           <h2 className="section-headline text-foreground text-center mb-4">Powering the entire Borna ecosystem</h2>
           <p className="body-text mx-auto text-center mb-16">Every product sends data to Core. Core returns intelligence to every product.</p>
@@ -203,7 +203,7 @@ const BornaCorePage = () => {
       </section>
 
       {/* How it works */}
-      <section className="py-12 md:py-12 md:py-20 border-t border-glass-border">
+      <section className="py-12 md:py-20 border-t border-glass-border">
         <div className="container mx-auto px-4 md:px-6">
           <h2 className="section-headline text-foreground text-center mb-16">How Borna Core works</h2>
           <div className="grid grid-cols-1 md:grid-cols-5 gap-4 max-w-5xl mx-auto">
@@ -227,7 +227,7 @@ const BornaCorePage = () => {
       </section>
 
       {/* FAQ */}
-      <section className="py-12 md:py-12 md:py-20 border-t border-glass-border">
+      <section className="py-12 md:py-20 border-t border-glass-border">
         <div className="container mx-auto px-4 md:px-6 max-w-3xl">
           <h2 className="section-headline text-foreground text-center mb-12">Frequently asked questions</h2>
           <div className="space-y-2">
@@ -245,7 +245,7 @@ const BornaCorePage = () => {
       </section>
 
       {/* CTA */}
-      <section className="py-12 md:py-12 md:py-20 relative overflow-hidden">
+      <section className="py-12 md:py-20 relative overflow-hidden">
         <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
           <div className="w-[600px] h-[400px] rounded-full blur-[120px]" style={{ background: 'rgba(20,53,193,0.05)' }} />
         </div>

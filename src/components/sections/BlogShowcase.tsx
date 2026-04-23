@@ -41,7 +41,7 @@ const options = blogPosts.map((post, i) => ({
 
 const BlogShowcase = () => {
   return (
-    <section className="py-12 md:py-12 md:py-20">
+    <section className="py-12 md:py-20">
       <div className="container mx-auto px-4 md:px-6">
         <motion.div
           initial={{ opacity: 0, y: 20 }}

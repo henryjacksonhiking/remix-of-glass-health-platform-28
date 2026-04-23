@@ -12,7 +12,7 @@ import { SparklesCore } from "@/components/ui/sparkles-core";
 
 const Eyebrow = ({ children }: { children: React.ReactNode }) => (<span className="inline-block text-[11px] tracking-[0.18em] uppercase font-semibold text-primary mb-3">{children}</span>);
 const fadeUp = { initial: { opacity: 0, y: 16 }, whileInView: { opacity: 1, y: 0 }, viewport: { once: true, amount: 0.3 }, transition: { duration: 0.5 } };
-const SectionDark = ({ id, children, className = "" }: { id?: string; children: React.ReactNode; className?: string }) => (<section id={id} className={`relative py-12 md:py-20 md:py-12 md:py-12 md:py-20 border-t border-glass-border ${className}`}><div className="container mx-auto px-4 md:px-6 relative z-10">{children}</div></section>);
+const SectionDark = ({ id, children, className = "" }: { id?: string; children: React.ReactNode; className?: string }) => (<section id={id} className={`relative py-12 md:py-20 border-t border-glass-border ${className}`}><div className="container mx-auto px-4 md:px-6 relative z-10">{children}</div></section>);
 
 const faqData = [
   { q: "What is multi-location management in healthcare?", a: "Multi-location management refers to the ability to oversee and coordinate operations, patient interactions, and performance across multiple healthcare facilities from a centralized system." },
@@ -31,10 +31,10 @@ const MultiLocationPage = () => (
       <script type="application/ld+json">{JSON.stringify({ "@context": "https://schema.org", "@type": "BreadcrumbList", itemListElement: [{ "@type": "ListItem", position: 1, name: "Home", item: "https://borna.ai" }, { "@type": "ListItem", position: 2, name: "Solutions", item: "https://borna.ai/solutions" }, { "@type": "ListItem", position: 3, name: "Multi-Location Management", item: "https://borna.ai/solutions/multi-location" }] })}</script>
     </Helmet>
 
-    <nav aria-label="breadcrumb" className="container mx-auto px-4 md:px-6 pt-20 md:pt-20 md:pt-24 pb-0 md:pb-2"><p className="text-xs text-muted-foreground"><Link to="/" className="hover:text-foreground">Home</Link> / <Link to="/solutions" className="hover:text-foreground">Solutions</Link> / <span className="text-primary">Multi-Location Management</span></p></nav>
+    <nav aria-label="breadcrumb" className="container mx-auto px-4 md:px-6 pt-20 md:pt-20 pb-0 md:pb-2"><p className="text-xs text-muted-foreground"><Link to="/" className="hover:text-foreground">Home</Link> / <Link to="/solutions" className="hover:text-foreground">Solutions</Link> / <span className="text-primary">Multi-Location Management</span></p></nav>
 
     {/* Hero */}
-    <section className="relative py-16 md:py-12 md:py-12 md:py-20 overflow-hidden">
+    <section className="relative py-12 md:py-20 overflow-hidden">
       <div className="container mx-auto px-4 md:px-6 relative z-10">
         <div className="grid md:grid-cols-2 gap-12 items-center">
           <motion.div {...fadeUp}>
@@ -44,21 +44,42 @@ const MultiLocationPage = () => (
             <div className="flex flex-row items-center gap-2 sm:gap-3"><Link to="/demo" className="gradient-btn whitespace-nowrap">Request Demo</Link><a href="#centralized-control" className="ghost-btn whitespace-nowrap">See How It Works</a></div>
           </motion.div>
           <motion.div {...fadeUp} className="relative flex items-center justify-center" aria-hidden="true">
-            <svg viewBox="0 0 300 300" className="w-64 h-64 md:w-80 md:h-80">
-              <circle cx="150" cy="150" r="16" className="fill-primary/15 stroke-primary" strokeWidth="1.5">
-                <animate attributeName="r" values="16;18;16" dur="3s" repeatCount="indefinite" />
-              </circle>
-              <text x="150" y="148" textAnchor="middle" className="fill-primary" fontSize="6" fontWeight="600">Borna AI</text>
-              <text x="150" y="156" textAnchor="middle" className="fill-muted-foreground" fontSize="4">Central Platform</text>
+            <svg viewBox="0 0 320 320" className="w-full max-w-sm md:max-w-md mx-auto h-auto" preserveAspectRatio="xMidYMid meet">
+              <defs>
+                <radialGradient id="ml-hub-grad" cx="40%" cy="35%">
+                  <stop offset="0%" stopColor="hsl(var(--primary))" stopOpacity="0.5" />
+                  <stop offset="100%" stopColor="hsl(var(--primary))" stopOpacity="0.08" />
+                </radialGradient>
+                <radialGradient id="ml-node-grad" cx="40%" cy="35%">
+                  <stop offset="0%" stopColor="hsl(var(--primary))" stopOpacity="0.25" />
+                  <stop offset="100%" stopColor="hsl(var(--primary))" stopOpacity="0.04" />
+                </radialGradient>
+              </defs>
+              {/* Connection lines first */}
               {["North Clinic", "East Branch", "South Office", "West Clinic", "Central HQ"].map((label, i) => {
                 const angle = (i * 72 - 90) * (Math.PI / 180);
-                const x = 150 + 100 * Math.cos(angle);
-                const y = 150 + 100 * Math.sin(angle);
+                const x = 160 + 105 * Math.cos(angle);
+                const y = 160 + 105 * Math.sin(angle);
+                return (
+                  <line key={`l-${i}`} x1="160" y1="160" x2={x} y2={y} stroke="hsl(var(--primary))" strokeOpacity="0.35" strokeWidth="1" strokeDasharray="3 4" />
+                );
+              })}
+              {/* Hub */}
+              <circle cx="160" cy="160" r="32" fill="url(#ml-hub-grad)" stroke="hsl(var(--primary))" strokeWidth="1.5">
+                <animate attributeName="r" values="32;35;32" dur="3s" repeatCount="indefinite" />
+              </circle>
+              <text x="160" y="158" textAnchor="middle" className="fill-foreground" fontSize="11" fontWeight="700">Borna</text>
+              <text x="160" y="172" textAnchor="middle" className="fill-muted-foreground" fontSize="8">Central</text>
+              {/* Branch nodes */}
+              {["North Clinic", "East Branch", "South Office", "West Clinic", "Central HQ"].map((label, i) => {
+                const angle = (i * 72 - 90) * (Math.PI / 180);
+                const x = 160 + 105 * Math.cos(angle);
+                const y = 160 + 105 * Math.sin(angle);
+                const labelOffsetY = y < 160 ? -22 : 26;
                 return (
                   <g key={label}>
-                    <line x1="150" y1="150" x2={x} y2={y} className="stroke-primary/30" strokeWidth="1" />
-                    <circle cx={x} cy={y} r="10" className="fill-primary/10 stroke-primary/40" strokeWidth="1" />
-                    <text x={x} y={y + 3} textAnchor="middle" className="fill-foreground" fontSize="5">{label}</text>
+                    <circle cx={x} cy={y} r="14" fill="url(#ml-node-grad)" stroke="hsl(var(--primary))" strokeOpacity="0.5" strokeWidth="1" />
+                    <text x={x} y={y + labelOffsetY} textAnchor="middle" className="fill-foreground" fontSize="10" fontWeight="500">{label}</text>
                   </g>
                 );
               })}
@@ -212,7 +233,7 @@ const MultiLocationPage = () => (
     </SectionDark>
 
     {/* CTA */}
-    <section className="py-12 md:py-12 md:py-20 relative overflow-hidden">
+    <section className="py-12 md:py-20 relative overflow-hidden">
       <div className="container mx-auto px-4 md:px-6 relative z-10 text-center">
         <h2 className="text-2xl md:text-4xl font-bold text-foreground mb-4">Manage and scale all your locations in one platform.</h2>
         <p className="text-muted-foreground max-w-xl mx-auto mb-8">Borna AI helps you unify operations, maintain consistency, and grow your healthcare organization — with full control from one centralized platform.</p>

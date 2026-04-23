@@ -20,7 +20,7 @@ import { SparklesCore } from "@/components/ui/sparkles-core";
    "light" = brighter glass panel surface.
 ───────────────────────────────────────────────*/
 const SectionDark = ({ id, children, className = "" }: { id?: string; children: React.ReactNode; className?: string }) => (
-  <section id={id} className={`relative py-12 md:py-20 md:py-12 md:py-12 md:py-20 border-t border-glass-border ${className}`}>
+  <section id={id} className={`relative py-12 md:py-20 border-t border-glass-border ${className}`}>
     <div className="container mx-auto px-4 md:px-6 relative z-10">{children}</div>
   </section>
 );
@@ -28,7 +28,7 @@ const SectionDark = ({ id, children, className = "" }: { id?: string; children: 
 const SectionLight = ({ id, children, className = "" }: { id?: string; children: React.ReactNode; className?: string }) => (
   <section
     id={id}
-    className={`relative py-12 md:py-20 md:py-12 md:py-12 md:py-20 border-t border-glass-border ${className}`}
+    className={`relative py-12 md:py-20 border-t border-glass-border ${className}`}
     style={{
       background:
         "linear-gradient(180deg, hsla(0,0%,100%,0.04) 0%, hsla(0,0%,100%,0.02) 100%)",
@@ -114,7 +114,7 @@ const HeroVisual = () => (
 );
 
 const Hero = () => (
-  <section className="relative overflow-hidden pt-20 md:pt-20 md:pt-24 pb-20 md:pt-20 md:pt-20 md:pt-24 md:pb-28">
+  <section className="relative overflow-hidden pt-20 md:pt-20 pb-20 md:pb-28">
     <div className="absolute inset-0 opacity-50">
       <BeamsBackground intensity="medium" />
     </div>
@@ -679,7 +679,13 @@ const PlatformDiagram = () => {
   ];
   return (
     <div className="relative w-full max-w-md mx-auto aspect-square">
-      <svg viewBox="0 0 400 400" className="absolute inset-0 w-full h-full">
+      <svg viewBox="0 0 400 400" className="absolute inset-0 w-full h-full" preserveAspectRatio="xMidYMid meet">
+        <defs>
+          <radialGradient id="sol-platform-hub" cx="40%" cy="35%">
+            <stop offset="0%" stopColor="hsl(var(--primary))" stopOpacity="0.5" />
+            <stop offset="100%" stopColor="hsl(var(--primary))" stopOpacity="0.1" />
+          </radialGradient>
+        </defs>
         {modules.map((_, i) => {
           const angle = (i / modules.length) * Math.PI * 2 - Math.PI / 2;
           const x = 200 + Math.cos(angle) * 150;
@@ -689,16 +695,17 @@ const PlatformDiagram = () => {
               key={i}
               x1="200" y1="200" x2={x} y2={y}
               stroke="hsl(var(--primary))" strokeOpacity="0.35" strokeWidth="1"
+              strokeDasharray="3 4"
             />
           );
         })}
-        <circle cx="200" cy="200" r="44" fill="hsl(var(--primary) / 0.15)" />
+        <circle cx="200" cy="200" r="44" fill="url(#sol-platform-hub)" stroke="hsl(var(--primary))" strokeWidth="1.5">
+          <animate attributeName="r" values="44;48;44" dur="3s" repeatCount="indefinite" />
+        </circle>
         <circle cx="200" cy="200" r="28" fill="hsl(var(--primary) / 0.3)" />
         <circle cx="200" cy="200" r="12" fill="hsl(var(--primary))" />
+        <text x="200" y="260" textAnchor="middle" className="fill-foreground" fontSize="13" fontWeight="600">Borna</text>
       </svg>
-      <div className="absolute inset-0 flex items-center justify-center">
-        <span className="text-xs font-semibold text-primary-foreground bg-primary/0 mt-24">Borna</span>
-      </div>
       {modules.map((m, i) => {
         const Icon = m.icon;
         const angle = (i / modules.length) * Math.PI * 2 - Math.PI / 2;
@@ -922,7 +929,7 @@ const FAQ = () => (
    SECTION 15 — Final CTA (dark gradient)
 ───────────────────────────────────────────────*/
 const FinalCTA = () => (
-  <section className="py-12 md:py-20 md:py-12 md:py-12 md:py-20 relative overflow-hidden border-t border-glass-border">
+  <section className="py-12 md:py-20 relative overflow-hidden border-t border-glass-border">
     <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
       <div className="w-[700px] h-[450px] rounded-full bg-primary/8 blur-[140px]" />
     </div>

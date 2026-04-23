@@ -52,7 +52,7 @@ const VisionMissionPage = () => (
     </div>
 
     {/* Hero */}
-    <section className="relative overflow-hidden py-12 md:py-12 md:py-20 md:py-16 md:py-12 md:py-12 md:py-20">
+    <section className="relative overflow-hidden py-12 md:py-20">
       <div className="absolute inset-0 opacity-40"><BeamsBackground intensity="medium" /></div>
       <div className="container mx-auto px-4 md:px-6 relative z-10 max-w-5xl">
         <div className="grid md:grid-cols-2 gap-12 items-center">
@@ -84,7 +84,7 @@ const VisionMissionPage = () => (
     </section>
 
     {/* Why V&M matter */}
-    <section className="py-12 md:py-12 md:py-20 border-t border-glass-border">
+    <section className="py-12 md:py-20 border-t border-glass-border">
       <div className="container mx-auto px-4 md:px-6 max-w-3xl text-center">
         <h2 className="section-headline text-foreground mb-4">Why vision and mission matter in healthcare technology</h2>
         <p className="body-text mx-auto">
@@ -95,7 +95,7 @@ const VisionMissionPage = () => (
     </section>
 
     {/* Vision */}
-    <section className="py-12 md:py-12 md:py-20 border-t border-glass-border">
+    <section className="py-12 md:py-20 border-t border-glass-border">
       <div className="container mx-auto px-4 md:px-6 max-w-4xl">
         <div className="grid md:grid-cols-2 gap-12 items-start">
           <div>
@@ -119,7 +119,7 @@ const VisionMissionPage = () => (
     </section>
 
     {/* Mission */}
-    <section className="py-12 md:py-12 md:py-20 border-t border-glass-border">
+    <section className="py-12 md:py-20 border-t border-glass-border">
       <div className="container mx-auto px-4 md:px-6">
         <h2 className="section-headline text-foreground text-center mb-4">Our mission: transforming healthcare operations with AI</h2>
         <p className="body-text text-center mx-auto max-w-2xl mb-12">
@@ -142,7 +142,7 @@ const VisionMissionPage = () => (
     </section>
 
     {/* Industry context */}
-    <section className="py-12 md:py-12 md:py-20 border-t border-glass-border">
+    <section className="py-12 md:py-20 border-t border-glass-border">
       <div className="container mx-auto px-4 md:px-6 max-w-3xl text-center">
         <h2 className="section-headline text-foreground mb-4">The future of healthcare technology</h2>
         <p className="body-text mx-auto mb-4">
@@ -153,7 +153,7 @@ const VisionMissionPage = () => (
     </section>
 
     {/* Approach */}
-    <section className="py-12 md:py-12 md:py-20 border-t border-glass-border">
+    <section className="py-12 md:py-20 border-t border-glass-border">
       <div className="container mx-auto px-4 md:px-6 max-w-4xl">
         <h2 className="section-headline text-foreground text-center mb-4">How Borna AI delivers on its vision</h2>
         <p className="body-text text-center mx-auto max-w-2xl mb-12">
@@ -181,7 +181,7 @@ const VisionMissionPage = () => (
     </section>
 
     {/* Platform stack */}
-    <section className="py-12 md:py-12 md:py-20 border-t border-glass-border">
+    <section className="py-12 md:py-20 border-t border-glass-border">
       <div className="container mx-auto px-4 md:px-6 max-w-4xl">
         <div className="grid md:grid-cols-2 gap-12 items-center">
           <div className="space-y-2">
@@ -210,7 +210,7 @@ const VisionMissionPage = () => (
     </section>
 
     {/* Long-term impact */}
-    <section className="py-12 md:py-12 md:py-20 border-t border-glass-border">
+    <section className="py-12 md:py-20 border-t border-glass-border">
       <div className="container mx-auto px-4 md:px-6">
         <h2 className="section-headline text-foreground text-center mb-4">Creating long-term value in healthcare</h2>
         <p className="body-text text-center mx-auto max-w-2xl mb-12">
@@ -233,7 +233,7 @@ const VisionMissionPage = () => (
     </section>
 
     {/* Commitment */}
-    <section className="py-12 md:py-12 md:py-20 border-t border-glass-border">
+    <section className="py-12 md:py-20 border-t border-glass-border">
       <div className="container mx-auto px-4 md:px-6">
         <h2 className="section-headline text-foreground text-center mb-12">Our commitment to innovation and excellence</h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-5xl mx-auto">
@@ -258,7 +258,7 @@ const VisionMissionPage = () => (
     </section>
 
     {/* Key Takeaways */}
-    <section className="py-12 md:py-12 md:py-20 border-t border-glass-border">
+    <section className="py-12 md:py-20 border-t border-glass-border">
       <div className="container mx-auto px-4 md:px-6">
         <h2 className="section-headline text-foreground text-center mb-12">Key takeaways</h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-5xl mx-auto">
@@ -278,7 +278,7 @@ const VisionMissionPage = () => (
     </section>
 
     {/* FAQ */}
-    <section className="py-12 md:py-12 md:py-20 border-t border-glass-border">
+    <section className="py-12 md:py-20 border-t border-glass-border">
       <div className="container mx-auto px-4 md:px-6 max-w-3xl">
         <h2 className="section-headline text-foreground text-center mb-12">Frequently asked questions</h2>
         <div className="space-y-3">
