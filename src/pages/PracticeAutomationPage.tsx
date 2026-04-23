@@ -174,12 +174,12 @@ const PracticeAutomationPage = () => (
       <motion.div {...fadeUp} className="text-center mb-12"><h2 className="text-2xl md:text-3xl font-bold text-foreground">Why practice automation matters</h2></motion.div>
       <div className="grid md:grid-cols-4 gap-4 max-w-4xl mx-auto">
         {[
-          { icon: Zap, title: "Automation", body: "Workflows run without manual effort" },
+          { icon: Wand2, title: "Automation", body: "Workflows run without manual effort" },
           { icon: TrendingUp, title: "Efficiency", body: "Staff time used more effectively" },
           { icon: Users, title: "Capacity", body: "Handle more patients with same team" },
-          { icon: Sparkles, title: "Growth", body: "Revenue scales without proportional cost" },
+          { icon: Rocket, title: "Growth", body: "Revenue scales without proportional cost" },
         ].map((item, i) => (
-          <motion.div key={i} {...fadeUp} className="glass-panel rounded-xl p-5 text-center" style={{ opacity: 0.7 + i * 0.1 }}>
+          <motion.div key={i} {...fadeUp} className="glass-panel rounded-xl p-5 text-center">
             <item.icon className="w-5 h-5 text-primary mx-auto mb-2" />
             <h3 className="text-sm font-semibold text-foreground mb-1">{item.title}</h3>
             <p className="text-xs text-muted-foreground">{item.body}</p>
