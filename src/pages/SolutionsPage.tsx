@@ -9,6 +9,7 @@ import {
 } from "lucide-react";
 import { BeamsBackground } from "@/components/ui/beams-background";
 import PageWrapper from "@/components/layout/PageWrapper";
+import StandardFAQ from "@/components/sections/StandardFAQ";
 import {
   Accordion, AccordionContent, AccordionItem, AccordionTrigger,
 } from "@/components/ui/accordion";

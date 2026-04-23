@@ -22,6 +22,7 @@ import {
   Shield,
 } from "lucide-react";
 import PageWrapper from "@/components/layout/PageWrapper";
+import StandardFAQ from "@/components/sections/StandardFAQ";
 import {
   Accordion,
   AccordionContent,

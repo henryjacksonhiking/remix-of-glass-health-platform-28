@@ -31,6 +31,7 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import PageWrapper from "@/components/layout/PageWrapper";
+import StandardFAQ from "@/components/sections/StandardFAQ";
 import { products } from "@/lib/products";
 import { GlowingEffect } from "@/components/ui/glowing-effect";
 

@@ -9,6 +9,7 @@ import {
   Handshake, TrendingUp, ArrowRight, ChevronDown, ChevronUp
 } from "lucide-react";
 import PageWrapper from "@/components/layout/PageWrapper";
+import StandardFAQ from "@/components/sections/StandardFAQ";
 import { cn } from "@/lib/utils";
 
 const fadeUp = {

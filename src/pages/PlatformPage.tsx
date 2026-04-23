@@ -36,6 +36,7 @@ import {
 } from "@/components/ui/accordion";
 import { BeamsBackground } from "@/components/ui/beams-background";
 import PageWrapper from "@/components/layout/PageWrapper";
+import StandardFAQ from "@/components/sections/StandardFAQ";
 import SpotlightCard from "@/components/ui/spotlight-card";
 
 /* ----------------------------- Data ----------------------------- */

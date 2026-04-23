@@ -2,6 +2,7 @@ import { useNavigate, Link } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 import { motion } from "framer-motion";
 import PageWrapper from "@/components/layout/PageWrapper";
+import StandardFAQ from "@/components/sections/StandardFAQ";
 import { Check, Minus, Shield, TrendingUp, ArrowUpRight } from "lucide-react";
 import {
   Accordion,

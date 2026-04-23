@@ -3,6 +3,7 @@ import { useRef, useState, useEffect } from "react";
 import { Helmet } from "react-helmet-async";
 import { motion } from "framer-motion";
 import PageWrapper from "@/components/layout/PageWrapper";
+import StandardFAQ from "@/components/sections/StandardFAQ";
 import SpotlightCard from "@/components/ui/spotlight-card";
 import {
   Accordion,

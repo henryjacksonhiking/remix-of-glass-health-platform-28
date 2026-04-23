@@ -25,6 +25,7 @@ import {
   ShieldCheck,
 } from "lucide-react";
 import PageWrapper from "@/components/layout/PageWrapper";
+import StandardFAQ from "@/components/sections/StandardFAQ";
 import FAQSection from "@/components/sections/FAQSection";
 import CTASection from "@/components/sections/CTASection";
 import {

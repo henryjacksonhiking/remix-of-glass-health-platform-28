@@ -24,6 +24,7 @@ import {
   CheckCircle2,
 } from "lucide-react";
 import PageWrapper from "@/components/layout/PageWrapper";
+import StandardFAQ from "@/components/sections/StandardFAQ";
 import {
   Breadcrumb,
   BreadcrumbList,

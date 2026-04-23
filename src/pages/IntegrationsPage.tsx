@@ -9,6 +9,7 @@ import {
   Code, Users, TrendingUp, Lock as LockIcon, ChevronDown, ChevronUp
 } from "lucide-react";
 import PageWrapper from "@/components/layout/PageWrapper";
+import StandardFAQ from "@/components/sections/StandardFAQ";
 import { cn } from "@/lib/utils";
 import DataStreamVisual from "@/components/ui/data-stream-visual";
 
