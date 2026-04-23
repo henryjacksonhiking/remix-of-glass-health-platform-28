@@ -921,43 +921,7 @@ const FAQ = () => {
       a: "Yes. Every industry solution is built on the same Borna AI platform — the same communication layer, CRM, analytics, and AI engine — configured to each practice type on top of a shared foundation.",
     },
   ];
-  return (
-    <section className="py-12 md:py-20">
-      <div className="container mx-auto px-4 md:px-6 max-w-3xl">
-        <h2 className="text-2xl md:text-3xl lg:text-4xl font-medium text-foreground mb-12 tracking-tight text-center">
-          Frequently Asked Questions
-        </h2>
-        <Accordion type="single" collapsible className="space-y-3">
-          {faqs.map((faq, i) => (
-            <AccordionItem
-              key={i}
-              value={`faq-${i}`}
-              className="border-none"
-              style={{
-                background: "rgba(255,255,255,0.04)",
-                border: "0.5px solid rgba(255,255,255,0.08)",
-                borderRadius: "14px",
-                overflow: "hidden",
-              }}
-            >
-              <AccordionTrigger
-                className="px-6 py-5 text-left text-[15px] font-medium hover:no-underline"
-                style={{ color: "rgba(255,255,255,0.9)" }}
-              >
-                {faq.q}
-              </AccordionTrigger>
-              <AccordionContent
-                className="px-6 pb-5 text-sm leading-relaxed"
-                style={{ color: "rgba(255,255,255,0.6)" }}
-              >
-                {faq.a}
-              </AccordionContent>
-            </AccordionItem>
-          ))}
-        </Accordion>
-      </div>
-    </section>
-  );
+  return <StandardFAQ items={faqs} />;
 };
 
 // === Section 14: Final CTA ===

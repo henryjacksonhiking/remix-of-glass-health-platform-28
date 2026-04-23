@@ -597,25 +597,13 @@ const CRMLifecyclePage = () => {
       </Section>
 
       {/* SECTION 14 — FAQ */}
-      <Section>
-        <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} className="max-w-3xl mx-auto">
-          <h2 className="text-2xl md:text-3xl font-bold text-center mb-10">Frequently asked questions</h2>
-          <Accordion type="single" collapsible className="space-y-3">
-            {[
-              { q: "What is a healthcare CRM?", a: "A healthcare CRM system helps practices manage patient interactions, track engagement, and maintain relationships over time — centralizing all patient data, communication history, and lifecycle stages in one unified place." },
-              { q: "What is patient lifecycle management?", a: "Patient lifecycle management tracks the full patient journey — from lead acquisition and first contact through appointment booking, active treatment, and long-term retention — giving practices the visibility to manage every stage proactively." },
-              { q: "How does Borna improve patient retention?", a: "Borna analyzes patient engagement patterns to identify at-risk relationships, automates reactivation campaigns for inactive patients, and gives practices the visibility needed to proactively manage retention before patients disengage." },
-              { q: "How does Borna help with lead conversion?", a: "Borna captures leads from multiple marketing channels, tracks their source and engagement, and enables automated follow-up workflows — ensuring inquiries are responded to promptly and guided toward booked appointments." },
-              { q: "How does the CRM layer connect to the rest of the Borna platform?", a: "The CRM & Lifecycle Layer receives communication data from the Communication Layer, feeds lifecycle data into the Analytics & Insights layer, and connects to the AI engine for automated engagement — making it the relationship backbone of the entire ecosystem." },
-            ].map((faq, i) => (
-              <AccordionItem key={i} value={`faq-${i}`} className="border border-white/[0.08] rounded-xl bg-white/[0.02] px-5">
-                <AccordionTrigger className="text-sm font-medium text-left">{faq.q}</AccordionTrigger>
-                <AccordionContent className="text-sm text-muted-foreground leading-relaxed">{faq.a}</AccordionContent>
-              </AccordionItem>
-            ))}
-          </Accordion>
-        </motion.div>
-      </Section>
+      <StandardFAQ items={[
+        { q: "What is a healthcare CRM?", a: "A healthcare CRM system helps practices manage patient interactions, track engagement, and maintain relationships over time — centralizing all patient data, communication history, and lifecycle stages in one unified place." },
+        { q: "What is patient lifecycle management?", a: "Patient lifecycle management tracks the full patient journey — from lead acquisition and first contact through appointment booking, active treatment, and long-term retention — giving practices the visibility to manage every stage proactively." },
+        { q: "How does Borna improve patient retention?", a: "Borna analyzes patient engagement patterns to identify at-risk relationships, automates reactivation campaigns for inactive patients, and gives practices the visibility needed to proactively manage retention before patients disengage." },
+        { q: "How does Borna help with lead conversion?", a: "Borna captures leads from multiple marketing channels, tracks their source and engagement, and enables automated follow-up workflows — ensuring inquiries are responded to promptly and guided toward booked appointments." },
+        { q: "How does the CRM layer connect to the rest of the Borna platform?", a: "The CRM & Lifecycle Layer receives communication data from the Communication Layer, feeds lifecycle data into the Analytics & Insights layer, and connects to the AI engine for automated engagement — making it the relationship backbone of the entire ecosystem." },
+      ]} />
 
       {/* SECTION 15 — FINAL CTA */}
       <section className="py-12 md:py-20 relative overflow-hidden">

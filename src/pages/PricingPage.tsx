@@ -563,34 +563,7 @@ const faqs = [
   { q: "Does Borna AI offer custom pricing for large organizations?", a: "Yes. For multi-location organizations, DSOs, and MSOs, Borna AI provides custom Enterprise pricing based on the number of locations, user seats, integration requirements, and specific platform modules needed. Contact our team for a tailored quote." },
 ];
 
-const FAQSection = () => (
-  <section className="py-12 md:py-20" role="region" aria-label="Pricing FAQs">
-    <div className="container mx-auto px-4 md:px-6 max-w-3xl">
-      <motion.h2 variants={fadeUp} viewport={{ once: true }} whileInView="visible" initial="hidden"
-        className="section-headline text-foreground text-center mb-12">
-        Pricing FAQs
-      </motion.h2>
-      <Accordion type="single" collapsible className="space-y-3">
-        {faqs.map((faq, i) => (
-          <motion.div key={i}
-            initial={{ opacity: 0, y: 8 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: i * 0.06, duration: 0.4 }}>
-            <AccordionItem value={`faq-${i}`} className="glass-panel border px-6 rounded-2xl">
-              <AccordionTrigger className="text-base font-medium text-foreground hover:no-underline py-5">
-                {faq.q}
-              </AccordionTrigger>
-              <AccordionContent className="text-sm text-muted-foreground leading-relaxed pb-5">
-                {faq.a}
-              </AccordionContent>
-            </AccordionItem>
-          </motion.div>
-        ))}
-      </Accordion>
-    </div>
-  </section>
-);
+const FAQSection = () => <StandardFAQ items={faqs} title="Pricing FAQs" eyebrow="What people ask" />;
 
 /* ------------------------------------------------------------------ */
 /*  SECTION 9 — TRUST                                                 */

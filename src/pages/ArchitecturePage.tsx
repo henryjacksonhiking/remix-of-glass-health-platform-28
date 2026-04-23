@@ -521,23 +521,7 @@ const faqs = [
   { q: "Is Borna's architecture secure?", a: "Borna is designed with secure data handling practices, access control mechanisms, and compliance considerations appropriate for healthcare environments — including role-based access and structured data boundaries." },
 ];
 
-const FAQSection = () => (
-  <section className="py-20 md:py-28 overflow-hidden" role="region" aria-label="FAQ">
-    <div className="container mx-auto px-4 md:px-6 max-w-2xl">
-      <motion.h2 variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }} className="section-headline text-foreground mb-10 text-center">
-        Frequently asked questions
-      </motion.h2>
-      <Accordion type="single" collapsible className="space-y-2">
-        {faqs.map((f, i) => (
-          <AccordionItem key={i} value={`faq-${i}`} className="glass-panel px-5">
-            <AccordionTrigger className="text-sm font-medium text-foreground py-4">{f.q}</AccordionTrigger>
-            <AccordionContent className="text-sm text-muted-foreground pb-4">{f.a}</AccordionContent>
-          </AccordionItem>
-        ))}
-      </Accordion>
-    </div>
-  </section>
-);
+const FAQSection = () => <StandardFAQ items={faqs} />;
 
 /* ------------------------------------------------------------------ */
 /*  15. FINAL CTA                                                      */

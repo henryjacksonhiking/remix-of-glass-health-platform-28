@@ -464,25 +464,13 @@ const DualExperiencePage = () => {
       </Section>
 
       {/* FAQ */}
-      <Section>
-        <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} className="max-w-3xl mx-auto">
-          <h2 className="text-2xl md:text-3xl font-bold text-center mb-10">Frequently asked questions</h2>
-          <Accordion type="single" collapsible className="space-y-3">
-            {[
-              { q: "What is a patient experience platform?", a: "A patient experience platform is a digital system that allows patients to interact with their healthcare provider — scheduling appointments, completing forms, making payments, and communicating — through a seamless, accessible interface." },
-              { q: "What is office experience in healthcare software?", a: "Office experience refers to the internal dashboard and tools that healthcare teams use to manage patient data, scheduling, communication, workflows, and operational performance." },
-              { q: "How does Borna connect patient and office experiences?", a: "Borna synchronizes both sides in real time through a shared data layer. When a patient books an appointment, the office calendar updates immediately. Both sides always share the same accurate, current information." },
-              { q: "What can patients do through the Borna patient experience?", a: "Patients can book appointments online, complete digital intake forms, make secure payments, and communicate with the practice through SMS, chat, and email — all through a branded interface." },
-              { q: "What can practice staff manage through the Borna office experience?", a: "Staff can manage patient records, control scheduling, centralize all communication, coordinate and automate workflows, and access real-time performance data — all from one unified dashboard." },
-            ].map((faq, i) => (
-              <AccordionItem key={i} value={`faq-${i}`} className="border border-white/[0.08] rounded-xl bg-white/[0.02] px-5">
-                <AccordionTrigger className="text-sm font-medium text-left">{faq.q}</AccordionTrigger>
-                <AccordionContent className="text-sm text-muted-foreground leading-relaxed">{faq.a}</AccordionContent>
-              </AccordionItem>
-            ))}
-          </Accordion>
-        </motion.div>
-      </Section>
+      <StandardFAQ items={[
+        { q: "What is a patient experience platform?", a: "A patient experience platform is a digital system that allows patients to interact with their healthcare provider — scheduling appointments, completing forms, making payments, and communicating — through a seamless, accessible interface." },
+        { q: "What is office experience in healthcare software?", a: "Office experience refers to the internal dashboard and tools that healthcare teams use to manage patient data, scheduling, communication, workflows, and operational performance." },
+        { q: "How does Borna connect patient and office experiences?", a: "Borna synchronizes both sides in real time through a shared data layer. When a patient books an appointment, the office calendar updates immediately. Both sides always share the same accurate, current information." },
+        { q: "What can patients do through the Borna patient experience?", a: "Patients can book appointments online, complete digital intake forms, make secure payments, and communicate with the practice through SMS, chat, and email — all through a branded interface." },
+        { q: "What can practice staff manage through the Borna office experience?", a: "Staff can manage patient records, control scheduling, centralize all communication, coordinate and automate workflows, and access real-time performance data — all from one unified dashboard." },
+      ]} />
 
       {/* FINAL CTA */}
       <section className="py-12 md:py-20 relative overflow-hidden">

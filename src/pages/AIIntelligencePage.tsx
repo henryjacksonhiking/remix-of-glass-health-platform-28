@@ -458,25 +458,13 @@ const AIIntelligencePage = () => {
       </Section>
 
       {/* FAQ */}
-      <Section>
-        <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} className="max-w-3xl mx-auto">
-          <h2 className="text-2xl md:text-3xl font-bold text-center mb-10">Frequently asked questions</h2>
-          <Accordion type="single" collapsible className="space-y-3">
-            {[
-              { q: "What is an AI intelligence layer in healthcare?", a: "An AI intelligence layer processes and analyzes data from multiple sources to generate insights, automate workflows, and support decision-making — enabling healthcare providers to understand patient behavior, optimize operations, and improve engagement." },
-              { q: "How does AI improve patient engagement?", a: "AI analyzes patient communication patterns, behavior history, and lifecycle data to surface personalized follow-up recommendations, optimize outreach timing, and automate responses — keeping patients connected without manual effort." },
-              { q: "Does Borna provide real-time AI insights?", a: "Yes. Borna processes data in real time — generating actionable insights, alerts, and automated workflow triggers the moment relevant patterns or events are detected across the platform." },
-              { q: "What AI capabilities does Borna provide?", a: "Sentiment analysis of patient communications, predictive insights into patient behavior and lifecycle events, intelligent workflow automation, and AI-assisted decision support for practice managers and clinical staff." },
-              { q: "How does the AI layer connect to the rest of the Borna ecosystem?", a: "The AI Intelligence Layer receives structured data from the Data & Integration Layer and processes information from Communication and CRM layers. Its outputs — insights, alerts, and automation — flow back into every other layer, making the entire system continuously smarter." },
-            ].map((faq, i) => (
-              <AccordionItem key={i} value={`faq-${i}`} className="border border-white/[0.08] rounded-xl bg-white/[0.02] px-5">
-                <AccordionTrigger className="text-sm font-medium text-left">{faq.q}</AccordionTrigger>
-                <AccordionContent className="text-sm text-muted-foreground leading-relaxed">{faq.a}</AccordionContent>
-              </AccordionItem>
-            ))}
-          </Accordion>
-        </motion.div>
-      </Section>
+      <StandardFAQ items={[
+        { q: "What is an AI intelligence layer in healthcare?", a: "An AI intelligence layer processes and analyzes data from multiple sources to generate insights, automate workflows, and support decision-making — enabling healthcare providers to understand patient behavior, optimize operations, and improve engagement." },
+        { q: "How does AI improve patient engagement?", a: "AI analyzes patient communication patterns, behavior history, and lifecycle data to surface personalized follow-up recommendations, optimize outreach timing, and automate responses — keeping patients connected without manual effort." },
+        { q: "Does Borna provide real-time AI insights?", a: "Yes. Borna processes data in real time — generating actionable insights, alerts, and automated workflow triggers the moment relevant patterns or events are detected across the platform." },
+        { q: "What AI capabilities does Borna provide?", a: "Sentiment analysis of patient communications, predictive insights into patient behavior and lifecycle events, intelligent workflow automation, and AI-assisted decision support for practice managers and clinical staff." },
+        { q: "How does the AI layer connect to the rest of the Borna ecosystem?", a: "The AI Intelligence Layer receives structured data from the Data & Integration Layer and processes information from Communication and CRM layers. Its outputs — insights, alerts, and automation — flow back into every other layer, making the entire system continuously smarter." },
+      ]} />
 
       {/* FINAL CTA */}
       <section className="py-12 md:py-20 relative overflow-hidden">

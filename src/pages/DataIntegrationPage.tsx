@@ -492,25 +492,13 @@ const DataIntegrationPage = () => {
       </Section>
 
       {/* FAQ */}
-      <Section>
-        <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} className="max-w-3xl mx-auto">
-          <h2 className="text-2xl md:text-3xl font-bold text-center mb-10">Frequently asked questions</h2>
-          <Accordion type="single" collapsible className="space-y-3">
-            {[
-              { q: "What is a healthcare data platform?", a: "A healthcare data platform centralizes and integrates data from multiple sources — PMS, EHR, communication tools, and marketing platforms — into one unified environment that supports real-time insights, AI automation, and operational decision-making." },
-              { q: "Why is data integration important in healthcare?", a: "Data integration eliminates silos that cause inconsistent information, manual re-entry, and operational blind spots. When all systems share a unified data layer, practices gain full visibility into patient relationships, operational performance, and revenue." },
-              { q: "Does Borna support real-time data integration?", a: "Yes. Borna enables real-time data synchronization across all connected systems — updates in one place are immediately available across the entire platform without batch delays or manual intervention." },
-              { q: "What data sources does the Borna Data Layer connect?", a: "Borna connects Practice Management Systems (PMS), Electronic Health Records (EHR), all communication channels, marketing platforms, and financial and payment systems — along with data generated internally by other Borna ecosystem layers." },
-              { q: "How does the Data Layer enable AI and analytics?", a: "By centralizing, structuring, and governing data from all sources, the Data Layer provides the AI layer with the clean, complete, and consistent data it needs to generate insights, predictions, and automation." },
-            ].map((faq, i) => (
-              <AccordionItem key={i} value={`faq-${i}`} className="border border-white/[0.08] rounded-xl bg-white/[0.02] px-5">
-                <AccordionTrigger className="text-sm font-medium text-left">{faq.q}</AccordionTrigger>
-                <AccordionContent className="text-sm text-muted-foreground leading-relaxed">{faq.a}</AccordionContent>
-              </AccordionItem>
-            ))}
-          </Accordion>
-        </motion.div>
-      </Section>
+      <StandardFAQ items={[
+        { q: "What is a healthcare data platform?", a: "A healthcare data platform centralizes and integrates data from multiple sources — PMS, EHR, communication tools, and marketing platforms — into one unified environment that supports real-time insights, AI automation, and operational decision-making." },
+        { q: "Why is data integration important in healthcare?", a: "Data integration eliminates silos that cause inconsistent information, manual re-entry, and operational blind spots. When all systems share a unified data layer, practices gain full visibility into patient relationships, operational performance, and revenue." },
+        { q: "Does Borna support real-time data integration?", a: "Yes. Borna enables real-time data synchronization across all connected systems — updates in one place are immediately available across the entire platform without batch delays or manual intervention." },
+        { q: "What data sources does the Borna Data Layer connect?", a: "Borna connects Practice Management Systems (PMS), Electronic Health Records (EHR), all communication channels, marketing platforms, and financial and payment systems — along with data generated internally by other Borna ecosystem layers." },
+        { q: "How does the Data Layer enable AI and analytics?", a: "By centralizing, structuring, and governing data from all sources, the Data Layer provides the AI layer with the clean, complete, and consistent data it needs to generate insights, predictions, and automation." },
+      ]} />
 
       {/* FINAL CTA */}
       <section className="py-12 md:py-20 relative overflow-hidden">

@@ -673,18 +673,7 @@ const SecurityCompliancePage = () => {
       </SectionWrap>
 
       {/* ── SECTION 15: FAQ ── */}
-      <SectionWrap>
-        <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} className="text-center mb-8">
-          <h2 className="text-2xl md:text-3xl font-bold text-foreground">Frequently asked questions</h2>
-        </motion.div>
-        <div className="max-w-2xl mx-auto space-y-3">
-          {faqItems.map((item, i) => (
-            <motion.div key={i} initial="hidden" whileInView="visible" viewport={{ once: true }} custom={i * 0.2} variants={fadeUp}>
-              <FAQItem item={item} />
-            </motion.div>
-          ))}
-        </div>
-      </SectionWrap>
+      <StandardFAQ items={faqItems} />
 
       {/* ── SECTION 16: FINAL CTA ── */}
       <section className="relative py-16 md:py-24 overflow-hidden">
