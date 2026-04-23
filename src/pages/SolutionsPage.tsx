@@ -737,18 +737,24 @@ const PlatformDiagram = () => {
         </defs>
         {modules.map((_, i) => {
           const angle = (i / modules.length) * Math.PI * 2 - Math.PI / 2;
-          const x = 200 + Math.cos(angle) * 130;
-          const y = 200 + Math.sin(angle) * 130;
+          // Line stops short of label pill (radius ~108) so it visibly connects into the label center
+          const lineEndR = 108;
+          // Start line just outside the central hub glow
+          const lineStartR = 32;
+          const x1 = 200 + Math.cos(angle) * lineStartR;
+          const y1 = 200 + Math.sin(angle) * lineStartR;
+          const x2 = 200 + Math.cos(angle) * lineEndR;
+          const y2 = 200 + Math.sin(angle) * lineEndR;
           return (
             <g key={i}>
               <line
-                x1="200" y1="200" x2={x} y2={y}
+                x1={x1} y1={y1} x2={x2} y2={y2}
                 stroke="hsl(var(--primary))" strokeOpacity="0.4" strokeWidth="1"
                 strokeDasharray="3 4"
               />
               <circle r="2.5" fill="hsl(var(--primary))" opacity="0.8">
                 <animateMotion dur={`${4 + i * 0.4}s`} repeatCount="indefinite"
-                  path={`M200,200 L${x},${y}`} />
+                  path={`M${x1},${y1} L${x2},${y2}`} />
                 <animate attributeName="opacity" values="0;1;0" dur={`${4 + i * 0.4}s`} repeatCount="indefinite" />
               </circle>
             </g>
@@ -859,13 +865,14 @@ const Differentiation = () => {
         {/* Old way — disconnected, muted */}
         <motion.div {...fadeUp} className="glass-panel p-6 relative overflow-hidden">
           <div className="text-[10px] uppercase tracking-widest text-muted-foreground/80 font-semibold mb-5">Fragmented Tools</div>
-          <div className="grid grid-cols-3 gap-2.5 relative">
+          <div className="grid grid-cols-2 gap-2.5 relative max-w-[240px] mx-auto">
             {oldTools.map((t, i) => {
               const Icon = t.icon;
+              const isLastOdd = i === oldTools.length - 1 && oldTools.length % 2 === 1;
               return (
                 <div
                   key={t.label}
-                  className="rounded-lg border border-dashed border-muted-foreground/25 bg-muted/[0.04] p-3 flex flex-col items-center text-center"
+                  className={`rounded-lg border border-dashed border-muted-foreground/25 bg-muted/[0.04] p-3 flex flex-col items-center text-center ${isLastOdd ? "col-span-2 max-w-[50%] mx-auto w-full" : ""}`}
                   style={{ transform: `rotate(${(i % 2 === 0 ? -1 : 1) * 1.5}deg)` }}
                 >
                   <div className="w-7 h-7 rounded-md bg-muted-foreground/10 flex items-center justify-center mb-1.5">
