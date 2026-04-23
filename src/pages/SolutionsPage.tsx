@@ -822,8 +822,20 @@ const PlatformConnection = () => (
    SECTION 12 — Differentiation (light)
 ───────────────────────────────────────────────*/
 const Differentiation = () => {
-  const oldTools = ["Phone", "CRM", "Scheduler", "Analytics", "Billing"];
-  const newMods = ["Comms", "CRM", "Scheduler", "Analytics", "Billing"];
+  const oldTools = [
+    { label: "Phone", icon: Phone },
+    { label: "CRM", icon: Heart },
+    { label: "Scheduler", icon: CalendarCheck },
+    { label: "Analytics", icon: BarChart3 },
+    { label: "Billing", icon: DollarSign },
+  ];
+  const newMods = [
+    { label: "Comms", icon: MessageCircle },
+    { label: "CRM", icon: Heart },
+    { label: "Scheduler", icon: CalendarCheck },
+    { label: "Analytics", icon: BarChart3 },
+    { label: "Billing", icon: DollarSign },
+  ];
   return (
     <SectionLight id="differentiation">
       <div className="max-w-3xl mx-auto text-center mb-12">
@@ -848,54 +860,85 @@ const Differentiation = () => {
         </ul>
       </div>
 
-      <div className="grid md:grid-cols-[1fr_auto_1fr] gap-5 items-center max-w-5xl mx-auto">
-        {/* Old way */}
-        <motion.div {...fadeUp} className="glass-panel p-6 opacity-70">
-          <div className="text-[10px] uppercase tracking-widest text-muted-foreground font-semibold mb-4">Fragmented Tools</div>
-          <div className="grid grid-cols-3 gap-2">
-            {oldTools.map((t) => (
-              <div key={t} className="rounded-lg border border-dashed border-muted-foreground/30 bg-muted/10 p-3 text-center">
-                <div className="w-6 h-6 rounded bg-muted-foreground/20 mx-auto mb-1.5" />
-                <span className="text-[10px] text-muted-foreground">{t}</span>
-              </div>
-            ))}
-          </div>
-        </motion.div>
-
-        <ArrowRight className="hidden md:block w-6 h-6 text-primary mx-auto" />
-
-        {/* Borna */}
-        <motion.div {...fadeUp} transition={{ ...fadeUp.transition, delay: 0.15 }} className="glass-panel p-6">
-          <div className="text-[10px] uppercase tracking-widest text-primary font-semibold mb-4">Unified Platform</div>
-          <div className="relative h-[180px]">
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-primary/20 ring-2 ring-primary flex items-center justify-center z-10">
-              <Database className="w-5 h-5 text-primary" strokeWidth={1.5} />
-            </div>
-            <svg viewBox="0 0 200 200" className="absolute inset-0 w-full h-full">
-              {newMods.map((_, i) => {
-                const angle = (i / newMods.length) * Math.PI * 2 - Math.PI / 2;
-                const x = 100 + Math.cos(angle) * 75;
-                const y = 100 + Math.sin(angle) * 75;
-                return (
-                  <line key={i} x1="100" y1="100" x2={x} y2={y} stroke="hsl(var(--primary))" strokeWidth="1.5" strokeOpacity="0.6" />
-                );
-              })}
-            </svg>
-            {newMods.map((m, i) => {
-              const angle = (i / newMods.length) * Math.PI * 2 - Math.PI / 2;
-              const x = 50 + Math.cos(angle) * 40;
-              const y = 50 + Math.sin(angle) * 40;
+      <div className="grid md:grid-cols-[1fr_auto_1fr] gap-5 items-stretch max-w-5xl mx-auto">
+        {/* Old way — disconnected, muted */}
+        <motion.div {...fadeUp} className="glass-panel p-6 relative overflow-hidden">
+          <div className="text-[10px] uppercase tracking-widest text-muted-foreground/80 font-semibold mb-5">Fragmented Tools</div>
+          <div className="grid grid-cols-3 gap-2.5 relative">
+            {oldTools.map((t, i) => {
+              const Icon = t.icon;
               return (
                 <div
-                  key={m}
-                  className="absolute -translate-x-1/2 -translate-y-1/2 px-2 py-1 rounded-md bg-primary/10 border border-primary/20 text-[10px] text-primary font-medium"
-                  style={{ left: `${x}%`, top: `${y}%` }}
+                  key={t.label}
+                  className="rounded-lg border border-dashed border-muted-foreground/25 bg-muted/[0.04] p-3 flex flex-col items-center text-center"
+                  style={{ transform: `rotate(${(i % 2 === 0 ? -1 : 1) * 1.5}deg)` }}
                 >
-                  {m}
+                  <div className="w-7 h-7 rounded-md bg-muted-foreground/10 flex items-center justify-center mb-1.5">
+                    <Icon className="w-3.5 h-3.5 text-muted-foreground/60" strokeWidth={1.5} />
+                  </div>
+                  <span className="text-[10px] text-muted-foreground/80 font-medium">{t.label}</span>
                 </div>
               );
             })}
           </div>
+          <p className="mt-4 text-[10px] text-muted-foreground/60 italic text-center">Disconnected · duplicate data · manual handoffs</p>
+        </motion.div>
+
+        <ArrowRight className="hidden md:block w-6 h-6 text-primary mx-auto" />
+
+        {/* Borna — unified hub */}
+        <motion.div {...fadeUp} transition={{ ...fadeUp.transition, delay: 0.15 }} className="glass-panel p-6">
+          <div className="text-[10px] uppercase tracking-widest text-primary font-semibold mb-5">Unified Platform</div>
+          <div className="relative w-full aspect-square max-w-[280px] mx-auto">
+            <svg viewBox="0 0 200 200" className="absolute inset-0 w-full h-full">
+              <defs>
+                <radialGradient id="diff-hub" cx="50%" cy="50%">
+                  <stop offset="0%" stopColor="hsl(var(--primary))" stopOpacity="0.85" />
+                  <stop offset="55%" stopColor="hsl(var(--primary))" stopOpacity="0.25" />
+                  <stop offset="100%" stopColor="hsl(var(--primary))" stopOpacity="0" />
+                </radialGradient>
+              </defs>
+              {newMods.map((_, i) => {
+                const angle = (i / newMods.length) * Math.PI * 2 - Math.PI / 2;
+                const x = 100 + Math.cos(angle) * 70;
+                const y = 100 + Math.sin(angle) * 70;
+                return (
+                  <g key={i}>
+                    <line x1="100" y1="100" x2={x} y2={y} stroke="hsl(var(--primary))" strokeWidth="1.25" strokeOpacity="0.55" strokeDasharray="3 3" />
+                    <circle r="2" fill="hsl(var(--primary))">
+                      <animateMotion dur={`${3 + i * 0.3}s`} repeatCount="indefinite"
+                        path={`M100,100 L${x},${y}`} />
+                      <animate attributeName="opacity" values="0;1;0" dur={`${3 + i * 0.3}s`} repeatCount="indefinite" />
+                    </circle>
+                  </g>
+                );
+              })}
+              <circle cx="100" cy="100" r="36" fill="url(#diff-hub)" />
+              <circle cx="100" cy="100" r="18" fill="hsl(var(--primary) / 0.3)" stroke="hsl(var(--primary))" strokeWidth="1.5">
+                <animate attributeName="r" values="18;21;18" dur="2.5s" repeatCount="indefinite" />
+              </circle>
+            </svg>
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-10 flex items-center justify-center pointer-events-none">
+              <Database className="w-5 h-5 text-primary-foreground" strokeWidth={2} />
+            </div>
+            {newMods.map((m, i) => {
+              const Icon = m.icon;
+              const angle = (i / newMods.length) * Math.PI * 2 - Math.PI / 2;
+              const x = 50 + Math.cos(angle) * 36;
+              const y = 50 + Math.sin(angle) * 36;
+              return (
+                <div
+                  key={m.label}
+                  className="absolute -translate-x-1/2 -translate-y-1/2 px-2 py-1 rounded-md bg-gradient-to-br from-primary/20 to-primary/5 border border-primary/30 text-[10px] text-foreground font-medium flex items-center gap-1 shadow-[0_2px_10px_hsla(170,100%,43%,0.2)]"
+                  style={{ left: `${x}%`, top: `${y}%` }}
+                >
+                  <Icon className="w-2.5 h-2.5 text-primary" strokeWidth={2} />
+                  {m.label}
+                </div>
+              );
+            })}
+          </div>
+          <p className="mt-4 text-[10px] text-primary/80 italic text-center">Shared data · shared intelligence · one record</p>
         </motion.div>
       </div>
     </SectionLight>
