@@ -3,8 +3,9 @@ import { Helmet } from "react-helmet-async";
 import { motion } from "framer-motion";
 import {
   Zap, MessageSquare, CalendarCheck, RefreshCw, FileText, Workflow,
-  ArrowRight, Bot, CheckCircle2, XCircle, Sparkles, Users, TrendingUp,
-  Cpu, Settings, Activity, Layers,
+  ArrowRight, CheckCircle2, XCircle, Users, TrendingUp,
+  Cpu, Radar, GitBranch, RotateCw, Rocket, LineChart, UserPlus,
+  Layers, Bell, Wand2, ShieldCheck, Target,
 } from "lucide-react";
 import PageWrapper from "@/components/layout/PageWrapper";
 import StandardFAQ from "@/components/sections/StandardFAQ";
@@ -47,20 +48,41 @@ const PracticeAutomationPage = () => (
               <a href="#automation-areas" className="ghost-btn whitespace-nowrap">See Automation</a>
             </div>
           </motion.div>
-          <motion.div {...fadeUp} className="relative" aria-hidden="true">
-            <div className="space-y-3">
+          <motion.div initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.2 }} transition={{ duration: 0.5 }} className="relative w-full min-w-0" aria-hidden="true">
+            <div className="space-y-3 w-full">
               {[
                 { trigger: "Missed Call", action: "Follow-Up SMS Sent" },
                 { trigger: "Appointment Due", action: "Reminder Sent" },
                 { trigger: "Patient Inactive 90 Days", action: "Reactivation Started" },
               ].map((lane, i) => (
-                <div key={i} className="glass-panel rounded-xl p-3 flex items-center gap-2 sm:gap-3 overflow-hidden">
-                  <div className="glass-panel rounded-lg px-2 sm:px-3 py-2 text-[11px] sm:text-xs text-muted-foreground shrink-0 min-w-0 truncate">{lane.trigger}</div>
-                  <ArrowRight className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-primary shrink-0" />
-                  <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-primary/20 flex items-center justify-center shrink-0"><Cpu className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-primary" /></div>
-                  <ArrowRight className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-primary shrink-0" />
-                  <div className="glass-panel rounded-lg px-2 sm:px-3 py-2 text-[11px] sm:text-xs text-primary border-primary/20 shrink-0 min-w-0 truncate">{lane.action}</div>
-                </div>
+                <motion.div
+                  key={i}
+                  initial={{ opacity: 0, y: 14 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, amount: 0.4 }}
+                  transition={{ duration: 0.5, delay: 0.15 + i * 0.25, ease: [0.16, 1, 0.3, 1] }}
+                  className="glass-panel rounded-xl p-2.5 sm:p-3 flex items-center gap-1.5 sm:gap-3 overflow-hidden w-full"
+                >
+                  <div className="glass-panel rounded-lg px-2 sm:px-3 py-1.5 sm:py-2 text-[10px] sm:text-xs text-muted-foreground shrink min-w-0 truncate">{lane.trigger}</div>
+                  <motion.div
+                    initial={{ x: -4, opacity: 0.4 }}
+                    animate={{ x: [-4, 2, -4], opacity: [0.4, 1, 0.4] }}
+                    transition={{ duration: 1.6, repeat: Infinity, delay: i * 0.3, ease: "easeInOut" }}
+                    className="shrink-0"
+                  >
+                    <ArrowRight className="w-3 h-3 sm:w-4 sm:h-4 text-primary" />
+                  </motion.div>
+                  <div className="w-6 h-6 sm:w-8 sm:h-8 rounded-full bg-primary/20 flex items-center justify-center shrink-0"><Cpu className="w-3 h-3 sm:w-4 sm:h-4 text-primary" /></div>
+                  <motion.div
+                    initial={{ x: -4, opacity: 0.4 }}
+                    animate={{ x: [-4, 2, -4], opacity: [0.4, 1, 0.4] }}
+                    transition={{ duration: 1.6, repeat: Infinity, delay: 0.4 + i * 0.3, ease: "easeInOut" }}
+                    className="shrink-0"
+                  >
+                    <ArrowRight className="w-3 h-3 sm:w-4 sm:h-4 text-primary" />
+                  </motion.div>
+                  <div className="glass-panel rounded-lg px-2 sm:px-3 py-1.5 sm:py-2 text-[10px] sm:text-xs text-primary border-primary/20 shrink min-w-0 truncate">{lane.action}</div>
+                </motion.div>
               ))}
             </div>
           </motion.div>
@@ -106,9 +128,9 @@ const PracticeAutomationPage = () => (
       <motion.div {...fadeUp} className="max-w-3xl mx-auto text-center mb-12"><h2 className="text-2xl md:text-3xl font-bold text-foreground mb-6">AI-driven workflow automation</h2><p className="text-muted-foreground leading-relaxed">Borna's automation is not just rule-based — it is AI-driven. The AI layer analyzes context, selects the optimal response, and adapts decisions over time based on observed outcomes.</p></motion.div>
       <div className="grid md:grid-cols-3 gap-6 max-w-3xl mx-auto">
         {[
-          { icon: Activity, title: "Intelligent Event Detection", body: "AI identifies triggering events across all systems — not just obvious ones, but subtle signals." },
-          { icon: Settings, title: "Dynamic Workflow Selection", body: "Instead of one rigid response per trigger, AI selects from multiple possible workflows based on context." },
-          { icon: Bot, title: "Adaptive Optimization", body: "Automation workflows improve over time as AI observes which responses achieve the best outcomes." },
+          { icon: Radar, title: "Intelligent Event Detection", body: "AI identifies triggering events across all systems — not just obvious ones, but subtle signals." },
+          { icon: GitBranch, title: "Dynamic Workflow Selection", body: "Instead of one rigid response per trigger, AI selects from multiple possible workflows based on context." },
+          { icon: RotateCw, title: "Adaptive Optimization", body: "Automation workflows improve over time as AI observes which responses achieve the best outcomes." },
         ].map((item, i) => (
           <motion.div key={i} {...fadeUp} className="glass-panel rounded-xl p-5 text-center">
             <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center text-primary mx-auto mb-3"><item.icon className="w-5 h-5" /></div>
@@ -152,12 +174,12 @@ const PracticeAutomationPage = () => (
       <motion.div {...fadeUp} className="text-center mb-12"><h2 className="text-2xl md:text-3xl font-bold text-foreground">Why practice automation matters</h2></motion.div>
       <div className="grid md:grid-cols-4 gap-4 max-w-4xl mx-auto">
         {[
-          { icon: Zap, title: "Automation", body: "Workflows run without manual effort" },
+          { icon: Wand2, title: "Automation", body: "Workflows run without manual effort" },
           { icon: TrendingUp, title: "Efficiency", body: "Staff time used more effectively" },
           { icon: Users, title: "Capacity", body: "Handle more patients with same team" },
-          { icon: Sparkles, title: "Growth", body: "Revenue scales without proportional cost" },
+          { icon: Rocket, title: "Growth", body: "Revenue scales without proportional cost" },
         ].map((item, i) => (
-          <motion.div key={i} {...fadeUp} className="glass-panel rounded-xl p-5 text-center" style={{ opacity: 0.7 + i * 0.1 }}>
+          <motion.div key={i} {...fadeUp} className="glass-panel rounded-xl p-5 text-center">
             <item.icon className="w-5 h-5 text-primary mx-auto mb-2" />
             <h3 className="text-sm font-semibold text-foreground mb-1">{item.title}</h3>
             <p className="text-xs text-muted-foreground">{item.body}</p>
@@ -183,22 +205,11 @@ const PracticeAutomationPage = () => (
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.2 }}
             transition={{ duration: 0.5, delay: i * 0.15, ease: [0.16, 1, 0.3, 1] }}
-            className="glass-panel rounded-xl p-5 text-center relative"
+            className="glass-panel rounded-xl p-5 text-center"
           >
             <div className="w-8 h-8 rounded-full bg-primary/20 flex items-center justify-center text-primary text-sm font-bold mx-auto mb-3">{step.n}</div>
             <h3 className="text-sm font-semibold text-foreground mb-2">{step.title}</h3>
             <p className="text-xs text-muted-foreground">{step.body}</p>
-            {i < 4 && (
-              <div className="hidden lg:block absolute top-1/2 -translate-y-1/2 -right-3 z-10" aria-hidden>
-                <svg viewBox="0 0 24 12" className="w-6 h-3">
-                  <line x1="0" y1="6" x2="18" y2="6" stroke="hsl(var(--primary))" strokeOpacity="0.4" strokeWidth="1" />
-                  <path d="M16 2 L22 6 L16 10" fill="none" stroke="hsl(var(--primary))" strokeOpacity="0.6" strokeWidth="1" strokeLinecap="round" />
-                  <circle r="1.5" fill="hsl(var(--primary))">
-                    <animateMotion dur="1.5s" repeatCount="indefinite" begin={`${i * 0.3}s`} path="M0,6 L18,6" />
-                  </circle>
-                </svg>
-              </div>
-            )}
           </motion.div>
         ))}
       </div>
@@ -208,8 +219,13 @@ const PracticeAutomationPage = () => (
     <SectionDark>
       <motion.div {...fadeUp} className="text-center mb-8"><h2 className="text-2xl md:text-3xl font-bold text-foreground">Key takeaways</h2></motion.div>
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-        {["Borna automates communication, scheduling, lifecycle management, and administrative workflows", "AI-driven automation selects the optimal response for each event and adapts over time", "Manual repetitive tasks are eliminated — freeing staff to focus on patient care", "Automation enables practices to scale capacity without proportionally increasing headcount"].map((t, i) => (
-          <motion.div key={i} {...fadeUp} className="glass-panel rounded-xl p-4 text-center"><Sparkles className="w-5 h-5 text-primary mx-auto mb-2" /><p className="text-xs text-muted-foreground">{t}</p></motion.div>
+        {[
+          { icon: Layers, t: "Borna automates communication, scheduling, lifecycle management, and administrative workflows" },
+          { icon: Target, t: "AI-driven automation selects the optimal response for each event and adapts over time" },
+          { icon: Zap, t: "Manual repetitive tasks are eliminated — freeing staff to focus on patient care" },
+          { icon: LineChart, t: "Automation enables practices to scale capacity without proportionally increasing headcount" },
+        ].map((item, i) => (
+          <motion.div key={i} {...fadeUp} className="glass-panel rounded-xl p-4 text-center"><item.icon className="w-5 h-5 text-primary mx-auto mb-2" /><p className="text-xs text-muted-foreground">{item.t}</p></motion.div>
         ))}
       </div>
     </SectionDark>
