@@ -61,57 +61,78 @@ const heroOutcomes = [
   { icon: Sparkles, label: "Automation" },
 ];
 
-const HeroVisual = () => (
-  <div className="relative w-full h-[360px] md:h-[440px]">
-    {/* Network background */}
-    <svg viewBox="0 0 400 400" className="absolute inset-0 w-full h-full">
-      {heroOutcomes.map((_, i) => {
-        const angle = (i / heroOutcomes.length) * Math.PI * 2 - Math.PI / 2;
-        const x = 200 + Math.cos(angle) * 140;
-        const y = 200 + Math.sin(angle) * 140;
+const HeroVisual = () => {
+  // Mobile-safe positions: 4 distinct quadrants with vertical separation
+  // sm+ uses tighter premium positions (unchanged feel on desktop)
+  const positions = [
+    // Patient Growth - top left
+    "top-[4%] left-[2%] sm:top-[8%] sm:left-[10%]",
+    // Scheduling Efficiency - top right (moved DOWN on mobile to avoid overlap)
+    "top-[22%] right-[2%] sm:top-[12%] sm:right-[8%]",
+    // Revenue Performance - bottom left (moved UP on mobile)
+    "bottom-[22%] left-[2%] sm:bottom-[14%] sm:left-[6%]",
+    // Automation - bottom right
+    "bottom-[4%] right-[2%] sm:bottom-[10%] sm:right-[10%]",
+  ];
+  return (
+    <div className="relative w-full h-[380px] md:h-[440px]">
+      <svg viewBox="0 0 400 400" className="absolute inset-0 w-full h-full">
+        <defs>
+          <radialGradient id="hero-hub-grad" cx="50%" cy="50%">
+            <stop offset="0%" stopColor="hsl(var(--primary))" stopOpacity="0.9" />
+            <stop offset="60%" stopColor="hsl(var(--primary))" stopOpacity="0.3" />
+            <stop offset="100%" stopColor="hsl(var(--primary))" stopOpacity="0" />
+          </radialGradient>
+        </defs>
+        {heroOutcomes.map((_, i) => {
+          const angle = (i / heroOutcomes.length) * Math.PI * 2 - Math.PI / 2;
+          const x = 200 + Math.cos(angle) * 140;
+          const y = 200 + Math.sin(angle) * 140;
+          return (
+            <g key={i}>
+              <line
+                x1="200" y1="200" x2={x} y2={y}
+                stroke="hsl(var(--primary))" strokeOpacity="0.3" strokeWidth="1"
+                strokeDasharray="3 4"
+              />
+              <circle r="3" fill="hsl(var(--primary))">
+                <animateMotion dur={`${3 + i * 0.5}s`} repeatCount="indefinite"
+                  path={`M200,200 L${x},${y}`} />
+                <animate attributeName="opacity" values="0;1;0" dur={`${3 + i * 0.5}s`} repeatCount="indefinite" />
+              </circle>
+            </g>
+          );
+        })}
+        <circle cx="200" cy="200" r="60" fill="url(#hero-hub-grad)" />
+        <circle cx="200" cy="200" r="22" fill="hsl(var(--primary) / 0.3)" stroke="hsl(var(--primary))" strokeWidth="1.5">
+          <animate attributeName="r" values="22;26;22" dur="2.5s" repeatCount="indefinite" />
+        </circle>
+        <circle cx="200" cy="200" r="9" fill="hsl(var(--primary))" />
+      </svg>
+
+      {heroOutcomes.map((o, i) => {
+        const Icon = o.icon;
         return (
-          <line
-            key={i}
-            x1="200" y1="200" x2={x} y2={y}
-            stroke="hsl(var(--primary))" strokeOpacity="0.25" strokeWidth="1"
-            strokeDasharray="3 4"
-          />
+          <motion.div
+            key={o.label}
+            className={`absolute glass-panel px-3 py-2.5 flex items-center gap-2 backdrop-blur-xl shadow-[0_4px_20px_hsla(170,100%,43%,0.15)] ${positions[i]}`}
+            initial={{ opacity: 0, y: 12 }}
+            animate={{ opacity: 1, y: [0, -6, 0] }}
+            transition={{
+              opacity: { delay: 0.4 + i * 0.15, duration: 0.5 },
+              y: { delay: i * 0.5, duration: 4 + i, repeat: Infinity, ease: "easeInOut" },
+            }}
+          >
+            <span className="w-6 h-6 rounded-md flex items-center justify-center bg-gradient-to-br from-primary/30 to-primary/10 ring-1 ring-primary/30">
+              <Icon className="w-3.5 h-3.5 text-primary" strokeWidth={1.75} />
+            </span>
+            <span className="text-xs font-medium text-foreground whitespace-nowrap">{o.label}</span>
+          </motion.div>
         );
       })}
-      {/* Central node */}
-      <circle cx="200" cy="200" r="34" fill="hsl(var(--primary) / 0.12)" />
-      <circle cx="200" cy="200" r="20" fill="hsl(var(--primary) / 0.25)" />
-      <circle cx="200" cy="200" r="8" fill="hsl(var(--primary))" />
-    </svg>
-
-    {/* Floating outcome cards */}
-    {heroOutcomes.map((o, i) => {
-      const Icon = o.icon;
-      const positions = [
-        { top: "8%", left: "10%" },
-        { top: "12%", right: "8%" },
-        { bottom: "14%", left: "6%" },
-        { bottom: "10%", right: "10%" },
-      ];
-      return (
-        <motion.div
-          key={o.label}
-          className="absolute glass-panel px-3 py-2.5 flex items-center gap-2 backdrop-blur-xl"
-          style={positions[i]}
-          initial={{ opacity: 0, y: 12 }}
-          animate={{ opacity: 1, y: [0, -6, 0] }}
-          transition={{
-            opacity: { delay: 0.4 + i * 0.15, duration: 0.5 },
-            y: { delay: i * 0.5, duration: 4 + i, repeat: Infinity, ease: "easeInOut" },
-          }}
-        >
-          <Icon className="w-3.5 h-3.5 text-primary" strokeWidth={1.5} />
-          <span className="text-xs font-medium text-foreground whitespace-nowrap">{o.label}</span>
-        </motion.div>
-      );
-    })}
-  </div>
-);
+    </div>
+  );
+};
 
 const Hero = () => (
   <section className="relative overflow-hidden pt-20 md:pt-20 pb-20 md:pb-28">
@@ -409,13 +430,45 @@ const RetentionLoop = () => {
     { label: "Return Appointment", icon: CalendarCheck },
   ];
   return (
-    <div className="glass-panel p-6 md:p-8 relative">
-      <svg viewBox="0 0 300 300" className="absolute inset-0 w-full h-full opacity-40 pointer-events-none">
-        <circle cx="150" cy="150" r="110" fill="none" stroke="hsl(var(--primary))" strokeOpacity="0.3" strokeWidth="1" strokeDasharray="4 6" />
-      </svg>
-      <div className="grid grid-cols-2 gap-4 relative">
+    <div className="glass-panel p-5 md:p-8 relative">
+      <div className="relative w-full aspect-square max-w-[460px] mx-auto">
+        {/* Animated orbit ring + center hub */}
+        <svg viewBox="0 0 300 300" className="absolute inset-0 w-full h-full pointer-events-none">
+          <defs>
+            <radialGradient id="ret-hub" cx="50%" cy="50%">
+              <stop offset="0%" stopColor="hsl(var(--primary))" stopOpacity="0.9" />
+              <stop offset="60%" stopColor="hsl(var(--primary))" stopOpacity="0.25" />
+              <stop offset="100%" stopColor="hsl(var(--primary))" stopOpacity="0" />
+            </radialGradient>
+          </defs>
+          <circle cx="150" cy="150" r="110" fill="none" stroke="hsl(var(--primary))" strokeOpacity="0.45" strokeWidth="1.25" strokeDasharray="4 6">
+            <animateTransform attributeName="transform" type="rotate" from="0 150 150" to="360 150 150" dur="20s" repeatCount="indefinite" />
+          </circle>
+          {/* Circulating pulse along the loop */}
+          <circle r="4" fill="hsl(var(--primary))">
+            <animateMotion dur="6s" repeatCount="indefinite" path="M150,40 A110,110 0 1,1 149.9,40" />
+          </circle>
+          <circle r="3" fill="hsl(var(--primary))" opacity="0.6">
+            <animateMotion dur="6s" repeatCount="indefinite" begin="3s" path="M150,40 A110,110 0 1,1 149.9,40" />
+          </circle>
+          {/* Center hub */}
+          <circle cx="150" cy="150" r="38" fill="url(#ret-hub)" />
+          <circle cx="150" cy="150" r="14" fill="hsl(var(--primary) / 0.3)" stroke="hsl(var(--primary))" strokeWidth="1.25">
+            <animate attributeName="r" values="14;17;14" dur="2.5s" repeatCount="indefinite" />
+          </circle>
+          <circle cx="150" cy="150" r="6" fill="hsl(var(--primary))" />
+        </svg>
+
+        {/* Quadrant nodes */}
         {nodes.map((n, i) => {
           const Icon = n.icon;
+          // 4 corners
+          const corners = [
+            "top-0 left-0",
+            "top-0 right-0",
+            "bottom-0 left-0",
+            "bottom-0 right-0",
+          ];
           return (
             <motion.div
               key={n.label}
@@ -423,12 +476,12 @@ const RetentionLoop = () => {
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.1 }}
-              className="rounded-xl border border-glass-border bg-white/[0.04] p-4 flex flex-col items-center text-center"
+              className={`absolute ${corners[i]} w-[44%] rounded-xl border border-glass-border bg-white/[0.05] backdrop-blur-sm p-3 flex flex-col items-center text-center`}
             >
-              <div className="w-9 h-9 rounded-full bg-primary/10 flex items-center justify-center mb-2">
-                <Icon className="w-4 h-4 text-primary" strokeWidth={1.5} />
+              <div className="w-9 h-9 rounded-full flex items-center justify-center mb-2 bg-gradient-to-br from-primary/30 to-primary/5 ring-1 ring-primary/30">
+                <Icon className="w-4 h-4 text-primary" strokeWidth={1.75} />
               </div>
-              <span className="text-xs font-medium text-foreground mb-2">{n.label}</span>
+              <span className="text-[11px] sm:text-xs font-medium text-foreground mb-1.5 leading-tight">{n.label}</span>
               {n.chips && (
                 <div className="flex gap-1 flex-wrap justify-center">
                   {n.chips.map((c) => (
@@ -678,39 +731,47 @@ const PlatformDiagram = () => {
     { label: "Patient Experience", icon: UserPlus },
   ];
   return (
-    <div className="relative w-full max-w-md mx-auto aspect-square">
+    <div className="relative w-full max-w-md mx-auto aspect-square px-4 sm:px-6">
       <svg viewBox="0 0 400 400" className="absolute inset-0 w-full h-full" preserveAspectRatio="xMidYMid meet">
         <defs>
-          <radialGradient id="sol-platform-hub" cx="40%" cy="35%">
-            <stop offset="0%" stopColor="hsl(var(--primary))" stopOpacity="0.5" />
-            <stop offset="100%" stopColor="hsl(var(--primary))" stopOpacity="0.1" />
+          <radialGradient id="sol-platform-hub" cx="50%" cy="50%">
+            <stop offset="0%" stopColor="hsl(var(--primary))" stopOpacity="0.9" />
+            <stop offset="55%" stopColor="hsl(var(--primary))" stopOpacity="0.25" />
+            <stop offset="100%" stopColor="hsl(var(--primary))" stopOpacity="0" />
           </radialGradient>
         </defs>
         {modules.map((_, i) => {
           const angle = (i / modules.length) * Math.PI * 2 - Math.PI / 2;
-          const x = 200 + Math.cos(angle) * 150;
-          const y = 200 + Math.sin(angle) * 150;
+          const x = 200 + Math.cos(angle) * 130;
+          const y = 200 + Math.sin(angle) * 130;
           return (
-            <line
-              key={i}
-              x1="200" y1="200" x2={x} y2={y}
-              stroke="hsl(var(--primary))" strokeOpacity="0.35" strokeWidth="1"
-              strokeDasharray="3 4"
-            />
+            <g key={i}>
+              <line
+                x1="200" y1="200" x2={x} y2={y}
+                stroke="hsl(var(--primary))" strokeOpacity="0.4" strokeWidth="1"
+                strokeDasharray="3 4"
+              />
+              <circle r="2.5" fill="hsl(var(--primary))" opacity="0.8">
+                <animateMotion dur={`${4 + i * 0.4}s`} repeatCount="indefinite"
+                  path={`M200,200 L${x},${y}`} />
+                <animate attributeName="opacity" values="0;1;0" dur={`${4 + i * 0.4}s`} repeatCount="indefinite" />
+              </circle>
+            </g>
           );
         })}
-        <circle cx="200" cy="200" r="44" fill="url(#sol-platform-hub)" stroke="hsl(var(--primary))" strokeWidth="1.5">
-          <animate attributeName="r" values="44;48;44" dur="3s" repeatCount="indefinite" />
+        <circle cx="200" cy="200" r="60" fill="url(#sol-platform-hub)" />
+        <circle cx="200" cy="200" r="26" fill="hsl(var(--primary) / 0.3)" stroke="hsl(var(--primary))" strokeWidth="1.5">
+          <animate attributeName="r" values="26;30;26" dur="3s" repeatCount="indefinite" />
         </circle>
-        <circle cx="200" cy="200" r="28" fill="hsl(var(--primary) / 0.3)" />
-        <circle cx="200" cy="200" r="12" fill="hsl(var(--primary))" />
-        <text x="200" y="260" textAnchor="middle" className="fill-foreground" fontSize="13" fontWeight="600">Borna</text>
+        <circle cx="200" cy="200" r="11" fill="hsl(var(--primary))" />
+        <text x="200" y="252" textAnchor="middle" className="fill-foreground" fontSize="14" fontWeight="600">Borna</text>
       </svg>
       {modules.map((m, i) => {
         const Icon = m.icon;
         const angle = (i / modules.length) * Math.PI * 2 - Math.PI / 2;
-        const x = 50 + Math.cos(angle) * 37.5;
-        const y = 50 + Math.sin(angle) * 37.5;
+        // Reduced radius from 37.5 to 32.5 to keep labels fully inside container
+        const x = 50 + Math.cos(angle) * 32.5;
+        const y = 50 + Math.sin(angle) * 32.5;
         return (
           <motion.div
             key={m.label}
@@ -718,10 +779,12 @@ const PlatformDiagram = () => {
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
             transition={{ delay: i * 0.1 }}
-            className="absolute -translate-x-1/2 -translate-y-1/2 glass-panel px-2.5 py-1.5 flex items-center gap-1.5"
+            className="absolute -translate-x-1/2 -translate-y-1/2 glass-panel px-2.5 py-1.5 flex items-center gap-1.5 shadow-[0_4px_16px_hsla(170,100%,43%,0.15)]"
             style={{ left: `${x}%`, top: `${y}%` }}
           >
-            <Icon className="w-3 h-3 text-primary" strokeWidth={1.5} />
+            <span className="w-5 h-5 rounded-md flex items-center justify-center bg-gradient-to-br from-primary/35 to-primary/10 ring-1 ring-primary/30">
+              <Icon className="w-3 h-3 text-primary" strokeWidth={1.75} />
+            </span>
             <span className="text-[10px] font-medium text-foreground whitespace-nowrap">{m.label}</span>
           </motion.div>
         );
@@ -759,8 +822,20 @@ const PlatformConnection = () => (
    SECTION 12 — Differentiation (light)
 ───────────────────────────────────────────────*/
 const Differentiation = () => {
-  const oldTools = ["Phone", "CRM", "Scheduler", "Analytics", "Billing"];
-  const newMods = ["Comms", "CRM", "Scheduler", "Analytics", "Billing"];
+  const oldTools = [
+    { label: "Phone", icon: Phone },
+    { label: "CRM", icon: Heart },
+    { label: "Scheduler", icon: CalendarCheck },
+    { label: "Analytics", icon: BarChart3 },
+    { label: "Billing", icon: DollarSign },
+  ];
+  const newMods = [
+    { label: "Comms", icon: MessageCircle },
+    { label: "CRM", icon: Heart },
+    { label: "Scheduler", icon: CalendarCheck },
+    { label: "Analytics", icon: BarChart3 },
+    { label: "Billing", icon: DollarSign },
+  ];
   return (
     <SectionLight id="differentiation">
       <div className="max-w-3xl mx-auto text-center mb-12">
@@ -785,54 +860,85 @@ const Differentiation = () => {
         </ul>
       </div>
 
-      <div className="grid md:grid-cols-[1fr_auto_1fr] gap-5 items-center max-w-5xl mx-auto">
-        {/* Old way */}
-        <motion.div {...fadeUp} className="glass-panel p-6 opacity-70">
-          <div className="text-[10px] uppercase tracking-widest text-muted-foreground font-semibold mb-4">Fragmented Tools</div>
-          <div className="grid grid-cols-3 gap-2">
-            {oldTools.map((t) => (
-              <div key={t} className="rounded-lg border border-dashed border-muted-foreground/30 bg-muted/10 p-3 text-center">
-                <div className="w-6 h-6 rounded bg-muted-foreground/20 mx-auto mb-1.5" />
-                <span className="text-[10px] text-muted-foreground">{t}</span>
-              </div>
-            ))}
-          </div>
-        </motion.div>
-
-        <ArrowRight className="hidden md:block w-6 h-6 text-primary mx-auto" />
-
-        {/* Borna */}
-        <motion.div {...fadeUp} transition={{ ...fadeUp.transition, delay: 0.15 }} className="glass-panel p-6">
-          <div className="text-[10px] uppercase tracking-widest text-primary font-semibold mb-4">Unified Platform</div>
-          <div className="relative h-[180px]">
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-primary/20 ring-2 ring-primary flex items-center justify-center z-10">
-              <Database className="w-5 h-5 text-primary" strokeWidth={1.5} />
-            </div>
-            <svg viewBox="0 0 200 200" className="absolute inset-0 w-full h-full">
-              {newMods.map((_, i) => {
-                const angle = (i / newMods.length) * Math.PI * 2 - Math.PI / 2;
-                const x = 100 + Math.cos(angle) * 75;
-                const y = 100 + Math.sin(angle) * 75;
-                return (
-                  <line key={i} x1="100" y1="100" x2={x} y2={y} stroke="hsl(var(--primary))" strokeWidth="1.5" strokeOpacity="0.6" />
-                );
-              })}
-            </svg>
-            {newMods.map((m, i) => {
-              const angle = (i / newMods.length) * Math.PI * 2 - Math.PI / 2;
-              const x = 50 + Math.cos(angle) * 40;
-              const y = 50 + Math.sin(angle) * 40;
+      <div className="grid md:grid-cols-[1fr_auto_1fr] gap-5 items-stretch max-w-5xl mx-auto">
+        {/* Old way — disconnected, muted */}
+        <motion.div {...fadeUp} className="glass-panel p-6 relative overflow-hidden">
+          <div className="text-[10px] uppercase tracking-widest text-muted-foreground/80 font-semibold mb-5">Fragmented Tools</div>
+          <div className="grid grid-cols-3 gap-2.5 relative">
+            {oldTools.map((t, i) => {
+              const Icon = t.icon;
               return (
                 <div
-                  key={m}
-                  className="absolute -translate-x-1/2 -translate-y-1/2 px-2 py-1 rounded-md bg-primary/10 border border-primary/20 text-[10px] text-primary font-medium"
-                  style={{ left: `${x}%`, top: `${y}%` }}
+                  key={t.label}
+                  className="rounded-lg border border-dashed border-muted-foreground/25 bg-muted/[0.04] p-3 flex flex-col items-center text-center"
+                  style={{ transform: `rotate(${(i % 2 === 0 ? -1 : 1) * 1.5}deg)` }}
                 >
-                  {m}
+                  <div className="w-7 h-7 rounded-md bg-muted-foreground/10 flex items-center justify-center mb-1.5">
+                    <Icon className="w-3.5 h-3.5 text-muted-foreground/60" strokeWidth={1.5} />
+                  </div>
+                  <span className="text-[10px] text-muted-foreground/80 font-medium">{t.label}</span>
                 </div>
               );
             })}
           </div>
+          <p className="mt-4 text-[10px] text-muted-foreground/60 italic text-center">Disconnected · duplicate data · manual handoffs</p>
+        </motion.div>
+
+        <ArrowRight className="hidden md:block w-6 h-6 text-primary mx-auto" />
+
+        {/* Borna — unified hub */}
+        <motion.div {...fadeUp} transition={{ ...fadeUp.transition, delay: 0.15 }} className="glass-panel p-6">
+          <div className="text-[10px] uppercase tracking-widest text-primary font-semibold mb-5">Unified Platform</div>
+          <div className="relative w-full aspect-square max-w-[280px] mx-auto">
+            <svg viewBox="0 0 200 200" className="absolute inset-0 w-full h-full">
+              <defs>
+                <radialGradient id="diff-hub" cx="50%" cy="50%">
+                  <stop offset="0%" stopColor="hsl(var(--primary))" stopOpacity="0.85" />
+                  <stop offset="55%" stopColor="hsl(var(--primary))" stopOpacity="0.25" />
+                  <stop offset="100%" stopColor="hsl(var(--primary))" stopOpacity="0" />
+                </radialGradient>
+              </defs>
+              {newMods.map((_, i) => {
+                const angle = (i / newMods.length) * Math.PI * 2 - Math.PI / 2;
+                const x = 100 + Math.cos(angle) * 70;
+                const y = 100 + Math.sin(angle) * 70;
+                return (
+                  <g key={i}>
+                    <line x1="100" y1="100" x2={x} y2={y} stroke="hsl(var(--primary))" strokeWidth="1.25" strokeOpacity="0.55" strokeDasharray="3 3" />
+                    <circle r="2" fill="hsl(var(--primary))">
+                      <animateMotion dur={`${3 + i * 0.3}s`} repeatCount="indefinite"
+                        path={`M100,100 L${x},${y}`} />
+                      <animate attributeName="opacity" values="0;1;0" dur={`${3 + i * 0.3}s`} repeatCount="indefinite" />
+                    </circle>
+                  </g>
+                );
+              })}
+              <circle cx="100" cy="100" r="36" fill="url(#diff-hub)" />
+              <circle cx="100" cy="100" r="18" fill="hsl(var(--primary) / 0.3)" stroke="hsl(var(--primary))" strokeWidth="1.5">
+                <animate attributeName="r" values="18;21;18" dur="2.5s" repeatCount="indefinite" />
+              </circle>
+            </svg>
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-10 flex items-center justify-center pointer-events-none">
+              <Database className="w-5 h-5 text-primary-foreground" strokeWidth={2} />
+            </div>
+            {newMods.map((m, i) => {
+              const Icon = m.icon;
+              const angle = (i / newMods.length) * Math.PI * 2 - Math.PI / 2;
+              const x = 50 + Math.cos(angle) * 36;
+              const y = 50 + Math.sin(angle) * 36;
+              return (
+                <div
+                  key={m.label}
+                  className="absolute -translate-x-1/2 -translate-y-1/2 px-2 py-1 rounded-md bg-gradient-to-br from-primary/20 to-primary/5 border border-primary/30 text-[10px] text-foreground font-medium flex items-center gap-1 shadow-[0_2px_10px_hsla(170,100%,43%,0.2)]"
+                  style={{ left: `${x}%`, top: `${y}%` }}
+                >
+                  <Icon className="w-2.5 h-2.5 text-primary" strokeWidth={2} />
+                  {m.label}
+                </div>
+              );
+            })}
+          </div>
+          <p className="mt-4 text-[10px] text-primary/80 italic text-center">Shared data · shared intelligence · one record</p>
         </motion.div>
       </div>
     </SectionLight>
