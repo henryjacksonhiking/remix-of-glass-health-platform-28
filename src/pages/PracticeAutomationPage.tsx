@@ -41,9 +41,9 @@ const PracticeAutomationPage = () => (
             <Eyebrow>Practice Automation</Eyebrow>
             <h1 className="text-3xl md:text-5xl font-bold text-foreground mb-6 leading-tight">Healthcare practice automation platform</h1>
             <p className="text-muted-foreground text-lg leading-relaxed mb-8 max-w-lg">Borna AI automates repetitive tasks, streamlines workflows, and enables healthcare practices to operate more efficiently. From communication to scheduling and follow-ups, Borna reduces manual work and empowers teams to focus on patient care.</p>
-            <div className="flex flex-wrap gap-3">
-              <Link to="/demo" className="gradient-btn px-8 py-3">Request Demo</Link>
-              <a href="#automation-areas" className="ghost-btn px-8 py-3">See Automation in Action</a>
+            <div className="flex flex-row items-center gap-2 sm:gap-3">
+              <Link to="/demo" className="gradient-btn whitespace-nowrap">Request Demo</Link>
+              <a href="#automation-areas" className="ghost-btn whitespace-nowrap">See Automation</a>
             </div>
           </motion.div>
           <motion.div {...fadeUp} className="relative" aria-hidden="true">
