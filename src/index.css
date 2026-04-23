@@ -88,6 +88,8 @@
 @layer components {
   .glass-panel {
     @apply bg-glass border border-glass-border backdrop-blur-lg rounded-2xl;
+    position: relative;
+    overflow: hidden;
   }
 
   .glass-panel-hover {
@@ -98,6 +100,40 @@
     background: hsla(var(--glass-bg-hover));
     border-color: hsla(0, 0%, 100%, 0.15);
     box-shadow: 0 8px 32px hsla(170, 100%, 43%, 0.1);
+  }
+
+  /* Global teal spotlight glow on every glass card — non-JS approximation
+     of the SpotlightCard component. Activates on hover, falls back to no-op
+     on touch devices automatically. */
+  .glass-panel::before,
+  .glass-card::before,
+  [class*="glass-panel"]::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background: radial-gradient(
+      280px circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
+      hsla(170, 100%, 43%, 0.12),
+      transparent 60%
+    );
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  .glass-panel:hover::before,
+  .glass-card:hover::before,
+  [class*="glass-panel"]:hover::before {
+    opacity: 1;
+  }
+
+  /* Make sure card content stays above the spotlight overlay */
+  .glass-panel > *,
+  .glass-card > * {
+    position: relative;
+    z-index: 2;
   }
 
   .gradient-text {
