@@ -770,9 +770,11 @@ const PlatformDiagram = () => {
       {modules.map((m, i) => {
         const Icon = m.icon;
         const angle = (i / modules.length) * Math.PI * 2 - Math.PI / 2;
-        // Reduced radius from 37.5 to 32.5 to keep labels fully inside container
-        const x = 50 + Math.cos(angle) * 32.5;
-        const y = 50 + Math.sin(angle) * 32.5;
+        // Line ends at radius 108 (in 400-unit svg) = 27% of container.
+        // Push label center outward so its inner edge sits on the line endpoint.
+        const labelR = 38; // % from center
+        const x = 50 + Math.cos(angle) * labelR;
+        const y = 50 + Math.sin(angle) * labelR;
         return (
           <motion.div
             key={m.label}
