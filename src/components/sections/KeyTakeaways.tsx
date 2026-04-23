@@ -64,7 +64,7 @@ const KeyTakeaways = ({
                 }}
               >
                 <div className="w-9 h-9 rounded-lg bg-primary/10 flex items-center justify-center mb-3">
-                  <Icon className="w-4.5 h-4.5 text-primary" strokeWidth={2} size={18} />
+                  <Icon className="text-primary" strokeWidth={2} size={18} />
                 </div>
                 <p className="text-xs md:text-sm leading-relaxed text-muted-foreground">
                   {item.text}
