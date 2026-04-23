@@ -3,7 +3,7 @@ import careHero from "@/assets/care-hero.webp";
 
 const CareHero = () => {
   return (
-    <section className="relative overflow-hidden pt-24 pb-12 md:pt-32 md:pb-16">
+    <section className="relative overflow-hidden pt-20 md:pt-24 pb-12 md:pt-20 md:pt-20 md:pt-24 md:pb-16">
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[400px] rounded-full blur-[120px] bg-primary/10 pointer-events-none" />
 
       <div className="container mx-auto px-4 md:px-6 relative z-10 text-center">

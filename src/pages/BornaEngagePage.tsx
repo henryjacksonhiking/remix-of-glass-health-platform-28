@@ -97,7 +97,7 @@ const BornaEngagePage = () => {
       </section>
 
       {/* Definition */}
-      <section className="py-20 border-t border-glass-border">
+      <section className="py-12 md:py-20 border-t border-glass-border">
         <div className="container mx-auto px-4 md:px-6 max-w-3xl text-center">
           <h2 className="section-headline text-foreground mb-6">What is a healthcare CRM platform?</h2>
           <p className="text-[15px] leading-relaxed" style={{ color: 'rgba(255,255,255,0.55)' }}>
@@ -107,7 +107,7 @@ const BornaEngagePage = () => {
       </section>
 
       {/* Problem */}
-      <section className="py-20 border-t border-glass-border">
+      <section className="py-12 md:py-20 border-t border-glass-border">
         <div className="container mx-auto px-4 md:px-6 text-center">
           <h2 className="section-headline text-foreground mb-12">Why healthcare practices lose patients and leads</h2>
           <div className="flex flex-wrap justify-center gap-3 max-w-2xl mx-auto">
@@ -121,7 +121,7 @@ const BornaEngagePage = () => {
       </section>
 
       {/* Core Capabilities */}
-      <section className="py-24 border-t border-glass-border">
+      <section className="py-12 md:py-12 md:py-20 border-t border-glass-border">
         <div className="container mx-auto px-4 md:px-6">
           <h2 className="section-headline text-foreground text-center mb-16">What Borna Engage enables</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 max-w-5xl mx-auto">
@@ -139,7 +139,7 @@ const BornaEngagePage = () => {
       </section>
 
       {/* Conversion & Retention */}
-      <section className="py-24 border-t border-glass-border">
+      <section className="py-12 md:py-12 md:py-20 border-t border-glass-border">
         <div className="container mx-auto px-4 md:px-6">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
             <div className="rounded-xl p-8" style={{ background: 'rgba(224,17,157,0.04)', border: '1px solid rgba(224,17,157,0.1)' }}>
@@ -169,7 +169,7 @@ const BornaEngagePage = () => {
       </section>
 
       {/* How it works */}
-      <section className="py-24 border-t border-glass-border">
+      <section className="py-12 md:py-12 md:py-20 border-t border-glass-border">
         <div className="container mx-auto px-4 md:px-6">
           <h2 className="section-headline text-foreground text-center mb-16">How Borna Engage works</h2>
           <div className="grid grid-cols-1 md:grid-cols-4 gap-6 max-w-4xl mx-auto">
@@ -192,7 +192,7 @@ const BornaEngagePage = () => {
       </section>
 
       {/* FAQ */}
-      <section className="py-24 border-t border-glass-border">
+      <section className="py-12 md:py-12 md:py-20 border-t border-glass-border">
         <div className="container mx-auto px-4 md:px-6 max-w-3xl">
           <h2 className="section-headline text-foreground text-center mb-12">Frequently asked questions</h2>
           <div className="space-y-2">
@@ -210,7 +210,7 @@ const BornaEngagePage = () => {
       </section>
 
       {/* CTA */}
-      <section className="py-24 relative overflow-hidden">
+      <section className="py-12 md:py-12 md:py-20 relative overflow-hidden">
         <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
           <div className="w-[600px] h-[400px] rounded-full blur-[120px]" style={{ background: 'rgba(224,17,157,0.05)' }} />
         </div>

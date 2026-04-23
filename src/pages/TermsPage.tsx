@@ -43,7 +43,7 @@ const TermsPage = () => (
       <title>Terms of Service — Borna.ai</title>
       <meta name="description" content="Read the Borna.ai Terms of Service covering acceptable use, account responsibilities, intellectual property, and liability for our healthcare platform." />
     </Helmet>
-    <section className="py-24 md:py-32">
+    <section className="py-12 md:py-12 md:py-20 md:py-16 md:py-12 md:py-12 md:py-20">
       <div className="container mx-auto px-4 md:px-6 max-w-3xl">
         <motion.h1
           initial={{ opacity: 0, y: 20 }}

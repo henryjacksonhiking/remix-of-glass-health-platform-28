@@ -20,7 +20,7 @@ import { SparklesCore } from "@/components/ui/sparkles-core";
    "light" = brighter glass panel surface.
 ───────────────────────────────────────────────*/
 const SectionDark = ({ id, children, className = "" }: { id?: string; children: React.ReactNode; className?: string }) => (
-  <section id={id} className={`relative py-20 md:py-28 border-t border-glass-border ${className}`}>
+  <section id={id} className={`relative py-12 md:py-20 md:py-12 md:py-12 md:py-20 border-t border-glass-border ${className}`}>
     <div className="container mx-auto px-4 md:px-6 relative z-10">{children}</div>
   </section>
 );
@@ -28,7 +28,7 @@ const SectionDark = ({ id, children, className = "" }: { id?: string; children: 
 const SectionLight = ({ id, children, className = "" }: { id?: string; children: React.ReactNode; className?: string }) => (
   <section
     id={id}
-    className={`relative py-20 md:py-28 border-t border-glass-border ${className}`}
+    className={`relative py-12 md:py-20 md:py-12 md:py-12 md:py-20 border-t border-glass-border ${className}`}
     style={{
       background:
         "linear-gradient(180deg, hsla(0,0%,100%,0.04) 0%, hsla(0,0%,100%,0.02) 100%)",
@@ -114,7 +114,7 @@ const HeroVisual = () => (
 );
 
 const Hero = () => (
-  <section className="relative overflow-hidden pt-28 pb-20 md:pt-36 md:pb-28">
+  <section className="relative overflow-hidden pt-20 md:pt-20 md:pt-24 pb-20 md:pt-20 md:pt-20 md:pt-24 md:pb-28">
     <div className="absolute inset-0 opacity-50">
       <BeamsBackground intensity="medium" />
     </div>
@@ -922,7 +922,7 @@ const FAQ = () => (
    SECTION 15 — Final CTA (dark gradient)
 ───────────────────────────────────────────────*/
 const FinalCTA = () => (
-  <section className="py-20 md:py-28 relative overflow-hidden border-t border-glass-border">
+  <section className="py-12 md:py-20 md:py-12 md:py-12 md:py-20 relative overflow-hidden border-t border-glass-border">
     <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
       <div className="w-[700px] h-[450px] rounded-full bg-primary/8 blur-[140px]" />
     </div>

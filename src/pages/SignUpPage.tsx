@@ -118,7 +118,7 @@ const SignUpPage = () => {
 
   return (
     <PageWrapper>
-      <section className="py-16 md:py-24">
+      <section className="py-16 md:py-12 md:py-12 md:py-20">
         <div className="container mx-auto px-4 md:px-6 max-w-5xl">
           <Link
             to="/pricing"
