@@ -5,6 +5,7 @@ import { Layers, Cpu, Workflow, Database, Network, Zap, Brain, MessageSquare, Us
 import { BeamsBackground } from "@/components/ui/beams-background";
 import PageWrapper from "@/components/layout/PageWrapper";
 import StandardFAQ from "@/components/sections/StandardFAQ";
+import KeyTakeaways from "@/components/sections/KeyTakeaways";
 import CTASection from "@/components/sections/CTASection";
 
 const fadeIn = { hidden: { opacity: 0, y: 16 }, visible: (i: number) => ({ opacity: 1, y: 0, transition: { delay: i * 0.1, duration: 0.5 } }) };
@@ -275,27 +276,14 @@ const CompanyPage = () => (
     </section>
 
     {/* Key Takeaways */}
-    <section className="py-12 md:py-20 border-t border-glass-border">
-      <div className="container mx-auto px-4 md:px-6">
-        <h2 className="section-headline text-foreground text-center mb-12">Key takeaways</h2>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-5xl mx-auto">
-          {[
-            { icon: Layers, text: "Borna AI is a healthcare technology company building a unified AI platform" },
-            { icon: Shield, text: "Founded to solve fragmentation in healthcare systems" },
-            { icon: Cpu, text: "Building a scalable, modular platform with initial products already live" },
-            { icon: Network, text: "Serving dental, medical, and specialty practices through one connected system" },
-          ].map((item, i) => {
-            const Icon = item.icon;
-            return (
-              <motion.div key={i} custom={i} initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeIn} className="text-center">
-                <Icon className="w-6 h-6 text-primary mx-auto mb-3" />
-                <p className="text-sm text-muted-foreground">{item.text}</p>
-              </motion.div>
-            );
-          })}
-        </div>
-      </div>
-    </section>
+    <KeyTakeaways
+      items={[
+        { icon: Layers, text: "Borna AI is a healthcare technology company building a unified AI platform" },
+        { icon: Shield, text: "Founded to solve fragmentation in healthcare systems" },
+        { icon: Cpu, text: "Building a scalable, modular platform with initial products already live" },
+        { icon: Network, text: "Serving dental, medical, and specialty practices through one connected system" },
+      ]}
+    />
 
     {/* FAQ */}
     <StandardFAQ items={faqItems} />

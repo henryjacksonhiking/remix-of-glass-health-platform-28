@@ -23,6 +23,7 @@ import {
 } from "lucide-react";
 import PageWrapper from "@/components/layout/PageWrapper";
 import StandardFAQ from "@/components/sections/StandardFAQ";
+import KeyTakeaways from "@/components/sections/KeyTakeaways";
 import {
   Breadcrumb,
   BreadcrumbList,
@@ -437,26 +438,14 @@ const AIIntelligencePage = () => {
       </Section>
 
       {/* KEY TAKEAWAYS */}
-      <Section>
-        <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} className="text-center mb-10">
-          <h2 className="text-2xl md:text-3xl font-bold">Key takeaways</h2>
-        </motion.div>
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-5xl mx-auto">
-          {[
-            "Borna transforms raw healthcare data into real-time intelligence through AI",
-            "AI powers sentiment analysis, predictive insights, workflow automation, and decision support",
-            "Real-time processing enables immediate analysis, alerts, and automated action",
-            "Continuous learning means the system becomes smarter and more accurate over time",
-          ].map((text, i) => (
-            <motion.div key={i} initial="hidden" whileInView="visible" viewport={{ once: true }}
-              variants={{ ...fadeUp, visible: { ...fadeUp.visible, transition: { ...fadeUp.visible.transition, delay: i * 0.08 } } }}
-              className="flex items-start gap-3">
-              <CheckCircle2 className="w-5 h-5 text-primary shrink-0 mt-0.5" />
-              <p className="text-sm font-medium leading-relaxed">{text}</p>
-            </motion.div>
-          ))}
-        </div>
-      </Section>
+      <KeyTakeaways
+        items={[
+          { icon: Brain, text: "Borna transforms raw healthcare data into real-time intelligence through AI" },
+          { icon: Sparkles, text: "AI powers sentiment analysis, predictive insights, workflow automation, and decision support" },
+          { icon: Activity, text: "Real-time processing enables immediate analysis, alerts, and automated action" },
+          { icon: TrendingUp, text: "Continuous learning means the system becomes smarter and more accurate over time" },
+        ]}
+      />
 
       {/* FAQ */}
       <StandardFAQ items={[
