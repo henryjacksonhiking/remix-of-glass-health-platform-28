@@ -25,6 +25,7 @@ import {
 } from "lucide-react";
 import PageWrapper from "@/components/layout/PageWrapper";
 import StandardFAQ from "@/components/sections/StandardFAQ";
+import KeyTakeaways from "@/components/sections/KeyTakeaways";
 import {
   Breadcrumb,
   BreadcrumbList,
@@ -571,31 +572,14 @@ const CRMLifecyclePage = () => {
       </Section>
 
       {/* SECTION 13 — KEY TAKEAWAYS */}
-      <Section>
-        <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} className="text-center mb-10">
-          <h2 className="text-2xl md:text-3xl font-bold">Key takeaways</h2>
-        </motion.div>
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-5xl mx-auto">
-          {[
-            "Borna manages the full patient lifecycle from lead acquisition to long-term retention",
-            "The CRM centralizes all patient relationship data — profiles, interactions, history, and stages",
-            "AI enhances every lifecycle stage with predictive insights and optimized engagement timing",
-            "Lifecycle management directly improves conversion rates, retention, and practice revenue",
-          ].map((text, i) => (
-            <motion.div
-              key={i}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true }}
-              variants={{ ...fadeUp, visible: { ...fadeUp.visible, transition: { ...fadeUp.visible.transition, delay: i * 0.08 } } }}
-              className="flex items-start gap-3"
-            >
-              <CheckCircle2 className="w-5 h-5 text-primary shrink-0 mt-0.5" />
-              <p className="text-sm font-medium leading-relaxed">{text}</p>
-            </motion.div>
-          ))}
-        </div>
-      </Section>
+      <KeyTakeaways
+        items={[
+          { icon: UserCheck, text: "Borna manages the full patient lifecycle from lead acquisition to long-term retention" },
+          { icon: Database, text: "The CRM centralizes all patient relationship data — profiles, interactions, history, and stages" },
+          { icon: Brain, text: "AI enhances every lifecycle stage with predictive insights and optimized engagement timing" },
+          { icon: TrendingUp, text: "Lifecycle management directly improves conversion rates, retention, and practice revenue" },
+        ]}
+      />
 
       {/* SECTION 14 — FAQ */}
       <StandardFAQ items={[
