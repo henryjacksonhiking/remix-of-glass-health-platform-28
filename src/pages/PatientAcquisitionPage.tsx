@@ -81,7 +81,7 @@ const PatientAcquisitionPage = () => (
             </div>
           </motion.div>
           <motion.div {...fadeUp} className="relative" aria-hidden="true">
-            <div className="w-full max-w-lg mx-auto overflow-hidden">
+            <div className="w-full max-w-2xl mx-auto overflow-hidden">
               <svg viewBox="0 0 560 340" className="w-full h-auto" preserveAspectRatio="xMidYMid meet">
                 <defs>
                   <radialGradient id="acq-node-grad" cx="40%" cy="35%">
