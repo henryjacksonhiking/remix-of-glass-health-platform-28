@@ -430,13 +430,45 @@ const RetentionLoop = () => {
     { label: "Return Appointment", icon: CalendarCheck },
   ];
   return (
-    <div className="glass-panel p-6 md:p-8 relative">
-      <svg viewBox="0 0 300 300" className="absolute inset-0 w-full h-full opacity-40 pointer-events-none">
-        <circle cx="150" cy="150" r="110" fill="none" stroke="hsl(var(--primary))" strokeOpacity="0.3" strokeWidth="1" strokeDasharray="4 6" />
-      </svg>
-      <div className="grid grid-cols-2 gap-4 relative">
+    <div className="glass-panel p-5 md:p-8 relative">
+      <div className="relative w-full aspect-square max-w-[460px] mx-auto">
+        {/* Animated orbit ring + center hub */}
+        <svg viewBox="0 0 300 300" className="absolute inset-0 w-full h-full pointer-events-none">
+          <defs>
+            <radialGradient id="ret-hub" cx="50%" cy="50%">
+              <stop offset="0%" stopColor="hsl(var(--primary))" stopOpacity="0.9" />
+              <stop offset="60%" stopColor="hsl(var(--primary))" stopOpacity="0.25" />
+              <stop offset="100%" stopColor="hsl(var(--primary))" stopOpacity="0" />
+            </radialGradient>
+          </defs>
+          <circle cx="150" cy="150" r="110" fill="none" stroke="hsl(var(--primary))" strokeOpacity="0.45" strokeWidth="1.25" strokeDasharray="4 6">
+            <animateTransform attributeName="transform" type="rotate" from="0 150 150" to="360 150 150" dur="20s" repeatCount="indefinite" />
+          </circle>
+          {/* Circulating pulse along the loop */}
+          <circle r="4" fill="hsl(var(--primary))">
+            <animateMotion dur="6s" repeatCount="indefinite" path="M150,40 A110,110 0 1,1 149.9,40" />
+          </circle>
+          <circle r="3" fill="hsl(var(--primary))" opacity="0.6">
+            <animateMotion dur="6s" repeatCount="indefinite" begin="3s" path="M150,40 A110,110 0 1,1 149.9,40" />
+          </circle>
+          {/* Center hub */}
+          <circle cx="150" cy="150" r="38" fill="url(#ret-hub)" />
+          <circle cx="150" cy="150" r="14" fill="hsl(var(--primary) / 0.3)" stroke="hsl(var(--primary))" strokeWidth="1.25">
+            <animate attributeName="r" values="14;17;14" dur="2.5s" repeatCount="indefinite" />
+          </circle>
+          <circle cx="150" cy="150" r="6" fill="hsl(var(--primary))" />
+        </svg>
+
+        {/* Quadrant nodes */}
         {nodes.map((n, i) => {
           const Icon = n.icon;
+          // 4 corners
+          const corners = [
+            "top-0 left-0",
+            "top-0 right-0",
+            "bottom-0 left-0",
+            "bottom-0 right-0",
+          ];
           return (
             <motion.div
               key={n.label}
@@ -444,12 +476,12 @@ const RetentionLoop = () => {
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.1 }}
-              className="rounded-xl border border-glass-border bg-white/[0.04] p-4 flex flex-col items-center text-center"
+              className={`absolute ${corners[i]} w-[44%] rounded-xl border border-glass-border bg-white/[0.05] backdrop-blur-sm p-3 flex flex-col items-center text-center`}
             >
-              <div className="w-9 h-9 rounded-full bg-primary/10 flex items-center justify-center mb-2">
-                <Icon className="w-4 h-4 text-primary" strokeWidth={1.5} />
+              <div className="w-9 h-9 rounded-full flex items-center justify-center mb-2 bg-gradient-to-br from-primary/30 to-primary/5 ring-1 ring-primary/30">
+                <Icon className="w-4 h-4 text-primary" strokeWidth={1.75} />
               </div>
-              <span className="text-xs font-medium text-foreground mb-2">{n.label}</span>
+              <span className="text-[11px] sm:text-xs font-medium text-foreground mb-1.5 leading-tight">{n.label}</span>
               {n.chips && (
                 <div className="flex gap-1 flex-wrap justify-center">
                   {n.chips.map((c) => (
