@@ -192,7 +192,7 @@ const HeroIndustries = () => (
 
 // === Section 2: Definition ===
 const DefinitionSection = () => (
-  <section className="py-16 md:py-12 relative">
+  <section className="py-12 md:py-20 relative">
     <div className="container mx-auto px-4 md:px-6 max-w-4xl text-center">
       <h2 className="text-2xl md:text-3xl lg:text-4xl font-medium text-foreground mb-6 tracking-tight">
         What Is Industry-Specific Healthcare Software?
@@ -252,7 +252,7 @@ const ProblemIndustries = () => {
     },
   ];
   return (
-    <section className="py-16 md:py-12 relative">
+    <section className="py-12 md:py-20 relative">
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[400px] rounded-full bg-amber-500/[0.04] blur-[140px]" />
       </div>
@@ -309,7 +309,7 @@ const SolutionGrid = () => {
     { Icon: CalendarDays, title: "Scheduling & Workflows", body: "Appointment management built for volume and complexity." },
   ];
   return (
-    <section className="py-16 md:py-12 relative">
+    <section className="py-12 md:py-20 relative">
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[400px] rounded-full bg-primary/[0.06] blur-[120px]" />
       </div>
@@ -355,7 +355,7 @@ const SolutionGrid = () => {
 const DentalSection = () => {
   const steps = ["Booked", "Confirmed", "Treatment", "Follow-Up", "Retention"];
   return (
-    <section className="py-16 md:py-12 relative">
+    <section className="py-12 md:py-20 relative">
       <div className="container mx-auto px-4 md:px-6 max-w-5xl">
         <div className="mb-10 max-w-2xl">
           <Eyebrow>Dental Practices</Eyebrow>
@@ -435,7 +435,7 @@ const MedicalSection = () => {
     { label: "Billing", x: 85, y: 75 },
   ];
   return (
-    <section className="py-16 md:py-12 relative">
+    <section className="py-12 md:py-20 relative">
       <div className="container mx-auto px-4 md:px-6 max-w-5xl">
         <div className="mb-10 max-w-2xl">
           <Eyebrow>Medical Clinics</Eyebrow>
@@ -517,7 +517,7 @@ const SpecialtySection = () => {
     { label: "Scheduling", Icon: CalendarDays },
   ];
   return (
-    <section className="py-16 md:py-12 relative">
+    <section className="py-12 md:py-20 relative">
       <div className="container mx-auto px-4 md:px-6 max-w-5xl">
         <div className="mb-10 max-w-2xl">
           <Eyebrow>Specialty Providers</Eyebrow>
@@ -571,7 +571,7 @@ const CommonCapabilities = () => {
     { Icon: Sparkles, label: "AI Automation" },
   ];
   return (
-    <section className="py-16 md:py-12 relative">
+    <section className="py-12 md:py-20 relative">
       <div className="container mx-auto px-4 md:px-6 max-w-5xl">
         <div className="text-center mb-10 max-w-2xl mx-auto">
           <h2 className="text-2xl md:text-3xl lg:text-4xl font-medium text-foreground mb-4 tracking-tight">
@@ -614,7 +614,7 @@ const HowItWorks = () => {
     { n: 4, Icon: Zap, title: "Optimize", body: "Deliver automation and insights that drive results" },
   ];
   return (
-    <section className="py-16 md:py-12 relative">
+    <section className="py-12 md:py-20 relative">
       <div className="container mx-auto px-4 md:px-6 max-w-6xl">
         <div className="text-center mb-12 max-w-2xl mx-auto">
           <h2 className="text-2xl md:text-3xl lg:text-4xl font-medium text-foreground mb-4 tracking-tight">
@@ -665,7 +665,7 @@ const PlatformConnection = () => {
     { label: "Patient Experience", angle: 288 },
   ];
   return (
-    <section className="py-16 md:py-12 relative">
+    <section className="py-12 md:py-20 relative">
       <div className="container mx-auto px-4 md:px-6 max-w-5xl">
         <div className="text-center mb-10 max-w-3xl mx-auto">
           <h2 className="text-2xl md:text-3xl lg:text-4xl font-medium text-foreground mb-4 tracking-tight">
@@ -761,7 +761,7 @@ const Differentiation = () => {
     "Scalable from single-location to multi-site practices",
   ];
   return (
-    <section className="py-16 md:py-12 relative">
+    <section className="py-12 md:py-20 relative">
       <div className="container mx-auto px-4 md:px-6 max-w-6xl">
         <div className="text-center mb-12 max-w-3xl mx-auto">
           <h2 className="text-2xl md:text-3xl lg:text-4xl font-medium text-foreground mb-4 tracking-tight">
@@ -870,7 +870,7 @@ const KeyTakeaways = () => {
     { Icon: Sparkles, text: "AI enhances performance and outcomes across practice types" },
   ];
   return (
-    <section className="py-16 md:py-12 relative">
+    <section className="py-12 md:py-20 relative">
       <div className="container mx-auto px-4 md:px-6 max-w-5xl">
         <h2 className="text-2xl md:text-3xl lg:text-4xl font-medium text-foreground mb-12 tracking-tight text-center">
           Key Takeaways
@@ -922,7 +922,7 @@ const FAQ = () => {
     },
   ];
   return (
-    <section className="py-16 md:py-12">
+    <section className="py-12 md:py-20">
       <div className="container mx-auto px-4 md:px-6 max-w-3xl">
         <h2 className="text-2xl md:text-3xl lg:text-4xl font-medium text-foreground mb-12 tracking-tight text-center">
           Frequently Asked Questions
@@ -962,7 +962,7 @@ const FAQ = () => {
 
 // === Section 14: Final CTA ===
 const FinalCTA = () => (
-  <section className="py-16 md:py-12 relative overflow-hidden">
+  <section className="py-12 md:py-20 relative overflow-hidden">
     <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
       <div className="w-[700px] h-[400px] rounded-full bg-primary/8 blur-[140px]" />
     </div>

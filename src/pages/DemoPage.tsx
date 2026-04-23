@@ -26,7 +26,7 @@ const DemoPage = () => {
         <title>Book a Demo — Healthcare Software for Clinics | Borna.ai</title>
         <meta name="description" content="Book a healthcare software demo and see Borna.ai in action. Request a clinic software consultation and discover how Borna Care can transform your practice operations." />
       </Helmet>
-      <section className="py-12 md:py-12">
+      <section className="py-12 md:py-20">
         <div className="container mx-auto px-4 md:px-6 max-w-5xl">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
             {/* Left — copy */}

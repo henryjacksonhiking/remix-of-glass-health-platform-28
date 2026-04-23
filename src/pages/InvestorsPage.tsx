@@ -51,7 +51,7 @@ const SectionShell = ({
 }) => (
   <section
     id={id}
-    className={`relative py-16 md:py-12 md:py-12 md:py-20 overflow-hidden ${className}`}
+    className={`relative py-12 md:py-20 md:py-20 md:py-20 overflow-hidden ${className}`}
   >
     {children}
   </section>

@@ -68,7 +68,7 @@ const LeadershipPage = () => (
     </div>
 
     {/* Hero */}
-    <section className="relative overflow-hidden py-12 md:py-12">
+    <section className="relative overflow-hidden py-12 md:py-20">
       <div className="absolute inset-0 opacity-30"><BeamsBackground intensity="medium" /></div>
       <div className="container mx-auto px-4 md:px-6 relative z-10 max-w-4xl">
         <div className="grid md:grid-cols-2 gap-12 items-center">
@@ -98,7 +98,7 @@ const LeadershipPage = () => (
     </section>
 
     {/* Intro context */}
-    <section className="py-12 md:py-12 border-t border-glass-border">
+    <section className="py-12 md:py-20 border-t border-glass-border">
       <div className="container mx-auto px-4 md:px-6 max-w-3xl text-center">
         <h2 className="section-headline text-foreground mb-4">Leadership in healthcare technology</h2>
         <p className="body-text mx-auto">
@@ -109,7 +109,7 @@ const LeadershipPage = () => (
     </section>
 
     {/* Executive Team */}
-    <section className="py-12 md:py-12 border-t border-glass-border">
+    <section className="py-12 md:py-20 border-t border-glass-border">
       <div className="container mx-auto px-4 md:px-6">
         <h2 className="section-headline text-foreground text-center mb-16">Executive leadership</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-5xl mx-auto">
@@ -153,7 +153,7 @@ const LeadershipPage = () => (
     </section>
 
     {/* Leadership Approach */}
-    <section className="py-12 md:py-12 border-t border-glass-border">
+    <section className="py-12 md:py-20 border-t border-glass-border">
       <div className="container mx-auto px-4 md:px-6">
         <h2 className="section-headline text-foreground text-center mb-4">Our leadership approach</h2>
         <p className="body-text text-center mx-auto max-w-2xl mb-12">
@@ -176,7 +176,7 @@ const LeadershipPage = () => (
     </section>
 
     {/* Industry Expertise */}
-    <section className="py-12 md:py-12 border-t border-glass-border">
+    <section className="py-12 md:py-20 border-t border-glass-border">
       <div className="container mx-auto px-4 md:px-6">
         <h2 className="section-headline text-foreground text-center mb-12">Expertise across healthcare and technology</h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-5xl mx-auto">
@@ -198,7 +198,7 @@ const LeadershipPage = () => (
     </section>
 
     {/* Platform Connection */}
-    <section className="py-12 md:py-12 border-t border-glass-border">
+    <section className="py-12 md:py-20 border-t border-glass-border">
       <div className="container mx-auto px-4 md:px-6 max-w-4xl">
         <div className="grid md:grid-cols-2 gap-12 items-center">
           <div className="flex items-center justify-center gap-8">
@@ -233,7 +233,7 @@ const LeadershipPage = () => (
     </section>
 
     {/* Organizational Impact */}
-    <section className="py-12 md:py-12 border-t border-glass-border">
+    <section className="py-12 md:py-20 border-t border-glass-border">
       <div className="container mx-auto px-4 md:px-6">
         <h2 className="section-headline text-foreground text-center mb-12">Driving impact across healthcare organizations</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
@@ -253,7 +253,7 @@ const LeadershipPage = () => (
     </section>
 
     {/* Key Takeaways */}
-    <section className="py-12 md:py-12 border-t border-glass-border">
+    <section className="py-12 md:py-20 border-t border-glass-border">
       <div className="container mx-auto px-4 md:px-6">
         <h2 className="section-headline text-foreground text-center mb-12">Key takeaways</h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-5xl mx-auto">
@@ -273,7 +273,7 @@ const LeadershipPage = () => (
     </section>
 
     {/* FAQ */}
-    <section className="py-12 md:py-12 border-t border-glass-border">
+    <section className="py-12 md:py-20 border-t border-glass-border">
       <div className="container mx-auto px-4 md:px-6 max-w-3xl">
         <h2 className="section-headline text-foreground text-center mb-12">Frequently asked questions</h2>
         <div className="space-y-3">

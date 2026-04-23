@@ -17,7 +17,7 @@ const adminChecklist = [
 
 const WatchBornaCareWork = () => {
   return (
-    <section className="py-12 md:py-12">
+    <section className="py-12 md:py-20">
       <div className="container mx-auto px-4 md:px-6">
         {/* Header */}
         <div className="text-center mb-16">

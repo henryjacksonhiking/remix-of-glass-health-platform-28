@@ -34,7 +34,7 @@ const PracticeAutomationPage = () => (
     <nav aria-label="breadcrumb" className="container mx-auto px-4 md:px-6 pt-20 md:pt-20 pb-0 md:pb-2"><p className="text-xs text-muted-foreground"><Link to="/" className="hover:text-foreground">Home</Link> / <Link to="/solutions" className="hover:text-foreground">Solutions</Link> / <span className="text-primary">Practice Automation</span></p></nav>
 
     {/* Hero */}
-    <section className="relative py-16 md:py-12 overflow-hidden">
+    <section className="relative py-12 md:py-20 overflow-hidden">
       <div className="container mx-auto px-4 md:px-6 relative z-10">
         <div className="grid md:grid-cols-2 gap-12 items-center">
           <motion.div {...fadeUp}>
@@ -221,7 +221,7 @@ const PracticeAutomationPage = () => (
     </SectionDark>
 
     {/* CTA */}
-    <section className="py-16 md:py-12 relative overflow-hidden">
+    <section className="py-12 md:py-20 relative overflow-hidden">
       <div className="container mx-auto px-4 md:px-6 relative z-10 text-center">
         <h2 className="text-2xl md:text-4xl font-bold text-foreground mb-4">Automate your practice and focus on care.</h2>
         <p className="text-muted-foreground max-w-xl mx-auto mb-8">Borna AI helps healthcare practices streamline operations, eliminate manual work, and scale efficiently — through intelligent automation that runs continuously in the background.</p>

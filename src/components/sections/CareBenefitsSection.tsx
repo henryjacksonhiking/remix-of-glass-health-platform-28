@@ -10,7 +10,7 @@ const benefits = [
 
 const CareBenefitsSection = () => {
   return (
-    <section className="py-12 md:py-12 border-t border-glass-border">
+    <section className="py-12 md:py-20 border-t border-glass-border">
       <div className="container mx-auto px-4 md:px-6">
         <h2 className="section-headline text-foreground text-center mb-16">
           What Borna Care delivers for your clinic

@@ -801,7 +801,7 @@ const ResourcesPage = () => {
       </section>
 
       {/* SECTION 12 — FINAL CTA */}
-      <section className="py-12 md:py-12 relative overflow-hidden">
+      <section className="py-12 md:py-20 relative overflow-hidden">
         <div className="absolute inset-0 pointer-events-none">
           <div className="absolute inset-0" style={{ background: "radial-gradient(ellipse at center, hsl(var(--primary) / 0.18), transparent 60%)" }} />
         </div>

@@ -479,7 +479,7 @@ const AIIntelligencePage = () => {
       </Section>
 
       {/* FINAL CTA */}
-      <section className="py-12 md:py-12 relative overflow-hidden">
+      <section className="py-12 md:py-20 relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-primary/[0.03] to-transparent" />
         <div className="container mx-auto px-4 md:px-6 text-center relative z-10">
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp}>

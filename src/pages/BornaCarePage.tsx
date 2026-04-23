@@ -264,7 +264,7 @@ const BornaCarePage = () => {
       </section>
 
       {/* SECTION 4 — Patient Experience */}
-      <section className="py-12 md:py-12 border-t border-glass-border">
+      <section className="py-12 md:py-20 border-t border-glass-border">
         <div className="container mx-auto px-4 md:px-6 text-center">
           <motion.h2 initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="section-headline text-foreground mb-4">
             A seamless experience for patients
@@ -297,7 +297,7 @@ const BornaCarePage = () => {
       </section>
 
       {/* SECTION 5 — Practice Experience */}
-      <section className="py-12 md:py-12 border-t border-glass-border">
+      <section className="py-12 md:py-20 border-t border-glass-border">
         <div className="container mx-auto px-4 md:px-6">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center max-w-5xl mx-auto">
             <div>
@@ -326,7 +326,7 @@ const BornaCarePage = () => {
       </section>
 
       {/* SECTION 6 — Core Features */}
-      <section id="features" className="py-12 md:py-12 border-t border-glass-border">
+      <section id="features" className="py-12 md:py-20 border-t border-glass-border">
         <div className="container mx-auto px-4 md:px-6">
           <h2 className="section-headline text-foreground text-center mb-16">Key features of Borna Care</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 max-w-5xl mx-auto">
@@ -344,7 +344,7 @@ const BornaCarePage = () => {
       </section>
 
       {/* SECTION 7 — How it Works */}
-      <section className="py-12 md:py-12 border-t border-glass-border">
+      <section className="py-12 md:py-20 border-t border-glass-border">
         <div className="container mx-auto px-4 md:px-6">
           <h2 className="section-headline text-foreground text-center mb-16">How Borna Care works</h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto">
@@ -366,7 +366,7 @@ const BornaCarePage = () => {
       </section>
 
       {/* SECTION 8 — Platform Connection */}
-      <section className="py-12 md:py-12 border-t border-glass-border">
+      <section className="py-12 md:py-20 border-t border-glass-border">
         <div className="container mx-auto px-4 md:px-6">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center max-w-5xl mx-auto">
             <div>
@@ -411,7 +411,7 @@ const BornaCarePage = () => {
       </section>
 
       {/* SECTION 9 — Benefits */}
-      <section className="py-12 md:py-12 border-t border-glass-border">
+      <section className="py-12 md:py-20 border-t border-glass-border">
         <div className="container mx-auto px-4 md:px-6">
           <h2 className="section-headline text-foreground text-center mb-16">What Borna Care delivers for your clinic</h2>
           <div className="max-w-3xl mx-auto space-y-4">
@@ -431,7 +431,7 @@ const BornaCarePage = () => {
       </section>
 
       {/* SECTION 10 — Differentiation */}
-      <section className="py-12 md:py-12 border-t border-glass-border">
+      <section className="py-12 md:py-20 border-t border-glass-border">
         <div className="container mx-auto px-4 md:px-6 text-center max-w-4xl">
           <h2 className="section-headline text-foreground mb-12">Why Borna Care is different</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -475,7 +475,7 @@ const BornaCarePage = () => {
       </section>
 
       {/* SECTION 12 — FAQ */}
-      <section className="py-12 md:py-12 border-t border-glass-border">
+      <section className="py-12 md:py-20 border-t border-glass-border">
         <div className="container mx-auto px-4 md:px-6 max-w-3xl">
           <h2 className="section-headline text-foreground text-center mb-12">Frequently asked questions</h2>
           <div className="space-y-2">
@@ -515,7 +515,7 @@ const BornaCarePage = () => {
       </section>
 
       {/* SECTION 14 — Final CTA */}
-      <section className="py-12 md:py-12 relative overflow-hidden">
+      <section className="py-12 md:py-20 relative overflow-hidden">
         <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
           <div className="w-[600px] h-[400px] rounded-full bg-primary/5 blur-[120px]" />
         </div>
