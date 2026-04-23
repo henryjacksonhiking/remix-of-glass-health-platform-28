@@ -1,9 +1,10 @@
 import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 import { motion } from "framer-motion";
-import { Layers, MessageSquare, CalendarCheck, RefreshCw, ArrowRight, Bot, Sparkles, CheckCircle2, XCircle, Filter, Zap, Users, Network, Stethoscope, BarChart3 } from "lucide-react";
+import { Layers, MessageSquare, CalendarCheck, RefreshCw, ArrowRight, Bot, Sparkles, CheckCircle2, XCircle, Filter, Zap, Users, Network, Stethoscope, BarChart3, Wand2, Rocket } from "lucide-react";
 import PageWrapper from "@/components/layout/PageWrapper";
 import StandardFAQ from "@/components/sections/StandardFAQ";
+import KeyTakeaways from "@/components/sections/KeyTakeaways";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { SparklesCore } from "@/components/ui/sparkles-core";
 
@@ -80,7 +81,14 @@ const MedicalPracticesPage = () => (
 
     <SectionDark><motion.div {...fadeUp} className="max-w-3xl mx-auto text-center"><h2 className="text-2xl md:text-3xl font-bold text-foreground mb-6">Support for group and multi-location practices</h2><p className="text-muted-foreground leading-relaxed mb-4">For medical groups operating multiple offices, Borna provides centralized management across all locations.</p><Link to="/solutions/multi-location" className="text-sm text-primary hover:underline inline-flex items-center gap-1">Explore Multi-Location Management <ArrowRight className="w-3.5 h-3.5" /></Link></motion.div></SectionDark>
 
-    <SectionDark><motion.div {...fadeUp} className="text-center mb-8"><h2 className="text-2xl md:text-3xl font-bold text-foreground">Key takeaways</h2></motion.div><div className="grid grid-cols-2 md:grid-cols-4 gap-4">{["Borna unifies all operational layers of a medical practice into one platform", "Automated workflows reduce administrative burden", "AI continuously optimizes patient engagement and operational performance", "Scalable from single practices to multi-location medical groups"].map((t, i) => (<motion.div key={i} {...fadeUp} className="glass-panel rounded-xl p-4 text-center"><Sparkles className="w-5 h-5 text-primary mx-auto mb-2" /><p className="text-xs text-muted-foreground">{t}</p></motion.div>))}</div></SectionDark>
+    <KeyTakeaways
+      items={[
+        { icon: Layers, text: "Borna unifies all operational layers of a medical practice into one platform" },
+        { icon: Wand2, text: "Automated workflows reduce administrative burden" },
+        { icon: Bot, text: "AI continuously optimizes patient engagement and operational performance" },
+        { icon: Rocket, text: "Scalable from single practices to multi-location medical groups" },
+      ]}
+    />
 
     <StandardFAQ items={faqData} />
 

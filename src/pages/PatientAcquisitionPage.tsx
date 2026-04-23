@@ -4,10 +4,11 @@ import { motion } from "framer-motion";
 import {
   Filter, UserPlus, Phone, Globe, MessageSquare, MessageCircle, Mail, Zap, BarChart3,
   CalendarCheck, Target, TrendingUp, ArrowRight, Bot, Search, DollarSign,
-  CheckCircle2, XCircle, Sparkles, Layers, Send,
+  CheckCircle2, XCircle, Sparkles, Layers, Send, Workflow, Database, LineChart, Compass,
 } from "lucide-react";
 import PageWrapper from "@/components/layout/PageWrapper";
 import StandardFAQ from "@/components/sections/StandardFAQ";
+import KeyTakeaways from "@/components/sections/KeyTakeaways";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { SparklesCore } from "@/components/ui/sparkles-core";
 
@@ -326,23 +327,14 @@ const PatientAcquisitionPage = () => (
     </SectionDark>
 
     {/* Key Takeaways */}
-    <SectionDark>
-      <motion.div {...fadeUp} className="text-center mb-8">
-        <h2 className="text-2xl md:text-3xl font-bold text-foreground">Key takeaways</h2>
-      </motion.div>
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-        {[
-          "Borna connects the full patient acquisition journey from first click to confirmed appointment",
-          "Every lead from every channel is captured, tracked, and entered into the system automatically",
-          "AI continuously analyzes and improves conversion performance across the entire funnel",
-          "Full ROI tracking connects marketing spend to real patient growth",
-        ].map((t, i) => (
-          <motion.div key={i} {...fadeUp} className="glass-panel rounded-xl p-4 text-center">
-            <Sparkles className="w-5 h-5 text-primary mx-auto mb-2" /><p className="text-xs text-muted-foreground">{t}</p>
-          </motion.div>
-        ))}
-      </div>
-    </SectionDark>
+    <KeyTakeaways
+      items={[
+        { icon: Compass, text: "Borna connects the full patient acquisition journey from first click to confirmed appointment" },
+        { icon: Database, text: "Every lead from every channel is captured, tracked, and entered into the system automatically" },
+        { icon: Bot, text: "AI continuously analyzes and improves conversion performance across the entire funnel" },
+        { icon: LineChart, text: "Full ROI tracking connects marketing spend to real patient growth" },
+      ]}
+    />
 
     {/* FAQ */}
     <StandardFAQ items={faqData} />

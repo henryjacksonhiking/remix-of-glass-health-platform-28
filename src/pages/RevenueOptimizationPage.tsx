@@ -4,10 +4,11 @@ import { motion } from "framer-motion";
 import {
   TrendingUp, DollarSign, BarChart3, ArrowRight, Bot, Target, UserPlus,
   Heart, Zap, CalendarCheck, Sparkles, CheckCircle2, XCircle, Activity,
-  Percent, Users, Layers,
+  Percent, Users, Layers, Wand2, ShieldCheck, LineChart,
 } from "lucide-react";
 import PageWrapper from "@/components/layout/PageWrapper";
 import StandardFAQ from "@/components/sections/StandardFAQ";
+import KeyTakeaways from "@/components/sections/KeyTakeaways";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { SparklesCore } from "@/components/ui/sparkles-core";
 
@@ -203,14 +204,14 @@ const RevenueOptimizationPage = () => (
     </SectionDark>
 
     {/* Key Takeaways */}
-    <SectionDark>
-      <motion.div {...fadeUp} className="text-center mb-8"><h2 className="text-2xl md:text-3xl font-bold text-foreground">Key takeaways</h2></motion.div>
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-        {["Borna connects patient acquisition, retention, automation, and data into one unified revenue system", "AI continuously identifies revenue gaps and optimizes strategies across all performance dimensions", "Automation prevents revenue loss and increases capacity — allowing practices to grow efficiently", "Full performance tracking connects every practice activity to measurable financial outcomes"].map((t, i) => (
-          <motion.div key={i} {...fadeUp} className="glass-panel rounded-xl p-4 text-center"><Sparkles className="w-5 h-5 text-primary mx-auto mb-2" /><p className="text-xs text-muted-foreground">{t}</p></motion.div>
-        ))}
-      </div>
-    </SectionDark>
+    <KeyTakeaways
+      items={[
+        { icon: DollarSign, text: "Borna connects patient acquisition, retention, automation, and data into one unified revenue system" },
+        { icon: Bot, text: "AI continuously identifies revenue gaps and optimizes strategies across all performance dimensions" },
+        { icon: Wand2, text: "Automation prevents revenue loss and increases capacity — allowing practices to grow efficiently" },
+        { icon: LineChart, text: "Full performance tracking connects every practice activity to measurable financial outcomes" },
+      ]}
+    />
 
     {/* FAQ */}
     <StandardFAQ items={faqData} />

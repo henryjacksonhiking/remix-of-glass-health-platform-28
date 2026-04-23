@@ -4,9 +4,11 @@ import { motion } from "framer-motion";
 import {
   Heart, Bell, CalendarCheck, MessageSquare, RefreshCw, ArrowRight,
   Bot, Users, TrendingUp, Sparkles, CheckCircle2, XCircle, Shield, Activity,
+  Repeat, UserCheck, Radar, Coins,
 } from "lucide-react";
 import PageWrapper from "@/components/layout/PageWrapper";
 import StandardFAQ from "@/components/sections/StandardFAQ";
+import KeyTakeaways from "@/components/sections/KeyTakeaways";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { SparklesCore } from "@/components/ui/sparkles-core";
 
@@ -251,14 +253,14 @@ const PatientRetentionPage = () => (
     </SectionDark>
 
     {/* Key Takeaways */}
-    <SectionDark>
-      <motion.div {...fadeUp} className="text-center mb-8"><h2 className="text-2xl md:text-3xl font-bold text-foreground">Key takeaways</h2></motion.div>
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-        {["Borna improves patient retention through automated communication, follow-ups, and reactivation", "The CRM tracks the full patient lifecycle — making personalized retention possible at scale", "AI predicts patient drop-off before it happens and triggers proactive interventions automatically", "Patient retention increases lifetime value, reduces churn, and builds a stable revenue foundation"].map((t, i) => (
-          <motion.div key={i} {...fadeUp} className="glass-panel rounded-xl p-4 text-center"><Sparkles className="w-5 h-5 text-primary mx-auto mb-2" /><p className="text-xs text-muted-foreground">{t}</p></motion.div>
-        ))}
-      </div>
-    </SectionDark>
+    <KeyTakeaways
+      items={[
+        { icon: Repeat, text: "Borna improves patient retention through automated communication, follow-ups, and reactivation" },
+        { icon: UserCheck, text: "The CRM tracks the full patient lifecycle — making personalized retention possible at scale" },
+        { icon: Radar, text: "AI predicts patient drop-off before it happens and triggers proactive interventions automatically" },
+        { icon: Coins, text: "Patient retention increases lifetime value, reduces churn, and builds a stable revenue foundation" },
+      ]}
+    />
 
     {/* FAQ */}
     <StandardFAQ items={faqData} />

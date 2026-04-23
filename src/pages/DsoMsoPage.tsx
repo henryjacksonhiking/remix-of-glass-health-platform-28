@@ -1,9 +1,10 @@
 import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 import { motion } from "framer-motion";
-import { Network, BarChart3, ArrowRight, Bot, Sparkles, CheckCircle2, XCircle, Users, TrendingUp, MessageSquare, Building, Shield, Layers, Plus, Workflow } from "lucide-react";
+import { Network, BarChart3, ArrowRight, Bot, Sparkles, CheckCircle2, XCircle, Users, TrendingUp, MessageSquare, Building, Shield, Layers, Plus, Workflow, Cpu, Eye, Rocket } from "lucide-react";
 import PageWrapper from "@/components/layout/PageWrapper";
 import StandardFAQ from "@/components/sections/StandardFAQ";
+import KeyTakeaways from "@/components/sections/KeyTakeaways";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { SparklesCore } from "@/components/ui/sparkles-core";
 
@@ -85,7 +86,14 @@ const DsoMsoPage = () => (
       </div>
     </SectionDark>
 
-    <SectionDark><motion.div {...fadeUp} className="text-center mb-8"><h2 className="text-2xl md:text-3xl font-bold text-foreground">Key takeaways</h2></motion.div><div className="grid grid-cols-2 md:grid-cols-4 gap-4">{["Borna provides a unified operating system for multi-location healthcare networks", "Full visibility at every organizational level — location, region, and network", "AI identifies performance gaps and growth opportunities across all locations", "Enterprise-grade scalability — new locations connect and operate immediately"].map((t, i) => (<motion.div key={i} {...fadeUp} className="glass-panel rounded-xl p-4 text-center"><Sparkles className="w-5 h-5 text-primary mx-auto mb-2" /><p className="text-xs text-muted-foreground">{t}</p></motion.div>))}</div></SectionDark>
+    <KeyTakeaways
+      items={[
+        { icon: Cpu, text: "Borna provides a unified operating system for multi-location healthcare networks" },
+        { icon: Eye, text: "Full visibility at every organizational level — location, region, and network" },
+        { icon: Bot, text: "AI identifies performance gaps and growth opportunities across all locations" },
+        { icon: Rocket, text: "Enterprise-grade scalability — new locations connect and operate immediately" },
+      ]}
+    />
 
     <StandardFAQ items={faqData} />
 
