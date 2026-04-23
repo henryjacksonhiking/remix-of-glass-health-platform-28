@@ -205,22 +205,11 @@ const PracticeAutomationPage = () => (
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.2 }}
             transition={{ duration: 0.5, delay: i * 0.15, ease: [0.16, 1, 0.3, 1] }}
-            className="glass-panel rounded-xl p-5 text-center relative"
+            className="glass-panel rounded-xl p-5 text-center"
           >
             <div className="w-8 h-8 rounded-full bg-primary/20 flex items-center justify-center text-primary text-sm font-bold mx-auto mb-3">{step.n}</div>
             <h3 className="text-sm font-semibold text-foreground mb-2">{step.title}</h3>
             <p className="text-xs text-muted-foreground">{step.body}</p>
-            {i < 4 && (
-              <div className="hidden lg:block absolute top-1/2 -translate-y-1/2 -right-3 z-10" aria-hidden>
-                <svg viewBox="0 0 24 12" className="w-6 h-3">
-                  <line x1="0" y1="6" x2="18" y2="6" stroke="hsl(var(--primary))" strokeOpacity="0.4" strokeWidth="1" />
-                  <path d="M16 2 L22 6 L16 10" fill="none" stroke="hsl(var(--primary))" strokeOpacity="0.6" strokeWidth="1" strokeLinecap="round" />
-                  <circle r="1.5" fill="hsl(var(--primary))">
-                    <animateMotion dur="1.5s" repeatCount="indefinite" begin={`${i * 0.3}s`} path="M0,6 L18,6" />
-                  </circle>
-                </svg>
-              </div>
-            )}
           </motion.div>
         ))}
       </div>
