@@ -475,30 +475,7 @@ const BornaCarePage = () => {
       </section>
 
       {/* SECTION 12 — FAQ */}
-      <section className="py-12 md:py-20 border-t border-glass-border">
-        <div className="container mx-auto px-4 md:px-6 max-w-3xl">
-          <h2 className="section-headline text-foreground text-center mb-12">Frequently asked questions</h2>
-          <div className="space-y-2">
-            {faqItems.map((faq, i) => (
-              <div key={i} className="rounded-xl overflow-hidden" style={{ background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.08)' }}>
-                <button
-                  onClick={() => setOpenFaq(openFaq === i ? null : i)}
-                  className="w-full flex items-center justify-between px-5 py-4 text-left"
-                  aria-expanded={openFaq === i}
-                >
-                  <span className="text-sm font-medium text-foreground pr-4">{faq.q}</span>
-                  <ChevronDown className={`w-4 h-4 text-muted-foreground transition-transform shrink-0 ${openFaq === i ? "rotate-180" : ""}`} />
-                </button>
-                {openFaq === i && (
-                  <div className="px-5 pb-4">
-                    <p className="text-sm text-muted-foreground leading-relaxed">{faq.a}</p>
-                  </div>
-                )}
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      <StandardFAQ items={faqItems} />
 
       {/* SECTION 13 — EHR Integration */}
       <section className="py-16 border-t border-glass-border">
