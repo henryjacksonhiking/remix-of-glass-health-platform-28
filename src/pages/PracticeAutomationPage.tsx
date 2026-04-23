@@ -128,9 +128,9 @@ const PracticeAutomationPage = () => (
       <motion.div {...fadeUp} className="max-w-3xl mx-auto text-center mb-12"><h2 className="text-2xl md:text-3xl font-bold text-foreground mb-6">AI-driven workflow automation</h2><p className="text-muted-foreground leading-relaxed">Borna's automation is not just rule-based — it is AI-driven. The AI layer analyzes context, selects the optimal response, and adapts decisions over time based on observed outcomes.</p></motion.div>
       <div className="grid md:grid-cols-3 gap-6 max-w-3xl mx-auto">
         {[
-          { icon: Activity, title: "Intelligent Event Detection", body: "AI identifies triggering events across all systems — not just obvious ones, but subtle signals." },
-          { icon: Settings, title: "Dynamic Workflow Selection", body: "Instead of one rigid response per trigger, AI selects from multiple possible workflows based on context." },
-          { icon: Bot, title: "Adaptive Optimization", body: "Automation workflows improve over time as AI observes which responses achieve the best outcomes." },
+          { icon: Radar, title: "Intelligent Event Detection", body: "AI identifies triggering events across all systems — not just obvious ones, but subtle signals." },
+          { icon: GitBranch, title: "Dynamic Workflow Selection", body: "Instead of one rigid response per trigger, AI selects from multiple possible workflows based on context." },
+          { icon: RotateCw, title: "Adaptive Optimization", body: "Automation workflows improve over time as AI observes which responses achieve the best outcomes." },
         ].map((item, i) => (
           <motion.div key={i} {...fadeUp} className="glass-panel rounded-xl p-5 text-center">
             <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center text-primary mx-auto mb-3"><item.icon className="w-5 h-5" /></div>
