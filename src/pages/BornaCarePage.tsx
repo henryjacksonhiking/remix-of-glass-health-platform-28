@@ -150,9 +150,9 @@ const faqItems = [
 
 const ecosystemModules = [
   { name: "Borna Connect", color: "#00DEC4", status: "Coming Soon" },
-  { name: "Borna Engage", color: "#D6007F", status: "Coming Soon" },
-  { name: "Borna Insight", color: "#818CF8", status: "Coming Soon" },
-  { name: "Borna Core", color: "#4F6AFF", status: "Coming Soon" },
+  { name: "Borna Engage", color: "#E0119D", status: "Coming Soon" },
+  { name: "Borna Insight", color: "#6366F1", status: "Coming Soon" },
+  { name: "Borna Core", color: "#1435C1", status: "Coming Soon" },
 ];
 
 const BornaCarePage = () => {

@@ -165,10 +165,10 @@ const HeroSection = () => {
 const DefinitionSection = () => {
   const nodes = [
     { label: "Communication", icon: MessageSquare, color: "#00DEC4" },
-    { label: "CRM", icon: Users, color: "#D6007F" },
+    { label: "CRM", icon: Users, color: "#E0119D" },
     { label: "Scheduling", icon: Calendar, color: "#00479B" },
-    { label: "Analytics", icon: BarChart3 , color: "#818CF8" },
-    { label: "AI Automation", icon: Sparkles, color: "#4F6AFF" },
+    { label: "Analytics", icon: BarChart3 , color: "#6366F1" },
+    { label: "AI Automation", icon: Sparkles, color: "#1435C1" },
   ];
   return (
     <section className="py-16 md:py-24 border-t border-glass-border">
@@ -260,7 +260,7 @@ const EcosystemBridge = () => {
   const layers = [
     { label: "Patient Layer", desc: "Booking, forms, payments, communication", icon: HeartPulse, color: "#00DEC4" },
     { label: "Practice Layer", desc: "Scheduling, CRM, workflows, analytics", icon: Workflow, color: "#00479B" },
-    { label: "Intelligence Layer", desc: "AI summaries, automation, predictions", icon: Cpu, color: "#4F6AFF" },
+    { label: "Intelligence Layer", desc: "AI summaries, automation, predictions", icon: Cpu, color: "#1435C1" },
   ];
   return (
     <section className="py-16 md:py-24 border-t border-glass-border">
@@ -571,7 +571,7 @@ const ConceptDiagram = ({ slug, color }: { slug: string; color: string }) => {
         <defs>
           <linearGradient id="insight-bar" x1="0" y1="0" x2="0" y2="1">
             <stop offset="0%" stopColor={color} stopOpacity="0.85" />
-            <stop offset="100%" stopColor="#818CF8" stopOpacity="0.35" />
+            <stop offset="100%" stopColor="#6366F1" stopOpacity="0.35" />
           </linearGradient>
           <filter id="insight-glow" x="-20%" y="-20%" width="140%" height="140%">
             <feGaussianBlur stdDeviation="1.2" result="b" />
