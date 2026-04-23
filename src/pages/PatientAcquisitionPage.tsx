@@ -82,7 +82,7 @@ const PatientAcquisitionPage = () => (
           </motion.div>
           <motion.div {...fadeUp} className="relative" aria-hidden="true">
             <div className="w-full max-w-lg mx-auto overflow-hidden">
-              <svg viewBox="0 0 500 340" className="w-full h-auto" preserveAspectRatio="xMidYMid meet">
+              <svg viewBox="0 0 560 340" className="w-full h-auto" preserveAspectRatio="xMidYMid meet">
                 <defs>
                   <radialGradient id="acq-node-grad" cx="40%" cy="35%">
                     <stop offset="0%" stopColor="hsl(var(--primary))" stopOpacity="0.3" />
@@ -93,16 +93,30 @@ const PatientAcquisitionPage = () => (
                     <stop offset="100%" stopColor="hsl(var(--primary))" stopOpacity="0.1" />
                   </radialGradient>
                 </defs>
-                {/* 5 channels */}
-                {["Google Ads", "Phone Calls", "Website Forms", "SMS", "Referrals"].map((label, i) => (
-                  <g key={label}>
-                    <circle cx="50" cy={40 + i * 60} r="14" fill="url(#acq-node-grad)" stroke="hsl(var(--primary))" strokeOpacity="0.6" strokeWidth="1" />
-                    <text x="74" y={45 + i * 60} className="fill-foreground" fontSize="11" fontWeight="500">{label}</text>
-                    <line x1="170" y1={40 + i * 60} x2="220" y2={150 + (i - 2) * 8} stroke="hsl(var(--primary))" strokeOpacity="0.35" strokeWidth="1">
-                      <animate attributeName="stroke-opacity" values="0.2;0.6;0.2" dur="3s" begin={`${i * 0.3}s`} repeatCount="indefinite" />
-                    </line>
-                  </g>
-                ))}
+                {/* 5 channels — curved lines converging into center of Captured node (x=240, y=152) */}
+                {["Google Ads", "Phone Calls", "Website Forms", "SMS", "Referrals"].map((label, i) => {
+                  const cy = 40 + i * 60;
+                  const startX = 64; // right edge of channel circle (cx 50 + r 14)
+                  const endX = 240;  // center of Captured node
+                  const endY = 152;
+                  const cpX = 200;   // control point for smooth convergence
+                  return (
+                    <g key={label}>
+                      <circle cx="50" cy={cy} r="14" fill="url(#acq-node-grad)" stroke="hsl(var(--primary))" strokeOpacity="0.6" strokeWidth="1" />
+                      <text x="74" y={cy + 4} className="fill-foreground" fontSize="11" fontWeight="500">{label}</text>
+                      <path
+                        d={`M ${startX} ${cy} Q ${cpX} ${cy} ${endX} ${endY}`}
+                        fill="none"
+                        stroke="hsl(var(--primary))"
+                        strokeOpacity="0.35"
+                        strokeWidth="1"
+                        strokeDasharray="3 3"
+                      >
+                        <animate attributeName="stroke-opacity" values="0.2;0.6;0.2" dur="3s" begin={`${i * 0.3}s`} repeatCount="indefinite" />
+                      </path>
+                    </g>
+                  );
+                })}
                 {/* Stages */}
                 {[{ x: 240, l: "Captured" }, { x: 330, l: "Engaged" }, { x: 420, l: "Converting" }].map((s, i) => (
                   <g key={s.l}>
@@ -113,10 +127,10 @@ const PatientAcquisitionPage = () => (
                 ))}
                 {/* Output */}
                 <line x1="458" y1="152" x2="478" y2="152" stroke="hsl(var(--primary))" strokeWidth="1.5" />
-                <circle cx="488" cy="152" r="10" fill="url(#acq-hub-grad)" stroke="hsl(var(--primary))" strokeWidth="1.5">
+                <circle cx="495" cy="152" r="10" fill="url(#acq-hub-grad)" stroke="hsl(var(--primary))" strokeWidth="1.5">
                   <animate attributeName="r" values="10;13;10" dur="2s" repeatCount="indefinite" />
                 </circle>
-                <text x="488" y="180" textAnchor="middle" className="fill-primary" fontSize="11" fontWeight="600">Confirmed</text>
+                <text x="495" y="182" textAnchor="middle" className="fill-primary" fontSize="11" fontWeight="600">Confirmed</text>
               </svg>
             </div>
           </motion.div>
