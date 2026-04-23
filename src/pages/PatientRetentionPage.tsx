@@ -52,33 +52,64 @@ const PatientRetentionPage = () => (
               <a href="#retention-journey" className="ghost-btn whitespace-nowrap">See Retention Strategies</a>
             </div>
           </motion.div>
-          <motion.div {...fadeUp} className="relative flex items-center justify-center" aria-hidden="true">
-            <svg viewBox="0 0 320 320" className="w-full max-w-sm md:max-w-md mx-auto h-auto" preserveAspectRatio="xMidYMid meet">
+          <motion.div {...fadeUp} className="relative flex items-center justify-center w-full" aria-hidden="true">
+            <svg viewBox="0 0 320 320" className="w-full max-w-[320px] sm:max-w-sm md:max-w-md mx-auto h-auto" preserveAspectRatio="xMidYMid meet">
               <defs>
-                <radialGradient id="ret-node-grad" cx="40%" cy="35%">
-                  <stop offset="0%" stopColor="hsl(var(--primary))" stopOpacity="0.3" />
+                <radialGradient id="ret-node-grad" cx="35%" cy="30%">
+                  <stop offset="0%" stopColor="hsl(var(--primary))" stopOpacity="0.55" />
+                  <stop offset="60%" stopColor="hsl(var(--primary))" stopOpacity="0.18" />
                   <stop offset="100%" stopColor="hsl(var(--primary))" stopOpacity="0.05" />
                 </radialGradient>
+                <filter id="ret-node-glow" x="-50%" y="-50%" width="200%" height="200%">
+                  <feGaussianBlur stdDeviation="3" result="blur" />
+                  <feMerge>
+                    <feMergeNode in="blur" />
+                    <feMergeNode in="SourceGraphic" />
+                  </feMerge>
+                </filter>
               </defs>
-              <ellipse cx="160" cy="160" rx="115" ry="115" fill="none" stroke="hsl(var(--primary))" strokeOpacity="0.3" strokeWidth="1.5" strokeDasharray="3 5" />
-              {[{ a: 270, l: "Visit" }, { a: 0, l: "Follow-Up" }, { a: 90, l: "Engagement" }, { a: 180, l: "Return" }].map((node) => {
-                const rad = (node.a * Math.PI) / 180;
-                const x = 160 + 115 * Math.cos(rad);
-                const y = 160 + 115 * Math.sin(rad);
-                return (
-                  <g key={node.l}>
-                    <circle cx={x} cy={y} r="22" fill="url(#ret-node-grad)" stroke="hsl(var(--primary))" strokeOpacity="0.6" strokeWidth="1.25" />
-                    <text x={x} y={y + 4} textAnchor="middle" className="fill-foreground" fontSize="10" fontWeight="500">{node.l}</text>
+
+              {/* Dotted orbit */}
+              <circle cx="160" cy="160" r="115" fill="none" stroke="hsl(var(--primary))" strokeOpacity="0.35" strokeWidth="1.5" strokeDasharray="2 6" strokeLinecap="round" />
+
+              {/* Center label */}
+              <text x="160" y="164" textAnchor="middle" className="fill-foreground" fontSize="11" fontWeight="600" opacity="0.85">Always Connected</text>
+
+              {/* Orbiting nodes — equal size, text inside, smooth rotation */}
+              {[
+                { l: "Visit", offset: 0 },
+                { l: "Follow-Up", offset: 90 },
+                { l: "Engagement", offset: 180 },
+                { l: "Return", offset: 270 },
+              ].map((node) => (
+                <g key={node.l} style={{ transformOrigin: "160px 160px" }}>
+                  <g
+                    style={{
+                      transformOrigin: "160px 160px",
+                      animation: `ret-orbit 24s linear infinite`,
+                      animationDelay: `${-(node.offset / 360) * 24}s`,
+                    }}
+                  >
+                    <g transform="translate(275, 160)">
+                      <g
+                        style={{
+                          transformOrigin: "0px 0px",
+                          animation: `ret-orbit-counter 24s linear infinite`,
+                          animationDelay: `${-(node.offset / 360) * 24}s`,
+                        }}
+                      >
+                        <circle r="26" fill="url(#ret-node-grad)" stroke="hsl(var(--primary))" strokeOpacity="0.7" strokeWidth="1.25" filter="url(#ret-node-glow)" />
+                        <text textAnchor="middle" dominantBaseline="middle" className="fill-foreground" fontSize="9.5" fontWeight="600">{node.l}</text>
+                      </g>
+                    </g>
                   </g>
-                );
-              })}
-              <circle r="6" fill="hsl(var(--primary))">
-                <animateMotion dur="6s" repeatCount="indefinite" path="M160,45 A115,115 0 1,1 159.9,45" />
-              </circle>
-              <circle r="5" fill="hsl(var(--primary))" fillOpacity="0.7">
-                <animateMotion dur="6s" repeatCount="indefinite" begin="3s" path="M160,45 A115,115 0 1,1 159.9,45" />
-              </circle>
-              <text x="160" y="164" textAnchor="middle" className="fill-muted-foreground" fontSize="10" fontWeight="500">Always Connected</text>
+                </g>
+              ))}
+
+              <style>{`
+                @keyframes ret-orbit { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+                @keyframes ret-orbit-counter { from { transform: rotate(0deg); } to { transform: rotate(-360deg); } }
+              `}</style>
             </svg>
           </motion.div>
         </div>
