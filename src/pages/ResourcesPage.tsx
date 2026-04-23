@@ -440,7 +440,7 @@ const ResourcesPage = () => {
       </Helmet>
 
       {/* SECTION 1 — HERO */}
-      <section className="relative overflow-hidden pt-24 md:pt-32 pb-20">
+      <section className="relative overflow-hidden pt-20 md:pt-24 md:pt-20 md:pt-20 md:pt-24 pb-20">
         <div className="absolute inset-0 pointer-events-none">
           <div className="absolute top-1/3 left-1/4 w-[500px] h-[500px] rounded-full blur-3xl opacity-30" style={{ background: "hsl(var(--primary) / 0.25)" }} />
         </div>
@@ -504,7 +504,7 @@ const ResourcesPage = () => {
       </section>
 
       {/* SECTION 2 — DEFINITION */}
-      <section className="py-20">
+      <section className="py-12 md:py-20">
         <div className="container mx-auto px-4 md:px-6 max-w-3xl text-center">
           <h2 className="section-headline text-foreground mb-6">What are healthcare technology resources?</h2>
           <p className="body-text mb-4">
@@ -533,7 +533,7 @@ const ResourcesPage = () => {
       </section>
 
       {/* SECTION 3 — CATEGORIES */}
-      <section className="py-20">
+      <section className="py-12 md:py-20">
         <div className="container mx-auto px-4 md:px-6 max-w-6xl">
           <div className="text-center mb-12">
             <h2 className="section-headline text-foreground mb-4">Explore resources by category</h2>
@@ -577,7 +577,7 @@ const ResourcesPage = () => {
       </section>
 
       {/* SECTION 4 — FEATURED */}
-      <section id="featured" className="py-20">
+      <section id="featured" className="py-12 md:py-20">
         <div className="container mx-auto px-4 md:px-6 max-w-6xl">
           <div className="text-center mb-12">
             <h2 className="section-headline text-foreground mb-4">Featured articles and insights</h2>
@@ -616,7 +616,7 @@ const ResourcesPage = () => {
       </section>
 
       {/* SECTION 5 — LATEST INSIGHTS */}
-      <section className="py-20">
+      <section className="py-12 md:py-20">
         <div className="container mx-auto px-4 md:px-6 max-w-6xl">
           <div className="text-center mb-12">
             <h2 className="section-headline text-foreground mb-4">Latest insights from Borna AI</h2>
@@ -637,7 +637,7 @@ const ResourcesPage = () => {
       </section>
 
       {/* SECTION 6 — EDUCATIONAL VALUE */}
-      <section className="py-20 relative overflow-hidden">
+      <section className="py-12 md:py-20 relative overflow-hidden">
         <div
           className="absolute inset-0 opacity-[0.06] pointer-events-none"
           style={{
@@ -681,7 +681,7 @@ const ResourcesPage = () => {
       </section>
 
       {/* SECTION 7 — PLATFORM CONNECTION */}
-      <section className="py-20">
+      <section className="py-12 md:py-20">
         <div className="container mx-auto px-4 md:px-6 max-w-6xl">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
             <div>
@@ -699,7 +699,7 @@ const ResourcesPage = () => {
       </section>
 
       {/* SECTION 8 — HOW TO USE */}
-      <section className="py-20">
+      <section className="py-12 md:py-20">
         <div className="container mx-auto px-4 md:px-6 max-w-6xl">
           <div className="text-center mb-12">
             <h2 className="section-headline text-foreground mb-4">How to use Borna resources</h2>
@@ -736,7 +736,7 @@ const ResourcesPage = () => {
       </section>
 
       {/* SECTION 9 — DIFFERENTIATION */}
-      <section className="py-20">
+      <section className="py-12 md:py-20">
         <div className="container mx-auto px-4 md:px-6 max-w-5xl">
           <div className="text-center mb-12">
             <h2 className="section-headline text-foreground mb-4">Why Borna resources are different</h2>
@@ -769,7 +769,7 @@ const ResourcesPage = () => {
       </section>
 
       {/* SECTION 10 — KEY TAKEAWAYS */}
-      <section className="py-20">
+      <section className="py-12 md:py-20">
         <div className="container mx-auto px-4 md:px-6 max-w-6xl">
           <h2 className="section-headline text-foreground text-center mb-12">Key takeaways</h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -793,7 +793,7 @@ const ResourcesPage = () => {
       </section>
 
       {/* SECTION 11 — FAQ */}
-      <section className="py-20">
+      <section className="py-12 md:py-20">
         <div className="container mx-auto px-4 md:px-6 max-w-3xl">
           <h2 className="section-headline text-foreground text-center mb-12">Frequently asked questions</h2>
           <FAQ />
@@ -801,7 +801,7 @@ const ResourcesPage = () => {
       </section>
 
       {/* SECTION 12 — FINAL CTA */}
-      <section className="py-24 relative overflow-hidden">
+      <section className="py-12 md:py-12 md:py-20 relative overflow-hidden">
         <div className="absolute inset-0 pointer-events-none">
           <div className="absolute inset-0" style={{ background: "radial-gradient(ellipse at center, hsl(var(--primary) / 0.18), transparent 60%)" }} />
         </div>

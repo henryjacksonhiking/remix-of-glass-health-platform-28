@@ -39,7 +39,7 @@ const PrivacyPage = () => (
       <title>Privacy Policy — Borna.ai</title>
       <meta name="description" content="Learn how Borna.ai collects, uses, and protects your data. Read our privacy policy covering HIPAA compliance, data security, and your rights." />
     </Helmet>
-    <section className="py-24 md:py-32">
+    <section className="py-12 md:py-12 md:py-20 md:py-16 md:py-12 md:py-12 md:py-20">
       <div className="container mx-auto px-4 md:px-6 max-w-3xl">
         <motion.h1
           initial={{ opacity: 0, y: 20 }}

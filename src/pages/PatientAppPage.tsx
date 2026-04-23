@@ -130,7 +130,7 @@ const PatientAppPage = () => {
       </section>
 
       {/* Definition */}
-      <section className="py-20 border-t border-glass-border">
+      <section className="py-12 md:py-20 border-t border-glass-border">
         <div className="container mx-auto px-4 md:px-6 max-w-3xl text-center">
           <motion.h2 initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="section-headline text-foreground mb-6">What is a healthcare patient app?</motion.h2>
           <motion.p initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.1 }} className="text-[15px] leading-relaxed" style={{ color: 'rgba(255,255,255,0.55)' }}>
@@ -140,7 +140,7 @@ const PatientAppPage = () => {
       </section>
 
       {/* Patient Experience Flow */}
-      <section className="py-24 border-t border-glass-border">
+      <section className="py-12 md:py-12 md:py-20 border-t border-glass-border">
         <div className="container mx-auto px-4 md:px-6 text-center">
           <h2 className="section-headline text-foreground mb-4">A unified patient experience platform</h2>
           <p className="body-text mx-auto mb-12">Six stages, one seamless journey.</p>
@@ -162,7 +162,7 @@ const PatientAppPage = () => {
       </section>
 
       {/* Core Capabilities */}
-      <section className="py-24 border-t border-glass-border">
+      <section className="py-12 md:py-12 md:py-20 border-t border-glass-border">
         <div className="container mx-auto px-4 md:px-6">
           <h2 className="section-headline text-foreground text-center mb-16">What patients can do with the Borna App</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 max-w-5xl mx-auto">
@@ -177,7 +177,7 @@ const PatientAppPage = () => {
       </section>
 
       {/* Practice Benefits */}
-      <section className="py-24 border-t border-glass-border">
+      <section className="py-12 md:py-12 md:py-20 border-t border-glass-border">
         <div className="container mx-auto px-4 md:px-6">
           <h2 className="section-headline text-foreground text-center mb-16">Benefits for healthcare practices</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 max-w-5xl mx-auto">
@@ -193,7 +193,7 @@ const PatientAppPage = () => {
       </section>
 
       {/* Ecosystem Connection */}
-      <section className="py-20 border-t border-glass-border">
+      <section className="py-12 md:py-20 border-t border-glass-border">
         <div className="container mx-auto px-4 md:px-6 max-w-3xl text-center">
           <h2 className="section-headline text-foreground mb-6">Connected to the full Borna ecosystem</h2>
           <p className="body-text mx-auto mb-6">
@@ -206,7 +206,7 @@ const PatientAppPage = () => {
       </section>
 
       {/* FAQ */}
-      <section className="py-24 border-t border-glass-border">
+      <section className="py-12 md:py-12 md:py-20 border-t border-glass-border">
         <div className="container mx-auto px-4 md:px-6 max-w-3xl">
           <h2 className="section-headline text-foreground text-center mb-12">Frequently asked questions</h2>
           <div className="space-y-2">
@@ -224,7 +224,7 @@ const PatientAppPage = () => {
       </section>
 
       {/* CTA */}
-      <section className="py-24 relative overflow-hidden">
+      <section className="py-12 md:py-12 md:py-20 relative overflow-hidden">
         <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
           <div className="w-[500px] h-[350px] rounded-full bg-primary/5 blur-[120px]" />
         </div>

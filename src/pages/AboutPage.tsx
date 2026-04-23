@@ -45,7 +45,7 @@ const AboutPage = () => (
     </div>
 
     {/* Hero */}
-    <section className="relative overflow-hidden py-24 md:py-32">
+    <section className="relative overflow-hidden py-12 md:py-12 md:py-20 md:py-16 md:py-12 md:py-12 md:py-20">
       <div className="absolute inset-0 opacity-35"><BeamsBackground intensity="medium" /></div>
       <div className="container mx-auto px-4 md:px-6 relative z-10 max-w-5xl">
         <div className="grid md:grid-cols-2 gap-12 items-center">
@@ -84,7 +84,7 @@ const AboutPage = () => (
     </section>
 
     {/* Who we are */}
-    <section className="py-24 border-t border-glass-border">
+    <section className="py-12 md:py-12 md:py-20 border-t border-glass-border">
       <div className="container mx-auto px-4 md:px-6 max-w-4xl">
         <div className="grid md:grid-cols-2 gap-12 items-center">
           <div>
@@ -116,7 +116,7 @@ const AboutPage = () => (
     </section>
 
     {/* Mission & Vision */}
-    <section className="py-28 border-t border-glass-border">
+    <section className="py-12 md:py-12 md:py-20 border-t border-glass-border">
       <div className="container mx-auto px-4 md:px-6 max-w-4xl">
         <div className="grid md:grid-cols-2 gap-8 relative">
           <motion.div initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5 }}
@@ -138,7 +138,7 @@ const AboutPage = () => (
     </section>
 
     {/* The Problem */}
-    <section className="py-24 border-t border-glass-border">
+    <section className="py-12 md:py-12 md:py-20 border-t border-glass-border">
       <div className="container mx-auto px-4 md:px-6 max-w-4xl">
         <div className="grid md:grid-cols-2 gap-12 items-center">
           <div>
@@ -161,7 +161,7 @@ const AboutPage = () => (
     </section>
 
     {/* Our Approach */}
-    <section className="py-24 border-t border-glass-border">
+    <section className="py-12 md:py-12 md:py-20 border-t border-glass-border">
       <div className="container mx-auto px-4 md:px-6 max-w-4xl">
         <h2 className="section-headline text-foreground text-center mb-4">Our approach to healthcare technology</h2>
         <p className="body-text text-center mx-auto max-w-2xl mb-6">
@@ -172,7 +172,7 @@ const AboutPage = () => (
     </section>
 
     {/* Platform Stack */}
-    <section className="py-24 border-t border-glass-border">
+    <section className="py-12 md:py-12 md:py-20 border-t border-glass-border">
       <div className="container mx-auto px-4 md:px-6 max-w-3xl">
         <h2 className="section-headline text-foreground text-center mb-4">The Borna AI platform</h2>
         <p className="body-text text-center mx-auto mb-10">Four integrated layers, each fully functional independently, exponentially more powerful together.</p>
@@ -195,7 +195,7 @@ const AboutPage = () => (
     </section>
 
     {/* What Makes Borna Different */}
-    <section className="py-24 border-t border-glass-border">
+    <section className="py-12 md:py-12 md:py-20 border-t border-glass-border">
       <div className="container mx-auto px-4 md:px-6">
         <h2 className="section-headline text-foreground text-center mb-4">What makes Borna AI different</h2>
         <p className="body-text text-center mx-auto max-w-2xl mb-12">Four architectural advantages that no collection of point tools can replicate.</p>
@@ -216,7 +216,7 @@ const AboutPage = () => (
     </section>
 
     {/* Who We Serve */}
-    <section className="py-24 border-t border-glass-border">
+    <section className="py-12 md:py-12 md:py-20 border-t border-glass-border">
       <div className="container mx-auto px-4 md:px-6 max-w-4xl text-center">
         <h2 className="section-headline text-foreground mb-4">Who we serve</h2>
         <p className="body-text mx-auto mb-8">
@@ -237,7 +237,7 @@ const AboutPage = () => (
     </section>
 
     {/* Commitment */}
-    <section className="py-24 border-t border-glass-border">
+    <section className="py-12 md:py-12 md:py-20 border-t border-glass-border">
       <div className="container mx-auto px-4 md:px-6">
         <h2 className="section-headline text-foreground text-center mb-12">Our commitment to healthcare innovation</h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-5xl mx-auto">
@@ -257,7 +257,7 @@ const AboutPage = () => (
     </section>
 
     {/* How It Works */}
-    <section className="py-24 border-t border-glass-border">
+    <section className="py-12 md:py-12 md:py-20 border-t border-glass-border">
       <div className="container mx-auto px-4 md:px-6">
         <h2 className="section-headline text-foreground text-center mb-12">How Borna works</h2>
         <div className="grid grid-cols-2 md:grid-cols-5 gap-4 max-w-5xl mx-auto">
@@ -284,7 +284,7 @@ const AboutPage = () => (
     </section>
 
     {/* Key Takeaways */}
-    <section className="py-24 border-t border-glass-border">
+    <section className="py-12 md:py-12 md:py-20 border-t border-glass-border">
       <div className="container mx-auto px-4 md:px-6">
         <h2 className="section-headline text-foreground text-center mb-12">Key takeaways</h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-5xl mx-auto">
@@ -304,7 +304,7 @@ const AboutPage = () => (
     </section>
 
     {/* FAQ */}
-    <section className="py-24 border-t border-glass-border">
+    <section className="py-12 md:py-12 md:py-20 border-t border-glass-border">
       <div className="container mx-auto px-4 md:px-6 max-w-3xl">
         <h2 className="section-headline text-foreground text-center mb-12">Frequently asked questions</h2>
         <div className="space-y-3">

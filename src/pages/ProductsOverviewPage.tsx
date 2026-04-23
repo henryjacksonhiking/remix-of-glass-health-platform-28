@@ -165,13 +165,13 @@ const HeroSection = () => {
 const DefinitionSection = () => {
   const nodes = [
     { label: "Communication", icon: MessageSquare, color: "#00DEC4" },
-    { label: "CRM", icon: Users, color: "#D6007F" },
+    { label: "CRM", icon: Users, color: "#E0119D" },
     { label: "Scheduling", icon: Calendar, color: "#00479B" },
-    { label: "Analytics", icon: BarChart3 , color: "#818CF8" },
-    { label: "AI Automation", icon: Sparkles, color: "#4F6AFF" },
+    { label: "Analytics", icon: BarChart3 , color: "#6366F1" },
+    { label: "AI Automation", icon: Sparkles, color: "#1435C1" },
   ];
   return (
-    <section className="py-16 md:py-24 border-t border-glass-border">
+    <section className="py-16 md:py-12 md:py-12 md:py-20 border-t border-glass-border">
       <div className="container mx-auto px-4 md:px-6">
         <div className="text-center mb-12 md:mb-16">
           <span className="section-eyebrow">Definition</span>
@@ -260,10 +260,10 @@ const EcosystemBridge = () => {
   const layers = [
     { label: "Patient Layer", desc: "Booking, forms, payments, communication", icon: HeartPulse, color: "#00DEC4" },
     { label: "Practice Layer", desc: "Scheduling, CRM, workflows, analytics", icon: Workflow, color: "#00479B" },
-    { label: "Intelligence Layer", desc: "AI summaries, automation, predictions", icon: Cpu, color: "#4F6AFF" },
+    { label: "Intelligence Layer", desc: "AI summaries, automation, predictions", icon: Cpu, color: "#1435C1" },
   ];
   return (
-    <section className="py-16 md:py-24 border-t border-glass-border">
+    <section className="py-16 md:py-12 md:py-12 md:py-20 border-t border-glass-border">
       <div className="container mx-auto px-4 md:px-6">
         <div className="text-center mb-12 md:mb-14">
           <span className="section-eyebrow">Ecosystem</span>
@@ -317,7 +317,7 @@ const CareSpotlight = () => {
   const patientFeatures = ["Online booking & scheduling", "Digital forms", "Secure payments", "Patient communication"];
   const adminFeatures = ["Patient management", "Scheduling control", "PMS / EHR integration", "Workflow coordination"];
   return (
-    <section className="py-16 md:py-24 border-t border-glass-border relative overflow-hidden">
+    <section className="py-16 md:py-12 md:py-12 md:py-20 border-t border-glass-border relative overflow-hidden">
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[400px] rounded-full blur-[140px] pointer-events-none" style={{ background: "hsla(170, 100%, 43%, 0.06)" }} />
       <div className="container mx-auto px-4 md:px-6 relative z-10">
         <div className="text-center mb-12 md:mb-16">
@@ -435,7 +435,7 @@ const CareSpotlight = () => {
 const OtherProducts = () => {
   const items = products.filter((p) => p.id !== "care");
   return (
-    <section className="py-16 md:py-24 border-t border-glass-border">
+    <section className="py-16 md:py-12 md:py-12 md:py-20 border-t border-glass-border">
       <div className="container mx-auto px-4 md:px-6">
         <div className="text-center mb-12 md:mb-14">
           <span className="section-eyebrow">The rest of the platform</span>
@@ -571,7 +571,7 @@ const ConceptDiagram = ({ slug, color }: { slug: string; color: string }) => {
         <defs>
           <linearGradient id="insight-bar" x1="0" y1="0" x2="0" y2="1">
             <stop offset="0%" stopColor={color} stopOpacity="0.85" />
-            <stop offset="100%" stopColor="#818CF8" stopOpacity="0.35" />
+            <stop offset="100%" stopColor="#6366F1" stopOpacity="0.35" />
           </linearGradient>
           <filter id="insight-glow" x="-20%" y="-20%" width="140%" height="140%">
             <feGaussianBlur stdDeviation="1.2" result="b" />
@@ -733,7 +733,7 @@ const FlowSection = () => {
     { name: "Care", desc: "Deliver experience", id: "care" },
   ];
   return (
-    <section className="py-16 md:py-24 border-t border-glass-border">
+    <section className="py-16 md:py-12 md:py-12 md:py-20 border-t border-glass-border">
       <div className="container mx-auto px-4 md:px-6">
         <div className="text-center mb-12 md:mb-14">
           <span className="section-eyebrow">How it fits together</span>
@@ -807,7 +807,7 @@ const ComparisonTable = () => {
     { capability: "Scalability", traditional: "Add more tools", borna: "Add more modules" },
   ];
   return (
-    <section className="py-16 md:py-24 border-t border-glass-border">
+    <section className="py-16 md:py-12 md:py-12 md:py-20 border-t border-glass-border">
       <div className="container mx-auto px-4 md:px-6">
         <div className="text-center mb-10 md:mb-14">
           <span className="section-eyebrow">Comparison</span>
@@ -879,7 +879,7 @@ const AuthoritySection = () => {
     { value: "24/7", label: "Real-time insights across the practice", icon: BarChart3 },
   ];
   return (
-    <section className="py-16 md:py-24 border-t border-glass-border">
+    <section className="py-16 md:py-12 md:py-12 md:py-20 border-t border-glass-border">
       <div className="container mx-auto px-4 md:px-6">
         <div className="text-center mb-12 md:mb-14 max-w-3xl mx-auto">
           <span className="section-eyebrow">Why it matters</span>
@@ -921,7 +921,7 @@ const Takeaways = () => {
     { icon: Sparkles, text: "AI enhances automation and clinical decision-making" },
   ];
   return (
-    <section className="py-16 md:py-24 border-t border-glass-border">
+    <section className="py-16 md:py-12 md:py-12 md:py-20 border-t border-glass-border">
       <div className="container mx-auto px-4 md:px-6">
         <div className="text-center mb-10 md:mb-14">
           <span className="section-eyebrow">Key takeaways</span>
@@ -960,7 +960,7 @@ const FAQ = () => {
     { q: "Can I start with just one product?", a: "Yes. Borna is designed for modular adoption — start with Borna Care and expand into additional modules as your practice grows." },
   ];
   return (
-    <section className="py-16 md:py-24 border-t border-glass-border">
+    <section className="py-16 md:py-12 md:py-12 md:py-20 border-t border-glass-border">
       <div className="container mx-auto px-4 md:px-6">
         <div className="text-center mb-12 md:mb-14">
           <span className="section-eyebrow">What people ask</span>
@@ -997,7 +997,7 @@ const FAQ = () => {
 
 /* ============== Section 11: Final CTA ============== */
 const FinalCTA = () => (
-  <section className="py-16 md:py-24 border-t border-glass-border relative overflow-hidden">
+  <section className="py-16 md:py-12 md:py-12 md:py-20 border-t border-glass-border relative overflow-hidden">
     <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
       <div className="w-[700px] h-[400px] rounded-full bg-primary/5 blur-[140px]" />
     </div>

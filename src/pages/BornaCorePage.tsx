@@ -31,8 +31,8 @@ const capabilities = [
 const ecosystemProducts = [
   { name: "Borna Care", color: "#00479B", desc: "Patient portal", role: "Sends patient interaction data → receives scheduling intelligence" },
   { name: "Borna Connect", color: "#00DEC4", desc: "Communication", role: "Sends communication data → receives routing & sentiment intelligence" },
-  { name: "Borna Engage", color: "#D6007F", desc: "CRM", role: "Sends lifecycle data → receives retention predictions & automation triggers" },
-  { name: "Borna Insight", color: "#818CF8", desc: "Analytics", role: "Sends performance data → receives predictive models & anomaly detection" },
+  { name: "Borna Engage", color: "#E0119D", desc: "CRM", role: "Sends lifecycle data → receives retention predictions & automation triggers" },
+  { name: "Borna Insight", color: "#6366F1", desc: "Analytics", role: "Sends performance data → receives predictive models & anomaly detection" },
 ];
 
 const faqItems = [
@@ -65,21 +65,21 @@ const BornaCorePage = () => {
         <nav aria-label="breadcrumb" className="flex items-center gap-2 text-sm text-muted-foreground">
           <Link to="/" className="hover:text-foreground transition-colors">Home</Link><span>/</span>
           <Link to="/products" className="hover:text-foreground transition-colors">Products</Link><span>/</span>
-          <span style={{ color: '#4F6AFF' }}>Borna Core</span>
+          <span style={{ color: '#1435C1' }}>Borna Core</span>
         </nav>
       </div>
 
       {/* Hero */}
       <section className="relative overflow-hidden pt-12 pb-20 md:pt-20 md:pb-28">
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[400px] rounded-full blur-[120px] pointer-events-none" style={{ background: 'rgba(79,106,255,0.08)' }} />
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[400px] rounded-full blur-[120px] pointer-events-none" style={{ background: 'rgba(20,53,193,0.08)' }} />
         <div className="container mx-auto px-4 md:px-6 relative z-10">
           <div className="max-w-3xl mx-auto text-center">
             <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="inline-flex items-center gap-2 rounded-full border border-glass-border bg-glass px-4 py-1.5 text-sm text-muted-foreground mb-6">
               <span>Borna Core</span>
-              <span style={{ color: '#4F6AFF' }}>AI Engine</span>
+              <span style={{ color: '#1435C1' }}>AI Engine</span>
             </motion.div>
             <motion.h1 initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.1 }} className="hero-headline text-foreground mb-6">
-              The <span className="bg-clip-text text-transparent" style={{ backgroundImage: 'linear-gradient(135deg, #4F6AFF, #00DEC4)' }}>intelligence layer</span> powering the entire platform
+              The <span className="bg-clip-text text-transparent" style={{ backgroundImage: 'linear-gradient(135deg, #1435C1, #00DEC4)' }}>intelligence layer</span> powering the entire platform
             </motion.h1>
             <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 }} className="body-text mb-8">
               A centralized AI engine that learns from all data, powers all products, and makes every system in the Borna platform smarter.
@@ -97,22 +97,22 @@ const BornaCorePage = () => {
               <div className="flex flex-col gap-3">
                 {inputNodes.map((node, i) => (
                   <motion.div key={node.label} initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.5 + i * 0.1 }} className="flex items-center gap-2">
-                    <div className="w-10 h-10 rounded-lg flex items-center justify-center" style={{ background: 'rgba(79,106,255,0.08)', border: '1px solid rgba(79,106,255,0.15)' }}>
-                      <node.icon className="w-4 h-4" style={{ color: '#4F6AFF' }} />
+                    <div className="w-10 h-10 rounded-lg flex items-center justify-center" style={{ background: 'rgba(20,53,193,0.08)', border: '1px solid rgba(20,53,193,0.15)' }}>
+                      <node.icon className="w-4 h-4" style={{ color: '#1435C1' }} />
                     </div>
                     <span className="text-[11px] text-muted-foreground hidden md:block">{node.label}</span>
-                    <ArrowRight className="w-3 h-3 hidden md:block" style={{ color: 'rgba(79,106,255,0.4)' }} />
+                    <ArrowRight className="w-3 h-3 hidden md:block" style={{ color: 'rgba(20,53,193,0.4)' }} />
                   </motion.div>
                 ))}
               </div>
 
               {/* Core center node */}
               <div className="relative">
-                <div className="absolute inset-0 rounded-full blur-xl" style={{ background: 'rgba(79,106,255,0.15)' }} />
-                <div className="absolute inset-[-8px] rounded-full" style={{ border: '1px solid rgba(79,106,255,0.1)' }} />
-                <div className="relative w-24 h-24 rounded-full flex flex-col items-center justify-center" style={{ background: 'rgba(79,106,255,0.12)', border: '2px solid rgba(79,106,255,0.3)', boxShadow: '0 0 40px rgba(79,106,255,0.2), 0 0 80px rgba(79,106,255,0.1)' }}>
-                  <Cpu className="w-6 h-6 mb-1" style={{ color: '#4F6AFF' }} />
-                  <span className="text-[9px] font-medium" style={{ color: '#4F6AFF' }}>BORNA CORE</span>
+                <div className="absolute inset-0 rounded-full blur-xl" style={{ background: 'rgba(20,53,193,0.15)' }} />
+                <div className="absolute inset-[-8px] rounded-full" style={{ border: '1px solid rgba(20,53,193,0.1)' }} />
+                <div className="relative w-24 h-24 rounded-full flex flex-col items-center justify-center" style={{ background: 'rgba(20,53,193,0.12)', border: '2px solid rgba(20,53,193,0.3)', boxShadow: '0 0 40px rgba(20,53,193,0.2), 0 0 80px rgba(20,53,193,0.1)' }}>
+                  <Cpu className="w-6 h-6 mb-1" style={{ color: '#1435C1' }} />
+                  <span className="text-[9px] font-medium" style={{ color: '#1435C1' }}>BORNA CORE</span>
                 </div>
               </div>
 
@@ -120,7 +120,7 @@ const BornaCorePage = () => {
               <div className="flex flex-col gap-3">
                 {outputNodes.map((node, i) => (
                   <motion.div key={node.label} initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.7 + i * 0.1 }} className="flex items-center gap-2">
-                    <ArrowRight className="w-3 h-3 hidden md:block" style={{ color: 'rgba(79,106,255,0.4)' }} />
+                    <ArrowRight className="w-3 h-3 hidden md:block" style={{ color: 'rgba(20,53,193,0.4)' }} />
                     <span className="text-[11px] text-muted-foreground hidden md:block">{node.label}</span>
                     <div className="w-10 h-10 rounded-lg flex items-center justify-center" style={{ background: 'rgba(0,222,196,0.08)', border: '1px solid rgba(0,222,196,0.15)' }}>
                       <node.icon className="w-4 h-4 text-primary" />
@@ -134,7 +134,7 @@ const BornaCorePage = () => {
       </section>
 
       {/* Definition */}
-      <section className="py-20 border-t border-glass-border">
+      <section className="py-12 md:py-20 border-t border-glass-border">
         <div className="container mx-auto px-4 md:px-6 max-w-3xl text-center">
           <h2 className="section-headline text-foreground mb-6">What is an AI engine in healthcare software?</h2>
           <p className="text-[15px] leading-relaxed" style={{ color: 'rgba(255,255,255,0.55)' }}>
@@ -144,7 +144,7 @@ const BornaCorePage = () => {
       </section>
 
       {/* Problem */}
-      <section className="py-20 border-t border-glass-border">
+      <section className="py-12 md:py-20 border-t border-glass-border">
         <div className="container mx-auto px-4 md:px-6 text-center">
           <h2 className="section-headline text-foreground mb-12">Why healthcare systems lack intelligence</h2>
           <div className="max-w-md mx-auto grid grid-cols-2 gap-3">
@@ -159,14 +159,14 @@ const BornaCorePage = () => {
       </section>
 
       {/* Core Capabilities */}
-      <section className="py-24 border-t border-glass-border">
+      <section className="py-12 md:py-12 md:py-20 border-t border-glass-border">
         <div className="container mx-auto px-4 md:px-6">
           <h2 className="section-headline text-foreground text-center mb-16">What Borna Core enables</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 max-w-5xl mx-auto">
             {capabilities.map((cap, i) => (
               <motion.div key={cap.title} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.08 }} className="rounded-xl p-6" style={{ background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.08)' }}>
-                <div className="w-10 h-10 rounded-lg flex items-center justify-center mb-4" style={{ background: 'rgba(79,106,255,0.12)' }}>
-                  <cap.icon className="w-5 h-5" style={{ color: '#4F6AFF' }} />
+                <div className="w-10 h-10 rounded-lg flex items-center justify-center mb-4" style={{ background: 'rgba(20,53,193,0.12)' }}>
+                  <cap.icon className="w-5 h-5" style={{ color: '#1435C1' }} />
                 </div>
                 <h3 className="text-base font-medium text-foreground mb-1">{cap.title}</h3>
                 <p className="text-sm text-muted-foreground leading-relaxed">{cap.desc}</p>
@@ -177,7 +177,7 @@ const BornaCorePage = () => {
       </section>
 
       {/* Platform Integration — Ecosystem */}
-      <section className="py-24 border-t border-glass-border">
+      <section className="py-12 md:py-12 md:py-20 border-t border-glass-border">
         <div className="container mx-auto px-4 md:px-6">
           <h2 className="section-headline text-foreground text-center mb-4">Powering the entire Borna ecosystem</h2>
           <p className="body-text mx-auto text-center mb-16">Every product sends data to Core. Core returns intelligence to every product.</p>
@@ -203,7 +203,7 @@ const BornaCorePage = () => {
       </section>
 
       {/* How it works */}
-      <section className="py-24 border-t border-glass-border">
+      <section className="py-12 md:py-12 md:py-20 border-t border-glass-border">
         <div className="container mx-auto px-4 md:px-6">
           <h2 className="section-headline text-foreground text-center mb-16">How Borna Core works</h2>
           <div className="grid grid-cols-1 md:grid-cols-5 gap-4 max-w-5xl mx-auto">
@@ -215,8 +215,8 @@ const BornaCorePage = () => {
               { step: "5", title: "Optimize", desc: "Continuous improvement loop" },
             ].map((s, i) => (
               <motion.div key={s.step} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }} className="glass-panel p-4 text-center">
-                <div className="w-8 h-8 rounded-full flex items-center justify-center mx-auto mb-2" style={{ background: 'rgba(79,106,255,0.12)' }}>
-                  <span className="text-xs font-semibold" style={{ color: '#4F6AFF' }}>{s.step}</span>
+                <div className="w-8 h-8 rounded-full flex items-center justify-center mx-auto mb-2" style={{ background: 'rgba(20,53,193,0.12)' }}>
+                  <span className="text-xs font-semibold" style={{ color: '#1435C1' }}>{s.step}</span>
                 </div>
                 <h3 className="text-xs font-medium text-foreground mb-0.5">{s.title}</h3>
                 <p className="text-[10px] text-muted-foreground">{s.desc}</p>
@@ -227,7 +227,7 @@ const BornaCorePage = () => {
       </section>
 
       {/* FAQ */}
-      <section className="py-24 border-t border-glass-border">
+      <section className="py-12 md:py-12 md:py-20 border-t border-glass-border">
         <div className="container mx-auto px-4 md:px-6 max-w-3xl">
           <h2 className="section-headline text-foreground text-center mb-12">Frequently asked questions</h2>
           <div className="space-y-2">
@@ -245,9 +245,9 @@ const BornaCorePage = () => {
       </section>
 
       {/* CTA */}
-      <section className="py-24 relative overflow-hidden">
+      <section className="py-12 md:py-12 md:py-20 relative overflow-hidden">
         <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-          <div className="w-[600px] h-[400px] rounded-full blur-[120px]" style={{ background: 'rgba(79,106,255,0.05)' }} />
+          <div className="w-[600px] h-[400px] rounded-full blur-[120px]" style={{ background: 'rgba(20,53,193,0.05)' }} />
         </div>
         <div className="container mx-auto px-4 md:px-6 relative z-10 text-center">
           <h2 className="section-headline text-foreground mb-4">Ready to see the AI engine behind the platform?</h2>
@@ -257,7 +257,7 @@ const BornaCorePage = () => {
             <Link to="/platform" className="ghost-btn px-8 py-3.5">Explore platform</Link>
           </div>
           <div className="relative w-full max-w-lg mx-auto h-32">
-            <SparklesCore className="w-full h-full" background="transparent" particleColor="#4F6AFF" particleDensity={80} minSize={0.4} maxSize={1.2} speed={2.5} />
+            <SparklesCore className="w-full h-full" background="transparent" particleColor="#1435C1" particleDensity={80} minSize={0.4} maxSize={1.2} speed={2.5} />
           </div>
         </div>
       </section>

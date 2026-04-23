@@ -24,7 +24,7 @@ const fadeUp = {
 const HeroSection = () => {
   const navigate = useNavigate();
   return (
-    <section className="relative py-24 md:py-32 overflow-hidden" role="region" aria-label="Pricing hero">
+    <section className="relative py-12 md:py-12 md:py-20 md:py-16 md:py-12 md:py-12 md:py-20 overflow-hidden" role="region" aria-label="Pricing hero">
       {/* Ambient glow */}
       <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[400px] rounded-full"
@@ -53,7 +53,7 @@ const HeroSection = () => {
 /*  SECTION 2 — PRICING POSITIONING                                   */
 /* ------------------------------------------------------------------ */
 const PositioningSection = () => (
-  <section className="py-16 md:py-20" role="region" aria-label="Pricing positioning">
+  <section className="py-16 md:py-12 md:py-20" role="region" aria-label="Pricing positioning">
     <div className="container mx-auto px-4 md:px-6 max-w-3xl text-center">
       <motion.h2 variants={fadeUp} viewport={{ once: true }} whileInView="visible" initial="hidden" className="section-headline text-foreground mb-5">
         Simple, scalable, and built for growth
@@ -272,7 +272,7 @@ const PricingCard = ({ plan }: { plan: PlanData }) => {
 };
 
 const PricingCardsSection = () => (
-  <section className="py-20 md:py-28" role="region" aria-label="Pricing plans">
+  <section className="py-12 md:py-20 md:py-12 md:py-12 md:py-20" role="region" aria-label="Pricing plans">
     <div className="container mx-auto px-4 md:px-6">
       <motion.h2 variants={fadeUp} viewport={{ once: true }} whileInView="visible" initial="hidden"
         className="section-headline text-foreground text-center mb-14">
@@ -319,7 +319,7 @@ const renderCellContent = (val: string) => {
 };
 
 const ComparisonSection = () => (
-  <section className="py-16 md:py-24" role="region" aria-label="Feature comparison">
+  <section className="py-16 md:py-12 md:py-12 md:py-20" role="region" aria-label="Feature comparison">
     <div className="container mx-auto px-4 md:px-6">
       <motion.h2 variants={fadeUp} viewport={{ once: true }} whileInView="visible" initial="hidden"
         className="section-headline text-foreground text-center mb-4">
@@ -377,7 +377,7 @@ const convergenceNodes = [
 ];
 
 const ValueSection = () => (
-  <section className="py-16 md:py-24" role="region" aria-label="Platform value">
+  <section className="py-16 md:py-12 md:py-12 md:py-20" role="region" aria-label="Platform value">
     <div className="container mx-auto px-4 md:px-6 max-w-4xl">
       <motion.h2 variants={fadeUp} viewport={{ once: true }} whileInView="visible" initial="hidden"
         className="section-headline text-foreground text-center mb-5">
@@ -455,7 +455,7 @@ const flexPoints = [
 ];
 
 const CustomizationSection = () => (
-  <section className="py-16 md:py-24" role="region" aria-label="Enterprise customization">
+  <section className="py-16 md:py-12 md:py-12 md:py-20" role="region" aria-label="Enterprise customization">
     <div className="container mx-auto px-4 md:px-6 max-w-3xl">
       <motion.h2 variants={fadeUp} viewport={{ once: true }} whileInView="visible" initial="hidden"
         className="section-headline text-foreground text-center mb-5">
@@ -494,7 +494,7 @@ const CustomizationSection = () => (
 const standaloneTools = ["Scheduling Tool", "CRM Platform", "Analytics Software", "Communication System"];
 
 const ROISection = () => (
-  <section className="py-16 md:py-24" role="region" aria-label="ROI comparison">
+  <section className="py-16 md:py-12 md:py-12 md:py-20" role="region" aria-label="ROI comparison">
     <div className="container mx-auto px-4 md:px-6 max-w-4xl">
       <motion.h2 variants={fadeUp} viewport={{ once: true }} whileInView="visible" initial="hidden"
         className="section-headline text-foreground text-center mb-5">
@@ -564,7 +564,7 @@ const faqs = [
 ];
 
 const FAQSection = () => (
-  <section className="py-16 md:py-24" role="region" aria-label="Pricing FAQs">
+  <section className="py-16 md:py-12 md:py-12 md:py-20" role="region" aria-label="Pricing FAQs">
     <div className="container mx-auto px-4 md:px-6 max-w-3xl">
       <motion.h2 variants={fadeUp} viewport={{ once: true }} whileInView="visible" initial="hidden"
         className="section-headline text-foreground text-center mb-12">
@@ -614,7 +614,7 @@ const trustSignals = [
 ];
 
 const TrustSection = () => (
-  <section className="py-16 md:py-24" role="region" aria-label="Trust and transparency">
+  <section className="py-16 md:py-12 md:py-12 md:py-20" role="region" aria-label="Trust and transparency">
     <div className="container mx-auto px-4 md:px-6 max-w-4xl">
       <motion.h2 variants={fadeUp} viewport={{ once: true }} whileInView="visible" initial="hidden"
         className="section-headline text-foreground text-center mb-12">
@@ -655,7 +655,7 @@ const TrustSection = () => (
 const FinalCTASection = () => {
   const navigate = useNavigate();
   return (
-    <section className="py-20 md:py-28" role="region" aria-label="Final call to action">
+    <section className="py-12 md:py-20 md:py-12 md:py-12 md:py-20" role="region" aria-label="Final call to action">
       <div className="container mx-auto px-4 md:px-6 text-center">
         <motion.h2 variants={fadeUp} viewport={{ once: true }} whileInView="visible" initial="hidden"
           className="section-headline text-foreground mb-5 max-w-2xl mx-auto">

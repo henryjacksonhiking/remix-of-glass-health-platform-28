@@ -56,7 +56,7 @@ export const products: Product[] = [
     slug: 'core',
     tagline: 'Healthcare AI infrastructure behind every Borna module',
     description: 'Borna Core is the healthcare AI infrastructure powering medical workflow automation, secure data sync, workflow orchestration, and system governance across the entire platform.',
-    accentColor: '#4F6AFF',
+    accentColor: '#1435C1',
     href: '/products/core',
     features: [
       { title: 'AI workflow automation', description: 'Smart routing, predictive analytics, and intelligent scheduling — the core of our medical workflow automation system.', icon: 'Cpu' },
@@ -73,7 +73,7 @@ export const products: Product[] = [
     slug: 'insight',
     tagline: 'The healthcare analytics dashboard for your clinic',
     description: 'Borna Insight is a healthcare analytics dashboard that surfaces clinic performance analytics across appointments, revenue, communications, and patient engagement — so clinic leaders can make decisions with confidence.',
-    accentColor: '#818CF8',
+    accentColor: '#6366F1',
     href: '/products/insight',
     features: [
       { title: 'Appointment analytics', description: 'Track no-shows, cancellations, and booking trends with clinic performance analytics.', icon: 'BarChart2' },
@@ -90,7 +90,7 @@ export const products: Product[] = [
     slug: 'engage',
     tagline: 'Healthcare CRM software that turns every patient into a loyal long-term patient',
     description: 'Borna Engage is healthcare CRM software and a patient retention platform that manages the full patient relationship — from first enquiry to repeat visits — with automated follow-ups, campaigns, and lifecycle tracking.',
-    accentColor: '#D6007F',
+    accentColor: '#E0119D',
     href: '/products/engage',
     features: [
       { title: 'Patient pipeline', description: 'Lead and patient management from first contact onward — built into your patient retention platform.', icon: 'Funnel' },

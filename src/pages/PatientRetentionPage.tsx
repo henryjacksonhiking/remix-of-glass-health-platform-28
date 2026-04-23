@@ -14,7 +14,7 @@ const Eyebrow = ({ children }: { children: React.ReactNode }) => (
 );
 const fadeUp = { initial: { opacity: 0, y: 16 }, whileInView: { opacity: 1, y: 0 }, viewport: { once: true, amount: 0.3 }, transition: { duration: 0.5 } };
 const SectionDark = ({ id, children, className = "" }: { id?: string; children: React.ReactNode; className?: string }) => (
-  <section id={id} className={`relative py-20 md:py-28 border-t border-glass-border ${className}`}><div className="container mx-auto px-4 md:px-6 relative z-10">{children}</div></section>
+  <section id={id} className={`relative py-12 md:py-20 md:py-12 md:py-12 md:py-20 border-t border-glass-border ${className}`}><div className="container mx-auto px-4 md:px-6 relative z-10">{children}</div></section>
 );
 
 const faqData = [
@@ -34,12 +34,12 @@ const PatientRetentionPage = () => (
       <script type="application/ld+json">{JSON.stringify({ "@context": "https://schema.org", "@type": "BreadcrumbList", itemListElement: [{ "@type": "ListItem", position: 1, name: "Home", item: "https://borna.ai" }, { "@type": "ListItem", position: 2, name: "Solutions", item: "https://borna.ai/solutions" }, { "@type": "ListItem", position: 3, name: "Patient Retention", item: "https://borna.ai/solutions/patient-retention" }] })}</script>
     </Helmet>
 
-    <nav aria-label="breadcrumb" className="container mx-auto px-4 md:px-6 pt-20 md:pt-24 pb-0 md:pb-2">
+    <nav aria-label="breadcrumb" className="container mx-auto px-4 md:px-6 pt-20 md:pt-20 md:pt-24 pb-0 md:pb-2">
       <p className="text-xs text-muted-foreground"><Link to="/" className="hover:text-foreground">Home</Link> / <Link to="/solutions" className="hover:text-foreground">Solutions</Link> / <span className="text-primary">Patient Retention</span></p>
     </nav>
 
     {/* Hero */}
-    <section className="relative py-16 md:py-24 overflow-hidden">
+    <section className="relative py-16 md:py-12 md:py-12 md:py-20 overflow-hidden">
       <div className="container mx-auto px-4 md:px-6 relative z-10">
         <div className="grid md:grid-cols-2 gap-12 items-center">
           <motion.div {...fadeUp}>
@@ -230,7 +230,7 @@ const PatientRetentionPage = () => (
     </SectionDark>
 
     {/* CTA */}
-    <section className="py-24 relative overflow-hidden">
+    <section className="py-12 md:py-12 md:py-20 relative overflow-hidden">
       <div className="container mx-auto px-4 md:px-6 relative z-10 text-center">
         <h2 className="text-2xl md:text-4xl font-bold text-foreground mb-4">Keep your patients engaged and coming back.</h2>
         <p className="text-muted-foreground max-w-xl mx-auto mb-8">Borna AI helps healthcare practices build lasting patient relationships through automated engagement, intelligent communication, and AI-powered retention strategies — creating a cycle of care that never stops.</p>

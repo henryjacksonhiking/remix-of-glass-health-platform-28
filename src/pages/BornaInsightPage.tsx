@@ -26,8 +26,8 @@ const capabilities = [
 const dataSources = [
   { label: "Borna Care", desc: "Scheduling, forms, payments", color: "#00479B" },
   { label: "Borna Connect", desc: "Calls, messages, channels", color: "#00DEC4" },
-  { label: "Borna Engage", desc: "CRM, lifecycle, campaigns", color: "#D6007F" },
-  { label: "EHR Systems", desc: "Clinical records, billing", color: "#818CF8" },
+  { label: "Borna Engage", desc: "CRM, lifecycle, campaigns", color: "#E0119D" },
+  { label: "EHR Systems", desc: "Clinical records, billing", color: "#6366F1" },
 ];
 
 const faqItems = [
@@ -60,21 +60,21 @@ const BornaInsightPage = () => {
         <nav aria-label="breadcrumb" className="flex items-center gap-2 text-sm text-muted-foreground">
           <Link to="/" className="hover:text-foreground transition-colors">Home</Link><span>/</span>
           <Link to="/products" className="hover:text-foreground transition-colors">Products</Link><span>/</span>
-          <span style={{ color: '#818CF8' }}>Borna Insight</span>
+          <span style={{ color: '#6366F1' }}>Borna Insight</span>
         </nav>
       </div>
 
       {/* Hero */}
       <section className="relative overflow-hidden pt-12 pb-20 md:pt-20 md:pb-28">
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[400px] rounded-full blur-[120px] pointer-events-none" style={{ background: 'rgba(129,140,248,0.06)' }} />
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[400px] rounded-full blur-[120px] pointer-events-none" style={{ background: 'rgba(99,102,241,0.06)' }} />
         <div className="container mx-auto px-4 md:px-6 relative z-10">
           <div className="max-w-3xl mx-auto text-center">
             <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="inline-flex items-center gap-2 rounded-full border border-glass-border bg-glass px-4 py-1.5 text-sm text-muted-foreground mb-6">
               <span>Borna Insight</span>
-              <span style={{ color: '#818CF8' }}>Analytics</span>
+              <span style={{ color: '#6366F1' }}>Analytics</span>
             </motion.div>
             <motion.h1 initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.1 }} className="hero-headline text-foreground mb-6">
-              From raw data to <span className="bg-clip-text text-transparent" style={{ backgroundImage: 'linear-gradient(135deg, #818CF8, #00DEC4)' }}>actionable intelligence</span>
+              From raw data to <span className="bg-clip-text text-transparent" style={{ backgroundImage: 'linear-gradient(135deg, #6366F1, #00DEC4)' }}>actionable intelligence</span>
             </motion.h1>
             <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 }} className="body-text mb-8">
               Transform scattered healthcare data into insights that drive decisions. AI-powered analytics for appointments, revenue, communication, and operational performance.
@@ -89,13 +89,13 @@ const BornaInsightPage = () => {
             {pipelineStages.map((stage, i) => (
               <div key={stage.label} className="flex items-center gap-3">
                 <div className="text-center">
-                  <div className="w-14 h-14 rounded-xl flex items-center justify-center mx-auto mb-1" style={{ background: `rgba(129,140,248,${stage.opacity * 0.15})`, border: `1px solid rgba(129,140,248,${stage.opacity * 0.3})`, boxShadow: stage.opacity > 0.8 ? '0 0 20px rgba(129,140,248,0.15)' : 'none' }}>
-                    <div className="w-2.5 h-2.5 rounded-full" style={{ background: '#818CF8', opacity: stage.opacity }} />
+                  <div className="w-14 h-14 rounded-xl flex items-center justify-center mx-auto mb-1" style={{ background: `rgba(99,102,241,${stage.opacity * 0.15})`, border: `1px solid rgba(99,102,241,${stage.opacity * 0.3})`, boxShadow: stage.opacity > 0.8 ? '0 0 20px rgba(99,102,241,0.15)' : 'none' }}>
+                    <div className="w-2.5 h-2.5 rounded-full" style={{ background: '#6366F1', opacity: stage.opacity }} />
                   </div>
                   <div className="text-[11px] font-medium text-foreground">{stage.label}</div>
                   <div className="text-[9px]" style={{ color: 'rgba(255,255,255,0.4)' }}>{stage.desc}</div>
                 </div>
-                {i < pipelineStages.length - 1 && <ArrowRight className="w-3.5 h-3.5 shrink-0 hidden md:block" style={{ color: '#818CF8' }} />}
+                {i < pipelineStages.length - 1 && <ArrowRight className="w-3.5 h-3.5 shrink-0 hidden md:block" style={{ color: '#6366F1' }} />}
               </div>
             ))}
           </motion.div>
@@ -103,7 +103,7 @@ const BornaInsightPage = () => {
       </section>
 
       {/* Definition */}
-      <section className="py-20 border-t border-glass-border">
+      <section className="py-12 md:py-20 border-t border-glass-border">
         <div className="container mx-auto px-4 md:px-6 max-w-3xl text-center">
           <h2 className="section-headline text-foreground mb-6">What is healthcare analytics software?</h2>
           <p className="text-[15px] leading-relaxed" style={{ color: 'rgba(255,255,255,0.55)' }}>
@@ -113,7 +113,7 @@ const BornaInsightPage = () => {
       </section>
 
       {/* Problem */}
-      <section className="py-20 border-t border-glass-border">
+      <section className="py-12 md:py-20 border-t border-glass-border">
         <div className="container mx-auto px-4 md:px-6 text-center">
           <h2 className="section-headline text-foreground mb-12">Why healthcare data often goes unused</h2>
           <div className="max-w-md mx-auto grid grid-cols-3 gap-3">
@@ -128,14 +128,14 @@ const BornaInsightPage = () => {
       </section>
 
       {/* Core Capabilities */}
-      <section className="py-24 border-t border-glass-border">
+      <section className="py-12 md:py-12 md:py-20 border-t border-glass-border">
         <div className="container mx-auto px-4 md:px-6">
           <h2 className="section-headline text-foreground text-center mb-16">What Borna Insight enables</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 max-w-5xl mx-auto">
             {capabilities.map((cap, i) => (
               <motion.div key={cap.title} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.08 }} className="rounded-xl p-6" style={{ background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.08)' }}>
-                <div className="w-10 h-10 rounded-lg flex items-center justify-center mb-4" style={{ background: 'rgba(129,140,248,0.12)' }}>
-                  <cap.icon className="w-5 h-5" style={{ color: '#818CF8' }} />
+                <div className="w-10 h-10 rounded-lg flex items-center justify-center mb-4" style={{ background: 'rgba(99,102,241,0.12)' }}>
+                  <cap.icon className="w-5 h-5" style={{ color: '#6366F1' }} />
                 </div>
                 <h3 className="text-base font-medium text-foreground mb-1">{cap.title}</h3>
                 <p className="text-sm text-muted-foreground leading-relaxed">{cap.desc}</p>
@@ -146,7 +146,7 @@ const BornaInsightPage = () => {
       </section>
 
       {/* Data Sources */}
-      <section className="py-24 border-t border-glass-border">
+      <section className="py-12 md:py-12 md:py-20 border-t border-glass-border">
         <div className="container mx-auto px-4 md:px-6">
           <h2 className="section-headline text-foreground text-center mb-4">See your entire practice in one view</h2>
           <p className="body-text mx-auto text-center mb-12">Borna Insight pulls data from every source into a unified intelligence layer.</p>
@@ -165,7 +165,7 @@ const BornaInsightPage = () => {
       </section>
 
       {/* AI Insights */}
-      <section className="py-24 border-t border-glass-border">
+      <section className="py-12 md:py-12 md:py-20 border-t border-glass-border">
         <div className="container mx-auto px-4 md:px-6 max-w-4xl">
           <h2 className="section-headline text-foreground text-center mb-4">From data to actionable intelligence</h2>
           <p className="body-text mx-auto text-center mb-12">AI identifies patterns and recommends specific actions.</p>
@@ -176,8 +176,8 @@ const BornaInsightPage = () => {
               { label: "Revenue opportunity", value: "+$4,200/mo potential", type: "positive" },
               { label: "Channel gap", value: "Email unmonitored 48h", type: "warning" },
             ].map((alert, i) => (
-              <motion.div key={alert.label} initial={{ opacity: 0, x: -12 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }} className="flex items-center gap-3 px-4 py-3 rounded-xl" style={{ background: 'rgba(129,140,248,0.06)', border: '1px solid rgba(129,140,248,0.12)' }}>
-                <Bot className="w-4 h-4 shrink-0" style={{ color: '#818CF8' }} />
+              <motion.div key={alert.label} initial={{ opacity: 0, x: -12 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }} className="flex items-center gap-3 px-4 py-3 rounded-xl" style={{ background: 'rgba(99,102,241,0.06)', border: '1px solid rgba(99,102,241,0.12)' }}>
+                <Bot className="w-4 h-4 shrink-0" style={{ color: '#6366F1' }} />
                 <div>
                   <div className="text-xs font-medium text-foreground">{alert.label}</div>
                   <div className="text-[11px]" style={{ color: 'rgba(255,255,255,0.5)' }}>{alert.value}</div>
@@ -189,7 +189,7 @@ const BornaInsightPage = () => {
       </section>
 
       {/* How it works */}
-      <section className="py-24 border-t border-glass-border">
+      <section className="py-12 md:py-12 md:py-20 border-t border-glass-border">
         <div className="container mx-auto px-4 md:px-6">
           <h2 className="section-headline text-foreground text-center mb-16">How Borna Insight works</h2>
           <div className="grid grid-cols-1 md:grid-cols-4 gap-6 max-w-4xl mx-auto">
@@ -200,8 +200,8 @@ const BornaInsightPage = () => {
               { step: "4", title: "Decisions made", desc: "Act on intelligence with confidence and clarity." },
             ].map((s, i) => (
               <motion.div key={s.step} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.12 }} className="glass-panel p-5 text-center">
-                <div className="w-8 h-8 rounded-full flex items-center justify-center mx-auto mb-3" style={{ background: 'rgba(129,140,248,0.12)' }}>
-                  <span className="text-xs font-semibold" style={{ color: '#818CF8' }}>{s.step}</span>
+                <div className="w-8 h-8 rounded-full flex items-center justify-center mx-auto mb-3" style={{ background: 'rgba(99,102,241,0.12)' }}>
+                  <span className="text-xs font-semibold" style={{ color: '#6366F1' }}>{s.step}</span>
                 </div>
                 <h3 className="text-sm font-medium text-foreground mb-1">{s.title}</h3>
                 <p className="text-xs text-muted-foreground">{s.desc}</p>
@@ -212,7 +212,7 @@ const BornaInsightPage = () => {
       </section>
 
       {/* FAQ */}
-      <section className="py-24 border-t border-glass-border">
+      <section className="py-12 md:py-12 md:py-20 border-t border-glass-border">
         <div className="container mx-auto px-4 md:px-6 max-w-3xl">
           <h2 className="section-headline text-foreground text-center mb-12">Frequently asked questions</h2>
           <div className="space-y-2">
@@ -230,9 +230,9 @@ const BornaInsightPage = () => {
       </section>
 
       {/* CTA */}
-      <section className="py-24 relative overflow-hidden">
+      <section className="py-12 md:py-12 md:py-20 relative overflow-hidden">
         <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-          <div className="w-[600px] h-[400px] rounded-full blur-[120px]" style={{ background: 'rgba(129,140,248,0.05)' }} />
+          <div className="w-[600px] h-[400px] rounded-full blur-[120px]" style={{ background: 'rgba(99,102,241,0.05)' }} />
         </div>
         <div className="container mx-auto px-4 md:px-6 relative z-10 text-center">
           <h2 className="section-headline text-foreground mb-4">Ready to turn your data into decisions?</h2>
@@ -242,7 +242,7 @@ const BornaInsightPage = () => {
             <Link to="/platform" className="ghost-btn px-8 py-3.5">Explore platform</Link>
           </div>
           <div className="relative w-full max-w-lg mx-auto h-32">
-            <SparklesCore className="w-full h-full" background="transparent" particleColor="#818CF8" particleDensity={80} minSize={0.4} maxSize={1.2} speed={2.5} />
+            <SparklesCore className="w-full h-full" background="transparent" particleColor="#6366F1" particleDensity={80} minSize={0.4} maxSize={1.2} speed={2.5} />
           </div>
         </div>
       </section>

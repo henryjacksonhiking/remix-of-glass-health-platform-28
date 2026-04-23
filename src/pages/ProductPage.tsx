@@ -58,7 +58,7 @@ const ProductPage = () => {
   if (!product) {
     return (
       <PageWrapper>
-        <div className="container mx-auto px-4 py-32 text-center">
+        <div className="container mx-auto px-4 py-16 md:py-12 md:py-12 md:py-20 text-center">
           <h1 className="section-headline text-foreground">Product not found</h1>
           <Link to="/" className="gradient-btn mt-8 inline-block">Back to home</Link>
         </div>
@@ -111,7 +111,7 @@ const ProductPage = () => {
         <CareSolutionOverview />
 
         {/* Features grid */}
-        <section id="features" className="py-24 border-t border-glass-border">
+        <section id="features" className="py-12 md:py-12 md:py-20 border-t border-glass-border">
           <div className="container mx-auto px-4 md:px-6">
             <h2 className="section-headline text-foreground text-center mb-16">
               Everything Borna Care does for your clinic
@@ -178,7 +178,7 @@ const ProductPage = () => {
       )}
       <DevelopmentBanner moduleName={product.name} />
       {/* Hero */}
-      <section className="relative overflow-hidden py-24 md:py-32">
+      <section className="relative overflow-hidden py-12 md:py-12 md:py-20 md:py-16 md:py-12 md:py-12 md:py-20">
         <AetherFlowBackground accentColor={product.accentColor} />
         <div className="absolute top-0 left-1/3 w-80 h-80 rounded-full blur-[120px] animate-glow-pulse" style={{ backgroundColor: `${product.accentColor}15` }} />
         <div className="container mx-auto px-4 md:px-6 relative z-10">
@@ -212,7 +212,7 @@ const ProductPage = () => {
       </section>
 
       {/* Features grid */}
-      <section id="features" className="py-24 border-t border-glass-border">
+      <section id="features" className="py-12 md:py-12 md:py-20 border-t border-glass-border">
         <div className="container mx-auto px-4 md:px-6">
           <h2 className="section-headline text-foreground text-center mb-16">
             Everything {product.name} does for your clinic
@@ -246,7 +246,7 @@ const ProductPage = () => {
 
       {/* How it works */}
       {steps && (
-        <section className="py-24 border-t border-glass-border">
+        <section className="py-12 md:py-12 md:py-20 border-t border-glass-border">
           <div className="container mx-auto px-4 md:px-6">
             <h2 className="section-headline text-foreground text-center mb-16">How it works</h2>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto">
@@ -293,7 +293,7 @@ const ProductPage = () => {
       )}
 
       {/* Related modules */}
-      <section className="py-24 border-t border-glass-border">
+      <section className="py-12 md:py-12 md:py-20 border-t border-glass-border">
         <div className="container mx-auto px-4 md:px-6">
           <h2 className="section-headline text-foreground text-center mb-12">Works best together with</h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 max-w-4xl mx-auto">
