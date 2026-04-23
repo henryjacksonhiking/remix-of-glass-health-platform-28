@@ -726,7 +726,7 @@ const PlatformDiagram = () => {
     { label: "Patient Experience", icon: UserPlus },
   ];
   return (
-    <div className="relative w-full max-w-md mx-auto aspect-square px-4 sm:px-6">
+    <div className="relative w-full max-w-md mx-auto aspect-square">
       <svg viewBox="0 0 400 400" className="absolute inset-0 w-full h-full" preserveAspectRatio="xMidYMid meet">
         <defs>
           <radialGradient id="sol-platform-hub" cx="50%" cy="50%">
@@ -737,10 +737,9 @@ const PlatformDiagram = () => {
         </defs>
         {modules.map((_, i) => {
           const angle = (i / modules.length) * Math.PI * 2 - Math.PI / 2;
-          // Line ends well before the label pill so dotted line is fully visible and doesn't overlap the pill
-          const lineEndR = 88;
-          // Start line just outside the central hub glow
+          // Line spans from just outside the hub to just before the label icon
           const lineStartR = 38;
+          const lineEndR = 132;
           const x1 = 200 + Math.cos(angle) * lineStartR;
           const y1 = 200 + Math.sin(angle) * lineStartR;
           const x2 = 200 + Math.cos(angle) * lineEndR;
@@ -749,10 +748,10 @@ const PlatformDiagram = () => {
             <g key={i}>
               <line
                 x1={x1} y1={y1} x2={x2} y2={y2}
-                stroke="hsl(var(--primary))" strokeOpacity="0.4" strokeWidth="1"
+                stroke="hsl(var(--primary))" strokeOpacity="0.45" strokeWidth="1"
                 strokeDasharray="3 4"
               />
-              <circle r="2.5" fill="hsl(var(--primary))" opacity="0.8">
+              <circle r="2.5" fill="hsl(var(--primary))" opacity="0.85">
                 <animateMotion dur={`${4 + i * 0.4}s`} repeatCount="indefinite"
                   path={`M${x1},${y1} L${x2},${y2}`} />
                 <animate attributeName="opacity" values="0;1;0" dur={`${4 + i * 0.4}s`} repeatCount="indefinite" />
@@ -770,11 +769,15 @@ const PlatformDiagram = () => {
       {modules.map((m, i) => {
         const Icon = m.icon;
         const angle = (i / modules.length) * Math.PI * 2 - Math.PI / 2;
-        // Line ends at radius 108 (in 400-unit svg) = 27% of container.
-        // Push label center outward so its inner edge sits on the line endpoint.
-        const labelR = 38; // % from center
-        const x = 50 + Math.cos(angle) * labelR;
-        const y = 50 + Math.sin(angle) * labelR;
+        // Anchor each pill so its leading-edge icon sits exactly on the line endpoint (radius 132 / 400 = 33%).
+        // Match SVG coordinate space exactly — no container padding offset.
+        const endRPct = 33; // (132/400)*100
+        const x = 50 + Math.cos(angle) * endRPct;
+        const y = 50 + Math.sin(angle) * endRPct;
+        // Shift the pill outward along the angle so the icon (not the pill center) aligns with the endpoint.
+        // Icon is ~10px from the pill's leading edge; using translate based on angle for clean attachment.
+        const tx = Math.cos(angle) * 50; // % of own size — shifts pill so left/right icon meets line
+        const ty = Math.sin(angle) * 50;
         return (
           <motion.div
             key={m.label}
@@ -782,8 +785,12 @@ const PlatformDiagram = () => {
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
             transition={{ delay: i * 0.1 }}
-            className="absolute -translate-x-1/2 -translate-y-1/2 glass-panel px-2.5 py-1.5 flex items-center gap-1.5 shadow-[0_4px_16px_hsla(170,100%,43%,0.15)]"
-            style={{ left: `${x}%`, top: `${y}%` }}
+            className="absolute glass-panel px-2.5 py-1.5 flex items-center gap-1.5 shadow-[0_4px_16px_hsla(170,100%,43%,0.15)]"
+            style={{
+              left: `${x}%`,
+              top: `${y}%`,
+              transform: `translate(calc(-50% + ${tx}%), calc(-50% + ${ty}%))`,
+            }}
           >
             <span className="w-5 h-5 rounded-md flex items-center justify-center bg-gradient-to-br from-primary/35 to-primary/10 ring-1 ring-primary/30">
               <Icon className="w-3 h-3 text-primary" strokeWidth={1.75} />
