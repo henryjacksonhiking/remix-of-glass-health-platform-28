@@ -204,12 +204,54 @@ img, svg, video, canvas {
     padding-top: clamp(1.5rem, 4vw, 2.5rem);
     padding-bottom: clamp(1.5rem, 4vw, 2.5rem);
   }
-  
+
   /* Tighten breadcrumb-to-hero gap */
   .container + section,
   nav[aria-label="breadcrumb"] + section {
     padding-top: 1rem !important;
   }
+
+  /* Mobile container safety: never let content escape viewport */
+  .container {
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+  }
+
+  /* Stack any narrow side-by-side flex rows on mobile by default
+     (escape hatch: components can opt out with .no-mobile-stack) */
+
+  /* Ensure CTA rows wrap nicely & buttons hit min touch target */
+  .cta-row:not(.no-mobile-stack) > a,
+  .cta-row:not(.no-mobile-stack) > button {
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* Tables: enable horizontal scroll if they would overflow */
+  table {
+    display: block;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    max-width: 100%;
+  }
+
+  /* Body text minimum readability */
+  p { font-size: 15px; line-height: 1.6; }
+}
+
+/* Tablet+ baseline */
+@media (min-width: 640px) {
+  table { max-width: 100%; }
+}
+
+/* Standardize icon stroke width globally for lucide icons inside cards
+   (lucide uses inline SVG with stroke-width on the <svg>; we normalize
+   any stray 1 or 2 to 1.5 visually via CSS where possible) */
+.glass-panel svg[stroke="currentColor"],
+.glass-card svg[stroke="currentColor"] {
+  stroke-width: 1.5;
 }
 
 .nav-spotlight {
