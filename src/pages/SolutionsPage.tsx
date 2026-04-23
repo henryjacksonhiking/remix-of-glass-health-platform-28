@@ -61,57 +61,78 @@ const heroOutcomes = [
   { icon: Sparkles, label: "Automation" },
 ];
 
-const HeroVisual = () => (
-  <div className="relative w-full h-[360px] md:h-[440px]">
-    {/* Network background */}
-    <svg viewBox="0 0 400 400" className="absolute inset-0 w-full h-full">
-      {heroOutcomes.map((_, i) => {
-        const angle = (i / heroOutcomes.length) * Math.PI * 2 - Math.PI / 2;
-        const x = 200 + Math.cos(angle) * 140;
-        const y = 200 + Math.sin(angle) * 140;
+const HeroVisual = () => {
+  // Mobile-safe positions: 4 distinct quadrants with vertical separation
+  // sm+ uses tighter premium positions (unchanged feel on desktop)
+  const positions = [
+    // Patient Growth - top left
+    "top-[4%] left-[2%] sm:top-[8%] sm:left-[10%]",
+    // Scheduling Efficiency - top right (moved DOWN on mobile to avoid overlap)
+    "top-[22%] right-[2%] sm:top-[12%] sm:right-[8%]",
+    // Revenue Performance - bottom left (moved UP on mobile)
+    "bottom-[22%] left-[2%] sm:bottom-[14%] sm:left-[6%]",
+    // Automation - bottom right
+    "bottom-[4%] right-[2%] sm:bottom-[10%] sm:right-[10%]",
+  ];
+  return (
+    <div className="relative w-full h-[380px] md:h-[440px]">
+      <svg viewBox="0 0 400 400" className="absolute inset-0 w-full h-full">
+        <defs>
+          <radialGradient id="hero-hub-grad" cx="50%" cy="50%">
+            <stop offset="0%" stopColor="hsl(var(--primary))" stopOpacity="0.9" />
+            <stop offset="60%" stopColor="hsl(var(--primary))" stopOpacity="0.3" />
+            <stop offset="100%" stopColor="hsl(var(--primary))" stopOpacity="0" />
+          </radialGradient>
+        </defs>
+        {heroOutcomes.map((_, i) => {
+          const angle = (i / heroOutcomes.length) * Math.PI * 2 - Math.PI / 2;
+          const x = 200 + Math.cos(angle) * 140;
+          const y = 200 + Math.sin(angle) * 140;
+          return (
+            <g key={i}>
+              <line
+                x1="200" y1="200" x2={x} y2={y}
+                stroke="hsl(var(--primary))" strokeOpacity="0.3" strokeWidth="1"
+                strokeDasharray="3 4"
+              />
+              <circle r="3" fill="hsl(var(--primary))">
+                <animateMotion dur={`${3 + i * 0.5}s`} repeatCount="indefinite"
+                  path={`M200,200 L${x},${y}`} />
+                <animate attributeName="opacity" values="0;1;0" dur={`${3 + i * 0.5}s`} repeatCount="indefinite" />
+              </circle>
+            </g>
+          );
+        })}
+        <circle cx="200" cy="200" r="60" fill="url(#hero-hub-grad)" />
+        <circle cx="200" cy="200" r="22" fill="hsl(var(--primary) / 0.3)" stroke="hsl(var(--primary))" strokeWidth="1.5">
+          <animate attributeName="r" values="22;26;22" dur="2.5s" repeatCount="indefinite" />
+        </circle>
+        <circle cx="200" cy="200" r="9" fill="hsl(var(--primary))" />
+      </svg>
+
+      {heroOutcomes.map((o, i) => {
+        const Icon = o.icon;
         return (
-          <line
-            key={i}
-            x1="200" y1="200" x2={x} y2={y}
-            stroke="hsl(var(--primary))" strokeOpacity="0.25" strokeWidth="1"
-            strokeDasharray="3 4"
-          />
+          <motion.div
+            key={o.label}
+            className={`absolute glass-panel px-3 py-2.5 flex items-center gap-2 backdrop-blur-xl shadow-[0_4px_20px_hsla(170,100%,43%,0.15)] ${positions[i]}`}
+            initial={{ opacity: 0, y: 12 }}
+            animate={{ opacity: 1, y: [0, -6, 0] }}
+            transition={{
+              opacity: { delay: 0.4 + i * 0.15, duration: 0.5 },
+              y: { delay: i * 0.5, duration: 4 + i, repeat: Infinity, ease: "easeInOut" },
+            }}
+          >
+            <span className="w-6 h-6 rounded-md flex items-center justify-center bg-gradient-to-br from-primary/30 to-primary/10 ring-1 ring-primary/30">
+              <Icon className="w-3.5 h-3.5 text-primary" strokeWidth={1.75} />
+            </span>
+            <span className="text-xs font-medium text-foreground whitespace-nowrap">{o.label}</span>
+          </motion.div>
         );
       })}
-      {/* Central node */}
-      <circle cx="200" cy="200" r="34" fill="hsl(var(--primary) / 0.12)" />
-      <circle cx="200" cy="200" r="20" fill="hsl(var(--primary) / 0.25)" />
-      <circle cx="200" cy="200" r="8" fill="hsl(var(--primary))" />
-    </svg>
-
-    {/* Floating outcome cards */}
-    {heroOutcomes.map((o, i) => {
-      const Icon = o.icon;
-      const positions = [
-        { top: "8%", left: "10%" },
-        { top: "12%", right: "8%" },
-        { bottom: "14%", left: "6%" },
-        { bottom: "10%", right: "10%" },
-      ];
-      return (
-        <motion.div
-          key={o.label}
-          className="absolute glass-panel px-3 py-2.5 flex items-center gap-2 backdrop-blur-xl"
-          style={positions[i]}
-          initial={{ opacity: 0, y: 12 }}
-          animate={{ opacity: 1, y: [0, -6, 0] }}
-          transition={{
-            opacity: { delay: 0.4 + i * 0.15, duration: 0.5 },
-            y: { delay: i * 0.5, duration: 4 + i, repeat: Infinity, ease: "easeInOut" },
-          }}
-        >
-          <Icon className="w-3.5 h-3.5 text-primary" strokeWidth={1.5} />
-          <span className="text-xs font-medium text-foreground whitespace-nowrap">{o.label}</span>
-        </motion.div>
-      );
-    })}
-  </div>
-);
+    </div>
+  );
+};
 
 const Hero = () => (
   <section className="relative overflow-hidden pt-20 md:pt-20 pb-20 md:pb-28">
