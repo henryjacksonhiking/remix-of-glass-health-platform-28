@@ -2,9 +2,9 @@ import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 import { motion } from "framer-motion";
 import {
-  Filter, UserPlus, Phone, Globe, MessageSquare, Mail, Zap, BarChart3,
+  Filter, UserPlus, Phone, Globe, MessageSquare, MessageCircle, Mail, Zap, BarChart3,
   CalendarCheck, Target, TrendingUp, ArrowRight, Bot, Search, DollarSign,
-  CheckCircle2, XCircle, Sparkles, Layers,
+  CheckCircle2, XCircle, Sparkles, Layers, Send,
 } from "lucide-react";
 import PageWrapper from "@/components/layout/PageWrapper";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
@@ -164,16 +164,16 @@ const PatientAcquisitionPage = () => (
         <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-4">Capture every lead across all channels</h2>
         <p className="text-muted-foreground max-w-2xl mx-auto">A lead can come from anywhere. Borna captures every inquiry regardless of channel and brings it into one unified acquisition system.</p>
       </motion.div>
-      <div className="grid md:grid-cols-5 gap-6">
+      <div className="grid grid-cols-2 md:grid-cols-5 gap-4 md:gap-6">
         {[
           { icon: Phone, title: "Phone Calls", body: "Every inbound call logged, tracked, and connected to its source." },
-          { icon: MessageSquare, title: "SMS Inquiries", body: "Text inquiries captured and entered into the lead pipeline automatically." },
+          { icon: Send, title: "SMS Inquiries", body: "Text inquiries captured and entered into the lead pipeline automatically." },
           { icon: Globe, title: "Website Forms", body: "Form submissions captured in real time from any page." },
-          { icon: MessageSquare, title: "Live Chat", body: "Web chat inquiries routed into the unified lead system instantly." },
+          { icon: MessageCircle, title: "Live Chat", body: "Web chat inquiries routed into the unified lead system instantly." },
           { icon: Mail, title: "Email", body: "Email inquiries captured, logged, and associated with their campaign." },
         ].map((item, i) => (
           <motion.div key={i} {...fadeUp} className="text-center glass-panel rounded-xl p-5">
-            <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center text-primary mx-auto mb-3"><item.icon className="w-5 h-5" /></div>
+            <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center text-primary mx-auto mb-3"><item.icon className="w-5 h-5" strokeWidth={1.5} /></div>
             <h3 className="text-sm font-semibold text-foreground mb-1">{item.title}</h3>
             <p className="text-xs text-muted-foreground">{item.body}</p>
           </motion.div>
