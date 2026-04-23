@@ -207,8 +207,8 @@ const MultiLocationPage = () => (
           { n: 3, title: "Monitor", body: "Real-time visibility into every location's performance" },
           { n: 4, title: "Optimize", body: "AI identifies gaps and opportunities across the network" },
           { n: 5, title: "Scale", body: "New locations added to the existing network immediately" },
-        ].map((step) => (
-          <motion.div key={step.n} {...fadeUp} className="glass-panel rounded-xl p-5 text-center">
+        ].map((step, i) => (
+          <motion.div key={step.n} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.2 }} transition={{ duration: 0.5, delay: i * 0.12, ease: "easeOut" }} className="glass-panel rounded-xl p-5 text-center">
             <div className="w-8 h-8 rounded-full bg-primary/20 flex items-center justify-center text-primary text-sm font-bold mx-auto mb-3">{step.n}</div>
             <h3 className="text-sm font-semibold text-foreground mb-2">{step.title}</h3>
             <p className="text-xs text-muted-foreground">{step.body}</p>

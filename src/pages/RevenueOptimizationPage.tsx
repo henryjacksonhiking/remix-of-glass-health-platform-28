@@ -193,8 +193,8 @@ const RevenueOptimizationPage = () => (
           { n: 3, title: "Optimize", body: "AI optimizes acquisition, retention, and automation strategies based on analyzed performance" },
           { n: 4, title: "Execute", body: "Optimized workflows execute automatically — follow-ups sent, schedules filled, capacity maximized" },
           { n: 5, title: "Grow", body: "Revenue compounds as the optimized system continuously captures more value" },
-        ].map((step) => (
-          <motion.div key={step.n} {...fadeUp} className="glass-panel rounded-xl p-5 text-center" style={{ opacity: 0.7 + step.n * 0.06 }}>
+        ].map((step, i) => (
+          <motion.div key={step.n} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.2 }} transition={{ duration: 0.5, delay: i * 0.12, ease: "easeOut" }} className="glass-panel rounded-xl p-5 text-center" style={{ opacity: 0.7 + step.n * 0.06 }}>
             <div className="w-8 h-8 rounded-full bg-primary/20 flex items-center justify-center text-primary text-sm font-bold mx-auto mb-3">{step.n}</div>
             <h3 className="text-sm font-semibold text-foreground mb-2">{step.title}</h3>
             <p className="text-xs text-muted-foreground">{step.body}</p>
