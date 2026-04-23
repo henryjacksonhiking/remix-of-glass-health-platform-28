@@ -21,7 +21,7 @@ const SecurityPage = () => (
       <meta name="description" content="Borna.ai is a secure healthcare data platform with HIPAA-ready architecture, enterprise-grade encryption, and compliance-ready governance controls." />
     </Helmet>
     {/* Hero */}
-    <section className="relative overflow-hidden py-12 md:py-12 md:py-20 md:py-16 md:py-12 md:py-12 md:py-20">
+    <section className="relative overflow-hidden py-12 md:py-12">
       <div className="absolute top-0 left-1/2 w-80 h-80 rounded-full blur-[120px] animate-glow-pulse bg-primary/10" />
       <div className="container mx-auto px-4 md:px-6 relative z-10 max-w-3xl text-center">
         <motion.h1
@@ -53,7 +53,7 @@ const SecurityPage = () => (
     </section>
 
     {/* HIPAA-ready architecture */}
-    <section className="py-12 md:py-12 md:py-20 border-t border-glass-border">
+    <section className="py-12 md:py-12 border-t border-glass-border">
       <div className="container mx-auto px-4 md:px-6 max-w-3xl text-center mb-16">
         <h2 className="section-headline text-foreground mb-4">HIPAA-ready architecture</h2>
         <p className="body-text mx-auto">
@@ -102,7 +102,7 @@ const SecurityPage = () => (
     </section>
 
     {/* Audit logs & monitoring */}
-    <section className="py-12 md:py-12 md:py-20 border-t border-glass-border">
+    <section className="py-12 md:py-12 border-t border-glass-border">
       <div className="container mx-auto px-4 md:px-6 max-w-4xl">
         <h2 className="section-headline text-foreground text-center mb-16">Audit logs and system monitoring</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -141,7 +141,7 @@ const SecurityPage = () => (
     </section>
 
     {/* Security features grid */}
-    <section className="py-12 md:py-12 md:py-20 border-t border-glass-border">
+    <section className="py-12 md:py-12 border-t border-glass-border">
       <div className="container mx-auto px-4 md:px-6">
         <h2 className="section-headline text-foreground text-center mb-16">Security features</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">

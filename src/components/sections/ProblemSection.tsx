@@ -16,7 +16,7 @@ const cardStyle: React.CSSProperties = {
 };
 
 const ProblemSection = () => (
-  <section className="py-12 md:py-12 md:py-20">
+  <section className="py-12 md:py-12">
     <div className="container mx-auto px-4 md:px-6">
       <div className="text-center mb-16">
         <span style={{ fontSize: '11px', textTransform: 'uppercase', letterSpacing: '1.5px', color: 'rgba(255,255,255,0.3)' }}>

@@ -179,7 +179,7 @@ const HeroVisual = () => {
 /* ---------- Section 1: Hero ---------- */
 
 const Hero = () => (
-  <SectionShell className="pt-20 md:pt-24 md:pt-20 md:pt-20 md:pt-24">
+  <SectionShell className="pt-20 md:pt-24">
     <div className="absolute inset-0 pointer-events-none">
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[500px] bg-primary/5 blur-[140px] rounded-full" />
     </div>

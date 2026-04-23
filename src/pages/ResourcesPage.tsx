@@ -440,7 +440,7 @@ const ResourcesPage = () => {
       </Helmet>
 
       {/* SECTION 1 — HERO */}
-      <section className="relative overflow-hidden pt-20 md:pt-24 md:pt-20 md:pt-20 md:pt-24 pb-20">
+      <section className="relative overflow-hidden pt-20 md:pt-24 pb-20">
         <div className="absolute inset-0 pointer-events-none">
           <div className="absolute top-1/3 left-1/4 w-[500px] h-[500px] rounded-full blur-3xl opacity-30" style={{ background: "hsl(var(--primary) / 0.25)" }} />
         </div>
@@ -801,7 +801,7 @@ const ResourcesPage = () => {
       </section>
 
       {/* SECTION 12 — FINAL CTA */}
-      <section className="py-12 md:py-12 md:py-20 relative overflow-hidden">
+      <section className="py-12 md:py-12 relative overflow-hidden">
         <div className="absolute inset-0 pointer-events-none">
           <div className="absolute inset-0" style={{ background: "radial-gradient(ellipse at center, hsl(var(--primary) / 0.18), transparent 60%)" }} />
         </div>

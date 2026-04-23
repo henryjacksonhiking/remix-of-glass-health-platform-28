@@ -18,7 +18,7 @@ const BlogPage = () => {
         <meta name="description" content="Explore Borna.ai resources — healthcare case studies, clinic management best practices, ebooks, and guides to help your practice grow." />
       </Helmet>
       {/* Hero */}
-      <section className="relative overflow-hidden py-12 md:py-12 md:py-20 md:py-16 md:py-12 md:py-12 md:py-20">
+      <section className="relative overflow-hidden py-12 md:py-12">
         <div className="container mx-auto px-4 md:px-6 relative z-10 max-w-3xl text-center">
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
@@ -102,7 +102,7 @@ const BlogPage = () => {
       </section>
 
       {/* Newsletter */}
-      <section className="py-12 md:py-12 md:py-20 border-t border-glass-border">
+      <section className="py-12 md:py-12 border-t border-glass-border">
         <div className="container mx-auto px-4 md:px-6 max-w-xl text-center">
           <h2 className="text-xl font-semibold text-foreground mb-3">Stay in the loop</h2>
           <p className="text-sm text-muted-foreground mb-6">Subscribe for new articles and product updates.</p>

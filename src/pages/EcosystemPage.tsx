@@ -383,7 +383,7 @@ const EcosystemPage = () => {
       </Helmet>
 
       {/* SECTION 1 — Hero */}
-      <section className="relative overflow-hidden py-12 md:py-20 md:py-12 md:py-12 md:py-20">
+      <section className="relative overflow-hidden py-12 md:py-20">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,hsla(170,100%,43%,0.12),transparent_60%)]" />
         <div className="container mx-auto px-4 md:px-6 relative">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
@@ -425,7 +425,7 @@ const EcosystemPage = () => {
       </section>
 
       {/* SECTION 2 — Definition */}
-      <section className="py-12 md:py-20 md:py-12 md:py-12 md:py-20 bg-card/30 border-y border-border/50">
+      <section className="py-12 md:py-20 bg-card/30 border-y border-border/50">
         <div className="container mx-auto px-4 md:px-6">
           <div className="max-w-3xl mx-auto text-center mb-12">
             <h2 className="section-headline text-foreground mb-4">What is a healthcare ecosystem platform?</h2>
@@ -452,7 +452,7 @@ const EcosystemPage = () => {
       </section>
 
       {/* SECTION 3 — Layered architecture */}
-      <section className="py-12 md:py-20 md:py-12 md:py-12 md:py-20">
+      <section className="py-12 md:py-20">
         <div className="container mx-auto px-4 md:px-6">
           <div className="max-w-3xl mx-auto text-center mb-12">
             <h2 className="section-headline text-foreground mb-4">How the Borna ecosystem works</h2>
@@ -501,7 +501,7 @@ const EcosystemPage = () => {
       </section>
 
       {/* SECTION 4 — Patient journey */}
-      <section className="py-12 md:py-20 md:py-12 md:py-12 md:py-20 bg-card/30 border-y border-border/50">
+      <section className="py-12 md:py-20 bg-card/30 border-y border-border/50">
         <div className="container mx-auto px-4 md:px-6">
           <div className="max-w-3xl mx-auto text-center mb-12">
             <h2 className="section-headline text-foreground mb-4">
@@ -529,7 +529,7 @@ const EcosystemPage = () => {
       </section>
 
       {/* SECTION 5 — Dual experience */}
-      <section className="py-12 md:py-20 md:py-12 md:py-12 md:py-20">
+      <section className="py-12 md:py-20">
         <div className="container mx-auto px-4 md:px-6">
           <div className="max-w-3xl mx-auto text-center mb-12">
             <h2 className="section-headline text-foreground mb-4">A connected experience for patients and practices</h2>
@@ -593,7 +593,7 @@ const EcosystemPage = () => {
       </section>
 
       {/* SECTION 6 — Entry point */}
-      <section className="py-12 md:py-20 md:py-12 md:py-12 md:py-20 bg-card/30 border-y border-border/50">
+      <section className="py-12 md:py-20 bg-card/30 border-y border-border/50">
         <div className="container mx-auto px-4 md:px-6">
           <div className="max-w-3xl mx-auto text-center mb-12">
             <h2 className="section-headline text-foreground mb-4">
@@ -618,7 +618,7 @@ const EcosystemPage = () => {
       </section>
 
       {/* SECTION 7 — Differentiation */}
-      <section className="py-12 md:py-20 md:py-12 md:py-12 md:py-20">
+      <section className="py-12 md:py-20">
         <div className="container mx-auto px-4 md:px-6">
           <div className="max-w-3xl mx-auto text-center mb-12">
             <h2 className="section-headline text-foreground mb-4">
@@ -675,7 +675,7 @@ const EcosystemPage = () => {
       </section>
 
       {/* SECTION 8 — Final CTA */}
-      <section className="relative overflow-hidden py-12 md:py-20 md:py-12 md:py-12 md:py-20">
+      <section className="relative overflow-hidden py-12 md:py-20">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,hsla(170,100%,43%,0.15),transparent_60%)]" />
         <div className="container mx-auto px-4 md:px-6 relative text-center">
           <h2 className="section-headline text-foreground mb-4">
