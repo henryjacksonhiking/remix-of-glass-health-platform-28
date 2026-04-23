@@ -3,8 +3,9 @@ import { Helmet } from "react-helmet-async";
 import { motion } from "framer-motion";
 import {
   Zap, MessageSquare, CalendarCheck, RefreshCw, FileText, Workflow,
-  ArrowRight, Bot, CheckCircle2, XCircle, Sparkles, Users, TrendingUp,
-  Cpu, Settings, Activity, Layers,
+  ArrowRight, CheckCircle2, XCircle, Users, TrendingUp,
+  Cpu, Radar, GitBranch, RotateCw, Rocket, LineChart, UserPlus,
+  Layers, Bell, Wand2, ShieldCheck, Target,
 } from "lucide-react";
 import PageWrapper from "@/components/layout/PageWrapper";
 import StandardFAQ from "@/components/sections/StandardFAQ";
