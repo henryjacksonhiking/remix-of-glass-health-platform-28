@@ -48,20 +48,41 @@ const PracticeAutomationPage = () => (
               <a href="#automation-areas" className="ghost-btn whitespace-nowrap">See Automation</a>
             </div>
           </motion.div>
-          <motion.div {...fadeUp} className="relative" aria-hidden="true">
-            <div className="space-y-3">
+          <motion.div initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.2 }} transition={{ duration: 0.5 }} className="relative w-full min-w-0" aria-hidden="true">
+            <div className="space-y-3 w-full">
               {[
                 { trigger: "Missed Call", action: "Follow-Up SMS Sent" },
                 { trigger: "Appointment Due", action: "Reminder Sent" },
                 { trigger: "Patient Inactive 90 Days", action: "Reactivation Started" },
               ].map((lane, i) => (
-                <div key={i} className="glass-panel rounded-xl p-3 flex items-center gap-2 sm:gap-3 overflow-hidden">
-                  <div className="glass-panel rounded-lg px-2 sm:px-3 py-2 text-[11px] sm:text-xs text-muted-foreground shrink-0 min-w-0 truncate">{lane.trigger}</div>
-                  <ArrowRight className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-primary shrink-0" />
-                  <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-primary/20 flex items-center justify-center shrink-0"><Cpu className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-primary" /></div>
-                  <ArrowRight className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-primary shrink-0" />
-                  <div className="glass-panel rounded-lg px-2 sm:px-3 py-2 text-[11px] sm:text-xs text-primary border-primary/20 shrink-0 min-w-0 truncate">{lane.action}</div>
-                </div>
+                <motion.div
+                  key={i}
+                  initial={{ opacity: 0, y: 14 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, amount: 0.4 }}
+                  transition={{ duration: 0.5, delay: 0.15 + i * 0.25, ease: [0.16, 1, 0.3, 1] }}
+                  className="glass-panel rounded-xl p-2.5 sm:p-3 flex items-center gap-1.5 sm:gap-3 overflow-hidden w-full"
+                >
+                  <div className="glass-panel rounded-lg px-2 sm:px-3 py-1.5 sm:py-2 text-[10px] sm:text-xs text-muted-foreground shrink min-w-0 truncate">{lane.trigger}</div>
+                  <motion.div
+                    initial={{ x: -4, opacity: 0.4 }}
+                    animate={{ x: [-4, 2, -4], opacity: [0.4, 1, 0.4] }}
+                    transition={{ duration: 1.6, repeat: Infinity, delay: i * 0.3, ease: "easeInOut" }}
+                    className="shrink-0"
+                  >
+                    <ArrowRight className="w-3 h-3 sm:w-4 sm:h-4 text-primary" />
+                  </motion.div>
+                  <div className="w-6 h-6 sm:w-8 sm:h-8 rounded-full bg-primary/20 flex items-center justify-center shrink-0"><Cpu className="w-3 h-3 sm:w-4 sm:h-4 text-primary" /></div>
+                  <motion.div
+                    initial={{ x: -4, opacity: 0.4 }}
+                    animate={{ x: [-4, 2, -4], opacity: [0.4, 1, 0.4] }}
+                    transition={{ duration: 1.6, repeat: Infinity, delay: 0.4 + i * 0.3, ease: "easeInOut" }}
+                    className="shrink-0"
+                  >
+                    <ArrowRight className="w-3 h-3 sm:w-4 sm:h-4 text-primary" />
+                  </motion.div>
+                  <div className="glass-panel rounded-lg px-2 sm:px-3 py-1.5 sm:py-2 text-[10px] sm:text-xs text-primary border-primary/20 shrink min-w-0 truncate">{lane.action}</div>
+                </motion.div>
               ))}
             </div>
           </motion.div>
