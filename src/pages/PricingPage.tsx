@@ -175,10 +175,8 @@ const plans: PlanData[] = [
 ];
 
 const CheckMarks = ({ level }: { level: number }) => (
-  <span className="flex items-center gap-0.5 shrink-0 mt-0.5">
-    {Array.from({ length: Math.min(level, 3) }).map((_, i) => (
-      <Check key={i} className="w-3.5 h-3.5 text-primary" aria-hidden="true" />
-    ))}
+  <span className="flex items-center justify-center w-4 shrink-0 mt-0.5" aria-label={`Tier ${level}`}>
+    <Check className="w-3.5 h-3.5 text-primary" aria-hidden="true" />
   </span>
 );
 
