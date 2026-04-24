@@ -79,20 +79,44 @@ const BornaEngagePage = () => {
               <Link to="/platform" className="ghost-btn px-6 py-3">Explore platform</Link>
             </motion.div>
           </div>
-          {/* Lifecycle Flow */}
-          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.4 }} className="flex flex-wrap justify-center gap-3 mt-16">
-            {lifecycleStages.map((stage, i) => (
-              <div key={stage.label} className="flex items-center gap-3">
-                <div className="text-center">
-                  <div className="w-14 h-14 rounded-xl flex items-center justify-center mx-auto mb-1" style={{ background: stage.color, border: '1px solid rgba(0,222,196,0.18)' }}>
-                    <span className="text-xs font-medium" style={{ color: '#00DEC4' }}>{i + 1}</span>
+          {/* Lifecycle Flow — desktop horizontal, mobile 3x2 grid */}
+          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.4 }} className="mt-16 max-w-[600px] mx-auto">
+            <div className="grid grid-cols-3 md:flex md:flex-wrap md:justify-center gap-x-3 gap-y-6 md:gap-3">
+              {lifecycleStages.map((stage, i) => {
+                const isLastInRow = i === 2 || i === 5;
+                return (
+                  <div key={stage.label} className="flex items-center justify-center md:gap-3">
+                    <div className="text-center">
+                      <div
+                        className="w-16 h-16 md:w-20 md:h-20 rounded-2xl flex items-center justify-center mx-auto mb-2"
+                        style={{
+                          background: `linear-gradient(135deg, ${stage.color}, rgba(20,53,193,0.18))`,
+                          border: "1px solid rgba(0,222,196,0.3)",
+                          boxShadow: "0 0 18px rgba(0,222,196,0.18)",
+                        }}
+                      >
+                        <span
+                          className="text-base md:text-lg font-semibold"
+                          style={{ color: "#00DEC4", textShadow: "0 1px 2px rgba(0,0,0,0.5)" }}
+                        >
+                          {i + 1}
+                        </span>
+                      </div>
+                      <div className="text-[12px] md:text-sm font-semibold text-foreground">{stage.label}</div>
+                      <div className="text-[10px] md:text-[11px]" style={{ color: "rgba(255,255,255,0.5)" }}>{stage.desc}</div>
+                    </div>
+                    {/* Inline arrow on mobile (within row) and on desktop */}
+                    {i < lifecycleStages.length - 1 && !isLastInRow && (
+                      <ArrowRight className="w-3.5 h-3.5 shrink-0 hidden md:block" style={{ color: "#00DEC4" }} />
+                    )}
                   </div>
-                  <div className="text-[11px] font-medium text-foreground">{stage.label}</div>
-                  <div className="text-[9px]" style={{ color: 'rgba(255,255,255,0.4)' }}>{stage.desc}</div>
-                </div>
-                {i < lifecycleStages.length - 1 && <ArrowRight className="w-3.5 h-3.5 shrink-0 hidden md:block" style={{ color: '#00DEC4' }} />}
-              </div>
-            ))}
+                );
+              })}
+            </div>
+            {/* Mobile-only vertical down arrow between row 1 and row 2 (decorative) */}
+            <div className="md:hidden flex justify-center -mt-2 mb-2">
+              <ArrowRight className="w-4 h-4 rotate-90 opacity-0" />
+            </div>
           </motion.div>
         </div>
       </section>

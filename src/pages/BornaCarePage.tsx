@@ -152,8 +152,8 @@ const faqItems = [
 
 const ecosystemModules = [
   { name: "Borna Connect", color: "#00DEC4", status: "Coming Soon" },
-  { name: "Borna Engage", color: "#E0119D", status: "Coming Soon" },
-  { name: "Borna Insight", color: "#6366F1", status: "Coming Soon" },
+  { name: "Borna Engage", color: "#00DEC4", status: "Coming Soon" },
+  { name: "Borna Insight", color: "#1435C1", status: "Coming Soon" },
   { name: "Borna Core", color: "#1435C1", status: "Coming Soon" },
 ];
 
@@ -205,11 +205,11 @@ const BornaCarePage = () => {
                 <span className="text-xs px-3 py-1 rounded-full" style={{ background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.08)', color: 'rgba(255,255,255,0.5)' }}>Mobile PWA</span>
               </motion.div>
             </div>
-            <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.3, duration: 0.6 }} className="relative flex items-end gap-4 justify-center">
-              <MobileFrame className="w-48 md:w-56 animate-[float_6s_ease-in-out_infinite]">
+            <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.3, duration: 0.6 }} className="relative flex flex-col md:flex-row items-center md:items-end justify-center gap-6 md:gap-10 lg:gap-12 overflow-visible">
+              <MobileFrame className="w-48 md:w-56 shrink-0 animate-[float_6s_ease-in-out_infinite]">
                 <SchedulingScreen />
               </MobileFrame>
-              <DesktopFrame className="w-72 md:w-96 -ml-6 animate-[float_6s_ease-in-out_infinite_0.5s]">
+              <DesktopFrame className="w-full max-w-sm md:max-w-md lg:w-96 shrink-0 animate-[float_6s_ease-in-out_infinite_0.5s]">
                 <DashboardScreen />
               </DesktopFrame>
             </motion.div>
@@ -461,17 +461,17 @@ const BornaCarePage = () => {
                       style={{ left: `${x}%`, top: `${y}%`, transform: "translate(-50%, -50%)" }}
                     >
                       <div
-                        className="w-12 h-12 rounded-xl mx-auto mb-1.5 flex items-center justify-center"
+                        className="w-14 h-14 md:w-16 md:h-16 rounded-2xl mx-auto mb-1.5 flex items-center justify-center"
                         style={{
-                          background: `linear-gradient(135deg, ${mod.color}26, ${mod.color}08)`,
-                          border: `1px solid ${mod.color}50`,
-                          boxShadow: `0 0 14px ${mod.color}26`,
+                          background: `linear-gradient(135deg, ${mod.color}33, ${mod.color}0d)`,
+                          border: `1px solid ${mod.color}66`,
+                          boxShadow: `0 0 22px ${mod.color}40, inset 0 0 12px ${mod.color}1a`,
                         }}
                       >
-                        <Icon className="w-4 h-4" style={{ color: mod.color }} />
+                        <Icon className="w-5 h-5 md:w-6 md:h-6" style={{ color: mod.color }} />
                       </div>
-                      <div className="text-[10px] font-medium text-foreground/85">{short}</div>
-                      <div className="text-[8px] mt-0.5" style={{ color: "rgba(255,255,255,0.4)" }}>{mod.status}</div>
+                      <div className="text-[11px] font-semibold text-foreground/90">{short}</div>
+                      <div className="text-[9px] mt-0.5 uppercase tracking-wider" style={{ color: `${mod.color}cc` }}>{mod.status}</div>
                     </div>
                   );
                 })}
