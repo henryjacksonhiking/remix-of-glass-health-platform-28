@@ -103,7 +103,7 @@ const PatientAppPage = () => {
                     <span className="text-[10px]" style={{ color: 'rgba(255,255,255,0.5)' }}>9:41</span>
                     <span className="text-[10px]" style={{ color: 'rgba(255,255,255,0.5)' }}>Borna</span>
                   </div>
-                  <div className="p-4 space-y-4">
+                  <div className="p-4 space-y-4 md:space-y-5">
                     <div className="text-center mb-4">
                       <div className="w-12 h-12 rounded-full bg-primary/15 mx-auto mb-2 flex items-center justify-center">
                         <span className="text-primary text-lg font-medium">S</span>
@@ -117,9 +117,9 @@ const PatientAppPage = () => {
                       { icon: "💬", label: "Messages (2)", accent: false },
                       { icon: "💳", label: "Pay invoice", accent: false },
                     ].map((item, i) => (
-                      <div key={i} className="flex items-center gap-3 px-3 py-2.5 rounded-lg" style={{ background: item.accent ? 'rgba(0,222,196,0.08)' : 'rgba(255,255,255,0.04)', border: `1px solid ${item.accent ? 'rgba(0,222,196,0.15)' : 'rgba(255,255,255,0.06)'}` }}>
-                        <span className="text-sm">{item.icon}</span>
-                        <span className="text-xs" style={{ color: item.accent ? '#00DEC4' : 'rgba(255,255,255,0.6)' }}>{item.label}</span>
+                      <div key={i} className="flex items-center gap-3 px-3 py-2.5 md:py-5 lg:py-7 rounded-lg" style={{ background: item.accent ? 'rgba(0,222,196,0.08)' : 'rgba(255,255,255,0.04)', border: `1px solid ${item.accent ? 'rgba(0,222,196,0.15)' : 'rgba(255,255,255,0.06)'}` }}>
+                        <span className="text-sm md:text-base">{item.icon}</span>
+                        <span className="text-xs md:text-sm" style={{ color: item.accent ? '#00DEC4' : 'rgba(255,255,255,0.6)' }}>{item.label}</span>
                       </div>
                     ))}
                   </div>
