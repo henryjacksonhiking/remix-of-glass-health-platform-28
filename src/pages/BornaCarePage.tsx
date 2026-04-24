@@ -205,11 +205,11 @@ const BornaCarePage = () => {
                 <span className="text-xs px-3 py-1 rounded-full" style={{ background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.08)', color: 'rgba(255,255,255,0.5)' }}>Mobile PWA</span>
               </motion.div>
             </div>
-            <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.3, duration: 0.6 }} className="relative flex items-end gap-4 justify-center">
-              <MobileFrame className="w-48 md:w-56 animate-[float_6s_ease-in-out_infinite]">
+            <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.3, duration: 0.6 }} className="relative flex flex-col md:flex-row items-center md:items-end justify-center gap-6 md:gap-10 lg:gap-12 overflow-visible">
+              <MobileFrame className="w-48 md:w-56 shrink-0 animate-[float_6s_ease-in-out_infinite]">
                 <SchedulingScreen />
               </MobileFrame>
-              <DesktopFrame className="w-72 md:w-96 -ml-6 animate-[float_6s_ease-in-out_infinite_0.5s]">
+              <DesktopFrame className="w-full max-w-sm md:max-w-md lg:w-96 shrink-0 animate-[float_6s_ease-in-out_infinite_0.5s]">
                 <DashboardScreen />
               </DesktopFrame>
             </motion.div>
