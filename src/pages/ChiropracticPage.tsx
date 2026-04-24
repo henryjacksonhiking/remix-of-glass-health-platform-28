@@ -39,13 +39,23 @@ const ChiropracticPage = () => (
             <p className="text-muted-foreground text-lg leading-relaxed mb-8 max-w-lg">Borna AI helps chiropractic clinics attract new patients, improve retention, and manage recurring care plans through intelligent automation and communication.</p>
             <div className="flex flex-row items-center gap-2 sm:gap-3"><Link to="/demo" className="gradient-btn whitespace-nowrap">Request Demo</Link><a href="#use-cases" className="ghost-btn whitespace-nowrap">See Chiropractic Solutions</a></div>
           </motion.div>
-          <motion.div {...fadeUp} className="flex items-center justify-center" aria-hidden="true">
-            <svg viewBox="0 0 300 300" className="w-64 h-64 md:w-72 md:h-72">
-              <ellipse cx="150" cy="150" rx="100" ry="100" fill="none" className="stroke-primary/30" strokeWidth="1.5" />
-              {[{ a: 270, l: "Visit" }, { a: 0, l: "Follow-Up" }, { a: 90, l: "Next Appt" }, { a: 180, l: "Return" }].map((node) => { const rad = (node.a * Math.PI) / 180; const x = 150 + 100 * Math.cos(rad); const y = 150 + 100 * Math.sin(rad); return (<g key={node.l}><circle cx={x} cy={y} r="16" className="fill-primary/10 stroke-primary/50" strokeWidth="1" /><text x={x} y={y + 4} textAnchor="middle" className="fill-foreground" fontSize="7" fontWeight="500">{node.l}</text></g>); })}
-              <circle r="4" className="fill-primary"><animateMotion dur="5s" repeatCount="indefinite" path="M150,50 A100,100 0 1,1 149.9,50" /></circle>
-              <circle r="3" className="fill-primary/60"><animateMotion dur="5s" repeatCount="indefinite" begin="2.5s" path="M150,50 A100,100 0 1,1 149.9,50" /></circle>
-              <text x="150" y="154" textAnchor="middle" className="fill-muted-foreground" fontSize="7">Active Care Plan</text>
+          <motion.div {...fadeUp} className="flex items-center justify-center w-full" aria-hidden="true">
+            <svg viewBox="0 0 360 360" className="w-full max-w-sm md:max-w-md h-auto" preserveAspectRatio="xMidYMid meet">
+              <ellipse cx="180" cy="180" rx="120" ry="120" fill="none" className="stroke-primary/40" strokeWidth="1.5" />
+              {[{ a: 270, l: "Visit" }, { a: 0, l: "Follow-Up" }, { a: 90, l: "Next Appt" }, { a: 180, l: "Return" }].map((node) => {
+                const rad = (node.a * Math.PI) / 180;
+                const x = 180 + 120 * Math.cos(rad);
+                const y = 180 + 120 * Math.sin(rad);
+                return (
+                  <g key={node.l}>
+                    <circle cx={x} cy={y} r="30" className="fill-primary/15 stroke-primary/60" strokeWidth="1.5" />
+                    <text x={x} y={y + 5} textAnchor="middle" className="fill-foreground" fontSize="13" fontWeight="600">{node.l}</text>
+                  </g>
+                );
+              })}
+              <circle r="5" className="fill-primary"><animateMotion dur="5s" repeatCount="indefinite" path="M180,60 A120,120 0 1,1 179.9,60" /></circle>
+              <circle r="4" className="fill-primary/60"><animateMotion dur="5s" repeatCount="indefinite" begin="2.5s" path="M180,60 A120,120 0 1,1 179.9,60" /></circle>
+              <text x="180" y="186" textAnchor="middle" className="fill-foreground" fontSize="14" fontWeight="600">Active Care Plan</text>
             </svg>
           </motion.div>
         </div>
