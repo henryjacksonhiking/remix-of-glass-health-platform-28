@@ -91,86 +91,107 @@ const BornaConnectPage = () => {
                 <Link to="/contact" className="ghost-btn px-6 py-3">Talk to sales</Link>
               </motion.div>
             </div>
-            {/* Channel convergence hub — communication workflow */}
-            <motion.div initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} transition={{ delay: 0.3, duration: 0.6 }} className="flex justify-center">
+            {/* Unified inbox mockup — multi-channel conversations collapsed into one feed */}
+            <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.3, duration: 0.6 }} className="flex justify-center">
               <div
-                className="relative w-full max-w-[480px] aspect-square rounded-3xl p-4"
+                className="relative w-full max-w-[480px] rounded-2xl overflow-hidden"
                 style={{
-                  background: "linear-gradient(135deg, rgba(20,53,193,0.12), rgba(0,222,196,0.08) 50%, rgba(13,21,53,0.4))",
+                  background: "linear-gradient(160deg, rgba(20,53,193,0.10), rgba(13,21,53,0.55))",
                   border: "1px solid rgba(0,222,196,0.18)",
-                  boxShadow: "0 0 60px rgba(0,222,196,0.12)",
+                  boxShadow: "0 30px 80px -20px rgba(0,222,196,0.15), 0 0 0 1px rgba(255,255,255,0.04) inset",
                 }}
               >
-                <svg viewBox="0 0 320 320" className="absolute inset-0 w-full h-full" aria-hidden>
-                  <defs>
-                    <linearGradient id="connect-flow" x1="0" y1="0" x2="1" y2="1">
-                      <stop offset="0%" stopColor="#1435C1" stopOpacity="0.7" />
-                      <stop offset="100%" stopColor="#00DEC4" stopOpacity="0.7" />
-                    </linearGradient>
-                    <radialGradient id="connect-core-glow" cx="50%" cy="50%" r="50%">
-                      <stop offset="0%" stopColor="#00DEC4" stopOpacity="0.45" />
-                      <stop offset="100%" stopColor="#00DEC4" stopOpacity="0" />
-                    </radialGradient>
-                  </defs>
-                  {/* Workflow arrows — each channel flows to inbox */}
-                  {channels.map((_, i) => {
-                    const angle = (i * 72 - 90) * (Math.PI / 180);
-                    const x = 160 + 110 * Math.cos(angle);
-                    const y = 160 + 110 * Math.sin(angle);
-                    return (
-                      <g key={i}>
-                        <path
-                          d={`M ${x} ${y} Q 160 160 ${160 - (x - 160) * 0.05} ${160 - (y - 160) * 0.05}`}
-                          fill="none"
-                          stroke="url(#connect-flow)"
-                          strokeWidth="1.5"
-                          strokeDasharray="4 5"
-                          opacity="0.65"
-                        />
-                      </g>
-                    );
-                  })}
-                  <circle cx="160" cy="160" r="62" fill="url(#connect-core-glow)" />
-                </svg>
+                {/* Window chrome */}
+                <div className="flex items-center justify-between px-4 py-3 border-b" style={{ borderColor: "rgba(255,255,255,0.06)", background: "rgba(255,255,255,0.02)" }}>
+                  <div className="flex items-center gap-2">
+                    <span className="w-2.5 h-2.5 rounded-full" style={{ background: "rgba(255,255,255,0.15)" }} />
+                    <span className="w-2.5 h-2.5 rounded-full" style={{ background: "rgba(255,255,255,0.15)" }} />
+                    <span className="w-2.5 h-2.5 rounded-full" style={{ background: "rgba(255,255,255,0.15)" }} />
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <MessagesSquare className="w-3.5 h-3.5 text-primary" />
+                    <span className="text-[11px] font-semibold text-foreground/85">Unified Inbox</span>
+                  </div>
+                  <span className="text-[10px]" style={{ color: "rgba(255,255,255,0.4)" }}>5 channels · live</span>
+                </div>
 
-                <div className="relative w-full h-full">
-                  {/* Center inbox */}
-                  <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-10">
-                    <div
-                      className="w-24 h-24 md:w-28 md:h-28 rounded-2xl flex flex-col items-center justify-center"
+                {/* Filter pills */}
+                <div className="flex flex-wrap items-center gap-1.5 px-4 pt-3">
+                  {[
+                    { label: "All", active: true },
+                    { label: "Voice" },
+                    { label: "SMS" },
+                    { label: "Email" },
+                    { label: "Chat" },
+                    { label: "Video" },
+                  ].map((p) => (
+                    <span
+                      key={p.label}
+                      className="text-[10px] px-2 py-0.5 rounded-full"
                       style={{
-                        background: "linear-gradient(135deg, rgba(0,222,196,0.18), rgba(20,53,193,0.18))",
-                        border: "1.5px solid rgba(0,222,196,0.4)",
-                        boxShadow: "0 0 40px rgba(0,222,196,0.25)",
+                        background: p.active ? "rgba(0,222,196,0.18)" : "rgba(255,255,255,0.04)",
+                        border: `1px solid ${p.active ? "rgba(0,222,196,0.45)" : "rgba(255,255,255,0.08)"}`,
+                        color: p.active ? "#00DEC4" : "rgba(255,255,255,0.55)",
                       }}
                     >
-                      <MessagesSquare className="w-7 h-7 text-primary mb-1" />
-                      <span className="text-[10px] font-semibold text-primary">Unified Inbox</span>
-                    </div>
-                  </div>
-                  {/* Channel nodes */}
-                  {channels.map((ch, i) => {
-                    const angle = (i * 72 - 90) * (Math.PI / 180);
-                    const x = 50 + 38 * Math.cos(angle);
-                    const y = 50 + 38 * Math.sin(angle);
-                    const isAlt = i % 2 === 1;
-                    const c = isAlt ? "#1435C1" : "#00DEC4";
-                    return (
-                      <motion.div key={ch.label} initial={{ opacity: 0, scale: 0 }} animate={{ opacity: 1, scale: 1 }} transition={{ delay: 0.5 + i * 0.1 }} className="absolute" style={{ left: `${x}%`, top: `${y}%`, transform: "translate(-50%, -50%)" }}>
-                        <div
-                          className="w-12 h-12 md:w-14 md:h-14 rounded-xl flex items-center justify-center"
-                          style={{
-                            background: `linear-gradient(135deg, ${c}26, ${c}0d)`,
-                            border: `1px solid ${c}55`,
-                            boxShadow: `0 0 14px ${c}33`,
-                          }}
-                        >
-                          <ch.icon className="w-5 h-5" style={{ color: c }} />
+                      {p.label}
+                    </span>
+                  ))}
+                </div>
+
+                {/* Conversation rows */}
+                <div className="px-3 py-3 space-y-2">
+                  {[
+                    { icon: Phone, channel: "Voice", name: "Sarah M.", preview: "Missed call · transcribed voicemail", time: "2m", unread: true, accent: "#00DEC4" },
+                    { icon: MessageSquare, channel: "SMS", name: "James O.", preview: "Yes, tomorrow 10:30 works for me 👍", time: "8m", unread: true, accent: "#4A7FFF" },
+                    { icon: Mail, channel: "Email", name: "Dr. Patel (referral)", preview: "Patient records attached for review", time: "24m", accent: "#00DEC4" },
+                    { icon: MessagesSquare, channel: "Chat", name: "Web visitor", preview: "Do you accept Aetna PPO?", time: "31m", aiHandled: true, accent: "#4A7FFF" },
+                    { icon: Video, channel: "Video", name: "Telehealth · K. Lee", preview: "Session ended · summary ready", time: "1h", accent: "#00DEC4" },
+                  ].map((row, i) => (
+                    <motion.div
+                      key={i}
+                      initial={{ opacity: 0, x: -8 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{ delay: 0.4 + i * 0.08 }}
+                      className="flex items-center gap-3 px-3 py-2.5 rounded-xl"
+                      style={{
+                        background: row.unread ? "rgba(0,222,196,0.06)" : "rgba(255,255,255,0.03)",
+                        border: `1px solid ${row.unread ? "rgba(0,222,196,0.18)" : "rgba(255,255,255,0.05)"}`,
+                      }}
+                    >
+                      <div
+                        className="w-8 h-8 rounded-lg flex items-center justify-center shrink-0"
+                        style={{
+                          background: `linear-gradient(135deg, ${row.accent}26, ${row.accent}0d)`,
+                          border: `1px solid ${row.accent}40`,
+                        }}
+                      >
+                        <row.icon className="w-3.5 h-3.5" style={{ color: row.accent }} />
+                      </div>
+                      <div className="flex-1 min-w-0">
+                        <div className="flex items-center gap-1.5">
+                          <span className="text-[11px] font-semibold text-foreground truncate">{row.name}</span>
+                          <span className="text-[9px] uppercase tracking-wider" style={{ color: row.accent }}>{row.channel}</span>
+                          {row.aiHandled && (
+                            <span className="inline-flex items-center gap-0.5 text-[9px] px-1.5 py-0.5 rounded-full" style={{ background: "rgba(74,127,255,0.15)", color: "#4A7FFF" }}>
+                              <Bot className="w-2.5 h-2.5" /> AI
+                            </span>
+                          )}
                         </div>
-                        <div className="text-[10px] text-center mt-1 font-medium text-foreground/80">{ch.label}</div>
-                      </motion.div>
-                    );
-                  })}
+                        <div className="text-[10px] truncate" style={{ color: "rgba(255,255,255,0.5)" }}>{row.preview}</div>
+                      </div>
+                      <span className="text-[9px] shrink-0" style={{ color: "rgba(255,255,255,0.35)" }}>{row.time}</span>
+                    </motion.div>
+                  ))}
+                </div>
+
+                {/* Footer status bar */}
+                <div className="flex items-center justify-between px-4 py-2.5 border-t text-[10px]" style={{ borderColor: "rgba(255,255,255,0.06)", background: "rgba(0,0,0,0.15)", color: "rgba(255,255,255,0.5)" }}>
+                  <span className="inline-flex items-center gap-1.5">
+                    <span className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse" />
+                    AI routing active
+                  </span>
+                  <span>Sentiment · 92% positive</span>
                 </div>
               </div>
             </motion.div>
