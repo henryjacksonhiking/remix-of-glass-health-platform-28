@@ -799,179 +799,132 @@ const EcosystemDiagram = ({
   caption?: string;
 }) => {
   const reduce = useReducedMotion();
-  const radius = 130;
-  const cx = 200;
-  const cy = 200;
-  const items = [
-    { label: "Care", angle: -90 },
-    { label: "Connect", angle: -18 },
-    { label: "Insight", angle: 54 },
-    { label: "Engage", angle: 126 },
-    { label: "Core", angle: 198 },
+  // Layered platform stack — each module is a layer that integrates with the next
+  const layers = [
+    { label: "Care", sub: "Patient experience" },
+    { label: "Connect", sub: "Communication layer" },
+    { label: "Insight", sub: "Analytics & data" },
+    { label: "Engage", sub: "Lifecycle automation" },
+    { label: "Core", sub: "Platform foundation" },
   ];
   return (
-    <div className="flex flex-col items-center">
-      <div className="relative w-full max-w-[400px] aspect-square">
-        <svg viewBox="0 0 400 400" className="w-full h-full" preserveAspectRatio="xMidYMid meet">
+    <div className="flex flex-col items-center w-full">
+      <div className="relative w-full max-w-[420px]">
+        <svg viewBox="0 0 420 420" className="w-full h-auto" preserveAspectRatio="xMidYMid meet">
           <defs>
-            <radialGradient id="rmEcoCore">
-              <stop offset="0%" stopColor="hsl(var(--primary))" stopOpacity="0.55" />
-              <stop offset="70%" stopColor="hsl(var(--primary))" stopOpacity="0.08" />
+            <linearGradient id="rmEcoLayer" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%" stopColor="hsl(var(--primary))" stopOpacity="0.08" />
+              <stop offset="50%" stopColor="hsl(var(--primary))" stopOpacity="0.22" />
+              <stop offset="100%" stopColor="hsl(var(--primary))" stopOpacity="0.08" />
+            </linearGradient>
+            <linearGradient id="rmEcoLayerActive" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%" stopColor="hsl(var(--primary))" stopOpacity="0.18" />
+              <stop offset="50%" stopColor="hsl(var(--primary))" stopOpacity="0.45" />
+              <stop offset="100%" stopColor="hsl(var(--primary))" stopOpacity="0.18" />
+            </linearGradient>
+            <linearGradient id="rmEcoFlow" x1="0%" y1="0%" x2="0%" y2="100%">
+              <stop offset="0%" stopColor="hsl(var(--primary))" stopOpacity="0" />
+              <stop offset="50%" stopColor="hsl(var(--primary))" stopOpacity="1" />
+              <stop offset="100%" stopColor="hsl(var(--primary))" stopOpacity="0" />
+            </linearGradient>
+            <radialGradient id="rmEcoAura" cx="50%" cy="50%" r="50%">
+              <stop offset="0%" stopColor="hsl(var(--primary))" stopOpacity="0.35" />
               <stop offset="100%" stopColor="hsl(var(--primary))" stopOpacity="0" />
             </radialGradient>
-            <radialGradient id="rmEcoNode" cx="35%" cy="30%">
-              <stop offset="0%" stopColor="hsl(var(--primary))" stopOpacity="0.7" />
-              <stop offset="100%" stopColor="hsl(var(--primary))" stopOpacity="0.12" />
-            </radialGradient>
-            <filter id="rmEcoGlow" x="-50%" y="-50%" width="200%" height="200%">
-              <feGaussianBlur stdDeviation="3" result="b" />
+            <filter id="rmEcoSoftGlow" x="-50%" y="-50%" width="200%" height="200%">
+              <feGaussianBlur stdDeviation="2.5" result="b" />
               <feMerge><feMergeNode in="b" /><feMergeNode in="SourceGraphic" /></feMerge>
             </filter>
           </defs>
 
-          {/* ambient glow */}
-          <circle cx={cx} cy={cy} r={170} fill="url(#rmEcoCore)" opacity={fullBright ? 1 : 0.5} />
+          {/* ambient aura behind stack */}
+          <ellipse cx={210} cy={210} rx={210} ry={170} fill="url(#rmEcoAura)" opacity={fullBright ? 0.95 : 0.5} />
 
-          {/* concentric orbit rings */}
-          {[80, 125, 165].map((r, i) => (
-            <circle
-              key={r}
-              cx={cx}
-              cy={cy}
-              r={r}
-              fill="none"
-              stroke="hsl(var(--primary))"
-              strokeOpacity={fullBright ? 0.22 - i * 0.04 : 0.12 - i * 0.03}
-              strokeWidth="1"
-              strokeDasharray="2 6"
-            />
+          {/* Vertical data lanes flowing through all layers */}
+          {[120, 210, 300].map((x, i) => (
+            <g key={`lane-${x}`}>
+              <line x1={x} y1={60} x2={x} y2={360} stroke="hsl(var(--primary))" strokeOpacity="0.12" strokeWidth="1" strokeDasharray="2 5" />
+              {!reduce && (
+                <motion.circle
+                  cx={x}
+                  r={2.5}
+                  fill="hsl(var(--primary))"
+                  initial={{ cy: 60, opacity: 0 }}
+                  animate={{ cy: [60, 360], opacity: [0, 1, 0] }}
+                  transition={{ duration: 3.2, repeat: Infinity, delay: i * 0.6, ease: "easeInOut" }}
+                  style={{ filter: "drop-shadow(0 0 5px hsl(var(--primary)))" }}
+                />
+              )}
+            </g>
           ))}
 
-          {/* alternating orbit radii: inner (95) and outer (150) for layered constellation */}
-          {items.map((it, i) => {
-            const r = i % 2 === 0 ? 100 : 150;
-            const rad = (it.angle * Math.PI) / 180;
-            const x = cx + Math.cos(rad) * r;
-            const y = cy + Math.sin(rad) * r;
-            const opacity = fullBright ? 1 : i === 0 ? 1 : i === 1 ? 0.7 : 0.4;
+          {/* Stacked layers */}
+          {layers.map((l, i) => {
+            const y = 70 + i * 56;
+            const opacity = fullBright ? 1 : i === 0 ? 1 : i === 1 ? 0.8 : i === 2 ? 0.55 : 0.32;
+            const isActive = fullBright || i < 2;
             return (
-              <g key={it.label}>
-                {/* faint connector to core */}
-                <line
-                  x1={cx}
-                  y1={cy}
-                  x2={x}
-                  y2={y}
+              <g key={l.label} opacity={opacity}>
+                {/* layer slab */}
+                <rect
+                  x={50}
+                  y={y}
+                  width={320}
+                  height={42}
+                  rx={10}
+                  fill={isActive ? "url(#rmEcoLayerActive)" : "url(#rmEcoLayer)"}
                   stroke="hsl(var(--primary))"
-                  strokeWidth="0.75"
-                  strokeOpacity={opacity * 0.25}
-                  strokeDasharray="1 4"
-                />
-                {/* travelling data particle outward */}
-                {fullBright && !reduce && (
-                  <motion.circle
-                    r={2.2}
-                    fill="hsl(var(--primary))"
-                    initial={{ cx: cx, cy: cy, opacity: 0 }}
-                    animate={{ cx: [cx, x], cy: [cy, y], opacity: [0, 1, 0] }}
-                    transition={{ duration: 2.4, repeat: Infinity, delay: i * 0.45, ease: "easeOut" }}
-                    style={{ filter: "drop-shadow(0 0 5px hsl(var(--primary)))" }}
-                  />
-                )}
-                {/* outer halo */}
-                <circle
-                  cx={x}
-                  cy={y}
-                  r={26}
-                  fill="none"
-                  stroke="hsl(var(--primary))"
-                  strokeOpacity={opacity * 0.25}
-                  strokeWidth="1"
-                />
-                {/* node body */}
-                <circle
-                  cx={x}
-                  cy={y}
-                  r={20}
-                  fill="url(#rmEcoNode)"
-                  stroke="hsl(var(--primary))"
-                  strokeOpacity={opacity * 0.8}
+                  strokeOpacity={isActive ? 0.55 : 0.28}
                   strokeWidth="1.25"
-                  style={{
-                    filter: opacity > 0.6 ? `drop-shadow(0 0 10px hsl(var(--primary) / ${opacity}))` : undefined,
-                  }}
+                  style={isActive ? { filter: "drop-shadow(0 0 12px hsl(var(--primary) / 0.25))" } : undefined}
                 />
-                {/* gentle pulse on first node */}
-                {i === 0 && fullBright && !reduce && (
-                  <motion.circle
-                    cx={x}
-                    cy={y}
-                    r={20}
-                    fill="none"
-                    stroke="hsl(var(--primary))"
-                    animate={{ r: [20, 32], opacity: [0.6, 0] }}
-                    transition={{ duration: 2.4, repeat: Infinity, ease: "easeOut" }}
-                  />
-                )}
-                <text
-                  x={x}
-                  y={y + 4}
-                  textAnchor="middle"
-                  fontSize="11"
-                  fontWeight="600"
-                  fill="hsl(var(--foreground))"
-                  opacity={opacity}
-                >
-                  {it.label}
-                </text>
+                {/* index chip */}
+                <rect x={60} y={y + 11} width={20} height={20} rx={5} fill="hsl(var(--primary))" fillOpacity={isActive ? 0.25 : 0.12} stroke="hsl(var(--primary))" strokeOpacity={isActive ? 0.7 : 0.35} strokeWidth="1" />
+                <text x={70} y={y + 25} textAnchor="middle" fontSize="10" fontWeight="700" fill="hsl(var(--foreground))">{i + 1}</text>
+                {/* labels */}
+                <text x={92} y={y + 22} fontSize="13" fontWeight="700" fill="hsl(var(--foreground))">{l.label}</text>
+                <text x={92} y={y + 35} fontSize="9" fill="hsl(var(--muted-foreground))">{l.sub}</text>
+                {/* status pill */}
+                <g>
+                  <rect x={300} y={y + 12} width={58} height={18} rx={9} fill={isActive ? "hsl(var(--primary))" : "hsl(var(--primary))"} fillOpacity={isActive ? 0.18 : 0.08} stroke="hsl(var(--primary))" strokeOpacity={isActive ? 0.5 : 0.25} strokeWidth="0.75" />
+                  <circle cx={310} cy={y + 21} r={2.5} fill="hsl(var(--primary))" opacity={isActive ? 1 : 0.4}>
+                    {isActive && !reduce && <animate attributeName="opacity" values="0.4;1;0.4" dur="2s" repeatCount="indefinite" />}
+                  </circle>
+                  <text x={318} y={y + 25} fontSize="8" fontWeight="600" fill="hsl(var(--primary))" opacity={isActive ? 1 : 0.5}>
+                    {isActive ? "ACTIVE" : "PHASED"}
+                  </text>
+                </g>
               </g>
             );
           })}
 
-          {/* Core pulses */}
+          {/* Borna core label badge above stack */}
+          <g filter="url(#rmEcoSoftGlow)">
+            <rect x={150} y={20} width={120} height={32} rx={16} fill="hsl(var(--primary))" opacity={fullBright ? 1 : 0.9} />
+          </g>
+          <rect x={150} y={20} width={120} height={32} rx={16} fill="none" stroke="hsl(var(--background))" strokeOpacity="0.4" strokeWidth="1" />
+          <text x={210} y={41} textAnchor="middle" fontSize="13" fontWeight="700" fill="hsl(var(--background))">
+            Borna Platform
+          </text>
           {fullBright && !reduce && (
-            <>
-              <motion.circle
-                cx={cx}
-                cy={cy}
-                r={32}
-                fill="none"
-                stroke="hsl(var(--primary))"
-                animate={{ r: [32, 60], opacity: [0.5, 0] }}
-                transition={{ duration: 3, repeat: Infinity, ease: "easeOut" }}
-              />
-              <motion.circle
-                cx={cx}
-                cy={cy}
-                r={32}
-                fill="none"
-                stroke="hsl(var(--primary))"
-                animate={{ r: [32, 75], opacity: [0.35, 0] }}
-                transition={{ duration: 3, repeat: Infinity, delay: 1.2, ease: "easeOut" }}
-              />
-            </>
+            <motion.rect
+              x={150}
+              y={20}
+              width={120}
+              height={32}
+              rx={16}
+              fill="none"
+              stroke="hsl(var(--primary))"
+              animate={{ opacity: [0.6, 0], scale: [1, 1.15] }}
+              style={{ transformOrigin: "210px 36px" }}
+              transition={{ duration: 2.4, repeat: Infinity, ease: "easeOut" }}
+            />
           )}
 
-          {/* Core */}
-          <circle
-            cx={cx}
-            cy={cy}
-            r={32}
-            fill="hsl(var(--primary))"
-            opacity={fullBright ? 1 : 0.9}
-            filter="url(#rmEcoGlow)"
-          />
-          <circle
-            cx={cx}
-            cy={cy}
-            r={32}
-            fill="none"
-            stroke="hsl(var(--background))"
-            strokeOpacity="0.4"
-            strokeWidth="1"
-          />
-          <text x={cx} y={cy + 5} textAnchor="middle" fontSize="13" fontWeight="700" fill="hsl(var(--background))">
-            Borna
+          {/* foundation baseline */}
+          <line x1={50} y1={372} x2={370} y2={372} stroke="hsl(var(--primary))" strokeOpacity="0.4" strokeWidth="1.25" />
+          <text x={210} y={392} textAnchor="middle" fontSize="10" fill="hsl(var(--muted-foreground))" letterSpacing="2">
+            UNIFIED OPERATING SYSTEM
           </text>
         </svg>
       </div>
