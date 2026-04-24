@@ -49,7 +49,7 @@ const CareHero = () => {
             <p className="text-[11px] uppercase tracking-wider text-primary mt-3 font-semibold">Patient experience</p>
           </div>
           <div
-            className="rounded-2xl p-3 md:p-4"
+            className="rounded-2xl p-3 md:p-4 flex-1 min-w-0"
             style={{
               background: "rgba(255,255,255,0.04)",
               border: "0.5px solid rgba(255,255,255,0.1)",
