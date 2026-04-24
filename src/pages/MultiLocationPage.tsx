@@ -46,45 +46,117 @@ const MultiLocationPage = () => (
             <div className="flex flex-row items-center gap-2 sm:gap-3"><Link to="/demo" className="gradient-btn whitespace-nowrap">Request Demo</Link><a href="#centralized-control" className="ghost-btn whitespace-nowrap">See How It Works</a></div>
           </motion.div>
           <motion.div {...fadeUp} className="relative flex items-center justify-center" aria-hidden="true">
-            <svg viewBox="0 0 320 320" className="w-full max-w-sm md:max-w-md mx-auto h-auto" preserveAspectRatio="xMidYMid meet">
+            <svg viewBox="0 0 480 380" className="w-full max-w-md md:max-w-lg mx-auto h-auto" preserveAspectRatio="xMidYMid meet">
               <defs>
-                <radialGradient id="ml-hub-grad" cx="40%" cy="35%">
-                  <stop offset="0%" stopColor="hsl(var(--primary))" stopOpacity="0.5" />
-                  <stop offset="100%" stopColor="hsl(var(--primary))" stopOpacity="0.08" />
-                </radialGradient>
-                <radialGradient id="ml-node-grad" cx="40%" cy="35%">
-                  <stop offset="0%" stopColor="hsl(var(--primary))" stopOpacity="0.25" />
+                <linearGradient id="ml-tile-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stopColor="hsl(var(--primary))" stopOpacity="0.18" />
                   <stop offset="100%" stopColor="hsl(var(--primary))" stopOpacity="0.04" />
-                </radialGradient>
+                </linearGradient>
+                <linearGradient id="ml-cmd-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stopColor="hsl(var(--primary))" stopOpacity="0.45" />
+                  <stop offset="100%" stopColor="hsl(var(--primary))" stopOpacity="0.1" />
+                </linearGradient>
+                <linearGradient id="ml-flow" x1="0%" y1="0%" x2="100%" y2="0%">
+                  <stop offset="0%" stopColor="hsl(var(--primary))" stopOpacity="0" />
+                  <stop offset="50%" stopColor="hsl(var(--primary))" stopOpacity="1" />
+                  <stop offset="100%" stopColor="hsl(var(--primary))" stopOpacity="0" />
+                </linearGradient>
+                <filter id="ml-glow" x="-50%" y="-50%" width="200%" height="200%">
+                  <feGaussianBlur stdDeviation="3" result="b" />
+                  <feMerge><feMergeNode in="b" /><feMergeNode in="SourceGraphic" /></feMerge>
+                </filter>
               </defs>
-              {/* Connection lines first */}
-              {["North Clinic", "East Branch", "South Office", "West Clinic", "Central HQ"].map((label, i) => {
-                const angle = (i * 72 - 90) * (Math.PI / 180);
-                const x = 160 + 105 * Math.cos(angle);
-                const y = 160 + 105 * Math.sin(angle);
+
+              {/* Subtle grid backdrop */}
+              <g opacity="0.06" stroke="hsl(var(--primary))" strokeWidth="0.5">
+                {Array.from({ length: 8 }).map((_, i) => (
+                  <line key={`gh-${i}`} x1="0" y1={i * 50} x2="480" y2={i * 50} />
+                ))}
+                {Array.from({ length: 10 }).map((_, i) => (
+                  <line key={`gv-${i}`} x1={i * 50} y1="0" x2={i * 50} y2="380" />
+                ))}
+              </g>
+
+              {/* Location tiles (left column) */}
+              {[
+                { y: 30, name: "North Clinic", meta: "412 patients" },
+                { y: 110, name: "East Branch", meta: "298 patients" },
+                { y: 190, name: "South Office", meta: "356 patients" },
+                { y: 270, name: "West Clinic", meta: "184 patients" },
+              ].map((loc, i) => {
+                const tx = 20, ty = loc.y, tw = 170, th = 60;
+                const cx = tx + tw, cy = ty + th / 2;
+                // Bezier into command panel left edge (320, 190)
+                const ex = 320, ey = 190;
+                const path = `M ${cx} ${cy} C ${cx + 60} ${cy}, ${ex - 60} ${ey}, ${ex} ${ey}`;
                 return (
-                  <line key={`l-${i}`} x1="160" y1="160" x2={x} y2={y} stroke="hsl(var(--primary))" strokeOpacity="0.35" strokeWidth="1" strokeDasharray="3 4" />
-                );
-              })}
-              {/* Hub */}
-              <circle cx="160" cy="160" r="32" fill="url(#ml-hub-grad)" stroke="hsl(var(--primary))" strokeWidth="1.5">
-                <animate attributeName="r" values="32;35;32" dur="3s" repeatCount="indefinite" />
-              </circle>
-              <text x="160" y="158" textAnchor="middle" className="fill-foreground" fontSize="11" fontWeight="700">Borna</text>
-              <text x="160" y="172" textAnchor="middle" className="fill-muted-foreground" fontSize="8">Central</text>
-              {/* Branch nodes */}
-              {["North Clinic", "East Branch", "South Office", "West Clinic", "Central HQ"].map((label, i) => {
-                const angle = (i * 72 - 90) * (Math.PI / 180);
-                const x = 160 + 105 * Math.cos(angle);
-                const y = 160 + 105 * Math.sin(angle);
-                const labelOffsetY = y < 160 ? -22 : 26;
-                return (
-                  <g key={label}>
-                    <circle cx={x} cy={y} r="14" fill="url(#ml-node-grad)" stroke="hsl(var(--primary))" strokeOpacity="0.5" strokeWidth="1" />
-                    <text x={x} y={y + labelOffsetY} textAnchor="middle" className="fill-foreground" fontSize="10" fontWeight="500">{label}</text>
+                  <g key={loc.name}>
+                    {/* connection path base */}
+                    <path d={path} fill="none" stroke="hsl(var(--primary))" strokeOpacity="0.25" strokeWidth="1.25" />
+                    {/* animated flow pulse */}
+                    <path d={path} fill="none" stroke="url(#ml-flow)" strokeWidth="2" strokeDasharray="40 220" strokeLinecap="round">
+                      <animate attributeName="stroke-dashoffset" from="260" to="0" dur="3s" begin={`${i * 0.5}s`} repeatCount="indefinite" />
+                    </path>
+                    {/* tile */}
+                    <rect x={tx} y={ty} width={tw} height={th} rx="10" fill="url(#ml-tile-grad)" stroke="hsl(var(--primary))" strokeOpacity="0.35" strokeWidth="1" />
+                    {/* status dot */}
+                    <circle cx={tx + 14} cy={ty + 14} r="3.5" fill="hsl(var(--primary))">
+                      <animate attributeName="opacity" values="0.4;1;0.4" dur="2s" begin={`${i * 0.3}s`} repeatCount="indefinite" />
+                    </circle>
+                    <text x={tx + 26} y={ty + 18} className="fill-foreground" fontSize="11" fontWeight="600">{loc.name}</text>
+                    <text x={tx + 14} y={ty + 36} className="fill-muted-foreground" fontSize="9">{loc.meta}</text>
+                    {/* mini sparkline */}
+                    <polyline
+                      points={`${tx + 14},${ty + 50} ${tx + 30},${ty + 46} ${tx + 46},${ty + 48} ${tx + 62},${ty + 42} ${tx + 78},${ty + 44} ${tx + 94},${ty + 38} ${tx + 110},${ty + 40}`}
+                      fill="none"
+                      stroke="hsl(var(--primary))"
+                      strokeOpacity="0.7"
+                      strokeWidth="1.25"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
                   </g>
                 );
               })}
+
+              {/* Central command panel */}
+              <g filter="url(#ml-glow)">
+                <rect x="320" y="120" width="140" height="140" rx="14" fill="url(#ml-cmd-grad)" stroke="hsl(var(--primary))" strokeWidth="1.5" />
+              </g>
+              {/* aura */}
+              <rect x="320" y="120" width="140" height="140" rx="14" fill="none" stroke="hsl(var(--primary))" strokeOpacity="0.3">
+                <animate attributeName="stroke-opacity" values="0.15;0.5;0.15" dur="3s" repeatCount="indefinite" />
+              </rect>
+
+              {/* Command panel content */}
+              <text x="390" y="148" textAnchor="middle" className="fill-primary" fontSize="8" fontWeight="600" letterSpacing="1.5">BORNA CENTRAL</text>
+              <line x1="338" y1="158" x2="442" y2="158" stroke="hsl(var(--primary))" strokeOpacity="0.3" strokeWidth="0.75" />
+
+              {/* KPI rows */}
+              <text x="338" y="176" className="fill-muted-foreground" fontSize="8">Locations</text>
+              <text x="442" y="176" textAnchor="end" className="fill-foreground" fontSize="10" fontWeight="700">4</text>
+
+              <text x="338" y="194" className="fill-muted-foreground" fontSize="8">Patients</text>
+              <text x="442" y="194" textAnchor="end" className="fill-foreground" fontSize="10" fontWeight="700">1,250</text>
+
+              <text x="338" y="212" className="fill-muted-foreground" fontSize="8">Uptime</text>
+              <text x="442" y="212" textAnchor="end" className="fill-primary" fontSize="10" fontWeight="700">99.9%</text>
+
+              {/* Mini bar chart */}
+              <g>
+                {[28, 18, 34, 22].map((h, i) => (
+                  <rect key={i} x={340 + i * 26} y={244 - h} width="16" height={h} rx="2" fill="hsl(var(--primary))" fillOpacity={0.35 + i * 0.15}>
+                    <animate attributeName="height" values={`${h * 0.4};${h};${h * 0.4}`} dur="3s" begin={`${i * 0.2}s`} repeatCount="indefinite" />
+                    <animate attributeName="y" values={`${244 - h * 0.4};${244 - h};${244 - h * 0.4}`} dur="3s" begin={`${i * 0.2}s`} repeatCount="indefinite" />
+                  </rect>
+                ))}
+              </g>
+
+              {/* Output: unified insights label */}
+              <g>
+                <rect x="180" y="335" width="120" height="28" rx="14" fill="hsl(var(--primary))" fillOpacity="0.12" stroke="hsl(var(--primary))" strokeOpacity="0.4" strokeWidth="1" />
+                <text x="240" y="353" textAnchor="middle" className="fill-primary" fontSize="10" fontWeight="600">Unified Operations</text>
+              </g>
             </svg>
           </motion.div>
         </div>
