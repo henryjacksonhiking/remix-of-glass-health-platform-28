@@ -39,19 +39,25 @@ const DentalPracticesPage = () => (
             <p className="text-muted-foreground text-lg leading-relaxed mb-8 max-w-lg">Borna AI helps dental practices attract more patients, improve retention, streamline operations, and increase production. From patient acquisition to long-term engagement, Borna connects every part of your dental practice into one intelligent system.</p>
             <div className="flex flex-row items-center gap-2 sm:gap-3"><Link to="/demo" className="gradient-btn whitespace-nowrap">Request Demo</Link><a href="#use-cases" className="ghost-btn whitespace-nowrap">See Dental Solutions</a></div>
           </motion.div>
-          <motion.div {...fadeUp} aria-hidden="true">
-            <svg viewBox="0 0 400 180" className="w-full max-w-md mx-auto">
-              {[{ x: 50, l: "Inquiry", icon: "📞" }, { x: 160, l: "Booked", icon: "📅" }, { x: 270, l: "Treated", icon: "🦷" }, { x: 380, l: "Follow-Up", icon: "💬" }].map((s, i) => (
-                <g key={s.l}>
-                  <circle cx={s.x} cy={60} r="16" className="fill-primary/10 stroke-primary/40" strokeWidth="1" />
-                  <text x={s.x} y={64} textAnchor="middle" fontSize="14">{s.icon}</text>
-                  <text x={s.x} y={90} textAnchor="middle" className="fill-foreground" fontSize="9" fontWeight="500">{s.l}</text>
-                  {i < 3 && <line x1={s.x + 16} y1={60} x2={s.x + 94} y2={60} className="stroke-primary/30" strokeWidth="1" />}
-                </g>
-              ))}
-              <circle cx="215" cy="140" r="14" className="fill-primary/10 stroke-primary/50" strokeWidth="1"><animate attributeName="r" values="14;16;14" dur="3s" repeatCount="indefinite" /></circle>
-              <text x="215" y="143" textAnchor="middle" className="fill-primary" fontSize="6" fontWeight="600">Borna AI</text>
-              {[50, 160, 270, 380].map((x) => (<line key={x} x1={x} y1={76} x2="215" y2="126" className="stroke-primary/15" strokeWidth="0.5" />))}
+          <motion.div {...fadeUp} aria-hidden="true" className="w-full">
+            <svg viewBox="0 0 480 280" className="w-full max-w-xl mx-auto h-auto" preserveAspectRatio="xMidYMid meet">
+              {[{ x: 60, l: "Inquiry", icon: "📞" }, { x: 200, l: "Booked", icon: "📅" }, { x: 340, l: "Treated", icon: "🦷" }, { x: 440, l: "Follow-Up", icon: "💬" }].map((s, i) => {
+                const positions = [60, 180, 300, 420];
+                const cx = positions[i];
+                return (
+                  <g key={s.l}>
+                    {i < 3 && <line x1={cx + 28} y1={90} x2={positions[i + 1] - 28} y2={90} className="stroke-primary/40" strokeWidth="1.5" strokeDasharray="4 3" />}
+                    <circle cx={cx} cy={90} r="28" className="fill-primary/15 stroke-primary/60" strokeWidth="1.5" />
+                    <text x={cx} y={98} textAnchor="middle" fontSize="24">{s.icon}</text>
+                    <text x={cx} y={140} textAnchor="middle" className="fill-foreground" fontSize="14" fontWeight="600">{s.l}</text>
+                  </g>
+                );
+              })}
+              <circle cx="240" cy="220" r="32" className="fill-primary/15 stroke-primary/70" strokeWidth="1.5">
+                <animate attributeName="r" values="30;34;30" dur="3s" repeatCount="indefinite" />
+              </circle>
+              <text x="240" y="225" textAnchor="middle" className="fill-primary" fontSize="13" fontWeight="700">Borna AI</text>
+              {[60, 180, 300, 420].map((x) => (<line key={x} x1={x} y1={118} x2="240" y2="190" className="stroke-primary/25" strokeWidth="1" />))}
             </svg>
           </motion.div>
         </div>
