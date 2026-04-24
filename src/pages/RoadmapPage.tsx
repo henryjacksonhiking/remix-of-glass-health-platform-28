@@ -124,7 +124,7 @@ const StatusBadge = ({ status }: { status: Status }) => {
   const b = map[status];
   return (
     <span
-      className={`inline-flex items-center px-2.5 py-1 rounded-full text-[11px] font-medium tracking-wide ${b.cls}`}
+      className={`inline-flex items-center px-2.5 py-1 rounded-full text-[11px] font-medium tracking-wide whitespace-nowrap ${b.cls}`}
       style={b.style}
     >
       {b.label}
