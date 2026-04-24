@@ -8,12 +8,12 @@ import { SparklesCore } from "@/components/ui/sparkles-core";
 import { useState } from "react";
 
 const lifecycleStages = [
-  { label: "Lead", desc: "First contact", color: "rgba(224,17,157,0.15)" },
-  { label: "Contact", desc: "Initial outreach", color: "rgba(224,17,157,0.2)" },
-  { label: "Appointment", desc: "Booked visit", color: "rgba(224,17,157,0.3)" },
-  { label: "Treatment", desc: "Service delivered", color: "rgba(224,17,157,0.4)" },
-  { label: "Follow-Up", desc: "Post-visit care", color: "rgba(224,17,157,0.5)" },
-  { label: "Retention", desc: "Long-term loyalty", color: "rgba(224,17,157,0.6)" },
+  { label: "Lead", desc: "First contact", color: "rgba(0,222,196,0.12)" },
+  { label: "Contact", desc: "Initial outreach", color: "rgba(0,222,196,0.18)" },
+  { label: "Appointment", desc: "Booked visit", color: "rgba(0,222,196,0.26)" },
+  { label: "Treatment", desc: "Service delivered", color: "rgba(0,222,196,0.34)" },
+  { label: "Follow-Up", desc: "Post-visit care", color: "rgba(0,222,196,0.42)" },
+  { label: "Retention", desc: "Long-term loyalty", color: "rgba(0,222,196,0.5)" },
 ];
 
 const capabilities = [
@@ -55,7 +55,7 @@ const BornaEngagePage = () => {
         <nav aria-label="breadcrumb" className="flex items-center gap-2 text-sm text-muted-foreground">
           <Link to="/" className="hover:text-foreground transition-colors">Home</Link><span>/</span>
           <Link to="/products" className="hover:text-foreground transition-colors">Products</Link><span>/</span>
-          <span style={{ color: '#E0119D' }}>Borna Engage</span>
+          <span style={{ color: '#00DEC4' }}>Borna Engage</span>
         </nav>
       </div>
 
@@ -66,10 +66,10 @@ const BornaEngagePage = () => {
           <div className="max-w-3xl mx-auto text-center">
             <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="inline-flex items-center gap-2 rounded-full border border-glass-border bg-glass px-4 py-1.5 text-sm text-muted-foreground mb-6">
               <span>Borna Engage</span>
-              <span style={{ color: '#E0119D' }}>CRM</span>
+              <span style={{ color: '#00DEC4' }}>CRM</span>
             </motion.div>
             <motion.h1 initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.1 }} className="hero-headline text-foreground mb-6">
-              A continuous <span className="bg-clip-text text-transparent" style={{ backgroundImage: 'linear-gradient(135deg, #E0119D, #00DEC4)' }}>patient lifecycle</span>, intelligently managed
+              A continuous <span className="bg-clip-text text-transparent" style={{ backgroundImage: 'linear-gradient(135deg, #00DEC4, #1435C1)' }}>patient lifecycle</span>, intelligently managed
             </motion.h1>
             <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 }} className="body-text mb-8">
               Track every patient from first lead contact through long-term retention. Automate follow-ups, campaigns, and lifecycle management — so no opportunity is lost.
@@ -84,13 +84,13 @@ const BornaEngagePage = () => {
             {lifecycleStages.map((stage, i) => (
               <div key={stage.label} className="flex items-center gap-3">
                 <div className="text-center">
-                  <div className="w-14 h-14 rounded-xl flex items-center justify-center mx-auto mb-1" style={{ background: stage.color, border: '1px solid rgba(224,17,157,0.2)' }}>
-                    <span className="text-xs font-medium" style={{ color: '#E0119D' }}>{i + 1}</span>
+                  <div className="w-14 h-14 rounded-xl flex items-center justify-center mx-auto mb-1" style={{ background: stage.color, border: '1px solid rgba(0,222,196,0.18)' }}>
+                    <span className="text-xs font-medium" style={{ color: '#00DEC4' }}>{i + 1}</span>
                   </div>
                   <div className="text-[11px] font-medium text-foreground">{stage.label}</div>
                   <div className="text-[9px]" style={{ color: 'rgba(255,255,255,0.4)' }}>{stage.desc}</div>
                 </div>
-                {i < lifecycleStages.length - 1 && <ArrowRight className="w-3.5 h-3.5 shrink-0 hidden md:block" style={{ color: '#E0119D' }} />}
+                {i < lifecycleStages.length - 1 && <ArrowRight className="w-3.5 h-3.5 shrink-0 hidden md:block" style={{ color: '#00DEC4' }} />}
               </div>
             ))}
           </motion.div>
@@ -129,7 +129,7 @@ const BornaEngagePage = () => {
             {capabilities.map((cap, i) => (
               <motion.div key={cap.title} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.08 }} className="rounded-xl p-6" style={{ background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.08)' }}>
                 <div className="w-10 h-10 rounded-lg flex items-center justify-center mb-4" style={{ background: 'rgba(224,17,157,0.12)' }}>
-                  <cap.icon className="w-5 h-5" style={{ color: '#E0119D' }} />
+                  <cap.icon className="w-5 h-5" style={{ color: '#00DEC4' }} />
                 </div>
                 <h3 className="text-base font-medium text-foreground mb-1">{cap.title}</h3>
                 <p className="text-sm text-muted-foreground leading-relaxed">{cap.desc}</p>
@@ -149,7 +149,7 @@ const BornaEngagePage = () => {
               <ul className="space-y-2">
                 {["Automatic lead capture", "Drip campaign sequences", "Conversion tracking", "Source attribution"].map(item => (
                   <li key={item} className="text-sm flex items-center gap-2" style={{ color: 'rgba(255,255,255,0.6)' }}>
-                    <span className="w-1.5 h-1.5 rounded-full shrink-0" style={{ background: '#E0119D' }} />{item}
+                    <span className="w-1.5 h-1.5 rounded-full shrink-0" style={{ background: '#00DEC4' }} />{item}
                   </li>
                 ))}
               </ul>
@@ -182,7 +182,7 @@ const BornaEngagePage = () => {
             ].map((s, i) => (
               <motion.div key={s.step} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.12 }} className="glass-panel p-5 text-center">
                 <div className="w-8 h-8 rounded-full flex items-center justify-center mx-auto mb-3" style={{ background: 'rgba(224,17,157,0.12)' }}>
-                  <span className="text-xs font-semibold" style={{ color: '#E0119D' }}>{s.step}</span>
+                  <span className="text-xs font-semibold" style={{ color: '#00DEC4' }}>{s.step}</span>
                 </div>
                 <h3 className="text-sm font-medium text-foreground mb-1">{s.title}</h3>
                 <p className="text-xs text-muted-foreground">{s.desc}</p>
@@ -208,7 +208,7 @@ const BornaEngagePage = () => {
             <Link to="/platform" className="ghost-btn px-8 py-3.5">Explore platform</Link>
           </div>
           <div className="relative w-full max-w-lg mx-auto h-32">
-            <SparklesCore className="w-full h-full" background="transparent" particleColor="#E0119D" particleDensity={80} minSize={0.4} maxSize={1.2} speed={2.5} />
+            <SparklesCore className="w-full h-full" background="transparent" particleColor="#00DEC4" particleDensity={80} minSize={0.4} maxSize={1.2} speed={2.5} />
           </div>
         </div>
       </section>
