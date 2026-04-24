@@ -347,47 +347,51 @@ const FAQ = () => {
 const KnowledgeFlow = () => {
   const reduce = useReducedMotion();
   return (
-    <div className="glass-panel p-8">
-      <svg viewBox="0 0 600 140" className="w-full h-auto">
+    <div className="glass-panel p-6 md:p-8">
+      <svg viewBox="0 0 600 160" className="w-full h-auto" preserveAspectRatio="xMidYMid meet">
         <defs>
           <radialGradient id="kf-hub" cx="50%" cy="50%" r="50%">
-            <stop offset="0%" stopColor="hsl(var(--primary))" stopOpacity="0.5" />
+            <stop offset="0%" stopColor="hsl(var(--primary))" stopOpacity="0.55" />
             <stop offset="100%" stopColor="hsl(var(--primary))" stopOpacity="0" />
           </radialGradient>
+          <filter id="kf-glow" x="-50%" y="-50%" width="200%" height="200%">
+            <feGaussianBlur stdDeviation="3" result="b" />
+            <feMerge><feMergeNode in="b" /><feMergeNode in="SourceGraphic" /></feMerge>
+          </filter>
         </defs>
         {/* Lines */}
-        <line x1="120" y1="70" x2="240" y2="70" stroke="hsl(var(--primary))" strokeOpacity="0.3" strokeDasharray="2 4" />
-        <line x1="360" y1="70" x2="480" y2="70" stroke="hsl(var(--primary))" strokeOpacity="0.3" strokeDasharray="2 4" />
+        <line x1="130" y1="80" x2="240" y2="80" stroke="hsl(var(--primary))" strokeOpacity="0.5" strokeWidth="1.25" strokeDasharray="3 5" />
+        <line x1="360" y1="80" x2="470" y2="80" stroke="hsl(var(--primary))" strokeOpacity="0.5" strokeWidth="1.25" strokeDasharray="3 5" />
         {!reduce && (
           <>
-            <circle r="3" fill="hsl(var(--primary))">
-              <animateMotion dur="3s" repeatCount="indefinite" path="M120 70 L240 70" />
+            <circle r="3.5" fill="hsl(var(--primary))">
+              <animateMotion dur="3s" repeatCount="indefinite" path="M130 80 L240 80" />
             </circle>
-            <circle r="3" fill="hsl(var(--primary))">
-              <animateMotion dur="3s" repeatCount="indefinite" path="M360 70 L480 70" />
+            <circle r="3.5" fill="hsl(var(--primary))">
+              <animateMotion dur="3s" repeatCount="indefinite" path="M360 80 L470 80" />
             </circle>
           </>
         )}
         {/* Nodes */}
-        <circle cx="80" cy="70" r="38" fill="hsl(var(--background))" stroke="hsl(var(--glass-border))" />
-        <circle cx="300" cy="70" r="55" fill="url(#kf-hub)" />
-        <circle cx="300" cy="70" r="42" fill="hsl(var(--background))" stroke="hsl(var(--primary))" strokeOpacity="0.5" />
-        <circle cx="520" cy="70" r="38" fill="hsl(var(--background))" stroke="hsl(var(--glass-border))" />
+        <circle cx="80" cy="80" r="46" fill="hsl(var(--background))" stroke="hsl(var(--primary))" strokeOpacity="0.45" strokeWidth="1.25" />
+        <circle cx="300" cy="80" r="64" fill="url(#kf-hub)" filter="url(#kf-glow)" />
+        <circle cx="300" cy="80" r="50" fill="hsl(var(--background))" stroke="hsl(var(--primary))" strokeOpacity="0.7" strokeWidth="1.5" />
+        <circle cx="520" cy="80" r="46" fill="hsl(var(--background))" stroke="hsl(var(--primary))" strokeOpacity="0.45" strokeWidth="1.25" />
         {/* Labels */}
-        <text x="80" y="74" textAnchor="middle" className="fill-foreground" fontSize="10">Knowledge</text>
-        <text x="300" y="68" textAnchor="middle" className="fill-foreground" fontSize="11" fontWeight="600">Borna AI</text>
-        <text x="300" y="80" textAnchor="middle" className="fill-foreground" fontSize="9" opacity="0.7">Platform</text>
-        <text x="520" y="74" textAnchor="middle" className="fill-foreground" fontSize="10">Outcomes</text>
+        <text x="80" y="85" textAnchor="middle" className="fill-foreground" fontSize="14" fontWeight="600">Knowledge</text>
+        <text x="300" y="76" textAnchor="middle" className="fill-foreground" fontSize="15" fontWeight="700">Borna AI</text>
+        <text x="300" y="92" textAnchor="middle" className="fill-muted-foreground" fontSize="11" fontWeight="500">Platform</text>
+        <text x="520" y="85" textAnchor="middle" className="fill-foreground" fontSize="14" fontWeight="600">Outcomes</text>
       </svg>
-      <div className="grid grid-cols-3 gap-3 mt-4 text-center">
+      <div className="grid grid-cols-3 gap-3 mt-5 text-center">
         <div>
-          <p className="text-xs text-muted-foreground">Insights & Guides</p>
+          <p className="text-sm md:text-base text-foreground font-medium">Insights & Guides</p>
         </div>
         <div>
-          <p className="text-xs text-primary font-medium">Borna AI Platform</p>
+          <p className="text-sm md:text-base text-primary font-semibold">Borna AI Platform</p>
         </div>
         <div>
-          <p className="text-xs text-muted-foreground">Better Operations</p>
+          <p className="text-sm md:text-base text-foreground font-medium">Better Operations</p>
         </div>
       </div>
     </div>
