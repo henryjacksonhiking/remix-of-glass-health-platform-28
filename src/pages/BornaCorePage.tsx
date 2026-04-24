@@ -7,17 +7,18 @@ import StandardFAQ from "@/components/sections/StandardFAQ";
 import { SparklesCore } from "@/components/ui/sparkles-core";
 import { useState } from "react";
 
+// Color mapping aligned with navbar dropdown system
 const inputNodes = [
-  { label: "Patient Data", icon: Database },
-  { label: "Communication", icon: Braces },
-  { label: "Events", icon: Zap },
-  { label: "Behavior", icon: Brain },
+  { label: "Patient Data", icon: Database, color: "#1435C1" },
+  { label: "Communication", icon: Braces, color: "#00DEC4" },
+  { label: "Events", icon: Zap, color: "#1435C1" },
+  { label: "Behavior", icon: Brain, color: "#00DEC4" },
 ];
 
 const outputNodes = [
-  { label: "Insights", icon: Cpu },
-  { label: "Automation", icon: Workflow },
-  { label: "Decisions", icon: ShieldCheck },
+  { label: "Insights", icon: Cpu, color: "#1435C1" },
+  { label: "Automation", icon: Workflow, color: "#00DEC4" },
+  { label: "Decisions", icon: ShieldCheck, color: "#00DEC4" },
 ];
 
 const capabilities = [
