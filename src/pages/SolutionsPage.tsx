@@ -723,83 +723,107 @@ const PlatformDiagram = () => {
     { label: "Communication", icon: MessageCircle },
     { label: "CRM", icon: Heart },
     { label: "Analytics", icon: BarChart3 },
-    { label: "AI", icon: Bot },
-    { label: "Patient Experience", icon: UserPlus },
+    { label: "Patient App", icon: UserPlus },
   ];
   return (
-    <div className="relative w-full max-w-md mx-auto aspect-square">
-      <svg viewBox="0 0 400 400" className="absolute inset-0 w-full h-full" preserveAspectRatio="xMidYMid meet">
-        <defs>
-          <radialGradient id="sol-platform-hub" cx="50%" cy="50%">
-            <stop offset="0%" stopColor="hsl(var(--primary))" stopOpacity="0.9" />
-            <stop offset="55%" stopColor="hsl(var(--primary))" stopOpacity="0.25" />
-            <stop offset="100%" stopColor="hsl(var(--primary))" stopOpacity="0" />
-          </radialGradient>
-        </defs>
-        {modules.map((_, i) => {
-          const angle = (i / modules.length) * Math.PI * 2 - Math.PI / 2;
-          // Line spans from just outside the hub to just before the label icon
-          const lineStartR = 38;
-          const lineEndR = 132;
-          const x1 = 200 + Math.cos(angle) * lineStartR;
-          const y1 = 200 + Math.sin(angle) * lineStartR;
-          const x2 = 200 + Math.cos(angle) * lineEndR;
-          const y2 = 200 + Math.sin(angle) * lineEndR;
+    <div className="relative w-full max-w-md mx-auto">
+      {/* Top row: solution modules */}
+      <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5 mb-6">
+        {modules.map((m, i) => {
+          const Icon = m.icon;
           return (
-            <g key={i}>
-              <line
-                x1={x1} y1={y1} x2={x2} y2={y2}
-                stroke="hsl(var(--primary))" strokeOpacity="0.45" strokeWidth="1"
-                strokeDasharray="3 4"
-              />
-              <circle r="2.5" fill="hsl(var(--primary))" opacity="0.85">
-                <animateMotion dur={`${4 + i * 0.4}s`} repeatCount="indefinite"
-                  path={`M${x1},${y1} L${x2},${y2}`} />
-                <animate attributeName="opacity" values="0;1;0" dur={`${4 + i * 0.4}s`} repeatCount="indefinite" />
-              </circle>
-            </g>
+            <motion.div
+              key={m.label}
+              initial={{ opacity: 0, y: -10 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: i * 0.08 }}
+              className="glass-panel px-2.5 py-3 flex flex-col items-center gap-1.5 text-center"
+            >
+              <span className="w-7 h-7 rounded-md flex items-center justify-center bg-gradient-to-br from-primary/35 to-primary/10 ring-1 ring-primary/30">
+                <Icon className="w-3.5 h-3.5 text-primary" strokeWidth={1.75} />
+              </span>
+              <span className="text-[10px] font-medium text-foreground leading-tight">{m.label}</span>
+            </motion.div>
           );
         })}
-        <circle cx="200" cy="200" r="60" fill="url(#sol-platform-hub)" />
-        <circle cx="200" cy="200" r="26" fill="hsl(var(--primary) / 0.3)" stroke="hsl(var(--primary))" strokeWidth="1.5">
-          <animate attributeName="r" values="26;30;26" dur="3s" repeatCount="indefinite" />
-        </circle>
-        <circle cx="200" cy="200" r="11" fill="hsl(var(--primary))" />
-        <text x="200" y="252" textAnchor="middle" className="fill-foreground" fontSize="14" fontWeight="600">Borna</text>
-      </svg>
-      {modules.map((m, i) => {
-        const Icon = m.icon;
-        const angle = (i / modules.length) * Math.PI * 2 - Math.PI / 2;
-        // Anchor each pill so its leading-edge icon sits exactly on the line endpoint (radius 132 / 400 = 33%).
-        // Match SVG coordinate space exactly — no container padding offset.
-        const endRPct = 33; // (132/400)*100
-        const x = 50 + Math.cos(angle) * endRPct;
-        const y = 50 + Math.sin(angle) * endRPct;
-        // Shift the pill outward along the angle so the icon (not the pill center) aligns with the endpoint.
-        // Icon is ~10px from the pill's leading edge; using translate based on angle for clean attachment.
-        const tx = Math.cos(angle) * 50; // % of own size — shifts pill so left/right icon meets line
-        const ty = Math.sin(angle) * 50;
-        return (
-          <motion.div
-            key={m.label}
-            initial={{ opacity: 0, scale: 0.8 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
-            transition={{ delay: i * 0.1 }}
-            className="absolute glass-panel px-2.5 py-1.5 flex items-center gap-1.5 shadow-[0_4px_16px_hsla(170,100%,43%,0.15)]"
-            style={{
-              left: `${x}%`,
-              top: `${y}%`,
-              transform: `translate(calc(-50% + ${tx}%), calc(-50% + ${ty}%))`,
-            }}
-          >
-            <span className="w-5 h-5 rounded-md flex items-center justify-center bg-gradient-to-br from-primary/35 to-primary/10 ring-1 ring-primary/30">
-              <Icon className="w-3 h-3 text-primary" strokeWidth={1.75} />
+      </div>
+
+      {/* Animated connection beams */}
+      <div className="relative h-14 -my-1">
+        <svg viewBox="0 0 400 56" preserveAspectRatio="none" className="absolute inset-0 w-full h-full">
+          <defs>
+            <linearGradient id="sol-beam-grad" x1="0%" y1="0%" x2="0%" y2="100%">
+              <stop offset="0%" stopColor="hsl(var(--primary))" stopOpacity="0" />
+              <stop offset="50%" stopColor="hsl(var(--primary))" stopOpacity="0.55" />
+              <stop offset="100%" stopColor="hsl(var(--primary))" stopOpacity="0" />
+            </linearGradient>
+          </defs>
+          {[50, 150, 250, 350].map((x, i) => (
+            <g key={x}>
+              <line x1={x} y1="0" x2="200" y2="56"
+                stroke="hsl(var(--primary))" strokeOpacity="0.2" strokeWidth="1" strokeDasharray="2 4" />
+              <circle r="2" fill="hsl(var(--primary))">
+                <animateMotion dur={`${2.4 + i * 0.3}s`} repeatCount="indefinite"
+                  path={`M${x},0 L200,56`} />
+                <animate attributeName="opacity" values="0;1;0" dur={`${2.4 + i * 0.3}s`} repeatCount="indefinite" />
+              </circle>
+              <circle r="1.8" fill="hsl(var(--primary))" opacity="0.7">
+                <animateMotion dur={`${2.8 + i * 0.25}s`} repeatCount="indefinite" begin={`${i * 0.4}s`}
+                  path={`M200,56 L${x},0`} />
+                <animate attributeName="opacity" values="0;0.9;0" dur={`${2.8 + i * 0.25}s`} repeatCount="indefinite" begin={`${i * 0.4}s`} />
+              </circle>
+            </g>
+          ))}
+        </svg>
+      </div>
+
+      {/* Unified platform core */}
+      <motion.div
+        initial={{ opacity: 0, scale: 0.95 }}
+        whileInView={{ opacity: 1, scale: 1 }}
+        viewport={{ once: true }}
+        transition={{ delay: 0.4 }}
+        className="relative glass-panel p-4 overflow-hidden"
+      >
+        <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-transparent to-primary/5 pointer-events-none" />
+        <div className="relative">
+          <div className="flex items-center justify-between mb-3">
+            <div className="flex items-center gap-2">
+              <span className="w-7 h-7 rounded-md bg-gradient-to-br from-primary to-primary/40 flex items-center justify-center shadow-[0_0_16px_hsla(170,100%,43%,0.45)]">
+                <Bot className="w-4 h-4 text-background" strokeWidth={2} />
+              </span>
+              <div>
+                <div className="text-[11px] font-semibold text-foreground leading-tight">Borna AI Platform</div>
+                <div className="text-[9px] text-muted-foreground">Unified data & intelligence layer</div>
+              </div>
+            </div>
+            <span className="flex items-center gap-1 text-[9px] text-primary">
+              <span className="relative flex h-1.5 w-1.5">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75" />
+                <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-primary" />
+              </span>
+              live
             </span>
-            <span className="text-[10px] font-medium text-foreground whitespace-nowrap">{m.label}</span>
-          </motion.div>
-        );
-      })}
+          </div>
+
+          <div className="grid grid-cols-3 gap-1.5">
+            {[
+              { label: "Shared CRM", icon: Heart },
+              { label: "Shared events", icon: Sparkles },
+              { label: "Shared insights", icon: BarChart3 },
+            ].map((s) => {
+              const Icon = s.icon;
+              return (
+                <div key={s.label} className="flex items-center gap-1.5 px-2 py-1.5 rounded-md bg-primary/5 ring-1 ring-primary/15">
+                  <Icon className="w-3 h-3 text-primary shrink-0" strokeWidth={1.75} />
+                  <span className="text-[9px] text-foreground/85 font-medium truncate">{s.label}</span>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </motion.div>
     </div>
   );
 };
