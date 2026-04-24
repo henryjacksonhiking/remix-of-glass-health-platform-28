@@ -39,14 +39,91 @@ const DsoMsoPage = () => (
             <p className="text-muted-foreground text-lg leading-relaxed mb-8 max-w-lg">Borna AI enables DSOs, MSOs, and multi-location healthcare groups to centralize operations, optimize performance, and scale efficiently. Unify communication, data, and workflows across all locations.</p>
             <div className="flex flex-row items-center gap-2 sm:gap-3"><Link to="/demo" className="gradient-btn whitespace-nowrap">Request Enterprise Demo</Link><Link to="/platform" className="ghost-btn whitespace-nowrap">Explore Platform</Link></div>
           </motion.div>
-          <motion.div {...fadeUp} className="flex items-center justify-center" aria-hidden="true">
-            <svg viewBox="0 0 340 340" className="w-72 h-72 md:w-80 md:h-80">
-              <circle cx="170" cy="170" r="18" className="fill-primary/15 stroke-primary" strokeWidth="1.5"><animate attributeName="r" values="18;20;18" dur="4s" repeatCount="indefinite" /></circle>
-              <text x="170" y="168" textAnchor="middle" className="fill-primary" fontSize="5" fontWeight="600">Borna AI</text>
-              <text x="170" y="176" textAnchor="middle" className="fill-muted-foreground" fontSize="4">Enterprise Platform</text>
-              {["Region 1", "Clinic A", "Practice B", "Network C", "Group D"].map((label, i) => { const angle = (i * 72 - 90) * (Math.PI / 180); const x = 170 + 85 * Math.cos(angle); const y = 170 + 85 * Math.sin(angle); return (<g key={label}><line x1="170" y1="170" x2={x} y2={y} className="stroke-primary/30" strokeWidth="0.8" /><circle cx={x} cy={y} r="10" className="fill-primary/10 stroke-primary/40" strokeWidth="0.8" /><text x={x} y={y + 3} textAnchor="middle" className="fill-foreground" fontSize="4.5">{label}</text></g>); })}
-              {["Clinic E", "Practice F", "Network G"].map((label, i) => { const angle = ((i * 120 + 30) - 90) * (Math.PI / 180); const x = 170 + 130 * Math.cos(angle); const y = 170 + 130 * Math.sin(angle); return (<g key={label}><line x1="170" y1="170" x2={x} y2={y} className="stroke-primary/20" strokeWidth="0.5" /><circle cx={x} cy={y} r="8" className="fill-primary/5 stroke-primary/30" strokeWidth="0.5" /><text x={x} y={y + 3} textAnchor="middle" className="fill-muted-foreground" fontSize="4">{label}</text></g>); })}
-            </svg>
+          <motion.div {...fadeUp} className="w-full" aria-hidden="true">
+            <div className="relative w-full max-w-lg mx-auto">
+              {/* Glow */}
+              <div className="absolute -inset-6 rounded-3xl opacity-60 blur-3xl pointer-events-none" style={{ background: "radial-gradient(circle at 50% 50%, rgba(0,222,196,0.25), rgba(74,127,255,0.12) 60%, transparent 75%)" }} />
+
+              {/* Dashboard window */}
+              <div className="relative rounded-2xl overflow-hidden border border-glass-border backdrop-blur-xl" style={{ background: "linear-gradient(145deg, rgba(20,28,55,0.85), rgba(13,21,53,0.95))" }}>
+                {/* Header */}
+                <div className="flex items-center justify-between px-4 py-3 border-b border-glass-border">
+                  <div className="flex items-center gap-2">
+                    <div className="w-2.5 h-2.5 rounded-full bg-destructive/70" />
+                    <div className="w-2.5 h-2.5 rounded-full bg-yellow-500/70" />
+                    <div className="w-2.5 h-2.5 rounded-full bg-primary/70" />
+                  </div>
+                  <span className="text-[11px] text-muted-foreground tracking-wider">Enterprise · 42 locations</span>
+                </div>
+
+                {/* KPI row */}
+                <div className="grid grid-cols-3 gap-3 p-4">
+                  {[
+                    { label: "Locations", value: "42", trend: "+3" },
+                    { label: "Active Patients", value: "18.4k", trend: "+12%" },
+                    { label: "Revenue MTD", value: "$2.1M", trend: "+8%" },
+                  ].map((kpi) => (
+                    <div key={kpi.label} className="rounded-lg p-3 border border-glass-border" style={{ background: "rgba(255,255,255,0.03)" }}>
+                      <p className="text-[10px] uppercase tracking-wider text-muted-foreground mb-1">{kpi.label}</p>
+                      <p className="text-lg font-bold text-foreground leading-none">{kpi.value}</p>
+                      <p className="text-[10px] text-primary mt-1 font-medium">{kpi.trend}</p>
+                    </div>
+                  ))}
+                </div>
+
+                {/* Region rows */}
+                <div className="px-4 pb-4 space-y-2">
+                  <p className="text-[10px] uppercase tracking-wider text-muted-foreground mb-2">Regional Performance</p>
+                  {[
+                    { region: "Northeast", clinics: 12, perf: 92 },
+                    { region: "Midwest", clinics: 9, perf: 78 },
+                    { region: "South", clinics: 14, perf: 85 },
+                    { region: "West Coast", clinics: 7, perf: 88 },
+                  ].map((r, i) => (
+                    <motion.div
+                      key={r.region}
+                      initial={{ opacity: 0, x: -10 }}
+                      whileInView={{ opacity: 1, x: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ delay: 0.1 + i * 0.08, duration: 0.4 }}
+                      className="flex items-center gap-3 rounded-lg px-3 py-2 border border-glass-border"
+                      style={{ background: "rgba(255,255,255,0.02)" }}
+                    >
+                      <div className="w-1 h-8 rounded-full bg-primary/60" />
+                      <div className="flex-1 min-w-0">
+                        <p className="text-xs font-semibold text-foreground">{r.region}</p>
+                        <p className="text-[10px] text-muted-foreground">{r.clinics} clinics</p>
+                      </div>
+                      <div className="flex-1 max-w-[120px]">
+                        <div className="h-1.5 rounded-full overflow-hidden" style={{ background: "rgba(255,255,255,0.06)" }}>
+                          <motion.div
+                            initial={{ width: 0 }}
+                            whileInView={{ width: `${r.perf}%` }}
+                            viewport={{ once: true }}
+                            transition={{ delay: 0.3 + i * 0.08, duration: 0.8 }}
+                            className="h-full rounded-full"
+                            style={{ background: "linear-gradient(90deg, rgba(0,222,196,0.9), rgba(74,127,255,0.9))" }}
+                          />
+                        </div>
+                      </div>
+                      <span className="text-xs font-semibold text-primary tabular-nums w-8 text-right">{r.perf}%</span>
+                    </motion.div>
+                  ))}
+                </div>
+
+                {/* Footer */}
+                <div className="flex items-center justify-between px-4 py-2.5 border-t border-glass-border" style={{ background: "rgba(0,0,0,0.2)" }}>
+                  <div className="flex items-center gap-2">
+                    <span className="relative flex w-2 h-2">
+                      <span className="absolute inline-flex h-full w-full rounded-full bg-primary opacity-60 animate-ping" />
+                      <span className="relative inline-flex rounded-full h-2 w-2 bg-primary" />
+                    </span>
+                    <span className="text-[10px] text-muted-foreground">Synced across all locations</span>
+                  </div>
+                  <span className="text-[10px] text-muted-foreground">live</span>
+                </div>
+              </div>
+            </div>
           </motion.div>
         </div>
       </div>
