@@ -519,7 +519,7 @@ const OtherProducts = () => {
 /* Refined abstract diagrams per product — on-brand, no placeholder shapes */
 const ConceptDiagram = ({ slug, color }: { slug: string; color: string }) => {
   if (slug === "connect") {
-    // 4 channel icons (left) → converging lines → glowing hub (right)
+    // 4 channel icons (left) → converging gradient lines → glowing hub (right)
     const channels = [
       { Icon: Phone, y: 14 },
       { Icon: MessageSquare, y: 36 },
@@ -529,13 +529,24 @@ const ConceptDiagram = ({ slug, color }: { slug: string; color: string }) => {
     const hubX = 168;
     const hubY = 47;
     return (
-      <svg width="200" height="94" viewBox="0 0 200 94" fill="none" aria-hidden>
+      <svg viewBox="0 0 200 94" fill="none" aria-hidden className="w-full h-auto max-w-[280px] px-3">
         <defs>
+          <linearGradient id="connect-line" x1="0" y1="0" x2="1" y2="0">
+            <stop offset="0%" stopColor={color} stopOpacity="0.15" />
+            <stop offset="100%" stopColor={color} stopOpacity="0.85" />
+          </linearGradient>
           <radialGradient id="connect-hub-glow" cx="50%" cy="50%" r="50%">
-            <stop offset="0%" stopColor={color} stopOpacity="0.55" />
-            <stop offset="60%" stopColor={color} stopOpacity="0.15" />
+            <stop offset="0%" stopColor={color} stopOpacity="0.7" />
+            <stop offset="55%" stopColor={color} stopOpacity="0.2" />
             <stop offset="100%" stopColor={color} stopOpacity="0" />
           </radialGradient>
+          <filter id="connect-glow" x="-50%" y="-50%" width="200%" height="200%">
+            <feGaussianBlur stdDeviation="1.4" result="b" />
+            <feMerge>
+              <feMergeNode in="b" />
+              <feMergeNode in="SourceGraphic" />
+            </feMerge>
+          </filter>
         </defs>
         {channels.map((c, i) => (
           <line
@@ -544,19 +555,16 @@ const ConceptDiagram = ({ slug, color }: { slug: string; color: string }) => {
             y1={c.y}
             x2={hubX}
             y2={hubY}
-            stroke={color}
-            strokeOpacity="0.35"
-            strokeWidth="0.7"
+            stroke="url(#connect-line)"
+            strokeWidth="1"
           />
         ))}
-        {/* Hub glow halo */}
-        <circle cx={hubX} cy={hubY} r="18" fill="url(#connect-hub-glow)" />
-        <circle cx={hubX} cy={hubY} r="6" fill={color} />
-        <circle cx={hubX} cy={hubY} r="6" fill="none" stroke={color} strokeOpacity="0.6" strokeWidth="0.8" />
-        {/* Channel icons via foreignObject */}
+        <circle cx={hubX} cy={hubY} r="22" fill="url(#connect-hub-glow)" />
+        <circle cx={hubX} cy={hubY} r="7" fill={color} filter="url(#connect-glow)" />
+        <circle cx={hubX} cy={hubY} r="7" fill="none" stroke={color} strokeOpacity="0.7" strokeWidth="0.8" />
         {channels.map(({ Icon, y }, i) => (
-          <foreignObject key={i} x="14" y={y - 8} width="20" height="20">
-            <Icon className="w-4 h-4" style={{ color, opacity: 0.9 }} />
+          <foreignObject key={i} x="14" y={y - 8} width="22" height="22">
+            <Icon className="w-4 h-4" style={{ color, opacity: 0.95 }} />
           </foreignObject>
         ))}
       </svg>
@@ -564,11 +572,10 @@ const ConceptDiagram = ({ slug, color }: { slug: string; color: string }) => {
   }
 
   if (slug === "insight") {
-    // Bar chart with sparkline overlay
     const bars = [22, 34, 28, 46, 38, 56];
     const maxH = 60;
     return (
-      <svg width="200" height="94" viewBox="0 0 200 94" fill="none" aria-hidden>
+      <svg viewBox="0 0 200 94" fill="none" aria-hidden className="w-full h-auto max-w-[280px] px-3">
         <defs>
           <linearGradient id="insight-bar" x1="0" y1="0" x2="0" y2="1">
             <stop offset="0%" stopColor={color} stopOpacity="0.85" />
@@ -594,7 +601,6 @@ const ConceptDiagram = ({ slug, color }: { slug: string; color: string }) => {
             fill="url(#insight-bar)"
           />
         ))}
-        {/* Sparkline trending up */}
         <polyline
           points={bars.map((h, i) => `${28 + i * 27},${maxH + 16 - h - 4}`).join(" ")}
           fill="none"
@@ -605,23 +611,30 @@ const ConceptDiagram = ({ slug, color }: { slug: string; color: string }) => {
           opacity="0.95"
           filter="url(#insight-glow)"
         />
-        {/* Endpoint dot */}
         <circle cx={28 + 5 * 27} cy={maxH + 16 - bars[5] - 4} r="2.4" fill={color} filter="url(#insight-glow)" />
       </svg>
     );
   }
 
   if (slug === "engage") {
-    // Patient → Active → Retained on a curved path with arrow
     const nodes = [
       { x: 30, y: 56, label: "Patient" },
       { x: 100, y: 30, label: "Active" },
       { x: 170, y: 56, label: "Retained" },
     ];
     return (
-      <svg width="200" height="94" viewBox="0 0 200 94" fill="none" aria-hidden>
+      <svg viewBox="0 0 200 94" fill="none" aria-hidden className="w-full h-auto max-w-[280px] px-3">
         <defs>
-          <filter id="engage-glow" x="-20%" y="-20%" width="140%" height="140%">
+          <linearGradient id="engage-path" x1="0" y1="0" x2="1" y2="0">
+            <stop offset="0%" stopColor={color} stopOpacity="0.4" />
+            <stop offset="50%" stopColor={color} stopOpacity="1" />
+            <stop offset="100%" stopColor="#E0119D" stopOpacity="0.6" />
+          </linearGradient>
+          <radialGradient id="engage-node-glow" cx="50%" cy="50%" r="50%">
+            <stop offset="0%" stopColor={color} stopOpacity="0.6" />
+            <stop offset="100%" stopColor={color} stopOpacity="0" />
+          </radialGradient>
+          <filter id="engage-glow" x="-50%" y="-50%" width="200%" height="200%">
             <feGaussianBlur stdDeviation="1.6" result="b" />
             <feMerge>
               <feMergeNode in="b" />
@@ -635,21 +648,21 @@ const ConceptDiagram = ({ slug, color }: { slug: string; color: string }) => {
         <path
           d={`M ${nodes[0].x} ${nodes[0].y} Q ${nodes[1].x} ${nodes[1].y - 18} ${nodes[2].x - 6} ${nodes[2].y - 2}`}
           fill="none"
-          stroke={color}
-          strokeOpacity="0.85"
-          strokeWidth="1.2"
+          stroke="url(#engage-path)"
+          strokeWidth="1.6"
           strokeLinecap="round"
           markerEnd="url(#engage-arrow)"
           filter="url(#engage-glow)"
         />
         {nodes.map((n) => (
           <g key={n.label}>
-            <circle cx={n.x} cy={n.y} r="4" fill={color} filter="url(#engage-glow)" />
+            <circle cx={n.x} cy={n.y} r="14" fill="url(#engage-node-glow)" />
+            <circle cx={n.x} cy={n.y} r="4.5" fill={color} filter="url(#engage-glow)" />
             <text
               x={n.x}
-              y={n.y + 16}
+              y={n.y + 18}
               fontSize="8"
-              fill="rgba(255,255,255,0.78)"
+              fill="rgba(255,255,255,0.85)"
               textAnchor="middle"
               fontWeight="500"
             >
@@ -662,7 +675,6 @@ const ConceptDiagram = ({ slug, color }: { slug: string; color: string }) => {
   }
 
   if (slug === "core") {
-    // Sparse organic neural cluster — 6 nodes, varied sizes, partial links, 2 pulsing
     const nodes = [
       { x: 38, y: 30, r: 3 },
       { x: 70, y: 60, r: 4.5, pulse: 0 },
@@ -671,13 +683,20 @@ const ConceptDiagram = ({ slug, color }: { slug: string; color: string }) => {
       { x: 162, y: 34, r: 3.5 },
       { x: 175, y: 64, r: 2.5 },
     ];
-    // Curated, sparse edges
     const edges: [number, number][] = [
       [0, 1], [1, 2], [2, 3], [1, 3], [3, 4], [4, 5], [3, 5],
     ];
     return (
-      <svg width="200" height="94" viewBox="0 0 200 94" fill="none" aria-hidden>
+      <svg viewBox="0 0 200 94" fill="none" aria-hidden className="w-full h-auto max-w-[280px] px-3">
         <defs>
+          <linearGradient id="core-edge" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%" stopColor={color} stopOpacity="0.15" />
+            <stop offset="100%" stopColor={color} stopOpacity="0.65" />
+          </linearGradient>
+          <radialGradient id="core-node-glow" cx="50%" cy="50%" r="50%">
+            <stop offset="0%" stopColor={color} stopOpacity="0.55" />
+            <stop offset="100%" stopColor={color} stopOpacity="0" />
+          </radialGradient>
           <filter id="core-glow" x="-50%" y="-50%" width="200%" height="200%">
             <feGaussianBlur stdDeviation="1.8" result="b" />
             <feMerge>
@@ -693,19 +712,19 @@ const ConceptDiagram = ({ slug, color }: { slug: string; color: string }) => {
             y1={nodes[a].y}
             x2={nodes[b].x}
             y2={nodes[b].y}
-            stroke={color}
-            strokeOpacity="0.28"
-            strokeWidth="0.6"
+            stroke="url(#core-edge)"
+            strokeWidth="0.8"
           />
         ))}
         {nodes.map((n, i) => (
           <g key={i}>
+            <circle cx={n.x} cy={n.y} r={n.r * 2.6} fill="url(#core-node-glow)" />
             <circle
               cx={n.x}
               cy={n.y}
               r={n.r}
               fill={color}
-              opacity={0.9}
+              opacity={0.95}
               filter="url(#core-glow)"
               style={
                 n.pulse !== undefined
