@@ -1,7 +1,7 @@
 import { Helmet } from "react-helmet-async";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import { Calendar, FileText, CreditCard, Users, RefreshCw, Building2, ClipboardMinus, UserCheck, BellRing, Banknote, ArrowRight, ChevronDown } from "lucide-react";
+import { Calendar, FileText, CreditCard, Users, RefreshCw, Building2, ClipboardMinus, UserCheck, BellRing, Banknote, ArrowRight, ChevronDown, LayoutGrid, MapPin, Layers, MessageSquare, BarChart3, Cpu, Sparkles, Phone } from "lucide-react";
 import PageWrapper from "@/components/layout/PageWrapper";
 import StandardFAQ from "@/components/sections/StandardFAQ";
 import { SparklesCore } from "@/components/ui/sparkles-core";
