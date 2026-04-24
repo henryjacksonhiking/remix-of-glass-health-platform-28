@@ -135,12 +135,12 @@ const HeroSection = () => {
                         : undefined
                     }
                   >
-                    <div className="flex items-start justify-between mb-3 gap-2">
+                    <div className="flex items-start justify-between mb-3 gap-1.5">
                       <div
-                        className="w-10 h-10 rounded-lg flex items-center justify-center shrink-0"
+                        className="w-8 h-8 md:w-10 md:h-10 rounded-lg flex items-center justify-center shrink-0"
                         style={{ backgroundColor: `${p.accentColor}1F` }}
                       >
-                        <IconComp className="w-5 h-5" style={{ color: p.accentColor }} />
+                        <IconComp className="w-4 h-4 md:w-5 md:h-5" style={{ color: p.accentColor }} />
                       </div>
                       <StatusBadge slug={p.slug} />
                     </div>
