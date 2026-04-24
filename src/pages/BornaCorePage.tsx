@@ -92,40 +92,62 @@ const BornaCorePage = () => {
             </motion.div>
           </div>
 
-          {/* Central Intelligence System diagram */}
-          <motion.div initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} transition={{ delay: 0.4, duration: 0.6 }} className="mt-16 flex items-center justify-center">
-            <div className="flex flex-col md:flex-row items-center gap-6 md:gap-8">
+          {/* Central Intelligence System diagram — responsive: vertical stack on mobile, horizontal on desktop */}
+          <motion.div initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} transition={{ delay: 0.4, duration: 0.6 }} className="mt-16 flex items-center justify-center">
+            <div className="flex flex-col md:flex-row items-center gap-8 md:gap-10 w-full max-w-4xl px-2">
               {/* Input nodes */}
-              <div className="flex flex-col gap-3">
+              <div className="grid grid-cols-2 md:flex md:flex-col gap-3 md:gap-4 w-full md:w-auto">
                 {inputNodes.map((node, i) => (
-                  <motion.div key={node.label} initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.5 + i * 0.1 }} className="flex items-center gap-2">
-                    <div className="w-10 h-10 rounded-lg flex items-center justify-center" style={{ background: 'rgba(20,53,193,0.08)', border: '1px solid rgba(20,53,193,0.15)' }}>
-                      <node.icon className="w-4 h-4" style={{ color: '#1435C1' }} />
+                  <motion.div key={node.label} initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.5 + i * 0.1 }} className="flex items-center gap-2 md:gap-3 justify-start">
+                    <div
+                      className="w-12 h-12 md:w-14 md:h-14 rounded-xl flex items-center justify-center shrink-0"
+                      style={{
+                        background: `linear-gradient(135deg, ${node.color}26, ${node.color}0d)`,
+                        border: `1px solid ${node.color}55`,
+                        boxShadow: `0 0 18px ${node.color}33`,
+                      }}
+                    >
+                      <node.icon className="w-5 h-5 md:w-6 md:h-6" style={{ color: node.color }} strokeWidth={2} />
                     </div>
-                    <span className="text-[11px] text-muted-foreground hidden md:block">{node.label}</span>
-                    <ArrowRight className="w-3 h-3 hidden md:block" style={{ color: 'rgba(20,53,193,0.4)' }} />
+                    <span className="text-xs md:text-sm font-medium text-foreground/85 leading-tight">{node.label}</span>
+                    <ArrowRight className="w-3.5 h-3.5 hidden md:block ml-auto" style={{ color: `${node.color}88` }} />
                   </motion.div>
                 ))}
               </div>
 
               {/* Core center node */}
-              <div className="relative">
-                <div className="absolute inset-0 rounded-full blur-xl" style={{ background: 'rgba(20,53,193,0.15)' }} />
-                <div className="absolute inset-[-8px] rounded-full" style={{ border: '1px solid rgba(20,53,193,0.1)' }} />
-                <div className="relative w-24 h-24 rounded-full flex flex-col items-center justify-center" style={{ background: 'rgba(20,53,193,0.12)', border: '2px solid rgba(20,53,193,0.3)', boxShadow: '0 0 40px rgba(20,53,193,0.2), 0 0 80px rgba(20,53,193,0.1)' }}>
-                  <Cpu className="w-6 h-6 mb-1" style={{ color: '#1435C1' }} />
-                  <span className="text-[9px] font-medium" style={{ color: '#1435C1' }}>BORNA CORE</span>
+              <div className="relative my-2 md:my-0">
+                <div className="absolute inset-[-24px] rounded-full blur-2xl" style={{ background: "radial-gradient(circle, rgba(0,222,196,0.35), rgba(20,53,193,0.18) 60%, transparent)" }} />
+                <div className="absolute inset-[-10px] rounded-full" style={{ border: "1px solid rgba(20,53,193,0.18)" }} />
+                <div
+                  className="relative w-36 h-36 md:w-44 md:h-44 rounded-full flex flex-col items-center justify-center"
+                  style={{
+                    background: "linear-gradient(135deg, rgba(20,53,193,0.22), rgba(0,222,196,0.18))",
+                    border: "2px solid rgba(0,222,196,0.45)",
+                    boxShadow: "0 0 50px rgba(20,53,193,0.35), 0 0 90px rgba(0,222,196,0.18)",
+                  }}
+                >
+                  <Cpu className="w-9 h-9 md:w-11 md:h-11 mb-1.5" style={{ color: "#00DEC4" }} />
+                  <span className="text-[11px] md:text-xs font-bold tracking-wider" style={{ color: "#FFFFFF" }}>BORNA CORE</span>
+                  <span className="text-[9px] md:text-[10px] mt-0.5" style={{ color: "rgba(255,255,255,0.55)" }}>AI Engine</span>
                 </div>
               </div>
 
               {/* Output nodes */}
-              <div className="flex flex-col gap-3">
+              <div className="grid grid-cols-1 md:flex md:flex-col gap-3 md:gap-4 w-full md:w-auto">
                 {outputNodes.map((node, i) => (
-                  <motion.div key={node.label} initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.7 + i * 0.1 }} className="flex items-center gap-2">
-                    <ArrowRight className="w-3 h-3 hidden md:block" style={{ color: 'rgba(20,53,193,0.4)' }} />
-                    <span className="text-[11px] text-muted-foreground hidden md:block">{node.label}</span>
-                    <div className="w-10 h-10 rounded-lg flex items-center justify-center" style={{ background: 'rgba(0,222,196,0.08)', border: '1px solid rgba(0,222,196,0.15)' }}>
-                      <node.icon className="w-4 h-4 text-primary" />
+                  <motion.div key={node.label} initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.7 + i * 0.1 }} className="flex items-center gap-2 md:gap-3 justify-start md:justify-end">
+                    <ArrowRight className="w-3.5 h-3.5 hidden md:block" style={{ color: `${node.color}88` }} />
+                    <span className="text-xs md:text-sm font-medium text-foreground/85 leading-tight md:order-none order-2">{node.label}</span>
+                    <div
+                      className="w-12 h-12 md:w-14 md:h-14 rounded-xl flex items-center justify-center shrink-0 md:order-none"
+                      style={{
+                        background: `linear-gradient(135deg, ${node.color}26, ${node.color}0d)`,
+                        border: `1px solid ${node.color}55`,
+                        boxShadow: `0 0 18px ${node.color}33`,
+                      }}
+                    >
+                      <node.icon className="w-5 h-5 md:w-6 md:h-6" style={{ color: node.color }} strokeWidth={2} />
                     </div>
                   </motion.div>
                 ))}
