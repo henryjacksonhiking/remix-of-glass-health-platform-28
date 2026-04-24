@@ -422,8 +422,8 @@ const CareSpotlight = () => {
         <p className="text-center mt-10 text-[15px] text-foreground/70 max-w-2xl mx-auto">
           Improve patient experience, reduce administrative workload, and increase collections.
         </p>
-        <div className="text-center mt-6">
-          <Link to="/products/care" className="gradient-btn text-sm md:text-base px-7 py-3 inline-flex items-center gap-2">
+        <div className="text-center mt-6 flex justify-center">
+          <Link to="/products/care" className="gradient-btn text-sm md:text-base px-6 md:px-7 py-3 inline-flex items-center justify-center gap-2 whitespace-nowrap">
             Explore Borna Care <ArrowRight className="w-4 h-4" />
           </Link>
         </div>
