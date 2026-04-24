@@ -35,9 +35,9 @@ const ChiropracticPage = () => (
         <div className="grid md:grid-cols-2 gap-12 items-center">
           <motion.div {...fadeUp}>
             <Eyebrow>Chiropractic Clinics</Eyebrow>
-            <h1 className="text-3xl md:text-5xl font-bold text-foreground mb-6 leading-tight">AI platform for chiropractic clinics</h1>
-            <p className="text-muted-foreground text-lg leading-relaxed mb-8 max-w-lg">Borna AI helps chiropractic clinics attract new patients, improve retention, and manage recurring care plans through intelligent automation and communication.</p>
-            <div className="flex flex-row items-center gap-2 sm:gap-3"><Link to="/demo" className="gradient-btn whitespace-nowrap">Request Demo</Link><a href="#use-cases" className="ghost-btn whitespace-nowrap">See Chiropractic Solutions</a></div>
+            <h1 className="text-3xl md:text-5xl font-bold text-foreground mb-6 leading-tight break-words">AI platform for chiropractic clinics</h1>
+            <p className="text-muted-foreground text-base sm:text-lg leading-relaxed mb-8 max-w-lg">Borna AI helps chiropractic clinics attract new patients, improve retention, and manage recurring care plans through intelligent automation and communication.</p>
+            <div className="cta-row justify-start"><Link to="/demo" className="gradient-btn">Request Demo</Link><a href="#use-cases" className="ghost-btn">See Solutions</a></div>
           </motion.div>
           <motion.div {...fadeUp} className="flex items-center justify-center w-full" aria-hidden="true">
             <svg viewBox="0 0 360 360" className="w-full max-w-sm md:max-w-md h-auto" preserveAspectRatio="xMidYMid meet">

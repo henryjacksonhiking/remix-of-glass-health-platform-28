@@ -35,9 +35,9 @@ const DsoMsoPage = () => (
         <div className="grid md:grid-cols-2 gap-12 items-center">
           <motion.div {...fadeUp}>
             <Eyebrow>Enterprise Healthcare</Eyebrow>
-            <h1 className="text-3xl md:text-5xl font-bold text-foreground mb-6 leading-tight">Platform for multi-location healthcare groups (DSOs & MSOs)</h1>
-            <p className="text-muted-foreground text-lg leading-relaxed mb-8 max-w-lg">Borna AI enables DSOs, MSOs, and multi-location healthcare groups to centralize operations, optimize performance, and scale efficiently. Unify communication, data, and workflows across all locations.</p>
-            <div className="flex flex-row items-center gap-2 sm:gap-3"><Link to="/demo" className="gradient-btn whitespace-nowrap">Request Enterprise Demo</Link><Link to="/platform" className="ghost-btn whitespace-nowrap">Explore Platform</Link></div>
+            <h1 className="text-3xl md:text-5xl font-bold text-foreground mb-6 leading-tight break-words">Platform for multi-location healthcare groups (DSOs &amp; MSOs)</h1>
+            <p className="text-muted-foreground text-base sm:text-lg leading-relaxed mb-8 max-w-lg">Borna AI enables DSOs, MSOs, and multi-location healthcare groups to centralize operations, optimize performance, and scale efficiently. Unify communication, data, and workflows across all locations.</p>
+            <div className="cta-row justify-start"><Link to="/demo" className="gradient-btn">Enterprise Demo</Link><Link to="/platform" className="ghost-btn">Explore Platform</Link></div>
           </motion.div>
           <motion.div {...fadeUp} className="w-full" aria-hidden="true">
             <div className="relative w-full max-w-lg mx-auto">
