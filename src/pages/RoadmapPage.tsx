@@ -166,40 +166,48 @@ const ProgressBar = ({
 
 const HeroPath = () => {
   const reduce = useReducedMotion();
+  // Diagonal layout: bottom-left → top-right
   const nodes = [
-    { x: 60, color: "hsl(var(--primary))", opacity: 1, label: "Phase 1" },
-    { x: 170, color: "#F59E0B", opacity: 0.85, label: "Phase 2" },
-    { x: 280, color: "hsl(var(--primary))", opacity: 0.5, label: "Phase 3" },
-    { x: 390, color: "#94A3B8", opacity: 0.35, label: "Phase 4" },
-    { x: 500, color: "#94A3B8", opacity: 0.18, label: "Phase 5" },
+    { x: 60, y: 220, color: "hsl(var(--primary))", opacity: 1, label: "Phase 1" },
+    { x: 170, y: 180, color: "#F59E0B", opacity: 0.9, label: "Phase 2" },
+    { x: 280, y: 140, color: "hsl(var(--primary))", opacity: 0.75, label: "Phase 3" },
+    { x: 390, y: 100, color: "#94A3B8", opacity: 0.6, label: "Phase 4" },
+    { x: 500, y: 60, color: "#94A3B8", opacity: 0.45, label: "Phase 5" },
   ];
   return (
     <div className="relative w-full h-[260px] md:h-[320px]">
-      <svg viewBox="0 0 560 260" className="absolute inset-0 w-full h-full">
+      <svg viewBox="0 0 560 260" className="absolute inset-0 w-full h-full" preserveAspectRatio="xMidYMid meet">
         <defs>
-          <linearGradient id="rmHeroLine" x1="0" x2="1">
-            <stop offset="0%" stopColor="hsl(var(--primary))" stopOpacity="0.9" />
-            <stop offset="50%" stopColor="hsl(var(--primary))" stopOpacity="0.5" />
-            <stop offset="100%" stopColor="hsl(var(--primary))" stopOpacity="0.05" />
+          <linearGradient id="rmHeroLine" x1="0" y1="1" x2="1" y2="0">
+            <stop offset="0%" stopColor="hsl(var(--primary))" stopOpacity="1" />
+            <stop offset="60%" stopColor="hsl(var(--primary))" stopOpacity="0.7" />
+            <stop offset="100%" stopColor="hsl(var(--primary))" stopOpacity="0.25" />
           </linearGradient>
           <radialGradient id="rmHeroGlow">
-            <stop offset="0%" stopColor="hsl(var(--primary))" stopOpacity="0.5" />
+            <stop offset="0%" stopColor="hsl(var(--primary))" stopOpacity="0.4" />
             <stop offset="100%" stopColor="hsl(var(--primary))" stopOpacity="0" />
           </radialGradient>
+          <filter id="rmHeroBlur" x="-50%" y="-50%" width="200%" height="200%">
+            <feGaussianBlur stdDeviation="3" result="b" />
+            <feMerge><feMergeNode in="b" /><feMergeNode in="SourceGraphic" /></feMerge>
+          </filter>
         </defs>
-        <circle cx="280" cy="130" r="120" fill="url(#rmHeroGlow)" opacity="0.3" />
+        <circle cx="280" cy="140" r="140" fill="url(#rmHeroGlow)" opacity="0.4" />
+        {/* Diagonal trajectory line with glow */}
         <path
-          d="M 60 130 Q 200 90, 340 130 T 500 130"
+          d="M 60 220 C 170 200, 280 160, 390 110 S 480 70, 500 60"
           stroke="url(#rmHeroLine)"
-          strokeWidth="1.5"
+          strokeWidth="2.5"
+          strokeLinecap="round"
           fill="none"
+          filter="url(#rmHeroBlur)"
         />
         {nodes.map((n, i) => (
           <g key={i} opacity={n.opacity}>
             {i === 0 && !reduce && (
               <motion.circle
                 cx={n.x}
-                cy={130}
+                cy={n.y}
                 r={10}
                 fill={n.color}
                 opacity={0.3}
@@ -207,13 +215,14 @@ const HeroPath = () => {
                 transition={{ duration: 3, repeat: Infinity, ease: "easeOut" }}
               />
             )}
-            <circle cx={n.x} cy={130} r={i === 0 ? 7 : 5} fill={n.color} />
+            <circle cx={n.x} cy={n.y} r={i === 0 ? 8 : 6} fill={n.color} stroke="hsl(var(--background))" strokeWidth="1.5" />
             <text
               x={n.x}
-              y={160}
+              y={n.y + 22}
               textAnchor="middle"
-              fontSize="10"
-              fill="hsl(var(--muted-foreground))"
+              fontSize="12"
+              fontWeight="600"
+              fill="hsl(var(--foreground))"
             >
               {n.label}
             </text>
@@ -221,12 +230,12 @@ const HeroPath = () => {
         ))}
         {!reduce && (
           <motion.circle
-            r={4}
+            r={5}
             fill="hsl(var(--primary))"
-            initial={{ cx: 60, cy: 130 }}
-            animate={{ cx: [60, 170, 280, 390, 500], cy: [130, 110, 130, 130, 130] }}
+            initial={{ cx: 60, cy: 220 }}
+            animate={{ cx: [60, 170, 280, 390, 500], cy: [220, 180, 140, 100, 60] }}
             transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }}
-            style={{ filter: "drop-shadow(0 0 6px hsl(var(--primary)))" }}
+            style={{ filter: "drop-shadow(0 0 8px hsl(var(--primary)))" }}
           />
         )}
       </svg>
