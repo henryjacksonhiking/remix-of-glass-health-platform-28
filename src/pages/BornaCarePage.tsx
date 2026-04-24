@@ -5,6 +5,7 @@ import { Calendar, FileText, CreditCard, Users, RefreshCw, Building2, ClipboardM
 import PageWrapper from "@/components/layout/PageWrapper";
 import StandardFAQ from "@/components/sections/StandardFAQ";
 import { SparklesCore } from "@/components/ui/sparkles-core";
+import KeyTakeaways from "@/components/sections/KeyTakeaways";
 import { useState } from "react";
 
 /* ── Breadcrumb ── */
