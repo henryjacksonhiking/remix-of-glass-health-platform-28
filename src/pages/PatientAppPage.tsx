@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import { Smartphone, Calendar, MessageSquare, FileText, CreditCard, RotateCcw, ArrowRight, ChevronDown } from "lucide-react";
 import PageWrapper from "@/components/layout/PageWrapper";
 import StandardFAQ from "@/components/sections/StandardFAQ";
-import { SparklesCore } from "@/components/ui/sparkles-core";
+
 import { useState } from "react";
 
 const stages = [
@@ -221,8 +221,16 @@ const PatientAppPage = () => {
             <Link to="/demo" className="gradient-btn px-8 py-3.5">Request demo</Link>
             <Link to="/products/care" className="ghost-btn px-8 py-3.5">Explore Borna Care</Link>
           </div>
-          <div className="relative w-full max-w-lg mx-auto h-32">
-            <SparklesCore className="w-full h-full" background="transparent" particleColor="#ffffff" particleDensity={80} minSize={0.4} maxSize={1.2} speed={2} />
+          <div className="relative w-full max-w-lg mx-auto h-32 pointer-events-none">
+            {/* Soft brand glow — replaces star/sparkle visual */}
+            <div className="absolute inset-0 flex items-center justify-center">
+              <div className="w-72 h-24 rounded-full blur-3xl" style={{ background: "radial-gradient(ellipse, rgba(0,222,196,0.35), rgba(74,127,255,0.18) 55%, transparent 75%)" }} />
+            </div>
+            <div className="absolute inset-0 flex items-center justify-center gap-3">
+              <span className="w-1.5 h-1.5 rounded-full bg-primary/70 animate-[float_5s_ease-in-out_infinite]" />
+              <span className="w-2 h-2 rounded-full bg-primary animate-[float_6s_ease-in-out_infinite_0.5s]" />
+              <span className="w-1.5 h-1.5 rounded-full bg-primary/70 animate-[float_5.5s_ease-in-out_infinite_1s]" />
+            </div>
           </div>
         </div>
       </section>
