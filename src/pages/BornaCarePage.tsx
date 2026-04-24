@@ -523,26 +523,14 @@ const BornaCarePage = () => {
       </section>
 
       {/* SECTION 11 — Key Takeaways */}
-      <section className="py-12 md:py-20 border-t border-glass-border">
-        <div className="container mx-auto px-4 md:px-6 max-w-3xl">
-          <h2 className="section-headline text-foreground text-center mb-10">Key takeaways</h2>
-          <div className="space-y-4">
-            {[
-              "Borna Care is a full patient portal — scheduling, forms, payments, and communication in one platform",
-              "Both patients and staff benefit — dual-sided experience designed for both audiences",
-              "Built for multi-location practices — one system across all connected clinics",
-              "The first live module of the Borna ecosystem — with communication, CRM, and AI layers integrating as they launch",
-            ].map((item, i) => (
-              <motion.div key={i} initial={{ opacity: 0, y: 12 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.08 }} className="flex items-start gap-3 text-sm text-muted-foreground">
-                <span className="w-5 h-5 rounded-full bg-primary/10 flex items-center justify-center shrink-0 mt-0.5">
-                  <span className="text-[10px] text-primary font-medium">{i + 1}</span>
-                </span>
-                {item}
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
+      <KeyTakeaways
+        items={[
+          { icon: LayoutGrid, text: "Borna Care is a full patient portal — scheduling, forms, payments, and communication in one platform" },
+          { icon: UserCheck, text: "Both patients and staff benefit — dual-sided experience designed for both audiences" },
+          { icon: MapPin, text: "Built for multi-location practices — one system across all connected clinics" },
+          { icon: Layers, text: "The first live module of the Borna ecosystem — with communication, CRM, and AI layers integrating as they launch" },
+        ]}
+      />
 
       {/* SECTION 12 — FAQ */}
       <StandardFAQ items={faqItems} />
