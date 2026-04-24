@@ -35,9 +35,9 @@ const DsoMsoPage = () => (
         <div className="grid md:grid-cols-2 gap-12 items-center">
           <motion.div {...fadeUp}>
             <Eyebrow>Enterprise Healthcare</Eyebrow>
-            <h1 className="text-3xl md:text-5xl font-bold text-foreground mb-6 leading-tight">Platform for multi-location healthcare groups (DSOs & MSOs)</h1>
-            <p className="text-muted-foreground text-lg leading-relaxed mb-8 max-w-lg">Borna AI enables DSOs, MSOs, and multi-location healthcare groups to centralize operations, optimize performance, and scale efficiently. Unify communication, data, and workflows across all locations.</p>
-            <div className="flex flex-row items-center gap-2 sm:gap-3"><Link to="/demo" className="gradient-btn whitespace-nowrap">Request Enterprise Demo</Link><Link to="/platform" className="ghost-btn whitespace-nowrap">Explore Platform</Link></div>
+            <h1 className="text-3xl md:text-5xl font-bold text-foreground mb-6 leading-tight break-words">Platform for multi-location healthcare groups (DSOs &amp; MSOs)</h1>
+            <p className="text-muted-foreground text-base sm:text-lg leading-relaxed mb-8 max-w-lg">Borna AI enables DSOs, MSOs, and multi-location healthcare groups to centralize operations, optimize performance, and scale efficiently. Unify communication, data, and workflows across all locations.</p>
+            <div className="cta-row justify-start"><Link to="/demo" className="gradient-btn">Enterprise Demo</Link><Link to="/platform" className="ghost-btn">Explore Platform</Link></div>
           </motion.div>
           <motion.div {...fadeUp} className="w-full" aria-hidden="true">
             <div className="relative w-full max-w-lg mx-auto">
@@ -174,7 +174,7 @@ const DsoMsoPage = () => (
 
     <StandardFAQ items={faqData} />
 
-    <section className="py-12 md:py-20 relative overflow-hidden"><div className="container mx-auto px-4 md:px-6 relative z-10 text-center"><h2 className="text-2xl md:text-4xl font-bold text-foreground mb-4">Scale your healthcare network with Borna AI.</h2><p className="text-muted-foreground max-w-xl mx-auto mb-8">Centralize operations, optimize performance, and grow your organization — with full control from one enterprise platform.</p><div className="cta-row"><Link to="/demo" className="gradient-btn whitespace-nowrap">Request Enterprise Demo</Link><Link to="/platform" className="ghost-btn whitespace-nowrap">Explore Platform →</Link></div><div className="relative w-full max-w-lg mx-auto h-40 mt-8"><div className="absolute top-0 left-1/2 -translate-x-1/2 w-3/4 h-[2px] bg-gradient-to-r from-transparent via-primary to-transparent" /><SparklesCore className="w-full h-full" background="transparent" particleColor="#ffffff" particleDensity={80} minSize={0.6} maxSize={1.4} speed={3} /></div></div></section>
+    <section className="py-12 md:py-20 relative overflow-hidden"><div className="container mx-auto px-4 md:px-6 relative z-10 text-center"><h2 className="text-2xl md:text-4xl font-bold text-foreground mb-4 break-words">Scale your healthcare network with Borna AI.</h2><p className="text-muted-foreground max-w-xl mx-auto mb-8">Centralize operations, optimize performance, and grow your organization — with full control from one enterprise platform.</p><div className="cta-row"><Link to="/demo" className="gradient-btn">Enterprise Demo</Link><Link to="/platform" className="ghost-btn">Explore Platform →</Link></div><div className="relative w-full max-w-lg mx-auto h-40 mt-8"><div className="absolute top-0 left-1/2 -translate-x-1/2 w-3/4 h-[2px] bg-gradient-to-r from-transparent via-primary to-transparent" /><SparklesCore className="w-full h-full" background="transparent" particleColor="#ffffff" particleDensity={80} minSize={0.6} maxSize={1.4} speed={3} /></div></div></section>
   </PageWrapper>
 );
 export default DsoMsoPage;

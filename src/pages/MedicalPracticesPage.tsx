@@ -35,9 +35,9 @@ const MedicalPracticesPage = () => (
         <div className="grid md:grid-cols-2 gap-12 items-center">
           <motion.div {...fadeUp}>
             <Eyebrow>Medical Practices</Eyebrow>
-            <h1 className="text-3xl md:text-5xl font-bold text-foreground mb-6 leading-tight">AI platform for medical practices</h1>
-            <p className="text-muted-foreground text-lg leading-relaxed mb-8 max-w-lg">Borna AI helps medical practices improve patient engagement, streamline operations, and optimize performance through a unified platform. From patient acquisition to care coordination and follow-up, Borna connects every part of your practice.</p>
-            <div className="flex flex-row items-center gap-2 sm:gap-3"><Link to="/demo" className="gradient-btn whitespace-nowrap">Request Demo</Link><a href="#use-cases" className="ghost-btn whitespace-nowrap">Explore Healthcare Solutions</a></div>
+            <h1 className="text-3xl md:text-5xl font-bold text-foreground mb-6 leading-tight break-words">AI platform for medical practices</h1>
+            <p className="text-muted-foreground text-base sm:text-lg leading-relaxed mb-8 max-w-lg">Borna AI helps medical practices improve patient engagement, streamline operations, and optimize performance through a unified platform. From patient acquisition to care coordination and follow-up, Borna connects every part of your practice.</p>
+            <div className="cta-row justify-start"><Link to="/demo" className="gradient-btn">Request Demo</Link><a href="#use-cases" className="ghost-btn">See Solutions</a></div>
           </motion.div>
           <motion.div {...fadeUp} aria-hidden="true">
             <div className="space-y-3">

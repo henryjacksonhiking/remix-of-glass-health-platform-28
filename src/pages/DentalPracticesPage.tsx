@@ -35,9 +35,9 @@ const DentalPracticesPage = () => (
         <div className="grid md:grid-cols-2 gap-12 items-center">
           <motion.div {...fadeUp}>
             <Eyebrow>Dental Practices</Eyebrow>
-            <h1 className="text-3xl md:text-5xl font-bold text-foreground mb-6 leading-tight">AI-powered platform for dental practices</h1>
-            <p className="text-muted-foreground text-lg leading-relaxed mb-8 max-w-lg">Borna AI helps dental practices attract more patients, improve retention, streamline operations, and increase production. From patient acquisition to long-term engagement, Borna connects every part of your dental practice into one intelligent system.</p>
-            <div className="flex flex-row items-center gap-2 sm:gap-3"><Link to="/demo" className="gradient-btn whitespace-nowrap">Request Demo</Link><a href="#use-cases" className="ghost-btn whitespace-nowrap">See Dental Solutions</a></div>
+            <h1 className="text-3xl md:text-5xl font-bold text-foreground mb-6 leading-tight break-words">AI-powered platform for dental practices</h1>
+            <p className="text-muted-foreground text-base sm:text-lg leading-relaxed mb-8 max-w-lg">Borna AI helps dental practices attract more patients, improve retention, streamline operations, and increase production. From patient acquisition to long-term engagement, Borna connects every part of your dental practice into one intelligent system.</p>
+            <div className="cta-row justify-start"><Link to="/demo" className="gradient-btn">Request Demo</Link><a href="#use-cases" className="ghost-btn">See Solutions</a></div>
           </motion.div>
           <motion.div {...fadeUp} aria-hidden="true" className="w-full">
             <svg viewBox="0 0 480 280" className="w-full max-w-xl mx-auto h-auto" preserveAspectRatio="xMidYMid meet">
