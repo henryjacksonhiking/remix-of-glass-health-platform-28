@@ -329,15 +329,21 @@ const ComparisonSection = () => (
         A quick-scan reference showing which capabilities are included in each plan.
       </motion.p>
 
-      <div className="max-w-4xl mx-auto overflow-x-auto">
+      <div className="max-w-4xl mx-auto overflow-x-auto rounded-2xl" style={{ border: "1px solid rgba(255,255,255,0.06)" }}>
         <motion.table variants={fadeUp} viewport={{ once: true }} whileInView="visible" initial="hidden" transition={{ delay: 0.15 }}
-          className="w-full text-sm min-w-[600px]">
+          className="w-full text-sm min-w-[640px] table-fixed">
+          <colgroup>
+            <col style={{ width: "34%" }} />
+            <col style={{ width: "22%" }} />
+            <col style={{ width: "22%" }} />
+            <col style={{ width: "22%" }} />
+          </colgroup>
           <thead>
             <tr style={{ borderBottom: "1px solid rgba(0,222,196,0.15)" }}>
-              <th scope="col" className="text-left py-3 px-4 font-medium text-muted-foreground text-xs uppercase tracking-wider">Feature</th>
-              <th scope="col" className="text-left py-3 px-4 font-medium text-muted-foreground text-xs uppercase tracking-wider">Starter</th>
-              <th scope="col" className="text-left py-3 px-4 font-medium text-xs uppercase tracking-wider text-primary" style={{ background: "rgba(0,222,196,0.03)" }}>Growth</th>
-              <th scope="col" className="text-left py-3 px-4 font-medium text-muted-foreground text-xs uppercase tracking-wider">Enterprise</th>
+              <th scope="col" className="text-left py-3.5 px-4 font-medium text-muted-foreground text-xs uppercase tracking-wider">Feature</th>
+              <th scope="col" className="text-center py-3.5 px-4 font-medium text-muted-foreground text-xs uppercase tracking-wider">Starter</th>
+              <th scope="col" className="text-center py-3.5 px-4 font-medium text-xs uppercase tracking-wider text-primary" style={{ background: "rgba(0,222,196,0.04)" }}>Growth</th>
+              <th scope="col" className="text-center py-3.5 px-4 font-medium text-muted-foreground text-xs uppercase tracking-wider">Enterprise</th>
             </tr>
           </thead>
           <tbody>
@@ -345,10 +351,10 @@ const ComparisonSection = () => (
               <tr key={row.feature}
                 className="transition-colors duration-200 hover:bg-white/[0.03]"
                 style={{ borderBottom: "1px solid rgba(0,222,196,0.08)" }}>
-                <th scope="row" className="text-left py-3 px-4 font-medium text-muted-foreground">{row.feature}</th>
-                <td className="py-3 px-4 text-muted-foreground">{renderCellContent(row.starter)}</td>
-                <td className="py-3 px-4 text-foreground" style={{ background: "rgba(0,222,196,0.03)" }}>{renderCellContent(row.growth)}</td>
-                <td className="py-3 px-4 text-muted-foreground">{renderCellContent(row.enterprise)}</td>
+                <th scope="row" className="text-left py-3.5 px-4 font-medium text-foreground/90">{row.feature}</th>
+                <td className="py-3.5 px-4 text-center text-muted-foreground align-middle">{renderCellContent(row.starter)}</td>
+                <td className="py-3.5 px-4 text-center text-foreground align-middle" style={{ background: "rgba(0,222,196,0.03)" }}>{renderCellContent(row.growth)}</td>
+                <td className="py-3.5 px-4 text-center text-muted-foreground align-middle">{renderCellContent(row.enterprise)}</td>
               </tr>
             ))}
           </tbody>
