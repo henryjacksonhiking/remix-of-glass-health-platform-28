@@ -57,29 +57,29 @@ const DesktopFrame = ({ children, className = "" }: { children: React.ReactNode;
 
 /* ── Scheduling Screen Mockup ── */
 const SchedulingScreen = () => (
-  <div className="p-4 space-y-3">
+  <div className="p-2.5 md:p-4 space-y-2 md:space-y-3">
     <div className="flex items-center justify-between">
-      <h4 className="text-sm font-medium text-foreground">Book appointment</h4>
-      <span className="text-[10px] px-2 py-0.5 rounded-full" style={{ background: 'rgba(0,222,196,0.15)', color: '#00DEC4' }}>Online</span>
+      <h4 className="text-xs md:text-sm font-medium text-foreground">Book appointment</h4>
+      <span className="text-[9px] md:text-[10px] px-1.5 md:px-2 py-0.5 rounded-full" style={{ background: 'rgba(0,222,196,0.15)', color: '#00DEC4' }}>Online</span>
     </div>
-    <div className="grid grid-cols-7 gap-1">
+    <div className="grid grid-cols-7 gap-0.5 md:gap-1">
       {["M","T","W","T","F","S","S"].map((d, i) => (
-        <div key={i} className="text-center text-[9px] py-1" style={{ color: 'rgba(255,255,255,0.4)' }}>{d}</div>
+        <div key={i} className="text-center text-[8px] md:text-[9px] py-0.5 md:py-1" style={{ color: 'rgba(255,255,255,0.4)' }}>{d}</div>
       ))}
       {Array.from({ length: 28 }, (_, i) => (
-        <div key={i} className={`text-center text-[10px] py-1.5 rounded ${i === 14 ? 'bg-primary text-primary-foreground font-medium' : ''}`} style={i !== 14 ? { color: 'rgba(255,255,255,0.5)' } : {}}>
+        <div key={i} className={`text-center text-[8px] md:text-[10px] py-0.5 md:py-1.5 rounded ${i === 14 ? 'bg-primary text-primary-foreground font-medium' : ''}`} style={i !== 14 ? { color: 'rgba(255,255,255,0.5)' } : {}}>
           {i + 1}
         </div>
       ))}
     </div>
-    <div className="space-y-1.5">
+    <div className="space-y-1 md:space-y-1.5">
       {["9:00 AM", "10:30 AM", "2:00 PM"].map((t, i) => (
-        <div key={t} className={`px-3 py-2 rounded-lg text-xs ${i === 1 ? 'border-primary' : ''}`} style={{ background: i === 1 ? 'rgba(0,222,196,0.1)' : 'rgba(255,255,255,0.04)', border: `1px solid ${i === 1 ? 'rgba(0,222,196,0.3)' : 'rgba(255,255,255,0.08)'}`, color: i === 1 ? '#00DEC4' : 'rgba(255,255,255,0.6)' }}>
+        <div key={t} className={`px-2 md:px-3 py-1 md:py-2 rounded-lg text-[10px] md:text-xs ${i === 1 ? 'border-primary' : ''}`} style={{ background: i === 1 ? 'rgba(0,222,196,0.1)' : 'rgba(255,255,255,0.04)', border: `1px solid ${i === 1 ? 'rgba(0,222,196,0.3)' : 'rgba(255,255,255,0.08)'}`, color: i === 1 ? '#00DEC4' : 'rgba(255,255,255,0.6)' }}>
           {t}
         </div>
       ))}
     </div>
-    <button className="w-full py-2.5 rounded-lg text-xs font-medium text-primary-foreground" style={{ background: 'linear-gradient(135deg, #00DEC4, #00479B)' }}>
+    <button className="w-full py-1.5 md:py-2.5 rounded-lg text-[10px] md:text-xs font-medium text-primary-foreground" style={{ background: 'linear-gradient(135deg, #00DEC4, #00479B)' }}>
       Confirm appointment
     </button>
   </div>
