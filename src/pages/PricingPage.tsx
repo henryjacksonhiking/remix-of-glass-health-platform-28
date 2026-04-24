@@ -414,7 +414,7 @@ const ValueSection = () => (
       {/* Convergence diagram — fragmented tools merge into Borna AI */}
       <motion.div variants={fadeUp} viewport={{ once: true }} whileInView="visible" initial="hidden" transition={{ delay: 0.25 }}
         className="mt-14 w-full max-w-2xl mx-auto" aria-hidden="true">
-        <svg viewBox="0 0 600 280" className="w-full h-auto" preserveAspectRatio="xMidYMid meet">
+        <svg viewBox="0 0 640 320" className="w-full h-auto" preserveAspectRatio="xMidYMid meet">
           <defs>
             <linearGradient id="pcConvFlow" x1="0%" y1="0%" x2="100%" y2="0%">
               <stop offset="0%" stopColor="hsl(170 100% 43%)" stopOpacity="0" />
@@ -433,43 +433,42 @@ const ValueSection = () => (
 
           {/* Left side: legacy fragmented tools */}
           {convergenceNodes.map((node, i) => {
-            const ny = 40 + i * 60;
-            const tx = 20, ty = ny - 18, tw = 170, th = 36;
-            // bezier from tile right edge into hub left edge
+            const ny = 50 + i * 65;
+            const tx = 16, ty = ny - 22, tw = 215, th = 44;
             const sx = tx + tw, sy = ny;
-            const ex = 430, ey = 140;
-            const path = `M ${sx} ${sy} C ${sx + 80} ${sy}, ${ex - 80} ${ey}, ${ex} ${ey}`;
+            const ex = 460, ey = 160;
+            const path = `M ${sx} ${sy} C ${sx + 90} ${sy}, ${ex - 90} ${ey}, ${ex} ${ey}`;
             return (
               <g key={node}>
-                <path d={path} fill="none" stroke="rgba(0,222,196,0.18)" strokeWidth="1" />
-                <path d={path} fill="none" stroke="url(#pcConvFlow)" strokeWidth="1.75" strokeDasharray="35 220" strokeLinecap="round">
-                  <animate attributeName="stroke-dashoffset" from="255" to="0" dur="3.2s" begin={`${i * 0.4}s`} repeatCount="indefinite" />
+                <path d={path} fill="none" stroke="rgba(0,222,196,0.22)" strokeWidth="1.25" />
+                <path d={path} fill="none" stroke="url(#pcConvFlow)" strokeWidth="2" strokeDasharray="40 240" strokeLinecap="round">
+                  <animate attributeName="stroke-dashoffset" from="280" to="0" dur="3.2s" begin={`${i * 0.4}s`} repeatCount="indefinite" />
                 </path>
-                <rect x={tx} y={ty} width={tw} height={th} rx="8"
-                  fill="rgba(255,255,255,0.025)"
-                  stroke="rgba(255,255,255,0.08)"
+                <rect x={tx} y={ty} width={tw} height={th} rx="10"
+                  fill="rgba(255,255,255,0.04)"
+                  stroke="rgba(255,255,255,0.12)"
                   strokeWidth="1" />
-                <circle cx={tx + 14} cy={ny} r="3" fill="rgba(255,255,255,0.3)" />
-                <text x={tx + 26} y={ny + 4} fontSize="11" fill="rgba(255,255,255,0.55)" fontWeight="500">{node}</text>
+                <circle cx={tx + 16} cy={ny} r="4" fill="rgba(255,255,255,0.45)" />
+                <text x={tx + 30} y={ny + 6} fontSize="16" fill="rgba(255,255,255,0.82)" fontWeight="600">{node}</text>
               </g>
             );
           })}
 
           {/* Section labels */}
-          <text x="105" y="270" textAnchor="middle" fontSize="9" letterSpacing="2" fill="rgba(255,255,255,0.35)">FRAGMENTED STACK</text>
-          <text x="495" y="270" textAnchor="middle" fontSize="9" letterSpacing="2" fill="hsl(170 100% 43%)" opacity="0.85">UNIFIED PLATFORM</text>
+          <text x="125" y="310" textAnchor="middle" fontSize="13" letterSpacing="2.5" fill="rgba(255,255,255,0.55)" fontWeight="600">FRAGMENTED STACK</text>
+          <text x="525" y="310" textAnchor="middle" fontSize="13" letterSpacing="2.5" fill="hsl(170 100% 43%)" fontWeight="700">UNIFIED PLATFORM</text>
 
           {/* Central Borna hub */}
-          <circle cx="495" cy="140" r="80" fill="url(#pcConvHub)" opacity="0.5" />
-          <circle cx="495" cy="140" r="55" fill="url(#pcConvHub)" stroke="hsl(170 100% 43%)" strokeWidth="1.5" filter="url(#pcConvGlow)">
-            <animate attributeName="r" values="55;58;55" dur="3s" repeatCount="indefinite" />
+          <circle cx="525" cy="160" r="95" fill="url(#pcConvHub)" opacity="0.55" />
+          <circle cx="525" cy="160" r="68" fill="url(#pcConvHub)" stroke="hsl(170 100% 43%)" strokeWidth="1.75" filter="url(#pcConvGlow)">
+            <animate attributeName="r" values="68;72;68" dur="3s" repeatCount="indefinite" />
           </circle>
-          <circle cx="495" cy="140" r="55" fill="none" stroke="hsl(170 100% 43%)" strokeOpacity="0.35">
-            <animate attributeName="r" values="55;78;55" dur="3s" repeatCount="indefinite" />
-            <animate attributeName="stroke-opacity" values="0.5;0;0.5" dur="3s" repeatCount="indefinite" />
+          <circle cx="525" cy="160" r="68" fill="none" stroke="hsl(170 100% 43%)" strokeOpacity="0.4">
+            <animate attributeName="r" values="68;94;68" dur="3s" repeatCount="indefinite" />
+            <animate attributeName="stroke-opacity" values="0.55;0;0.55" dur="3s" repeatCount="indefinite" />
           </circle>
-          <text x="495" y="136" textAnchor="middle" fontSize="13" fontWeight="700" fill="hsl(var(--background))">Borna AI</text>
-          <text x="495" y="152" textAnchor="middle" fontSize="9" fill="hsl(var(--background))" opacity="0.75">Platform</text>
+          <text x="525" y="156" textAnchor="middle" fontSize="18" fontWeight="700" fill="hsl(var(--background))">Borna AI</text>
+          <text x="525" y="176" textAnchor="middle" fontSize="13" fill="hsl(var(--background))" opacity="0.8" fontWeight="500">Platform</text>
         </svg>
         <p className="text-center text-xs text-primary/70 mt-3">One platform. All of the above.</p>
       </motion.div>
