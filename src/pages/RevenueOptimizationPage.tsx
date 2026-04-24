@@ -45,37 +45,87 @@ const RevenueOptimizationPage = () => (
             <p className="text-muted-foreground text-lg leading-relaxed mb-8 max-w-lg">Borna AI helps healthcare practices increase revenue by optimizing patient acquisition, improving retention, and automating operations. From lead generation to long-term patient value, Borna ensures every opportunity contributes to growth.</p>
             <div className="flex flex-row items-center gap-2 sm:gap-3"><Link to="/demo" className="gradient-btn whitespace-nowrap">Request Demo</Link><a href="#revenue-drivers" className="ghost-btn whitespace-nowrap">See How It Works</a></div>
           </motion.div>
-          <motion.div {...fadeUp} className="relative" aria-hidden="true">
-            <svg viewBox="0 0 420 300" className="w-full max-w-md mx-auto h-auto" preserveAspectRatio="xMidYMid meet">
+          <motion.div {...fadeUp} className="relative md:scale-110 lg:scale-125 md:origin-center" aria-hidden="true">
+            <svg viewBox="0 0 520 360" className="w-full max-w-xl mx-auto h-auto" preserveAspectRatio="xMidYMid meet">
               <defs>
                 <radialGradient id="rev-node-grad" cx="40%" cy="35%">
-                  <stop offset="0%" stopColor="hsl(var(--primary))" stopOpacity="0.3" />
-                  <stop offset="100%" stopColor="hsl(var(--primary))" stopOpacity="0.05" />
+                  <stop offset="0%" stopColor="hsl(var(--primary))" stopOpacity="0.4" />
+                  <stop offset="100%" stopColor="hsl(var(--primary))" stopOpacity="0.08" />
                 </radialGradient>
                 <radialGradient id="rev-hub-grad" cx="40%" cy="35%">
-                  <stop offset="0%" stopColor="hsl(var(--primary))" stopOpacity="0.5" />
-                  <stop offset="100%" stopColor="hsl(var(--primary))" stopOpacity="0.1" />
+                  <stop offset="0%" stopColor="hsl(var(--primary))" stopOpacity="0.65" />
+                  <stop offset="100%" stopColor="hsl(var(--primary))" stopOpacity="0.12" />
                 </radialGradient>
+                <linearGradient id="rev-line-grad" x1="0%" y1="100%" x2="100%" y2="0%">
+                  <stop offset="0%" stopColor="hsl(var(--primary))" stopOpacity="0.4" />
+                  <stop offset="100%" stopColor="hsl(var(--primary))" stopOpacity="1" />
+                </linearGradient>
+                <filter id="rev-glow" x="-50%" y="-50%" width="200%" height="200%">
+                  <feGaussianBlur stdDeviation="3" result="b" />
+                  <feMerge><feMergeNode in="b" /><feMergeNode in="SourceGraphic" /></feMerge>
+                </filter>
               </defs>
-              {[{ y: 60, l: "Patient Acquisition" }, { y: 120, l: "Patient Retention" }, { y: 180, l: "Practice Automation" }, { y: 240, l: "Performance Data" }].map((input, i) => (
-                <g key={i}>
-                  <circle cx="50" cy={input.y} r="12" fill="url(#rev-node-grad)" stroke="hsl(var(--primary))" strokeOpacity="0.5" strokeWidth="1" />
-                  <text x="70" y={input.y + 4} className="fill-foreground" fontSize="11" fontWeight="500">{input.l}</text>
-                  <line x1="200" y1={input.y} x2="220" y2="150" stroke="hsl(var(--primary))" strokeOpacity="0.3" strokeWidth="1">
-                    <animate attributeName="stroke-opacity" values="0.15;0.5;0.15" dur="3s" begin={`${i * 0.3}s`} repeatCount="indefinite" />
-                  </line>
-                </g>
-              ))}
-              <circle cx="230" cy="150" r="26" fill="url(#rev-hub-grad)" stroke="hsl(var(--primary))" strokeWidth="1.5">
-                <animate attributeName="r" values="26;30;26" dur="3s" repeatCount="indefinite" />
+
+              {/* Hub coordinates: center (260, 180), r=38 */}
+              {[
+                { y: 70, l: "Patient Acquisition" },
+                { y: 140, l: "Patient Retention" },
+                { y: 220, l: "Practice Automation" },
+                { y: 290, l: "Performance Data" },
+              ].map((input, i) => {
+                // Compute clean line from node edge to hub edge
+                const nx = 60, ny = input.y, hx = 260, hy = 180, hr = 38, nr = 10;
+                const dx = hx - nx, dy = hy - ny;
+                const dist = Math.hypot(dx, dy);
+                const x1 = nx + (dx / dist) * nr;
+                const y1 = ny + (dy / dist) * nr;
+                const x2 = hx - (dx / dist) * hr;
+                const y2 = hy - (dy / dist) * hr;
+                return (
+                  <g key={i}>
+                    <line x1={x1} y1={y1} x2={x2} y2={y2} stroke="hsl(var(--primary))" strokeOpacity="0.35" strokeWidth="1.25">
+                      <animate attributeName="stroke-opacity" values="0.2;0.6;0.2" dur="3s" begin={`${i * 0.4}s`} repeatCount="indefinite" />
+                    </line>
+                    <circle cx={nx} cy={ny} r={nr} fill="url(#rev-node-grad)" stroke="hsl(var(--primary))" strokeOpacity="0.6" strokeWidth="1.25" />
+                    <text x={nx + 18} y={ny + 4} className="fill-foreground" fontSize="12" fontWeight="500">{input.l}</text>
+                  </g>
+                );
+              })}
+
+              {/* Hub */}
+              <circle cx="260" cy="180" r="38" fill="url(#rev-hub-grad)" stroke="hsl(var(--primary))" strokeWidth="1.75" filter="url(#rev-glow)">
+                <animate attributeName="r" values="38;42;38" dur="3s" repeatCount="indefinite" />
               </circle>
-              <text x="230" y="148" textAnchor="middle" className="fill-foreground" fontSize="10" fontWeight="700">Borna AI</text>
-              <text x="230" y="160" textAnchor="middle" className="fill-muted-foreground" fontSize="7">Revenue Engine</text>
-              <line x1="256" y1="142" x2="370" y2="60" stroke="hsl(var(--primary))" strokeWidth="1.5" />
-              <circle cx="378" cy="54" r="11" fill="url(#rev-hub-grad)" stroke="hsl(var(--primary))" strokeWidth="1.5">
-                <animate attributeName="r" values="11;14;11" dur="2.5s" repeatCount="indefinite" />
+              <circle cx="260" cy="180" r="38" fill="none" stroke="hsl(var(--primary))" strokeOpacity="0.25" strokeWidth="1">
+                <animate attributeName="r" values="38;58;38" dur="3s" repeatCount="indefinite" />
+                <animate attributeName="stroke-opacity" values="0.4;0;0.4" dur="3s" repeatCount="indefinite" />
               </circle>
-              <text x="378" y="80" textAnchor="middle" className="fill-primary" fontSize="11" fontWeight="600">Revenue ↑</text>
+              <text x="260" y="178" textAnchor="middle" className="fill-foreground" fontSize="13" fontWeight="700">Borna AI</text>
+              <text x="260" y="192" textAnchor="middle" className="fill-muted-foreground" fontSize="9">Revenue Engine</text>
+
+              {/* Smooth growth curve from hub edge (298, 180) to revenue node (470, 70) */}
+              <path
+                d="M 298 180 C 340 175, 370 150, 400 130 S 450 90, 468 78"
+                fill="none"
+                stroke="url(#rev-line-grad)"
+                strokeWidth="2.5"
+                strokeLinecap="round"
+                filter="url(#rev-glow)"
+                strokeDasharray="260"
+                strokeDashoffset="260"
+              >
+                <animate attributeName="stroke-dashoffset" from="260" to="0" dur="1.6s" begin="0.4s" fill="freeze" />
+              </path>
+
+              {/* Revenue endpoint */}
+              <circle cx="470" cy="70" r="14" fill="url(#rev-hub-grad)" stroke="hsl(var(--primary))" strokeWidth="1.5" filter="url(#rev-glow)" opacity="0">
+                <animate attributeName="opacity" from="0" to="1" dur="0.4s" begin="2s" fill="freeze" />
+                <animate attributeName="r" values="14;17;14" dur="2.5s" begin="2.4s" repeatCount="indefinite" />
+              </circle>
+              <text x="470" y="42" textAnchor="middle" className="fill-primary" fontSize="13" fontWeight="700" opacity="0">
+                Revenue ↑
+                <animate attributeName="opacity" from="0" to="1" dur="0.5s" begin="2.1s" fill="freeze" />
+              </text>
             </svg>
           </motion.div>
         </div>
