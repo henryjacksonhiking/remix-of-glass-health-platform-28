@@ -500,7 +500,7 @@ const ResourcesPage = () => {
             </div>
             <HeroVisual />
             {/* Mobile fallback */}
-            <div className="md:hidden grid grid-cols-1 gap-4">
+            <div className="md:hidden grid grid-cols-1 gap-4 justify-items-center [&>*]:w-full [&>*]:max-w-sm">
               <FloatingCard category="Patient Engagement" title="Reduce no-shows with smart reminders" delay={0} />
               <FloatingCard category="AI in Healthcare" title="Automating routine clinic workflows" delay={0.3} />
             </div>
