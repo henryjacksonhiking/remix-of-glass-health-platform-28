@@ -33,7 +33,7 @@ const CareHero = () => {
         {/* Dual mockup — patient + practice. Stacks on mobile (24px gap), side-by-side on desktop (48px gap), no horizontal clip. */}
         <div className="flex flex-col lg:flex-row items-stretch justify-center gap-6 md:gap-8 lg:gap-12 max-w-6xl mx-auto overflow-visible">
           <div
-            className="rounded-2xl p-3 md:p-4"
+            className="rounded-2xl p-3 md:p-4 flex-1 min-w-0"
             style={{
               background: "rgba(255,255,255,0.04)",
               border: "0.5px solid rgba(255,255,255,0.1)",
