@@ -30,8 +30,8 @@ const CareHero = () => {
           <Link to="/sign-up" className="ghost-btn text-sm sm:text-base px-4 sm:px-8 py-2.5 sm:py-3.5 whitespace-nowrap">Start free trial</Link>
         </div>
 
-        {/* Dual mockup — patient + practice. Stacks on mobile, side-by-side on desktop with proper spacing */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8 max-w-6xl mx-auto">
+        {/* Dual mockup — patient + practice. Stacks on mobile (24px gap), side-by-side on desktop (48px gap), no horizontal clip. */}
+        <div className="flex flex-col lg:flex-row items-stretch justify-center gap-6 md:gap-8 lg:gap-12 max-w-6xl mx-auto overflow-visible">
           <div
             className="rounded-2xl p-3 md:p-4"
             style={{
