@@ -61,7 +61,7 @@ const BornaEngagePage = () => {
 
       {/* Hero */}
       <section className="relative overflow-hidden pt-12 pb-20 md:pt-20 md:pb-28">
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[400px] rounded-full blur-[120px] pointer-events-none" style={{ background: 'rgba(224,17,157,0.06)' }} />
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[400px] rounded-full blur-[120px] pointer-events-none" style={{ background: 'rgba(0,222,196,0.06)' }} />
         <div className="container mx-auto px-4 md:px-6 relative z-10">
           <div className="max-w-3xl mx-auto text-center">
             <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="inline-flex items-center gap-2 rounded-full border border-glass-border bg-glass px-4 py-1.5 text-sm text-muted-foreground mb-6">
@@ -128,7 +128,7 @@ const BornaEngagePage = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 max-w-5xl mx-auto">
             {capabilities.map((cap, i) => (
               <motion.div key={cap.title} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.08 }} className="rounded-xl p-6" style={{ background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.08)' }}>
-                <div className="w-10 h-10 rounded-lg flex items-center justify-center mb-4" style={{ background: 'rgba(224,17,157,0.12)' }}>
+                <div className="w-10 h-10 rounded-lg flex items-center justify-center mb-4" style={{ background: 'rgba(0,222,196,0.12)' }}>
                   <cap.icon className="w-5 h-5" style={{ color: '#00DEC4' }} />
                 </div>
                 <h3 className="text-base font-medium text-foreground mb-1">{cap.title}</h3>
@@ -143,7 +143,7 @@ const BornaEngagePage = () => {
       <section className="py-12 md:py-20 border-t border-glass-border">
         <div className="container mx-auto px-4 md:px-6">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-            <div className="rounded-xl p-8" style={{ background: 'rgba(224,17,157,0.04)', border: '1px solid rgba(224,17,157,0.1)' }}>
+            <div className="rounded-xl p-8" style={{ background: 'rgba(0,222,196,0.04)', border: '1px solid rgba(0,222,196,0.1)' }}>
               <h3 className="text-lg font-medium text-foreground mb-4">Convert more leads into patients</h3>
               <p className="text-sm text-muted-foreground mb-4">Track every lead from first contact. Automated outreach ensures no opportunity is missed.</p>
               <ul className="space-y-2">
@@ -181,7 +181,7 @@ const BornaEngagePage = () => {
               { step: "4", title: "Optimize & grow", desc: "AI identifies patterns, predicts churn, and recommends actions." },
             ].map((s, i) => (
               <motion.div key={s.step} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.12 }} className="glass-panel p-5 text-center">
-                <div className="w-8 h-8 rounded-full flex items-center justify-center mx-auto mb-3" style={{ background: 'rgba(224,17,157,0.12)' }}>
+                <div className="w-8 h-8 rounded-full flex items-center justify-center mx-auto mb-3" style={{ background: 'rgba(0,222,196,0.12)' }}>
                   <span className="text-xs font-semibold" style={{ color: '#00DEC4' }}>{s.step}</span>
                 </div>
                 <h3 className="text-sm font-medium text-foreground mb-1">{s.title}</h3>
@@ -198,7 +198,7 @@ const BornaEngagePage = () => {
       {/* CTA */}
       <section className="py-12 md:py-20 relative overflow-hidden">
         <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-          <div className="w-[600px] h-[400px] rounded-full blur-[120px]" style={{ background: 'rgba(224,17,157,0.05)' }} />
+          <div className="w-[600px] h-[400px] rounded-full blur-[120px]" style={{ background: 'rgba(0,222,196,0.05)' }} />
         </div>
         <div className="container mx-auto px-4 md:px-6 relative z-10 text-center">
           <h2 className="section-headline text-foreground mb-4">Ready to manage the full patient lifecycle?</h2>

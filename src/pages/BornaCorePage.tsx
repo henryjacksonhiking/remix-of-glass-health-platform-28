@@ -32,8 +32,8 @@ const capabilities = [
 const ecosystemProducts = [
   { name: "Borna Care", color: "#00479B", desc: "Patient portal", role: "Sends patient interaction data → receives scheduling intelligence" },
   { name: "Borna Connect", color: "#00DEC4", desc: "Communication", role: "Sends communication data → receives routing & sentiment intelligence" },
-  { name: "Borna Engage", color: "#E0119D", desc: "CRM", role: "Sends lifecycle data → receives retention predictions & automation triggers" },
-  { name: "Borna Insight", color: "#6366F1", desc: "Analytics", role: "Sends performance data → receives predictive models & anomaly detection" },
+  { name: "Borna Engage", color: "#00DEC4", desc: "CRM", role: "Sends lifecycle data → receives retention predictions & automation triggers" },
+  { name: "Borna Insight", color: "#1435C1", desc: "Analytics", role: "Sends performance data → receives predictive models & anomaly detection" },
 ];
 
 const faqItems = [
