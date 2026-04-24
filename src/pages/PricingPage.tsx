@@ -411,40 +411,67 @@ const ValueSection = () => (
         </div>
       </motion.div>
 
-      {/* Convergence diagram */}
+      {/* Convergence diagram — fragmented tools merge into Borna AI */}
       <motion.div variants={fadeUp} viewport={{ once: true }} whileInView="visible" initial="hidden" transition={{ delay: 0.25 }}
-        className="mt-14 flex flex-col md:flex-row items-center justify-center gap-6 md:gap-10">
-        {/* Left — scattered tools */}
-        <div className="flex flex-col gap-3">
-          {convergenceNodes.map((node, i) => (
-            <motion.div key={node}
-              initial={{ opacity: 0, x: -10 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.3 + i * 0.08 }}
-              className="px-4 py-2 rounded-lg text-xs text-muted-foreground/60 border"
-              style={{ background: "rgba(255,255,255,0.02)", borderColor: "rgba(255,255,255,0.06)" }}>
-              {node}
-            </motion.div>
-          ))}
-        </div>
+        className="mt-14 w-full max-w-2xl mx-auto" aria-hidden="true">
+        <svg viewBox="0 0 600 280" className="w-full h-auto" preserveAspectRatio="xMidYMid meet">
+          <defs>
+            <linearGradient id="pcConvFlow" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%" stopColor="hsl(170 100% 43%)" stopOpacity="0" />
+              <stop offset="50%" stopColor="hsl(170 100% 43%)" stopOpacity="1" />
+              <stop offset="100%" stopColor="hsl(170 100% 43%)" stopOpacity="0" />
+            </linearGradient>
+            <radialGradient id="pcConvHub" cx="40%" cy="35%">
+              <stop offset="0%" stopColor="hsl(170 100% 43%)" stopOpacity="0.55" />
+              <stop offset="100%" stopColor="hsl(170 100% 43%)" stopOpacity="0.1" />
+            </radialGradient>
+            <filter id="pcConvGlow" x="-50%" y="-50%" width="200%" height="200%">
+              <feGaussianBlur stdDeviation="3" result="b" />
+              <feMerge><feMergeNode in="b" /><feMergeNode in="SourceGraphic" /></feMerge>
+            </filter>
+          </defs>
 
-        {/* Converging lines */}
-        <div className="hidden md:flex flex-col items-center gap-1">
-          {[0,1,2,3].map((i) => (
-            <div key={i} className="w-12 h-px" style={{ background: "rgba(0,222,196,0.15)" }} />
-          ))}
-        </div>
-        <div className="md:hidden w-px h-8" style={{ background: "rgba(0,222,196,0.15)" }} />
+          {/* Left side: legacy fragmented tools */}
+          {convergenceNodes.map((node, i) => {
+            const ny = 40 + i * 60;
+            const tx = 20, ty = ny - 18, tw = 170, th = 36;
+            // bezier from tile right edge into hub left edge
+            const sx = tx + tw, sy = ny;
+            const ex = 430, ey = 140;
+            const path = `M ${sx} ${sy} C ${sx + 80} ${sy}, ${ex - 80} ${ey}, ${ex} ${ey}`;
+            return (
+              <g key={node}>
+                <path d={path} fill="none" stroke="rgba(0,222,196,0.18)" strokeWidth="1" />
+                <path d={path} fill="none" stroke="url(#pcConvFlow)" strokeWidth="1.75" strokeDasharray="35 220" strokeLinecap="round">
+                  <animate attributeName="stroke-dashoffset" from="255" to="0" dur="3.2s" begin={`${i * 0.4}s`} repeatCount="indefinite" />
+                </path>
+                <rect x={tx} y={ty} width={tw} height={th} rx="8"
+                  fill="rgba(255,255,255,0.025)"
+                  stroke="rgba(255,255,255,0.08)"
+                  strokeWidth="1" />
+                <circle cx={tx + 14} cy={ny} r="3" fill="rgba(255,255,255,0.3)" />
+                <text x={tx + 26} y={ny + 4} fontSize="11" fill="rgba(255,255,255,0.55)" fontWeight="500">{node}</text>
+              </g>
+            );
+          })}
 
-        {/* Right — Borna node */}
-        <div className="flex flex-col items-center gap-2">
-          <div className="px-6 py-3 rounded-xl text-sm font-medium text-primary border"
-            style={{ background: "rgba(0,222,196,0.06)", borderColor: "rgba(0,222,196,0.2)", boxShadow: "0 0 30px rgba(0,222,196,0.08)" }}>
-            Borna AI Platform
-          </div>
-          <span className="text-xs text-primary/70">One platform. All of the above.</span>
-        </div>
+          {/* Section labels */}
+          <text x="105" y="270" textAnchor="middle" fontSize="9" letterSpacing="2" fill="rgba(255,255,255,0.35)">FRAGMENTED STACK</text>
+          <text x="495" y="270" textAnchor="middle" fontSize="9" letterSpacing="2" fill="hsl(170 100% 43%)" opacity="0.85">UNIFIED PLATFORM</text>
+
+          {/* Central Borna hub */}
+          <circle cx="495" cy="140" r="80" fill="url(#pcConvHub)" opacity="0.5" />
+          <circle cx="495" cy="140" r="55" fill="url(#pcConvHub)" stroke="hsl(170 100% 43%)" strokeWidth="1.5" filter="url(#pcConvGlow)">
+            <animate attributeName="r" values="55;58;55" dur="3s" repeatCount="indefinite" />
+          </circle>
+          <circle cx="495" cy="140" r="55" fill="none" stroke="hsl(170 100% 43%)" strokeOpacity="0.35">
+            <animate attributeName="r" values="55;78;55" dur="3s" repeatCount="indefinite" />
+            <animate attributeName="stroke-opacity" values="0.5;0;0.5" dur="3s" repeatCount="indefinite" />
+          </circle>
+          <text x="495" y="136" textAnchor="middle" fontSize="13" fontWeight="700" fill="hsl(var(--background))">Borna AI</text>
+          <text x="495" y="152" textAnchor="middle" fontSize="9" fill="hsl(var(--background))" opacity="0.75">Platform</text>
+        </svg>
+        <p className="text-center text-xs text-primary/70 mt-3">One platform. All of the above.</p>
       </motion.div>
     </div>
   </section>
