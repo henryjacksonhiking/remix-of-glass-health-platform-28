@@ -300,18 +300,18 @@ const comparisonRows = [
 ];
 
 const renderCellContent = (val: string) => {
-  if (val === "—") return <Minus className="w-4 h-4 text-muted-foreground/40" aria-label="Not included" />;
-  const checkCount = (val.match(/✓/g) || []).length;
+  if (val === "—") {
+    return (
+      <span className="flex items-center justify-center">
+        <Minus className="w-4 h-4 text-muted-foreground/40" aria-label="Not included" />
+      </span>
+    );
+  }
+  const hasCheck = /✓/.test(val);
   const text = val.replace(/✓+\s*/g, "").trim();
   return (
-    <span className="flex items-center gap-1.5">
-      {checkCount > 0 && (
-        <span className="flex items-center gap-0.5">
-          {Array.from({ length: checkCount }).map((_, i) => (
-            <Check key={i} className="w-3.5 h-3.5 text-primary" aria-hidden="true" />
-          ))}
-        </span>
-      )}
+    <span className="flex items-center justify-center gap-1.5">
+      {hasCheck && <Check className="w-3.5 h-3.5 text-primary shrink-0" aria-hidden="true" />}
       {text && <span>{text}</span>}
     </span>
   );
