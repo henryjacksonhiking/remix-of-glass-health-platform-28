@@ -380,28 +380,97 @@ const BornaCarePage = () => {
               </Link>
             </div>
             <div className="flex items-center justify-center">
-              <div className="relative w-64 h-64">
-                {/* Center node */}
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="w-20 h-20 rounded-full flex items-center justify-center" style={{ background: 'rgba(0,71,155,0.2)', border: '2px solid rgba(0,71,155,0.4)', boxShadow: '0 0 30px rgba(0,71,155,0.2)' }}>
-                    <div className="text-center">
-                      <div className="text-[10px] font-medium text-foreground">Borna Care</div>
-                      <span className="text-[8px] px-1.5 py-0.5 rounded-full bg-primary/20 text-primary">Live</span>
-                    </div>
+              {/* Unique ecosystem visual — branching trunk with Care as foundation, modules grow outward */}
+              <div className="relative w-full max-w-[360px] aspect-square">
+                <svg viewBox="0 0 360 360" className="w-full h-full" aria-hidden>
+                  <defs>
+                    <radialGradient id="care-core-glow" cx="50%" cy="50%" r="50%">
+                      <stop offset="0%" stopColor="#00DEC4" stopOpacity="0.55" />
+                      <stop offset="60%" stopColor="#00DEC4" stopOpacity="0.12" />
+                      <stop offset="100%" stopColor="#00DEC4" stopOpacity="0" />
+                    </radialGradient>
+                    <linearGradient id="branch-grad" x1="0" y1="0" x2="1" y2="1">
+                      <stop offset="0%" stopColor="#00DEC4" stopOpacity="0.7" />
+                      <stop offset="100%" stopColor="#1435C1" stopOpacity="0.15" />
+                    </linearGradient>
+                  </defs>
+
+                  {/* Branch curves from center to each module */}
+                  {ecosystemModules.map((mod, i) => {
+                    const angle = (i * 90 - 45) * (Math.PI / 180);
+                    const r = 130;
+                    const x = 180 + Math.cos(angle) * r;
+                    const y = 180 + Math.sin(angle) * r;
+                    const cx = 180 + Math.cos(angle) * (r * 0.45);
+                    const cy = 180 + Math.sin(angle) * (r * 0.45);
+                    return (
+                      <g key={mod.name}>
+                        <path
+                          d={`M 180 180 Q ${cx} ${cy} ${x} ${y}`}
+                          fill="none"
+                          stroke="url(#branch-grad)"
+                          strokeWidth="1.2"
+                          strokeDasharray="3 4"
+                          opacity="0.7"
+                        />
+                      </g>
+                    );
+                  })}
+
+                  {/* Care core glow */}
+                  <circle cx="180" cy="180" r="70" fill="url(#care-core-glow)" />
+                </svg>
+
+                {/* Center Care card */}
+                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-10">
+                  <div
+                    className="rounded-2xl flex flex-col items-center justify-center text-center px-4 py-3"
+                    style={{
+                      width: 110,
+                      background: "rgba(0,222,196,0.12)",
+                      border: "1.5px solid rgba(0,222,196,0.4)",
+                      boxShadow: "0 0 40px rgba(0,222,196,0.25)",
+                    }}
+                  >
+                    <span className="text-[11px] font-semibold text-foreground leading-tight mb-1">Borna Care</span>
+                    <span className="inline-flex items-center gap-1 text-[8px] uppercase tracking-wider font-semibold text-primary">
+                      <span className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse" />
+                      Live
+                    </span>
                   </div>
                 </div>
-                {/* Surrounding nodes */}
+
+                {/* Surrounding module cards */}
                 {ecosystemModules.map((mod, i) => {
+                  const moduleIcons: Record<string, typeof MessageSquare> = {
+                    "Borna Connect": MessageSquare,
+                    "Borna Engage": Users,
+                    "Borna Insight": BarChart3,
+                    "Borna Core": Cpu,
+                  };
+                  const Icon = moduleIcons[mod.name] || Sparkles;
                   const angle = (i * 90 - 45) * (Math.PI / 180);
                   const x = 50 + 38 * Math.cos(angle);
                   const y = 50 + 38 * Math.sin(angle);
+                  const short = mod.name.replace("Borna ", "");
                   return (
-                    <div key={mod.name} className="absolute w-16 text-center" style={{ left: `${x}%`, top: `${y}%`, transform: 'translate(-50%, -50%)' }}>
-                      <div className="w-10 h-10 rounded-full mx-auto mb-1 flex items-center justify-center" style={{ background: `${mod.color}15`, border: `1px solid ${mod.color}30` }}>
-                        <div className="w-2 h-2 rounded-full" style={{ background: mod.color, opacity: 0.5 }} />
+                    <div
+                      key={mod.name}
+                      className="absolute w-20 text-center"
+                      style={{ left: `${x}%`, top: `${y}%`, transform: "translate(-50%, -50%)" }}
+                    >
+                      <div
+                        className="w-12 h-12 rounded-xl mx-auto mb-1.5 flex items-center justify-center"
+                        style={{
+                          background: `linear-gradient(135deg, ${mod.color}26, ${mod.color}08)`,
+                          border: `1px solid ${mod.color}50`,
+                          boxShadow: `0 0 14px ${mod.color}26`,
+                        }}
+                      >
+                        <Icon className="w-4 h-4" style={{ color: mod.color }} />
                       </div>
-                      <div className="text-[9px] text-muted-foreground">{mod.name.replace("Borna ", "")}</div>
-                      <span className="text-[7px] px-1 rounded" style={{ color: 'rgba(255,255,255,0.3)' }}>{mod.status}</span>
+                      <div className="text-[10px] font-medium text-foreground/85">{short}</div>
+                      <div className="text-[8px] mt-0.5" style={{ color: "rgba(255,255,255,0.4)" }}>{mod.status}</div>
                     </div>
                   );
                 })}
