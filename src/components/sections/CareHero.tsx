@@ -1,5 +1,4 @@
 import { Link } from "react-router-dom";
-import careHero from "@/assets/care-hero.webp";
 
 const CareHero = () => {
   return (
@@ -31,15 +30,40 @@ const CareHero = () => {
           <Link to="/sign-up" className="ghost-btn text-sm sm:text-base px-4 sm:px-8 py-2.5 sm:py-3.5 whitespace-nowrap">Start free trial</Link>
         </div>
 
-        <div className="relative w-full mx-auto">
-          <img
-            src={careHero}
-            alt="Borna Care patient portal showing appointments, forms, payments, and scheduling"
-            className="w-full h-auto"
-            loading="eager"
-            width={1600}
-            height={611}
-          />
+        {/* Dual mockup — patient + practice. Stacks on mobile, side-by-side on desktop with proper spacing */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8 max-w-6xl mx-auto">
+          <div
+            className="rounded-2xl p-3 md:p-4"
+            style={{
+              background: "rgba(255,255,255,0.04)",
+              border: "0.5px solid rgba(255,255,255,0.1)",
+              boxShadow: "0 0 40px 8px hsla(170, 100%, 43%, 0.08)",
+            }}
+          >
+            <img
+              src="/images/Hero_-_patient_Dashboard__1_.webp"
+              alt="Borna Care patient portal — appointments, forms, payments"
+              className="w-full h-auto rounded-xl block"
+              loading="eager"
+            />
+            <p className="text-[11px] uppercase tracking-wider text-primary mt-3 font-semibold">Patient experience</p>
+          </div>
+          <div
+            className="rounded-2xl p-3 md:p-4"
+            style={{
+              background: "rgba(255,255,255,0.04)",
+              border: "0.5px solid rgba(255,255,255,0.1)",
+              boxShadow: "0 0 40px 8px hsla(170, 100%, 43%, 0.08)",
+            }}
+          >
+            <img
+              src="/images/Admin_Dashboard.webp"
+              alt="Borna Care admin dashboard — scheduling, patient management"
+              className="w-full h-auto rounded-xl block"
+              loading="eager"
+            />
+            <p className="text-[11px] uppercase tracking-wider text-primary mt-3 font-semibold">Practice experience</p>
+          </div>
         </div>
       </div>
     </section>
