@@ -7,16 +7,17 @@ import StandardFAQ from "@/components/sections/StandardFAQ";
 import { SparklesCore } from "@/components/ui/sparkles-core";
 import { useState } from "react";
 
-// Color mapping aligned with navbar dropdown system
+// Color mapping aligned with navbar dropdown system.
+// Electric blue lightened from #1435C1 → #4A7FFF for visibility on dark navy background (SC12).
 const inputNodes = [
-  { label: "Patient Data", icon: Database, color: "#1435C1" },
+  { label: "Patient Data", icon: Database, color: "#4A7FFF" },
   { label: "Communication", icon: Braces, color: "#00DEC4" },
-  { label: "Events", icon: Zap, color: "#1435C1" },
+  { label: "Events", icon: Zap, color: "#4A7FFF" },
   { label: "Behavior", icon: Brain, color: "#00DEC4" },
 ];
 
 const outputNodes = [
-  { label: "Insights", icon: Cpu, color: "#1435C1" },
+  { label: "Insights", icon: Cpu, color: "#4A7FFF" },
   { label: "Automation", icon: Workflow, color: "#00DEC4" },
   { label: "Decisions", icon: ShieldCheck, color: "#00DEC4" },
 ];
