@@ -206,7 +206,7 @@ const BornaCarePage = () => {
               </motion.div>
             </div>
             <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.3, duration: 0.6 }} className="relative flex flex-col md:flex-row items-center md:items-end justify-center gap-6 md:gap-10 lg:gap-12 overflow-visible">
-              <MobileFrame className="w-48 md:w-56 shrink-0 animate-[float_6s_ease-in-out_infinite]">
+              <MobileFrame className="w-36 md:w-56 shrink-0 animate-[float_6s_ease-in-out_infinite]">
                 <SchedulingScreen />
               </MobileFrame>
               <DesktopFrame className="w-full max-w-sm md:max-w-md lg:w-96 shrink-0 animate-[float_6s_ease-in-out_infinite_0.5s]">
