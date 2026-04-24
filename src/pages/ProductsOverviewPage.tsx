@@ -66,8 +66,8 @@ const StatusBadge = ({ slug }: { slug: string }) => {
   if (!s) return null;
   return (
     <span
-      className="inline-flex items-center text-[10px] font-medium px-2 py-0.5 rounded-full uppercase tracking-wider whitespace-nowrap"
-      style={{ ...statusStyle(s.key), letterSpacing: "0.08em" }}
+      className="inline-flex items-center text-[9px] md:text-[10px] font-medium px-1.5 md:px-2 py-0.5 rounded-full uppercase tracking-wider whitespace-nowrap max-w-full shrink"
+      style={{ ...statusStyle(s.key), letterSpacing: "0.06em" }}
     >
       {s.label}
     </span>
