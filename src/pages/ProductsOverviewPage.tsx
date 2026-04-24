@@ -459,35 +459,35 @@ const OtherProducts = () => {
               >
                 <Link
                   to={p.href}
-                  className="glass-panel-hover p-6 group block h-full relative"
+                  className="glass-panel-hover p-5 md:p-6 group block h-full relative"
                 >
                   {/* Status badge floats top-right */}
-                  <div className="absolute top-5 right-5">
+                  <div className="absolute top-4 right-4 max-w-[55%] flex justify-end">
                     <StatusBadge slug={p.slug} />
                   </div>
 
                   {/* Icon — larger, with halo, breathing room */}
                   <div
-                    className="w-14 h-14 rounded-2xl flex items-center justify-center mb-5 transition-transform duration-300 group-hover:scale-110 group-hover:-rotate-3"
+                    className="w-12 h-12 md:w-14 md:h-14 rounded-2xl flex items-center justify-center mb-4 md:mb-5 transition-transform duration-300 group-hover:scale-110 group-hover:-rotate-3"
                     style={{
                       background: `linear-gradient(135deg, ${p.accentColor}2E, ${p.accentColor}10)`,
                       border: `1px solid ${p.accentColor}40`,
                       boxShadow: `0 0 24px ${p.accentColor}26, inset 0 1px 0 rgba(255,255,255,0.08)`,
                     }}
                   >
-                    <IconComp className="w-6 h-6" style={{ color: p.accentColor }} />
+                    <IconComp className="w-5 h-5 md:w-6 md:h-6" style={{ color: p.accentColor }} />
                   </div>
 
-                  <h3 className="text-base md:text-lg font-medium text-foreground mb-2">{p.name}</h3>
+                  <h3 className="text-base md:text-lg font-medium text-foreground mb-2 pr-20">{p.name}</h3>
                   <p className="text-sm text-muted-foreground leading-relaxed mb-5">{p.tagline}</p>
 
                   {/* Conceptual diagram — taller, centered, richer background */}
                   <div
-                    className="rounded-xl h-[110px] flex items-center justify-center overflow-hidden relative"
+                    className="rounded-xl h-[140px] md:h-[160px] flex items-center justify-center overflow-hidden relative"
                     style={{
-                      background: `radial-gradient(ellipse at center, ${p.accentColor}1A 0%, ${p.accentColor}05 40%, transparent 75%)`,
-                      border: `0.5px solid ${p.accentColor}33`,
-                      boxShadow: `inset 0 0 32px ${p.accentColor}0D`,
+                      background: `radial-gradient(ellipse at center, ${p.accentColor}26 0%, ${p.accentColor}0A 45%, transparent 80%)`,
+                      border: `0.5px solid ${p.accentColor}40`,
+                      boxShadow: `inset 0 0 40px ${p.accentColor}14, 0 0 30px ${p.accentColor}10`,
                     }}
                   >
                     {/* subtle grid backdrop */}
@@ -498,7 +498,7 @@ const OtherProducts = () => {
                         backgroundSize: "20px 20px",
                       }}
                     />
-                    <div className="relative z-10 transition-transform duration-500 group-hover:scale-105">
+                    <div className="relative z-10 w-full h-full flex items-center justify-center transition-transform duration-500 group-hover:scale-105">
                       <ConceptDiagram slug={p.slug} color={p.accentColor} />
                     </div>
                   </div>
