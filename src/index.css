@@ -152,14 +152,14 @@
       @apply text-sm px-4 py-2.5;
       min-width: 0;
       flex: 1 1 0%;
-      max-width: 180px;
+      max-width: 220px;
       text-align: center;
     }
   }
 
-  /* CTA row: always horizontal, equal width on mobile */
+  /* CTA row: horizontal, wraps if needed, equal width on mobile */
   .cta-row {
-    @apply flex flex-row items-center justify-center gap-2 sm:gap-3;
+    @apply flex flex-row flex-wrap items-center justify-center gap-2 sm:gap-3;
   }
   .cta-row > * {
     @apply whitespace-nowrap;
