@@ -382,7 +382,7 @@ const BornaCarePage = () => {
             </div>
             <div className="flex items-center justify-center">
               {/* Live product preview — admin dashboard */}
-              <div className="relative w-full max-w-[560px] mx-auto">
+              <div className="relative w-full max-w-[720px] mx-auto">
                 <div
                   className="rounded-2xl p-2 md:p-3"
                   style={{
