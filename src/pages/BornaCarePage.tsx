@@ -370,8 +370,8 @@ const BornaCarePage = () => {
       {/* SECTION 8 — Platform Connection */}
       <section className="py-12 md:py-20 border-t border-glass-border">
         <div className="container mx-auto px-4 md:px-6">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center max-w-5xl mx-auto">
-            <div>
+          <div className="grid grid-cols-1 lg:grid-cols-5 gap-10 lg:gap-14 items-center max-w-6xl mx-auto">
+            <div className="lg:col-span-2">
               <h2 className="section-headline text-foreground mb-6">Built as part of the Borna AI platform</h2>
               <p className="body-text mb-6">
                 Borna Care is the first live module of the Borna ecosystem. As additional modules launch, your clinic gains communication, CRM, analytics, and AI capabilities — all connected to the same patient data.
@@ -380,21 +380,23 @@ const BornaCarePage = () => {
                 See the full platform <ArrowRight className="w-3.5 h-3.5" />
               </Link>
             </div>
-            <div className="flex items-center justify-center">
+            <div className="lg:col-span-3 flex items-center justify-center">
               {/* Live product preview — admin dashboard */}
-              <div className="relative w-full max-w-[560px] mx-auto">
+              <div className="relative w-full">
                 <div
                   className="rounded-2xl p-2 md:p-3"
                   style={{
                     background: "rgba(255,255,255,0.05)",
                     border: "0.5px solid rgba(255,255,255,0.12)",
-                    boxShadow: "0 0 50px 10px hsla(170, 100%, 43%, 0.12)",
+                    boxShadow: "0 0 60px 12px hsla(170, 100%, 43%, 0.14)",
                   }}
                 >
                   <img
-                    src="/images/Admin_Dashboard.webp"
+                    src="/images/admin-hero-collage.webp"
                     alt="Borna Care practice dashboard preview"
                     loading="lazy"
+                    width={1365}
+                    height={784}
                     className="w-full h-auto rounded-xl block"
                   />
                   <div className="flex items-center justify-between mt-3 px-1">
