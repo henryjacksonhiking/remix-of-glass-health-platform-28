@@ -86,18 +86,49 @@ const BornaInsightPage = () => {
             </motion.div>
           </div>
           {/* Data → Insight → Action pipeline */}
-          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.4 }} className="flex flex-wrap justify-center gap-3 mt-16">
+          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.4 }} className="flex flex-wrap justify-center items-center gap-4 md:gap-5 lg:gap-6 mt-20">
             {pipelineStages.map((stage, i) => (
-              <div key={stage.label} className="flex items-center gap-3">
+              <motion.div
+                key={stage.label}
+                initial={{ opacity: 0, y: 14, scale: 0.92 }}
+                whileInView={{ opacity: 1, y: 0, scale: 1 }}
+                viewport={{ once: true, margin: "-50px" }}
+                transition={{ delay: 0.45 + i * 0.1, duration: 0.45, ease: "easeOut" }}
+                className="flex items-center gap-4 md:gap-5 lg:gap-6"
+              >
                 <div className="text-center">
-                  <div className="w-14 h-14 rounded-xl flex items-center justify-center mx-auto mb-1" style={{ background: `rgba(99,102,241,${stage.opacity * 0.15})`, border: `1px solid rgba(99,102,241,${stage.opacity * 0.3})`, boxShadow: stage.opacity > 0.8 ? '0 0 20px rgba(99,102,241,0.15)' : 'none' }}>
-                    <div className="w-2.5 h-2.5 rounded-full" style={{ background: '#1435C1', opacity: stage.opacity }} />
-                  </div>
-                  <div className="text-[11px] font-medium text-foreground">{stage.label}</div>
-                  <div className="text-[9px]" style={{ color: 'rgba(255,255,255,0.4)' }}>{stage.desc}</div>
+                  <motion.div
+                    whileHover={{ scale: 1.06, boxShadow: "0 0 32px rgba(99,102,241,0.5)" }}
+                    transition={{ type: "spring", stiffness: 300, damping: 18 }}
+                    className="w-20 h-20 md:w-24 md:h-24 lg:w-28 lg:h-28 rounded-2xl flex items-center justify-center mx-auto mb-2"
+                    style={{
+                      background: `linear-gradient(135deg, rgba(99,102,241,${0.25 + stage.opacity * 0.35}), rgba(20,53,193,${0.15 + stage.opacity * 0.4}))`,
+                      border: `1px solid rgba(99,102,241,${0.45 + stage.opacity * 0.4})`,
+                      boxShadow: `0 0 ${18 + stage.opacity * 22}px rgba(99,102,241,${0.2 + stage.opacity * 0.3})`,
+                    }}
+                  >
+                    <span
+                      className="text-2xl md:text-3xl font-semibold"
+                      style={{ color: "#A5B4FC", textShadow: "0 1px 4px rgba(0,0,0,0.6)" }}
+                    >
+                      {i + 1}
+                    </span>
+                  </motion.div>
+                  <div className="text-sm md:text-base font-semibold text-foreground">{stage.label}</div>
+                  <div className="text-[11px] md:text-xs mt-0.5" style={{ color: "rgba(255,255,255,0.55)" }}>{stage.desc}</div>
                 </div>
-                {i < pipelineStages.length - 1 && <ArrowRight className="w-3.5 h-3.5 shrink-0 hidden md:block" style={{ color: '#1435C1' }} />}
-              </div>
+                {i < pipelineStages.length - 1 && (
+                  <motion.div
+                    initial={{ opacity: 0, x: -6 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: 0.55 + i * 0.1, duration: 0.4 }}
+                    className="shrink-0 hidden md:block"
+                  >
+                    <ArrowRight className="w-5 h-5" style={{ color: "#A5B4FC" }} />
+                  </motion.div>
+                )}
+              </motion.div>
             ))}
           </motion.div>
         </div>
