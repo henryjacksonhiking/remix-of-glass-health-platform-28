@@ -370,7 +370,7 @@ const BornaCarePage = () => {
       {/* SECTION 8 — Platform Connection */}
       <section className="py-12 md:py-20 border-t border-glass-border">
         <div className="container mx-auto px-4 md:px-6">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center max-w-5xl mx-auto">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center max-w-6xl mx-auto">
             <div>
               <h2 className="section-headline text-foreground mb-6">Built as part of the Borna AI platform</h2>
               <p className="body-text mb-6">
@@ -382,7 +382,7 @@ const BornaCarePage = () => {
             </div>
             <div className="flex items-center justify-center">
               {/* Live product preview — admin dashboard */}
-              <div className="relative w-full max-w-[560px] mx-auto">
+              <div className="relative w-full max-w-[720px] mx-auto">
                 <div
                   className="rounded-2xl p-2 md:p-3"
                   style={{
