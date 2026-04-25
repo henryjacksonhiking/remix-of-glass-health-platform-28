@@ -381,100 +381,49 @@ const BornaCarePage = () => {
               </Link>
             </div>
             <div className="flex items-center justify-center">
-              {/* Unique ecosystem visual — branching trunk with Care as foundation, modules grow outward */}
-              <div className="relative w-full max-w-[360px] aspect-square">
-                <svg viewBox="0 0 360 360" className="w-full h-full" aria-hidden>
-                  <defs>
-                    <radialGradient id="care-core-glow" cx="50%" cy="50%" r="50%">
-                      <stop offset="0%" stopColor="#00DEC4" stopOpacity="0.55" />
-                      <stop offset="60%" stopColor="#00DEC4" stopOpacity="0.12" />
-                      <stop offset="100%" stopColor="#00DEC4" stopOpacity="0" />
-                    </radialGradient>
-                    <linearGradient id="branch-grad" x1="0" y1="0" x2="1" y2="1">
-                      <stop offset="0%" stopColor="#00DEC4" stopOpacity="0.7" />
-                      <stop offset="100%" stopColor="#1435C1" stopOpacity="0.15" />
-                    </linearGradient>
-                  </defs>
+              {/* Live product preview — admin + patient dashboards, layered for depth */}
+              <div className="relative w-full max-w-[460px] mx-auto">
+                {/* Back frame — Admin dashboard */}
+                <div
+                  className="rounded-2xl p-2 md:p-2.5 lg:ml-0 lg:mr-12 lg:-mb-8"
+                  style={{
+                    background: "rgba(255,255,255,0.04)",
+                    border: "0.5px solid rgba(255,255,255,0.1)",
+                    boxShadow: "0 0 40px 8px hsla(170, 100%, 43%, 0.08)",
+                  }}
+                >
+                  <img
+                    src="/images/Admin_Dashboard.webp"
+                    alt="Borna Care admin dashboard preview"
+                    loading="lazy"
+                    className="w-full h-auto rounded-xl block"
+                  />
+                  <p className="text-[10px] uppercase tracking-wider text-primary mt-2 font-semibold px-1">Practice dashboard</p>
+                </div>
 
-                  {/* Branch curves from center to each module */}
-                  {ecosystemModules.map((mod, i) => {
-                    const angle = (i * 90 - 45) * (Math.PI / 180);
-                    const r = 130;
-                    const x = 180 + Math.cos(angle) * r;
-                    const y = 180 + Math.sin(angle) * r;
-                    const cx = 180 + Math.cos(angle) * (r * 0.45);
-                    const cy = 180 + Math.sin(angle) * (r * 0.45);
-                    return (
-                      <g key={mod.name}>
-                        <path
-                          d={`M 180 180 Q ${cx} ${cy} ${x} ${y}`}
-                          fill="none"
-                          stroke="url(#branch-grad)"
-                          strokeWidth="1.2"
-                          strokeDasharray="3 4"
-                          opacity="0.7"
-                        />
-                      </g>
-                    );
-                  })}
-
-                  {/* Care core glow */}
-                  <circle cx="180" cy="180" r="70" fill="url(#care-core-glow)" />
-                </svg>
-
-                {/* Center Care card */}
-                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-10">
-                  <div
-                    className="rounded-2xl flex flex-col items-center justify-center text-center px-4 py-3"
-                    style={{
-                      width: 110,
-                      background: "rgba(0,222,196,0.12)",
-                      border: "1.5px solid rgba(0,222,196,0.4)",
-                      boxShadow: "0 0 40px rgba(0,222,196,0.25)",
-                    }}
-                  >
-                    <span className="text-[11px] font-semibold text-foreground leading-tight mb-1">Borna Care</span>
-                    <span className="inline-flex items-center gap-1 text-[8px] uppercase tracking-wider font-semibold text-primary">
+                {/* Front frame — Patient portal, offset on desktop */}
+                <div
+                  className="relative mt-4 lg:mt-0 rounded-2xl p-2 md:p-2.5 lg:ml-12 lg:w-[78%] lg:translate-y-[-30%]"
+                  style={{
+                    background: "rgba(255,255,255,0.06)",
+                    border: "0.5px solid rgba(255,255,255,0.14)",
+                    boxShadow: "0 0 50px 10px hsla(170, 100%, 43%, 0.14)",
+                  }}
+                >
+                  <img
+                    src="/images/Hero_-_patient_Dashboard__1_.webp"
+                    alt="Borna Care patient portal preview"
+                    loading="lazy"
+                    className="w-full h-auto rounded-xl block"
+                  />
+                  <div className="flex items-center justify-between mt-2 px-1">
+                    <p className="text-[10px] uppercase tracking-wider text-primary font-semibold">Patient portal</p>
+                    <span className="inline-flex items-center gap-1 text-[9px] uppercase tracking-wider font-semibold text-primary">
                       <span className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse" />
                       Live
                     </span>
                   </div>
                 </div>
-
-                {/* Surrounding module cards */}
-                {ecosystemModules.map((mod, i) => {
-                  const moduleIcons: Record<string, typeof MessageSquare> = {
-                    "Borna Connect": MessageSquare,
-                    "Borna Engage": Users,
-                    "Borna Insight": BarChart3,
-                    "Borna Core": Cpu,
-                  };
-                  const Icon = moduleIcons[mod.name] || Sparkles;
-                  const angle = (i * 90 - 45) * (Math.PI / 180);
-                  const x = 50 + 38 * Math.cos(angle);
-                  const y = 50 + 38 * Math.sin(angle);
-                  const short = mod.name.replace("Borna ", "");
-                  return (
-                    <div
-                      key={mod.name}
-                      className="absolute w-20 text-center"
-                      style={{ left: `${x}%`, top: `${y}%`, transform: "translate(-50%, -50%)" }}
-                    >
-                      <div
-                        className="w-14 h-14 md:w-16 md:h-16 rounded-2xl mx-auto mb-1.5 flex items-center justify-center"
-                        style={{
-                          background: `linear-gradient(135deg, ${mod.color}33, ${mod.color}0d)`,
-                          border: `1px solid ${mod.color}66`,
-                          boxShadow: `0 0 22px ${mod.color}40, inset 0 0 12px ${mod.color}1a`,
-                        }}
-                      >
-                        <Icon className="w-5 h-5 md:w-6 md:h-6" style={{ color: mod.color }} />
-                      </div>
-                      <div className="text-[11px] font-semibold text-foreground/90">{short}</div>
-                      <div className="text-[9px] mt-0.5 uppercase tracking-wider" style={{ color: `${mod.color}cc` }}>{mod.status}</div>
-                    </div>
-                  );
-                })}
               </div>
             </div>
           </div>
