@@ -381,43 +381,24 @@ const BornaCarePage = () => {
               </Link>
             </div>
             <div className="flex items-center justify-center">
-              {/* Live product preview — admin + patient dashboards, layered for depth */}
-              <div className="relative w-full max-w-[460px] mx-auto">
-                {/* Back frame — Admin dashboard */}
+              {/* Live product preview — admin dashboard */}
+              <div className="relative w-full max-w-[560px] mx-auto">
                 <div
-                  className="rounded-2xl p-2 md:p-2.5 lg:ml-0 lg:mr-12 lg:-mb-8"
+                  className="rounded-2xl p-2 md:p-3"
                   style={{
-                    background: "rgba(255,255,255,0.04)",
-                    border: "0.5px solid rgba(255,255,255,0.1)",
-                    boxShadow: "0 0 40px 8px hsla(170, 100%, 43%, 0.08)",
+                    background: "rgba(255,255,255,0.05)",
+                    border: "0.5px solid rgba(255,255,255,0.12)",
+                    boxShadow: "0 0 50px 10px hsla(170, 100%, 43%, 0.12)",
                   }}
                 >
                   <img
                     src="/images/Admin_Dashboard.webp"
-                    alt="Borna Care admin dashboard preview"
+                    alt="Borna Care practice dashboard preview"
                     loading="lazy"
                     className="w-full h-auto rounded-xl block"
                   />
-                  <p className="text-[10px] uppercase tracking-wider text-primary mt-2 font-semibold px-1">Practice dashboard</p>
-                </div>
-
-                {/* Front frame — Patient portal, offset on desktop */}
-                <div
-                  className="relative mt-4 lg:mt-0 rounded-2xl p-2 md:p-2.5 lg:ml-12 lg:w-[78%] lg:translate-y-[-30%]"
-                  style={{
-                    background: "rgba(255,255,255,0.06)",
-                    border: "0.5px solid rgba(255,255,255,0.14)",
-                    boxShadow: "0 0 50px 10px hsla(170, 100%, 43%, 0.14)",
-                  }}
-                >
-                  <img
-                    src="/images/Hero_-_patient_Dashboard__1_.webp"
-                    alt="Borna Care patient portal preview"
-                    loading="lazy"
-                    className="w-full h-auto rounded-xl block"
-                  />
-                  <div className="flex items-center justify-between mt-2 px-1">
-                    <p className="text-[10px] uppercase tracking-wider text-primary font-semibold">Patient portal</p>
+                  <div className="flex items-center justify-between mt-3 px-1">
+                    <p className="text-[10px] uppercase tracking-wider text-primary font-semibold">Practice portal</p>
                     <span className="inline-flex items-center gap-1 text-[9px] uppercase tracking-wider font-semibold text-primary">
                       <span className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse" />
                       Live
