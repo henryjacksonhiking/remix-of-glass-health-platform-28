@@ -172,14 +172,14 @@ const BornaCorePage = () => {
       <section className="py-12 md:py-20 border-t border-glass-border">
         <div className="container mx-auto px-4 md:px-6 text-center">
           <h2 className="section-headline text-foreground mb-12">Why healthcare systems lack intelligence</h2>
-          <div className="max-w-md mx-auto grid grid-cols-2 gap-3">
+          <div className="max-w-2xl mx-auto grid grid-cols-2 gap-4">
             {["Scheduling system", "Phone system", "Billing software", "EHR records", "Email platform", "CRM tool"].map(item => (
-              <div key={item} className="rounded-lg p-3 text-center" style={{ background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.05)' }}>
-                <span className="text-[10px]" style={{ color: 'rgba(255,255,255,0.3)' }}>{item}</span>
+              <div key={item} className="rounded-xl p-5 text-center" style={{ background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.05)' }}>
+                <span className="text-sm" style={{ color: 'rgba(255,255,255,0.4)' }}>{item}</span>
               </div>
             ))}
           </div>
-          <p className="text-xs mt-4" style={{ color: 'rgba(255,255,255,0.3)' }}>6 systems. 0 intelligence connecting them.</p>
+          <p className="text-sm mt-6" style={{ color: 'rgba(255,255,255,0.4)' }}>6 systems. 0 intelligence connecting them.</p>
         </div>
       </section>
 
@@ -190,8 +190,8 @@ const BornaCorePage = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 max-w-5xl mx-auto">
             {capabilities.map((cap, i) => (
               <motion.div key={cap.title} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.08 }} className="rounded-xl p-6" style={{ background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.08)' }}>
-                <div className="w-10 h-10 rounded-lg flex items-center justify-center mb-4" style={{ background: 'rgba(20,53,193,0.12)' }}>
-                  <cap.icon className="w-5 h-5" style={{ color: '#1435C1' }} />
+                <div className="w-10 h-10 rounded-lg flex items-center justify-center mb-4" style={{ background: 'linear-gradient(135deg, rgba(74,127,255,0.15), rgba(74,127,255,0.05))', border: '1px solid rgba(74,127,255,0.35)', boxShadow: '0 0 18px rgba(74,127,255,0.2)' }}>
+                  <cap.icon className="w-5 h-5" style={{ color: '#4A7FFF' }} />
                 </div>
                 <h3 className="text-base font-medium text-foreground mb-1">{cap.title}</h3>
                 <p className="text-sm text-muted-foreground leading-relaxed">{cap.desc}</p>
