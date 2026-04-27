@@ -95,9 +95,9 @@ const BornaCorePage = () => {
 
           {/* Central Intelligence System diagram — responsive: vertical stack on mobile, horizontal on desktop */}
           <motion.div initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} transition={{ delay: 0.4, duration: 0.6 }} className="mt-16 flex items-center justify-center">
-            <div className="flex flex-col md:flex-row items-center gap-8 md:gap-10 w-full max-w-4xl px-2">
+            <div className="flex flex-col md:flex-row items-center justify-center gap-8 md:gap-10 w-full max-w-4xl px-2 mx-auto">
               {/* Input nodes */}
-              <div className="grid grid-cols-2 md:flex md:flex-col gap-3 md:gap-4 w-full md:w-auto">
+              <div className="grid grid-cols-2 md:flex md:flex-col gap-3 md:gap-4 w-full md:flex-1 md:basis-0 md:justify-center">
                 {inputNodes.map((node, i) => (
                   <motion.div key={node.label} initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.5 + i * 0.1 }} className="flex items-center gap-2 md:gap-3 justify-start">
                     <div
@@ -117,7 +117,7 @@ const BornaCorePage = () => {
               </div>
 
               {/* Core center node */}
-              <div className="relative my-2 md:my-0">
+              <div className="relative my-2 md:my-0 shrink-0">
                 <div className="absolute inset-[-24px] rounded-full blur-2xl" style={{ background: "radial-gradient(circle, rgba(0,222,196,0.35), rgba(20,53,193,0.18) 60%, transparent)" }} />
                 <div className="absolute inset-[-10px] rounded-full" style={{ border: "1px solid rgba(20,53,193,0.18)" }} />
                 <div
@@ -135,13 +135,13 @@ const BornaCorePage = () => {
               </div>
 
               {/* Output nodes */}
-              <div className="grid grid-cols-1 md:flex md:flex-col gap-3 md:gap-4 w-full md:w-auto">
+              <div className="grid grid-cols-1 md:flex md:flex-col gap-3 md:gap-4 w-full md:flex-1 md:basis-0 md:justify-center">
                 {outputNodes.map((node, i) => (
-                  <motion.div key={node.label} initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.7 + i * 0.1 }} className="flex items-center gap-2 md:gap-3 justify-start md:justify-end">
-                    <ArrowRight className="w-3.5 h-3.5 hidden md:block" style={{ color: `${node.color}88` }} />
-                    <span className="text-xs md:text-sm font-medium text-foreground/85 leading-tight md:order-none order-2">{node.label}</span>
+                  <motion.div key={node.label} initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.7 + i * 0.1 }} className="grid grid-cols-[1rem_1fr_3.5rem] items-center gap-2 md:gap-3 w-full">
+                    <ArrowRight className="w-3.5 h-3.5 hidden md:block justify-self-start" style={{ color: `${node.color}88` }} />
+                    <span className="text-xs md:text-sm font-medium text-foreground/85 leading-tight md:order-none order-2 md:text-right justify-self-end">{node.label}</span>
                     <div
-                      className="w-12 h-12 md:w-14 md:h-14 rounded-xl flex items-center justify-center shrink-0 md:order-none"
+                      className="w-12 h-12 md:w-14 md:h-14 rounded-xl flex items-center justify-center shrink-0 md:order-none justify-self-end"
                       style={{
                         background: `linear-gradient(135deg, ${node.color}26, ${node.color}0d)`,
                         border: `1px solid ${node.color}55`,
