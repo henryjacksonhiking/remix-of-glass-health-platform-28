@@ -148,14 +148,14 @@ const BornaInsightPage = () => {
       <section className="py-12 md:py-20 border-t border-glass-border">
         <div className="container mx-auto px-4 md:px-6 text-center">
           <h2 className="section-headline text-foreground mb-12">Why healthcare data often goes unused</h2>
-          <div className="max-w-md mx-auto grid grid-cols-3 gap-3">
+          <div className="max-w-3xl mx-auto grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-5">
             {["Scheduling data", "Billing records", "Call logs", "Patient forms", "EHR exports", "Email metrics"].map((item, i) => (
-              <div key={item} className="rounded-lg p-3 text-center" style={{ background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.05)' }}>
-                <span className="text-[10px]" style={{ color: 'rgba(255,255,255,0.3)' }}>{item}</span>
+              <div key={item} className="rounded-xl p-5 md:p-6 text-center flex items-center justify-center min-h-[80px] md:min-h-[96px]" style={{ background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.05)' }}>
+                <span className="text-sm md:text-base font-medium" style={{ color: 'rgba(255,255,255,0.5)' }}>{item}</span>
               </div>
             ))}
           </div>
-          <p className="text-xs mt-4" style={{ color: 'rgba(255,255,255,0.3)' }}>24 data points. 0 insights.</p>
+          <p className="text-sm mt-6" style={{ color: 'rgba(255,255,255,0.4)' }}>24 data points. 0 insights.</p>
         </div>
       </section>
 
