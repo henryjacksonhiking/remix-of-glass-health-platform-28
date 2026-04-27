@@ -86,7 +86,7 @@ const BornaInsightPage = () => {
             </motion.div>
           </div>
           {/* Data → Insight → Action pipeline */}
-          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.4 }} className="flex flex-wrap justify-center items-center gap-4 md:gap-5 lg:gap-6 mt-20">
+          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.4 }} className="flex flex-wrap justify-center items-center gap-2 md:gap-3 lg:gap-4 mt-12">
             {pipelineStages.map((stage, i) => (
               <motion.div
                 key={stage.label}
@@ -94,13 +94,13 @@ const BornaInsightPage = () => {
                 whileInView={{ opacity: 1, y: 0, scale: 1 }}
                 viewport={{ once: true, margin: "-50px" }}
                 transition={{ delay: 0.45 + i * 0.1, duration: 0.45, ease: "easeOut" }}
-                className="flex items-center gap-4 md:gap-5 lg:gap-6"
+                className="flex items-center gap-2 md:gap-3 lg:gap-4"
               >
                 <div className="text-center">
                   <motion.div
                     whileHover={{ scale: 1.06, boxShadow: "0 0 32px rgba(99,102,241,0.5)" }}
                     transition={{ type: "spring", stiffness: 300, damping: 18 }}
-                    className="w-20 h-20 md:w-24 md:h-24 lg:w-28 lg:h-28 rounded-2xl flex items-center justify-center mx-auto mb-2"
+                    className="w-16 h-16 md:w-[72px] md:h-[72px] lg:w-20 lg:h-20 rounded-2xl flex items-center justify-center mx-auto mb-2"
                     style={{
                       background: `linear-gradient(135deg, rgba(99,102,241,${0.25 + stage.opacity * 0.35}), rgba(20,53,193,${0.15 + stage.opacity * 0.4}))`,
                       border: `1px solid rgba(99,102,241,${0.45 + stage.opacity * 0.4})`,
@@ -108,7 +108,7 @@ const BornaInsightPage = () => {
                     }}
                   >
                     <span
-                      className="text-2xl md:text-3xl font-semibold"
+                      className="text-xl md:text-2xl font-semibold"
                       style={{ color: "#A5B4FC", textShadow: "0 1px 4px rgba(0,0,0,0.6)" }}
                     >
                       {i + 1}
@@ -125,7 +125,7 @@ const BornaInsightPage = () => {
                     transition={{ delay: 0.55 + i * 0.1, duration: 0.4 }}
                     className="shrink-0 hidden md:block"
                   >
-                    <ArrowRight className="w-5 h-5" style={{ color: "#A5B4FC" }} />
+                    <ArrowRight className="w-3.5 h-3.5 lg:w-4 lg:h-4" style={{ color: "#A5B4FC" }} />
                   </motion.div>
                 )}
               </motion.div>
