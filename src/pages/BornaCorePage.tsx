@@ -32,10 +32,10 @@ const capabilities = [
 ];
 
 const ecosystemProducts = [
-  { name: "Borna Care", color: "#00479B", desc: "Patient portal", role: "Sends patient interaction data → receives scheduling intelligence" },
+  { name: "Borna Care", color: "#4A7FFF", desc: "Patient portal", role: "Sends patient interaction data → receives scheduling intelligence" },
   { name: "Borna Connect", color: "#00DEC4", desc: "Communication", role: "Sends communication data → receives routing & sentiment intelligence" },
   { name: "Borna Engage", color: "#00DEC4", desc: "CRM", role: "Sends lifecycle data → receives retention predictions & automation triggers" },
-  { name: "Borna Insight", color: "#1435C1", desc: "Analytics", role: "Sends performance data → receives predictive models & anomaly detection" },
+  { name: "Borna Insight", color: "#4A7FFF", desc: "Analytics", role: "Sends performance data → receives predictive models & anomaly detection" },
 ];
 
 const faqItems = [
@@ -172,14 +172,14 @@ const BornaCorePage = () => {
       <section className="py-12 md:py-20 border-t border-glass-border">
         <div className="container mx-auto px-4 md:px-6 text-center">
           <h2 className="section-headline text-foreground mb-12">Why healthcare systems lack intelligence</h2>
-          <div className="max-w-md mx-auto grid grid-cols-2 gap-3">
+          <div className="max-w-2xl mx-auto grid grid-cols-2 gap-4">
             {["Scheduling system", "Phone system", "Billing software", "EHR records", "Email platform", "CRM tool"].map(item => (
-              <div key={item} className="rounded-lg p-3 text-center" style={{ background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.05)' }}>
-                <span className="text-[10px]" style={{ color: 'rgba(255,255,255,0.3)' }}>{item}</span>
+              <div key={item} className="rounded-xl p-5 text-center" style={{ background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.05)' }}>
+                <span className="text-sm" style={{ color: 'rgba(255,255,255,0.4)' }}>{item}</span>
               </div>
             ))}
           </div>
-          <p className="text-xs mt-4" style={{ color: 'rgba(255,255,255,0.3)' }}>6 systems. 0 intelligence connecting them.</p>
+          <p className="text-sm mt-6" style={{ color: 'rgba(255,255,255,0.4)' }}>6 systems. 0 intelligence connecting them.</p>
         </div>
       </section>
 
@@ -190,8 +190,8 @@ const BornaCorePage = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 max-w-5xl mx-auto">
             {capabilities.map((cap, i) => (
               <motion.div key={cap.title} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.08 }} className="rounded-xl p-6" style={{ background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.08)' }}>
-                <div className="w-10 h-10 rounded-lg flex items-center justify-center mb-4" style={{ background: 'rgba(20,53,193,0.12)' }}>
-                  <cap.icon className="w-5 h-5" style={{ color: '#1435C1' }} />
+                <div className="w-10 h-10 rounded-lg flex items-center justify-center mb-4" style={{ background: 'linear-gradient(135deg, rgba(74,127,255,0.15), rgba(74,127,255,0.05))', border: '1px solid rgba(74,127,255,0.35)', boxShadow: '0 0 18px rgba(74,127,255,0.2)' }}>
+                  <cap.icon className="w-5 h-5" style={{ color: '#4A7FFF' }} />
                 </div>
                 <h3 className="text-base font-medium text-foreground mb-1">{cap.title}</h3>
                 <p className="text-sm text-muted-foreground leading-relaxed">{cap.desc}</p>
@@ -208,9 +208,9 @@ const BornaCorePage = () => {
           <p className="body-text mx-auto text-center mb-16">Every product sends data to Core. Core returns intelligence to every product.</p>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 max-w-4xl mx-auto">
             {ecosystemProducts.map((prod, i) => (
-              <motion.div key={prod.name} initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }} className="rounded-xl p-5 flex items-start gap-4" style={{ background: 'rgba(255,255,255,0.04)', border: `1px solid ${prod.color}20` }}>
-                <div className="w-10 h-10 rounded-full shrink-0 flex items-center justify-center" style={{ background: `${prod.color}15`, border: `1px solid ${prod.color}30` }}>
-                  <div className="w-2.5 h-2.5 rounded-full" style={{ background: prod.color }} />
+              <motion.div key={prod.name} initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }} className="rounded-xl p-5 flex items-start gap-4" style={{ background: 'rgba(255,255,255,0.04)', border: `1px solid ${prod.color}30` }}>
+                <div className="w-10 h-10 rounded-full shrink-0 flex items-center justify-center" style={{ background: `linear-gradient(135deg, ${prod.color}26, ${prod.color}0d)`, border: `1px solid ${prod.color}55`, boxShadow: `0 0 14px ${prod.color}33` }}>
+                  <div className="w-2.5 h-2.5 rounded-full" style={{ background: prod.color, boxShadow: `0 0 8px ${prod.color}` }} />
                 </div>
                 <div>
                   <div className="text-sm font-medium text-foreground">{prod.name}</div>
@@ -240,8 +240,8 @@ const BornaCorePage = () => {
               { step: "5", title: "Optimize", desc: "Continuous improvement loop" },
             ].map((s, i) => (
               <motion.div key={s.step} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }} className="glass-panel p-4 text-center">
-                <div className="w-8 h-8 rounded-full flex items-center justify-center mx-auto mb-2" style={{ background: 'rgba(20,53,193,0.12)' }}>
-                  <span className="text-xs font-semibold" style={{ color: '#1435C1' }}>{s.step}</span>
+                <div className="w-8 h-8 rounded-full flex items-center justify-center mx-auto mb-2" style={{ background: 'linear-gradient(135deg, rgba(74,127,255,0.18), rgba(74,127,255,0.06))', border: '1px solid rgba(74,127,255,0.4)', boxShadow: '0 0 14px rgba(74,127,255,0.25)' }}>
+                  <span className="text-xs font-semibold" style={{ color: '#4A7FFF' }}>{s.step}</span>
                 </div>
                 <h3 className="text-xs font-medium text-foreground mb-0.5">{s.title}</h3>
                 <p className="text-[10px] text-muted-foreground">{s.desc}</p>
