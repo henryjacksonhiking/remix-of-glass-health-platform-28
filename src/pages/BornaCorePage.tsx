@@ -97,7 +97,7 @@ const BornaCorePage = () => {
           <motion.div initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} transition={{ delay: 0.4, duration: 0.6 }} className="mt-16 flex items-center justify-center">
             <div className="flex flex-col md:flex-row items-center justify-center gap-8 md:gap-10 w-full max-w-4xl px-2 mx-auto">
               {/* Input nodes */}
-              <div className="grid grid-cols-2 md:flex md:flex-col gap-3 md:gap-4 w-full md:flex-1 md:basis-0 md:justify-center">
+              <div className="grid grid-cols-2 md:flex md:flex-col gap-3 md:gap-4 w-full md:flex-1 md:basis-0 md:justify-center md:items-end">
                 {inputNodes.map((node, i) => (
                   <motion.div key={node.label} initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.5 + i * 0.1 }} className="flex items-center gap-2 md:gap-3 justify-start">
                     <div
@@ -111,7 +111,7 @@ const BornaCorePage = () => {
                       <node.icon className="w-5 h-5 md:w-6 md:h-6" style={{ color: node.color }} strokeWidth={2} />
                     </div>
                     <span className="text-xs md:text-sm font-medium text-foreground/85 leading-tight">{node.label}</span>
-                    <ArrowRight className="w-3.5 h-3.5 hidden md:block ml-auto" style={{ color: `${node.color}88` }} />
+                    <ArrowRight className="w-3.5 h-3.5 hidden md:block" style={{ color: `${node.color}88` }} />
                   </motion.div>
                 ))}
               </div>
@@ -135,13 +135,13 @@ const BornaCorePage = () => {
               </div>
 
               {/* Output nodes */}
-              <div className="grid grid-cols-1 md:flex md:flex-col gap-3 md:gap-4 w-full md:flex-1 md:basis-0 md:justify-center">
+              <div className="grid grid-cols-1 md:flex md:flex-col gap-3 md:gap-4 w-full md:flex-1 md:basis-0 md:justify-center md:items-start">
                 {outputNodes.map((node, i) => (
-                  <motion.div key={node.label} initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.7 + i * 0.1 }} className="grid grid-cols-[1rem_1fr_3.5rem] items-center gap-2 md:gap-3 w-full">
-                    <ArrowRight className="w-3.5 h-3.5 hidden md:block justify-self-start" style={{ color: `${node.color}88` }} />
-                    <span className="text-xs md:text-sm font-medium text-foreground/85 leading-tight md:order-none order-2 md:text-right justify-self-end">{node.label}</span>
+                  <motion.div key={node.label} initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.7 + i * 0.1 }} className="flex items-center gap-2 md:gap-3 justify-start">
+                    <ArrowRight className="w-3.5 h-3.5 hidden md:block" style={{ color: `${node.color}88` }} />
+                    <span className="text-xs md:text-sm font-medium text-foreground/85 leading-tight order-2 md:order-none">{node.label}</span>
                     <div
-                      className="w-12 h-12 md:w-14 md:h-14 rounded-xl flex items-center justify-center shrink-0 md:order-none justify-self-end"
+                      className="w-12 h-12 md:w-14 md:h-14 rounded-xl flex items-center justify-center shrink-0"
                       style={{
                         background: `linear-gradient(135deg, ${node.color}26, ${node.color}0d)`,
                         border: `1px solid ${node.color}55`,
