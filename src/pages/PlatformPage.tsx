@@ -343,9 +343,9 @@ const PlatformHubDiagram = () => {
   return (
     <>
       {/* ---- Desktop: 3D radial diagram ---- */}
-      <div className="hidden md:block relative w-full" style={{ aspectRatio: "500 / 400" }}>
+      <div className="hidden md:block relative w-full" style={{ aspectRatio: "600 / 500" }}>
         <div className="absolute inset-0 borna-3d-tilt">
-          <svg viewBox="0 0 500 400" className="w-full h-full" role="img" aria-label="Hub and spoke diagram showing AI healthcare platform connecting Communication, CRM, Analytics, and Automation">
+          <svg viewBox="0 0 600 500" className="w-full h-full" role="img" aria-label="Hub and spoke diagram showing AI healthcare platform connecting Communication, CRM, Analytics, and Automation">
             <defs>
               <radialGradient id="plat-hub-glow" cx="50%" cy="50%" r="50%">
                 <stop offset="0%"  stopColor="hsl(var(--primary))" stopOpacity="0.6" />
