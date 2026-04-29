@@ -344,7 +344,7 @@ const PlatformHubDiagram = () => {
     <>
       {/* ---- Desktop: Layered architecture stack ---- */}
       <div className="hidden md:block relative w-full">
-        <div className="relative mx-auto" style={{ maxWidth: 560 }}>
+        <div className="relative mx-auto w-full" style={{ maxWidth: 640 }}>
           {/* Soft ambient glow behind stack */}
           <div
             aria-hidden
