@@ -64,29 +64,43 @@ const HeroSection = () => {
           initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.9, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-          className="relative w-full mx-auto mb-2 md:mb-8 flex-1 min-h-0"
+          className="relative w-full mx-auto mb-2 md:mb-8 flex-1 min-h-0 overflow-hidden"
         >
-          {/* Mobile: clean admin dashboard only */}
-          <img
-            src="/images/Admin_Dashboard.webp"
-            alt="Borna Care admin dashboard"
-            className="md:hidden w-full h-auto object-contain object-top rounded-lg"
-            loading="eager"
-            width={1920}
-            height={1080}
-            style={{ minHeight: '220px' }}
-          />
-          {/* Desktop: full collage */}
-          <img
-            src="/images/admin-hero-collage.webp"
-            alt="Borna Care platform — admin dashboard, payments, scheduling, forms, and patient management"
-            className="hidden md:block w-full h-auto md:h-full object-contain object-top"
-            loading="eager"
-            width={1920}
-            height={1527}
-          />
-          {/* Bottom fade to blend into page */}
-          <div className="absolute bottom-0 left-0 right-0 h-24 md:h-32 bg-gradient-to-t from-background to-transparent pointer-events-none" />
+          {/* Mobile hero image */}
+          <div className="relative md:hidden">
+            <img
+              src="/images/Admin_Dashboard.webp"
+              alt="Borna Care admin dashboard"
+              className="w-full h-auto object-contain object-top rounded-lg"
+              loading="eager"
+              width={1920}
+              height={1080}
+              style={{ minHeight: '220px' }}
+            />
+            <div className="absolute inset-y-0 left-0 w-10 bg-gradient-to-r from-background to-transparent pointer-events-none" />
+            <div className="absolute inset-y-0 right-0 w-10 bg-gradient-to-l from-background to-transparent pointer-events-none" />
+            <div className="absolute inset-x-0 top-0 h-8 bg-gradient-to-b from-background to-transparent pointer-events-none" />
+            <div className="absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-background to-transparent pointer-events-none" />
+          </div>
+          {/* Desktop hero image */}
+          <div className="relative hidden md:block md:h-full">
+            <img
+              src="/images/admin-hero-collage.webp"
+              alt="Borna Care platform — admin dashboard, payments, scheduling, forms, and patient management"
+              className="w-full h-auto md:h-full object-contain object-top"
+              loading="eager"
+              width={1920}
+              height={1527}
+            />
+            <div className="absolute inset-y-0 left-0 w-24 lg:w-32 bg-gradient-to-r from-background to-transparent pointer-events-none" />
+            <div className="absolute inset-y-0 right-0 w-24 lg:w-32 bg-gradient-to-l from-background to-transparent pointer-events-none" />
+            <div className="absolute inset-x-0 top-0 h-16 bg-gradient-to-b from-background to-transparent pointer-events-none" />
+            <div className="absolute inset-x-0 bottom-0 h-24 md:h-32 bg-gradient-to-t from-background to-transparent pointer-events-none" />
+            <div className="absolute top-0 left-0 w-40 h-40 pointer-events-none" style={{ background: 'radial-gradient(ellipse at top left, hsl(226 60% 12%) 0%, transparent 70%)' }} />
+            <div className="absolute top-0 right-0 w-40 h-40 pointer-events-none" style={{ background: 'radial-gradient(ellipse at top right, hsl(226 60% 12%) 0%, transparent 70%)' }} />
+            <div className="absolute bottom-0 left-0 w-40 h-40 pointer-events-none" style={{ background: 'radial-gradient(ellipse at bottom left, hsl(226 60% 12%) 0%, transparent 70%)' }} />
+            <div className="absolute bottom-0 right-0 w-40 h-40 pointer-events-none" style={{ background: 'radial-gradient(ellipse at bottom right, hsl(226 60% 12%) 0%, transparent 70%)' }} />
+          </div>
         </motion.div>
 
         {/* Description & CTAs: mobile only, after image */}
