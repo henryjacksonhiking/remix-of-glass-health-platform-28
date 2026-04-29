@@ -366,15 +366,15 @@ const PlatformHubDiagram = () => {
             {/* Spokes with gradient */}
             {outer.map((n, i) => {
               const rad = (n.angle * Math.PI) / 180;
-              const dist = 140;
-              const cx = 250 + Math.cos(rad) * dist;
-              const cy = 200 + Math.sin(rad) * dist;
-              const dx = cx - 250;
-              const dy = cy - 200;
+              const dist = 200;
+              const cx = 300 + Math.cos(rad) * dist;
+              const cy = 250 + Math.sin(rad) * dist;
+              const dx = cx - 300;
+              const dy = cy - 250;
               const len = Math.hypot(dx, dy);
               const ux = dx / len, uy = dy / len;
-              const x1 = 250 + ux * 68;
-              const y1 = 200 + uy * 68;
+              const x1 = 300 + ux * 68;
+              const y1 = 250 + uy * 68;
               const x2 = cx - ux * 50;
               const y2 = cy - uy * 50;
               return (
