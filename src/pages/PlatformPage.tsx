@@ -344,7 +344,7 @@ const PlatformHubDiagram = () => {
     <>
       {/* ---- Desktop: Layered architecture stack ---- */}
       <div className="hidden md:block relative w-full">
-        <div className="relative mx-auto" style={{ maxWidth: 560 }}>
+        <div className="relative mx-auto w-full" style={{ maxWidth: 640 }}>
           {/* Soft ambient glow behind stack */}
           <div
             aria-hidden
@@ -855,7 +855,7 @@ const PlatformPage = () => (
               Unlike standalone tools, a healthcare platform connects data and workflows across the entire patient journey.
             </p>
           </div>
-          <div className="rounded-[14px] p-6 md:p-8" style={cardStyle}>
+          <div className="rounded-[14px] p-4 md:p-6 overflow-visible" style={cardStyle}>
             <PlatformHubDiagram />
           </div>
         </div>
