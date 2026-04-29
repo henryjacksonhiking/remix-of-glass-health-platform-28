@@ -343,9 +343,9 @@ const PlatformHubDiagram = () => {
   return (
     <>
       {/* ---- Desktop: 3D radial diagram ---- */}
-      <div className="hidden md:block relative w-full" style={{ aspectRatio: "500 / 400" }}>
+      <div className="hidden md:block relative w-full" style={{ aspectRatio: "600 / 500" }}>
         <div className="absolute inset-0 borna-3d-tilt">
-          <svg viewBox="0 0 500 400" className="w-full h-full" role="img" aria-label="Hub and spoke diagram showing AI healthcare platform connecting Communication, CRM, Analytics, and Automation">
+          <svg viewBox="0 0 600 500" className="w-full h-full" role="img" aria-label="Hub and spoke diagram showing AI healthcare platform connecting Communication, CRM, Analytics, and Automation">
             <defs>
               <radialGradient id="plat-hub-glow" cx="50%" cy="50%" r="50%">
                 <stop offset="0%"  stopColor="hsl(var(--primary))" stopOpacity="0.6" />
@@ -366,15 +366,15 @@ const PlatformHubDiagram = () => {
             {/* Spokes with gradient */}
             {outer.map((n, i) => {
               const rad = (n.angle * Math.PI) / 180;
-              const dist = 140;
-              const cx = 250 + Math.cos(rad) * dist;
-              const cy = 200 + Math.sin(rad) * dist;
-              const dx = cx - 250;
-              const dy = cy - 200;
+              const dist = 200;
+              const cx = 300 + Math.cos(rad) * dist;
+              const cy = 250 + Math.sin(rad) * dist;
+              const dx = cx - 300;
+              const dy = cy - 250;
               const len = Math.hypot(dx, dy);
               const ux = dx / len, uy = dy / len;
-              const x1 = 250 + ux * 68;
-              const y1 = 200 + uy * 68;
+              const x1 = 300 + ux * 68;
+              const y1 = 250 + uy * 68;
               const x2 = cx - ux * 50;
               const y2 = cy - uy * 50;
               return (
@@ -390,26 +390,26 @@ const PlatformHubDiagram = () => {
 
             {/* Center ripple rings */}
             {[0, 1, 2].map(i => (
-              <circle key={`ripple-${i}`} cx="250" cy="200" r="68" fill="none" stroke="hsl(var(--primary))" strokeWidth="0.8">
+              <circle key={`ripple-${i}`} cx="300" cy="250" r="68" fill="none" stroke="hsl(var(--primary))" strokeWidth="0.8">
                 <animate attributeName="r" from="68" to="110" dur="3s" begin={`${i * 1}s`} repeatCount="indefinite" />
                 <animate attributeName="opacity" from="0.5" to="0" dur="3s" begin={`${i * 1}s`} repeatCount="indefinite" />
               </circle>
             ))}
 
             {/* Center halo — larger with more gradient depth */}
-            <circle cx="250" cy="200" r="95" fill="url(#plat-hub-glow)" />
+            <circle cx="300" cy="250" r="95" fill="url(#plat-hub-glow)" />
             {/* Center node — stronger */}
-            <circle cx="250" cy="200" r="68" fill="hsl(var(--primary))" fillOpacity="0.25" />
-            <circle cx="250" cy="200" r="68" fill="none" stroke="hsl(var(--primary))" strokeOpacity="0.9" strokeWidth="1.4" filter="url(#hub-glow-filter)" />
-            <text x="250" y="196" textAnchor="middle" fontSize="15" fontWeight="600" fill="rgba(255,255,255,0.95)">AI Healthcare</text>
-            <text x="250" y="214" textAnchor="middle" fontSize="15" fontWeight="600" fill="rgba(255,255,255,0.95)">Platform</text>
+            <circle cx="300" cy="250" r="68" fill="hsl(var(--primary))" fillOpacity="0.25" />
+            <circle cx="300" cy="250" r="68" fill="none" stroke="hsl(var(--primary))" strokeOpacity="0.9" strokeWidth="1.4" filter="url(#hub-glow-filter)" />
+            <text x="300" y="246" textAnchor="middle" fontSize="15" fontWeight="600" fill="rgba(255,255,255,0.95)">AI Healthcare</text>
+            <text x="300" y="264" textAnchor="middle" fontSize="15" fontWeight="600" fill="rgba(255,255,255,0.95)">Platform</text>
 
             {/* Outer nodes — equal size, with glow */}
             {outer.map(({ angle, label, Icon }) => {
               const rad = (angle * Math.PI) / 180;
-              const dist = 140;
-              const x = 250 + Math.cos(rad) * dist;
-              const y = 200 + Math.sin(rad) * dist;
+              const dist = 200;
+              const x = 300 + Math.cos(rad) * dist;
+              const y = 250 + Math.sin(rad) * dist;
               return (
                 <g key={label}>
                   <circle cx={x} cy={y} r="58" fill="url(#plat-outer-glow)" />
