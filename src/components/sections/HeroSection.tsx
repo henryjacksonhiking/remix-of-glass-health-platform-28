@@ -68,7 +68,7 @@ const HeroSection = () => {
         >
           {/* Mobile: clean admin dashboard only */}
           <img
-            src="/images/Admin_Dashboard.webp"
+            src="/images/Admin_Dashboard.png"
             alt="Borna Care admin dashboard"
             className="md:hidden w-full h-auto object-contain object-top rounded-lg"
             loading="eager"
@@ -78,7 +78,7 @@ const HeroSection = () => {
           />
           {/* Desktop: full collage */}
           <img
-            src="/images/admin-hero-collage.webp"
+            src="/images/admin-hero-collage.png"
             alt="Borna Care platform — admin dashboard, payments, scheduling, forms, and patient management"
             className="hidden md:block w-full h-auto md:h-full object-contain object-top"
             loading="eager"
