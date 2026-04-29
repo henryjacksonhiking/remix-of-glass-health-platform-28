@@ -68,7 +68,7 @@ const HeroSection = () => {
         >
           {/* Mobile: clean admin dashboard only */}
           <img
-            src="/images/Admin_Dashboard.png"
+            src="/images/Admin_Dashboard.webp"
             alt="Borna Care admin dashboard"
             className="md:hidden w-full h-auto object-contain object-top rounded-lg"
             loading="eager"
