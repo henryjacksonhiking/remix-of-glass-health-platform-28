@@ -333,126 +333,256 @@ const jsonLd = [
 
 /* ============== Platform Overview hub diagram (Change 5) ============== */
 const PlatformHubDiagram = () => {
-  const outer = [
-    { label: "Communication", Icon: MessageSquare, angle: -90 },
-    { label: "CRM",           Icon: Users,         angle: 0 },
-    { label: "Analytics",     Icon: BarChart2,     angle: 90 },
-    { label: "Automation",    Icon: Zap,           angle: 180 },
+  const capabilities = [
+    { label: "Communication", Icon: MessageSquare, desc: "Calls · SMS · Email" },
+    { label: "CRM",           Icon: Users,         desc: "Unified records" },
+    { label: "Analytics",     Icon: BarChart2,     desc: "Real-time insight" },
+    { label: "Automation",    Icon: Zap,           desc: "Workflows · AI" },
   ];
 
   return (
     <>
-      {/* ---- Desktop: 3D radial diagram ---- */}
-      <div className="hidden md:block relative w-full" style={{ aspectRatio: "600 / 500" }}>
-        <div className="absolute inset-0 borna-3d-tilt">
-          <svg viewBox="0 0 600 500" className="w-full h-full" role="img" aria-label="Hub and spoke diagram showing AI healthcare platform connecting Communication, CRM, Analytics, and Automation">
-            <defs>
-              <radialGradient id="plat-hub-glow" cx="50%" cy="50%" r="50%">
-                <stop offset="0%"  stopColor="hsl(var(--primary))" stopOpacity="0.6" />
-                <stop offset="40%" stopColor="hsl(var(--primary))" stopOpacity="0.25" />
-                <stop offset="70%" stopColor="hsl(var(--deep-blue))" stopOpacity="0.12" />
-                <stop offset="100%" stopColor="hsl(var(--primary))" stopOpacity="0" />
-              </radialGradient>
-              <radialGradient id="plat-outer-glow" cx="50%" cy="50%" r="50%">
-                <stop offset="0%" stopColor="hsl(var(--primary))" stopOpacity="0.18" />
-                <stop offset="100%" stopColor="hsl(var(--primary))" stopOpacity="0" />
-              </radialGradient>
-              <filter id="hub-glow-filter">
-                <feGaussianBlur stdDeviation="4" result="blur" />
-                <feMerge><feMergeNode in="blur" /><feMergeNode in="SourceGraphic" /></feMerge>
-              </filter>
-            </defs>
+      {/* ---- Desktop: Layered architecture stack ---- */}
+      <div className="hidden md:block relative w-full">
+        <div className="relative mx-auto" style={{ maxWidth: 560 }}>
+          {/* Soft ambient glow behind stack */}
+          <div
+            aria-hidden
+            className="absolute inset-0 -z-10 rounded-[32px] blur-3xl"
+            style={{
+              background:
+                "radial-gradient(ellipse at center, hsl(var(--primary) / 0.18) 0%, transparent 70%)",
+            }}
+          />
 
-            {/* Spokes with gradient */}
-            {outer.map((n, i) => {
-              const rad = (n.angle * Math.PI) / 180;
-              const dist = 200;
-              const cx = 300 + Math.cos(rad) * dist;
-              const cy = 250 + Math.sin(rad) * dist;
-              const dx = cx - 300;
-              const dy = cy - 250;
-              const len = Math.hypot(dx, dy);
-              const ux = dx / len, uy = dy / len;
-              const x1 = 300 + ux * 68;
-              const y1 = 250 + uy * 68;
-              const x2 = cx - ux * 50;
-              const y2 = cy - uy * 50;
-              return (
-                <g key={`spoke-${i}`}>
-                  <line x1={x1} y1={y1} x2={x2} y2={y2} stroke="hsl(var(--primary))" strokeOpacity="0.4" strokeWidth="1.2" />
-                  <circle r="3" fill="hsl(var(--primary))" filter="url(#hub-glow-filter)" style={{
-                    offsetPath: `path('M ${x2} ${y2} L ${x1} ${y1}')`,
-                    animation: `borna-travel-dot 3.5s linear ${i * 0.5}s infinite`,
-                  } as React.CSSProperties} />
-                </g>
-              );
-            })}
-
-            {/* Center ripple rings */}
-            {[0, 1, 2].map(i => (
-              <circle key={`ripple-${i}`} cx="300" cy="250" r="68" fill="none" stroke="hsl(var(--primary))" strokeWidth="0.8">
-                <animate attributeName="r" from="68" to="110" dur="3s" begin={`${i * 1}s`} repeatCount="indefinite" />
-                <animate attributeName="opacity" from="0.5" to="0" dur="3s" begin={`${i * 1}s`} repeatCount="indefinite" />
-              </circle>
+          {/* Top: Capabilities row */}
+          <div className="grid grid-cols-4 gap-3 relative">
+            {capabilities.map(({ label, Icon, desc }, i) => (
+              <motion.div
+                key={label}
+                initial={{ opacity: 0, y: -12 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: i * 0.08 }}
+                className="rounded-xl px-3 py-4 flex flex-col items-center text-center"
+                style={{
+                  background:
+                    "linear-gradient(180deg, rgba(255,255,255,0.06) 0%, rgba(255,255,255,0.02) 100%)",
+                  border: "1px solid hsl(var(--primary) / 0.35)",
+                  backdropFilter: "blur(12px)",
+                  boxShadow: "0 8px 24px -12px hsl(var(--primary) / 0.3)",
+                }}
+              >
+                <div
+                  className="w-10 h-10 rounded-lg flex items-center justify-center mb-2"
+                  style={{
+                    background: "hsl(var(--primary) / 0.15)",
+                    border: "1px solid hsl(var(--primary) / 0.4)",
+                  }}
+                >
+                  <Icon className="w-5 h-5 text-primary" />
+                </div>
+                <span className="text-[12px] font-semibold text-foreground leading-tight">
+                  {label}
+                </span>
+                <span className="text-[10px] text-muted-foreground mt-0.5">
+                  {desc}
+                </span>
+              </motion.div>
             ))}
+          </div>
 
-            {/* Center halo — larger with more gradient depth */}
-            <circle cx="300" cy="250" r="95" fill="url(#plat-hub-glow)" />
-            {/* Center node — stronger */}
-            <circle cx="300" cy="250" r="68" fill="hsl(var(--primary))" fillOpacity="0.25" />
-            <circle cx="300" cy="250" r="68" fill="none" stroke="hsl(var(--primary))" strokeOpacity="0.9" strokeWidth="1.4" filter="url(#hub-glow-filter)" />
-            <text x="300" y="246" textAnchor="middle" fontSize="15" fontWeight="600" fill="rgba(255,255,255,0.95)">AI Healthcare</text>
-            <text x="300" y="264" textAnchor="middle" fontSize="15" fontWeight="600" fill="rgba(255,255,255,0.95)">Platform</text>
-
-            {/* Outer nodes — equal size, with glow */}
-            {outer.map(({ angle, label, Icon }) => {
-              const rad = (angle * Math.PI) / 180;
-              const dist = 200;
-              const x = 300 + Math.cos(rad) * dist;
-              const y = 250 + Math.sin(rad) * dist;
-              return (
-                <g key={label}>
-                  <circle cx={x} cy={y} r="58" fill="url(#plat-outer-glow)" />
-                  <circle cx={x} cy={y} r="50" fill="rgba(255,255,255,0.06)" stroke="hsl(var(--primary))" strokeOpacity="0.5" strokeWidth="1.2" />
-                  <foreignObject x={x - 12} y={y - 16} width="24" height="24">
-                    <Icon className="w-6 h-6 text-primary" />
-                  </foreignObject>
-                  <text x={x} y={y + 20} textAnchor="middle" fontSize="11" fontWeight="500" fill="rgba(255,255,255,0.9)">{label}</text>
-                </g>
-              );
-            })}
+          {/* Connector lines flowing down to platform bar */}
+          <svg
+            viewBox="0 0 560 56"
+            className="w-full h-14 mt-1"
+            preserveAspectRatio="none"
+            aria-hidden
+          >
+            <defs>
+              <linearGradient id="plat-line-grad" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stopColor="hsl(var(--primary))" stopOpacity="0.05" />
+                <stop offset="100%" stopColor="hsl(var(--primary))" stopOpacity="0.55" />
+              </linearGradient>
+            </defs>
+            {[70, 210, 350, 490].map((x, i) => (
+              <g key={x}>
+                <path
+                  d={`M ${x} 0 Q ${x} 28 280 56`}
+                  fill="none"
+                  stroke="url(#plat-line-grad)"
+                  strokeWidth="1.2"
+                />
+                <circle r="2.5" fill="hsl(var(--primary))">
+                  <animateMotion
+                    dur="2.4s"
+                    begin={`${i * 0.5}s`}
+                    repeatCount="indefinite"
+                    path={`M ${x} 0 Q ${x} 28 280 56`}
+                  />
+                </circle>
+              </g>
+            ))}
           </svg>
+
+          {/* Center: AI Healthcare Platform bar */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.96 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="relative rounded-2xl px-6 py-5 flex items-center justify-center gap-3"
+            style={{
+              background:
+                "linear-gradient(135deg, hsl(var(--primary) / 0.22) 0%, hsl(var(--primary) / 0.08) 100%)",
+              border: "1.5px solid hsl(var(--primary) / 0.7)",
+              boxShadow:
+                "0 0 60px hsl(var(--primary) / 0.25), inset 0 1px 0 hsl(var(--primary) / 0.3)",
+            }}
+          >
+            <div
+              className="w-9 h-9 rounded-lg flex items-center justify-center"
+              style={{
+                background: "hsl(var(--primary) / 0.3)",
+                border: "1px solid hsl(var(--primary))",
+              }}
+            >
+              <Cpu className="w-5 h-5 text-primary" />
+            </div>
+            <div className="flex flex-col">
+              <span className="text-[10px] uppercase tracking-[0.18em] text-primary font-semibold">
+                Borna · AI Core
+              </span>
+              <span className="text-base font-bold text-foreground leading-tight">
+                AI Healthcare Platform
+              </span>
+            </div>
+
+            {/* pulse ring */}
+            <span
+              aria-hidden
+              className="absolute inset-0 rounded-2xl pointer-events-none"
+              style={{
+                border: "1px solid hsl(var(--primary) / 0.5)",
+                animation: "borna-heartbeat 2.8s ease-out infinite",
+              }}
+            />
+          </motion.div>
+
+          {/* Connector down to data foundation */}
+          <svg
+            viewBox="0 0 560 40"
+            className="w-full h-10"
+            preserveAspectRatio="none"
+            aria-hidden
+          >
+            {[180, 280, 380].map((x, i) => (
+              <g key={x}>
+                <line
+                  x1={x}
+                  y1="0"
+                  x2={x}
+                  y2="40"
+                  stroke="hsl(var(--primary))"
+                  strokeOpacity="0.3"
+                  strokeWidth="1"
+                  strokeDasharray="2 4"
+                />
+                <circle r="2" fill="hsl(var(--primary))" cx={x} cy="0">
+                  <animate
+                    attributeName="cy"
+                    from="0"
+                    to="40"
+                    dur="2s"
+                    begin={`${i * 0.4}s`}
+                    repeatCount="indefinite"
+                  />
+                  <animate
+                    attributeName="opacity"
+                    from="1"
+                    to="0"
+                    dur="2s"
+                    begin={`${i * 0.4}s`}
+                    repeatCount="indefinite"
+                  />
+                </circle>
+              </g>
+            ))}
+          </svg>
+
+          {/* Bottom: Data foundation */}
+          <div
+            className="rounded-xl px-5 py-3 flex items-center justify-between"
+            style={{
+              background: "rgba(255,255,255,0.03)",
+              border: "1px dashed hsl(var(--primary) / 0.3)",
+            }}
+          >
+            <div className="flex items-center gap-2">
+              <Database className="w-4 h-4 text-primary/70" />
+              <span className="text-[11px] text-muted-foreground font-medium">
+                Unified patient data layer
+              </span>
+            </div>
+            <div className="flex items-center gap-1.5">
+              <span className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse" />
+              <span className="text-[10px] text-primary/80 font-mono">
+                HIPAA · SOC 2
+              </span>
+            </div>
+          </div>
         </div>
       </div>
 
-      {/* ---- Mobile: 2x2 grid below center node ---- */}
-      <div className="md:hidden flex flex-col items-center gap-5 py-2">
-        <div className="relative">
-          <div
-            className="rounded-full flex flex-col items-center justify-center"
-            style={{
-              width: 110, height: 110,
-              background: "hsl(var(--primary) / 0.22)",
-              border: "1px solid hsl(var(--primary) / 0.85)",
-              boxShadow: "0 0 60px hsl(var(--primary) / 0.25)",
-            }}
-          >
-            <span className="text-[10px] font-semibold text-foreground leading-tight text-center">AI Healthcare<br/>Platform</span>
-          </div>
-          <span aria-hidden className="absolute inset-0 rounded-full pointer-events-none borna-heartbeat-ring"
-            style={{ border: "1.25px solid hsla(170, 100%, 43%, 0.55)" }} />
-          <span aria-hidden className="absolute inset-0 rounded-full pointer-events-none borna-heartbeat-ring"
-            style={{ border: "1.25px solid hsla(170, 100%, 43%, 0.55)", animationDelay: "0.4s" }} />
-        </div>
-        <div className="grid grid-cols-2 gap-3 w-full max-w-xs">
-          {outer.map(({ label, Icon }) => (
-            <div key={label} className="flex flex-col items-center gap-1.5 rounded-xl py-3"
-              style={{ background: "rgba(255,255,255,0.04)", border: "0.5px solid hsl(var(--primary) / 0.35)" }}
+      {/* ---- Mobile: Stacked vertical flow ---- */}
+      <div className="md:hidden flex flex-col items-center gap-3 py-2">
+        <div className="grid grid-cols-2 gap-2.5 w-full max-w-xs">
+          {capabilities.map(({ label, Icon }) => (
+            <div
+              key={label}
+              className="flex flex-col items-center gap-1.5 rounded-xl py-3"
+              style={{
+                background: "rgba(255,255,255,0.04)",
+                border: "0.5px solid hsl(var(--primary) / 0.35)",
+              }}
             >
               <Icon className="w-4 h-4 text-primary" />
-              <span className="text-[11px]" style={{ color: "rgba(255,255,255,0.78)" }}>{label}</span>
+              <span className="text-[11px]" style={{ color: "rgba(255,255,255,0.78)" }}>
+                {label}
+              </span>
             </div>
           ))}
+        </div>
+
+        <div className="w-px h-6 bg-gradient-to-b from-primary/60 to-primary/10" />
+
+        <div
+          className="rounded-2xl px-5 py-3 flex items-center gap-2.5 w-full max-w-xs justify-center"
+          style={{
+            background: "hsl(var(--primary) / 0.22)",
+            border: "1px solid hsl(var(--primary) / 0.85)",
+            boxShadow: "0 0 40px hsl(var(--primary) / 0.25)",
+          }}
+        >
+          <Cpu className="w-4 h-4 text-primary" />
+          <span className="text-xs font-semibold text-foreground">
+            AI Healthcare Platform
+          </span>
+        </div>
+
+        <div className="w-px h-6 bg-gradient-to-b from-primary/40 to-primary/5" />
+
+        <div
+          className="rounded-xl px-4 py-2 flex items-center gap-2 w-full max-w-xs justify-center"
+          style={{
+            background: "rgba(255,255,255,0.03)",
+            border: "1px dashed hsl(var(--primary) / 0.3)",
+          }}
+        >
+          <Database className="w-3.5 h-3.5 text-primary/70" />
+          <span className="text-[10px] text-muted-foreground">
+            Unified data layer
+          </span>
         </div>
       </div>
     </>
