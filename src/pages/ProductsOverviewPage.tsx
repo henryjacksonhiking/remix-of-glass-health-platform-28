@@ -44,7 +44,7 @@ const statusMap: Record<string, { label: string; key: StatusKey }> = {
   connect: { label: "In Development", key: "in-development" },
   insight: { label: "Early Stage", key: "early-stage" },
   engage: { label: "Planned", key: "planned" },
-  core: { label: "Planned", key: "planned" },
+  core: { label: "In Development", key: "in-development" },
 };
 
 const statusStyle = (key: StatusKey): React.CSSProperties => {

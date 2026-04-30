@@ -22,7 +22,7 @@ export const products: Product[] = [
     slug: 'care',
     tagline: 'The patient portal software your clinic actually deserves',
     description: 'Borna Care is patient portal software that gives patients a seamless digital experience — online appointment scheduling for clinics, digital intake forms, payments, and communication — while giving staff the tools to manage everything from one place.',
-    accentColor: '#00479B',
+    accentColor: '#3B82F6',
     href: '/products/care',
     features: [
       { title: 'Online appointment scheduling', description: 'Patients book, reschedule, or cancel appointments 24/7 with online appointment scheduling for clinics.', icon: 'Calendar' },
@@ -56,7 +56,7 @@ export const products: Product[] = [
     slug: 'core',
     tagline: 'Healthcare AI infrastructure behind every Borna module',
     description: 'Borna Core is the healthcare AI infrastructure powering medical workflow automation, secure data sync, workflow orchestration, and system governance across the entire platform.',
-    accentColor: '#1435C1',
+    accentColor: '#5B7FFF',
     href: '/products/core',
     features: [
       { title: 'AI workflow automation', description: 'Smart routing, predictive analytics, and intelligent scheduling — the core of our medical workflow automation system.', icon: 'Cpu' },
