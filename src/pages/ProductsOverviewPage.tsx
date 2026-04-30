@@ -519,25 +519,22 @@ const OtherProducts = () => {
 /* Refined abstract diagrams per product — on-brand, no placeholder shapes */
 const ConceptDiagram = ({ slug, color }: { slug: string; color: string }) => {
   if (slug === "connect") {
-    // 4 channel icons (left) → converging gradient lines → glowing hub (right)
-    const channels = [
-      { Icon: Phone, y: 14 },
-      { Icon: MessageSquare, y: 36 },
-      { Icon: Mail, y: 58 },
-      { Icon: Video, y: 80 },
+    // Platform device base with feature icons (call, sms, email, video) floating above
+    const features = [
+      { Icon: Phone, x: 38, label: "Call" },
+      { Icon: MessageSquare, x: 80, label: "SMS" },
+      { Icon: Mail, x: 122, label: "Email" },
+      { Icon: Video, x: 164, label: "Video" },
     ];
-    const hubX = 168;
-    const hubY = 47;
     return (
       <svg viewBox="0 0 200 94" fill="none" aria-hidden className="w-full h-auto max-w-[280px] px-3">
         <defs>
-          <linearGradient id="connect-line" x1="0" y1="0" x2="1" y2="0">
-            <stop offset="0%" stopColor={color} stopOpacity="0.15" />
-            <stop offset="100%" stopColor={color} stopOpacity="0.85" />
+          <linearGradient id="connect-base" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stopColor={color} stopOpacity="0.45" />
+            <stop offset="100%" stopColor={color} stopOpacity="0.12" />
           </linearGradient>
-          <radialGradient id="connect-hub-glow" cx="50%" cy="50%" r="50%">
-            <stop offset="0%" stopColor={color} stopOpacity="0.7" />
-            <stop offset="55%" stopColor={color} stopOpacity="0.2" />
+          <radialGradient id="connect-feat-glow" cx="50%" cy="50%" r="50%">
+            <stop offset="0%" stopColor={color} stopOpacity="0.65" />
             <stop offset="100%" stopColor={color} stopOpacity="0" />
           </radialGradient>
           <filter id="connect-glow" x="-50%" y="-50%" width="200%" height="200%">
@@ -548,24 +545,37 @@ const ConceptDiagram = ({ slug, color }: { slug: string; color: string }) => {
             </feMerge>
           </filter>
         </defs>
-        {channels.map((c, i) => (
+
+        {/* Platform device base (Borna Connect) */}
+        <rect x="20" y="62" width="160" height="22" rx="5" fill="url(#connect-base)" stroke={color} strokeOpacity="0.55" strokeWidth="0.8" />
+        <text x="100" y="76" fontSize="7" fill="rgba(255,255,255,0.9)" textAnchor="middle" fontWeight="600" letterSpacing="0.5">
+          BORNA CONNECT
+        </text>
+
+        {/* Connection lines from base to feature nodes */}
+        {features.map((f, i) => (
           <line
-            key={i}
-            x1="36"
-            y1={c.y}
-            x2={hubX}
-            y2={hubY}
-            stroke="url(#connect-line)"
-            strokeWidth="1"
+            key={`l-${i}`}
+            x1={f.x}
+            y1="62"
+            x2={f.x}
+            y2="32"
+            stroke={color}
+            strokeOpacity="0.35"
+            strokeWidth="0.8"
+            strokeDasharray="2 2"
           />
         ))}
-        <circle cx={hubX} cy={hubY} r="22" fill="url(#connect-hub-glow)" />
-        <circle cx={hubX} cy={hubY} r="7" fill={color} filter="url(#connect-glow)" />
-        <circle cx={hubX} cy={hubY} r="7" fill="none" stroke={color} strokeOpacity="0.7" strokeWidth="0.8" />
-        {channels.map(({ Icon, y }, i) => (
-          <foreignObject key={i} x="14" y={y - 8} width="22" height="22">
-            <Icon className="w-4 h-4" style={{ color, opacity: 0.95 }} />
-          </foreignObject>
+
+        {/* Feature icons floating on top */}
+        {features.map(({ Icon, x }, i) => (
+          <g key={`f-${i}`}>
+            <circle cx={x} cy="22" r="14" fill="url(#connect-feat-glow)" />
+            <circle cx={x} cy="22" r="9" fill="rgba(15,21,53,0.85)" stroke={color} strokeOpacity="0.75" strokeWidth="0.8" />
+            <foreignObject x={x - 6} y="16" width="14" height="14">
+              <Icon className="w-3.5 h-3.5" style={{ color, opacity: 1 }} />
+            </foreignObject>
+          </g>
         ))}
       </svg>
     );
