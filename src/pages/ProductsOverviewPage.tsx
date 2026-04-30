@@ -706,6 +706,19 @@ const ConceptDiagram = ({ slug, color }: { slug: string; color: string }) => {
           );
         })}
 
+        {/* Center label — Lead */}
+        <text
+          x={cx}
+          y={cy + 3}
+          fontSize="11"
+          fill="rgba(255,255,255,0.95)"
+          textAnchor="middle"
+          fontWeight="700"
+          letterSpacing="1.5"
+        >
+          LEAD
+        </text>
+
         {/* Stage nodes */}
         {pos.map((n) => (
           <g key={n.label}>
