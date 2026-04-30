@@ -134,16 +134,6 @@ const Navbar = () => {
                             className="absolute left-full top-0 ml-1 w-60 p-2 rounded-xl"
                             style={dropdownStyle}
                           >
-                            <Link
-                              to={p.href}
-                              className="block px-3 py-2 rounded-lg text-sm transition-all duration-150"
-                              style={{ color: 'rgba(255, 255, 255, 0.85)' }}
-                              onMouseEnter={(e) => handleLinkHover(e, true)}
-                              onMouseLeave={(e) => handleLinkHover(e, false)}
-                            >
-                              <div className="font-medium">Overview</div>
-                              <div className="text-xs mt-0.5" style={{ color: 'rgba(255,255,255,0.5)' }}>Borna Care overview</div>
-                            </Link>
                             {p.children.map((child) => (
                               <Link
                                 key={child.href}
