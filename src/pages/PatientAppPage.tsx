@@ -145,17 +145,17 @@ const PatientAppPage = () => {
         <div className="container mx-auto px-4 md:px-6 text-center">
           <h2 className="section-headline text-foreground mb-4">A unified patient experience platform</h2>
           <p className="body-text mx-auto mb-12">Six stages, one seamless journey.</p>
-          <div className="flex flex-wrap justify-center gap-4 md:gap-3">
+          <div className="flex flex-wrap justify-center items-start gap-4 md:gap-3">
             {stages.map((stage, i) => (
-              <motion.div key={stage.label} initial={{ opacity: 0, y: 8 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }} className="flex items-center gap-3">
-                <div className="text-center w-20">
-                  <div className="w-12 h-12 rounded-xl mx-auto mb-2 flex items-center justify-center" style={{ background: 'rgba(0,222,196,0.08)', border: '1px solid rgba(0,222,196,0.15)' }}>
+              <motion.div key={stage.label} initial={{ opacity: 0, y: 8 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }} className="flex items-start gap-3">
+                <div className="flex flex-col items-center text-center w-28">
+                  <div className="w-12 h-12 rounded-xl mb-3 flex items-center justify-center shrink-0" style={{ background: 'rgba(0,222,196,0.08)', border: '1px solid rgba(0,222,196,0.15)' }}>
                     <stage.icon className="w-5 h-5 text-primary" />
                   </div>
-                  <div className="text-xs font-medium text-foreground">{stage.label}</div>
-                  <div className="text-[10px]" style={{ color: 'rgba(255,255,255,0.4)' }}>{stage.desc}</div>
+                  <div className="text-xs font-medium text-foreground leading-tight min-h-[2rem] flex items-center justify-center">{stage.label}</div>
+                  <div className="text-[10px] leading-snug mt-1" style={{ color: 'rgba(255,255,255,0.4)' }}>{stage.desc}</div>
                 </div>
-                {i < stages.length - 1 && <ArrowRight className="w-3.5 h-3.5 text-primary shrink-0 hidden md:block" />}
+                {i < stages.length - 1 && <ArrowRight className="w-3.5 h-3.5 text-primary shrink-0 hidden md:block mt-5" />}
               </motion.div>
             ))}
           </div>
