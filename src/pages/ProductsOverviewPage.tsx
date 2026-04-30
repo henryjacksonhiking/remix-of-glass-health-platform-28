@@ -459,7 +459,7 @@ const OtherProducts = () => {
               >
                 <Link
                   to={p.href}
-                  className="glass-panel-hover p-5 md:p-6 group block h-full relative"
+                  className="glass-panel-hover p-5 md:p-6 group h-full relative flex flex-col"
                 >
                   {/* Status badge floats top-right */}
                   <div className="absolute top-4 right-4 max-w-[55%] flex justify-end">
@@ -479,11 +479,11 @@ const OtherProducts = () => {
                   </div>
 
                   <h3 className="text-base md:text-lg font-medium text-foreground mb-2 pr-20">{p.name}</h3>
-                  <p className="text-sm text-muted-foreground leading-relaxed mb-5">{p.tagline}</p>
+                  <p className="text-sm text-muted-foreground leading-relaxed mb-5 min-h-[40px]">{p.tagline}</p>
 
-                  {/* Conceptual diagram — taller, centered, richer background */}
+                  {/* Conceptual diagram — equalized box, anchored above CTA */}
                   <div
-                    className="rounded-xl h-[140px] md:h-[160px] flex items-center justify-center overflow-hidden relative"
+                    className="rounded-xl h-[160px] md:h-[180px] flex items-center justify-center overflow-hidden relative mt-auto w-full"
                     style={{
                       background: `radial-gradient(ellipse at center, ${p.accentColor}26 0%, ${p.accentColor}0A 45%, transparent 80%)`,
                       border: `0.5px solid ${p.accentColor}40`,
