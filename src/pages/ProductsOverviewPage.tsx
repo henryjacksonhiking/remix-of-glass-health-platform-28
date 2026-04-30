@@ -167,9 +167,9 @@ const DefinitionSection = () => {
   const nodes = [
     { label: "Communication", icon: MessageSquare, color: "#00DEC4" },
     { label: "CRM", icon: Users, color: "#E0119D" },
-    { label: "Scheduling", icon: Calendar, color: "#00479B" },
+    { label: "Scheduling", icon: Calendar, color: "#3B82F6" },
     { label: "Analytics", icon: BarChart3 , color: "#6366F1" },
-    { label: "AI Automation", icon: Sparkles, color: "#1435C1" },
+    { label: "AI Automation", icon: Sparkles, color: "#5B7FFF" },
   ];
   return (
     <section className="py-12 md:py-20 border-t border-glass-border">
@@ -260,8 +260,8 @@ const DefinitionSection = () => {
 const EcosystemBridge = () => {
   const layers = [
     { label: "Patient Layer", desc: "Booking, forms, payments, communication", icon: HeartPulse, color: "#00DEC4" },
-    { label: "Practice Layer", desc: "Scheduling, CRM, workflows, analytics", icon: Workflow, color: "#00479B" },
-    { label: "Intelligence Layer", desc: "AI summaries, automation, predictions", icon: Cpu, color: "#1435C1" },
+    { label: "Practice Layer", desc: "Scheduling, CRM, workflows, analytics", icon: Workflow, color: "#00DEC4" },
+    { label: "Intelligence Layer", desc: "AI summaries, automation, predictions", icon: Cpu, color: "#00DEC4" },
   ];
   return (
     <section className="py-12 md:py-20 border-t border-glass-border">
