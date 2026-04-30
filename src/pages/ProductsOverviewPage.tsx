@@ -627,54 +627,97 @@ const ConceptDiagram = ({ slug, color }: { slug: string; color: string }) => {
   }
 
   if (slug === "engage") {
-    const nodes = [
-      { x: 30, y: 56, label: "Patient" },
-      { x: 100, y: 30, label: "Active" },
-      { x: 170, y: 56, label: "Retained" },
+    // Full lifecycle loop: Patient → Active → Retained → Reactivate → back to Patient
+    const cx = 100;
+    const cy = 47;
+    const rx = 70;
+    const ry = 30;
+    const stages = [
+      { angle: Math.PI, label: "Patient" },        // left
+      { angle: -Math.PI / 2, label: "Active" },    // top
+      { angle: 0, label: "Retained" },             // right
+      { angle: Math.PI / 2, label: "Reactivate" }, // bottom
     ];
+    const pos = stages.map((s) => ({
+      x: cx + Math.cos(s.angle) * rx,
+      y: cy + Math.sin(s.angle) * ry,
+      label: s.label,
+    }));
     return (
       <svg viewBox="0 0 200 94" fill="none" aria-hidden className="w-full h-auto max-w-[280px] px-3">
         <defs>
-          <linearGradient id="engage-path" x1="0" y1="0" x2="1" y2="0">
-            <stop offset="0%" stopColor={color} stopOpacity="0.4" />
-            <stop offset="50%" stopColor={color} stopOpacity="1" />
-            <stop offset="100%" stopColor="#E0119D" stopOpacity="0.6" />
+          <linearGradient id="engage-loop" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%" stopColor={color} stopOpacity="0.9" />
+            <stop offset="100%" stopColor="#E0119D" stopOpacity="0.9" />
           </linearGradient>
           <radialGradient id="engage-node-glow" cx="50%" cy="50%" r="50%">
-            <stop offset="0%" stopColor={color} stopOpacity="0.6" />
+            <stop offset="0%" stopColor={color} stopOpacity="0.7" />
             <stop offset="100%" stopColor={color} stopOpacity="0" />
           </radialGradient>
           <filter id="engage-glow" x="-50%" y="-50%" width="200%" height="200%">
-            <feGaussianBlur stdDeviation="1.6" result="b" />
+            <feGaussianBlur stdDeviation="1.4" result="b" />
             <feMerge>
               <feMergeNode in="b" />
               <feMergeNode in="SourceGraphic" />
             </feMerge>
           </filter>
-          <marker id="engage-arrow" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto">
-            <path d="M0,0 L6,3 L0,6 z" fill={color} />
-          </marker>
         </defs>
-        <path
-          d={`M ${nodes[0].x} ${nodes[0].y} Q ${nodes[1].x} ${nodes[1].y - 18} ${nodes[2].x - 6} ${nodes[2].y - 2}`}
+
+        {/* Lifecycle loop ellipse */}
+        <ellipse
+          cx={cx}
+          cy={cy}
+          rx={rx}
+          ry={ry}
           fill="none"
-          stroke="url(#engage-path)"
-          strokeWidth="1.6"
-          strokeLinecap="round"
-          markerEnd="url(#engage-arrow)"
-          filter="url(#engage-glow)"
+          stroke="url(#engage-loop)"
+          strokeWidth="1.2"
+          strokeDasharray="3 3"
+          opacity="0.85"
         />
-        {nodes.map((n) => (
+
+        {/* Directional arrows on the loop (clockwise) */}
+        {[Math.PI * 1.75, Math.PI * 0.25, Math.PI * 0.75, Math.PI * 1.25].map((a, i) => {
+          const ax = cx + Math.cos(a) * rx;
+          const ay = cy + Math.sin(a) * ry;
+          // tangent direction (clockwise)
+          const tx = -Math.sin(a) * rx;
+          const ty = Math.cos(a) * ry;
+          const tlen = Math.hypot(tx, ty);
+          const ux = tx / tlen;
+          const uy = ty / tlen;
+          const size = 3.5;
+          // perpendicular
+          const px = -uy;
+          const py = ux;
+          const p1x = ax + ux * size;
+          const p1y = ay + uy * size;
+          const p2x = ax - ux * size * 0.4 + px * size * 0.7;
+          const p2y = ay - uy * size * 0.4 + py * size * 0.7;
+          const p3x = ax - ux * size * 0.4 - px * size * 0.7;
+          const p3y = ay - uy * size * 0.4 - py * size * 0.7;
+          return (
+            <polygon
+              key={`arr-${i}`}
+              points={`${p1x},${p1y} ${p2x},${p2y} ${p3x},${p3y}`}
+              fill={color}
+              opacity="0.9"
+            />
+          );
+        })}
+
+        {/* Stage nodes */}
+        {pos.map((n) => (
           <g key={n.label}>
-            <circle cx={n.x} cy={n.y} r="14" fill="url(#engage-node-glow)" />
-            <circle cx={n.x} cy={n.y} r="4.5" fill={color} filter="url(#engage-glow)" />
+            <circle cx={n.x} cy={n.y} r="11" fill="url(#engage-node-glow)" />
+            <circle cx={n.x} cy={n.y} r="4" fill={color} filter="url(#engage-glow)" />
             <text
               x={n.x}
-              y={n.y + 18}
-              fontSize="8"
-              fill="rgba(255,255,255,0.85)"
+              y={n.label === "Active" ? n.y - 8 : n.label === "Reactivate" ? n.y + 14 : n.y + 14}
+              fontSize="7.5"
+              fill="rgba(255,255,255,0.92)"
               textAnchor="middle"
-              fontWeight="500"
+              fontWeight="600"
             >
               {n.label}
             </text>
