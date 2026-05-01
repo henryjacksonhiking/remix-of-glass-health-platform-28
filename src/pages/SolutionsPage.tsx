@@ -926,7 +926,7 @@ const Differentiation = () => {
         <motion.div {...fadeUp} transition={{ ...fadeUp.transition, delay: 0.15 }} className="glass-panel p-6">
           <div className="text-[10px] uppercase tracking-widest text-primary font-semibold mb-5">Unified Platform</div>
           <div className="relative w-full aspect-square max-w-[280px] mx-auto">
-            <svg viewBox="0 0 200 200" className="absolute inset-0 w-full h-full">
+            <svg viewBox="0 0 200 200" className="absolute inset-0 w-full h-full px-[5px] text-sm py-[5px]">
               <defs>
                 <radialGradient id="diff-hub" cx="50%" cy="50%">
                   <stop offset="0%" stopColor="hsl(var(--primary))" stopOpacity="0.85" />
