@@ -31,7 +31,7 @@ const SectionWrap = ({ children, className = "" }: { children: React.ReactNode; 
 const ProtectedCore = () => {
   const prefersReduced = typeof window !== "undefined" && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   return (
-    <svg viewBox="0 0 300 300" className="w-full max-w-[420px] mx-auto" aria-label="Protected system core with concentric security boundary rings around Borna AI">
+    <svg viewBox="0 0 300 300" className="w-full max-w-[420px] px-[5px] py-[5px] mx-[5px] my-[5px]" aria-label="Protected system core with concentric security boundary rings around Borna AI">
       <defs>
         <radialGradient id="secCoreGlow" cx="50%" cy="50%" r="50%">
           <stop offset="0%" stopColor="hsl(170 100% 43%)" stopOpacity="0.3" />
