@@ -73,10 +73,10 @@ const Footer = () => {
           {columns.map((col) => (
             <div key={col.title}>
               <h4 className="text-sm font-medium text-foreground mb-4">{col.title}</h4>
-              <ul className="space-y-2.5">
+              <ul className="space-y-3">
                 {col.links.map((link) => (
-                  <li key={link.label}>
-                    <Link to={link.href} className="text-sm text-muted-foreground hover:text-foreground transition-colors">
+                  <li key={link.label} className="leading-none">
+                    <Link to={link.href} className="text-sm text-muted-foreground hover:text-foreground transition-colors leading-none">
                       {link.label}
                     </Link>
                   </li>
