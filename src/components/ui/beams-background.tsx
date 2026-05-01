@@ -154,7 +154,7 @@ export function BeamsBackground({
     <div className={cn("relative w-full h-full overflow-hidden", className)}>
       <canvas
         ref={canvasRef}
-        className="absolute inset-0 w-full h-full"
+        className="absolute inset-0 w-full h-full px-[5px] text-sm py-[5px]"
         style={{ filter: "blur(15px)" }}
       />
       {children && (
