@@ -40,7 +40,7 @@ const RadialEcosystem = () => {
   const cy = 200;
 
   return (
-    <div className="relative w-full max-w-[420px] aspect-square mx-auto" aria-label="Borna ecosystem radial diagram">
+    <div className="relative w-full max-w-[420px] px-[5px] py-[5px] aspect-square mx-[5px] my-[5px]" aria-label="Borna ecosystem radial diagram">
       <svg viewBox="0 0 400 400" className="w-full h-full">
         <defs>
           <radialGradient id="coreGlow" cx="50%" cy="50%" r="50%">
