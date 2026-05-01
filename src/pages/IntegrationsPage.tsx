@@ -146,10 +146,10 @@ const BrokenNetwork = () => {
       })}
       {nodes.map((n, i) => (
         <g key={i}>
-          <circle cx={n.x} cy={n.y} r="30" fill="hsl(226 60% 14% / 0.7)" stroke="hsl(0 0% 45% / 0.35)" strokeWidth="1.2">
+          <circle cx={n.x} cy={n.y} r="34" fill="hsl(226 60% 14% / 0.7)" stroke="hsl(0 0% 45% / 0.35)" strokeWidth="1.2">
             <animate attributeName="opacity" values="0.6;0.4;0.6" dur="4s" repeatCount="indefinite" />
           </circle>
-          <text x={n.x} y={n.y + 4} textAnchor="middle" fill="hsl(0 0% 68%)" fontSize="10" fontWeight="500">{n.label}</text>
+          <text x={n.x} y={n.y + 4} textAnchor="middle" fill="hsl(0 0% 68%)" fontSize="9" fontWeight="500">{n.label}</text>
         </g>
       ))}
     </svg>
