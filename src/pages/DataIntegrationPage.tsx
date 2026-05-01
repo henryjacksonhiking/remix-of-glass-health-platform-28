@@ -55,7 +55,7 @@ const DataConvergenceHero = () => {
   const hubX = 320, hubY = 140, startX = 50;
 
   return (
-    <div className="relative w-full max-w-[420px] aspect-[4/3] mx-auto">
+    <div className="relative w-full max-w-[420px] px-[5px] py-[5px] aspect-[4/3] mx-[5px] my-[5px]">
       <svg viewBox="0 0 400 280" className="w-full h-full" aria-hidden="true">
         <defs>
           <radialGradient id="dataHubGlow" cx="50%" cy="50%" r="50%">
