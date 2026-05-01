@@ -116,7 +116,7 @@ const HeroVisual = () => {
       {/* Faint upward trending line */}
       <svg
         viewBox="0 0 400 400"
-        className="absolute inset-0 w-full h-full"
+        className="absolute inset-0 w-full h-full px-[5px] text-sm py-[5px]"
         aria-hidden
       >
         <defs>
