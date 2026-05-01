@@ -28,7 +28,8 @@ const dataSources = [
   { label: "Borna Care", desc: "Scheduling, forms, payments", color: "#00479B" },
   { label: "Borna Connect", desc: "Calls, messages, channels", color: "#00DEC4" },
   { label: "Borna Engage", desc: "CRM, lifecycle, campaigns", color: "#E0119D" },
-  { label: "EHR Systems", desc: "Clinical records, billing", color: "#1435C1" },
+  { label: "Borna Insight", desc: "Analytics & intelligence", color: "#6366F1" },
+  { label: "PMS/EHR Systems", desc: "Clinical records, billing", color: "#1435C1" },
 ];
 
 const faqItems = [
