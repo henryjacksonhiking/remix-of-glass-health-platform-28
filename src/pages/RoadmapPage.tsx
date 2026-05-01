@@ -484,7 +484,7 @@ const PhaseTimeline = () => {
       {/* Desktop horizontal */}
       <div className="hidden lg:block">
         <div className="relative h-[80px] mb-8">
-          <svg viewBox="0 0 1000 80" className="absolute inset-0 w-full h-full">
+          <svg viewBox="0 0 1000 80" className="absolute inset-0 w-full h-full px-[5px] text-sm py-[5px]">
             <defs>
               <linearGradient id="rmTimeline" x1="0" x2="1">
                 <stop offset="0%" stopColor="hsl(var(--primary))" stopOpacity="0.9" />
