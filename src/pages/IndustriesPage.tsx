@@ -116,7 +116,7 @@ const HeroIndustries = () => (
           transition={{ duration: 0.9, delay: 0.2 }}
           className="relative h-[420px] md:h-[480px]"
         >
-          <svg className="absolute inset-0 w-full h-full" viewBox="0 0 400 400">
+          <svg className="absolute inset-0 w-full h-full px-[5px] text-sm py-[5px]" viewBox="0 0 400 400">
             <defs>
               <linearGradient id="lineGrad" x1="0" y1="0" x2="1" y2="0">
                 <stop offset="0%" stopColor="hsl(var(--primary))" stopOpacity="0.6" />
