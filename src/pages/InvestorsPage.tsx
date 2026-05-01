@@ -396,7 +396,7 @@ const Opportunity = () => {
         <div className="mt-14 relative max-w-4xl mx-auto h-64 md:h-80">
           <svg
             viewBox="0 0 800 280"
-            className="absolute inset-0 w-full h-full"
+            className="absolute inset-0 w-full h-full px-[5px] text-sm py-[5px]"
             aria-label="Market growth trend"
           >
             <defs>
