@@ -455,7 +455,7 @@ const MedicalSection = () => {
         </div>
 
         <div className="glass-panel relative overflow-hidden h-[360px] md:h-[420px]">
-          <svg className="absolute inset-0 w-full h-full" viewBox="0 0 100 100" preserveAspectRatio="none">
+          <svg className="absolute inset-0 w-full h-full px-[5px] text-sm py-[5px]" viewBox="0 0 100 100" preserveAspectRatio="none">
             {nodes.map((n, i) => (
               <motion.line
                 key={i}
