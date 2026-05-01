@@ -684,7 +684,7 @@ const PlatformConnection = () => {
         </div>
 
         <div className="relative h-[420px] md:h-[480px]">
-          <svg className="absolute inset-0 w-full h-full" viewBox="0 0 400 400">
+          <svg className="absolute inset-0 w-full h-full px-[5px] text-sm py-[5px]" viewBox="0 0 400 400">
             {modules.map((m, i) => {
               const rad = (m.angle * Math.PI) / 180;
               const x = 200 + Math.cos(rad) * 150;
