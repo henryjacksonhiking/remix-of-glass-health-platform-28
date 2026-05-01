@@ -28,7 +28,8 @@ const dataSources = [
   { label: "Borna Care", desc: "Scheduling, forms, payments", color: "#00479B" },
   { label: "Borna Connect", desc: "Calls, messages, channels", color: "#00DEC4" },
   { label: "Borna Engage", desc: "CRM, lifecycle, campaigns", color: "#E0119D" },
-  { label: "EHR Systems", desc: "Clinical records, billing", color: "#1435C1" },
+  { label: "Borna Insight", desc: "Analytics & intelligence", color: "#6366F1" },
+  { label: "PMS/EHR Systems", desc: "Clinical records, billing", color: "#1435C1" },
 ];
 
 const faqItems = [
@@ -182,7 +183,7 @@ const BornaInsightPage = () => {
         <div className="container mx-auto px-4 md:px-6">
           <h2 className="section-headline text-foreground text-center mb-4">See your entire practice in one view</h2>
           <p className="body-text mx-auto text-center mb-12">Borna Insight pulls data from every source into a unified intelligence layer.</p>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-3xl mx-auto">
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 max-w-4xl mx-auto">
             {dataSources.map((src, i) => (
               <motion.div key={src.label} initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }} className="rounded-xl p-4 text-center" style={{ background: 'rgba(255,255,255,0.04)', border: `1px solid ${src.color}20` }}>
                 <div className="w-8 h-8 rounded-full mx-auto mb-2 flex items-center justify-center" style={{ background: `${src.color}15` }}>

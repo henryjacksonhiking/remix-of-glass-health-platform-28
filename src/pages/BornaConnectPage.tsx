@@ -214,7 +214,7 @@ const BornaConnectPage = () => {
         <div className="container mx-auto px-4 md:px-6">
           <h2 className="section-headline text-foreground text-center mb-12">Why healthcare communication systems are inefficient</h2>
           <div className="grid grid-cols-2 md:grid-cols-5 gap-3 max-w-3xl mx-auto">
-            {["Desk Phone", "Personal SMS", "Gmail", "Zoom", "Voicemail"].map((tool, i) => (
+            {["Desk Phone", "Personal SMS", "Gmail", "Fax", "Voicemail"].map((tool, i) => (
               <motion.div key={tool} initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }} className="rounded-xl p-4 text-center" style={{ background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.06)' }}>
                 <span className="text-xs" style={{ color: 'rgba(255,255,255,0.35)' }}>{tool}</span>
               </motion.div>

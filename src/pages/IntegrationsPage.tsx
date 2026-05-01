@@ -48,11 +48,11 @@ const HubSpokeDiagram = () => {
     return () => cancelAnimationFrame(raf);
   }, [prefersReduced]);
 
-  const cx = 250, cy = 250, orbitR = 150, nodeR = 46;
-  const rotationOffset = prefersReduced ? 0 : (time / 35) * 360;
+  const cx = 280, cy = 280, orbitR = 170, nodeR = 42;
+  const rotationOffset = prefersReduced ? 0 : (time / 60) * 360;
 
   return (
-    <svg ref={svgRef} viewBox="0 0 500 500" className="w-full max-w-[460px] mx-auto" aria-label="Hub and spoke integration diagram showing Borna AI connected to PMS, EHR, Communication, Payments, and Marketing systems">
+    <svg ref={svgRef} viewBox="0 0 560 560" className="w-full max-w-[560px] mx-auto" aria-label="Hub and spoke integration diagram showing Borna AI connected to PMS, EHR, Communication, Payments, and Marketing systems">
       <defs>
         <radialGradient id="hubGlow" cx="50%" cy="50%" r="50%">
           <stop offset="0%" stopColor="hsl(170 100% 43%)" stopOpacity="0.4" />
@@ -62,41 +62,33 @@ const HubSpokeDiagram = () => {
         <filter id="glowF"><feGaussianBlur stdDeviation="4" result="blur" /><feMerge><feMergeNode in="blur" /><feMergeNode in="SourceGraphic" /></feMerge></filter>
       </defs>
 
-      {[1, 2].map(i => (
-        <circle key={i} cx={cx} cy={cy} r={55} fill="none" stroke="hsl(170 100% 43%)" strokeWidth="1" opacity={0}>
-          {!prefersReduced && (
-            <>
-              <animate attributeName="r" from="55" to="110" dur="3s" begin={`${i * 1.5}s`} repeatCount="indefinite" />
-              <animate attributeName="opacity" from="0.5" to="0" dur="3s" begin={`${i * 1.5}s`} repeatCount="indefinite" />
-            </>
-          )}
+      {!prefersReduced && (
+        <circle cx={cx} cy={cy} r={55} fill="none" stroke="hsl(170 100% 43%)" strokeWidth="1" opacity={0}>
+          <animate attributeName="r" from="55" to="110" dur="5s" repeatCount="indefinite" />
+          <animate attributeName="opacity" from="0.4" to="0" dur="5s" repeatCount="indefinite" />
         </circle>
-      ))}
+      )}
 
       <circle cx={cx} cy={cy} r={100} fill="url(#hubGlow)" />
       <circle cx={cx} cy={cy} r={68} fill="hsl(170 100% 43% / 0.18)" stroke="hsl(170 100% 43%)" strokeWidth="2" filter="url(#glowF)" />
-      <text x={cx} y={cy - 6} textAnchor="middle" fill="hsl(170 100% 43%)" fontSize="16" fontWeight="700">Borna AI</text>
-      <text x={cx} y={cy + 12} textAnchor="middle" fill="hsl(170 100% 60%)" fontSize="11" fontWeight="500" opacity="0.9">Integration Hub</text>
+      <text x={cx} y={cy - 4} textAnchor="middle" fill="hsl(170 100% 43%)" fontSize="18" fontWeight="700">Borna AI</text>
+      <text x={cx} y={cy + 16} textAnchor="middle" fill="hsl(170 100% 60%)" fontSize="12" fontWeight="500" opacity="0.9">Integration Hub</text>
 
       {hubNodes.map((node, i) => {
         const a = ((node.angle + rotationOffset) * Math.PI) / 180;
         const nx = cx + Math.cos(a) * orbitR;
         const ny = cy + Math.sin(a) * orbitR;
 
-        const p1 = prefersReduced ? 0.5 : ((time * 0.4 + i * 0.3) % 1);
-        const p2 = prefersReduced ? 0.5 : (1 - ((time * 0.35 + i * 0.5) % 1));
+        const p1 = prefersReduced ? 0.5 : ((time * 0.25 + i * 0.3) % 1);
 
         return (
           <g key={node.label}>
             <line x1={cx} y1={cy} x2={nx} y2={ny} stroke="hsl(170 100% 43% / 0.3)" strokeWidth="1" />
             {!prefersReduced && (
-              <>
-                <circle cx={cx + (nx - cx) * p1} cy={cy + (ny - cy) * p1} r="2.5" fill="hsl(170 100% 60%)" opacity="0.8" />
-                <circle cx={cx + (nx - cx) * p2} cy={cy + (ny - cy) * p2} r="2" fill="hsl(170 100% 80%)" opacity="0.6" />
-              </>
+              <circle cx={cx + (nx - cx) * p1} cy={cy + (ny - cy) * p1} r="2.5" fill="hsl(170 100% 60%)" opacity="0.8" />
             )}
-            <circle cx={nx} cy={ny} r={nodeR} fill="hsl(226 60% 12% / 0.9)" stroke="hsl(170 100% 43% / 0.5)" strokeWidth="1.2" />
-            <text x={nx} y={ny + 4} textAnchor="middle" fill="hsl(210 40% 92%)" fontSize="10" fontWeight="500">{node.label}</text>
+            <circle cx={nx} cy={ny} r={nodeR} fill="hsl(226 60% 12% / 0.95)" stroke="hsl(170 100% 43% / 0.55)" strokeWidth="1.4" />
+            <text x={nx} y={ny + 4} textAnchor="middle" fill="hsl(210 40% 92%)" fontSize="12" fontWeight="500">{node.label}</text>
           </g>
         );
       })}
@@ -146,10 +138,10 @@ const BrokenNetwork = () => {
       })}
       {nodes.map((n, i) => (
         <g key={i}>
-          <circle cx={n.x} cy={n.y} r="30" fill="hsl(226 60% 14% / 0.7)" stroke="hsl(0 0% 45% / 0.35)" strokeWidth="1.2">
+          <circle cx={n.x} cy={n.y} r="34" fill="hsl(226 60% 14% / 0.7)" stroke="hsl(0 0% 45% / 0.35)" strokeWidth="1.2">
             <animate attributeName="opacity" values="0.6;0.4;0.6" dur="4s" repeatCount="indefinite" />
           </circle>
-          <text x={n.x} y={n.y + 4} textAnchor="middle" fill="hsl(0 0% 68%)" fontSize="10" fontWeight="500">{n.label}</text>
+          <text x={n.x} y={n.y + 4} textAnchor="middle" fill="hsl(0 0% 68%)" fontSize="9" fontWeight="500">{n.label}</text>
         </g>
       ))}
     </svg>

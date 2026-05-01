@@ -66,12 +66,12 @@ const ProtectedCore = () => {
 
       {/* Floating labels (desktop only) */}
       {[
-        { label: "Encrypted", x: 150, y: 18 },
-        { label: "Access Controlled", x: 282, y: 150 },
-        { label: "Monitored", x: 150, y: 286 },
-        { label: "Compliant", x: 18, y: 150 },
+        { label: "Encrypted", x: 150, y: 18, anchor: "middle" as const },
+        { label: "Access Controlled", x: 296, y: 150, anchor: "end" as const },
+        { label: "Monitored", x: 150, y: 290, anchor: "middle" as const },
+        { label: "Compliant", x: 4, y: 150, anchor: "start" as const },
       ].map(l => (
-        <text key={l.label} x={l.x} y={l.y} textAnchor="middle" fill="hsl(170 100% 43% / 0.7)" fontSize="11" fontWeight="500" className="hidden sm:block">{l.label}</text>
+        <text key={l.label} x={l.x} y={l.y} textAnchor={l.anchor} fill="hsl(170 100% 43% / 0.7)" fontSize="11" fontWeight="500" className="hidden sm:block">{l.label}</text>
       ))}
     </svg>
   );
@@ -499,7 +499,7 @@ const SecurityCompliancePage = () => {
             </motion.div>
           ))}
         </div>
-        <InfraGrid />
+        
       </SectionWrap>
 
       {/* ── SECTION 10: MONITORING & RISK ── */}
@@ -522,33 +522,6 @@ const SecurityCompliancePage = () => {
               <p className="text-muted-foreground text-xs leading-relaxed">{item.desc}</p>
             </motion.div>
           ))}
-        </div>
-        {/* Signal detection visual */}
-        <div className="flex justify-center">
-          <svg viewBox="0 0 280 160" className="w-full max-w-xs" aria-hidden="true">
-            {[
-              { x: 60, y: 40, flagged: false }, { x: 140, y: 30, flagged: true },
-              { x: 220, y: 50, flagged: false }, { x: 80, y: 100, flagged: false },
-              { x: 160, y: 90, flagged: false }, { x: 200, y: 120, flagged: true },
-              { x: 40, y: 130, flagged: false }, { x: 120, y: 140, flagged: false },
-            ].map((n, i) => (
-              <g key={i}>
-                <circle cx={n.x} cy={n.y} r="6" fill={`hsl(170 100% 43% / ${n.flagged ? 0.15 : 0.06})`} stroke={`hsl(170 100% 43% / ${n.flagged ? 0.5 : 0.2})`} strokeWidth="0.8" />
-                {n.flagged && (
-                  <circle cx={n.x} cy={n.y} r="10" fill="none" stroke="hsl(170 100% 43% / 0.3)" strokeWidth="0.6">
-                    <animate attributeName="opacity" values="0.2;0.5;0.2" dur="8s" repeatCount="indefinite" />
-                  </circle>
-                )}
-              </g>
-            ))}
-            {[[0,1],[1,2],[0,3],[3,4],[4,5],[6,7],[7,4]].map(([a,b], i) => {
-              const nodes = [
-                { x: 60, y: 40 }, { x: 140, y: 30 }, { x: 220, y: 50 }, { x: 80, y: 100 },
-                { x: 160, y: 90 }, { x: 200, y: 120 }, { x: 40, y: 130 }, { x: 120, y: 140 },
-              ];
-              return <line key={i} x1={nodes[a].x} y1={nodes[a].y} x2={nodes[b].x} y2={nodes[b].y} stroke="hsl(170 100% 43% / 0.1)" strokeWidth="0.5" />;
-            })}
-          </svg>
         </div>
       </SectionWrap>
 
@@ -584,7 +557,7 @@ const SecurityCompliancePage = () => {
             visible: { transition: { staggerChildren: 0.15 } },
           }}
         >
-          <svg viewBox="0 0 320 210" className="w-full max-w-[340px] text-sm" role="img" aria-label="Data governance diagram showing categorized data types around a central hub, each with access controls">
+          <svg viewBox="0 0 320 210" className="w-full max-w-[520px]" role="img" aria-label="Data governance diagram showing categorized data types around a central hub, each with access controls">
             <defs>
               <radialGradient id="govGlow" cx="50%" cy="50%" r="50%">
                 <stop offset="0%" stopColor="hsl(170 100% 43%)" stopOpacity="0.15" />
