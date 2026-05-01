@@ -201,7 +201,7 @@ const DefinitionSection = () => {
           </div>
 
           {/* Spokes (SVG) */}
-          <svg className="absolute inset-0 w-full h-full pointer-events-none" viewBox="0 0 600 420" preserveAspectRatio="none">
+          <svg className="absolute inset-0 w-full h-full px-[5px] text-sm py-[5px] pointer-events-none" viewBox="0 0 600 420" preserveAspectRatio="none">
             {nodes.map((_, i) => {
               const angle = (i / nodes.length) * Math.PI * 2 - Math.PI / 2;
               const cx = 300 + Math.cos(angle) * 220;
