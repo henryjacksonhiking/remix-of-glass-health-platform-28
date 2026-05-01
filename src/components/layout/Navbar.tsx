@@ -203,55 +203,6 @@ const Navbar = () => {
             </AnimatePresence>
           </div>
 
-          {/* Ecosystem dropdown */}
-          <div
-            className="relative"
-            onMouseEnter={() => setEcosystemOpen(true)}
-            onMouseLeave={() => setEcosystemOpen(false)}
-          >
-            <Link
-              to="/ecosystem"
-              className={cn(
-                "relative flex items-center gap-1 text-[13px] lg:text-sm transition-all duration-300 whitespace-nowrap py-1 px-2 rounded-md",
-                isEcosystemActive ? "text-foreground font-medium nav-spotlight" : "text-muted-foreground hover:text-foreground"
-              )}
-            >
-              Ecosystem <ChevronDown className="w-3.5 h-3.5" />
-            </Link>
-            <AnimatePresence>
-              {ecosystemOpen && (
-                <motion.div
-                  initial={{ opacity: 0, y: 8 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: 8 }}
-                  transition={{ duration: 0.2 }}
-                  className="absolute top-full left-0 mt-2 w-64 p-2 rounded-xl"
-                  style={dropdownStyle}
-                >
-                  {[
-                    { to: "/ecosystem/communication", label: "Communication Layer", sub: "Unified omnichannel patient communication" },
-                    { to: "/ecosystem/crm-lifecycle", label: "CRM & Lifecycle Layer", sub: "Lead-to-retention patient lifecycle management" },
-                    { to: "/ecosystem/data-integration", label: "Data & Integration Layer", sub: "Unified data infrastructure & system connectivity" },
-                    { to: "/ecosystem/ai-intelligence", label: "AI Intelligence Layer", sub: "Insights, automation & intelligent decision support" },
-                    { to: "/ecosystem/dual-experience", label: "Patient vs Office Experience", sub: "Dual-interface platform for patients & providers" },
-                  ].map((item) => (
-                    <Link
-                      key={item.to}
-                      to={item.to}
-                      className="block px-3 py-2.5 rounded-lg text-sm transition-all duration-150"
-                      style={{ color: 'rgba(255, 255, 255, 0.85)' }}
-                      onMouseEnter={(e) => handleLinkHover(e, true)}
-                      onMouseLeave={(e) => handleLinkHover(e, false)}
-                    >
-                      <div className="font-medium">{item.label}</div>
-                      <div className="text-xs mt-0.5" style={{ color: 'rgba(255,255,255,0.5)' }}>{item.sub}</div>
-                    </Link>
-                  ))}
-                </motion.div>
-              )}
-            </AnimatePresence>
-          </div>
-
           {/* Solutions dropdown */}
           <div
             className="relative"
@@ -449,15 +400,6 @@ const Navbar = () => {
                 <Link to="/platform/architecture" onClick={() => setMobileOpen(false)} className="block px-3 py-2 text-sm text-foreground">Architecture</Link>
                 <Link to="/platform/integrations" onClick={() => setMobileOpen(false)} className="block px-3 py-2 text-sm text-foreground">Integrations</Link>
                 <Link to="/platform/security" onClick={() => setMobileOpen(false)} className="block px-3 py-2 text-sm text-foreground">Security & Compliance</Link>
-              </div>
-              <div className="space-y-1">
-                <p className="text-xs text-muted-foreground uppercase tracking-wider px-3 pb-2 pt-3">Ecosystem</p>
-                <Link to="/ecosystem" onClick={() => setMobileOpen(false)} className="block px-3 py-2 text-sm text-foreground">Ecosystem</Link>
-                <Link to="/ecosystem/communication" onClick={() => setMobileOpen(false)} className="block px-3 py-2 text-sm text-foreground">Communication Layer</Link>
-                <Link to="/ecosystem/crm-lifecycle" onClick={() => setMobileOpen(false)} className="block px-3 py-2 text-sm text-foreground">CRM & Lifecycle Layer</Link>
-                <Link to="/ecosystem/data-integration" onClick={() => setMobileOpen(false)} className="block px-3 py-2 text-sm text-foreground">Data & Integration Layer</Link>
-                <Link to="/ecosystem/ai-intelligence" onClick={() => setMobileOpen(false)} className="block px-3 py-2 text-sm text-foreground">AI Intelligence Layer</Link>
-                <Link to="/ecosystem/dual-experience" onClick={() => setMobileOpen(false)} className="block px-3 py-2 text-sm text-foreground">Patient vs Office Experience</Link>
               </div>
               <div className="space-y-1">
                 <p className="text-xs text-muted-foreground uppercase tracking-wider px-3 pb-2 pt-3">Solutions</p>

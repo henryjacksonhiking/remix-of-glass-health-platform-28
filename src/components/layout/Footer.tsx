@@ -23,7 +23,6 @@ const Footer = () => {
       title: "Platform",
       links: [
         { label: "Overview", href: "/platform" },
-        { label: "Ecosystem", href: "/ecosystem" },
         { label: "Solutions", href: "/solutions" },
         { label: "Pricing", href: "/pricing" },
         { label: "Roadmap", href: "/roadmap" },
@@ -45,17 +44,6 @@ const Footer = () => {
         { label: "Resources", href: "/resources" },
         { label: "Book a demo", href: "/demo" },
         { label: "Contact", href: "/contact" },
-      ],
-    },
-    {
-      title: "Company",
-      links: [
-        { label: "Company Overview", href: "/company" },
-        { label: "About", href: "/about" },
-        { label: "Vision & Mission", href: "/vision-mission" },
-        { label: "Leadership", href: "/leadership" },
-        { label: "Careers", href: "/careers" },
-        { label: "Investors", href: "/investors" },
       ],
     },
     {
