@@ -77,7 +77,7 @@ const HeroVisual = () => {
   ];
   return (
     <div className="relative w-full h-[380px] md:h-[440px]">
-      <svg viewBox="0 0 400 400" className="absolute inset-0 w-full h-full">
+      <svg viewBox="0 0 400 400" className="absolute inset-0 w-full h-full px-[5px] text-sm py-[5px]">
         <defs>
           <radialGradient id="hero-hub-grad" cx="50%" cy="50%">
             <stop offset="0%" stopColor="hsl(var(--primary))" stopOpacity="0.9" />
