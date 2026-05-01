@@ -814,7 +814,7 @@ const Differentiation = () => {
               Unified Platform
             </div>
             <div className="relative h-[180px]">
-              <svg className="absolute inset-0 w-full h-full" viewBox="0 0 200 180">
+              <svg className="absolute inset-0 w-full h-full px-[5px] text-sm py-[5px]" viewBox="0 0 200 180">
                 {[
                   { x: 30, y: 40 },
                   { x: 100, y: 30 },
