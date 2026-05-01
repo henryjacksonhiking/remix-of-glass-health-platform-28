@@ -66,8 +66,8 @@ const pillars = [
 
 const modules = [
   { name: "Borna Care", desc: "Patient portal & clinic management", status: "✓ Available now", statusColor: "#00DEC4", filled: true, href: "/products/care" },
-  { name: "Borna Connect", desc: "Unified communications platform", status: "In development", statusColor: "rgba(255,255,255,0.3)", filled: false, href: "/products/connect" },
-  { name: "Borna Insight", desc: "Analytics & intelligence dashboard", status: "In development", statusColor: "rgba(255,255,255,0.3)", filled: false, href: "/products/insight" },
+  { name: "Borna Connect", desc: "Unified communications platform", status: "In development", statusColor: "#FFB400", filled: false, href: "/products/connect" },
+  { name: "Borna Insight", desc: "Analytics & intelligence dashboard", status: "In development", statusColor: "#FFB400", filled: false, href: "/products/insight" },
   { name: "Borna Engage", desc: "Healthcare CRM & patient retention", status: "Coming soon", statusColor: "rgba(255,255,255,0.3)", filled: false, href: "/products/engage" },
   { name: "Borna Core", desc: "AI engine & infrastructure", status: "Coming soon", statusColor: "rgba(255,255,255,0.3)", filled: false, href: "/products/core" },
 ];
