@@ -310,7 +310,7 @@ const Problem = () => (
         <div className="relative aspect-square max-w-md mx-auto w-full">
           <svg
             viewBox="0 0 400 400"
-            className="absolute inset-0 w-full h-full"
+            className="absolute inset-0 w-full h-full px-[5px] text-sm py-[5px]"
             aria-label="Fragmented healthcare stack diagram"
           >
             {[
