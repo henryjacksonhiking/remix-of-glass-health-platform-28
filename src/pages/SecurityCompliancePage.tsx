@@ -584,7 +584,7 @@ const SecurityCompliancePage = () => {
             visible: { transition: { staggerChildren: 0.15 } },
           }}
         >
-          <svg viewBox="0 0 320 210" className="w-full max-w-[340px]" role="img" aria-label="Data governance diagram showing categorized data types around a central hub, each with access controls">
+          <svg viewBox="0 0 320 210" className="w-full max-w-[340px] text-sm" role="img" aria-label="Data governance diagram showing categorized data types around a central hub, each with access controls">
             <defs>
               <radialGradient id="govGlow" cx="50%" cy="50%" r="50%">
                 <stop offset="0%" stopColor="hsl(170 100% 43%)" stopOpacity="0.15" />
