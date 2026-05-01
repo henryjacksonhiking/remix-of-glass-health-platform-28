@@ -23,7 +23,6 @@ const Footer = () => {
       title: "Platform",
       links: [
         { label: "Overview", href: "/platform" },
-        { label: "Ecosystem", href: "/ecosystem" },
         { label: "Solutions", href: "/solutions" },
         { label: "Pricing", href: "/pricing" },
         { label: "Roadmap", href: "/roadmap" },
