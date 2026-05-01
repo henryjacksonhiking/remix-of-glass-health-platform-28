@@ -66,12 +66,12 @@ const ProtectedCore = () => {
 
       {/* Floating labels (desktop only) */}
       {[
-        { label: "Encrypted", x: 150, y: 18 },
-        { label: "Access Controlled", x: 282, y: 150 },
-        { label: "Monitored", x: 150, y: 286 },
-        { label: "Compliant", x: 18, y: 150 },
+        { label: "Encrypted", x: 150, y: 18, anchor: "middle" as const },
+        { label: "Access Controlled", x: 296, y: 150, anchor: "end" as const },
+        { label: "Monitored", x: 150, y: 290, anchor: "middle" as const },
+        { label: "Compliant", x: 4, y: 150, anchor: "start" as const },
       ].map(l => (
-        <text key={l.label} x={l.x} y={l.y} textAnchor="middle" fill="hsl(170 100% 43% / 0.7)" fontSize="11" fontWeight="500" className="hidden sm:block">{l.label}</text>
+        <text key={l.label} x={l.x} y={l.y} textAnchor={l.anchor} fill="hsl(170 100% 43% / 0.7)" fontSize="11" fontWeight="500" className="hidden sm:block">{l.label}</text>
       ))}
     </svg>
   );
