@@ -77,7 +77,7 @@ const HeroVisual = () => {
   ];
   return (
     <div className="relative w-full h-[380px] md:h-[440px]">
-      <svg viewBox="0 0 400 400" className="absolute inset-0 w-full h-full">
+      <svg viewBox="0 0 400 400" className="absolute inset-0 w-full h-full px-[5px] text-sm py-[5px]">
         <defs>
           <radialGradient id="hero-hub-grad" cx="50%" cy="50%">
             <stop offset="0%" stopColor="hsl(var(--primary))" stopOpacity="0.9" />
@@ -751,7 +751,7 @@ const PlatformDiagram = () => {
 
       {/* Animated connection beams */}
       <div className="relative h-14 -my-1">
-        <svg viewBox="0 0 400 56" preserveAspectRatio="none" className="absolute inset-0 w-full h-full">
+        <svg viewBox="0 0 400 56" preserveAspectRatio="none" className="absolute inset-0 w-full h-full px-[5px] text-sm py-[5px]">
           <defs>
             <linearGradient id="sol-beam-grad" x1="0%" y1="0%" x2="0%" y2="100%">
               <stop offset="0%" stopColor="hsl(var(--primary))" stopOpacity="0" />
@@ -926,7 +926,7 @@ const Differentiation = () => {
         <motion.div {...fadeUp} transition={{ ...fadeUp.transition, delay: 0.15 }} className="glass-panel p-6">
           <div className="text-[10px] uppercase tracking-widest text-primary font-semibold mb-5">Unified Platform</div>
           <div className="relative w-full aspect-square max-w-[280px] mx-auto">
-            <svg viewBox="0 0 200 200" className="absolute inset-0 w-full h-full">
+            <svg viewBox="0 0 200 200" className="absolute inset-0 w-full h-full px-[5px] text-sm py-[5px]">
               <defs>
                 <radialGradient id="diff-hub" cx="50%" cy="50%">
                   <stop offset="0%" stopColor="hsl(var(--primary))" stopOpacity="0.85" />

@@ -116,7 +116,7 @@ const HeroIndustries = () => (
           transition={{ duration: 0.9, delay: 0.2 }}
           className="relative h-[420px] md:h-[480px]"
         >
-          <svg className="absolute inset-0 w-full h-full" viewBox="0 0 400 400">
+          <svg className="absolute inset-0 w-full h-full px-[5px] text-sm py-[5px]" viewBox="0 0 400 400">
             <defs>
               <linearGradient id="lineGrad" x1="0" y1="0" x2="1" y2="0">
                 <stop offset="0%" stopColor="hsl(var(--primary))" stopOpacity="0.6" />
@@ -455,7 +455,7 @@ const MedicalSection = () => {
         </div>
 
         <div className="glass-panel relative overflow-hidden h-[360px] md:h-[420px]">
-          <svg className="absolute inset-0 w-full h-full" viewBox="0 0 100 100" preserveAspectRatio="none">
+          <svg className="absolute inset-0 w-full h-full px-[5px] text-sm py-[5px]" viewBox="0 0 100 100" preserveAspectRatio="none">
             {nodes.map((n, i) => (
               <motion.line
                 key={i}
@@ -684,7 +684,7 @@ const PlatformConnection = () => {
         </div>
 
         <div className="relative h-[420px] md:h-[480px]">
-          <svg className="absolute inset-0 w-full h-full" viewBox="0 0 400 400">
+          <svg className="absolute inset-0 w-full h-full px-[5px] text-sm py-[5px]" viewBox="0 0 400 400">
             {modules.map((m, i) => {
               const rad = (m.angle * Math.PI) / 180;
               const x = 200 + Math.cos(rad) * 150;
@@ -814,7 +814,7 @@ const Differentiation = () => {
               Unified Platform
             </div>
             <div className="relative h-[180px]">
-              <svg className="absolute inset-0 w-full h-full" viewBox="0 0 200 180">
+              <svg className="absolute inset-0 w-full h-full px-[5px] text-sm py-[5px]" viewBox="0 0 200 180">
                 {[
                   { x: 30, y: 40 },
                   { x: 100, y: 30 },

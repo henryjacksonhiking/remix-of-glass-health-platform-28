@@ -116,7 +116,7 @@ const HeroVisual = () => {
       {/* Faint upward trending line */}
       <svg
         viewBox="0 0 400 400"
-        className="absolute inset-0 w-full h-full"
+        className="absolute inset-0 w-full h-full px-[5px] text-sm py-[5px]"
         aria-hidden
       >
         <defs>
@@ -310,7 +310,7 @@ const Problem = () => (
         <div className="relative aspect-square max-w-md mx-auto w-full">
           <svg
             viewBox="0 0 400 400"
-            className="absolute inset-0 w-full h-full"
+            className="absolute inset-0 w-full h-full px-[5px] text-sm py-[5px]"
             aria-label="Fragmented healthcare stack diagram"
           >
             {[
@@ -396,7 +396,7 @@ const Opportunity = () => {
         <div className="mt-14 relative max-w-4xl mx-auto h-64 md:h-80">
           <svg
             viewBox="0 0 800 280"
-            className="absolute inset-0 w-full h-full"
+            className="absolute inset-0 w-full h-full px-[5px] text-sm py-[5px]"
             aria-label="Market growth trend"
           >
             <defs>
@@ -512,7 +512,7 @@ const Solution = () => {
 
           {/* Ecosystem diagram */}
           <div className="relative aspect-square max-w-md mx-auto w-full">
-            <svg viewBox="0 0 400 400" className="absolute inset-0 w-full h-full" aria-hidden>
+            <svg viewBox="0 0 400 400" className="absolute inset-0 w-full h-full px-[5px] text-sm py-[5px]" aria-hidden>
               {modules.map((_, i) => {
                 const angle = (i / modules.length) * Math.PI * 2 - Math.PI / 2;
                 const x = 200 + Math.cos(angle) * 150;
@@ -1035,7 +1035,7 @@ const MarketFit = () => {
           </div>
 
           <div className="relative aspect-square max-w-md mx-auto w-full">
-            <svg viewBox="0 0 400 400" className="absolute inset-0 w-full h-full" aria-hidden>
+            <svg viewBox="0 0 400 400" className="absolute inset-0 w-full h-full px-[5px] text-sm py-[5px]" aria-hidden>
               {verticals.map((v, i) => {
                 const x = 200 + Math.cos(v.angle) * 130;
                 const y = 200 + Math.sin(v.angle) * 130;

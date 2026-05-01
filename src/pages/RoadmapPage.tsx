@@ -176,7 +176,7 @@ const HeroPath = () => {
   ];
   return (
     <div className="relative w-full h-[260px] md:h-[320px]">
-      <svg viewBox="0 0 560 260" className="absolute inset-0 w-full h-full" preserveAspectRatio="xMidYMid meet">
+      <svg viewBox="0 0 560 260" className="absolute inset-0 w-full h-full px-[5px] text-sm py-[5px]" preserveAspectRatio="xMidYMid meet">
         <defs>
           <linearGradient id="rmHeroLine" x1="0" y1="1" x2="1" y2="0">
             <stop offset="0%" stopColor="hsl(var(--primary))" stopOpacity="1" />
@@ -484,7 +484,7 @@ const PhaseTimeline = () => {
       {/* Desktop horizontal */}
       <div className="hidden lg:block">
         <div className="relative h-[80px] mb-8">
-          <svg viewBox="0 0 1000 80" className="absolute inset-0 w-full h-full">
+          <svg viewBox="0 0 1000 80" className="absolute inset-0 w-full h-full px-[5px] text-sm py-[5px]">
             <defs>
               <linearGradient id="rmTimeline" x1="0" x2="1">
                 <stop offset="0%" stopColor="hsl(var(--primary))" stopOpacity="0.9" />
