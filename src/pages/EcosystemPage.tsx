@@ -432,7 +432,7 @@ const EcosystemPage = () => {
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.8, delay: 0.2 }}
             >
-              <RadialEcosystem />
+              <EcosystemGlobe />
             </motion.div>
           </div>
         </div>
