@@ -762,8 +762,8 @@ const EcosystemPage = () => {
           <div className="max-w-3xl mx-auto rounded-2xl border border-border/60 bg-card/40 overflow-hidden">
             <div className="grid grid-cols-3 text-xs uppercase tracking-wider text-muted-foreground border-b border-border/60">
               <div className="px-4 py-3" />
-              <div className="px-4 py-3 text-center">Traditional tools</div>
-              <div className="px-4 py-3 text-center text-primary">Borna ecosystem</div>
+              <div className="px-4 py-3 text-left">Traditional tools</div>
+              <div className="px-4 py-3 text-left text-primary">Borna ecosystem</div>
             </div>
             {[
               ["Data", "Fragmented", "Centralized"],
@@ -773,11 +773,11 @@ const EcosystemPage = () => {
             ].map(([k, a, b]) => (
               <div key={k} className="grid grid-cols-3 text-sm border-b border-border/40 last:border-0">
                 <div className="px-4 py-3 text-foreground/85 font-medium">{k}</div>
-                <div className="px-4 py-3 text-center text-muted-foreground flex items-center justify-center gap-1.5">
-                  <XCircle className="w-3.5 h-3.5" /> {a}
+                <div className="px-4 py-3 text-left text-muted-foreground flex items-center gap-1.5">
+                  <XCircle className="w-3.5 h-3.5 shrink-0" /> <span>{a}</span>
                 </div>
-                <div className="px-4 py-3 text-center text-primary flex items-center justify-center gap-1.5">
-                  <CheckCircle2 className="w-3.5 h-3.5" /> {b}
+                <div className="px-4 py-3 text-left text-primary flex items-center gap-1.5">
+                  <CheckCircle2 className="w-3.5 h-3.5 shrink-0" /> <span>{b}</span>
                 </div>
               </div>
             ))}
