@@ -130,19 +130,43 @@ const RadialEcosystem = () => {
 
 /* ---------- Section 2: Before / After ---------- */
 const BeforeAfter = () => {
-  const tools = [Phone, Mail, Calendar, BarChart3, Database, Users];
+  const tools = [
+    { Icon: Phone, label: "Phone" },
+    { Icon: Mail, label: "Email" },
+    { Icon: Calendar, label: "Calendar" },
+    { Icon: BarChart3, label: "Analytics" },
+    { Icon: Database, label: "Records" },
+    { Icon: Users, label: "CRM" },
+  ];
+  const nodes = [
+    { Icon: MessageSquare, angle: -90 },
+    { Icon: Users, angle: -30 },
+    { Icon: BarChart3, angle: 30 },
+    { Icon: Calendar, angle: 90 },
+    { Icon: Database, angle: 150 },
+    { Icon: Cpu, angle: 210 },
+  ];
   return (
     <div className="grid md:grid-cols-[1fr_auto_1fr] gap-6 md:gap-8 items-center">
-      {/* Disconnected */}
-      <div className="rounded-2xl border border-border/60 bg-card/40 p-6">
-        <div className="grid grid-cols-3 gap-3 mb-4">
-          {tools.map((Icon, i) => (
-            <div
+      {/* Disconnected — 2x3 grid of floating 3D cards */}
+      <div className="rounded-2xl border border-border/60 bg-gradient-to-br from-card/30 to-card/10 p-5 sm:p-6 backdrop-blur-md">
+        <div className="grid grid-cols-3 gap-3 sm:gap-4 mb-5" style={{ perspective: "800px" }}>
+          {tools.map(({ Icon, label }, i) => (
+            <motion.div
               key={i}
-              className="aspect-square rounded-lg bg-muted/40 flex items-center justify-center border border-dashed border-muted-foreground/30"
+              initial={{ opacity: 0, y: 12 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.4, delay: i * 0.06 }}
+              whileHover={{ rotateX: -8, rotateY: 8, y: -4 }}
+              style={{ transformStyle: "preserve-3d" }}
+              className="aspect-square rounded-xl flex flex-col items-center justify-center gap-1.5 border border-white/[0.06] bg-gradient-to-br from-white/[0.04] to-white/[0.01] shadow-[0_10px_30px_-12px_rgba(0,0,0,0.6),inset_0_1px_0_rgba(255,255,255,0.04)] transition-shadow hover:shadow-[0_18px_40px_-12px_rgba(0,0,0,0.8)]"
             >
-              <Icon className="w-5 h-5 text-muted-foreground/60" strokeWidth={1.5} />
-            </div>
+              <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-lg bg-muted/30 flex items-center justify-center border border-white/5 grayscale opacity-70">
+                <Icon className="w-4 h-4 sm:w-5 sm:h-5 text-muted-foreground" strokeWidth={1.5} />
+              </div>
+              <span className="text-[9px] sm:text-[10px] uppercase tracking-wider text-muted-foreground/70">{label}</span>
+            </motion.div>
           ))}
         </div>
         <p className="text-center text-xs uppercase tracking-wider text-muted-foreground">Disconnected Tools</p>
@@ -151,26 +175,53 @@ const BeforeAfter = () => {
       <ArrowRight className="hidden md:block w-8 h-8 text-primary/60 mx-auto" />
       <div className="md:hidden h-px w-full bg-gradient-to-r from-transparent via-primary/40 to-transparent" />
 
-      {/* Unified */}
-      <div className="rounded-2xl border border-primary/30 bg-card/40 p-6 relative overflow-hidden">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,hsla(170,100%,43%,0.08),transparent_70%)]" />
+      {/* Unified — interactive network with animated streams */}
+      <div className="rounded-2xl border border-primary/30 bg-gradient-to-br from-card/40 to-card/10 p-5 sm:p-6 relative overflow-hidden backdrop-blur-md shadow-[0_0_40px_-10px_hsla(170,100%,43%,0.35)]">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,hsla(170,100%,43%,0.12),transparent_70%)]" />
         <div className="relative">
-          <svg viewBox="0 0 200 160" className="w-full h-40">
-            <circle cx="100" cy="80" r="22" fill="hsl(170 100% 43%)" />
-            <text x="100" y="84" textAnchor="middle" fontSize="9" fontWeight="600" fill="hsl(226 60% 12%)">
-              Borna
-            </text>
-            {tools.map((_, i) => {
-              const angle = (i / tools.length) * Math.PI * 2 - Math.PI / 2;
-              const x = 100 + 60 * Math.cos(angle);
-              const y = 80 + 60 * Math.sin(angle);
+          <svg viewBox="0 0 220 200" className="w-full h-44 sm:h-52">
+            <defs>
+              <radialGradient id="coreUnifiedGlow" cx="50%" cy="50%" r="50%">
+                <stop offset="0%" stopColor="#00DEC4" stopOpacity="0.6" />
+                <stop offset="100%" stopColor="#00DEC4" stopOpacity="0" />
+              </radialGradient>
+            </defs>
+            {/* pulsing glow */}
+            <motion.circle
+              cx="110" cy="100" r="40" fill="url(#coreUnifiedGlow)"
+              animate={{ opacity: [0.5, 1, 0.5], scale: [0.9, 1.1, 0.9] }}
+              transition={{ duration: 2.6, repeat: Infinity, ease: "easeInOut" }}
+              style={{ transformOrigin: "110px 100px" }}
+            />
+            {/* lines + animated stream dots inbound */}
+            {nodes.map((n, i) => {
+              const rad = (n.angle * Math.PI) / 180;
+              const x2 = 110 + 70 * Math.cos(rad);
+              const y2 = 100 + 70 * Math.sin(rad);
+              const x1 = 110 + 22 * Math.cos(rad);
+              const y1 = 100 + 22 * Math.sin(rad);
               return (
                 <g key={i}>
-                  <line x1="100" y1="80" x2={x} y2={y} stroke="#00DEC4" strokeOpacity="0.5" strokeWidth="1" />
-                  <circle cx={x} cy={y} r="8" fill="hsla(170, 100%, 43%, 0.15)" stroke="#00DEC4" strokeWidth="1" />
+                  <line x1={x1} y1={y1} x2={x2} y2={y2} stroke="#00DEC4" strokeOpacity="0.35" strokeWidth="1" />
+                  <motion.circle
+                    r="2" fill="#00DEC4"
+                    initial={{ cx: x2, cy: y2, opacity: 0 }}
+                    animate={{ cx: [x2, x1], cy: [y2, y1], opacity: [0, 1, 0] }}
+                    transition={{ duration: 1.8, repeat: Infinity, delay: i * 0.3, ease: "easeIn" }}
+                  />
+                  <circle cx={x2} cy={y2} r="9" fill="hsla(170, 100%, 43%, 0.2)" stroke="#00DEC4" strokeWidth="1" />
                 </g>
               );
             })}
+            {/* central core */}
+            <motion.circle
+              cx="110" cy="100" r="20" fill="hsl(170 100% 43%)"
+              animate={{ r: [20, 22, 20] }}
+              transition={{ duration: 2.6, repeat: Infinity, ease: "easeInOut" }}
+            />
+            <text x="110" y="104" textAnchor="middle" fontSize="9" fontWeight="700" fill="hsl(226 60% 12%)">
+              Core
+            </text>
           </svg>
           <p className="text-center text-xs uppercase tracking-wider text-primary mt-2">Unified Ecosystem</p>
         </div>
@@ -227,48 +278,83 @@ const LayeredArchitecture = () => {
   );
 };
 
-/* ---------- Section 4: Patient journey flow ---------- */
+/* ---------- Section 4: Patient journey — circular lifecycle ---------- */
 const JourneyFlow = () => {
   const steps = [
-    { label: "Marketing Touch", Icon: Radio },
+    { label: "Marketing", Icon: Radio },
     { label: "First Contact", Icon: MessageSquare },
     { label: "Booking", Icon: Calendar },
     { label: "Appointment", Icon: Users },
     { label: "Treatment", Icon: Heart },
     { label: "Payment", Icon: CreditCard },
-    { label: "Retention", Icon: RefreshCw },
+    { label: "Reactivation", Icon: RefreshCw },
   ];
+  const size = 480;
+  const cx = size / 2;
+  const cy = size / 2;
+  const R = 170;
+  const nodeR = 30;
+
   return (
-    <div className="relative">
-      <div className="flex flex-col md:flex-row items-stretch md:items-center justify-between gap-3 md:gap-1">
-        {steps.map((s, i) => (
-          <div key={s.label} className="flex md:flex-col items-center gap-3 md:gap-2 flex-1">
-            <motion.div
-              initial={{ opacity: 0, scale: 0.6 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.35, delay: i * 0.1 }}
-              className="flex flex-col items-center gap-2"
-            >
-              <div className="w-12 h-12 rounded-full bg-card border border-primary/30 flex items-center justify-center">
-                <s.Icon className="w-5 h-5 text-primary" strokeWidth={1.5} />
-              </div>
-              <span className="text-[11px] text-foreground/80 text-center whitespace-nowrap">{s.label}</span>
-            </motion.div>
-            {i < steps.length - 1 && (
-              <ArrowRight className="hidden md:block w-4 h-4 text-primary/50 shrink-0" />
-            )}
-          </div>
-        ))}
-      </div>
-      <p className="text-center text-xs text-muted-foreground mt-6">
-        ↻ Continuous lifecycle — Retention loops back into First Contact
+    <div className="relative mx-auto w-full max-w-[480px] aspect-square">
+      <svg viewBox={`0 0 ${size} ${size}`} className="absolute inset-0 w-full h-full">
+        <defs>
+          <radialGradient id="journeyCoreGlow" cx="50%" cy="50%" r="50%">
+            <stop offset="0%" stopColor="#00DEC4" stopOpacity="0.5" />
+            <stop offset="100%" stopColor="#00DEC4" stopOpacity="0" />
+          </radialGradient>
+        </defs>
+        {/* dashed orbit ring */}
+        <circle cx={cx} cy={cy} r={R} fill="none" stroke="#00DEC4" strokeOpacity="0.2" strokeWidth="1" strokeDasharray="3 5" />
+        {/* animated traveling pulse along circle */}
+        <motion.circle
+          r="4" fill="#00DEC4"
+          animate={{ rotate: 360 }}
+          transition={{ duration: 14, repeat: Infinity, ease: "linear" }}
+          style={{ transformOrigin: `${cx}px ${cy}px` }}
+          cx={cx + R} cy={cy}
+        />
+        {/* loop arrow indicator (last → first) */}
+        <path
+          d={`M ${cx + R - 6} ${cy - 18} A ${R} ${R} 0 0 0 ${cx + R - 6} ${cy + 18}`}
+          fill="none" stroke="#00DEC4" strokeOpacity="0.5" strokeWidth="1.5"
+        />
+        {/* center label */}
+        <circle cx={cx} cy={cy} r="60" fill="url(#journeyCoreGlow)" />
+        <circle cx={cx} cy={cy} r="38" fill="hsla(170, 100%, 43%, 0.12)" stroke="#00DEC4" strokeOpacity="0.4" strokeWidth="1" />
+        <text x={cx} y={cy - 2} textAnchor="middle" fontSize="11" fontWeight="600" fill="#00DEC4">Patient</text>
+        <text x={cx} y={cy + 12} textAnchor="middle" fontSize="11" fontWeight="600" fill="#00DEC4">Lifecycle</text>
+      </svg>
+      {/* nodes as HTML */}
+      {steps.map((s, i) => {
+        const angle = (i / steps.length) * Math.PI * 2 - Math.PI / 2;
+        const leftPct = 50 + (R / size) * 100 * Math.cos(angle);
+        const topPct = 50 + (R / size) * 100 * Math.sin(angle);
+        return (
+          <motion.div
+            key={s.label}
+            initial={{ opacity: 0, scale: 0.6 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.4, delay: 0.1 + i * 0.08 }}
+            className="absolute flex flex-col items-center gap-1.5"
+            style={{ left: `${leftPct}%`, top: `${topPct}%`, transform: "translate(-50%, -50%)", width: nodeR * 2 }}
+          >
+            <div className="w-12 h-12 rounded-full glass-panel border border-primary/40 flex items-center justify-center shadow-[0_8px_20px_-8px_hsla(170,100%,43%,0.4)]">
+              <s.Icon className="w-5 h-5 text-primary" strokeWidth={1.5} />
+            </div>
+            <span className="text-[10px] sm:text-[11px] text-foreground/85 text-center whitespace-nowrap">{s.label}</span>
+          </motion.div>
+        );
+      })}
+      <p className="absolute -bottom-8 left-0 right-0 text-center text-xs text-muted-foreground">
+        ↻ Continuous lifecycle — Reactivation flows back to Marketing
       </p>
     </div>
   );
 };
 
-/* ---------- Section 6: Progressive reveal ---------- */
+/* ---------- Section 6: Progressive reveal — glassmorphism premium ---------- */
 const ProgressiveReveal = () => {
   const modules = ["Care", "Connect", "Engage", "Insight", "Core"];
   return (
@@ -277,58 +363,69 @@ const ProgressiveReveal = () => {
         { stage: 1, title: "Start with Borna Care", activeOnly: true },
         { stage: 2, title: "Expand seamlessly over time", activeOnly: false },
       ].map((card) => (
-        <div key={card.stage} className="rounded-2xl border border-border/60 bg-card/40 p-8">
-          <p className="text-xs uppercase tracking-wider text-muted-foreground mb-4">Stage {card.stage}</p>
-          <svg viewBox="0 0 240 200" className="w-full h-48">
-            {modules.map((_, i) => {
-              const angle = (i / modules.length) * Math.PI * 2 - Math.PI / 2;
-              const x = 120 + 70 * Math.cos(angle);
-              const y = 100 + 70 * Math.sin(angle);
-              const isCare = i === 0;
-              const active = card.activeOnly ? isCare : true;
-              return (
-                <g key={i}>
-                  <line
-                    x1="120"
-                    y1="100"
-                    x2={x}
-                    y2={y}
-                    stroke="#00DEC4"
-                    strokeOpacity={active ? 0.5 : 0.1}
-                    strokeWidth="1"
-                  />
-                  <circle
-                    cx={x}
-                    cy={y}
-                    r={isCare ? 14 : 11}
-                    fill={active ? "hsla(170, 100%, 43%, 0.2)" : "hsla(0,0%,100%,0.04)"}
-                    stroke={active ? "#00DEC4" : "hsla(0,0%,100%,0.15)"}
-                    strokeWidth="1"
-                  />
-                  <text
-                    x={x}
-                    y={y + 3}
-                    textAnchor="middle"
-                    fontSize="8"
-                    fill={active ? "#00DEC4" : "hsla(0,0%,100%,0.4)"}
-                    fontWeight={isCare ? 600 : 400}
-                  >
-                    {modules[i]}
-                  </text>
-                </g>
-              );
-            })}
-            <circle cx="120" cy="100" r="5" fill="hsl(170 100% 43%)" />
-          </svg>
-          <p className="text-sm text-foreground/90 text-center mt-4">{card.title}</p>
-          {card.activeOnly && (
-            <div className="flex justify-center mt-3">
-              <span className="inline-flex items-center gap-1.5 text-[11px] font-medium px-2.5 py-0.5 rounded-full bg-primary/15 text-primary">
-                <span className="w-1.5 h-1.5 rounded-full bg-primary" /> Available now
-              </span>
-            </div>
-          )}
-        </div>
+        <motion.div
+          key={card.stage}
+          initial={{ opacity: 0, y: 16 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
+          className="relative rounded-3xl border border-white/10 bg-gradient-to-br from-white/[0.06] to-white/[0.01] backdrop-blur-xl p-6 sm:p-8 shadow-[0_20px_50px_-20px_rgba(0,0,0,0.6),inset_0_1px_0_rgba(255,255,255,0.06)] overflow-hidden"
+        >
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_30%,hsla(170,100%,43%,0.10),transparent_60%)] pointer-events-none" />
+          <div className="relative">
+            <p className="text-xs uppercase tracking-wider text-muted-foreground mb-4">Stage {card.stage}</p>
+            <svg viewBox="0 0 240 200" className="w-full h-48 sm:h-56">
+              <defs>
+                <radialGradient id={`reveal-glow-${card.stage}`} cx="50%" cy="50%" r="50%">
+                  <stop offset="0%" stopColor="#00DEC4" stopOpacity="0.5" />
+                  <stop offset="100%" stopColor="#00DEC4" stopOpacity="0" />
+                </radialGradient>
+                <radialGradient id={`node-glass-${card.stage}`} cx="30%" cy="30%" r="70%">
+                  <stop offset="0%" stopColor="hsla(170,100%,70%,0.55)" />
+                  <stop offset="100%" stopColor="hsla(170,100%,43%,0.15)" />
+                </radialGradient>
+              </defs>
+              <circle cx="120" cy="100" r="50" fill={`url(#reveal-glow-${card.stage})`} />
+              {modules.map((_, i) => {
+                const angle = (i / modules.length) * Math.PI * 2 - Math.PI / 2;
+                const x = 120 + 72 * Math.cos(angle);
+                const y = 100 + 72 * Math.sin(angle);
+                const isCare = i === 0;
+                const active = card.activeOnly ? isCare : true;
+                return (
+                  <g key={i}>
+                    <line x1="120" y1="100" x2={x} y2={y}
+                      stroke="#00DEC4" strokeOpacity={active ? 0.5 : 0.1} strokeWidth="1" />
+                    <circle cx={x} cy={y} r={isCare ? 16 : 13}
+                      fill={active ? `url(#node-glass-${card.stage})` : "hsla(0,0%,100%,0.04)"}
+                      stroke={active ? "#00DEC4" : "hsla(0,0%,100%,0.15)"}
+                      strokeWidth={active ? 1.2 : 1}
+                      style={active ? { filter: "drop-shadow(0 4px 8px hsla(170,100%,43%,0.4))" } : undefined}
+                    />
+                    <text x={x} y={y + 3} textAnchor="middle" fontSize="8"
+                      fill={active ? "hsl(226 60% 12%)" : "hsla(0,0%,100%,0.4)"}
+                      fontWeight={isCare ? 700 : 500}>
+                      {modules[i]}
+                    </text>
+                  </g>
+                );
+              })}
+              <motion.circle
+                cx="120" cy="100" r="6" fill="hsl(170 100% 43%)"
+                animate={{ r: [6, 8, 6], opacity: [1, 0.7, 1] }}
+                transition={{ duration: 2.4, repeat: Infinity, ease: "easeInOut" }}
+              />
+            </svg>
+            <p className="text-sm sm:text-base font-medium text-foreground text-center mt-4">{card.title}</p>
+            {card.activeOnly && (
+              <div className="flex justify-center mt-3">
+                <span className="inline-flex items-center gap-1.5 text-[11px] font-medium px-3 py-1 rounded-full bg-primary/15 text-primary border border-primary/30">
+                  <span className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse" /> Available now
+                </span>
+              </div>
+            )}
+          </div>
+        </motion.div>
       ))}
     </div>
   );
@@ -665,8 +762,8 @@ const EcosystemPage = () => {
           <div className="max-w-3xl mx-auto rounded-2xl border border-border/60 bg-card/40 overflow-hidden">
             <div className="grid grid-cols-3 text-xs uppercase tracking-wider text-muted-foreground border-b border-border/60">
               <div className="px-4 py-3" />
-              <div className="px-4 py-3 text-center">Traditional tools</div>
-              <div className="px-4 py-3 text-center text-primary">Borna ecosystem</div>
+              <div className="px-4 py-3 text-left">Traditional tools</div>
+              <div className="px-4 py-3 text-left text-primary">Borna ecosystem</div>
             </div>
             {[
               ["Data", "Fragmented", "Centralized"],
@@ -676,11 +773,11 @@ const EcosystemPage = () => {
             ].map(([k, a, b]) => (
               <div key={k} className="grid grid-cols-3 text-sm border-b border-border/40 last:border-0">
                 <div className="px-4 py-3 text-foreground/85 font-medium">{k}</div>
-                <div className="px-4 py-3 text-center text-muted-foreground flex items-center justify-center gap-1.5">
-                  <XCircle className="w-3.5 h-3.5" /> {a}
+                <div className="px-4 py-3 text-left text-muted-foreground flex items-center gap-1.5">
+                  <XCircle className="w-3.5 h-3.5 shrink-0" /> <span>{a}</span>
                 </div>
-                <div className="px-4 py-3 text-center text-primary flex items-center justify-center gap-1.5">
-                  <CheckCircle2 className="w-3.5 h-3.5" /> {b}
+                <div className="px-4 py-3 text-left text-primary flex items-center gap-1.5">
+                  <CheckCircle2 className="w-3.5 h-3.5 shrink-0" /> <span>{b}</span>
                 </div>
               </div>
             ))}
