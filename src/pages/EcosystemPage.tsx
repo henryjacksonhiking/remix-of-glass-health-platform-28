@@ -350,13 +350,15 @@ const JourneyFlow = () => {
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.4, delay: 0.1 + i * 0.08 }}
-            className="absolute flex flex-col items-center gap-1.5"
+            className="absolute"
             style={{ left: `${leftPct}%`, top: `${topPct}%`, transform: "translate(-50%, -50%)" }}
           >
-            <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-full glass-panel border border-primary/40 flex items-center justify-center shadow-[0_8px_20px_-8px_hsla(170,100%,43%,0.45)] backdrop-blur-md">
+            <div className="relative w-14 h-14 sm:w-16 sm:h-16 rounded-full glass-panel border border-primary/40 flex items-center justify-center shadow-[0_8px_20px_-8px_hsla(170,100%,43%,0.45)] backdrop-blur-md">
               <s.Icon className="w-6 h-6 sm:w-7 sm:h-7 text-primary" strokeWidth={1.5} />
+              <span className="absolute top-full left-1/2 -translate-x-1/2 mt-2 text-[11px] sm:text-xs text-foreground/85 text-center whitespace-nowrap">
+                {s.label}
+              </span>
             </div>
-            <span className="text-[11px] sm:text-xs text-foreground/85 text-center whitespace-nowrap">{s.label}</span>
           </motion.div>
         );
       })}
