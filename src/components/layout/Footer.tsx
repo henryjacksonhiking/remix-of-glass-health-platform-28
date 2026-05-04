@@ -47,6 +47,16 @@ const Footer = () => {
       ],
     },
     {
+      title: "Company",
+      links: [
+        { label: "About", href: "/about" },
+        { label: "Vision & Mission", href: "/vision-mission" },
+        { label: "Leadership", href: "/leadership" },
+        { label: "Careers", href: "/careers" },
+        { label: "Investors", href: "/investors" },
+      ],
+    },
+    {
       title: "Legal",
       links: [
         { label: "Privacy policy", href: "/privacy" },
