@@ -341,7 +341,7 @@ const ProgressiveReveal = () => {
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_30%,hsla(170,100%,43%,0.10),transparent_60%)] pointer-events-none" />
           <div className="relative">
             <p className="text-xs uppercase tracking-wider text-muted-foreground mb-4">Stage {card.stage}</p>
-            <svg viewBox="0 0 240 200" className="w-full h-48 sm:h-56">
+            <svg viewBox="0 0 240 200" className="w-full h-56 sm:h-72 mx-auto">
               <defs>
                 <radialGradient id={`reveal-glow-${card.stage}`} cx="50%" cy="50%" r="50%">
                   <stop offset="0%" stopColor="#00DEC4" stopOpacity="0.5" />
