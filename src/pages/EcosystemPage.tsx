@@ -300,6 +300,10 @@ const JourneyFlow = () => {
   const cx = size / 2;
   const cy = size / 2;
   const R = 210;
+  const nodeR = 32; // node radius in px (w-16 = 64px → 32)
+  const gap = Math.atan(nodeR / R) + 0.02; // angular offset so arc attaches to node edge
+
+  const nodeAngle = (i: number) => (i / steps.length) * Math.PI * 2 - Math.PI / 2;
 
   return (
     <div className="relative mx-auto w-full max-w-[560px] aspect-square">
@@ -314,17 +318,31 @@ const JourneyFlow = () => {
             d={`M ${cx} ${cy - R} A ${R} ${R} 0 1 1 ${cx - 0.01} ${cy - R} Z`}
           />
         </defs>
-        {/* dashed orbit ring connecting all nodes */}
-        <circle
-          cx={cx}
-          cy={cy}
-          r={R}
-          fill="none"
-          stroke="#00DEC4"
-          strokeOpacity="0.45"
-          strokeWidth="1.5"
-          strokeDasharray="4 6"
-        />
+        {/* dynamic dashed connector arcs — each segment attaches to adjacent node edges */}
+        {steps.map((_, i) => {
+          const a1 = nodeAngle(i) + gap;
+          const a2 = nodeAngle((i + 1) % steps.length) - gap;
+          const x1 = cx + R * Math.cos(a1);
+          const y1 = cy + R * Math.sin(a1);
+          const x2 = cx + R * Math.cos(a2);
+          const y2 = cy + R * Math.sin(a2);
+          return (
+            <motion.path
+              key={`arc-${i}`}
+              d={`M ${x1} ${y1} A ${R} ${R} 0 0 1 ${x2} ${y2}`}
+              fill="none"
+              stroke="#00DEC4"
+              strokeOpacity="0.55"
+              strokeWidth="1.5"
+              strokeDasharray="4 6"
+              strokeLinecap="round"
+              initial={{ pathLength: 0, opacity: 0 }}
+              whileInView={{ pathLength: 1, opacity: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.7, delay: 0.15 + i * 0.08, ease: "easeOut" }}
+            />
+          );
+        })}
         {/* center label */}
         <circle cx={cx} cy={cy} r="80" fill="url(#journeyCoreGlow)" />
         <circle cx={cx} cy={cy} r="56" fill="hsla(170, 100%, 43%, 0.14)" stroke="#00DEC4" strokeOpacity="0.5" strokeWidth="1.2" />
@@ -340,7 +358,7 @@ const JourneyFlow = () => {
       </svg>
       {/* nodes as HTML */}
       {steps.map((s, i) => {
-        const angle = (i / steps.length) * Math.PI * 2 - Math.PI / 2;
+        const angle = nodeAngle(i);
         const leftPct = 50 + (R / size) * 100 * Math.cos(angle);
         const topPct = 50 + (R / size) * 100 * Math.sin(angle);
         return (
@@ -766,9 +784,6 @@ const EcosystemPage = () => {
             <Link to="/products/care" className="text-sm text-primary hover:underline">
               Explore Borna Care →
             </Link>
-          </div>
-          <div className="max-w-4xl mx-auto">
-            <ProgressiveReveal />
           </div>
         </div>
       </section>
