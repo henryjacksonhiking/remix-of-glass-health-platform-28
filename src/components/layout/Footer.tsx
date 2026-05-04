@@ -29,6 +29,16 @@ const Footer = () => {
       ],
     },
     {
+      title: "Company",
+      links: [
+        { label: "About", href: "/about" },
+        { label: "Vision & Mission", href: "/vision-mission" },
+        { label: "Leadership", href: "/leadership" },
+        { label: "Careers", href: "/careers" },
+        { label: "Investors", href: "/investors" },
+      ],
+    },
+    {
       title: "Industries",
       links: [
         { label: "Dental Practices", href: "/industries/dental" },
@@ -44,16 +54,6 @@ const Footer = () => {
         { label: "Resources", href: "/resources" },
         { label: "Book a demo", href: "/demo" },
         { label: "Contact", href: "/contact" },
-      ],
-    },
-    {
-      title: "Company",
-      links: [
-        { label: "About", href: "/about" },
-        { label: "Vision & Mission", href: "/vision-mission" },
-        { label: "Leadership", href: "/leadership" },
-        { label: "Careers", href: "/careers" },
-        { label: "Investors", href: "/investors" },
       ],
     },
     {
