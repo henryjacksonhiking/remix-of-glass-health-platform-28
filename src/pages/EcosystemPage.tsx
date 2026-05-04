@@ -209,7 +209,12 @@ const BeforeAfter = () => {
                     animate={{ cx: [x2, x1], cy: [y2, y1], opacity: [0, 1, 0] }}
                     transition={{ duration: 1.8, repeat: Infinity, delay: i * 0.3, ease: "easeIn" }}
                   />
-                  <circle cx={x2} cy={y2} r="9" fill="hsla(170, 100%, 43%, 0.2)" stroke="#00DEC4" strokeWidth="1" />
+                  <circle cx={x2} cy={y2} r="11" fill="hsla(170, 100%, 43%, 0.2)" stroke="#00DEC4" strokeWidth="1" />
+                  <foreignObject x={x2 - 7} y={y2 - 7} width="14" height="14">
+                    <div style={{ display: "flex", alignItems: "center", justifyContent: "center", width: "100%", height: "100%" }}>
+                      <n.Icon style={{ width: 11, height: 11, color: "#00DEC4" }} strokeWidth={2} />
+                    </div>
+                  </foreignObject>
                 </g>
               );
             })}
