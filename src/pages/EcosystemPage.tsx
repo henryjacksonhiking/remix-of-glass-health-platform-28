@@ -25,6 +25,7 @@ import {
   Layers,
 } from "lucide-react";
 import PageWrapper from "@/components/layout/PageWrapper";
+import EcosystemGlobe from "@/components/ui/ecosystem-globe";
 
 /* ---------- Section 1: Hero radial diagram ---------- */
 const RadialEcosystem = () => {
@@ -431,7 +432,7 @@ const EcosystemPage = () => {
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.8, delay: 0.2 }}
             >
-              <RadialEcosystem />
+              <EcosystemGlobe />
             </motion.div>
           </div>
         </div>
