@@ -182,7 +182,53 @@ const BeforeAfter = () => {
           <p className="text-center text-xs sm:text-sm uppercase tracking-wider text-primary mb-5 sm:mb-6">Unified Ecosystem</p>
           <div className="flex-1 flex items-center justify-center">
           <svg viewBox="0 0 220 200" className="w-full h-56 sm:h-64">
-...
+            <defs>
+              <radialGradient id="coreUnifiedGlow" cx="50%" cy="50%" r="50%">
+                <stop offset="0%" stopColor="#00DEC4" stopOpacity="0.6" />
+                <stop offset="100%" stopColor="#00DEC4" stopOpacity="0" />
+              </radialGradient>
+            </defs>
+            {/* pulsing glow */}
+            <motion.circle
+              cx="110" cy="100" r="40" fill="url(#coreUnifiedGlow)"
+              animate={{ opacity: [0.5, 1, 0.5], scale: [0.9, 1.1, 0.9] }}
+              transition={{ duration: 2.6, repeat: Infinity, ease: "easeInOut" }}
+              style={{ transformOrigin: "110px 100px" }}
+            />
+            {/* lines + animated stream dots inbound */}
+            {nodes.map((n, i) => {
+              const rad = (n.angle * Math.PI) / 180;
+              const x2 = 110 + 75 * Math.cos(rad);
+              const y2 = 100 + 75 * Math.sin(rad);
+              const x1 = 110 + 22 * Math.cos(rad);
+              const y1 = 100 + 22 * Math.sin(rad);
+              return (
+                <g key={i}>
+                  <line x1={x1} y1={y1} x2={x2} y2={y2} stroke="#00DEC4" strokeOpacity="0.4" strokeWidth="1" />
+                  <motion.circle
+                    r="2" fill="#00DEC4"
+                    initial={{ cx: x2, cy: y2, opacity: 0 }}
+                    animate={{ cx: [x2, x1], cy: [y2, y1], opacity: [0, 1, 0] }}
+                    transition={{ duration: 1.8, repeat: Infinity, delay: i * 0.3, ease: "easeIn" }}
+                  />
+                  <circle cx={x2} cy={y2} r="13" fill="hsla(170, 100%, 43%, 0.2)" stroke="#00DEC4" strokeWidth="1" />
+                  <foreignObject x={x2 - 8} y={y2 - 8} width="16" height="16">
+                    <div style={{ display: "flex", alignItems: "center", justifyContent: "center", width: "100%", height: "100%" }}>
+                      <n.Icon style={{ width: 13, height: 13, color: "#00DEC4" }} strokeWidth={2} />
+                    </div>
+                  </foreignObject>
+                </g>
+              );
+            })}
+            {/* central core */}
+            <motion.circle
+              cx="110" cy="100" r="22" fill="hsl(170 100% 43%)"
+              animate={{ r: [22, 24, 22] }}
+              transition={{ duration: 2.6, repeat: Infinity, ease: "easeInOut" }}
+            />
+            <text x="110" y="104" textAnchor="middle" fontSize="10" fontWeight="700" fill="hsl(226 60% 12%)">
+              Core
+            </text>
           </svg>
           </div>
         </div>
