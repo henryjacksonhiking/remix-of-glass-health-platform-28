@@ -47,6 +47,16 @@ const Footer = () => {
       ],
     },
     {
+      title: "Company",
+      links: [
+        { label: "About", href: "/about" },
+        { label: "Vision & Mission", href: "/vision-mission" },
+        { label: "Leadership", href: "/leadership" },
+        { label: "Careers", href: "/careers" },
+        { label: "Investors", href: "/investors" },
+      ],
+    },
+    {
       title: "Legal",
       links: [
         { label: "Privacy policy", href: "/privacy" },
@@ -59,7 +69,7 @@ const Footer = () => {
   return (
     <footer className="border-t border-glass-border bg-background">
       <div className="container mx-auto px-4 md:px-6 py-16">
-        <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-7 gap-8 text-center md:text-left">
+        <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-8 gap-8 text-center md:text-left">
           {/* Brand col */}
           <div className="col-span-2 md:col-span-1 flex flex-col items-center md:items-start">
             <Link to="/" className="flex items-center mb-4 text-foreground">
