@@ -450,15 +450,6 @@ const Navbar = () => {
                 <Link to="/platform/security" onClick={() => setMobileOpen(false)} className="block px-3 py-2 text-sm text-foreground">Security & Compliance</Link>
               </div>
               <div className="space-y-1">
-                <p className="text-xs text-muted-foreground uppercase tracking-wider px-3 pb-2 pt-3">Solutions</p>
-                <Link to="/solutions" onClick={() => setMobileOpen(false)} className="block px-3 py-2 text-sm text-foreground">Overview</Link>
-                <Link to="/solutions/patient-acquisition" onClick={() => setMobileOpen(false)} className="block px-3 py-2 text-sm text-foreground">Patient Acquisition</Link>
-                <Link to="/solutions/patient-retention" onClick={() => setMobileOpen(false)} className="block px-3 py-2 text-sm text-foreground">Patient Retention</Link>
-                <Link to="/solutions/practice-automation" onClick={() => setMobileOpen(false)} className="block px-3 py-2 text-sm text-foreground">Practice Automation</Link>
-                <Link to="/solutions/revenue-optimization" onClick={() => setMobileOpen(false)} className="block px-3 py-2 text-sm text-foreground">Revenue Optimization</Link>
-                <Link to="/solutions/multi-location" onClick={() => setMobileOpen(false)} className="block px-3 py-2 text-sm text-foreground">Multi-location Management</Link>
-              </div>
-              <div className="space-y-1">
                 <p className="text-xs text-muted-foreground uppercase tracking-wider px-3 pb-2 pt-3">Ecosystem</p>
                 <Link to="/ecosystem" onClick={() => setMobileOpen(false)} className="block px-3 py-2 text-sm text-foreground">Overview</Link>
                 <Link to="/ecosystem/communication" onClick={() => setMobileOpen(false)} className="block px-3 py-2 text-sm text-foreground">Communication Layer</Link>
@@ -466,6 +457,15 @@ const Navbar = () => {
                 <Link to="/ecosystem/data-integration" onClick={() => setMobileOpen(false)} className="block px-3 py-2 text-sm text-foreground">Data Integration</Link>
                 <Link to="/ecosystem/ai-intelligence" onClick={() => setMobileOpen(false)} className="block px-3 py-2 text-sm text-foreground">AI Intelligence</Link>
                 <Link to="/ecosystem/dual-experience" onClick={() => setMobileOpen(false)} className="block px-3 py-2 text-sm text-foreground">Dual Experience</Link>
+              </div>
+              <div className="space-y-1">
+                <p className="text-xs text-muted-foreground uppercase tracking-wider px-3 pb-2 pt-3">Solutions</p>
+                <Link to="/solutions" onClick={() => setMobileOpen(false)} className="block px-3 py-2 text-sm text-foreground">Overview</Link>
+                <Link to="/solutions/patient-acquisition" onClick={() => setMobileOpen(false)} className="block px-3 py-2 text-sm text-foreground">Patient Acquisition</Link>
+                <Link to="/solutions/patient-retention" onClick={() => setMobileOpen(false)} className="block px-3 py-2 text-sm text-foreground">Patient Retention</Link>
+                <Link to="/solutions/practice-automation" onClick={() => setMobileOpen(false)} className="block px-3 py-2 text-sm text-foreground">Practice Automation</Link>
+                <Link to="/solutions/revenue-optimization" onClick={() => setMobileOpen(false)} className="block px-3 py-2 text-sm text-foreground">Revenue Optimization</Link>
+                <Link to="/solutions/multi-location" onClick={() => setMobileOpen(false)} className="block px-3 py-2 text-sm text-foreground">Multi-location Management</Link>
               </div>
               <Link to="/pricing" onClick={() => setMobileOpen(false)} className="block px-3 py-2 text-sm text-foreground">Pricing</Link>
               <div className="space-y-1">
