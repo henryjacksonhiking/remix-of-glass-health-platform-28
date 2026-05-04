@@ -130,19 +130,43 @@ const RadialEcosystem = () => {
 
 /* ---------- Section 2: Before / After ---------- */
 const BeforeAfter = () => {
-  const tools = [Phone, Mail, Calendar, BarChart3, Database, Users];
+  const tools = [
+    { Icon: Phone, label: "Phone" },
+    { Icon: Mail, label: "Email" },
+    { Icon: Calendar, label: "Calendar" },
+    { Icon: BarChart3, label: "Analytics" },
+    { Icon: Database, label: "Records" },
+    { Icon: Users, label: "CRM" },
+  ];
+  const nodes = [
+    { Icon: MessageSquare, angle: -90 },
+    { Icon: Users, angle: -30 },
+    { Icon: BarChart3, angle: 30 },
+    { Icon: Calendar, angle: 90 },
+    { Icon: Database, angle: 150 },
+    { Icon: Cpu, angle: 210 },
+  ];
   return (
     <div className="grid md:grid-cols-[1fr_auto_1fr] gap-6 md:gap-8 items-center">
-      {/* Disconnected */}
-      <div className="rounded-2xl border border-border/60 bg-card/40 p-6">
-        <div className="grid grid-cols-3 gap-3 mb-4">
-          {tools.map((Icon, i) => (
-            <div
+      {/* Disconnected — 2x3 grid of floating 3D cards */}
+      <div className="rounded-2xl border border-border/60 bg-gradient-to-br from-card/30 to-card/10 p-5 sm:p-6 backdrop-blur-md">
+        <div className="grid grid-cols-3 gap-3 sm:gap-4 mb-5" style={{ perspective: "800px" }}>
+          {tools.map(({ Icon, label }, i) => (
+            <motion.div
               key={i}
-              className="aspect-square rounded-lg bg-muted/40 flex items-center justify-center border border-dashed border-muted-foreground/30"
+              initial={{ opacity: 0, y: 12 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.4, delay: i * 0.06 }}
+              whileHover={{ rotateX: -8, rotateY: 8, y: -4 }}
+              style={{ transformStyle: "preserve-3d" }}
+              className="aspect-square rounded-xl flex flex-col items-center justify-center gap-1.5 border border-white/[0.06] bg-gradient-to-br from-white/[0.04] to-white/[0.01] shadow-[0_10px_30px_-12px_rgba(0,0,0,0.6),inset_0_1px_0_rgba(255,255,255,0.04)] transition-shadow hover:shadow-[0_18px_40px_-12px_rgba(0,0,0,0.8)]"
             >
-              <Icon className="w-5 h-5 text-muted-foreground/60" strokeWidth={1.5} />
-            </div>
+              <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-lg bg-muted/30 flex items-center justify-center border border-white/5 grayscale opacity-70">
+                <Icon className="w-4 h-4 sm:w-5 sm:h-5 text-muted-foreground" strokeWidth={1.5} />
+              </div>
+              <span className="text-[9px] sm:text-[10px] uppercase tracking-wider text-muted-foreground/70">{label}</span>
+            </motion.div>
           ))}
         </div>
         <p className="text-center text-xs uppercase tracking-wider text-muted-foreground">Disconnected Tools</p>
@@ -151,26 +175,53 @@ const BeforeAfter = () => {
       <ArrowRight className="hidden md:block w-8 h-8 text-primary/60 mx-auto" />
       <div className="md:hidden h-px w-full bg-gradient-to-r from-transparent via-primary/40 to-transparent" />
 
-      {/* Unified */}
-      <div className="rounded-2xl border border-primary/30 bg-card/40 p-6 relative overflow-hidden">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,hsla(170,100%,43%,0.08),transparent_70%)]" />
+      {/* Unified — interactive network with animated streams */}
+      <div className="rounded-2xl border border-primary/30 bg-gradient-to-br from-card/40 to-card/10 p-5 sm:p-6 relative overflow-hidden backdrop-blur-md shadow-[0_0_40px_-10px_hsla(170,100%,43%,0.35)]">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,hsla(170,100%,43%,0.12),transparent_70%)]" />
         <div className="relative">
-          <svg viewBox="0 0 200 160" className="w-full h-40">
-            <circle cx="100" cy="80" r="22" fill="hsl(170 100% 43%)" />
-            <text x="100" y="84" textAnchor="middle" fontSize="9" fontWeight="600" fill="hsl(226 60% 12%)">
-              Borna
-            </text>
-            {tools.map((_, i) => {
-              const angle = (i / tools.length) * Math.PI * 2 - Math.PI / 2;
-              const x = 100 + 60 * Math.cos(angle);
-              const y = 80 + 60 * Math.sin(angle);
+          <svg viewBox="0 0 220 200" className="w-full h-44 sm:h-52">
+            <defs>
+              <radialGradient id="coreUnifiedGlow" cx="50%" cy="50%" r="50%">
+                <stop offset="0%" stopColor="#00DEC4" stopOpacity="0.6" />
+                <stop offset="100%" stopColor="#00DEC4" stopOpacity="0" />
+              </radialGradient>
+            </defs>
+            {/* pulsing glow */}
+            <motion.circle
+              cx="110" cy="100" r="40" fill="url(#coreUnifiedGlow)"
+              animate={{ opacity: [0.5, 1, 0.5], scale: [0.9, 1.1, 0.9] }}
+              transition={{ duration: 2.6, repeat: Infinity, ease: "easeInOut" }}
+              style={{ transformOrigin: "110px 100px" }}
+            />
+            {/* lines + animated stream dots inbound */}
+            {nodes.map((n, i) => {
+              const rad = (n.angle * Math.PI) / 180;
+              const x2 = 110 + 70 * Math.cos(rad);
+              const y2 = 100 + 70 * Math.sin(rad);
+              const x1 = 110 + 22 * Math.cos(rad);
+              const y1 = 100 + 22 * Math.sin(rad);
               return (
                 <g key={i}>
-                  <line x1="100" y1="80" x2={x} y2={y} stroke="#00DEC4" strokeOpacity="0.5" strokeWidth="1" />
-                  <circle cx={x} cy={y} r="8" fill="hsla(170, 100%, 43%, 0.15)" stroke="#00DEC4" strokeWidth="1" />
+                  <line x1={x1} y1={y1} x2={x2} y2={y2} stroke="#00DEC4" strokeOpacity="0.35" strokeWidth="1" />
+                  <motion.circle
+                    r="2" fill="#00DEC4"
+                    initial={{ cx: x2, cy: y2, opacity: 0 }}
+                    animate={{ cx: [x2, x1], cy: [y2, y1], opacity: [0, 1, 0] }}
+                    transition={{ duration: 1.8, repeat: Infinity, delay: i * 0.3, ease: "easeIn" }}
+                  />
+                  <circle cx={x2} cy={y2} r="9" fill="hsla(170, 100%, 43%, 0.2)" stroke="#00DEC4" strokeWidth="1" />
                 </g>
               );
             })}
+            {/* central core */}
+            <motion.circle
+              cx="110" cy="100" r="20" fill="hsl(170 100% 43%)"
+              animate={{ r: [20, 22, 20] }}
+              transition={{ duration: 2.6, repeat: Infinity, ease: "easeInOut" }}
+            />
+            <text x="110" y="104" textAnchor="middle" fontSize="9" fontWeight="700" fill="hsl(226 60% 12%)">
+              Core
+            </text>
           </svg>
           <p className="text-center text-xs uppercase tracking-wider text-primary mt-2">Unified Ecosystem</p>
         </div>
