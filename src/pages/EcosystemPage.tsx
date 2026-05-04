@@ -57,8 +57,8 @@ const RadialEcosystem = () => {
           const sinA = Math.sin(rad);
           const x1 = cx + coreR * cosA;
           const y1 = cy + coreR * sinA;
-          const x2 = cx + (R - nodeR) * cosA;
-          const y2 = cy + (R - nodeR) * sinA;
+          const x2 = cx + R * cosA;
+          const y2 = cy + R * sinA;
           return (
             <motion.line
               key={i}
