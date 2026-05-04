@@ -354,7 +354,7 @@ const JourneyFlow = () => {
   );
 };
 
-/* ---------- Section 6: Progressive reveal ---------- */
+/* ---------- Section 6: Progressive reveal — glassmorphism premium ---------- */
 const ProgressiveReveal = () => {
   const modules = ["Care", "Connect", "Engage", "Insight", "Core"];
   return (
@@ -363,58 +363,69 @@ const ProgressiveReveal = () => {
         { stage: 1, title: "Start with Borna Care", activeOnly: true },
         { stage: 2, title: "Expand seamlessly over time", activeOnly: false },
       ].map((card) => (
-        <div key={card.stage} className="rounded-2xl border border-border/60 bg-card/40 p-8">
-          <p className="text-xs uppercase tracking-wider text-muted-foreground mb-4">Stage {card.stage}</p>
-          <svg viewBox="0 0 240 200" className="w-full h-48">
-            {modules.map((_, i) => {
-              const angle = (i / modules.length) * Math.PI * 2 - Math.PI / 2;
-              const x = 120 + 70 * Math.cos(angle);
-              const y = 100 + 70 * Math.sin(angle);
-              const isCare = i === 0;
-              const active = card.activeOnly ? isCare : true;
-              return (
-                <g key={i}>
-                  <line
-                    x1="120"
-                    y1="100"
-                    x2={x}
-                    y2={y}
-                    stroke="#00DEC4"
-                    strokeOpacity={active ? 0.5 : 0.1}
-                    strokeWidth="1"
-                  />
-                  <circle
-                    cx={x}
-                    cy={y}
-                    r={isCare ? 14 : 11}
-                    fill={active ? "hsla(170, 100%, 43%, 0.2)" : "hsla(0,0%,100%,0.04)"}
-                    stroke={active ? "#00DEC4" : "hsla(0,0%,100%,0.15)"}
-                    strokeWidth="1"
-                  />
-                  <text
-                    x={x}
-                    y={y + 3}
-                    textAnchor="middle"
-                    fontSize="8"
-                    fill={active ? "#00DEC4" : "hsla(0,0%,100%,0.4)"}
-                    fontWeight={isCare ? 600 : 400}
-                  >
-                    {modules[i]}
-                  </text>
-                </g>
-              );
-            })}
-            <circle cx="120" cy="100" r="5" fill="hsl(170 100% 43%)" />
-          </svg>
-          <p className="text-sm text-foreground/90 text-center mt-4">{card.title}</p>
-          {card.activeOnly && (
-            <div className="flex justify-center mt-3">
-              <span className="inline-flex items-center gap-1.5 text-[11px] font-medium px-2.5 py-0.5 rounded-full bg-primary/15 text-primary">
-                <span className="w-1.5 h-1.5 rounded-full bg-primary" /> Available now
-              </span>
-            </div>
-          )}
-        </div>
+        <motion.div
+          key={card.stage}
+          initial={{ opacity: 0, y: 16 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
+          className="relative rounded-3xl border border-white/10 bg-gradient-to-br from-white/[0.06] to-white/[0.01] backdrop-blur-xl p-6 sm:p-8 shadow-[0_20px_50px_-20px_rgba(0,0,0,0.6),inset_0_1px_0_rgba(255,255,255,0.06)] overflow-hidden"
+        >
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_30%,hsla(170,100%,43%,0.10),transparent_60%)] pointer-events-none" />
+          <div className="relative">
+            <p className="text-xs uppercase tracking-wider text-muted-foreground mb-4">Stage {card.stage}</p>
+            <svg viewBox="0 0 240 200" className="w-full h-48 sm:h-56">
+              <defs>
+                <radialGradient id={`reveal-glow-${card.stage}`} cx="50%" cy="50%" r="50%">
+                  <stop offset="0%" stopColor="#00DEC4" stopOpacity="0.5" />
+                  <stop offset="100%" stopColor="#00DEC4" stopOpacity="0" />
+                </radialGradient>
+                <radialGradient id={`node-glass-${card.stage}`} cx="30%" cy="30%" r="70%">
+                  <stop offset="0%" stopColor="hsla(170,100%,70%,0.55)" />
+                  <stop offset="100%" stopColor="hsla(170,100%,43%,0.15)" />
+                </radialGradient>
+              </defs>
+              <circle cx="120" cy="100" r="50" fill={`url(#reveal-glow-${card.stage})`} />
+              {modules.map((_, i) => {
+                const angle = (i / modules.length) * Math.PI * 2 - Math.PI / 2;
+                const x = 120 + 72 * Math.cos(angle);
+                const y = 100 + 72 * Math.sin(angle);
+                const isCare = i === 0;
+                const active = card.activeOnly ? isCare : true;
+                return (
+                  <g key={i}>
+                    <line x1="120" y1="100" x2={x} y2={y}
+                      stroke="#00DEC4" strokeOpacity={active ? 0.5 : 0.1} strokeWidth="1" />
+                    <circle cx={x} cy={y} r={isCare ? 16 : 13}
+                      fill={active ? `url(#node-glass-${card.stage})` : "hsla(0,0%,100%,0.04)"}
+                      stroke={active ? "#00DEC4" : "hsla(0,0%,100%,0.15)"}
+                      strokeWidth={active ? 1.2 : 1}
+                      style={active ? { filter: "drop-shadow(0 4px 8px hsla(170,100%,43%,0.4))" } : undefined}
+                    />
+                    <text x={x} y={y + 3} textAnchor="middle" fontSize="8"
+                      fill={active ? "hsl(226 60% 12%)" : "hsla(0,0%,100%,0.4)"}
+                      fontWeight={isCare ? 700 : 500}>
+                      {modules[i]}
+                    </text>
+                  </g>
+                );
+              })}
+              <motion.circle
+                cx="120" cy="100" r="6" fill="hsl(170 100% 43%)"
+                animate={{ r: [6, 8, 6], opacity: [1, 0.7, 1] }}
+                transition={{ duration: 2.4, repeat: Infinity, ease: "easeInOut" }}
+              />
+            </svg>
+            <p className="text-sm sm:text-base font-medium text-foreground text-center mt-4">{card.title}</p>
+            {card.activeOnly && (
+              <div className="flex justify-center mt-3">
+                <span className="inline-flex items-center gap-1.5 text-[11px] font-medium px-3 py-1 rounded-full bg-primary/15 text-primary border border-primary/30">
+                  <span className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse" /> Available now
+                </span>
+              </div>
+            )}
+          </div>
+        </motion.div>
       ))}
     </div>
   );
