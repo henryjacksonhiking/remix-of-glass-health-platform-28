@@ -70,8 +70,8 @@ interface FeatureCard {
 
 const cards: FeatureCard[] = [
   { label: "Communication", Icon: MessageSquare, pos: { left: "50%", top: "4%" }, delay: 0 },
-  { label: "CRM", Icon: Users, pos: { left: "92%", top: "32%" }, delay: 0.4 },
-  { label: "Analytics", Icon: BarChart3, pos: { left: "86%", top: "78%" }, delay: 0.8 },
+  { label: "CRM", Icon: Users, pos: { left: "86%", top: "32%" }, delay: 0.4 },
+  { label: "Analytics", Icon: BarChart3, pos: { left: "80%", top: "78%" }, delay: 0.8 },
   { label: "Patient Experience", Icon: Smartphone, pos: { left: "14%", top: "78%" }, delay: 1.2 },
   { label: "Automation", Icon: Cpu, pos: { left: "8%", top: "32%" }, delay: 1.6 },
 ];
