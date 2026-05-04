@@ -458,6 +458,15 @@ const Navbar = () => {
                 <Link to="/solutions/revenue-optimization" onClick={() => setMobileOpen(false)} className="block px-3 py-2 text-sm text-foreground">Revenue Optimization</Link>
                 <Link to="/solutions/multi-location" onClick={() => setMobileOpen(false)} className="block px-3 py-2 text-sm text-foreground">Multi-location Management</Link>
               </div>
+              <div className="space-y-1">
+                <p className="text-xs text-muted-foreground uppercase tracking-wider px-3 pb-2 pt-3">Ecosystem</p>
+                <Link to="/ecosystem" onClick={() => setMobileOpen(false)} className="block px-3 py-2 text-sm text-foreground">Overview</Link>
+                <Link to="/ecosystem/communication" onClick={() => setMobileOpen(false)} className="block px-3 py-2 text-sm text-foreground">Communication Layer</Link>
+                <Link to="/ecosystem/crm-lifecycle" onClick={() => setMobileOpen(false)} className="block px-3 py-2 text-sm text-foreground">CRM & Lifecycle</Link>
+                <Link to="/ecosystem/data-integration" onClick={() => setMobileOpen(false)} className="block px-3 py-2 text-sm text-foreground">Data Integration</Link>
+                <Link to="/ecosystem/ai-intelligence" onClick={() => setMobileOpen(false)} className="block px-3 py-2 text-sm text-foreground">AI Intelligence</Link>
+                <Link to="/ecosystem/dual-experience" onClick={() => setMobileOpen(false)} className="block px-3 py-2 text-sm text-foreground">Dual Experience</Link>
+              </div>
               <Link to="/pricing" onClick={() => setMobileOpen(false)} className="block px-3 py-2 text-sm text-foreground">Pricing</Link>
               <div className="space-y-1">
                 <p className="text-xs text-muted-foreground uppercase tracking-wider px-3 pb-2 pt-3">Resources</p>
