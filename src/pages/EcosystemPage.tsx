@@ -38,9 +38,11 @@ const RadialEcosystem = () => {
   const R = 140;
   const cx = 200;
   const cy = 200;
+  const coreR = 42; // core circle radius
+  const nodeR = 22; // satellite icon radius (w-11 = 44px → r=22)
 
   return (
-    <div className="relative w-full max-w-[420px] px-[5px] py-[5px] aspect-square mx-[5px] my-[5px]" aria-label="Borna ecosystem radial diagram">
+    <div className="relative w-full max-w-[420px] aspect-square mx-auto" aria-label="Borna ecosystem radial diagram">
       <svg viewBox="0 0 400 400" className="w-full h-full">
         <defs>
           <radialGradient id="coreGlow" cx="50%" cy="50%" r="50%">
@@ -48,21 +50,26 @@ const RadialEcosystem = () => {
             <stop offset="100%" stopColor="#00DEC4" stopOpacity="0" />
           </radialGradient>
         </defs>
-        {/* connecting lines */}
+        {/* connecting lines: terminate exactly at edges of core and satellite circles */}
         {nodes.map((n, i) => {
           const rad = (n.angle * Math.PI) / 180;
-          const x = cx + R * Math.cos(rad);
-          const y = cy + R * Math.sin(rad);
+          const cosA = Math.cos(rad);
+          const sinA = Math.sin(rad);
+          const x1 = cx + coreR * cosA;
+          const y1 = cy + coreR * sinA;
+          const x2 = cx + (R - nodeR) * cosA;
+          const y2 = cy + (R - nodeR) * sinA;
           return (
             <motion.line
               key={i}
-              x1={cx}
-              y1={cy}
-              x2={x}
-              y2={y}
+              x1={x1}
+              y1={y1}
+              x2={x2}
+              y2={y2}
               stroke="#00DEC4"
-              strokeOpacity="0.35"
-              strokeWidth="1"
+              strokeOpacity="0.5"
+              strokeWidth="1.5"
+              strokeLinecap="round"
               initial={{ pathLength: 0 }}
               whileInView={{ pathLength: 1 }}
               viewport={{ once: true }}
@@ -90,9 +97,9 @@ const RadialEcosystem = () => {
       {/* HTML labels for icons */}
       {nodes.map((n, i) => {
         const rad = (n.angle * Math.PI) / 180;
-        const xPct = 50 + (R / 4);
-        const left = `calc(50% + ${R * Math.cos(rad) * 0.95}px)`;
-        const top = `calc(50% + ${R * Math.sin(rad) * 0.95}px)`;
+        // Position relative to container (% of width, since aspect-square)
+        const leftPct = 50 + (R / 400) * 100 * Math.cos(rad);
+        const topPct = 50 + (R / 400) * 100 * Math.sin(rad);
         return (
           <motion.div
             key={n.label}
@@ -100,13 +107,19 @@ const RadialEcosystem = () => {
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.4, delay: 0.5 + i * 0.1 }}
-            className="absolute -translate-x-1/2 -translate-y-1/2 flex flex-col items-center gap-1"
-            style={{ left, top }}
+            className="absolute flex flex-col items-center gap-1.5"
+            style={{
+              left: `${leftPct}%`,
+              top: `${topPct}%`,
+              transform: "translate(-50%, -50%)",
+            }}
           >
             <div className="w-11 h-11 rounded-full glass-panel flex items-center justify-center border border-primary/40">
               <n.Icon className="w-5 h-5 text-primary" strokeWidth={1.5} />
             </div>
-            <span className="text-[10px] text-foreground/80 whitespace-nowrap">{n.label}</span>
+            <span className="absolute top-[44px] mt-1.5 text-[10px] text-foreground/80 whitespace-nowrap text-center leading-tight">
+              {n.label}
+            </span>
           </motion.div>
         );
       })}
