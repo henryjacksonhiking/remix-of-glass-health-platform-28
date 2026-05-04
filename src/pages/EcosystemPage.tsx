@@ -147,10 +147,11 @@ const BeforeAfter = () => {
     { Icon: Cpu, angle: 210 },
   ];
   return (
-    <div className="grid md:grid-cols-[1fr_auto_1fr] gap-6 md:gap-8 items-center">
+    <div className="grid md:grid-cols-[1fr_auto_1fr] gap-6 md:gap-8 items-stretch">
       {/* Disconnected — 2x3 grid of floating 3D cards */}
-      <div className="rounded-2xl border border-border/60 bg-gradient-to-br from-card/30 to-card/10 p-5 sm:p-6 backdrop-blur-md">
-        <div className="grid grid-cols-3 gap-3 sm:gap-4 mb-5" style={{ perspective: "800px" }}>
+      <div className="rounded-2xl border border-border/60 bg-gradient-to-br from-card/30 to-card/10 p-6 sm:p-8 backdrop-blur-md flex flex-col">
+        <p className="text-center text-xs sm:text-sm uppercase tracking-wider text-muted-foreground mb-5 sm:mb-6">Disconnected Tools</p>
+        <div className="grid grid-cols-3 gap-3 sm:gap-4 flex-1" style={{ perspective: "800px" }}>
           {tools.map(({ Icon, label }, i) => (
             <motion.div
               key={i}
@@ -160,75 +161,30 @@ const BeforeAfter = () => {
               transition={{ duration: 0.4, delay: i * 0.06 }}
               whileHover={{ rotateX: -8, rotateY: 8, y: -4 }}
               style={{ transformStyle: "preserve-3d" }}
-              className="aspect-square rounded-xl flex flex-col items-center justify-center gap-1.5 border border-white/[0.06] bg-gradient-to-br from-white/[0.04] to-white/[0.01] shadow-[0_10px_30px_-12px_rgba(0,0,0,0.6),inset_0_1px_0_rgba(255,255,255,0.04)] transition-shadow hover:shadow-[0_18px_40px_-12px_rgba(0,0,0,0.8)]"
+              className="aspect-square rounded-xl flex flex-col items-center justify-center gap-2 border border-white/[0.06] bg-gradient-to-br from-white/[0.04] to-white/[0.01] shadow-[0_10px_30px_-12px_rgba(0,0,0,0.6),inset_0_1px_0_rgba(255,255,255,0.04)] transition-shadow hover:shadow-[0_18px_40px_-12px_rgba(0,0,0,0.8)]"
             >
-              <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-lg bg-muted/30 flex items-center justify-center border border-white/5 grayscale opacity-70">
-                <Icon className="w-4 h-4 sm:w-5 sm:h-5 text-muted-foreground" strokeWidth={1.5} />
+              <div className="w-11 h-11 sm:w-12 sm:h-12 rounded-lg bg-muted/30 flex items-center justify-center border border-white/5 grayscale opacity-70">
+                <Icon className="w-5 h-5 sm:w-6 sm:h-6 text-muted-foreground" strokeWidth={1.5} />
               </div>
               <span className="text-[9px] sm:text-[10px] uppercase tracking-wider text-muted-foreground/70">{label}</span>
             </motion.div>
           ))}
         </div>
-        <p className="text-center text-xs uppercase tracking-wider text-muted-foreground">Disconnected Tools</p>
       </div>
 
-      <ArrowRight className="hidden md:block w-8 h-8 text-primary/60 mx-auto" />
+      <ArrowRight className="hidden md:block w-8 h-8 text-primary/60 mx-auto self-center" />
       <div className="md:hidden h-px w-full bg-gradient-to-r from-transparent via-primary/40 to-transparent" />
 
       {/* Unified — interactive network with animated streams */}
-      <div className="rounded-2xl border border-primary/30 bg-gradient-to-br from-card/40 to-card/10 p-5 sm:p-6 relative overflow-hidden backdrop-blur-md shadow-[0_0_40px_-10px_hsla(170,100%,43%,0.35)]">
+      <div className="rounded-2xl border border-primary/30 bg-gradient-to-br from-card/40 to-card/10 p-6 sm:p-8 relative overflow-hidden backdrop-blur-md shadow-[0_0_40px_-10px_hsla(170,100%,43%,0.35)] flex flex-col">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,hsla(170,100%,43%,0.12),transparent_70%)]" />
-        <div className="relative">
-          <svg viewBox="0 0 220 200" className="w-full h-44 sm:h-52">
-            <defs>
-              <radialGradient id="coreUnifiedGlow" cx="50%" cy="50%" r="50%">
-                <stop offset="0%" stopColor="#00DEC4" stopOpacity="0.6" />
-                <stop offset="100%" stopColor="#00DEC4" stopOpacity="0" />
-              </radialGradient>
-            </defs>
-            {/* pulsing glow */}
-            <motion.circle
-              cx="110" cy="100" r="40" fill="url(#coreUnifiedGlow)"
-              animate={{ opacity: [0.5, 1, 0.5], scale: [0.9, 1.1, 0.9] }}
-              transition={{ duration: 2.6, repeat: Infinity, ease: "easeInOut" }}
-              style={{ transformOrigin: "110px 100px" }}
-            />
-            {/* lines + animated stream dots inbound */}
-            {nodes.map((n, i) => {
-              const rad = (n.angle * Math.PI) / 180;
-              const x2 = 110 + 70 * Math.cos(rad);
-              const y2 = 100 + 70 * Math.sin(rad);
-              const x1 = 110 + 22 * Math.cos(rad);
-              const y1 = 100 + 22 * Math.sin(rad);
-              return (
-                <g key={i}>
-                  <line x1={x1} y1={y1} x2={x2} y2={y2} stroke="#00DEC4" strokeOpacity="0.35" strokeWidth="1" />
-                  <motion.circle
-                    r="2" fill="#00DEC4"
-                    initial={{ cx: x2, cy: y2, opacity: 0 }}
-                    animate={{ cx: [x2, x1], cy: [y2, y1], opacity: [0, 1, 0] }}
-                    transition={{ duration: 1.8, repeat: Infinity, delay: i * 0.3, ease: "easeIn" }}
-                  />
-                  <circle cx={x2} cy={y2} r="11" fill="hsla(170, 100%, 43%, 0.2)" stroke="#00DEC4" strokeWidth="1" />
-                  <foreignObject x={x2 - 7} y={y2 - 7} width="14" height="14">
-                    <div style={{ display: "flex", alignItems: "center", justifyContent: "center", width: "100%", height: "100%" }}>
-                      <n.Icon style={{ width: 11, height: 11, color: "#00DEC4" }} strokeWidth={2} />
-                    </div>
-                  </foreignObject>
-                </g>
-              );
-            })}
-            {/* central core */}
-            <motion.circle
-              cx="110" cy="100" r="20" fill="hsl(170 100% 43%)"
-              animate={{ r: [20, 22, 20] }}
-              transition={{ duration: 2.6, repeat: Infinity, ease: "easeInOut" }}
-            />
-            <text x="110" y="104" textAnchor="middle" fontSize="9" fontWeight="700" fill="hsl(226 60% 12%)">
-              Core
-            </text>
+        <div className="relative flex flex-col flex-1">
+          <p className="text-center text-xs sm:text-sm uppercase tracking-wider text-primary mb-5 sm:mb-6">Unified Ecosystem</p>
+          <div className="flex-1 flex items-center justify-center">
+          <svg viewBox="0 0 220 200" className="w-full h-56 sm:h-64">
+...
           </svg>
-          <p className="text-center text-xs uppercase tracking-wider text-primary mt-2">Unified Ecosystem</p>
+          </div>
         </div>
       </div>
     </div>
@@ -294,41 +250,47 @@ const JourneyFlow = () => {
     { label: "Payment", Icon: CreditCard },
     { label: "Reactivation", Icon: RefreshCw },
   ];
-  const size = 480;
+  const size = 560;
   const cx = size / 2;
   const cy = size / 2;
-  const R = 170;
-  const nodeR = 30;
+  const R = 210;
 
   return (
-    <div className="relative mx-auto w-full max-w-[480px] aspect-square">
-      <svg viewBox={`0 0 ${size} ${size}`} className="absolute inset-0 w-full h-full">
+    <div className="relative mx-auto w-full max-w-[560px] aspect-square">
+      <svg viewBox={`0 0 ${size} ${size}`} className="absolute inset-0 w-full h-full overflow-visible">
         <defs>
           <radialGradient id="journeyCoreGlow" cx="50%" cy="50%" r="50%">
             <stop offset="0%" stopColor="#00DEC4" stopOpacity="0.5" />
             <stop offset="100%" stopColor="#00DEC4" stopOpacity="0" />
           </radialGradient>
+          <path
+            id="journeyOrbit"
+            d={`M ${cx} ${cy - R} A ${R} ${R} 0 1 1 ${cx - 0.01} ${cy - R} Z`}
+          />
         </defs>
-        {/* dashed orbit ring */}
-        <circle cx={cx} cy={cy} r={R} fill="none" stroke="#00DEC4" strokeOpacity="0.2" strokeWidth="1" strokeDasharray="3 5" />
-        {/* animated traveling pulse along circle */}
-        <motion.circle
-          r="4" fill="#00DEC4"
-          animate={{ rotate: 360 }}
-          transition={{ duration: 14, repeat: Infinity, ease: "linear" }}
-          style={{ transformOrigin: `${cx}px ${cy}px` }}
-          cx={cx + R} cy={cy}
-        />
-        {/* loop arrow indicator (last → first) */}
-        <path
-          d={`M ${cx + R - 6} ${cy - 18} A ${R} ${R} 0 0 0 ${cx + R - 6} ${cy + 18}`}
-          fill="none" stroke="#00DEC4" strokeOpacity="0.5" strokeWidth="1.5"
+        {/* dashed orbit ring connecting all nodes */}
+        <circle
+          cx={cx}
+          cy={cy}
+          r={R}
+          fill="none"
+          stroke="#00DEC4"
+          strokeOpacity="0.45"
+          strokeWidth="1.5"
+          strokeDasharray="4 6"
         />
         {/* center label */}
-        <circle cx={cx} cy={cy} r="60" fill="url(#journeyCoreGlow)" />
-        <circle cx={cx} cy={cy} r="38" fill="hsla(170, 100%, 43%, 0.12)" stroke="#00DEC4" strokeOpacity="0.4" strokeWidth="1" />
-        <text x={cx} y={cy - 2} textAnchor="middle" fontSize="11" fontWeight="600" fill="#00DEC4">Patient</text>
-        <text x={cx} y={cy + 12} textAnchor="middle" fontSize="11" fontWeight="600" fill="#00DEC4">Lifecycle</text>
+        <circle cx={cx} cy={cy} r="80" fill="url(#journeyCoreGlow)" />
+        <circle cx={cx} cy={cy} r="56" fill="hsla(170, 100%, 43%, 0.14)" stroke="#00DEC4" strokeOpacity="0.5" strokeWidth="1.2" />
+        <text x={cx} y={cy - 4} textAnchor="middle" fontSize="14" fontWeight="600" fill="#00DEC4">Patient</text>
+        <text x={cx} y={cy + 14} textAnchor="middle" fontSize="14" fontWeight="600" fill="#00DEC4">Lifecycle</text>
+
+        {/* animated traveling pulse (clockwise) */}
+        <circle r="6" fill="#00DEC4" style={{ filter: "drop-shadow(0 0 8px #00DEC4)" }}>
+          <animateMotion dur="14s" repeatCount="indefinite" rotate="auto">
+            <mpath href="#journeyOrbit" />
+          </animateMotion>
+        </circle>
       </svg>
       {/* nodes as HTML */}
       {steps.map((s, i) => {
@@ -343,12 +305,12 @@ const JourneyFlow = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.4, delay: 0.1 + i * 0.08 }}
             className="absolute flex flex-col items-center gap-1.5"
-            style={{ left: `${leftPct}%`, top: `${topPct}%`, transform: "translate(-50%, -50%)", width: nodeR * 2 }}
+            style={{ left: `${leftPct}%`, top: `${topPct}%`, transform: "translate(-50%, -50%)" }}
           >
-            <div className="w-12 h-12 rounded-full glass-panel border border-primary/40 flex items-center justify-center shadow-[0_8px_20px_-8px_hsla(170,100%,43%,0.4)]">
-              <s.Icon className="w-5 h-5 text-primary" strokeWidth={1.5} />
+            <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-full glass-panel border border-primary/40 flex items-center justify-center shadow-[0_8px_20px_-8px_hsla(170,100%,43%,0.45)] backdrop-blur-md">
+              <s.Icon className="w-6 h-6 sm:w-7 sm:h-7 text-primary" strokeWidth={1.5} />
             </div>
-            <span className="text-[10px] sm:text-[11px] text-foreground/85 text-center whitespace-nowrap">{s.label}</span>
+            <span className="text-[11px] sm:text-xs text-foreground/85 text-center whitespace-nowrap">{s.label}</span>
           </motion.div>
         );
       })}
@@ -379,7 +341,7 @@ const ProgressiveReveal = () => {
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_30%,hsla(170,100%,43%,0.10),transparent_60%)] pointer-events-none" />
           <div className="relative">
             <p className="text-xs uppercase tracking-wider text-muted-foreground mb-4">Stage {card.stage}</p>
-            <svg viewBox="0 0 240 200" className="w-full h-48 sm:h-56">
+            <svg viewBox="0 0 240 200" className="w-full h-56 sm:h-72 mx-auto">
               <defs>
                 <radialGradient id={`reveal-glow-${card.stage}`} cx="50%" cy="50%" r="50%">
                   <stop offset="0%" stopColor="#00DEC4" stopOpacity="0.5" />
@@ -655,53 +617,83 @@ const EcosystemPage = () => {
             </p>
           </div>
 
-          <div className="grid lg:grid-cols-[1fr_auto_1fr] gap-8 lg:gap-4 items-center max-w-6xl mx-auto">
+          <div className="grid lg:grid-cols-[1fr_auto_1fr] gap-6 lg:gap-8 items-stretch max-w-6xl mx-auto">
             {/* Patient */}
-            <div className="rounded-2xl border border-border/60 bg-card/40 p-6">
-              <p className="text-xs uppercase tracking-wider text-primary mb-4">Patient experience</p>
-              <div className="aspect-[3/4] max-w-[240px] mx-auto rounded-2xl border border-border bg-background/60 p-4 flex flex-col gap-3">
-                {["Online booking", "Digital forms", "Secure payments", "Patient communication"].map((l, i) => (
-                  <div key={l} className="rounded-lg border border-border/60 px-3 py-2.5 bg-card/60">
-                    <div className="flex items-center gap-2">
-                      <div className="w-2 h-2 rounded-full bg-primary" />
-                      <span className="text-xs text-foreground/90">{l}</span>
+            <div className="rounded-2xl border border-border/60 bg-gradient-to-br from-card/40 to-card/10 p-6 sm:p-8 backdrop-blur-md">
+              <div className="flex items-center gap-2 mb-5">
+                <Smartphone className="w-4 h-4 text-primary" strokeWidth={1.75} />
+                <p className="text-xs uppercase tracking-wider text-primary">Patient experience</p>
+              </div>
+              <div className="space-y-3">
+                {[
+                  { Icon: Calendar, label: "Online booking", desc: "Self-serve scheduling, anytime" },
+                  { Icon: Layers, label: "Digital forms", desc: "Pre-visit intake, fully paperless" },
+                  { Icon: CreditCard, label: "Secure payments", desc: "Card-on-file & instant receipts" },
+                  { Icon: MessageSquare, label: "Patient communication", desc: "SMS, email & chat in one thread" },
+                ].map(({ Icon, label, desc }) => (
+                  <div key={label} className="flex items-start gap-3 rounded-xl border border-border/60 bg-card/60 p-3 hover:border-primary/40 transition-colors">
+                    <div className="shrink-0 w-9 h-9 rounded-lg bg-primary/10 border border-primary/20 flex items-center justify-center">
+                      <Icon className="w-4 h-4 text-primary" strokeWidth={1.75} />
+                    </div>
+                    <div className="min-w-0">
+                      <p className="text-sm font-medium text-foreground">{label}</p>
+                      <p className="text-xs text-muted-foreground">{desc}</p>
                     </div>
                   </div>
                 ))}
               </div>
             </div>
 
-            {/* Sync */}
-            <div className="flex lg:flex-col items-center justify-center gap-2">
-              <motion.div
-                animate={{ x: [0, 20, 0], opacity: [0.4, 1, 0.4] }}
-                transition={{ duration: 2, repeat: Infinity }}
-                className="lg:hidden h-px w-16 bg-primary"
-              />
+            {/* Sync indicator */}
+            <div className="flex lg:flex-col items-center justify-center gap-3">
+              <div className="relative flex lg:flex-col items-center justify-center">
+                <motion.div
+                  animate={{ scale: [1, 1.4, 1], opacity: [0.6, 0, 0.6] }}
+                  transition={{ duration: 2, repeat: Infinity }}
+                  className="absolute w-10 h-10 rounded-full bg-primary/30"
+                />
+                <div className="relative w-10 h-10 rounded-full bg-primary/15 border border-primary/50 flex items-center justify-center backdrop-blur-md">
+                  <RefreshCw className="w-4 h-4 text-primary" strokeWidth={2} />
+                </div>
+              </div>
               <span className="text-[10px] uppercase tracking-widest text-primary whitespace-nowrap">Real-time sync</span>
-              <motion.div
-                animate={{ y: [0, 20, 0], opacity: [0.4, 1, 0.4] }}
-                transition={{ duration: 2, repeat: Infinity }}
-                className="hidden lg:block w-px h-20 bg-primary"
-              />
+              <div className="relative w-16 lg:w-px h-px lg:h-24 bg-gradient-to-r lg:bg-gradient-to-b from-transparent via-primary/60 to-transparent overflow-hidden">
+                <motion.div
+                  animate={{ x: ["-100%", "100%"], y: ["0%", "0%"] }}
+                  transition={{ duration: 1.8, repeat: Infinity, ease: "linear" }}
+                  className="lg:hidden absolute inset-y-0 w-1/3 bg-primary"
+                />
+                <motion.div
+                  animate={{ y: ["-100%", "100%"] }}
+                  transition={{ duration: 1.8, repeat: Infinity, ease: "linear" }}
+                  className="hidden lg:block absolute inset-x-0 h-1/3 bg-primary"
+                />
+              </div>
             </div>
 
             {/* Practice */}
-            <div className="rounded-2xl border border-border/60 bg-card/40 p-6">
-              <p className="text-xs uppercase tracking-wider text-primary mb-4">Practice experience</p>
-              <div className="aspect-[16/10] rounded-xl border border-border bg-background/60 p-4">
-                <div className="flex gap-2 mb-3">
-                  <div className="w-2 h-2 rounded-full bg-destructive/60" />
-                  <div className="w-2 h-2 rounded-full bg-primary/60" />
-                  <div className="w-2 h-2 rounded-full bg-secondary/60" />
-                </div>
-                <div className="grid grid-cols-2 gap-2">
-                  {["Scheduling", "CRM management", "Workflow automation", "Analytics"].map((l) => (
-                    <div key={l} className="rounded-md border border-border/60 px-2 py-2 bg-card/60 text-[11px] text-foreground/85">
-                      {l}
+            <div className="rounded-2xl border border-border/60 bg-gradient-to-br from-card/40 to-card/10 p-6 sm:p-8 backdrop-blur-md">
+              <div className="flex items-center gap-2 mb-5">
+                <Cpu className="w-4 h-4 text-primary" strokeWidth={1.75} />
+                <p className="text-xs uppercase tracking-wider text-primary">Practice experience</p>
+              </div>
+              <div className="space-y-3">
+                {[
+                  { Icon: Calendar, label: "Scheduling", desc: "Smart calendar with auto-fill gaps" },
+                  { Icon: Users, label: "CRM management", desc: "Full patient lifecycle tracking" },
+                  { Icon: Network, label: "Workflow automation", desc: "Triggered tasks across channels" },
+                  { Icon: BarChart3, label: "Analytics", desc: "Live KPIs from acquisition to revenue" },
+                ].map(({ Icon, label, desc }) => (
+                  <div key={label} className="flex items-start gap-3 rounded-xl border border-border/60 bg-card/60 p-3 hover:border-primary/40 transition-colors">
+                    <div className="shrink-0 w-9 h-9 rounded-lg bg-primary/10 border border-primary/20 flex items-center justify-center">
+                      <Icon className="w-4 h-4 text-primary" strokeWidth={1.75} />
                     </div>
-                  ))}
-                </div>
+                    <div className="min-w-0">
+                      <p className="text-sm font-medium text-foreground">{label}</p>
+                      <p className="text-xs text-muted-foreground">{desc}</p>
+                    </div>
+                  </div>
+                ))}
               </div>
             </div>
           </div>
