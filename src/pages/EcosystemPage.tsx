@@ -358,7 +358,7 @@ const JourneyFlow = () => {
       </svg>
       {/* nodes as HTML */}
       {steps.map((s, i) => {
-        const angle = (i / steps.length) * Math.PI * 2 - Math.PI / 2;
+        const angle = nodeAngle(i);
         const leftPct = 50 + (R / size) * 100 * Math.cos(angle);
         const topPct = 50 + (R / size) * 100 * Math.sin(angle);
         return (
