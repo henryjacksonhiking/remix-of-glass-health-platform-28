@@ -25,6 +25,7 @@ import {
   Layers,
 } from "lucide-react";
 import PageWrapper from "@/components/layout/PageWrapper";
+import EcosystemGlobe from "@/components/ui/ecosystem-globe";
 
 /* ---------- Section 1: Hero radial diagram ---------- */
 const RadialEcosystem = () => {
