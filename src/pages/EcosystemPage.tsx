@@ -785,9 +785,6 @@ const EcosystemPage = () => {
               Explore Borna Care →
             </Link>
           </div>
-          <div className="max-w-4xl mx-auto">
-            <ProgressiveReveal />
-          </div>
         </div>
       </section>
 
