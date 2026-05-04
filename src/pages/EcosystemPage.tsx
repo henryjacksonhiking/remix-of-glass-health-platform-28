@@ -617,53 +617,83 @@ const EcosystemPage = () => {
             </p>
           </div>
 
-          <div className="grid lg:grid-cols-[1fr_auto_1fr] gap-8 lg:gap-4 items-center max-w-6xl mx-auto">
+          <div className="grid lg:grid-cols-[1fr_auto_1fr] gap-6 lg:gap-8 items-stretch max-w-6xl mx-auto">
             {/* Patient */}
-            <div className="rounded-2xl border border-border/60 bg-card/40 p-6">
-              <p className="text-xs uppercase tracking-wider text-primary mb-4">Patient experience</p>
-              <div className="aspect-[3/4] max-w-[240px] mx-auto rounded-2xl border border-border bg-background/60 p-4 flex flex-col gap-3">
-                {["Online booking", "Digital forms", "Secure payments", "Patient communication"].map((l, i) => (
-                  <div key={l} className="rounded-lg border border-border/60 px-3 py-2.5 bg-card/60">
-                    <div className="flex items-center gap-2">
-                      <div className="w-2 h-2 rounded-full bg-primary" />
-                      <span className="text-xs text-foreground/90">{l}</span>
+            <div className="rounded-2xl border border-border/60 bg-gradient-to-br from-card/40 to-card/10 p-6 sm:p-8 backdrop-blur-md">
+              <div className="flex items-center gap-2 mb-5">
+                <Smartphone className="w-4 h-4 text-primary" strokeWidth={1.75} />
+                <p className="text-xs uppercase tracking-wider text-primary">Patient experience</p>
+              </div>
+              <div className="space-y-3">
+                {[
+                  { Icon: Calendar, label: "Online booking", desc: "Self-serve scheduling, anytime" },
+                  { Icon: Layers, label: "Digital forms", desc: "Pre-visit intake, fully paperless" },
+                  { Icon: CreditCard, label: "Secure payments", desc: "Card-on-file & instant receipts" },
+                  { Icon: MessageSquare, label: "Patient communication", desc: "SMS, email & chat in one thread" },
+                ].map(({ Icon, label, desc }) => (
+                  <div key={label} className="flex items-start gap-3 rounded-xl border border-border/60 bg-card/60 p-3 hover:border-primary/40 transition-colors">
+                    <div className="shrink-0 w-9 h-9 rounded-lg bg-primary/10 border border-primary/20 flex items-center justify-center">
+                      <Icon className="w-4 h-4 text-primary" strokeWidth={1.75} />
+                    </div>
+                    <div className="min-w-0">
+                      <p className="text-sm font-medium text-foreground">{label}</p>
+                      <p className="text-xs text-muted-foreground">{desc}</p>
                     </div>
                   </div>
                 ))}
               </div>
             </div>
 
-            {/* Sync */}
-            <div className="flex lg:flex-col items-center justify-center gap-2">
-              <motion.div
-                animate={{ x: [0, 20, 0], opacity: [0.4, 1, 0.4] }}
-                transition={{ duration: 2, repeat: Infinity }}
-                className="lg:hidden h-px w-16 bg-primary"
-              />
+            {/* Sync indicator */}
+            <div className="flex lg:flex-col items-center justify-center gap-3">
+              <div className="relative flex lg:flex-col items-center justify-center">
+                <motion.div
+                  animate={{ scale: [1, 1.4, 1], opacity: [0.6, 0, 0.6] }}
+                  transition={{ duration: 2, repeat: Infinity }}
+                  className="absolute w-10 h-10 rounded-full bg-primary/30"
+                />
+                <div className="relative w-10 h-10 rounded-full bg-primary/15 border border-primary/50 flex items-center justify-center backdrop-blur-md">
+                  <RefreshCw className="w-4 h-4 text-primary" strokeWidth={2} />
+                </div>
+              </div>
               <span className="text-[10px] uppercase tracking-widest text-primary whitespace-nowrap">Real-time sync</span>
-              <motion.div
-                animate={{ y: [0, 20, 0], opacity: [0.4, 1, 0.4] }}
-                transition={{ duration: 2, repeat: Infinity }}
-                className="hidden lg:block w-px h-20 bg-primary"
-              />
+              <div className="relative w-16 lg:w-px h-px lg:h-24 bg-gradient-to-r lg:bg-gradient-to-b from-transparent via-primary/60 to-transparent overflow-hidden">
+                <motion.div
+                  animate={{ x: ["-100%", "100%"], y: ["0%", "0%"] }}
+                  transition={{ duration: 1.8, repeat: Infinity, ease: "linear" }}
+                  className="lg:hidden absolute inset-y-0 w-1/3 bg-primary"
+                />
+                <motion.div
+                  animate={{ y: ["-100%", "100%"] }}
+                  transition={{ duration: 1.8, repeat: Infinity, ease: "linear" }}
+                  className="hidden lg:block absolute inset-x-0 h-1/3 bg-primary"
+                />
+              </div>
             </div>
 
             {/* Practice */}
-            <div className="rounded-2xl border border-border/60 bg-card/40 p-6">
-              <p className="text-xs uppercase tracking-wider text-primary mb-4">Practice experience</p>
-              <div className="aspect-[16/10] rounded-xl border border-border bg-background/60 p-4">
-                <div className="flex gap-2 mb-3">
-                  <div className="w-2 h-2 rounded-full bg-destructive/60" />
-                  <div className="w-2 h-2 rounded-full bg-primary/60" />
-                  <div className="w-2 h-2 rounded-full bg-secondary/60" />
-                </div>
-                <div className="grid grid-cols-2 gap-2">
-                  {["Scheduling", "CRM management", "Workflow automation", "Analytics"].map((l) => (
-                    <div key={l} className="rounded-md border border-border/60 px-2 py-2 bg-card/60 text-[11px] text-foreground/85">
-                      {l}
+            <div className="rounded-2xl border border-border/60 bg-gradient-to-br from-card/40 to-card/10 p-6 sm:p-8 backdrop-blur-md">
+              <div className="flex items-center gap-2 mb-5">
+                <Cpu className="w-4 h-4 text-primary" strokeWidth={1.75} />
+                <p className="text-xs uppercase tracking-wider text-primary">Practice experience</p>
+              </div>
+              <div className="space-y-3">
+                {[
+                  { Icon: Calendar, label: "Scheduling", desc: "Smart calendar with auto-fill gaps" },
+                  { Icon: Users, label: "CRM management", desc: "Full patient lifecycle tracking" },
+                  { Icon: Network, label: "Workflow automation", desc: "Triggered tasks across channels" },
+                  { Icon: BarChart3, label: "Analytics", desc: "Live KPIs from acquisition to revenue" },
+                ].map(({ Icon, label, desc }) => (
+                  <div key={label} className="flex items-start gap-3 rounded-xl border border-border/60 bg-card/60 p-3 hover:border-primary/40 transition-colors">
+                    <div className="shrink-0 w-9 h-9 rounded-lg bg-primary/10 border border-primary/20 flex items-center justify-center">
+                      <Icon className="w-4 h-4 text-primary" strokeWidth={1.75} />
                     </div>
-                  ))}
-                </div>
+                    <div className="min-w-0">
+                      <p className="text-sm font-medium text-foreground">{label}</p>
+                      <p className="text-xs text-muted-foreground">{desc}</p>
+                    </div>
+                  </div>
+                ))}
               </div>
             </div>
           </div>
