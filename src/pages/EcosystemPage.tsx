@@ -250,41 +250,47 @@ const JourneyFlow = () => {
     { label: "Payment", Icon: CreditCard },
     { label: "Reactivation", Icon: RefreshCw },
   ];
-  const size = 480;
+  const size = 560;
   const cx = size / 2;
   const cy = size / 2;
-  const R = 170;
-  const nodeR = 30;
+  const R = 210;
 
   return (
-    <div className="relative mx-auto w-full max-w-[480px] aspect-square">
-      <svg viewBox={`0 0 ${size} ${size}`} className="absolute inset-0 w-full h-full">
+    <div className="relative mx-auto w-full max-w-[560px] aspect-square">
+      <svg viewBox={`0 0 ${size} ${size}`} className="absolute inset-0 w-full h-full overflow-visible">
         <defs>
           <radialGradient id="journeyCoreGlow" cx="50%" cy="50%" r="50%">
             <stop offset="0%" stopColor="#00DEC4" stopOpacity="0.5" />
             <stop offset="100%" stopColor="#00DEC4" stopOpacity="0" />
           </radialGradient>
+          <path
+            id="journeyOrbit"
+            d={`M ${cx} ${cy - R} A ${R} ${R} 0 1 1 ${cx - 0.01} ${cy - R} Z`}
+          />
         </defs>
-        {/* dashed orbit ring */}
-        <circle cx={cx} cy={cy} r={R} fill="none" stroke="#00DEC4" strokeOpacity="0.2" strokeWidth="1" strokeDasharray="3 5" />
-        {/* animated traveling pulse along circle */}
-        <motion.circle
-          r="4" fill="#00DEC4"
-          animate={{ rotate: 360 }}
-          transition={{ duration: 14, repeat: Infinity, ease: "linear" }}
-          style={{ transformOrigin: `${cx}px ${cy}px` }}
-          cx={cx + R} cy={cy}
-        />
-        {/* loop arrow indicator (last → first) */}
-        <path
-          d={`M ${cx + R - 6} ${cy - 18} A ${R} ${R} 0 0 0 ${cx + R - 6} ${cy + 18}`}
-          fill="none" stroke="#00DEC4" strokeOpacity="0.5" strokeWidth="1.5"
+        {/* dashed orbit ring connecting all nodes */}
+        <circle
+          cx={cx}
+          cy={cy}
+          r={R}
+          fill="none"
+          stroke="#00DEC4"
+          strokeOpacity="0.45"
+          strokeWidth="1.5"
+          strokeDasharray="4 6"
         />
         {/* center label */}
-        <circle cx={cx} cy={cy} r="60" fill="url(#journeyCoreGlow)" />
-        <circle cx={cx} cy={cy} r="38" fill="hsla(170, 100%, 43%, 0.12)" stroke="#00DEC4" strokeOpacity="0.4" strokeWidth="1" />
-        <text x={cx} y={cy - 2} textAnchor="middle" fontSize="11" fontWeight="600" fill="#00DEC4">Patient</text>
-        <text x={cx} y={cy + 12} textAnchor="middle" fontSize="11" fontWeight="600" fill="#00DEC4">Lifecycle</text>
+        <circle cx={cx} cy={cy} r="80" fill="url(#journeyCoreGlow)" />
+        <circle cx={cx} cy={cy} r="56" fill="hsla(170, 100%, 43%, 0.14)" stroke="#00DEC4" strokeOpacity="0.5" strokeWidth="1.2" />
+        <text x={cx} y={cy - 4} textAnchor="middle" fontSize="14" fontWeight="600" fill="#00DEC4">Patient</text>
+        <text x={cx} y={cy + 14} textAnchor="middle" fontSize="14" fontWeight="600" fill="#00DEC4">Lifecycle</text>
+
+        {/* animated traveling pulse (clockwise) */}
+        <circle r="6" fill="#00DEC4" style={{ filter: "drop-shadow(0 0 8px #00DEC4)" }}>
+          <animateMotion dur="14s" repeatCount="indefinite" rotate="auto">
+            <mpath href="#journeyOrbit" />
+          </animateMotion>
+        </circle>
       </svg>
       {/* nodes as HTML */}
       {steps.map((s, i) => {
@@ -299,12 +305,12 @@ const JourneyFlow = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.4, delay: 0.1 + i * 0.08 }}
             className="absolute flex flex-col items-center gap-1.5"
-            style={{ left: `${leftPct}%`, top: `${topPct}%`, transform: "translate(-50%, -50%)", width: nodeR * 2 }}
+            style={{ left: `${leftPct}%`, top: `${topPct}%`, transform: "translate(-50%, -50%)" }}
           >
-            <div className="w-12 h-12 rounded-full glass-panel border border-primary/40 flex items-center justify-center shadow-[0_8px_20px_-8px_hsla(170,100%,43%,0.4)]">
-              <s.Icon className="w-5 h-5 text-primary" strokeWidth={1.5} />
+            <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-full glass-panel border border-primary/40 flex items-center justify-center shadow-[0_8px_20px_-8px_hsla(170,100%,43%,0.45)] backdrop-blur-md">
+              <s.Icon className="w-6 h-6 sm:w-7 sm:h-7 text-primary" strokeWidth={1.5} />
             </div>
-            <span className="text-[10px] sm:text-[11px] text-foreground/85 text-center whitespace-nowrap">{s.label}</span>
+            <span className="text-[11px] sm:text-xs text-foreground/85 text-center whitespace-nowrap">{s.label}</span>
           </motion.div>
         );
       })}
