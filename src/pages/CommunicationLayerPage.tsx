@@ -452,7 +452,7 @@ const CommunicationLayerPage = () => {
             <p className="text-muted-foreground leading-relaxed mb-8">
               Omnichannel communication ensures that every interaction — regardless of channel — is captured, tracked, and actionable.
             </p>
-            <div className="flex justify-center gap-6 md:gap-10 mb-6">
+            <div className="flex flex-wrap justify-evenly items-start gap-6 sm:gap-10 mb-6">
               {[
                 { Icon: Phone, label: "Calls" },
                 { Icon: MessageSquare, label: "SMS" },
@@ -460,9 +460,11 @@ const CommunicationLayerPage = () => {
                 { Icon: MessageCircle, label: "Chat" },
                 { Icon: Video, label: "Video" },
               ].map((ch) => (
-                <div key={ch.label} className="flex flex-col items-center gap-1.5">
-                  <ch.Icon className="w-5 h-5 text-primary" strokeWidth={1.5} aria-label={ch.label} />
-                  <span className="text-[10px] text-muted-foreground">{ch.label}</span>
+                <div key={ch.label} className="flex flex-col items-center gap-2">
+                  <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-full glass-panel flex items-center justify-center border border-primary/40 shadow-[0_0_18px_-4px_hsla(170,100%,43%,0.45)]">
+                    <ch.Icon className="w-7 h-7 sm:w-8 sm:h-8 text-primary" strokeWidth={1.5} aria-label={ch.label} />
+                  </div>
+                  <span className="text-sm sm:text-base font-medium text-foreground/90">{ch.label}</span>
                 </div>
               ))}
             </div>
