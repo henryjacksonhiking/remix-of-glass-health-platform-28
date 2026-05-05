@@ -108,7 +108,7 @@ const ConvergenceHero = () => {
 
         {/* Particles on each line */}
         {!reduced && channels.map((_, i) => {
-          const sy = getY(i, channels.length);
+          const sy = getY(i, channels.length) + 8;
           return [0, 1].map((p) => (
             <motion.circle
               key={`p-${i}-${p}`}
