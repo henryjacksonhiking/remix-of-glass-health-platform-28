@@ -65,7 +65,7 @@ const ConvergenceHero = () => {
   };
 
   return (
-    <div className="relative w-full max-w-[520px] aspect-[4/3] mx-auto">
+    <div className="relative w-full max-w-[520px] aspect-[400/280] mx-auto">
       <svg viewBox="0 0 400 280" className="w-full h-full overflow-visible" aria-hidden="true">
         <defs>
           <radialGradient id="commHubGlow" cx="50%" cy="50%" r="50%">
@@ -149,7 +149,7 @@ const ConvergenceHero = () => {
         <text x={hubX} y={hubY + 12} textAnchor="middle" fontSize="9" fill="hsl(226 60% 12%)" opacity="0.75">Unified Stream</text>
       </svg>
 
-      {/* Channel icons — larger */}
+      {/* Channel icons — compact, label inline aligned to line origin */}
       {channels.map((ch, i) => {
         const sy = getY(i, channels.length);
         const pctTop = (sy / 280) * 100;
@@ -163,10 +163,10 @@ const ConvergenceHero = () => {
             viewport={{ once: true }}
             transition={{ delay: i * 0.1, duration: 0.4 }}
           >
-            <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-full glass-panel flex items-center justify-center border border-primary/40 shadow-[0_0_18px_-4px_hsla(170,100%,43%,0.45)]" aria-label={ch.label}>
-              <ch.Icon className="w-5 h-5 sm:w-6 sm:h-6 text-primary" strokeWidth={1.5} />
+            <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-full glass-panel flex items-center justify-center border border-primary/40 shadow-[0_0_14px_-4px_hsla(170,100%,43%,0.45)]" aria-label={ch.label}>
+              <ch.Icon className="w-4 h-4 sm:w-[18px] sm:h-[18px] text-primary" strokeWidth={1.5} />
             </div>
-            <span className="text-xs font-medium text-foreground/80">{ch.label}</span>
+            <span className="text-[11px] sm:text-xs font-medium text-foreground/80 leading-none">{ch.label}</span>
           </motion.div>
         );
       })}
@@ -258,30 +258,30 @@ const BeforeAfterComm = () => {
       <div className="rounded-2xl border border-primary/30 bg-card/40 p-6 relative overflow-hidden">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,hsla(170,100%,43%,0.08),transparent_70%)]" />
         <div className="relative">
-          <svg viewBox="0 0 200 120" className="w-full h-28" aria-hidden="true">
+          <svg viewBox="0 0 200 160" className="w-full h-44 md:h-52" aria-hidden="true">
             {channels.map((_, i) => {
               const angle = (i / channels.length) * Math.PI * 2 - Math.PI / 2;
-              const x = 100 + 45 * Math.cos(angle);
-              const y = 60 + 45 * Math.sin(angle);
+              const x = 100 + 60 * Math.cos(angle);
+              const y = 80 + 60 * Math.sin(angle);
               return (
                 <g key={i}>
-                  <line x1="100" y1="60" x2={x} y2={y} stroke="#00DEC4" strokeOpacity="0.5" strokeWidth="1" />
-                  <circle cx={x} cy={y} r="6" fill="hsla(170,100%,43%,0.15)" stroke="#00DEC4" strokeWidth="1" />
+                  <line x1="100" y1="80" x2={x} y2={y} stroke="#00DEC4" strokeOpacity="0.55" strokeWidth="1.2" />
+                  <circle cx={x} cy={y} r="9" fill="hsla(170,100%,43%,0.18)" stroke="#00DEC4" strokeWidth="1.2" />
                   {!reduced && (
-                    <motion.circle r="2.5" fill="#00DEC4" filter="url(#particleGlow)"
+                    <motion.circle r="3" fill="#00DEC4" filter="url(#particleGlow)"
                       initial={{ offsetDistance: "0%" }}
                       animate={{ offsetDistance: "100%" }}
                       transition={{ duration: 2.5, repeat: Infinity, delay: i * 0.6, ease: "linear" }}
-                      style={{ offsetPath: `path("M ${x} ${y} L 100 60")` } as any}
+                      style={{ offsetPath: `path("M ${x} ${y} L 100 80")` } as any}
                     />
                   )}
                 </g>
               );
             })}
-            <circle cx="100" cy="60" r="14" fill="hsl(170 100% 43%)" />
-            <text x="100" y="63" textAnchor="middle" fontSize="7" fontWeight="600" fill="hsl(226 60% 12%)">Borna</text>
+            <circle cx="100" cy="80" r="22" fill="hsl(170 100% 43%)" />
+            <text x="100" y="84" textAnchor="middle" fontSize="11" fontWeight="700" fill="hsl(226 60% 12%)">Borna</text>
           </svg>
-          <p className="text-center text-xs uppercase tracking-wider text-primary mt-2">Unified in Borna</p>
+          <p className="text-center text-sm uppercase tracking-wider text-primary mt-2 font-medium">Unified in Borna</p>
         </div>
       </div>
     </div>
@@ -461,10 +461,10 @@ const CommunicationLayerPage = () => {
                 { Icon: Video, label: "Video" },
               ].map((ch) => (
                 <div key={ch.label} className="flex flex-col items-center gap-2">
-                  <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-full glass-panel flex items-center justify-center border border-primary/40 shadow-[0_0_18px_-4px_hsla(170,100%,43%,0.45)]">
-                    <ch.Icon className="w-7 h-7 sm:w-8 sm:h-8 text-primary" strokeWidth={1.5} aria-label={ch.label} />
+                  <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-full glass-panel flex items-center justify-center border border-primary/40 shadow-[0_0_14px_-4px_hsla(170,100%,43%,0.45)]">
+                    <ch.Icon className="w-5 h-5 sm:w-6 sm:h-6 text-primary" strokeWidth={1.5} aria-label={ch.label} />
                   </div>
-                  <span className="text-sm sm:text-base font-medium text-foreground/90">{ch.label}</span>
+                  <span className="text-xs sm:text-sm font-medium text-foreground/90">{ch.label}</span>
                 </div>
               ))}
             </div>
@@ -659,11 +659,11 @@ const CommunicationLayerPage = () => {
               <motion.div key={stage.title} initial={{ opacity: 0, scale: 0.85 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} transition={{ delay: i * 0.1, duration: 0.4 }}
                 className="flex flex-col items-center text-center"
               >
-                <div className="w-20 h-20 rounded-full glass-panel flex items-center justify-center border border-primary/40 mb-3 shadow-[0_0_18px_-4px_hsla(170,100%,43%,0.45)]">
-                  <stage.Icon className="w-8 h-8 text-primary" strokeWidth={1.5} />
+                <div className="w-14 h-14 rounded-full glass-panel flex items-center justify-center border border-primary/40 mb-3 shadow-[0_0_14px_-4px_hsla(170,100%,43%,0.45)]">
+                  <stage.Icon className="w-6 h-6 text-primary" strokeWidth={1.5} />
                 </div>
-                <span className="text-base font-semibold text-foreground mb-1">{stage.title}</span>
-                <span className="text-sm text-muted-foreground leading-relaxed">{stage.sub}</span>
+                <span className="text-sm font-semibold text-foreground mb-1">{stage.title}</span>
+                <span className="text-xs text-muted-foreground leading-relaxed">{stage.sub}</span>
               </motion.div>
             ))}
           </div>
@@ -679,20 +679,20 @@ const CommunicationLayerPage = () => {
           </motion.div>
           <div className="relative max-w-6xl mx-auto">
             {/* glowing teal connector line — horizontal on md+, vertical on mobile */}
-            <div className="hidden md:block absolute left-[8%] right-[8%] top-[44px] h-[3px] rounded-full bg-gradient-to-r from-transparent via-[#00DEC4] to-transparent shadow-[0_0_18px_2px_hsla(170,100%,43%,0.55)]" />
-            <div className="md:hidden absolute top-0 bottom-0 left-[42px] w-[3px] rounded-full bg-gradient-to-b from-transparent via-[#00DEC4] to-transparent shadow-[0_0_18px_2px_hsla(170,100%,43%,0.55)]" />
+            <div className="hidden md:block absolute left-[8%] right-[8%] top-[38px] h-[2px] rounded-full bg-gradient-to-r from-transparent via-[#00DEC4] to-transparent shadow-[0_0_14px_2px_hsla(170,100%,43%,0.5)]" />
+            <div className="md:hidden absolute top-0 bottom-0 left-[34px] w-[2px] rounded-full bg-gradient-to-b from-transparent via-[#00DEC4] to-transparent shadow-[0_0_14px_2px_hsla(170,100%,43%,0.5)]" />
             <div className="flex flex-col md:flex-row items-stretch md:items-start justify-between gap-8 md:gap-4 relative">
               {howItWorksSteps.map((step, i) => (
                 <div key={step.num} className="flex md:flex-col items-start md:items-center gap-4 md:gap-3 flex-1" aria-label={`Step ${step.num}: ${step.title}`}>
                   <motion.div initial={{ opacity: 0, scale: 0.7 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} transition={{ delay: i * 0.1, duration: 0.35 }}
                     className="flex flex-col items-center gap-2 text-center md:w-full"
                   >
-                    <span className="text-sm font-bold text-primary">{step.num}</span>
-                    <div className="relative w-20 h-20 rounded-full bg-card border border-primary/40 flex items-center justify-center shadow-[0_0_18px_-4px_hsla(170,100%,43%,0.55)]">
-                      <step.Icon className="w-8 h-8 text-primary" strokeWidth={1.5} />
+                    <span className="text-xs font-bold text-primary">{step.num}</span>
+                    <div className="relative w-14 h-14 rounded-full bg-card border border-primary/40 flex items-center justify-center shadow-[0_0_14px_-4px_hsla(170,100%,43%,0.5)]">
+                      <step.Icon className="w-6 h-6 text-primary" strokeWidth={1.5} />
                     </div>
-                    <span className="text-base font-semibold text-foreground mt-1">{step.title}</span>
-                    <span className="text-sm text-muted-foreground max-w-[180px] leading-relaxed">{step.desc}</span>
+                    <span className="text-sm font-semibold text-foreground mt-1">{step.title}</span>
+                    <span className="text-xs text-muted-foreground max-w-[180px] leading-relaxed">{step.desc}</span>
                   </motion.div>
                 </div>
               ))}
