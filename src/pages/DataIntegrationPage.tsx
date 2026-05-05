@@ -52,11 +52,11 @@ const DataConvergenceHero = () => {
     { label: "Marketing", Icon: BarChart3 },
     { label: "Financial", Icon: CreditCard },
   ];
-  const hubX = 320, hubY = 140, startX = 50;
+  const hubX = 480, hubY = 200, startX = 70;
 
   return (
-    <div className="relative w-full max-w-[420px] px-[5px] py-[5px] aspect-[4/3] mx-[5px] my-[5px]">
-      <svg viewBox="0 0 400 280" className="w-full h-full" aria-hidden="true">
+    <div className="relative w-full max-w-[760px] mx-auto">
+      <svg viewBox="0 0 600 400" className="w-full h-auto" aria-hidden="true">
         <defs>
           <radialGradient id="dataHubGlow" cx="50%" cy="50%" r="50%">
             <stop offset="0%" stopColor="#00DEC4" stopOpacity="0.5" />
@@ -69,15 +69,15 @@ const DataConvergenceHero = () => {
         </defs>
 
         {sources.map((s, i) => {
-          const sy = 30 + i * 55;
+          const sy = 50 + i * 75;
           return (
             <g key={s.label}>
-              <line x1={startX + 30} y1={sy} x2={hubX - 20} y2={hubY} stroke="#00DEC4" strokeWidth={1} strokeOpacity={0.3} />
-              <circle cx={startX} cy={sy} r={12} fill="rgba(0,222,196,0.08)" stroke="#00DEC4" strokeWidth={0.8} strokeOpacity={0.5} />
-              <text x={startX + 20} y={sy + 4} fill="rgba(255,255,255,0.65)" fontSize={8}>{s.label}</text>
+              <line x1={startX + 40} y1={sy} x2={hubX - 50} y2={hubY} stroke="#00DEC4" strokeWidth={2} strokeOpacity={0.45} filter="url(#dataGlow)" />
+              <circle cx={startX} cy={sy} r={22} fill="rgba(0,222,196,0.10)" stroke="#00DEC4" strokeWidth={1.2} strokeOpacity={0.7} />
+              <text x={startX + 32} y={sy + 5} fill="rgba(255,255,255,0.92)" fontSize={14} fontWeight={600}>{s.label}</text>
               {!reduced && (
-                <circle r={3} fill="#00DEC4" filter="url(#dataGlow)">
-                  <animateMotion dur={`${2.5 + i * 0.3}s`} repeatCount="indefinite" path={`M${startX + 30},${sy} L${hubX - 20},${hubY}`} />
+                <circle r={4} fill="#00DEC4" filter="url(#dataGlow)">
+                  <animateMotion dur={`${2.5 + i * 0.3}s`} repeatCount="indefinite" path={`M${startX + 40},${sy} L${hubX - 50},${hubY}`} />
                   <animate attributeName="opacity" values="0.3;1;0.3" dur={`${2.5 + i * 0.3}s`} repeatCount="indefinite" />
                 </circle>
               )}
@@ -86,18 +86,19 @@ const DataConvergenceHero = () => {
         })}
 
         {/* Hub */}
-        <circle cx={hubX} cy={hubY} r={35} fill="url(#dataHubGlow)" />
-        <circle cx={hubX} cy={hubY} r={18} fill="rgba(0,222,196,0.15)" stroke="#00DEC4" strokeWidth={1.5}>
-          {!reduced && <animate attributeName="r" values="18;20;18" dur="3s" repeatCount="indefinite" />}
+        <circle cx={hubX} cy={hubY} r={75} fill="url(#dataHubGlow)" />
+        <ellipse cx={hubX} cy={hubY} rx={62} ry={56} fill="none" stroke="#FF6B6B" strokeWidth={1.5} strokeOpacity={0.55} strokeDasharray="4 4" />
+        <circle cx={hubX} cy={hubY} r={42} fill="rgba(0,222,196,0.18)" stroke="#00DEC4" strokeWidth={2}>
+          {!reduced && <animate attributeName="r" values="42;46;42" dur="3s" repeatCount="indefinite" />}
         </circle>
-        <text x={hubX} y={hubY - 4} textAnchor="middle" fill="white" fontSize={8} fontWeight={600}>Borna AI</text>
-        <text x={hubX} y={hubY + 7} textAnchor="middle" fill="rgba(255,255,255,0.7)" fontSize={6}>Data Core</text>
+        <text x={hubX} y={hubY - 4} textAnchor="middle" fill="white" fontSize={16} fontWeight={700}>Borna AI</text>
+        <text x={hubX} y={hubY + 14} textAnchor="middle" fill="rgba(255,255,255,0.8)" fontSize={11}>Data Core</text>
 
         {/* Chips */}
-        <rect x={hubX - 30} y={hubY - 50} width={60} height={16} rx={8} fill="rgba(0,222,196,0.1)" stroke="#00DEC4" strokeWidth={0.5} strokeOpacity={0.3} />
-        <text x={hubX} y={hubY - 39} textAnchor="middle" fill="#00DEC4" fontSize={6}>AI-Ready Data</text>
-        <rect x={hubX - 30} y={hubY + 35} width={60} height={16} rx={8} fill="rgba(0,222,196,0.1)" stroke="#00DEC4" strokeWidth={0.5} strokeOpacity={0.3} />
-        <text x={hubX} y={hubY + 46} textAnchor="middle" fill="#00DEC4" fontSize={6}>Real-Time Sync</text>
+        <rect x={hubX - 60} y={hubY - 110} width={120} height={26} rx={13} fill="rgba(0,222,196,0.12)" stroke="#00DEC4" strokeWidth={1} strokeOpacity={0.5} />
+        <text x={hubX} y={hubY - 92} textAnchor="middle" fill="#00DEC4" fontSize={12} fontWeight={600}>AI-Ready Data</text>
+        <rect x={hubX - 60} y={hubY + 84} width={120} height={26} rx={13} fill="rgba(0,222,196,0.12)" stroke="#00DEC4" strokeWidth={1} strokeOpacity={0.5} />
+        <text x={hubX} y={hubY + 102} textAnchor="middle" fill="#00DEC4" fontSize={12} fontWeight={600}>Real-Time Sync</text>
       </svg>
     </div>
   );
