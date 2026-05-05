@@ -182,7 +182,7 @@ const BeforeAfter = () => {
         <div className="relative flex flex-col flex-1">
           <p className="text-center text-xs sm:text-sm uppercase tracking-wider text-primary mb-5 sm:mb-6">Unified Ecosystem</p>
           <div className="flex-1 flex items-center justify-center">
-          <svg viewBox="0 0 220 200" className="w-full h-56 sm:h-64">
+          <svg viewBox="-10 -10 240 230" className="w-full h-64 sm:h-72 overflow-visible">
             <defs>
               <radialGradient id="coreUnifiedGlow" cx="50%" cy="50%" r="50%">
                 <stop offset="0%" stopColor="#00DEC4" stopOpacity="0.6" />
