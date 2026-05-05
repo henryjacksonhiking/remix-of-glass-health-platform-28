@@ -45,19 +45,19 @@ import {
 const AITransformationHero = () => {
   const reduced = useReducedMotion();
   const rawNodes = [
-    { x: 30, y: 60 }, { x: 50, y: 130 }, { x: 25, y: 200 }, { x: 65, y: 240 },
+    { x: 60, y: 90, label: "Comm" }, { x: 80, y: 180, label: "CRM" }, { x: 55, y: 270, label: "PMS" }, { x: 95, y: 340, label: "EHR" },
   ];
   const outputNodes = [
-    { x: 350, y: 60, label: "Insight" },
-    { x: 360, y: 130, label: "Prediction" },
-    { x: 350, y: 200, label: "Automation" },
-    { x: 365, y: 250, label: "Alert" },
+    { x: 520, y: 90, label: "Insight" },
+    { x: 540, y: 180, label: "Prediction" },
+    { x: 525, y: 270, label: "Automation" },
+    { x: 545, y: 340, label: "Alert" },
   ];
-  const coreX = 200, coreY = 140;
+  const coreX = 300, coreY = 215;
 
   return (
-    <div className="relative w-full max-w-[420px] px-[5px] py-[5px] aspect-[4/3] mx-[5px] my-[5px]">
-      <svg viewBox="0 0 400 280" className="w-full h-full" aria-hidden="true">
+    <div className="relative w-full max-w-[760px] mx-auto">
+      <svg viewBox="0 0 600 420" className="w-full h-auto" aria-hidden="true">
         <defs>
           <radialGradient id="aiCoreGlow" cx="50%" cy="50%" r="50%">
             <stop offset="0%" stopColor="#00DEC4" stopOpacity="0.6" />
@@ -65,7 +65,7 @@ const AITransformationHero = () => {
             <stop offset="100%" stopColor="#00DEC4" stopOpacity="0" />
           </radialGradient>
           <filter id="aiGlow">
-            <feGaussianBlur stdDeviation="2" result="b" />
+            <feGaussianBlur stdDeviation="2.5" result="b" />
             <feMerge><feMergeNode in="b" /><feMergeNode in="SourceGraphic" /></feMerge>
           </filter>
         </defs>
@@ -73,34 +73,35 @@ const AITransformationHero = () => {
         {/* Raw data nodes */}
         {rawNodes.map((n, i) => (
           <g key={`raw-${i}`}>
-            <circle cx={n.x} cy={n.y} r={8} fill="rgba(0,222,196,0.06)" stroke="#00DEC4" strokeWidth={0.6} strokeOpacity={0.25} />
-            <line x1={n.x + 8} y1={n.y} x2={coreX - 22} y2={coreY} stroke="#00DEC4" strokeWidth={0.8} strokeOpacity={0.2} />
+            <circle cx={n.x} cy={n.y} r={22} fill="rgba(0,222,196,0.08)" stroke="#00DEC4" strokeWidth={1} strokeOpacity={0.5} />
+            <text x={n.x} y={n.y + 4} textAnchor="middle" fill="rgba(255,255,255,0.85)" fontSize={11} fontWeight={600}>{n.label}</text>
+            <line x1={n.x + 22} y1={n.y} x2={coreX - 70} y2={coreY} stroke="#00DEC4" strokeWidth={1.5} strokeOpacity={0.4} filter="url(#aiGlow)" />
             {!reduced && (
-              <circle r={2.5} fill="#00DEC4" filter="url(#aiGlow)">
-                <animateMotion dur={`${2 + i * 0.4}s`} repeatCount="indefinite" path={`M${n.x + 8},${n.y} L${coreX - 22},${coreY}`} />
-                <animate attributeName="opacity" values="0.15;0.8;0.15" dur={`${2 + i * 0.4}s`} repeatCount="indefinite" />
+              <circle r={3.5} fill="#00DEC4" filter="url(#aiGlow)">
+                <animateMotion dur={`${2 + i * 0.4}s`} repeatCount="indefinite" path={`M${n.x + 22},${n.y} L${coreX - 70},${coreY}`} />
+                <animate attributeName="opacity" values="0.15;0.9;0.15" dur={`${2 + i * 0.4}s`} repeatCount="indefinite" />
               </circle>
             )}
           </g>
         ))}
 
         {/* AI Core */}
-        <circle cx={coreX} cy={coreY} r={45} fill="url(#aiCoreGlow)" />
-        <circle cx={coreX} cy={coreY} r={20} fill="rgba(0,222,196,0.18)" stroke="#00DEC4" strokeWidth={1.5}>
-          {!reduced && <animate attributeName="r" values="20;22;20" dur="3s" repeatCount="indefinite" />}
+        <circle cx={coreX} cy={coreY} r={110} fill="url(#aiCoreGlow)" />
+        <circle cx={coreX} cy={coreY} r={70} fill="rgba(0,222,196,0.18)" stroke="#00DEC4" strokeWidth={2}>
+          {!reduced && <animate attributeName="r" values="70;75;70" dur="3s" repeatCount="indefinite" />}
         </circle>
-        <text x={coreX} y={coreY - 4} textAnchor="middle" fill="white" fontSize={8} fontWeight={600}>Borna AI</text>
-        <text x={coreX} y={coreY + 7} textAnchor="middle" fill="rgba(255,255,255,0.7)" fontSize={6}>Intelligence Engine</text>
+        <text x={coreX} y={coreY - 6} textAnchor="middle" fill="white" fontSize={20} fontWeight={700}>Borna AI</text>
+        <text x={coreX} y={coreY + 16} textAnchor="middle" fill="rgba(255,255,255,0.8)" fontSize={11}>Intelligence Engine</text>
 
         {/* Output nodes */}
         {outputNodes.map((n, i) => (
           <g key={`out-${i}`}>
-            <line x1={coreX + 22} y1={coreY} x2={n.x - 12} y2={n.y} stroke="#00DEC4" strokeWidth={0.8} strokeOpacity={0.4} />
-            <circle cx={n.x} cy={n.y} r={10} fill="rgba(0,222,196,0.12)" stroke="#00DEC4" strokeWidth={1} strokeOpacity={0.7} />
-            <text x={n.x} y={n.y + 3} textAnchor="middle" fill="#00DEC4" fontSize={5.5} fontWeight={500}>{n.label}</text>
+            <line x1={coreX + 70} y1={coreY} x2={n.x - 30} y2={n.y} stroke="#00DEC4" strokeWidth={1.5} strokeOpacity={0.55} filter="url(#aiGlow)" />
+            <circle cx={n.x} cy={n.y} r={30} fill="rgba(0,222,196,0.14)" stroke="#00DEC4" strokeWidth={1.4} strokeOpacity={0.8} />
+            <text x={n.x} y={n.y + 4} textAnchor="middle" fill="#FFFFFF" fontSize={10} fontWeight={600}>{n.label}</text>
             {!reduced && (
-              <circle r={2.5} fill="#00DEC4" filter="url(#aiGlow)">
-                <animateMotion dur={`${1.5 + i * 0.3}s`} repeatCount="indefinite" path={`M${coreX + 22},${coreY} L${n.x - 12},${n.y}`} />
+              <circle r={3.5} fill="#00DEC4" filter="url(#aiGlow)">
+                <animateMotion dur={`${1.5 + i * 0.3}s`} repeatCount="indefinite" path={`M${coreX + 70},${coreY} L${n.x - 30},${n.y}`} />
                 <animate attributeName="opacity" values="0.8;1;0.8" dur={`${1.5 + i * 0.3}s`} repeatCount="indefinite" />
               </circle>
             )}
