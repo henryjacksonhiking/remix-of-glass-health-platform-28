@@ -461,10 +461,10 @@ const CommunicationLayerPage = () => {
                 { Icon: Video, label: "Video" },
               ].map((ch) => (
                 <div key={ch.label} className="flex flex-col items-center gap-2">
-                  <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-full glass-panel flex items-center justify-center border border-primary/40 shadow-[0_0_18px_-4px_hsla(170,100%,43%,0.45)]">
-                    <ch.Icon className="w-7 h-7 sm:w-8 sm:h-8 text-primary" strokeWidth={1.5} aria-label={ch.label} />
+                  <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-full glass-panel flex items-center justify-center border border-primary/40 shadow-[0_0_14px_-4px_hsla(170,100%,43%,0.45)]">
+                    <ch.Icon className="w-5 h-5 sm:w-6 sm:h-6 text-primary" strokeWidth={1.5} aria-label={ch.label} />
                   </div>
-                  <span className="text-sm sm:text-base font-medium text-foreground/90">{ch.label}</span>
+                  <span className="text-xs sm:text-sm font-medium text-foreground/90">{ch.label}</span>
                 </div>
               ))}
             </div>
