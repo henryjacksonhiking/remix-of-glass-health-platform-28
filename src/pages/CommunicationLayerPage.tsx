@@ -649,25 +649,22 @@ const CommunicationLayerPage = () => {
               Every missed patient inquiry is a missed opportunity. Every delayed response erodes trust. Borna's Communication Layer eliminates these gaps.
             </p>
           </motion.div>
-          <div className="flex flex-col md:flex-row items-center justify-between gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 items-start">
             {[
               { Icon: Layers, title: "Unified Communication", sub: "Every channel, one system" },
               { Icon: Heart, title: "Better Engagement", sub: "Faster responses, higher satisfaction" },
               { Icon: TrendingUp, title: "Higher Conversion", sub: "More inquiries become appointments" },
               { Icon: BarChart3, title: "Practice Growth", sub: "Retained patients, increased production" },
-            ].map((stage, i, arr) => (
-              <div key={stage.title} className="flex items-center gap-3">
-                <motion.div initial={{ opacity: 0, scale: 0.8 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} transition={{ delay: i * 0.1, duration: 0.4 }}
-                  className="flex flex-col items-center text-center min-w-[100px]"
-                >
-                  <div className="w-12 h-12 rounded-full glass-panel flex items-center justify-center border border-primary/30 mb-2">
-                    <stage.Icon className="w-5 h-5 text-primary" strokeWidth={1.5} />
-                  </div>
-                  <span className="text-xs font-medium text-foreground">{stage.title}</span>
-                  <span className="text-[10px] text-muted-foreground">{stage.sub}</span>
-                </motion.div>
-                {i < arr.length - 1 && <ArrowRight className="hidden md:block w-4 h-4 text-primary/40 shrink-0" />}
-              </div>
+            ].map((stage, i) => (
+              <motion.div key={stage.title} initial={{ opacity: 0, scale: 0.85 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} transition={{ delay: i * 0.1, duration: 0.4 }}
+                className="flex flex-col items-center text-center"
+              >
+                <div className="w-20 h-20 rounded-full glass-panel flex items-center justify-center border border-primary/40 mb-3 shadow-[0_0_18px_-4px_hsla(170,100%,43%,0.45)]">
+                  <stage.Icon className="w-8 h-8 text-primary" strokeWidth={1.5} />
+                </div>
+                <span className="text-base font-semibold text-foreground mb-1">{stage.title}</span>
+                <span className="text-sm text-muted-foreground leading-relaxed">{stage.sub}</span>
+              </motion.div>
             ))}
           </div>
         </div>
