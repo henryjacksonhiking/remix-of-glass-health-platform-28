@@ -149,7 +149,7 @@ const ConvergenceHero = () => {
         <text x={hubX} y={hubY + 12} textAnchor="middle" fontSize="9" fill="hsl(226 60% 12%)" opacity="0.75">Unified Stream</text>
       </svg>
 
-      {/* Channel icons — larger */}
+      {/* Channel icons — compact, label inline aligned to line origin */}
       {channels.map((ch, i) => {
         const sy = getY(i, channels.length);
         const pctTop = (sy / 280) * 100;
@@ -163,10 +163,10 @@ const ConvergenceHero = () => {
             viewport={{ once: true }}
             transition={{ delay: i * 0.1, duration: 0.4 }}
           >
-            <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-full glass-panel flex items-center justify-center border border-primary/40 shadow-[0_0_18px_-4px_hsla(170,100%,43%,0.45)]" aria-label={ch.label}>
-              <ch.Icon className="w-5 h-5 sm:w-6 sm:h-6 text-primary" strokeWidth={1.5} />
+            <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-full glass-panel flex items-center justify-center border border-primary/40 shadow-[0_0_14px_-4px_hsla(170,100%,43%,0.45)]" aria-label={ch.label}>
+              <ch.Icon className="w-4 h-4 sm:w-[18px] sm:h-[18px] text-primary" strokeWidth={1.5} />
             </div>
-            <span className="text-xs font-medium text-foreground/80">{ch.label}</span>
+            <span className="text-[11px] sm:text-xs font-medium text-foreground/80 leading-none">{ch.label}</span>
           </motion.div>
         );
       })}
