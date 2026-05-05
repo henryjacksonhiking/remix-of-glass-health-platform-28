@@ -65,35 +65,43 @@ const ConvergenceHero = () => {
   };
 
   return (
-    <div className="relative w-full max-w-[420px] px-[5px] py-[5px] aspect-[4/3] mx-[5px] my-[5px]">
-      <svg viewBox="0 0 400 280" className="w-full h-full" aria-hidden="true">
+    <div className="relative w-full max-w-[520px] aspect-[4/3] mx-auto">
+      <svg viewBox="0 0 400 280" className="w-full h-full overflow-visible" aria-hidden="true">
         <defs>
           <radialGradient id="commHubGlow" cx="50%" cy="50%" r="50%">
-            <stop offset="0%" stopColor="#00DEC4" stopOpacity="0.5" />
+            <stop offset="0%" stopColor="#00DEC4" stopOpacity="0.55" />
             <stop offset="100%" stopColor="#00DEC4" stopOpacity="0" />
           </radialGradient>
           <filter id="particleGlow">
             <feGaussianBlur stdDeviation="2" result="blur" />
             <feMerge><feMergeNode in="blur" /><feMergeNode in="SourceGraphic" /></feMerge>
           </filter>
+          <filter id="lineGlow" x="-20%" y="-20%" width="140%" height="140%">
+            <feGaussianBlur stdDeviation="2.5" result="b" />
+            <feMerge><feMergeNode in="b" /><feMergeNode in="SourceGraphic" /></feMerge>
+          </filter>
         </defs>
 
-        {/* Flow lines */}
+        {/* Flow lines — layered teal glow */}
         {channels.map((_, i) => {
           const sy = getY(i, channels.length);
+          const d = `M ${startX + 30} ${sy} C ${startX + 120} ${sy}, ${hubX - 100} ${hubY}, ${hubX - 30} ${hubY}`;
           return (
-            <motion.path
-              key={i}
-              d={`M ${startX + 30} ${sy} C ${startX + 120} ${sy}, ${hubX - 100} ${hubY}, ${hubX - 30} ${hubY}`}
-              stroke="#00DEC4"
-              strokeOpacity="0.3"
-              strokeWidth="1.5"
-              fill="none"
-              initial={{ pathLength: 0 }}
-              whileInView={{ pathLength: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8, delay: i * 0.1 }}
-            />
+            <g key={i}>
+              <path d={d} stroke="#70F5E3" strokeOpacity="0.18" strokeWidth="5" fill="none" filter="url(#lineGlow)" />
+              <path d={d} stroke="#40EBD8" strokeOpacity="0.35" strokeWidth="2.5" fill="none" />
+              <motion.path
+                d={d}
+                stroke="#00DEC4"
+                strokeOpacity="0.9"
+                strokeWidth="1.4"
+                fill="none"
+                initial={{ pathLength: 0 }}
+                whileInView={{ pathLength: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8, delay: i * 0.1 }}
+              />
+            </g>
           );
         })}
 
@@ -122,28 +130,26 @@ const ConvergenceHero = () => {
         })}
 
         {/* Hub glow */}
-        <circle cx={hubX} cy={hubY} r="50" fill="url(#commHubGlow)" />
+        <circle cx={hubX} cy={hubY} r="70" fill="url(#commHubGlow)" />
 
         {/* Hub pulse rings */}
         {!reduced && (
-          <>
-            <motion.circle cx={hubX} cy={hubY} r="28" fill="none" stroke="#00DEC4" strokeWidth="0.8"
-              animate={{ r: [28, 42], opacity: [0.5, 0] }}
-              transition={{ duration: 3, repeat: Infinity, ease: "easeOut" }}
-            />
-          </>
+          <motion.circle cx={hubX} cy={hubY} r="42" fill="none" stroke="#00DEC4" strokeWidth="0.8"
+            animate={{ r: [42, 60], opacity: [0.5, 0] }}
+            transition={{ duration: 3, repeat: Infinity, ease: "easeOut" }}
+          />
         )}
 
-        {/* Hub node */}
-        <motion.circle cx={hubX} cy={hubY} r="26" fill="hsl(170 100% 43%)"
-          animate={reduced ? {} : { r: [26, 28, 26], opacity: [1, 0.85, 1] }}
+        {/* Hub node — larger */}
+        <motion.circle cx={hubX} cy={hubY} r="40" fill="hsl(170 100% 43%)"
+          animate={reduced ? {} : { r: [40, 43, 40], opacity: [1, 0.9, 1] }}
           transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
         />
-        <text x={hubX} y={hubY - 3} textAnchor="middle" fontSize="10" fontWeight="600" fill="hsl(226 60% 12%)">Borna AI</text>
-        <text x={hubX} y={hubY + 10} textAnchor="middle" fontSize="7" fill="hsl(226 60% 12%)" opacity="0.7">Unified Stream</text>
+        <text x={hubX} y={hubY - 3} textAnchor="middle" fontSize="13" fontWeight="700" fill="hsl(226 60% 12%)">Borna AI</text>
+        <text x={hubX} y={hubY + 12} textAnchor="middle" fontSize="9" fill="hsl(226 60% 12%)" opacity="0.75">Unified Stream</text>
       </svg>
 
-      {/* Channel icons */}
+      {/* Channel icons — larger */}
       {channels.map((ch, i) => {
         const sy = getY(i, channels.length);
         const pctTop = (sy / 280) * 100;
@@ -157,21 +163,22 @@ const ConvergenceHero = () => {
             viewport={{ once: true }}
             transition={{ delay: i * 0.1, duration: 0.4 }}
           >
-            <div className="w-9 h-9 rounded-full glass-panel flex items-center justify-center border border-primary/40" aria-label={ch.label}>
-              <ch.Icon className="w-4 h-4 text-primary" strokeWidth={1.5} />
+            <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-full glass-panel flex items-center justify-center border border-primary/40 shadow-[0_0_18px_-4px_hsla(170,100%,43%,0.45)]" aria-label={ch.label}>
+              <ch.Icon className="w-5 h-5 sm:w-6 sm:h-6 text-primary" strokeWidth={1.5} />
             </div>
+            <span className="text-xs font-medium text-foreground/80">{ch.label}</span>
           </motion.div>
         );
       })}
 
       {/* AI Processing chip */}
       <motion.div
-        className="absolute hidden md:flex items-center gap-1.5 text-[10px] font-medium px-2.5 py-1 rounded-full bg-primary/15 text-primary border border-primary/20"
-        style={{ right: "2%", top: "15%" }}
-        animate={reduced ? {} : { opacity: [0.7, 1, 0.7] }}
+        className="absolute flex items-center gap-1.5 text-[11px] sm:text-xs font-medium px-3 py-1.5 rounded-full bg-primary/15 text-primary border border-primary/40 shadow-[0_0_18px_-4px_hsla(170,100%,43%,0.55)] backdrop-blur-sm"
+        style={{ right: "0%", top: "8%" }}
+        animate={reduced ? {} : { opacity: [0.75, 1, 0.75] }}
         transition={{ duration: 3, repeat: Infinity }}
       >
-        <span className="w-1.5 h-1.5 rounded-full bg-primary" /> AI Processing
+        <span className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse" /> AI Processing
       </motion.div>
     </div>
   );
@@ -445,7 +452,7 @@ const CommunicationLayerPage = () => {
             <p className="text-muted-foreground leading-relaxed mb-8">
               Omnichannel communication ensures that every interaction — regardless of channel — is captured, tracked, and actionable.
             </p>
-            <div className="flex justify-center gap-6 md:gap-10 mb-6">
+            <div className="flex flex-wrap justify-evenly items-start gap-6 sm:gap-10 mb-6">
               {[
                 { Icon: Phone, label: "Calls" },
                 { Icon: MessageSquare, label: "SMS" },
@@ -453,9 +460,11 @@ const CommunicationLayerPage = () => {
                 { Icon: MessageCircle, label: "Chat" },
                 { Icon: Video, label: "Video" },
               ].map((ch) => (
-                <div key={ch.label} className="flex flex-col items-center gap-1.5">
-                  <ch.Icon className="w-5 h-5 text-primary" strokeWidth={1.5} aria-label={ch.label} />
-                  <span className="text-[10px] text-muted-foreground">{ch.label}</span>
+                <div key={ch.label} className="flex flex-col items-center gap-2">
+                  <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-full glass-panel flex items-center justify-center border border-primary/40 shadow-[0_0_18px_-4px_hsla(170,100%,43%,0.45)]">
+                    <ch.Icon className="w-7 h-7 sm:w-8 sm:h-8 text-primary" strokeWidth={1.5} aria-label={ch.label} />
+                  </div>
+                  <span className="text-sm sm:text-base font-medium text-foreground/90">{ch.label}</span>
                 </div>
               ))}
             </div>
@@ -466,35 +475,19 @@ const CommunicationLayerPage = () => {
 
       {/* SECTION 3 — PROBLEM */}
       <section className="py-12 md:py-20">
-        <div className="container mx-auto px-4 md:px-6">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <motion.div initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5 }}>
-              <h2 className="text-2xl md:text-3xl font-medium text-foreground mb-5">The challenge of fragmented patient communication</h2>
-              <p className="text-foreground/80 leading-relaxed mb-4">
-                Most healthcare practices run communication across separate, disconnected systems — one for phone calls, another for SMS, another for email, another for chat. None of these systems talk to each other.
-              </p>
-              <p className="text-muted-foreground leading-relaxed mb-4">
-                The result is a fragmented patient experience and constant operational blind spots.
-              </p>
-              <p className="text-foreground/90 font-medium italic">
-                Patients don't switch channels to make things easier for your practice. Your system should handle all of them.
-              </p>
-            </motion.div>
-            <div className="relative">
-              <svg viewBox="0 0 300 220" className="w-full max-w-sm mx-auto" aria-hidden="true">
-                {[Phone, MessageSquare, Mail, MessageCircle, Video].map((_, i) => {
-                  const y = 22 + i * 40;
-                  return (
-                    <g key={i}>
-                      <circle cx="30" cy={y} r="12" fill="hsla(170,100%,43%,0.06)" stroke="#00DEC4" strokeOpacity="0.2" strokeWidth="0.8" />
-                      <line x1="50" y1={y} x2={130 + (i % 2 === 0 ? 20 : 0)} y2={y} stroke="#00DEC4" strokeOpacity="0.15" strokeWidth="1.5" strokeDasharray="6 4" />
-                      {i % 2 === 0 && <text x={140 + (i % 2 === 0 ? 20 : 0)} y={y + 4} fontSize="9" fill="rgba(255,100,100,0.4)">✕</text>}
-                    </g>
-                  );
-                })}
-              </svg>
-            </div>
-          </div>
+        <div className="container mx-auto px-4 md:px-6 max-w-3xl">
+          <motion.div initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5 }}>
+            <h2 className="text-2xl md:text-3xl font-medium text-foreground mb-5">The challenge of fragmented patient communication</h2>
+            <p className="text-base text-foreground/80 leading-relaxed mb-4">
+              Most healthcare practices run communication across separate, disconnected systems — one for phone calls, another for SMS, another for email, another for chat. None of these systems talk to each other.
+            </p>
+            <p className="text-base text-muted-foreground leading-relaxed mb-4">
+              The result is a fragmented patient experience and constant operational blind spots.
+            </p>
+            <p className="text-base text-foreground/90 font-medium italic">
+              Patients don't switch channels to make things easier for your practice. Your system should handle all of them.
+            </p>
+          </motion.div>
         </div>
       </section>
 
@@ -656,25 +649,22 @@ const CommunicationLayerPage = () => {
               Every missed patient inquiry is a missed opportunity. Every delayed response erodes trust. Borna's Communication Layer eliminates these gaps.
             </p>
           </motion.div>
-          <div className="flex flex-col md:flex-row items-center justify-between gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 items-start">
             {[
               { Icon: Layers, title: "Unified Communication", sub: "Every channel, one system" },
               { Icon: Heart, title: "Better Engagement", sub: "Faster responses, higher satisfaction" },
               { Icon: TrendingUp, title: "Higher Conversion", sub: "More inquiries become appointments" },
               { Icon: BarChart3, title: "Practice Growth", sub: "Retained patients, increased production" },
-            ].map((stage, i, arr) => (
-              <div key={stage.title} className="flex items-center gap-3">
-                <motion.div initial={{ opacity: 0, scale: 0.8 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} transition={{ delay: i * 0.1, duration: 0.4 }}
-                  className="flex flex-col items-center text-center min-w-[100px]"
-                >
-                  <div className="w-12 h-12 rounded-full glass-panel flex items-center justify-center border border-primary/30 mb-2">
-                    <stage.Icon className="w-5 h-5 text-primary" strokeWidth={1.5} />
-                  </div>
-                  <span className="text-xs font-medium text-foreground">{stage.title}</span>
-                  <span className="text-[10px] text-muted-foreground">{stage.sub}</span>
-                </motion.div>
-                {i < arr.length - 1 && <ArrowRight className="hidden md:block w-4 h-4 text-primary/40 shrink-0" />}
-              </div>
+            ].map((stage, i) => (
+              <motion.div key={stage.title} initial={{ opacity: 0, scale: 0.85 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} transition={{ delay: i * 0.1, duration: 0.4 }}
+                className="flex flex-col items-center text-center"
+              >
+                <div className="w-20 h-20 rounded-full glass-panel flex items-center justify-center border border-primary/40 mb-3 shadow-[0_0_18px_-4px_hsla(170,100%,43%,0.45)]">
+                  <stage.Icon className="w-8 h-8 text-primary" strokeWidth={1.5} />
+                </div>
+                <span className="text-base font-semibold text-foreground mb-1">{stage.title}</span>
+                <span className="text-sm text-muted-foreground leading-relaxed">{stage.sub}</span>
+              </motion.div>
             ))}
           </div>
         </div>
@@ -687,22 +677,26 @@ const CommunicationLayerPage = () => {
             <h2 className="text-2xl md:text-3xl font-medium text-foreground mb-4">How the communication layer works</h2>
             <p className="text-foreground/80 max-w-2xl mx-auto">Five steps — from the moment a patient reaches out to the moment the system delivers an actionable outcome.</p>
           </motion.div>
-          <div className="flex flex-col md:flex-row items-stretch md:items-center justify-between gap-4 md:gap-2 max-w-5xl mx-auto">
-            {howItWorksSteps.map((step, i, arr) => (
-              <div key={step.num} className="flex md:flex-col items-center gap-3 md:gap-2 flex-1" aria-label={`Step ${step.num}: ${step.title}`}>
-                <motion.div initial={{ opacity: 0, scale: 0.7 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} transition={{ delay: i * 0.1, duration: 0.35 }}
-                  className="flex flex-col items-center gap-2 text-center"
-                >
-                  <span className="text-xs font-bold text-primary">{step.num}</span>
-                  <div className="w-12 h-12 rounded-full bg-card border border-primary/30 flex items-center justify-center">
-                    <step.Icon className="w-5 h-5 text-primary" strokeWidth={1.5} />
-                  </div>
-                  <span className="text-xs font-medium text-foreground">{step.title}</span>
-                  <span className="text-[10px] text-muted-foreground max-w-[140px] hidden md:block">{step.desc}</span>
-                </motion.div>
-                {i < arr.length - 1 && <ArrowRight className="hidden md:block w-4 h-4 text-primary/40 shrink-0" />}
-              </div>
-            ))}
+          <div className="relative max-w-6xl mx-auto">
+            {/* glowing teal connector line — horizontal on md+, vertical on mobile */}
+            <div className="hidden md:block absolute left-[8%] right-[8%] top-[44px] h-[3px] rounded-full bg-gradient-to-r from-transparent via-[#00DEC4] to-transparent shadow-[0_0_18px_2px_hsla(170,100%,43%,0.55)]" />
+            <div className="md:hidden absolute top-0 bottom-0 left-[42px] w-[3px] rounded-full bg-gradient-to-b from-transparent via-[#00DEC4] to-transparent shadow-[0_0_18px_2px_hsla(170,100%,43%,0.55)]" />
+            <div className="flex flex-col md:flex-row items-stretch md:items-start justify-between gap-8 md:gap-4 relative">
+              {howItWorksSteps.map((step, i) => (
+                <div key={step.num} className="flex md:flex-col items-start md:items-center gap-4 md:gap-3 flex-1" aria-label={`Step ${step.num}: ${step.title}`}>
+                  <motion.div initial={{ opacity: 0, scale: 0.7 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} transition={{ delay: i * 0.1, duration: 0.35 }}
+                    className="flex flex-col items-center gap-2 text-center md:w-full"
+                  >
+                    <span className="text-sm font-bold text-primary">{step.num}</span>
+                    <div className="relative w-20 h-20 rounded-full bg-card border border-primary/40 flex items-center justify-center shadow-[0_0_18px_-4px_hsla(170,100%,43%,0.55)]">
+                      <step.Icon className="w-8 h-8 text-primary" strokeWidth={1.5} />
+                    </div>
+                    <span className="text-base font-semibold text-foreground mt-1">{step.title}</span>
+                    <span className="text-sm text-muted-foreground max-w-[180px] leading-relaxed">{step.desc}</span>
+                  </motion.div>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </section>

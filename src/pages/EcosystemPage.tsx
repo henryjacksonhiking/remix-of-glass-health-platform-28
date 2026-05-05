@@ -182,7 +182,7 @@ const BeforeAfter = () => {
         <div className="relative flex flex-col flex-1">
           <p className="text-center text-xs sm:text-sm uppercase tracking-wider text-primary mb-5 sm:mb-6">Unified Ecosystem</p>
           <div className="flex-1 flex items-center justify-center">
-          <svg viewBox="0 0 220 200" className="w-full h-56 sm:h-64">
+          <svg viewBox="-10 -10 240 230" className="w-full h-64 sm:h-72 overflow-visible">
             <defs>
               <radialGradient id="coreUnifiedGlow" cx="50%" cy="50%" r="50%">
                 <stop offset="0%" stopColor="#00DEC4" stopOpacity="0.6" />
@@ -326,12 +326,16 @@ const JourneyFlow = () => {
             <stop offset="0%" stopColor="#00DEC4" stopOpacity="0.5" />
             <stop offset="100%" stopColor="#00DEC4" stopOpacity="0" />
           </radialGradient>
+          <filter id="orbitGlow" x="-20%" y="-20%" width="140%" height="140%">
+            <feGaussianBlur stdDeviation="3" result="b" />
+            <feMerge><feMergeNode in="b" /><feMergeNode in="SourceGraphic" /></feMerge>
+          </filter>
           <path
             id="journeyOrbit"
             d={`M ${cx} ${cy - R} A ${R} ${R} 0 1 1 ${cx - 0.01} ${cy - R} Z`}
           />
         </defs>
-        {/* dynamic dashed connector arcs — each segment attaches to adjacent node edges */}
+        {/* glowing forward orbital arcs between adjacent nodes */}
         {steps.map((_, i) => {
           const a1 = nodeAngle(i) + gap;
           const a2 = nodeAngle((i + 1) % steps.length) - gap;
@@ -339,23 +343,48 @@ const JourneyFlow = () => {
           const y1 = cy + R * Math.sin(a1);
           const x2 = cx + R * Math.cos(a2);
           const y2 = cy + R * Math.sin(a2);
+          const d = `M ${x1} ${y1} A ${R} ${R} 0 0 1 ${x2} ${y2}`;
           return (
-            <motion.path
-              key={`arc-${i}`}
-              d={`M ${x1} ${y1} A ${R} ${R} 0 0 1 ${x2} ${y2}`}
-              fill="none"
-              stroke="#00DEC4"
-              strokeOpacity="0.55"
-              strokeWidth="1.5"
-              strokeDasharray="4 6"
-              strokeLinecap="round"
-              initial={{ pathLength: 0, opacity: 0 }}
-              whileInView={{ pathLength: 1, opacity: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.7, delay: 0.15 + i * 0.08, ease: "easeOut" }}
-            />
+            <g key={`arc-${i}`}>
+              {/* outer glow */}
+              <path d={d} fill="none" stroke="#70F5E3" strokeOpacity="0.25" strokeWidth="6" strokeLinecap="round" filter="url(#orbitGlow)" />
+              <path d={d} fill="none" stroke="#40EBD8" strokeOpacity="0.45" strokeWidth="3" strokeLinecap="round" />
+              <motion.path
+                d={d}
+                fill="none"
+                stroke="#00DEC4"
+                strokeOpacity="0.95"
+                strokeWidth="1.6"
+                strokeLinecap="round"
+                initial={{ pathLength: 0 }}
+                whileInView={{ pathLength: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.7, delay: 0.15 + i * 0.08, ease: "easeOut" }}
+              />
+            </g>
           );
         })}
+        {/* return flow arc — lighter teal, slightly inset, indicating reactivation loop */}
+        {(() => {
+          const Ri = R - 18;
+          const aStart = nodeAngle(steps.length - 1) + gap * 1.3;
+          const aEnd = nodeAngle(0) + 2 * Math.PI - gap * 1.3;
+          const x1 = cx + Ri * Math.cos(aStart);
+          const y1 = cy + Ri * Math.sin(aStart);
+          const x2 = cx + Ri * Math.cos(aEnd);
+          const y2 = cy + Ri * Math.sin(aEnd);
+          return (
+            <path
+              d={`M ${x1} ${y1} A ${Ri} ${Ri} 0 0 0 ${x2} ${y2}`}
+              fill="none"
+              stroke="#70F5E3"
+              strokeOpacity="0.55"
+              strokeWidth="1.2"
+              strokeDasharray="3 5"
+              strokeLinecap="round"
+            />
+          );
+        })()}
         {/* center label */}
         <circle cx={cx} cy={cy} r="80" fill="url(#journeyCoreGlow)" />
         <circle cx={cx} cy={cy} r="56" fill="hsla(170, 100%, 43%, 0.14)" stroke="#00DEC4" strokeOpacity="0.5" strokeWidth="1.2" />
