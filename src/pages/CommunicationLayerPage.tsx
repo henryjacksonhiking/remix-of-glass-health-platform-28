@@ -659,11 +659,11 @@ const CommunicationLayerPage = () => {
               <motion.div key={stage.title} initial={{ opacity: 0, scale: 0.85 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} transition={{ delay: i * 0.1, duration: 0.4 }}
                 className="flex flex-col items-center text-center"
               >
-                <div className="w-20 h-20 rounded-full glass-panel flex items-center justify-center border border-primary/40 mb-3 shadow-[0_0_18px_-4px_hsla(170,100%,43%,0.45)]">
-                  <stage.Icon className="w-8 h-8 text-primary" strokeWidth={1.5} />
+                <div className="w-14 h-14 rounded-full glass-panel flex items-center justify-center border border-primary/40 mb-3 shadow-[0_0_14px_-4px_hsla(170,100%,43%,0.45)]">
+                  <stage.Icon className="w-6 h-6 text-primary" strokeWidth={1.5} />
                 </div>
-                <span className="text-base font-semibold text-foreground mb-1">{stage.title}</span>
-                <span className="text-sm text-muted-foreground leading-relaxed">{stage.sub}</span>
+                <span className="text-sm font-semibold text-foreground mb-1">{stage.title}</span>
+                <span className="text-xs text-muted-foreground leading-relaxed">{stage.sub}</span>
               </motion.div>
             ))}
           </div>
