@@ -218,6 +218,16 @@ const BeforeAfter = () => {
                       <n.Icon style={{ width: 13, height: 13, color: "#00DEC4" }} strokeWidth={2} />
                     </div>
                   </foreignObject>
+                  <text
+                    x={x2}
+                    y={y2 + (Math.sin(rad) >= 0 ? 26 : -18)}
+                    textAnchor="middle"
+                    fontSize="8"
+                    fill="hsl(170 100% 70%)"
+                    fontWeight="500"
+                  >
+                    {n.label}
+                  </text>
                 </g>
               );
             })}
