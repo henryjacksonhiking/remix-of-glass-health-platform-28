@@ -677,22 +677,26 @@ const CommunicationLayerPage = () => {
             <h2 className="text-2xl md:text-3xl font-medium text-foreground mb-4">How the communication layer works</h2>
             <p className="text-foreground/80 max-w-2xl mx-auto">Five steps — from the moment a patient reaches out to the moment the system delivers an actionable outcome.</p>
           </motion.div>
-          <div className="flex flex-col md:flex-row items-stretch md:items-center justify-between gap-4 md:gap-2 max-w-5xl mx-auto">
-            {howItWorksSteps.map((step, i, arr) => (
-              <div key={step.num} className="flex md:flex-col items-center gap-3 md:gap-2 flex-1" aria-label={`Step ${step.num}: ${step.title}`}>
-                <motion.div initial={{ opacity: 0, scale: 0.7 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} transition={{ delay: i * 0.1, duration: 0.35 }}
-                  className="flex flex-col items-center gap-2 text-center"
-                >
-                  <span className="text-xs font-bold text-primary">{step.num}</span>
-                  <div className="w-12 h-12 rounded-full bg-card border border-primary/30 flex items-center justify-center">
-                    <step.Icon className="w-5 h-5 text-primary" strokeWidth={1.5} />
-                  </div>
-                  <span className="text-xs font-medium text-foreground">{step.title}</span>
-                  <span className="text-[10px] text-muted-foreground max-w-[140px] hidden md:block">{step.desc}</span>
-                </motion.div>
-                {i < arr.length - 1 && <ArrowRight className="hidden md:block w-4 h-4 text-primary/40 shrink-0" />}
-              </div>
-            ))}
+          <div className="relative max-w-6xl mx-auto">
+            {/* glowing teal connector line — horizontal on md+, vertical on mobile */}
+            <div className="hidden md:block absolute left-[8%] right-[8%] top-[44px] h-[3px] rounded-full bg-gradient-to-r from-transparent via-[#00DEC4] to-transparent shadow-[0_0_18px_2px_hsla(170,100%,43%,0.55)]" />
+            <div className="md:hidden absolute top-0 bottom-0 left-[42px] w-[3px] rounded-full bg-gradient-to-b from-transparent via-[#00DEC4] to-transparent shadow-[0_0_18px_2px_hsla(170,100%,43%,0.55)]" />
+            <div className="flex flex-col md:flex-row items-stretch md:items-start justify-between gap-8 md:gap-4 relative">
+              {howItWorksSteps.map((step, i) => (
+                <div key={step.num} className="flex md:flex-col items-start md:items-center gap-4 md:gap-3 flex-1" aria-label={`Step ${step.num}: ${step.title}`}>
+                  <motion.div initial={{ opacity: 0, scale: 0.7 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} transition={{ delay: i * 0.1, duration: 0.35 }}
+                    className="flex flex-col items-center gap-2 text-center md:w-full"
+                  >
+                    <span className="text-sm font-bold text-primary">{step.num}</span>
+                    <div className="relative w-20 h-20 rounded-full bg-card border border-primary/40 flex items-center justify-center shadow-[0_0_18px_-4px_hsla(170,100%,43%,0.55)]">
+                      <step.Icon className="w-8 h-8 text-primary" strokeWidth={1.5} />
+                    </div>
+                    <span className="text-base font-semibold text-foreground mt-1">{step.title}</span>
+                    <span className="text-sm text-muted-foreground max-w-[180px] leading-relaxed">{step.desc}</span>
+                  </motion.div>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </section>
