@@ -395,7 +395,7 @@ const JourneyFlow = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.4, delay: 0.1 + i * 0.08 }}
             className="absolute z-10"
-            style={{ left: `${left}%`, top: `${top}%`, transform: "translate(calc(-50% - 6px), calc(-50% - 6px))" }}
+            style={{ left: `${left}%`, top: `${top}%`, transform: "translate(calc(-50% - 14px), calc(-50% - 14px))" }}
           >
             <button
               type="button"
