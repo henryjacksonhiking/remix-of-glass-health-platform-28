@@ -84,7 +84,8 @@ const ConvergenceHero = () => {
 
         {/* Flow lines — layered teal glow */}
         {channels.map((_, i) => {
-          const sy = getY(i, channels.length);
+          // Shift line start down a few units so it visually centers with the icon/label row
+          const sy = getY(i, channels.length) + 8;
           const d = `M ${startX + 30} ${sy} C ${startX + 120} ${sy}, ${hubX - 100} ${hubY}, ${hubX - 30} ${hubY}`;
           return (
             <g key={i}>
@@ -107,7 +108,7 @@ const ConvergenceHero = () => {
 
         {/* Particles on each line */}
         {!reduced && channels.map((_, i) => {
-          const sy = getY(i, channels.length);
+          const sy = getY(i, channels.length) + 8;
           return [0, 1].map((p) => (
             <motion.circle
               key={`p-${i}-${p}`}
