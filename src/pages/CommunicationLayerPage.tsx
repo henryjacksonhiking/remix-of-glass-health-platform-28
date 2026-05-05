@@ -475,35 +475,19 @@ const CommunicationLayerPage = () => {
 
       {/* SECTION 3 — PROBLEM */}
       <section className="py-12 md:py-20">
-        <div className="container mx-auto px-4 md:px-6">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <motion.div initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5 }}>
-              <h2 className="text-2xl md:text-3xl font-medium text-foreground mb-5">The challenge of fragmented patient communication</h2>
-              <p className="text-foreground/80 leading-relaxed mb-4">
-                Most healthcare practices run communication across separate, disconnected systems — one for phone calls, another for SMS, another for email, another for chat. None of these systems talk to each other.
-              </p>
-              <p className="text-muted-foreground leading-relaxed mb-4">
-                The result is a fragmented patient experience and constant operational blind spots.
-              </p>
-              <p className="text-foreground/90 font-medium italic">
-                Patients don't switch channels to make things easier for your practice. Your system should handle all of them.
-              </p>
-            </motion.div>
-            <div className="relative">
-              <svg viewBox="0 0 300 220" className="w-full max-w-sm mx-auto" aria-hidden="true">
-                {[Phone, MessageSquare, Mail, MessageCircle, Video].map((_, i) => {
-                  const y = 22 + i * 40;
-                  return (
-                    <g key={i}>
-                      <circle cx="30" cy={y} r="12" fill="hsla(170,100%,43%,0.06)" stroke="#00DEC4" strokeOpacity="0.2" strokeWidth="0.8" />
-                      <line x1="50" y1={y} x2={130 + (i % 2 === 0 ? 20 : 0)} y2={y} stroke="#00DEC4" strokeOpacity="0.15" strokeWidth="1.5" strokeDasharray="6 4" />
-                      {i % 2 === 0 && <text x={140 + (i % 2 === 0 ? 20 : 0)} y={y + 4} fontSize="9" fill="rgba(255,100,100,0.4)">✕</text>}
-                    </g>
-                  );
-                })}
-              </svg>
-            </div>
-          </div>
+        <div className="container mx-auto px-4 md:px-6 max-w-3xl">
+          <motion.div initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5 }}>
+            <h2 className="text-2xl md:text-3xl font-medium text-foreground mb-5">The challenge of fragmented patient communication</h2>
+            <p className="text-base text-foreground/80 leading-relaxed mb-4">
+              Most healthcare practices run communication across separate, disconnected systems — one for phone calls, another for SMS, another for email, another for chat. None of these systems talk to each other.
+            </p>
+            <p className="text-base text-muted-foreground leading-relaxed mb-4">
+              The result is a fragmented patient experience and constant operational blind spots.
+            </p>
+            <p className="text-base text-foreground/90 font-medium italic">
+              Patients don't switch channels to make things easier for your practice. Your system should handle all of them.
+            </p>
+          </motion.div>
         </div>
       </section>
 
