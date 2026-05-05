@@ -288,14 +288,16 @@ const LayeredArchitecture = () => {
 /* ---------- Section 4: Patient journey — circular lifecycle ---------- */
 const JourneyFlow = () => {
   const steps = [
-    { label: "Marketing", Icon: Radio },
-    { label: "First Contact", Icon: MessageSquare },
-    { label: "Booking", Icon: Calendar },
-    { label: "Appointment", Icon: Users },
-    { label: "Treatment", Icon: Heart },
-    { label: "Payment", Icon: CreditCard },
-    { label: "Reactivation", Icon: RefreshCw },
+    { label: "Marketing", Icon: Radio, desc: "Targeted campaigns attract new patients across channels." },
+    { label: "First Contact", Icon: MessageSquare, desc: "AI replies instantly to calls, chats, and forms." },
+    { label: "Booking", Icon: Calendar, desc: "Patients self-schedule 24/7 with smart availability." },
+    { label: "Appointment", Icon: Users, desc: "Reminders and digital intake reduce no-shows." },
+    { label: "Treatment", Icon: Heart, desc: "Care notes sync seamlessly across the practice." },
+    { label: "Payment", Icon: CreditCard, desc: "Frictionless billing and digital checkout." },
+    { label: "Reactivation", Icon: RefreshCw, desc: "Automated recall keeps patients coming back." },
   ];
+  const [activeIdx, setActiveIdx] = useState<number | null>(null);
+  const [pinnedIdx, setPinnedIdx] = useState<number | null>(null);
   const size = 560;
   const cx = size / 2;
   const cy = size / 2;
