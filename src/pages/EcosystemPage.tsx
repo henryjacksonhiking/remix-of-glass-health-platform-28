@@ -310,9 +310,9 @@ const JourneyFlow = () => {
   const [activeIdx, setActiveIdx] = useState<number | null>(null);
   const [pinnedIdx, setPinnedIdx] = useState<number | null>(null);
   const size = 560;
-  // Slight offset to visually balance the diagram within its container
-  const offsetX = 28;
-  const offsetY = 22;
+  // Centered diagram to match reference design
+  const offsetX = 0;
+  const offsetY = 0;
   const cx = size / 2 + offsetX;
   const cy = size / 2 + offsetY;
   const R = 210;
