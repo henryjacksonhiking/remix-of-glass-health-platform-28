@@ -62,14 +62,14 @@ const LifecyclePipeline = ({ broken = false, compact = false }: { broken?: boole
         { label: "Retention", Icon: RefreshCcw },
       ];
 
-  const nodeW = compact ? 70 : 80;
+  const nodeW = compact ? 90 : 110;
   const gap = compact ? 40 : 55;
   const totalW = stages.length * nodeW + (stages.length - 1) * gap;
-  const h = compact ? 60 : 80;
+  const h = compact ? 70 : 90;
 
   return (
     <div className="relative w-full overflow-x-auto">
-      <svg viewBox={`0 0 ${totalW} ${h}`} className="w-full max-w-[600px] mx-auto h-auto" aria-hidden="true">
+      <svg viewBox={`0 0 ${totalW} ${h}`} className="w-full max-w-[760px] mx-auto h-auto" aria-hidden="true">
         <defs>
           <filter id="pipeGlow">
             <feGaussianBlur stdDeviation="2" result="b" />
@@ -101,10 +101,10 @@ const LifecyclePipeline = ({ broken = false, compact = false }: { broken?: boole
               {/* node */}
               <rect
                 x={cx - nodeW / 2 + 10}
-                y={cy - 18}
+                y={cy - 22}
                 width={nodeW - 20}
-                height={36}
-                rx={18}
+                height={44}
+                rx={22}
                 fill={`rgba(0, 222, 196, ${isBroken ? 0.05 : opacity * 0.15})`}
                 stroke="#00DEC4"
                 strokeWidth={1}
@@ -114,9 +114,9 @@ const LifecyclePipeline = ({ broken = false, compact = false }: { broken?: boole
                 x={cx}
                 y={cy + 4}
                 textAnchor="middle"
-                fill={broken ? "rgba(255,255,255,0.35)" : "rgba(255,255,255,0.9)"}
-                fontSize={compact ? 8 : 9}
-                fontWeight={500}
+                fill={broken ? "rgba(255,255,255,0.35)" : "rgba(255,255,255,0.95)"}
+                fontSize={compact ? 11 : 13}
+                fontWeight={600}
               >
                 {s.label}
               </text>
@@ -157,21 +157,21 @@ const CRMHub = () => {
     { label: "Engagement", Icon: Activity },
     { label: "Lifecycle", Icon: RefreshCcw },
   ];
-  const cx = 160, cy = 120, r = 85;
+  const cx = 200, cy = 160, r = 115;
 
   return (
-    <div className="w-full max-w-[360px] mx-auto">
-      <svg viewBox="0 0 320 240" className="w-full h-auto" aria-hidden="true">
+    <div className="w-full max-w-[520px] mx-auto">
+      <svg viewBox="0 0 400 320" className="w-full h-auto" aria-hidden="true">
         <defs>
           <radialGradient id="crmHubGlow" cx="50%" cy="50%" r="50%">
             <stop offset="0%" stopColor="#00DEC4" stopOpacity="0.4" />
             <stop offset="100%" stopColor="#00DEC4" stopOpacity="0" />
           </radialGradient>
         </defs>
-        <circle cx={cx} cy={cy} r={30} fill="url(#crmHubGlow)" />
-        <circle cx={cx} cy={cy} r={14} fill="rgba(0,222,196,0.15)" stroke="#00DEC4" strokeWidth={1.5} />
-        <text x={cx} y={cy - 3} textAnchor="middle" fill="white" fontSize={7} fontWeight={600}>Patient</text>
-        <text x={cx} y={cy + 6} textAnchor="middle" fill="rgba(255,255,255,0.7)" fontSize={6}>Record</text>
+        <circle cx={cx} cy={cy} r={50} fill="url(#crmHubGlow)" />
+        <circle cx={cx} cy={cy} r={26} fill="rgba(0,222,196,0.18)" stroke="#00DEC4" strokeWidth={1.5} />
+        <text x={cx} y={cy - 2} textAnchor="middle" fill="white" fontSize={11} fontWeight={700}>Patient</text>
+        <text x={cx} y={cy + 12} textAnchor="middle" fill="rgba(255,255,255,0.8)" fontSize={9}>Record</text>
 
         {items.map((item, i) => {
           const angle = (i * 2 * Math.PI) / items.length - Math.PI / 2;
@@ -179,11 +179,11 @@ const CRMHub = () => {
           const ny = cy + Math.sin(angle) * r;
           return (
             <g key={item.label}>
-              <line x1={cx} y1={cy} x2={nx} y2={ny} stroke="#00DEC4" strokeWidth={1} strokeOpacity={0.3} />
-              <circle cx={nx} cy={ny} r={10} fill="rgba(0,222,196,0.08)" stroke="#00DEC4" strokeWidth={0.8} strokeOpacity={0.5} />
-              <text x={nx} y={ny + 18} textAnchor="middle" fill="rgba(255,255,255,0.6)" fontSize={6}>{item.label}</text>
+              <line x1={cx} y1={cy} x2={nx} y2={ny} stroke="#00DEC4" strokeWidth={1.2} strokeOpacity={0.4} />
+              <circle cx={nx} cy={ny} r={18} fill="rgba(0,222,196,0.10)" stroke="#00DEC4" strokeWidth={1} strokeOpacity={0.6} />
+              <text x={nx} y={ny + 32} textAnchor="middle" fill="rgba(255,255,255,0.85)" fontSize={10} fontWeight={500}>{item.label}</text>
               {!reduced && (
-                <circle r={2} fill="#00DEC4" opacity={0.6}>
+                <circle r={2.5} fill="#00DEC4" opacity={0.7}>
                   <animateMotion dur={`${3 + i * 0.5}s`} repeatCount="indefinite" path={`M${nx},${ny} L${cx},${cy}`} />
                 </circle>
               )}
