@@ -415,7 +415,7 @@ const CommunicationLayerPage = () => {
         <div className="container mx-auto px-4 md:px-6 relative">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
-              <span className="inline-block glass-panel px-3 py-1 text-xs font-medium text-primary mb-5 uppercase tracking-wider">
+              <span className="inline-block glass-panel px-3 py-1 text-xs font-medium text-primary mb-5 uppercase tracking-wider hover-glow-card">
                 Communication Layer
               </span>
               <h1 className="text-3xl md:text-4xl lg:text-5xl font-medium tracking-tight leading-[1.15] text-foreground mb-5">

@@ -71,7 +71,7 @@ const AboutPage = () => (
                 { label: "AI Intelligence", sub: "Insights · Workflow AI · Predictive" },
               ].map((layer, i) => (
                 <motion.div key={layer.label} animate={{ opacity: [0.5, 0.8, 0.5], y: [0, -2, 0] }} transition={{ duration: 7, repeat: Infinity, delay: i }}
-                  className="glass-panel px-4 py-3 mb-2 border-l-2 border-primary/40">
+                  className="glass-panel px-4 py-3 mb-2 border-l-2 border-primary/40 hover-glow-card">
                   <span className="text-xs font-medium text-foreground">{layer.label}</span>
                   <span className="text-[10px] text-muted-foreground block">{layer.sub}</span>
                 </motion.div>
@@ -95,7 +95,7 @@ const AboutPage = () => (
               Borna AI is a healthcare-focused technology company building an integrated platform for patient engagement, communication, operational efficiency, and data-driven decision-making. We help practices replace fragmented tool stacks with one coherent system.
             </p>
           </div>
-          <div className="glass-panel p-6">
+          <div className="glass-panel p-6 hover-glow-card">
             <div className="grid grid-cols-2 gap-4">
               {[
                 { icon: Heart, label: "Patient Engagement" },
@@ -122,14 +122,14 @@ const AboutPage = () => (
       <div className="container mx-auto px-4 md:px-6 max-w-4xl">
         <div className="grid md:grid-cols-2 gap-8 relative">
           <motion.div initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5 }}
-            className="glass-panel p-8 border-t-2 border-primary/30">
+            className="glass-panel p-8 border-t-2 border-primary/30 hover-glow-card">
             <h2 className="text-lg font-semibold text-foreground mb-3">Our mission</h2>
             <p className="text-sm text-muted-foreground leading-relaxed">
               To empower healthcare providers with intelligent tools that simplify operations, enhance patient experiences, and enable sustainable growth.
             </p>
           </motion.div>
           <motion.div initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: 0.2 }}
-            className="glass-panel p-8 border-t-2 border-primary/30">
+            className="glass-panel p-8 border-t-2 border-primary/30 hover-glow-card">
             <h2 className="text-lg font-semibold text-foreground mb-3">Our vision</h2>
             <p className="text-sm text-muted-foreground leading-relaxed">
               To become the unified operating system for healthcare practices — connecting communication, data, and workflows into one seamless ecosystem.
@@ -153,7 +153,7 @@ const AboutPage = () => (
           <div className="grid grid-cols-3 gap-3">
             {["Scheduling", "Communication", "CRM", "Analytics", "Billing", "EHR"].map((tool, i) => (
               <motion.div key={tool} initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} transition={{ delay: i * 0.08 }}
-                className="glass-panel p-3 text-center" style={{ opacity: 0.4, transform: `rotate(${(i % 2 === 0 ? 1 : -1) * (1 + i * 0.5)}deg)`, fontSize: `${11 + (i % 3)}px` }}>
+                className="glass-panel p-3 text-center hover-glow-card" style={{ opacity: 0.4, transform: `rotate(${(i % 2 === 0 ? 1 : -1) * (1 + i * 0.5)}deg)`, fontSize: `${11 + (i % 3)}px` }}>
                 <span className="text-xs text-muted-foreground">{tool}</span>
               </motion.div>
             ))}
@@ -186,7 +186,7 @@ const AboutPage = () => (
             { emoji: "🤖", name: "AI Intelligence Layer", sub: "Automated Insights · Workflow AI · Predictive Analytics" },
           ].map((layer, i) => (
             <motion.div key={layer.name} initial={{ opacity: 0, x: -10 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.15 }}
-              className="glass-panel px-5 py-4 border-l-2 border-primary/40">
+              className="glass-panel px-5 py-4 border-l-2 border-primary/40 hover-glow-card">
               <span className="text-sm font-medium text-foreground">{layer.emoji} {layer.name}</span>
               <span className="text-xs text-muted-foreground block mt-0.5">{layer.sub}</span>
             </motion.div>
@@ -206,7 +206,7 @@ const AboutPage = () => (
             const Icon = card.icon;
             return (
               <motion.div key={card.title} custom={i} initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeIn}
-                className="glass-panel p-6 hover:translate-y-[-2px] transition-all duration-300">
+                className="glass-panel p-6 hover:translate-y-[-2px] transition-all duration-300 hover-glow-card">
                 <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center mb-4"><Icon className="w-5 h-5 text-primary" /></div>
                 <h3 className="text-base font-medium text-foreground mb-2">{card.title}</h3>
                 <p className="text-sm text-muted-foreground">{card.desc}</p>
@@ -231,7 +231,7 @@ const AboutPage = () => (
             { label: "Medical Practices", href: "/industries/medical" },
             { label: "DSOs & MSOs", href: "/industries/dso-mso" },
           ].map((ind) => (
-            <Link key={ind.label} to={ind.href} className="glass-panel px-4 py-2 text-xs text-muted-foreground hover:text-primary transition-colors">{ind.label}</Link>
+            <Link key={ind.label} to={ind.href} className="glass-panel px-4 py-2 text-xs text-muted-foreground hover:text-primary transition-colors hover-glow-card">{ind.label}</Link>
           ))}
         </div>
         <Link to="/industries" className="text-sm text-primary hover:underline">Explore all industries →</Link>
@@ -273,7 +273,7 @@ const AboutPage = () => (
             const Icon = step.icon;
             return (
               <motion.div key={step.label} custom={i} initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeIn}
-                className="glass-panel p-4 text-center">
+                className="glass-panel p-4 text-center hover-glow-card">
                 <span className="text-xs text-primary font-medium block mb-2">{i + 1}</span>
                 <div className="w-9 h-9 rounded-lg bg-primary/10 flex items-center justify-center mx-auto mb-2"><Icon className="w-4 h-4 text-primary" /></div>
                 <h3 className="text-xs font-medium text-foreground mb-1">{step.label}</h3>

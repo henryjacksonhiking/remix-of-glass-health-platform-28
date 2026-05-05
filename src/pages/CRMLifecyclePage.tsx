@@ -255,7 +255,7 @@ const CRMLifecyclePage = () => {
         <div className="grid md:grid-cols-2 gap-12 items-center">
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp}>
             <span className="text-primary text-xs uppercase tracking-widest font-medium">CRM & Lifecycle Layer</span>
-            <h1 className="text-3xl md:text-5xl font-bold mt-4 mb-6 leading-tight">
+            <h1 className="hero-headline text-foreground mt-4 mb-6">
               Healthcare CRM and patient lifecycle management platform
             </h1>
             <p className="text-muted-foreground leading-relaxed mb-8 max-w-xl">

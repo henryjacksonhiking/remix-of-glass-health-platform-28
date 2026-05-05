@@ -89,7 +89,7 @@ const LeadershipPage = () => (
             <div className="space-y-2 w-40 mx-auto">
               {["Communication", "CRM", "Data", "AI"].map((l, i) => (
                 <motion.div key={l} animate={{ opacity: [0.3, 0.5, 0.3] }} transition={{ duration: 8, repeat: Infinity, delay: i }}
-                  className="glass-panel px-3 py-2 border-l-2 border-primary/30">
+                  className="glass-panel px-3 py-2 border-l-2 border-primary/30 hover-glow-card">
                   <span className="text-[10px] text-muted-foreground">{l}</span>
                 </motion.div>
               ))}
@@ -166,7 +166,7 @@ const LeadershipPage = () => (
             const Icon = card.icon;
             return (
               <motion.div key={card.title} custom={i} initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeIn}
-                className="glass-panel p-6 hover:translate-y-[-2px] transition-all duration-300">
+                className="glass-panel p-6 hover:translate-y-[-2px] transition-all duration-300 hover-glow-card">
                 <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center mb-4"><Icon className="w-5 h-5 text-primary" /></div>
                 <h3 className="text-base font-medium text-foreground mb-2">{card.title}</h3>
                 <p className="text-sm text-muted-foreground">{card.desc}</p>
@@ -217,7 +217,7 @@ const LeadershipPage = () => (
             </div>
             <div className="space-y-1 w-28">
               {["Comm", "CRM", "Data", "AI"].map((l) => (
-                <div key={l} className="glass-panel px-2 py-1.5 border-l border-primary/30">
+                <div key={l} className="glass-panel px-2 py-1.5 border-l border-primary/30 hover-glow-card">
                   <span className="text-[9px] text-muted-foreground">{l}</span>
                 </div>
               ))}
@@ -243,7 +243,7 @@ const LeadershipPage = () => (
             const Icon = card.icon;
             return (
               <motion.div key={card.title} custom={i} initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeIn}
-                className="glass-panel p-6 hover:translate-y-[-2px] transition-all duration-300">
+                className="glass-panel p-6 hover:translate-y-[-2px] transition-all duration-300 hover-glow-card">
                 <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center mb-4"><Icon className="w-5 h-5 text-primary" /></div>
                 <h3 className="text-base font-medium text-foreground mb-2">{card.title}</h3>
                 <p className="text-sm text-muted-foreground">{card.desc}</p>

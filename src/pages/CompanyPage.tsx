@@ -83,7 +83,7 @@ const CompanyPage = () => (
           <motion.div initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} transition={{ delay: 0.3, duration: 0.8 }} className="hidden md:flex justify-center">
             <div className="relative w-48">
               {["Communication", "CRM & Lifecycle", "Data & Integration", "AI Intelligence"].map((layer, i) => (
-                <motion.div key={layer} animate={{ opacity: [0.5, 0.8, 0.5] }} transition={{ duration: 6 + i, repeat: Infinity, delay: i }} className="glass-panel px-4 py-3 mb-2 border-l-2 border-primary/40">
+                <motion.div key={layer} animate={{ opacity: [0.5, 0.8, 0.5] }} transition={{ duration: 6 + i, repeat: Infinity, delay: i }} className="glass-panel px-4 py-3 mb-2 border-l-2 border-primary/40 hover-glow-card">
                   <span className="text-xs text-muted-foreground">{layer}</span>
                 </motion.div>
               ))}
@@ -111,13 +111,13 @@ const CompanyPage = () => (
     <section className="py-12 md:py-20 border-t border-glass-border">
       <div className="container mx-auto px-4 md:px-6 max-w-4xl">
         <div className="grid md:grid-cols-2 gap-8 relative">
-          <motion.div initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5 }} className="glass-panel p-8 border-t-2 border-primary/30">
+          <motion.div initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5 }} className="glass-panel p-8 border-t-2 border-primary/30 hover-glow-card">
             <h2 className="text-lg font-semibold text-foreground mb-3">Our mission</h2>
             <p className="text-sm text-muted-foreground leading-relaxed">
               To help healthcare practices operate more efficiently by unifying systems, improving communication, and enabling data-driven decisions through AI.
             </p>
           </motion.div>
-          <motion.div initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: 0.2 }} className="glass-panel p-8 border-t-2 border-primary/30">
+          <motion.div initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: 0.2 }} className="glass-panel p-8 border-t-2 border-primary/30 hover-glow-card">
             <h2 className="text-lg font-semibold text-foreground mb-3">Our vision</h2>
             <p className="text-sm text-muted-foreground leading-relaxed">
               We envision a healthcare ecosystem where every patient interaction is connected, all data is centralized and actionable, workflows are automated, and every decision is supported by AI.
@@ -141,7 +141,7 @@ const CompanyPage = () => (
           <div className="grid grid-cols-3 gap-3">
             {["Scheduling", "Communication", "CRM", "Analytics", "Billing", "EHR"].map((tool, i) => (
               <motion.div key={tool} initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} transition={{ delay: i * 0.08 }}
-                className="glass-panel p-3 text-center opacity-50" style={{ transform: `rotate(${(i % 2 === 0 ? 1 : -1) * 2}deg)` }}>
+                className="glass-panel p-3 text-center opacity-50 hover-glow-card" style={{ transform: `rotate(${(i % 2 === 0 ? 1 : -1) * 2}deg)` }}>
                 <span className="text-xs text-muted-foreground">{tool}</span>
               </motion.div>
             ))}
@@ -161,7 +161,7 @@ const CompanyPage = () => (
           {approachSteps.map((step, i) => {
             const Icon = step.icon;
             return (
-              <motion.div key={step.label} custom={i} initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeIn} className="glass-panel p-5 text-center">
+              <motion.div key={step.label} custom={i} initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeIn} className="glass-panel p-5 text-center hover-glow-card">
                 <span className="text-xs text-primary font-medium mb-2 block">{i + 1}</span>
                 <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center mx-auto mb-3"><Icon className="w-5 h-5 text-primary" /></div>
                 <h3 className="text-sm font-medium text-foreground mb-1">{step.label}</h3>
@@ -182,7 +182,7 @@ const CompanyPage = () => (
         </p>
         <div className="space-y-3 max-w-md mx-auto">
           {modules.map((m, i) => (
-            <motion.div key={m.name} initial={{ opacity: 0, x: -10 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }} className="glass-panel px-5 py-3 text-left flex justify-between items-center">
+            <motion.div key={m.name} initial={{ opacity: 0, x: -10 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }} className="glass-panel px-5 py-3 text-left flex justify-between items-center hover-glow-card">
               <span className="text-sm font-medium text-foreground">{m.name}</span>
               <span className="text-xs text-muted-foreground">{m.desc}</span>
             </motion.div>
@@ -223,7 +223,7 @@ const CompanyPage = () => (
           {buildSteps.map((step, i) => {
             const Icon = step.icon;
             return (
-              <motion.div key={step.label} custom={i} initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeIn} className="glass-panel p-5 text-center">
+              <motion.div key={step.label} custom={i} initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeIn} className="glass-panel p-5 text-center hover-glow-card">
                 <span className="text-xs text-primary font-medium mb-2 block">{i + 1}</span>
                 <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center mx-auto mb-3"><Icon className="w-5 h-5 text-primary" /></div>
                 <h3 className="text-sm font-medium text-foreground mb-1">{step.label}</h3>
@@ -248,7 +248,7 @@ const CompanyPage = () => (
             { label: "Medical Clinics", href: "/industries/medical" },
             { label: "Specialty Providers", href: "/industries/chiropractic" },
           ].map((ind) => (
-            <Link key={ind.label} to={ind.href} className="glass-panel px-4 py-2 text-xs text-muted-foreground hover:text-primary transition-colors">{ind.label}</Link>
+            <Link key={ind.label} to={ind.href} className="glass-panel px-4 py-2 text-xs text-muted-foreground hover:text-primary transition-colors hover-glow-card">{ind.label}</Link>
           ))}
         </div>
         <Link to="/industries" className="inline-block mt-4 text-sm text-primary hover:underline">See all industries →</Link>
@@ -264,7 +264,7 @@ const CompanyPage = () => (
             const Icon = card.icon;
             return (
               <motion.div key={card.title} custom={i} initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeIn}
-                className="glass-panel p-6 hover:translate-y-[-2px] transition-all duration-300">
+                className="glass-panel p-6 hover:translate-y-[-2px] transition-all duration-300 hover-glow-card">
                 <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center mb-4"><Icon className="w-5 h-5 text-primary" /></div>
                 <h3 className="text-base font-medium text-foreground mb-2">{card.title}</h3>
                 <p className="text-sm text-muted-foreground">{card.desc}</p>

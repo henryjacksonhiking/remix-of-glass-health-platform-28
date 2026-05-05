@@ -218,6 +218,32 @@
   .breadcrumb-compact + section {
     @apply pt-6 md:pt-16;
   }
+
+  /* Reusable teal hover glow utilities — applied across Ecosystem & Company trees
+     for consistent interactive feedback on cards and icons. */
+  .hover-glow-card {
+    @apply transition-all duration-300;
+  }
+  @media (hover: hover) {
+    .hover-glow-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 0 20px hsla(170, 100%, 43%, 0.30);
+      border-color: hsla(170, 100%, 43%, 0.35);
+    }
+    .hover-glow-icon {
+      transition: transform 200ms ease, filter 200ms ease;
+    }
+    .hover-glow-icon:hover {
+      transform: scale(1.05);
+      filter: drop-shadow(0 0 12px hsla(170, 100%, 43%, 0.55));
+    }
+    /* Auto-lift any glass-panel on hover for missing-hover-effect coverage,
+       but only where explicit opt-in via .group-hover-lift parent is used. */
+    .group-hover-lift:hover .glass-panel {
+      transform: translateY(-2px);
+      box-shadow: 0 0 20px hsla(170, 100%, 43%, 0.25);
+    }
+  }
 }
 
 /* Global overflow guard */
