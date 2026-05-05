@@ -140,12 +140,12 @@ const BeforeAfter = () => {
     { Icon: Users, label: "CRM" },
   ];
   const nodes = [
-    { Icon: MessageSquare, angle: -90 },
-    { Icon: Users, angle: -30 },
-    { Icon: BarChart3, angle: 30 },
-    { Icon: Calendar, angle: 90 },
-    { Icon: Database, angle: 150 },
-    { Icon: Cpu, angle: 210 },
+    { Icon: MessageSquare, angle: -90, label: "Comms" },
+    { Icon: Users, angle: -30, label: "CRM" },
+    { Icon: BarChart3, angle: 30, label: "Analytics" },
+    { Icon: Calendar, angle: 90, label: "Booking" },
+    { Icon: Database, angle: 150, label: "Records" },
+    { Icon: Cpu, angle: 210, label: "AI" },
   ];
   return (
     <div className="grid md:grid-cols-[1fr_auto_1fr] gap-6 md:gap-8 items-stretch">
