@@ -258,30 +258,30 @@ const BeforeAfterComm = () => {
       <div className="rounded-2xl border border-primary/30 bg-card/40 p-6 relative overflow-hidden">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,hsla(170,100%,43%,0.08),transparent_70%)]" />
         <div className="relative">
-          <svg viewBox="0 0 200 120" className="w-full h-28" aria-hidden="true">
+          <svg viewBox="0 0 200 160" className="w-full h-44 md:h-52" aria-hidden="true">
             {channels.map((_, i) => {
               const angle = (i / channels.length) * Math.PI * 2 - Math.PI / 2;
-              const x = 100 + 45 * Math.cos(angle);
-              const y = 60 + 45 * Math.sin(angle);
+              const x = 100 + 60 * Math.cos(angle);
+              const y = 80 + 60 * Math.sin(angle);
               return (
                 <g key={i}>
-                  <line x1="100" y1="60" x2={x} y2={y} stroke="#00DEC4" strokeOpacity="0.5" strokeWidth="1" />
-                  <circle cx={x} cy={y} r="6" fill="hsla(170,100%,43%,0.15)" stroke="#00DEC4" strokeWidth="1" />
+                  <line x1="100" y1="80" x2={x} y2={y} stroke="#00DEC4" strokeOpacity="0.55" strokeWidth="1.2" />
+                  <circle cx={x} cy={y} r="9" fill="hsla(170,100%,43%,0.18)" stroke="#00DEC4" strokeWidth="1.2" />
                   {!reduced && (
-                    <motion.circle r="2.5" fill="#00DEC4" filter="url(#particleGlow)"
+                    <motion.circle r="3" fill="#00DEC4" filter="url(#particleGlow)"
                       initial={{ offsetDistance: "0%" }}
                       animate={{ offsetDistance: "100%" }}
                       transition={{ duration: 2.5, repeat: Infinity, delay: i * 0.6, ease: "linear" }}
-                      style={{ offsetPath: `path("M ${x} ${y} L 100 60")` } as any}
+                      style={{ offsetPath: `path("M ${x} ${y} L 100 80")` } as any}
                     />
                   )}
                 </g>
               );
             })}
-            <circle cx="100" cy="60" r="14" fill="hsl(170 100% 43%)" />
-            <text x="100" y="63" textAnchor="middle" fontSize="7" fontWeight="600" fill="hsl(226 60% 12%)">Borna</text>
+            <circle cx="100" cy="80" r="22" fill="hsl(170 100% 43%)" />
+            <text x="100" y="84" textAnchor="middle" fontSize="11" fontWeight="700" fill="hsl(226 60% 12%)">Borna</text>
           </svg>
-          <p className="text-center text-xs uppercase tracking-wider text-primary mt-2">Unified in Borna</p>
+          <p className="text-center text-sm uppercase tracking-wider text-primary mt-2 font-medium">Unified in Borna</p>
         </div>
       </div>
     </div>
