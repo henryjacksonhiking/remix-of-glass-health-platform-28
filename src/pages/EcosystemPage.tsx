@@ -335,56 +335,32 @@ const JourneyFlow = () => {
             d={`M ${cx} ${cy - R} A ${R} ${R} 0 1 1 ${cx - 0.01} ${cy - R} Z`}
           />
         </defs>
-        {/* glowing forward orbital arcs between adjacent nodes */}
-        {steps.map((_, i) => {
-          const a1 = nodeAngle(i) + gap;
-          const a2 = nodeAngle((i + 1) % steps.length) - gap;
-          const x1 = cx + R * Math.cos(a1);
-          const y1 = cy + R * Math.sin(a1);
-          const x2 = cx + R * Math.cos(a2);
-          const y2 = cy + R * Math.sin(a2);
-          const d = `M ${x1} ${y1} A ${R} ${R} 0 0 1 ${x2} ${y2}`;
-          return (
-            <g key={`arc-${i}`}>
-              {/* outer glow */}
-              <path d={d} fill="none" stroke="#70F5E3" strokeOpacity="0.25" strokeWidth="6" strokeLinecap="round" filter="url(#orbitGlow)" />
-              <path d={d} fill="none" stroke="#40EBD8" strokeOpacity="0.45" strokeWidth="3" strokeLinecap="round" />
-              <motion.path
-                d={d}
-                fill="none"
-                stroke="#00DEC4"
-                strokeOpacity="0.95"
-                strokeWidth="1.6"
-                strokeLinecap="round"
-                initial={{ pathLength: 0 }}
-                whileInView={{ pathLength: 1 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.7, delay: 0.15 + i * 0.08, ease: "easeOut" }}
-              />
-            </g>
-          );
-        })}
-        {/* return flow arc — lighter teal, slightly inset, indicating reactivation loop */}
-        {(() => {
-          const Ri = R - 18;
-          const aStart = nodeAngle(steps.length - 1) + gap * 1.3;
-          const aEnd = nodeAngle(0) + 2 * Math.PI - gap * 1.3;
-          const x1 = cx + Ri * Math.cos(aStart);
-          const y1 = cy + Ri * Math.sin(aStart);
-          const x2 = cx + Ri * Math.cos(aEnd);
-          const y2 = cy + Ri * Math.sin(aEnd);
-          return (
-            <path
-              d={`M ${x1} ${y1} A ${Ri} ${Ri} 0 0 0 ${x2} ${y2}`}
-              fill="none"
-              stroke="#70F5E3"
-              strokeOpacity="0.55"
-              strokeWidth="1.2"
-              strokeDasharray="3 5"
-              strokeLinecap="round"
-            />
-          );
-        })()}
+        {/* Continuous orbital ring — single unified track passing through all nodes */}
+        <circle cx={cx} cy={cy} r={R} fill="none" stroke="#70F5E3" strokeOpacity="0.18" strokeWidth="6" filter="url(#orbitGlow)" />
+        <circle cx={cx} cy={cy} r={R} fill="none" stroke="#40EBD8" strokeOpacity="0.4" strokeWidth="2.5" />
+        <motion.circle
+          cx={cx}
+          cy={cy}
+          r={R}
+          fill="none"
+          stroke="#00DEC4"
+          strokeOpacity="0.95"
+          strokeWidth="1.4"
+          initial={{ pathLength: 0 }}
+          whileInView={{ pathLength: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 1.6, ease: "easeOut" }}
+        />
+        <circle
+          cx={cx}
+          cy={cy}
+          r={R - 16}
+          fill="none"
+          stroke="#70F5E3"
+          strokeOpacity="0.35"
+          strokeWidth="1"
+          strokeDasharray="3 6"
+        />
         {/* center label */}
         <circle cx={cx} cy={cy} r="80" fill="url(#journeyCoreGlow)" />
         <circle cx={cx} cy={cy} r="56" fill="hsla(170, 100%, 43%, 0.14)" stroke="#00DEC4" strokeOpacity="0.5" strokeWidth="1.2" />
