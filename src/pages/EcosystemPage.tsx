@@ -381,8 +381,10 @@ const JourneyFlow = () => {
       {steps.map((s, i) => {
         const angle = nodeAngle(i);
         const radiusPct = (R / size) * 100;
-        const left = 50 + Math.cos(angle) * radiusPct;
-        const top = 50 + Math.sin(angle) * radiusPct;
+        const centerXPct = (cx / size) * 100;
+        const centerYPct = (cy / size) * 100;
+        const left = centerXPct + Math.cos(angle) * radiusPct;
+        const top = centerYPct + Math.sin(angle) * radiusPct;
         const isBottomHalf = Math.sin(angle) > 0.15;
         const isOpen = activeIdx === i || pinnedIdx === i;
         return (
