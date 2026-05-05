@@ -361,13 +361,12 @@ const JourneyFlow = () => {
       </svg>
       {/* 7 nodes positioned exactly on the dashed track at equal intervals */}
       {steps.map((s, i) => {
-        const angle = nodeAngle(i); // -PI/2 + i * (2PI/7) → starts at top, clockwise
+        const angle = nodeAngle(i);
         const radiusPct = (R / size) * 100;
         const left = 50 + Math.cos(angle) * radiusPct;
         const top = 50 + Math.sin(angle) * radiusPct;
-        // push label outward from center so it never overlaps the ring
-        const labelAngleDeg = (angle * 180) / Math.PI;
         const isBottomHalf = Math.sin(angle) > 0.15;
+        const isOpen = activeIdx === i || pinnedIdx === i;
         return (
           <motion.div
             key={s.label}
@@ -375,11 +374,20 @@ const JourneyFlow = () => {
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.4, delay: 0.1 + i * 0.08 }}
-            className="absolute"
+            className="absolute z-10"
             style={{ left: `${left}%`, top: `${top}%`, transform: "translate(-50%, -50%)" }}
-            aria-label={s.label}
           >
-            <div className="relative w-12 h-12 sm:w-14 sm:h-14 rounded-full glass-panel border border-primary/50 flex items-center justify-center shadow-[0_8px_20px_-8px_hsla(170,100%,43%,0.55)] backdrop-blur-md">
+            <button
+              type="button"
+              aria-label={`${s.label}: ${s.desc}`}
+              aria-expanded={isOpen}
+              onMouseEnter={() => setActiveIdx(i)}
+              onMouseLeave={() => setActiveIdx((cur) => (cur === i ? null : cur))}
+              onFocus={() => setActiveIdx(i)}
+              onBlur={() => setActiveIdx((cur) => (cur === i ? null : cur))}
+              onClick={() => setPinnedIdx((cur) => (cur === i ? null : i))}
+              className="relative w-12 h-12 sm:w-14 sm:h-14 rounded-full glass-panel border border-primary/50 flex items-center justify-center shadow-[0_8px_20px_-8px_hsla(170,100%,43%,0.55)] backdrop-blur-md transition-transform hover:scale-110 focus:outline-none focus:ring-2 focus:ring-primary/60"
+            >
               <s.Icon className="w-5 h-5 sm:w-6 sm:h-6 text-primary" strokeWidth={1.5} />
               <span
                 className={`absolute left-1/2 -translate-x-1/2 text-[11px] sm:text-xs font-medium text-foreground whitespace-nowrap pointer-events-none ${
@@ -388,7 +396,20 @@ const JourneyFlow = () => {
               >
                 {s.label}
               </span>
-            </div>
+            </button>
+            {isOpen && (
+              <motion.div
+                initial={{ opacity: 0, y: 4 }}
+                animate={{ opacity: 1, y: 0 }}
+                role="tooltip"
+                className={`absolute left-1/2 -translate-x-1/2 z-20 w-48 px-3 py-2 rounded-lg glass-panel border border-primary/40 backdrop-blur-md shadow-lg text-[11px] leading-snug text-foreground/90 text-center pointer-events-none ${
+                  isBottomHalf ? "bottom-full mb-8" : "top-full mt-8"
+                }`}
+              >
+                <div className="font-semibold text-primary mb-0.5">{s.label}</div>
+                {s.desc}
+              </motion.div>
+            )}
           </motion.div>
         );
       })}
