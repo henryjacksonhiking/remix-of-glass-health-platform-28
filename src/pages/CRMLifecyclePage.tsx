@@ -281,11 +281,13 @@ const CRMLifecyclePage = () => {
           <p className="text-muted-foreground leading-relaxed mb-8">
             A healthcare CRM helps practices manage patient interactions, track engagement, and maintain relationships over time. A lifecycle platform extends this by tracking the full journey — from marketing lead to active patient and beyond — enabling better decision-making and retention strategies.
           </p>
-          <div className="flex justify-center gap-8 mb-6">
+          <div className="flex flex-wrap justify-center gap-8 sm:gap-12 mb-6">
             {[{ Icon: Target, label: "Lead" }, { Icon: Handshake, label: "Contact" }, { Icon: UserCheck, label: "Patient" }, { Icon: RefreshCcw, label: "Retain" }].map((item, i) => (
-              <div key={i} className="flex flex-col items-center gap-2">
-                <item.Icon className="w-5 h-5 text-primary" />
-                <span className="text-xs text-muted-foreground">{item.label}</span>
+              <div key={i} className="flex flex-col items-center gap-3">
+                <div className="w-16 h-16 md:w-20 md:h-20 rounded-full border border-primary/40 bg-primary/5 flex items-center justify-center shadow-[0_0_18px_-4px_hsla(170,100%,43%,0.55)] hover-glow-icon">
+                  <item.Icon className="w-7 h-7 md:w-9 md:h-9 text-primary" strokeWidth={1.5} />
+                </div>
+                <span className="text-sm md:text-base font-semibold text-foreground">{item.label}</span>
               </div>
             ))}
           </div>
@@ -316,16 +318,9 @@ const CRMLifecyclePage = () => {
             Borna brings every stage of the patient lifecycle into one system — capturing every lead, tracking every interaction, and giving practices the visibility to manage relationships proactively instead of reactively.
           </p>
         </motion.div>
-        <div className="grid md:grid-cols-[1fr_auto_1fr] gap-6 items-center max-w-4xl mx-auto">
-          <div className="text-center">
-            <p className="text-xs text-muted-foreground mb-3">Disconnected Lifecycle</p>
-            <LifecyclePipeline broken compact />
-          </div>
-          <ArrowRight className="w-6 h-6 text-primary mx-auto hidden md:block" />
-          <div className="text-center">
-            <p className="text-xs text-primary mb-3">Unified in Borna</p>
-            <LifecyclePipeline compact />
-          </div>
+        <div className="max-w-4xl mx-auto">
+          <p className="text-xs text-primary mb-4 text-center uppercase tracking-widest font-medium">Unified in Borna</p>
+          <LifecyclePipeline />
         </div>
       </Section>
 
