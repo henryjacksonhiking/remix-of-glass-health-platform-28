@@ -110,7 +110,7 @@ const VisionMissionPage = () => (
             <span className="text-[10px] uppercase tracking-widest text-primary/60 block text-center mb-3">The future state</span>
             {["All patient communication centralized", "Data flows seamlessly", "Workflows automated", "Full visibility and control"].map((label, i) => (
               <motion.div key={label} animate={{ boxShadow: [`0 0 8px hsl(var(--primary)/0.1)`, `0 0 16px hsl(var(--primary)/0.2)`, `0 0 8px hsl(var(--primary)/0.1)`] }}
-                transition={{ duration: 6, repeat: Infinity, delay: i }} className="glass-panel px-4 py-3 border-l-2 border-primary/50">
+                transition={{ duration: 6, repeat: Infinity, delay: i }} className="glass-panel px-4 py-3 border-l-2 border-primary/50 hover-glow-card">
                 <span className="text-xs text-muted-foreground">{["💬", "👤", "⚙️", "🤖"][i]} {["Communication", "CRM & Lifecycle", "Data & Integration", "AI Intelligence"][i]}</span>
                 <span className="text-[10px] text-primary/60 ml-2">— {label}</span>
               </motion.div>
@@ -132,7 +132,7 @@ const VisionMissionPage = () => (
             const Icon = card.icon;
             return (
               <motion.div key={card.title} custom={i} initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeIn}
-                className="glass-panel p-6 hover:translate-y-[-2px] transition-all duration-300">
+                className="glass-panel p-6 hover:translate-y-[-2px] transition-all duration-300 hover-glow-card">
                 <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center mb-4"><Icon className="w-5 h-5 text-primary" /></div>
                 <h3 className="text-base font-medium text-foreground mb-2">{card.title}</h3>
                 <p className="text-sm text-muted-foreground">{card.desc}</p>
@@ -170,7 +170,7 @@ const VisionMissionPage = () => (
           ].map((item, i) => {
             const Icon = item.icon;
             return (
-              <motion.div key={item.title} custom={i} initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeIn} className="glass-panel p-5 text-center">
+              <motion.div key={item.title} custom={i} initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeIn} className="glass-panel p-5 text-center hover-glow-card">
                 <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center mx-auto mb-3"><Icon className="w-5 h-5 text-primary" /></div>
                 <h3 className="text-sm font-medium text-foreground mb-1">{item.title}</h3>
                 <p className="text-xs text-muted-foreground">{item.desc}</p>
@@ -194,7 +194,7 @@ const VisionMissionPage = () => (
               { emoji: "🤖", name: "AI Intelligence Layer", sub: "Automated insights and optimization" },
             ].map((layer, i) => (
               <motion.div key={layer.name} initial={{ opacity: 0, x: -10 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.15 }}
-                className="glass-panel px-5 py-3 border-l-2 border-primary/40">
+                className="glass-panel px-5 py-3 border-l-2 border-primary/40 hover-glow-card">
                 <span className="text-sm text-foreground">{layer.emoji} {layer.name}</span>
                 <span className="text-xs text-muted-foreground ml-2">— {layer.sub}</span>
               </motion.div>
@@ -223,7 +223,7 @@ const VisionMissionPage = () => (
             const Icon = card.icon;
             return (
               <motion.div key={card.title} custom={i} initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeIn}
-                className="glass-panel p-6 hover:translate-y-[-2px] transition-all duration-300">
+                className="glass-panel p-6 hover:translate-y-[-2px] transition-all duration-300 hover-glow-card">
                 <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center mb-4"><Icon className="w-5 h-5 text-primary" /></div>
                 <h3 className="text-base font-medium text-foreground mb-2">{card.title}</h3>
                 <p className="text-sm text-muted-foreground">{card.desc}</p>

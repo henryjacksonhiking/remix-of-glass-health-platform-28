@@ -124,7 +124,7 @@ const CareersPage = () => (
             const Icon = card.icon;
             return (
               <motion.div key={card.title} custom={i} initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeIn}
-                className="glass-panel p-6 hover:translate-y-[-2px] transition-all duration-300">
+                className="glass-panel p-6 hover:translate-y-[-2px] transition-all duration-300 hover-glow-card">
                 <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center mb-4"><Icon className="w-5 h-5 text-primary" /></div>
                 <h3 className="text-base font-medium text-foreground mb-2">{card.title}</h3>
                 <p className="text-sm text-muted-foreground">{card.desc}</p>
@@ -150,7 +150,7 @@ const CareersPage = () => (
             { emoji: "🤖", name: "AI & Intelligence Layer", sub: "AI-driven analytics, automation, and insights" },
           ].map((layer, i) => (
             <motion.div key={layer.name} initial={{ opacity: 0, x: -10 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.15 }}
-              className="glass-panel px-5 py-3 border-l-2 border-primary/40">
+              className="glass-panel px-5 py-3 border-l-2 border-primary/40 hover-glow-card">
               <span className="text-sm text-foreground">{layer.emoji} {layer.name}</span>
               <span className="text-xs text-muted-foreground ml-2">{layer.sub}</span>
             </motion.div>
@@ -169,7 +169,7 @@ const CareersPage = () => (
             const Icon = p.icon;
             return (
               <motion.div key={p.title} custom={i} initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeIn}
-                className="glass-panel p-4 text-center">
+                className="glass-panel p-4 text-center hover-glow-card">
                 <div className="w-9 h-9 rounded-lg bg-primary/10 flex items-center justify-center mx-auto mb-2"><Icon className="w-4 h-4 text-primary" /></div>
                 <h3 className="text-xs font-medium text-foreground mb-1">{p.title}</h3>
                 <p className="text-[10px] text-muted-foreground">{p.desc}</p>
@@ -184,7 +184,7 @@ const CareersPage = () => (
     <section className="py-12 md:py-20 border-t border-glass-border">
       <div className="container mx-auto px-4 md:px-6 max-w-3xl">
         <h2 className="section-headline text-foreground text-center mb-12">Who thrives at Borna</h2>
-        <div className="glass-panel p-6 space-y-0">
+        <div className="glass-panel p-6 space-y-0 hover-glow-card">
           {traits.map((t, i) => (
             <motion.div key={t.title} initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} transition={{ delay: i * 0.15 }}
               className="py-3 border-l-2 border-primary/30 pl-4 hover:border-primary/60 transition-colors">
@@ -204,7 +204,7 @@ const CareersPage = () => (
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
           {roles.map((role, i) => (
             <motion.div key={role.title} custom={i} initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeIn}
-              role="article" aria-label={role.title} className="glass-panel p-6 hover:translate-y-[-2px] transition-all duration-300">
+              role="article" aria-label={role.title} className="glass-panel p-6 hover:translate-y-[-2px] transition-all duration-300 hover-glow-card">
               <h3 className="text-base font-semibold text-foreground mb-2">{role.title}</h3>
               <div className="flex gap-2 mb-3">
                 {role.chips.map(c => <span key={c} className="text-[10px] px-2 py-0.5 rounded-full bg-primary/10 text-primary">{c}</span>)}

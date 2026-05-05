@@ -589,7 +589,7 @@ const EcosystemPage = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
             >
-              <span className="inline-block glass-panel px-3 py-1 text-xs font-medium text-primary mb-5 uppercase tracking-wider">
+              <span className="inline-block glass-panel px-3 py-1 text-xs font-medium text-primary mb-5 uppercase tracking-wider hover-glow-card">
                 Healthcare Ecosystem
               </span>
               <h1 className="text-4xl md:text-5xl lg:text-[52px] font-medium tracking-tight leading-[1.15] text-foreground mb-5">
