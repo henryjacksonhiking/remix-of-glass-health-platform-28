@@ -45,17 +45,18 @@ const DualPanelHero = () => {
   const reduced = useReducedMotion();
 
   return (
-    <div className="relative w-full max-w-[520px] mx-auto">
-      <div className="grid grid-cols-[1fr_auto_1fr] gap-3 items-center">
+    <div className="relative w-full max-w-[880px] mx-auto">
+      <div className="grid grid-cols-1 md:grid-cols-[1fr_auto_1fr] gap-6 md:gap-4 items-stretch md:items-center">
         {/* Patient Side */}
-        <div className="relative">
-          <span className="text-[10px] uppercase tracking-wider text-primary/70 block mb-2">Patient experience</span>
-          <div className="rounded-2xl border border-white/[0.1] bg-white/[0.03] p-4 backdrop-blur-sm" style={{ boxShadow: "0 0 30px rgba(0,222,196,0.06)" }}>
-            <div className="text-xs text-foreground/80 mb-3 font-medium">Welcome back</div>
-            <div className="grid grid-cols-2 gap-2">
+        <div className="relative hover-glow-card rounded-2xl">
+          <span className="text-xs uppercase tracking-wider text-primary block mb-3 font-semibold">Patient experience</span>
+          <div className="rounded-2xl border border-white/[0.12] bg-white/[0.04] p-6 md:p-8 backdrop-blur-sm" style={{ boxShadow: "0 0 40px rgba(0,222,196,0.10)" }}>
+            <div className="text-base text-foreground mb-5 font-semibold">Welcome back</div>
+            <div className="grid grid-cols-2 gap-3">
               {[{ Icon: Calendar, l: "Booking" }, { Icon: MessageSquare, l: "Messages" }, { Icon: CreditCard, l: "Payments" }, { Icon: FileText, l: "Forms" }].map((item) => (
-                <div key={item.l} className="flex items-center gap-1.5 text-[9px] text-muted-foreground bg-white/[0.04] rounded-lg px-2 py-1.5">
-                  <item.Icon className="w-3 h-3 text-primary/70" />{item.l}
+                <div key={item.l} className="flex items-center gap-3 text-sm text-foreground/90 bg-white/[0.05] hover:bg-white/[0.08] transition rounded-lg px-3 py-3">
+                  <item.Icon className="w-5 h-5 text-primary" strokeWidth={1.5} />
+                  <span className="font-medium">{item.l}</span>
                 </div>
               ))}
             </div>
@@ -63,30 +64,33 @@ const DualPanelHero = () => {
         </div>
 
         {/* Center sync */}
-        <div className="flex flex-col items-center h-full justify-center py-6">
-          <div className="w-px h-full bg-gradient-to-b from-transparent via-primary/40 to-transparent relative min-h-[80px]">
+        <div className="flex md:flex-col flex-row items-center justify-center md:h-full md:py-6 gap-2">
+          <div className="md:w-px md:h-full w-full h-px md:min-h-[120px] bg-gradient-to-r md:bg-gradient-to-b from-transparent via-primary/50 to-transparent relative">
             {!reduced && (
               <>
-                <motion.div className="absolute left-1/2 -translate-x-1/2 w-1.5 h-1.5 rounded-full bg-primary"
-                  animate={{ y: [0, 80, 0] }} transition={{ duration: 2, repeat: Infinity, ease: "linear" }} />
-                <motion.div className="absolute left-1/2 -translate-x-1/2 w-1.5 h-1.5 rounded-full bg-primary/70"
-                  animate={{ y: [80, 0, 80] }} transition={{ duration: 2, repeat: Infinity, ease: "linear" }} />
+                <motion.div className="absolute md:left-1/2 md:-translate-x-1/2 top-1/2 -translate-y-1/2 md:top-0 md:translate-y-0 w-1.5 h-1.5 rounded-full bg-primary hidden md:block"
+                  animate={{ y: [0, 120, 0] }} transition={{ duration: 2, repeat: Infinity, ease: "linear" }} />
+                <motion.div className="absolute left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2 md:top-0 md:translate-y-0 w-1.5 h-1.5 rounded-full bg-primary/70 hidden md:block"
+                  animate={{ y: [120, 0, 120] }} transition={{ duration: 2, repeat: Infinity, ease: "linear" }} />
               </>
             )}
           </div>
-          <div className="w-5 h-5 rounded-full border border-primary/40 bg-primary/10 flex items-center justify-center my-1">
-            <RefreshCcw className="w-2.5 h-2.5 text-primary" />
+          <div className="w-9 h-9 rounded-full border border-primary/50 bg-primary/15 flex items-center justify-center my-1 shadow-[0_0_18px_-4px_hsla(170,100%,43%,0.55)]">
+            <RefreshCcw className="w-4 h-4 text-primary" />
           </div>
         </div>
 
         {/* Office Side */}
-        <div className="relative">
-          <span className="text-[10px] uppercase tracking-wider text-primary/70 block mb-2 text-right">Office experience</span>
-          <div className="rounded-2xl border border-white/[0.1] bg-white/[0.03] p-4 backdrop-blur-sm" style={{ boxShadow: "0 0 30px rgba(0,222,196,0.08)" }}>
-            <div className="text-xs text-foreground/80 mb-3 font-medium">Dashboard</div>
-            <div className="space-y-1.5">
-              {["Patient list", "Schedule", "Messages", "Analytics"].map((item) => (
-                <div key={item} className="text-[9px] text-muted-foreground bg-white/[0.04] rounded px-2 py-1">{item}</div>
+        <div className="relative hover-glow-card rounded-2xl">
+          <span className="text-xs uppercase tracking-wider text-primary block mb-3 md:text-right font-semibold">Office experience</span>
+          <div className="rounded-2xl border border-white/[0.12] bg-white/[0.04] p-6 md:p-8 backdrop-blur-sm" style={{ boxShadow: "0 0 40px rgba(0,222,196,0.12)" }}>
+            <div className="text-base text-foreground mb-5 font-semibold">Dashboard</div>
+            <div className="space-y-2.5">
+              {[{ Icon: FileText, l: "Patient list" }, { Icon: Calendar, l: "Schedule" }, { Icon: MessageSquare, l: "Messages" }, { Icon: BarChart3, l: "Analytics" }].map((item) => (
+                <div key={item.l} className="flex items-center gap-3 text-sm text-foreground/90 bg-white/[0.05] hover:bg-white/[0.08] transition rounded-lg px-3 py-2.5">
+                  <item.Icon className="w-5 h-5 text-primary" strokeWidth={1.5} />
+                  <span className="font-medium">{item.l}</span>
+                </div>
               ))}
             </div>
           </div>
