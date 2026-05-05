@@ -65,35 +65,43 @@ const ConvergenceHero = () => {
   };
 
   return (
-    <div className="relative w-full max-w-[420px] px-[5px] py-[5px] aspect-[4/3] mx-[5px] my-[5px]">
-      <svg viewBox="0 0 400 280" className="w-full h-full" aria-hidden="true">
+    <div className="relative w-full max-w-[520px] aspect-[4/3] mx-auto">
+      <svg viewBox="0 0 400 280" className="w-full h-full overflow-visible" aria-hidden="true">
         <defs>
           <radialGradient id="commHubGlow" cx="50%" cy="50%" r="50%">
-            <stop offset="0%" stopColor="#00DEC4" stopOpacity="0.5" />
+            <stop offset="0%" stopColor="#00DEC4" stopOpacity="0.55" />
             <stop offset="100%" stopColor="#00DEC4" stopOpacity="0" />
           </radialGradient>
           <filter id="particleGlow">
             <feGaussianBlur stdDeviation="2" result="blur" />
             <feMerge><feMergeNode in="blur" /><feMergeNode in="SourceGraphic" /></feMerge>
           </filter>
+          <filter id="lineGlow" x="-20%" y="-20%" width="140%" height="140%">
+            <feGaussianBlur stdDeviation="2.5" result="b" />
+            <feMerge><feMergeNode in="b" /><feMergeNode in="SourceGraphic" /></feMerge>
+          </filter>
         </defs>
 
-        {/* Flow lines */}
+        {/* Flow lines — layered teal glow */}
         {channels.map((_, i) => {
           const sy = getY(i, channels.length);
+          const d = `M ${startX + 30} ${sy} C ${startX + 120} ${sy}, ${hubX - 100} ${hubY}, ${hubX - 30} ${hubY}`;
           return (
-            <motion.path
-              key={i}
-              d={`M ${startX + 30} ${sy} C ${startX + 120} ${sy}, ${hubX - 100} ${hubY}, ${hubX - 30} ${hubY}`}
-              stroke="#00DEC4"
-              strokeOpacity="0.3"
-              strokeWidth="1.5"
-              fill="none"
-              initial={{ pathLength: 0 }}
-              whileInView={{ pathLength: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8, delay: i * 0.1 }}
-            />
+            <g key={i}>
+              <path d={d} stroke="#70F5E3" strokeOpacity="0.18" strokeWidth="5" fill="none" filter="url(#lineGlow)" />
+              <path d={d} stroke="#40EBD8" strokeOpacity="0.35" strokeWidth="2.5" fill="none" />
+              <motion.path
+                d={d}
+                stroke="#00DEC4"
+                strokeOpacity="0.9"
+                strokeWidth="1.4"
+                fill="none"
+                initial={{ pathLength: 0 }}
+                whileInView={{ pathLength: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8, delay: i * 0.1 }}
+              />
+            </g>
           );
         })}
 
@@ -122,28 +130,26 @@ const ConvergenceHero = () => {
         })}
 
         {/* Hub glow */}
-        <circle cx={hubX} cy={hubY} r="50" fill="url(#commHubGlow)" />
+        <circle cx={hubX} cy={hubY} r="70" fill="url(#commHubGlow)" />
 
         {/* Hub pulse rings */}
         {!reduced && (
-          <>
-            <motion.circle cx={hubX} cy={hubY} r="28" fill="none" stroke="#00DEC4" strokeWidth="0.8"
-              animate={{ r: [28, 42], opacity: [0.5, 0] }}
-              transition={{ duration: 3, repeat: Infinity, ease: "easeOut" }}
-            />
-          </>
+          <motion.circle cx={hubX} cy={hubY} r="42" fill="none" stroke="#00DEC4" strokeWidth="0.8"
+            animate={{ r: [42, 60], opacity: [0.5, 0] }}
+            transition={{ duration: 3, repeat: Infinity, ease: "easeOut" }}
+          />
         )}
 
-        {/* Hub node */}
-        <motion.circle cx={hubX} cy={hubY} r="26" fill="hsl(170 100% 43%)"
-          animate={reduced ? {} : { r: [26, 28, 26], opacity: [1, 0.85, 1] }}
+        {/* Hub node — larger */}
+        <motion.circle cx={hubX} cy={hubY} r="40" fill="hsl(170 100% 43%)"
+          animate={reduced ? {} : { r: [40, 43, 40], opacity: [1, 0.9, 1] }}
           transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
         />
-        <text x={hubX} y={hubY - 3} textAnchor="middle" fontSize="10" fontWeight="600" fill="hsl(226 60% 12%)">Borna AI</text>
-        <text x={hubX} y={hubY + 10} textAnchor="middle" fontSize="7" fill="hsl(226 60% 12%)" opacity="0.7">Unified Stream</text>
+        <text x={hubX} y={hubY - 3} textAnchor="middle" fontSize="13" fontWeight="700" fill="hsl(226 60% 12%)">Borna AI</text>
+        <text x={hubX} y={hubY + 12} textAnchor="middle" fontSize="9" fill="hsl(226 60% 12%)" opacity="0.75">Unified Stream</text>
       </svg>
 
-      {/* Channel icons */}
+      {/* Channel icons — larger */}
       {channels.map((ch, i) => {
         const sy = getY(i, channels.length);
         const pctTop = (sy / 280) * 100;
@@ -157,21 +163,22 @@ const ConvergenceHero = () => {
             viewport={{ once: true }}
             transition={{ delay: i * 0.1, duration: 0.4 }}
           >
-            <div className="w-9 h-9 rounded-full glass-panel flex items-center justify-center border border-primary/40" aria-label={ch.label}>
-              <ch.Icon className="w-4 h-4 text-primary" strokeWidth={1.5} />
+            <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-full glass-panel flex items-center justify-center border border-primary/40 shadow-[0_0_18px_-4px_hsla(170,100%,43%,0.45)]" aria-label={ch.label}>
+              <ch.Icon className="w-5 h-5 sm:w-6 sm:h-6 text-primary" strokeWidth={1.5} />
             </div>
+            <span className="text-xs font-medium text-foreground/80">{ch.label}</span>
           </motion.div>
         );
       })}
 
       {/* AI Processing chip */}
       <motion.div
-        className="absolute hidden md:flex items-center gap-1.5 text-[10px] font-medium px-2.5 py-1 rounded-full bg-primary/15 text-primary border border-primary/20"
-        style={{ right: "2%", top: "15%" }}
-        animate={reduced ? {} : { opacity: [0.7, 1, 0.7] }}
+        className="absolute flex items-center gap-1.5 text-[11px] sm:text-xs font-medium px-3 py-1.5 rounded-full bg-primary/15 text-primary border border-primary/40 shadow-[0_0_18px_-4px_hsla(170,100%,43%,0.55)] backdrop-blur-sm"
+        style={{ right: "0%", top: "8%" }}
+        animate={reduced ? {} : { opacity: [0.75, 1, 0.75] }}
         transition={{ duration: 3, repeat: Infinity }}
       >
-        <span className="w-1.5 h-1.5 rounded-full bg-primary" /> AI Processing
+        <span className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse" /> AI Processing
       </motion.div>
     </div>
   );
