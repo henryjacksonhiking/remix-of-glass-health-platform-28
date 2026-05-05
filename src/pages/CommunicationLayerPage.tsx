@@ -680,21 +680,21 @@ const CommunicationLayerPage = () => {
             <p className="text-foreground/80 max-w-2xl mx-auto">Five steps — from the moment a patient reaches out to the moment the system delivers an actionable outcome.</p>
           </motion.div>
           <div className="relative max-w-6xl mx-auto">
-            {/* glowing teal connector line — horizontal on md+, vertical on mobile */}
+            {/* glowing teal connector line — horizontal on md+, vertical-center on mobile */}
             <div className="hidden md:block absolute left-[8%] right-[8%] top-[38px] h-[2px] rounded-full bg-gradient-to-r from-transparent via-[#00DEC4] to-transparent shadow-[0_0_14px_2px_hsla(170,100%,43%,0.5)]" />
-            <div className="md:hidden absolute top-0 bottom-0 left-[34px] w-[2px] rounded-full bg-gradient-to-b from-transparent via-[#00DEC4] to-transparent shadow-[0_0_14px_2px_hsla(170,100%,43%,0.5)]" />
-            <div className="flex flex-col md:flex-row items-stretch md:items-start justify-between gap-8 md:gap-4 relative">
+            <div className="md:hidden absolute top-0 bottom-0 left-1/2 -translate-x-1/2 w-[2px] rounded-full bg-gradient-to-b from-transparent via-[#00DEC4] to-transparent shadow-[0_0_14px_2px_hsla(170,100%,43%,0.5)]" />
+            <div className="flex flex-col md:flex-row items-center md:items-start justify-between gap-10 md:gap-4 relative">
               {howItWorksSteps.map((step, i) => (
-                <div key={step.num} className="flex md:flex-col items-start md:items-center gap-4 md:gap-3 flex-1" aria-label={`Step ${step.num}: ${step.title}`}>
+                <div key={step.num} className="flex flex-col items-center text-center md:flex-1 w-full max-w-[260px]" aria-label={`Step ${step.num}: ${step.title}`}>
                   <motion.div initial={{ opacity: 0, scale: 0.7 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} transition={{ delay: i * 0.1, duration: 0.35 }}
-                    className="flex flex-col items-center gap-2 text-center md:w-full"
+                    className="flex flex-col items-center gap-2 text-center w-full"
                   >
                     <span className="text-xs font-bold text-primary">{step.num}</span>
-                    <div className="relative w-14 h-14 rounded-full bg-card border border-primary/40 flex items-center justify-center shadow-[0_0_14px_-4px_hsla(170,100%,43%,0.5)]">
-                      <step.Icon className="w-6 h-6 text-primary" strokeWidth={1.5} />
+                    <div className="relative w-16 h-16 md:w-14 md:h-14 rounded-full bg-card border border-primary/40 flex items-center justify-center shadow-[0_0_14px_-4px_hsla(170,100%,43%,0.5)] hover-glow-icon">
+                      <step.Icon className="w-7 h-7 md:w-6 md:h-6 text-primary" strokeWidth={1.5} />
                     </div>
-                    <span className="text-sm font-semibold text-foreground mt-1">{step.title}</span>
-                    <span className="text-xs text-muted-foreground max-w-[180px] leading-relaxed">{step.desc}</span>
+                    <span className="text-base md:text-sm font-semibold text-foreground mt-1">{step.title}</span>
+                    <span className="text-sm md:text-xs text-muted-foreground max-w-[220px] leading-relaxed">{step.desc}</span>
                   </motion.div>
                 </div>
               ))}
