@@ -65,7 +65,7 @@ const ConvergenceHero = () => {
   };
 
   return (
-    <div className="relative w-full max-w-[520px] aspect-[4/3] mx-auto">
+    <div className="relative w-full max-w-[520px] aspect-[400/280] mx-auto">
       <svg viewBox="0 0 400 280" className="w-full h-full overflow-visible" aria-hidden="true">
         <defs>
           <radialGradient id="commHubGlow" cx="50%" cy="50%" r="50%">
