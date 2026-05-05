@@ -310,8 +310,11 @@ const JourneyFlow = () => {
   const [activeIdx, setActiveIdx] = useState<number | null>(null);
   const [pinnedIdx, setPinnedIdx] = useState<number | null>(null);
   const size = 560;
-  const cx = size / 2;
-  const cy = size / 2;
+  // Slight offset to visually balance the diagram within its container
+  const offsetX = 12;
+  const offsetY = 10;
+  const cx = size / 2 + offsetX;
+  const cy = size / 2 + offsetY;
   const R = 210;
   const nodeR = 32; // node radius in px (w-16 = 64px → 32)
   const gap = Math.atan(nodeR / R) + 0.02; // angular offset so arc attaches to node edge
