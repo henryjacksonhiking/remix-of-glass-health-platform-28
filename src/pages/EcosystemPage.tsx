@@ -395,8 +395,18 @@ const JourneyFlow = () => {
         const centerYPct = (cy / size) * 100;
         const left = centerXPct + Math.cos(angle) * radiusPct;
         const top = centerYPct + Math.sin(angle) * radiusPct;
-        const isBottomHalf = Math.sin(angle) > 0.15;
+        const cosA = Math.cos(angle);
+        const sinA = Math.sin(angle);
+        const isTop = sinA < -0.7;
+        const isBottom = sinA > 0.7;
+        const isRight = !isTop && !isBottom && cosA > 0;
+        const isLeft = !isTop && !isBottom && cosA < 0;
         const isOpen = activeIdx === i || pinnedIdx === i;
+        let labelPos = "top-full mt-2 left-1/2 -translate-x-1/2";
+        if (isTop) labelPos = "bottom-full mb-2 left-1/2 -translate-x-1/2";
+        else if (isBottom) labelPos = "top-full mt-2 left-1/2 -translate-x-1/2";
+        else if (isRight) labelPos = "left-full ml-3 top-1/2 -translate-y-1/2";
+        else if (isLeft) labelPos = "right-full mr-3 top-1/2 -translate-y-1/2";
         return (
           <motion.div
             key={s.label}
@@ -420,9 +430,7 @@ const JourneyFlow = () => {
             >
               <s.Icon className="w-5 h-5 sm:w-6 sm:h-6 text-primary" strokeWidth={1.5} />
               <span
-                className={`absolute left-1/2 -translate-x-1/2 text-[11px] sm:text-xs font-semibold text-primary whitespace-nowrap pointer-events-none drop-shadow-[0_2px_6px_rgba(0,0,0,0.6)] ${
-                  isBottomHalf ? "top-full mt-2" : "bottom-full mb-2"
-                }`}
+                className={`absolute ${labelPos} text-[12px] sm:text-sm font-medium text-foreground/95 whitespace-nowrap pointer-events-none`}
               >
                 {s.label}
               </span>
@@ -433,7 +441,7 @@ const JourneyFlow = () => {
                 animate={{ opacity: 1, y: 0 }}
                 role="tooltip"
                 className={`absolute left-1/2 -translate-x-1/2 z-20 w-48 px-3 py-2 rounded-lg glass-panel border border-primary/40 backdrop-blur-md shadow-lg text-[11px] leading-snug text-foreground/90 text-center pointer-events-none ${
-                  isBottomHalf ? "bottom-full mb-8" : "top-full mt-8"
+                  isBottom ? "bottom-full mb-8" : "top-full mt-8"
                 }`}
               >
                 <div className="font-semibold text-primary mb-0.5">{s.label}</div>
