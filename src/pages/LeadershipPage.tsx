@@ -130,9 +130,9 @@ const LeadershipPage = () => (
               aria-label={`${leader.name}, ${leader.title} — leadership card`}
               className="glass-panel overflow-hidden hover:translate-y-[-3px] transition-all duration-300 group"
             >
-              {/* UPDATE: Replace this placeholder with actual leader photo. Recommended: professional portrait, consistent lighting, same crop for all leaders. */}
-              <div className="aspect-[3/4] bg-background/50 flex flex-col items-center justify-center" aria-label={`Photo placeholder for ${leader.title}`}>
-                <User className="w-12 h-12 text-primary/70" />
+              {/* UPDATE: Replace this placeholder with actual leader photo. */}
+              <div className="aspect-[3/4] bg-gradient-to-b from-primary/10 to-background/50 border-b border-glass-border flex flex-col items-center justify-center" aria-label={`Photo placeholder for ${leader.title}`}>
+                <User className="w-16 h-16 text-primary" />
                 <span className="text-xs text-muted-foreground mt-2">[Photo]</span>
               </div>
               <div className="p-5">
