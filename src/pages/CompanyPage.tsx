@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import SpotlightCard from "@/components/ui/spotlight-card";
 import { Helmet } from "react-helmet-async";
 import { Link } from "react-router-dom";
 import { Layers, Cpu, Workflow, Database, Network, Zap, Brain, MessageSquare, Users, BarChart3, Settings, Rocket, RefreshCw, GitBranch, Heart, LineChart, Shield, TrendingUp } from "lucide-react";
@@ -63,8 +64,9 @@ const CompanyPage = () => (
 
     {/* Hero */}
     <section className="relative overflow-hidden py-12 md:py-20">
-      <div className="absolute inset-0 opacity-40"><BeamsBackground intensity="medium" /></div>
-      <div className="absolute top-20 right-1/4 w-72 h-72 rounded-full blur-[120px] bg-primary/8 animate-glow-pulse" />
+      <div className="absolute inset-0 opacity-50"><BeamsBackground intensity="medium" /></div>
+      <div className="absolute top-20 right-1/4 w-72 h-72 rounded-full blur-[120px] bg-primary/12 animate-glow-pulse" />
+      <div className="absolute bottom-10 left-1/4 w-56 h-56 rounded-full blur-[100px] bg-deep-blue/10 animate-glow-pulse pointer-events-none" style={{ animationDelay: "1.5s" }} />
       <div className="container mx-auto px-4 md:px-6 relative z-10 max-w-4xl">
         <div className="grid md:grid-cols-2 gap-12 items-center">
           <div>
@@ -111,13 +113,13 @@ const CompanyPage = () => (
     <section className="py-12 md:py-20 border-t border-glass-border">
       <div className="container mx-auto px-4 md:px-6 max-w-4xl">
         <div className="grid md:grid-cols-2 gap-8 relative">
-          <motion.div initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5 }} className="glass-panel p-8 border-t-2 border-primary/30 hover-glow-card">
+          <motion.div initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5 }} className="glass-panel p-8 border-t-2 border-primary/40 hover-glow-card">
             <h2 className="text-lg font-semibold text-foreground mb-3">Our mission</h2>
             <p className="text-sm text-muted-foreground leading-relaxed">
               To help healthcare practices operate more efficiently by unifying systems, improving communication, and enabling data-driven decisions through AI.
             </p>
           </motion.div>
-          <motion.div initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: 0.2 }} className="glass-panel p-8 border-t-2 border-primary/30 hover-glow-card">
+          <motion.div initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: 0.2 }} className="glass-panel p-8 border-t-2 border-primary/40 hover-glow-card">
             <h2 className="text-lg font-semibold text-foreground mb-3">Our vision</h2>
             <p className="text-sm text-muted-foreground leading-relaxed">
               We envision a healthcare ecosystem where every patient interaction is connected, all data is centralized and actionable, workflows are automated, and every decision is supported by AI.
@@ -141,7 +143,7 @@ const CompanyPage = () => (
           <div className="grid grid-cols-3 gap-3">
             {["Scheduling", "Communication", "CRM", "Analytics", "Billing", "EHR"].map((tool, i) => (
               <motion.div key={tool} initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} transition={{ delay: i * 0.08 }}
-                className="glass-panel p-3 text-center opacity-50 hover-glow-card" style={{ transform: `rotate(${(i % 2 === 0 ? 1 : -1) * 2}deg)` }}>
+                className="glass-panel p-3 text-center opacity-80 hover-glow-card" style={{ transform: `rotate(${(i % 2 === 0 ? 1 : -1) * 2}deg)` }}>
                 <span className="text-xs text-muted-foreground">{tool}</span>
               </motion.div>
             ))}
@@ -153,7 +155,7 @@ const CompanyPage = () => (
     {/* Approach */}
     <section className="py-12 md:py-20 border-t border-glass-border">
       <div className="container mx-auto px-4 md:px-6">
-        <h2 className="section-headline text-foreground text-center mb-4">A unified platform approach</h2>
+        <h2 className="section-headline gradient-text text-center mb-4">A unified platform approach</h2>
         <p className="body-text text-center mx-auto max-w-2xl mb-12">
           Borna addresses fragmentation by centralizing communication, integrating patient data, enabling AI-powered insights, and automating workflows.
         </p>
@@ -258,7 +260,7 @@ const CompanyPage = () => (
     {/* Why Borna */}
     <section className="py-12 md:py-20 border-t border-glass-border">
       <div className="container mx-auto px-4 md:px-6">
-        <h2 className="section-headline text-foreground text-center mb-12">Why Borna AI</h2>
+        <h2 className="section-headline gradient-text text-center mb-12">Why Borna AI</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
           {whyCards.map((card, i) => {
             const Icon = card.icon;

@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import SpotlightCard from "@/components/ui/spotlight-card";
 import { Helmet } from "react-helmet-async";
 import { Link } from "react-router-dom";
 import { MessageSquare, Users, Database, Brain, Workflow, BarChart3, Zap, Target, TrendingUp, Heart, Shield, Lightbulb, ArrowRight } from "lucide-react";
@@ -11,7 +12,7 @@ import CTASection from "@/components/sections/CTASection";
 const fadeIn = { hidden: { opacity: 0, y: 16 }, visible: (i: number) => ({ opacity: 1, y: 0, transition: { delay: i * 0.1, duration: 0.5 } }) };
 
 const stages = [
-  { label: "Fragmented", sub: "Today's healthcare reality", glow: "opacity-25" },
+  { label: "Fragmented", sub: "Today's healthcare reality", glow: "opacity-50" },
   { label: "Connected", sub: "Integrated systems", glow: "opacity-60" },
   { label: "Intelligent", sub: "AI-powered operations", glow: "opacity-90" },
   { label: "Optimized", sub: "Borna's vision", glow: "opacity-100" },
@@ -55,11 +56,13 @@ const VisionMissionPage = () => (
 
     {/* Hero */}
     <section className="relative overflow-hidden py-12 md:py-20">
-      <div className="absolute inset-0 opacity-40"><BeamsBackground intensity="medium" /></div>
+      <div className="absolute inset-0 opacity-50"><BeamsBackground intensity="medium" /></div>
+      <div className="absolute top-20 right-1/4 w-72 h-72 rounded-full blur-[120px] bg-primary/12 animate-glow-pulse pointer-events-none" />
+      <div className="absolute bottom-10 left-1/4 w-56 h-56 rounded-full blur-[100px] bg-deep-blue/10 animate-glow-pulse pointer-events-none" style={{ animationDelay: "1.5s" }} />
       <div className="container mx-auto px-4 md:px-6 relative z-10 max-w-5xl">
         <div className="grid md:grid-cols-2 gap-12 items-center">
           <div>
-            <motion.h1 initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }} className="hero-headline text-foreground mb-6">Our vision & mission</motion.h1>
+            <motion.h1 initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }} className="hero-headline text-foreground mb-6">Our <span className="gradient-text">vision & mission</span></motion.h1>
             <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.1, duration: 0.6 }} className="body-text mb-8">
               At Borna AI, we are building the foundation for the future of healthcare operations — where communication, data, and workflows are unified into one intelligent system.
             </motion.p>
@@ -75,7 +78,7 @@ const VisionMissionPage = () => (
                 <motion.div animate={{ opacity: [0.4, 0.8, 0.4] }} transition={{ duration: 6, repeat: Infinity, delay: i * 1.5 }}
                   className={`glass-panel px-4 py-2 flex-1 ${s.glow}`}>
                   <span className="text-xs font-medium text-foreground">{s.label}</span>
-                  <span className="text-[10px] text-muted-foreground ml-2">{s.sub}</span>
+                  <span className="text-xs text-muted-foreground ml-2">{s.sub}</span>
                 </motion.div>
                 {i < stages.length - 1 && <ArrowRight className="w-3 h-3 text-primary/50 shrink-0" />}
               </div>
@@ -101,18 +104,18 @@ const VisionMissionPage = () => (
       <div className="container mx-auto px-4 md:px-6 max-w-4xl">
         <div className="grid md:grid-cols-2 gap-12 items-start">
           <div>
-            <h2 className="section-headline text-foreground mb-4">Our vision: a unified healthcare platform</h2>
+            <h2 className="section-headline gradient-text mb-4">Our vision: a unified healthcare platform</h2>
             <p className="body-text">
               We envision a future where all patient communication is centralized, data flows seamlessly across systems, workflows are automated and optimized, and healthcare providers operate with full visibility and control.
             </p>
           </div>
           <div className="space-y-2">
-            <span className="text-[10px] uppercase tracking-widest text-primary/60 block text-center mb-3">The future state</span>
+            <span className="text-xs uppercase tracking-widest text-primary block text-center mb-3">The future state</span>
             {["All patient communication centralized", "Data flows seamlessly", "Workflows automated", "Full visibility and control"].map((label, i) => (
               <motion.div key={label} animate={{ boxShadow: [`0 0 8px hsl(var(--primary)/0.1)`, `0 0 16px hsl(var(--primary)/0.2)`, `0 0 8px hsl(var(--primary)/0.1)`] }}
                 transition={{ duration: 6, repeat: Infinity, delay: i }} className="glass-panel px-4 py-3 border-l-2 border-primary/50 hover-glow-card">
                 <span className="text-xs text-muted-foreground">{["💬", "👤", "⚙️", "🤖"][i]} {["Communication", "CRM & Lifecycle", "Data & Integration", "AI Intelligence"][i]}</span>
-                <span className="text-[10px] text-primary/60 ml-2">— {label}</span>
+                <span className="text-xs text-primary ml-2">— {label}</span>
               </motion.div>
             ))}
           </div>
@@ -214,7 +217,7 @@ const VisionMissionPage = () => (
     {/* Long-term impact */}
     <section className="py-12 md:py-20 border-t border-glass-border">
       <div className="container mx-auto px-4 md:px-6">
-        <h2 className="section-headline text-foreground text-center mb-4">Creating long-term value in healthcare</h2>
+        <h2 className="section-headline gradient-text text-center mb-4">Creating long-term value in healthcare</h2>
         <p className="body-text text-center mx-auto max-w-2xl mb-12">
           The impact of a unified platform compounds. Every improvement accumulates month over month.
         </p>

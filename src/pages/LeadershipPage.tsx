@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import SpotlightCard from "@/components/ui/spotlight-card";
 import { Helmet } from "react-helmet-async";
 import { Link } from "react-router-dom";
 import { Layers, Brain, Heart, TrendingUp, User, Linkedin, Target, Lightbulb, Shield, Network } from "lucide-react";
@@ -71,7 +72,9 @@ const LeadershipPage = () => (
 
     {/* Hero */}
     <section className="relative overflow-hidden py-12 md:py-20">
-      <div className="absolute inset-0 opacity-30"><BeamsBackground intensity="medium" /></div>
+      <div className="absolute inset-0 opacity-50"><BeamsBackground intensity="medium" /></div>
+      <div className="absolute top-20 right-1/4 w-72 h-72 rounded-full blur-[120px] bg-primary/12 animate-glow-pulse pointer-events-none" />
+      <div className="absolute bottom-10 left-1/4 w-56 h-56 rounded-full blur-[100px] bg-deep-blue/10 animate-glow-pulse pointer-events-none" style={{ animationDelay: "1.5s" }} />
       <div className="container mx-auto px-4 md:px-6 relative z-10 max-w-4xl">
         <div className="grid md:grid-cols-2 gap-12 items-center">
           <div>
@@ -85,12 +88,12 @@ const LeadershipPage = () => (
             </motion.div>
           </div>
           {/* Faint platform stack */}
-          <div className="hidden md:block opacity-35">
+          <div className="hidden md:block opacity-55">
             <div className="space-y-2 w-40 mx-auto">
               {["Communication", "CRM", "Data", "AI"].map((l, i) => (
                 <motion.div key={l} animate={{ opacity: [0.3, 0.5, 0.3] }} transition={{ duration: 8, repeat: Infinity, delay: i }}
-                  className="glass-panel px-3 py-2 border-l-2 border-primary/30 hover-glow-card">
-                  <span className="text-[10px] text-muted-foreground">{l}</span>
+                  className="glass-panel px-3 py-2 border-l-2 border-primary/40 hover-glow-card">
+                  <span className="text-xs text-muted-foreground">{l}</span>
                 </motion.div>
               ))}
             </div>
@@ -113,7 +116,7 @@ const LeadershipPage = () => (
     {/* Executive Team */}
     <section className="py-12 md:py-20 border-t border-glass-border">
       <div className="container mx-auto px-4 md:px-6">
-        <h2 className="section-headline text-foreground text-center mb-16">Executive leadership</h2>
+        <h2 className="section-headline gradient-text text-center mb-16">Executive leadership</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-5xl mx-auto">
           {leaders.map((leader, i) => (
             <motion.div
@@ -129,8 +132,8 @@ const LeadershipPage = () => (
             >
               {/* UPDATE: Replace this placeholder with actual leader photo. Recommended: professional portrait, consistent lighting, same crop for all leaders. */}
               <div className="aspect-[3/4] bg-background/50 flex flex-col items-center justify-center" aria-label={`Photo placeholder for ${leader.title}`}>
-                <User className="w-12 h-12 text-primary/40" />
-                <span className="text-[10px] text-muted-foreground mt-2">[Photo]</span>
+                <User className="w-12 h-12 text-primary/70" />
+                <span className="text-xs text-muted-foreground mt-2">[Photo]</span>
               </div>
               <div className="p-5">
                 <h3 className="text-base font-semibold text-foreground">{leader.name}</h3>
@@ -208,7 +211,7 @@ const LeadershipPage = () => (
               {["CEO", "CTO", "Product"].map((role, i) => (
                 <motion.div key={role} animate={{ opacity: [0.5, 0.8, 0.5] }} transition={{ duration: 6, repeat: Infinity, delay: i * 2 }}
                   className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center" aria-label={`${role} node`}>
-                  <span className="text-[10px] text-primary">{role}</span>
+                  <span className="text-xs text-primary">{role}</span>
                 </motion.div>
               ))}
             </div>
@@ -217,7 +220,7 @@ const LeadershipPage = () => (
             </div>
             <div className="space-y-1 w-28">
               {["Comm", "CRM", "Data", "AI"].map((l) => (
-                <div key={l} className="glass-panel px-2 py-1.5 border-l border-primary/30 hover-glow-card">
+                <div key={l} className="glass-panel px-2 py-1.5 border-l border-primary/40 hover-glow-card">
                   <span className="text-[9px] text-muted-foreground">{l}</span>
                 </div>
               ))}
@@ -237,7 +240,7 @@ const LeadershipPage = () => (
     {/* Organizational Impact */}
     <section className="py-12 md:py-20 border-t border-glass-border">
       <div className="container mx-auto px-4 md:px-6">
-        <h2 className="section-headline text-foreground text-center mb-12">Driving impact across healthcare organizations</h2>
+        <h2 className="section-headline gradient-text text-center mb-12">Driving impact across healthcare organizations</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
           {impactCards.map((card, i) => {
             const Icon = card.icon;

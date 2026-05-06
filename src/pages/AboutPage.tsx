@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import SpotlightCard from "@/components/ui/spotlight-card";
 import { Helmet } from "react-helmet-async";
 import { Link } from "react-router-dom";
 import { Layers, Brain, Zap, Network, Users, MessageSquare, BarChart3, Heart, Shield, TrendingUp, Target, Lightbulb, Database } from "lucide-react";
@@ -48,11 +49,13 @@ const AboutPage = () => (
 
     {/* Hero */}
     <section className="relative overflow-hidden py-12 md:py-20">
-      <div className="absolute inset-0 opacity-35"><BeamsBackground intensity="medium" /></div>
+      <div className="absolute inset-0 opacity-50"><BeamsBackground intensity="medium" /></div>
+      <div className="absolute top-20 right-1/4 w-72 h-72 rounded-full blur-[120px] bg-primary/12 animate-glow-pulse pointer-events-none" />
+      <div className="absolute bottom-10 left-1/4 w-56 h-56 rounded-full blur-[100px] bg-deep-blue/10 animate-glow-pulse pointer-events-none" style={{ animationDelay: "1.5s" }} />
       <div className="container mx-auto px-4 md:px-6 relative z-10 max-w-5xl">
         <div className="grid md:grid-cols-2 gap-12 items-center">
           <div>
-            <motion.h1 initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }} className="hero-headline text-foreground mb-6">About Borna AI</motion.h1>
+            <motion.h1 initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }} className="hero-headline text-foreground mb-6">About <span className="gradient-text">Borna AI</span></motion.h1>
             <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.1, duration: 0.6 }} className="body-text mb-8">
               Borna AI is a healthcare technology platform designed to transform how practices manage patient communication, operations, and growth. Our mission is to unify fragmented systems into one intelligent platform.
             </motion.p>
@@ -73,7 +76,7 @@ const AboutPage = () => (
                 <motion.div key={layer.label} animate={{ opacity: [0.5, 0.8, 0.5], y: [0, -2, 0] }} transition={{ duration: 7, repeat: Infinity, delay: i }}
                   className="glass-panel px-4 py-3 mb-2 border-l-2 border-primary/40 hover-glow-card">
                   <span className="text-xs font-medium text-foreground">{layer.label}</span>
-                  <span className="text-[10px] text-muted-foreground block">{layer.sub}</span>
+                  <span className="text-xs text-muted-foreground block">{layer.sub}</span>
                 </motion.div>
               ))}
               <div className="flex gap-1 justify-end mt-1">
@@ -106,7 +109,7 @@ const AboutPage = () => (
                 const Icon = item.icon;
                 return (
                   <div key={item.label} className="flex items-center gap-2">
-                    <Icon className="w-4 h-4 text-primary/60" />
+                    <Icon className="w-4 h-4 text-primary" />
                     <span className="text-xs text-muted-foreground">{item.label}</span>
                   </div>
                 );
@@ -122,14 +125,14 @@ const AboutPage = () => (
       <div className="container mx-auto px-4 md:px-6 max-w-4xl">
         <div className="grid md:grid-cols-2 gap-8 relative">
           <motion.div initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5 }}
-            className="glass-panel p-8 border-t-2 border-primary/30 hover-glow-card">
+            className="glass-panel p-8 border-t-2 border-primary/40 hover-glow-card">
             <h2 className="text-lg font-semibold text-foreground mb-3">Our mission</h2>
             <p className="text-sm text-muted-foreground leading-relaxed">
               To empower healthcare providers with intelligent tools that simplify operations, enhance patient experiences, and enable sustainable growth.
             </p>
           </motion.div>
           <motion.div initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: 0.2 }}
-            className="glass-panel p-8 border-t-2 border-primary/30 hover-glow-card">
+            className="glass-panel p-8 border-t-2 border-primary/40 hover-glow-card">
             <h2 className="text-lg font-semibold text-foreground mb-3">Our vision</h2>
             <p className="text-sm text-muted-foreground leading-relaxed">
               To become the unified operating system for healthcare practices — connecting communication, data, and workflows into one seamless ecosystem.
@@ -199,7 +202,7 @@ const AboutPage = () => (
     {/* What Makes Borna Different */}
     <section className="py-12 md:py-20 border-t border-glass-border">
       <div className="container mx-auto px-4 md:px-6">
-        <h2 className="section-headline text-foreground text-center mb-4">What makes Borna AI different</h2>
+        <h2 className="section-headline gradient-text text-center mb-4">What makes Borna AI different</h2>
         <p className="body-text text-center mx-auto max-w-2xl mb-12">Four architectural advantages that no collection of point tools can replicate.</p>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
           {diffCards.map((card, i) => {
@@ -241,7 +244,7 @@ const AboutPage = () => (
     {/* Commitment */}
     <section className="py-12 md:py-20 border-t border-glass-border">
       <div className="container mx-auto px-4 md:px-6">
-        <h2 className="section-headline text-foreground text-center mb-12">Our commitment to healthcare innovation</h2>
+        <h2 className="section-headline gradient-text text-center mb-12">Our commitment to healthcare innovation</h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-5xl mx-auto">
           {commitments.map((item, i) => {
             const Icon = item.icon;
@@ -277,7 +280,7 @@ const AboutPage = () => (
                 <span className="text-xs text-primary font-medium block mb-2">{i + 1}</span>
                 <div className="w-9 h-9 rounded-lg bg-primary/10 flex items-center justify-center mx-auto mb-2"><Icon className="w-4 h-4 text-primary" /></div>
                 <h3 className="text-xs font-medium text-foreground mb-1">{step.label}</h3>
-                <p className="text-[10px] text-muted-foreground">{step.desc}</p>
+                <p className="text-xs text-muted-foreground">{step.desc}</p>
               </motion.div>
             );
           })}
