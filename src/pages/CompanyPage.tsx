@@ -143,7 +143,7 @@ const CompanyPage = () => (
           <div className="grid grid-cols-3 gap-3">
             {["Scheduling", "Communication", "CRM", "Analytics", "Billing", "EHR"].map((tool, i) => (
               <motion.div key={tool} initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} transition={{ delay: i * 0.08 }}
-                className="glass-panel p-3 text-center opacity-50 hover-glow-card" style={{ transform: `rotate(${(i % 2 === 0 ? 1 : -1) * 2}deg)` }}>
+                className="glass-panel p-3 text-center opacity-80 hover-glow-card" style={{ transform: `rotate(${(i % 2 === 0 ? 1 : -1) * 2}deg)` }}>
                 <span className="text-xs text-muted-foreground">{tool}</span>
               </motion.div>
             ))}
