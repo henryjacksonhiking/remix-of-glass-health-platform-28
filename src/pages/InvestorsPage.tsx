@@ -70,8 +70,8 @@ const GlassCard = ({
   <div
     className={`relative rounded-2xl p-6 md:p-7 transition-all duration-300 hover:-translate-y-0.5 ${className}`}
     style={{
-      background: "rgba(255,255,255,0.04)",
-      border: "0.5px solid rgba(255,255,255,0.08)",
+      background: "rgba(255,255,255,0.06)",
+      border: "1px solid rgba(255,255,255,0.10)",
       backdropFilter: "blur(12px)",
       boxShadow: glow
         ? "0 0 0 1px hsl(var(--primary) / 0.25), 0 0 40px hsl(var(--primary) / 0.18)"
@@ -182,7 +182,7 @@ const HeroVisual = () => {
 const Hero = () => (
   <SectionShell className="pt-20 md:pt-24">
     <div className="absolute inset-0 pointer-events-none">
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[500px] bg-primary/5 blur-[140px] rounded-full" />
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[500px] bg-primary/10 blur-[140px] rounded-full" />
     </div>
     <div className="container mx-auto px-4 md:px-6 relative">
       <div className="grid md:grid-cols-2 gap-12 items-center">
@@ -255,7 +255,7 @@ const Definition = () => (
             <div
               className="w-12 h-12 rounded-xl flex items-center justify-center"
               style={{
-                background: "rgba(255,255,255,0.04)",
+                background: "rgba(255,255,255,0.06)",
                 border: "0.5px solid rgba(255,255,255,0.1)",
                 boxShadow: "0 0 24px hsl(var(--primary) / 0.15)",
               }}
@@ -491,7 +491,7 @@ const Solution = () => {
                 key={name}
                 className="flex items-center justify-between gap-4 px-4 py-3 rounded-xl"
                 style={{
-                  background: "rgba(255,255,255,0.03)",
+                  background: "rgba(255,255,255,0.06)",
                   border: "0.5px solid rgba(255,255,255,0.07)",
                 }}
               >
@@ -692,7 +692,7 @@ const BusinessModel = () => {
                   <div
                     className="w-14 h-14 rounded-xl flex items-center justify-center"
                     style={{
-                      background: "rgba(255,255,255,0.04)",
+                      background: "rgba(255,255,255,0.06)",
                       border: "0.5px solid rgba(255,255,255,0.1)",
                       boxShadow: "0 0 24px hsl(var(--primary) / 0.15)",
                     }}
@@ -784,7 +784,7 @@ const Differentiation = () => {
               <div
                 className="w-11 h-11 rounded-xl flex items-center justify-center shrink-0"
                 style={{
-                  background: "rgba(255,255,255,0.04)",
+                  background: "rgba(255,255,255,0.06)",
                   border: "0.5px solid rgba(255,255,255,0.1)",
                   boxShadow: "0 0 20px hsl(var(--primary) / 0.15)",
                 }}
@@ -1076,7 +1076,7 @@ const MarketFit = () => {
                   <div
                     className="w-12 h-12 rounded-xl flex items-center justify-center"
                     style={{
-                      background: "rgba(255,255,255,0.04)",
+                      background: "rgba(255,255,255,0.06)",
                       border: "0.5px solid rgba(255,255,255,0.1)",
                     }}
                   >
@@ -1131,7 +1131,7 @@ const Highlights = () => {
               <div
                 className="w-11 h-11 rounded-xl flex items-center justify-center mb-4"
                 style={{
-                  background: "rgba(255,255,255,0.04)",
+                  background: "rgba(255,255,255,0.06)",
                   border: "0.5px solid rgba(255,255,255,0.1)",
                   boxShadow: "0 0 20px hsl(var(--primary) / 0.15)",
                 }}
@@ -1172,8 +1172,8 @@ const Takeaways = () => {
               <div
                 className="w-11 h-11 rounded-xl flex items-center justify-center"
                 style={{
-                  background: "rgba(255,255,255,0.03)",
-                  border: "0.5px solid rgba(255,255,255,0.08)",
+                  background: "rgba(255,255,255,0.06)",
+                  border: "1px solid rgba(255,255,255,0.10)",
                   boxShadow: "0 0 18px hsl(var(--primary) / 0.15)",
                 }}
               >

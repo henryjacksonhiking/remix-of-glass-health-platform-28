@@ -107,12 +107,12 @@ const VisionMissionPage = () => (
             </p>
           </div>
           <div className="space-y-2">
-            <span className="text-[10px] uppercase tracking-widest text-primary/60 block text-center mb-3">The future state</span>
+            <span className="text-[10px] uppercase tracking-widest text-primary block text-center mb-3">The future state</span>
             {["All patient communication centralized", "Data flows seamlessly", "Workflows automated", "Full visibility and control"].map((label, i) => (
               <motion.div key={label} animate={{ boxShadow: [`0 0 8px hsl(var(--primary)/0.1)`, `0 0 16px hsl(var(--primary)/0.2)`, `0 0 8px hsl(var(--primary)/0.1)`] }}
                 transition={{ duration: 6, repeat: Infinity, delay: i }} className="glass-panel px-4 py-3 border-l-2 border-primary/50 hover-glow-card">
                 <span className="text-xs text-muted-foreground">{["💬", "👤", "⚙️", "🤖"][i]} {["Communication", "CRM & Lifecycle", "Data & Integration", "AI Intelligence"][i]}</span>
-                <span className="text-[10px] text-primary/60 ml-2">— {label}</span>
+                <span className="text-[10px] text-primary ml-2">— {label}</span>
               </motion.div>
             ))}
           </div>

@@ -106,7 +106,7 @@ const AboutPage = () => (
                 const Icon = item.icon;
                 return (
                   <div key={item.label} className="flex items-center gap-2">
-                    <Icon className="w-4 h-4 text-primary/60" />
+                    <Icon className="w-4 h-4 text-primary" />
                     <span className="text-xs text-muted-foreground">{item.label}</span>
                   </div>
                 );
@@ -122,14 +122,14 @@ const AboutPage = () => (
       <div className="container mx-auto px-4 md:px-6 max-w-4xl">
         <div className="grid md:grid-cols-2 gap-8 relative">
           <motion.div initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5 }}
-            className="glass-panel p-8 border-t-2 border-primary/30 hover-glow-card">
+            className="glass-panel p-8 border-t-2 border-primary/40 hover-glow-card">
             <h2 className="text-lg font-semibold text-foreground mb-3">Our mission</h2>
             <p className="text-sm text-muted-foreground leading-relaxed">
               To empower healthcare providers with intelligent tools that simplify operations, enhance patient experiences, and enable sustainable growth.
             </p>
           </motion.div>
           <motion.div initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: 0.2 }}
-            className="glass-panel p-8 border-t-2 border-primary/30 hover-glow-card">
+            className="glass-panel p-8 border-t-2 border-primary/40 hover-glow-card">
             <h2 className="text-lg font-semibold text-foreground mb-3">Our vision</h2>
             <p className="text-sm text-muted-foreground leading-relaxed">
               To become the unified operating system for healthcare practices — connecting communication, data, and workflows into one seamless ecosystem.

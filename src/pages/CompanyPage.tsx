@@ -64,7 +64,7 @@ const CompanyPage = () => (
     {/* Hero */}
     <section className="relative overflow-hidden py-12 md:py-20">
       <div className="absolute inset-0 opacity-40"><BeamsBackground intensity="medium" /></div>
-      <div className="absolute top-20 right-1/4 w-72 h-72 rounded-full blur-[120px] bg-primary/8 animate-glow-pulse" />
+      <div className="absolute top-20 right-1/4 w-72 h-72 rounded-full blur-[120px] bg-primary/12 animate-glow-pulse" />
       <div className="container mx-auto px-4 md:px-6 relative z-10 max-w-4xl">
         <div className="grid md:grid-cols-2 gap-12 items-center">
           <div>
@@ -111,13 +111,13 @@ const CompanyPage = () => (
     <section className="py-12 md:py-20 border-t border-glass-border">
       <div className="container mx-auto px-4 md:px-6 max-w-4xl">
         <div className="grid md:grid-cols-2 gap-8 relative">
-          <motion.div initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5 }} className="glass-panel p-8 border-t-2 border-primary/30 hover-glow-card">
+          <motion.div initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5 }} className="glass-panel p-8 border-t-2 border-primary/40 hover-glow-card">
             <h2 className="text-lg font-semibold text-foreground mb-3">Our mission</h2>
             <p className="text-sm text-muted-foreground leading-relaxed">
               To help healthcare practices operate more efficiently by unifying systems, improving communication, and enabling data-driven decisions through AI.
             </p>
           </motion.div>
-          <motion.div initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: 0.2 }} className="glass-panel p-8 border-t-2 border-primary/30 hover-glow-card">
+          <motion.div initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: 0.2 }} className="glass-panel p-8 border-t-2 border-primary/40 hover-glow-card">
             <h2 className="text-lg font-semibold text-foreground mb-3">Our vision</h2>
             <p className="text-sm text-muted-foreground leading-relaxed">
               We envision a healthcare ecosystem where every patient interaction is connected, all data is centralized and actionable, workflows are automated, and every decision is supported by AI.

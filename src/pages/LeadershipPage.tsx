@@ -89,7 +89,7 @@ const LeadershipPage = () => (
             <div className="space-y-2 w-40 mx-auto">
               {["Communication", "CRM", "Data", "AI"].map((l, i) => (
                 <motion.div key={l} animate={{ opacity: [0.3, 0.5, 0.3] }} transition={{ duration: 8, repeat: Infinity, delay: i }}
-                  className="glass-panel px-3 py-2 border-l-2 border-primary/30 hover-glow-card">
+                  className="glass-panel px-3 py-2 border-l-2 border-primary/40 hover-glow-card">
                   <span className="text-[10px] text-muted-foreground">{l}</span>
                 </motion.div>
               ))}
@@ -129,7 +129,7 @@ const LeadershipPage = () => (
             >
               {/* UPDATE: Replace this placeholder with actual leader photo. Recommended: professional portrait, consistent lighting, same crop for all leaders. */}
               <div className="aspect-[3/4] bg-background/50 flex flex-col items-center justify-center" aria-label={`Photo placeholder for ${leader.title}`}>
-                <User className="w-12 h-12 text-primary/40" />
+                <User className="w-12 h-12 text-primary/70" />
                 <span className="text-[10px] text-muted-foreground mt-2">[Photo]</span>
               </div>
               <div className="p-5">
@@ -217,7 +217,7 @@ const LeadershipPage = () => (
             </div>
             <div className="space-y-1 w-28">
               {["Comm", "CRM", "Data", "AI"].map((l) => (
-                <div key={l} className="glass-panel px-2 py-1.5 border-l border-primary/30 hover-glow-card">
+                <div key={l} className="glass-panel px-2 py-1.5 border-l border-primary/40 hover-glow-card">
                   <span className="text-[9px] text-muted-foreground">{l}</span>
                 </div>
               ))}

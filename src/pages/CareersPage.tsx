@@ -93,7 +93,7 @@ const CareersPage = () => (
             <div className="relative w-56 h-56">
               <div className="absolute inset-0 flex items-center justify-center">
                 <motion.div animate={{ opacity: [0.5, 0.9, 0.5] }} transition={{ duration: 4, repeat: Infinity }}
-                  className="w-14 h-14 rounded-full bg-primary/10 border border-primary/30 flex items-center justify-center">
+                  className="w-14 h-14 rounded-full bg-primary/10 border border-primary/40 flex items-center justify-center">
                   <span className="text-[10px] text-primary font-medium">Borna AI</span>
                 </motion.div>
               </div>
@@ -103,7 +103,7 @@ const CareersPage = () => (
                 const y = 50 + 40 * Math.sin(angle);
                 return (
                   <motion.div key={role} animate={{ opacity: [0.4, 0.8, 0.4] }} transition={{ duration: 4, repeat: Infinity, delay: i * 0.7 }}
-                    className="absolute w-12 h-12 rounded-full bg-primary/5 border border-primary/20 flex items-center justify-center hover:border-primary/50 transition-colors"
+                    className="absolute w-12 h-12 rounded-full bg-primary/10 border border-primary/40 flex items-center justify-center hover:border-primary/50 transition-colors"
                     style={{ left: `${x}%`, top: `${y}%`, transform: 'translate(-50%, -50%)' }} aria-label={`${role} team role`}>
                     <span className="text-[8px] text-muted-foreground">{role}</span>
                   </motion.div>
@@ -187,7 +187,7 @@ const CareersPage = () => (
         <div className="glass-panel p-6 space-y-0 hover-glow-card">
           {traits.map((t, i) => (
             <motion.div key={t.title} initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} transition={{ delay: i * 0.15 }}
-              className="py-3 border-l-2 border-primary/30 pl-4 hover:border-primary/60 transition-colors">
+              className="py-3 border-l-2 border-primary/40 pl-4 hover:border-primary/60 transition-colors">
               <span className="text-sm font-medium text-foreground">{t.title}</span>
               <span className="text-xs text-muted-foreground ml-2">— {t.desc}</span>
             </motion.div>
@@ -227,7 +227,7 @@ const CareersPage = () => (
           <div className="hidden md:block absolute top-3 left-0 right-0 h-px bg-primary/20" />
           {hiringSteps.map((step, i) => (
             <div key={step.label} className="relative flex flex-col items-center text-center flex-1">
-              <div className="w-5 h-5 rounded-full bg-primary/40 border border-primary/30 mb-3 relative z-10 flex items-center justify-center">
+              <div className="w-5 h-5 rounded-full bg-primary/40 border border-primary/40 mb-3 relative z-10 flex items-center justify-center">
                 <span className="text-[8px] text-primary font-medium">{i + 1}</span>
               </div>
               <span className="text-xs font-medium text-foreground mb-1">{step.label}</span>
