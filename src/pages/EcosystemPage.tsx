@@ -420,7 +420,7 @@ const JourneyFlow = () => {
             >
               <s.Icon className="w-5 h-5 sm:w-6 sm:h-6 text-primary" strokeWidth={1.5} />
               <span
-                className={`absolute left-1/2 -translate-x-1/2 text-[11px] sm:text-xs font-medium text-foreground whitespace-nowrap pointer-events-none ${
+                className={`absolute left-1/2 -translate-x-1/2 text-[11px] sm:text-xs font-semibold text-primary whitespace-nowrap pointer-events-none drop-shadow-[0_2px_6px_rgba(0,0,0,0.6)] ${
                   isBottomHalf ? "top-full mt-2" : "bottom-full mb-2"
                 }`}
               >
