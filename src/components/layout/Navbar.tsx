@@ -229,7 +229,6 @@ const Navbar = () => {
                   style={dropdownStyle}
                 >
                   {[
-                    { to: "/ecosystem", label: "Overview" },
                     { to: "/ecosystem/communication", label: "Communication Layer" },
                     { to: "/ecosystem/crm-lifecycle", label: "CRM & Lifecycle" },
                     { to: "/ecosystem/data-integration", label: "Data Integration" },
