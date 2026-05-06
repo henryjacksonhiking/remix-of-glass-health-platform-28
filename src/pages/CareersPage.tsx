@@ -86,9 +86,9 @@ const CareersPage = () => (
             <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.1, duration: 0.6 }} className="body-text mb-8">
               We are not creating isolated tools — we are designing infrastructure that transforms how healthcare businesses operate, grow, and deliver care.
             </motion.p>
-            <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.2 }} className="flex flex-wrap gap-3">
-              <a href="#open-roles" className="gradient-btn text-sm">View Open Roles</a>
-              <a href="mailto:careers@borna.ai" className="border border-glass-border text-foreground px-5 py-2.5 rounded-lg text-sm hover:bg-glass transition-colors">Apply Now</a>
+            <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.2 }} className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
+              <a href="#open-roles" className="gradient-btn text-sm h-11 inline-flex items-center justify-center">View Open Roles</a>
+              <a href="mailto:careers@borna.ai" className="border border-glass-border text-foreground px-5 rounded-lg text-sm hover:bg-glass transition-colors h-11 inline-flex items-center justify-center">Apply Now</a>
             </motion.div>
           </div>
           {/* Team network visual */}
