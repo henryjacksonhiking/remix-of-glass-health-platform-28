@@ -92,12 +92,22 @@ const CareersPage = () => (
             </motion.div>
           </div>
           {/* Team network visual */}
-          <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.3 }} className="hidden md:flex justify-center">
-            <div className="relative w-56 h-56">
+          <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.3 }} className="mt-8 md:mt-0 flex justify-center scale-75 md:scale-100 origin-center">
+            <div className="relative w-72 h-72">
+              <div className="absolute inset-0 rounded-full blur-[80px] bg-primary/15 pointer-events-none" />
+              {/* Connecting lines */}
+              <svg className="absolute inset-0 w-full h-full" viewBox="0 0 100 100" fill="none" aria-hidden>
+                {[0,1,2,3,4,5].map(i => {
+                  const angle = (i * 60 - 90) * (Math.PI / 180);
+                  const x = 50 + 38 * Math.cos(angle);
+                  const y = 50 + 38 * Math.sin(angle);
+                  return <line key={i} x1="50" y1="50" x2={x} y2={y} stroke="hsl(var(--primary))" strokeOpacity="0.25" strokeWidth="0.4" strokeDasharray="1.5 1.5" />;
+                })}
+              </svg>
               <div className="absolute inset-0 flex items-center justify-center">
-                <motion.div animate={{ opacity: [0.5, 0.9, 0.5] }} transition={{ duration: 4, repeat: Infinity }}
-                  className="w-14 h-14 rounded-full bg-primary/10 border border-primary/40 flex items-center justify-center">
-                  <span className="text-xs text-primary font-medium">Borna AI</span>
+                <motion.div animate={{ opacity: [0.6, 1, 0.6] }} transition={{ duration: 4, repeat: Infinity }}
+                  className="w-16 h-16 rounded-full bg-primary/15 border border-primary/50 flex items-center justify-center backdrop-blur-sm shadow-[0_0_30px_hsla(170,100%,43%,0.25)]">
+                  <span className="text-xs text-primary font-semibold">Borna AI</span>
                 </motion.div>
               </div>
               {["Product", "Engineering", "AI", "Growth", "Design", "Operations"].map((role, i) => {
@@ -105,10 +115,10 @@ const CareersPage = () => (
                 const x = 50 + 40 * Math.cos(angle);
                 const y = 50 + 40 * Math.sin(angle);
                 return (
-                  <motion.div key={role} animate={{ opacity: [0.4, 0.8, 0.4] }} transition={{ duration: 4, repeat: Infinity, delay: i * 0.7 }}
-                    className="absolute w-12 h-12 rounded-full bg-primary/10 border border-primary/40 flex items-center justify-center hover:border-primary/50 transition-colors"
+                  <motion.div key={role} animate={{ opacity: [0.5, 0.9, 0.5] }} transition={{ duration: 4, repeat: Infinity, delay: i * 0.7 }}
+                    className="absolute w-14 h-14 rounded-full bg-primary/10 border border-primary/40 flex items-center justify-center hover:border-primary/60 transition-colors"
                     style={{ left: `${x}%`, top: `${y}%`, transform: 'translate(-50%, -50%)' }} aria-label={`${role} team role`}>
-                    <span className="text-xs text-muted-foreground">{role}</span>
+                    <span className="text-xs text-foreground/90">{role}</span>
                   </motion.div>
                 );
               })}
