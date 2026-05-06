@@ -76,7 +76,7 @@ const AboutPage = () => (
                 <motion.div key={layer.label} animate={{ opacity: [0.5, 0.8, 0.5], y: [0, -2, 0] }} transition={{ duration: 7, repeat: Infinity, delay: i }}
                   className="glass-panel px-4 py-3 mb-2 border-l-2 border-primary/40 hover-glow-card">
                   <span className="text-xs font-medium text-foreground">{layer.label}</span>
-                  <span className="text-[10px] text-muted-foreground block">{layer.sub}</span>
+                  <span className="text-xs text-muted-foreground block">{layer.sub}</span>
                 </motion.div>
               ))}
               <div className="flex gap-1 justify-end mt-1">
@@ -280,7 +280,7 @@ const AboutPage = () => (
                 <span className="text-xs text-primary font-medium block mb-2">{i + 1}</span>
                 <div className="w-9 h-9 rounded-lg bg-primary/10 flex items-center justify-center mx-auto mb-2"><Icon className="w-4 h-4 text-primary" /></div>
                 <h3 className="text-xs font-medium text-foreground mb-1">{step.label}</h3>
-                <p className="text-[10px] text-muted-foreground">{step.desc}</p>
+                <p className="text-xs text-muted-foreground">{step.desc}</p>
               </motion.div>
             );
           })}

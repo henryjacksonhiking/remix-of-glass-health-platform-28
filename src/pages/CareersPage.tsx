@@ -97,7 +97,7 @@ const CareersPage = () => (
               <div className="absolute inset-0 flex items-center justify-center">
                 <motion.div animate={{ opacity: [0.5, 0.9, 0.5] }} transition={{ duration: 4, repeat: Infinity }}
                   className="w-14 h-14 rounded-full bg-primary/10 border border-primary/40 flex items-center justify-center">
-                  <span className="text-[10px] text-primary font-medium">Borna AI</span>
+                  <span className="text-xs text-primary font-medium">Borna AI</span>
                 </motion.div>
               </div>
               {["Product", "Engineering", "AI", "Growth", "Design", "Operations"].map((role, i) => {
@@ -108,7 +108,7 @@ const CareersPage = () => (
                   <motion.div key={role} animate={{ opacity: [0.4, 0.8, 0.4] }} transition={{ duration: 4, repeat: Infinity, delay: i * 0.7 }}
                     className="absolute w-12 h-12 rounded-full bg-primary/10 border border-primary/40 flex items-center justify-center hover:border-primary/50 transition-colors"
                     style={{ left: `${x}%`, top: `${y}%`, transform: 'translate(-50%, -50%)' }} aria-label={`${role} team role`}>
-                    <span className="text-[8px] text-muted-foreground">{role}</span>
+                    <span className="text-xs text-muted-foreground">{role}</span>
                   </motion.div>
                 );
               })}
@@ -175,7 +175,7 @@ const CareersPage = () => (
                 className="glass-panel p-4 text-center hover-glow-card">
                 <div className="w-9 h-9 rounded-lg bg-primary/10 flex items-center justify-center mx-auto mb-2"><Icon className="w-4 h-4 text-primary" /></div>
                 <h3 className="text-xs font-medium text-foreground mb-1">{p.title}</h3>
-                <p className="text-[10px] text-muted-foreground">{p.desc}</p>
+                <p className="text-xs text-muted-foreground">{p.desc}</p>
               </motion.div>
             );
           })}
@@ -210,7 +210,7 @@ const CareersPage = () => (
               role="article" aria-label={role.title} className="glass-panel p-6 hover:translate-y-[-2px] transition-all duration-300 hover-glow-card">
               <h3 className="text-base font-semibold text-foreground mb-2">{role.title}</h3>
               <div className="flex gap-2 mb-3">
-                {role.chips.map(c => <span key={c} className="text-[10px] px-2 py-0.5 rounded-full bg-primary/10 text-primary">{c}</span>)}
+                {role.chips.map(c => <span key={c} className="text-xs px-2 py-0.5 rounded-full bg-primary/10 text-primary">{c}</span>)}
               </div>
               <p className="text-sm text-muted-foreground mb-4">{role.desc}</p>
               <a href="mailto:careers@borna.ai" className="block text-center border border-glass-border text-foreground px-4 py-2 rounded-lg text-sm hover:bg-glass transition-colors">
@@ -231,10 +231,10 @@ const CareersPage = () => (
           {hiringSteps.map((step, i) => (
             <div key={step.label} className="relative flex flex-col items-center text-center flex-1">
               <div className="w-5 h-5 rounded-full bg-primary/40 border border-primary/40 mb-3 relative z-10 flex items-center justify-center">
-                <span className="text-[8px] text-primary font-medium">{i + 1}</span>
+                <span className="text-xs text-primary font-medium">{i + 1}</span>
               </div>
               <span className="text-xs font-medium text-foreground mb-1">{step.label}</span>
-              <span className="text-[10px] text-muted-foreground max-w-[120px]">{step.desc}</span>
+              <span className="text-xs text-muted-foreground max-w-[120px]">{step.desc}</span>
             </div>
           ))}
         </div>
