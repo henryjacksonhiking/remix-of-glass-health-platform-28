@@ -88,7 +88,7 @@ const LeadershipPage = () => (
             </motion.div>
           </div>
           {/* Faint platform stack */}
-          <div className="hidden md:block opacity-35">
+          <div className="hidden md:block opacity-55">
             <div className="space-y-2 w-40 mx-auto">
               {["Communication", "CRM", "Data", "AI"].map((l, i) => (
                 <motion.div key={l} animate={{ opacity: [0.3, 0.5, 0.3] }} transition={{ duration: 8, repeat: Infinity, delay: i }}

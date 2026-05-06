@@ -12,7 +12,7 @@ import CTASection from "@/components/sections/CTASection";
 const fadeIn = { hidden: { opacity: 0, y: 16 }, visible: (i: number) => ({ opacity: 1, y: 0, transition: { delay: i * 0.1, duration: 0.5 } }) };
 
 const stages = [
-  { label: "Fragmented", sub: "Today's healthcare reality", glow: "opacity-25" },
+  { label: "Fragmented", sub: "Today's healthcare reality", glow: "opacity-50" },
   { label: "Connected", sub: "Integrated systems", glow: "opacity-60" },
   { label: "Intelligent", sub: "AI-powered operations", glow: "opacity-90" },
   { label: "Optimized", sub: "Borna's vision", glow: "opacity-100" },
