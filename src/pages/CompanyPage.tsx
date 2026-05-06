@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import SpotlightCard from "@/components/ui/spotlight-card";
 import { Helmet } from "react-helmet-async";
 import { Link } from "react-router-dom";
 import { Layers, Cpu, Workflow, Database, Network, Zap, Brain, MessageSquare, Users, BarChart3, Settings, Rocket, RefreshCw, GitBranch, Heart, LineChart, Shield, TrendingUp } from "lucide-react";
@@ -65,6 +66,7 @@ const CompanyPage = () => (
     <section className="relative overflow-hidden py-12 md:py-20">
       <div className="absolute inset-0 opacity-50"><BeamsBackground intensity="medium" /></div>
       <div className="absolute top-20 right-1/4 w-72 h-72 rounded-full blur-[120px] bg-primary/12 animate-glow-pulse" />
+      <div className="absolute bottom-10 left-1/4 w-56 h-56 rounded-full blur-[100px] bg-deep-blue/10 animate-glow-pulse pointer-events-none" style={{ animationDelay: "1.5s" }} />
       <div className="container mx-auto px-4 md:px-6 relative z-10 max-w-4xl">
         <div className="grid md:grid-cols-2 gap-12 items-center">
           <div>

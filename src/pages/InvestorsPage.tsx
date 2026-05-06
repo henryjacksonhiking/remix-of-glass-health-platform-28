@@ -1,4 +1,5 @@
 import { Helmet } from "react-helmet-async";
+import SpotlightCard from "@/components/ui/spotlight-card";
 import { Link } from "react-router-dom";
 import { motion, useReducedMotion } from "framer-motion";
 import {
