@@ -62,7 +62,7 @@ const VisionMissionPage = () => (
       <div className="container mx-auto px-4 md:px-6 relative z-10 max-w-5xl">
         <div className="grid md:grid-cols-2 gap-12 items-center">
           <div>
-            <motion.h1 initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }} className="hero-headline text-foreground mb-6">Our vision & mission</motion.h1>
+            <motion.h1 initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }} className="hero-headline text-foreground mb-6">Our <span className="gradient-text">vision & mission</span></motion.h1>
             <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.1, duration: 0.6 }} className="body-text mb-8">
               At Borna AI, we are building the foundation for the future of healthcare operations — where communication, data, and workflows are unified into one intelligent system.
             </motion.p>
@@ -104,7 +104,7 @@ const VisionMissionPage = () => (
       <div className="container mx-auto px-4 md:px-6 max-w-4xl">
         <div className="grid md:grid-cols-2 gap-12 items-start">
           <div>
-            <h2 className="section-headline text-foreground mb-4">Our vision: a unified healthcare platform</h2>
+            <h2 className="section-headline gradient-text mb-4">Our vision: a unified healthcare platform</h2>
             <p className="body-text">
               We envision a future where all patient communication is centralized, data flows seamlessly across systems, workflows are automated and optimized, and healthcare providers operate with full visibility and control.
             </p>
@@ -217,7 +217,7 @@ const VisionMissionPage = () => (
     {/* Long-term impact */}
     <section className="py-12 md:py-20 border-t border-glass-border">
       <div className="container mx-auto px-4 md:px-6">
-        <h2 className="section-headline text-foreground text-center mb-4">Creating long-term value in healthcare</h2>
+        <h2 className="section-headline gradient-text text-center mb-4">Creating long-term value in healthcare</h2>
         <p className="body-text text-center mx-auto max-w-2xl mb-12">
           The impact of a unified platform compounds. Every improvement accumulates month over month.
         </p>

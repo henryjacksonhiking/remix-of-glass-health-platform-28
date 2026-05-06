@@ -155,7 +155,7 @@ const CompanyPage = () => (
     {/* Approach */}
     <section className="py-12 md:py-20 border-t border-glass-border">
       <div className="container mx-auto px-4 md:px-6">
-        <h2 className="section-headline text-foreground text-center mb-4">A unified platform approach</h2>
+        <h2 className="section-headline gradient-text text-center mb-4">A unified platform approach</h2>
         <p className="body-text text-center mx-auto max-w-2xl mb-12">
           Borna addresses fragmentation by centralizing communication, integrating patient data, enabling AI-powered insights, and automating workflows.
         </p>
@@ -260,7 +260,7 @@ const CompanyPage = () => (
     {/* Why Borna */}
     <section className="py-12 md:py-20 border-t border-glass-border">
       <div className="container mx-auto px-4 md:px-6">
-        <h2 className="section-headline text-foreground text-center mb-12">Why Borna AI</h2>
+        <h2 className="section-headline gradient-text text-center mb-12">Why Borna AI</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
           {whyCards.map((card, i) => {
             const Icon = card.icon;

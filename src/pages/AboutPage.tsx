@@ -55,7 +55,7 @@ const AboutPage = () => (
       <div className="container mx-auto px-4 md:px-6 relative z-10 max-w-5xl">
         <div className="grid md:grid-cols-2 gap-12 items-center">
           <div>
-            <motion.h1 initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }} className="hero-headline text-foreground mb-6">About Borna AI</motion.h1>
+            <motion.h1 initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }} className="hero-headline text-foreground mb-6">About <span className="gradient-text">Borna AI</span></motion.h1>
             <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.1, duration: 0.6 }} className="body-text mb-8">
               Borna AI is a healthcare technology platform designed to transform how practices manage patient communication, operations, and growth. Our mission is to unify fragmented systems into one intelligent platform.
             </motion.p>
@@ -202,7 +202,7 @@ const AboutPage = () => (
     {/* What Makes Borna Different */}
     <section className="py-12 md:py-20 border-t border-glass-border">
       <div className="container mx-auto px-4 md:px-6">
-        <h2 className="section-headline text-foreground text-center mb-4">What makes Borna AI different</h2>
+        <h2 className="section-headline gradient-text text-center mb-4">What makes Borna AI different</h2>
         <p className="body-text text-center mx-auto max-w-2xl mb-12">Four architectural advantages that no collection of point tools can replicate.</p>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
           {diffCards.map((card, i) => {
@@ -244,7 +244,7 @@ const AboutPage = () => (
     {/* Commitment */}
     <section className="py-12 md:py-20 border-t border-glass-border">
       <div className="container mx-auto px-4 md:px-6">
-        <h2 className="section-headline text-foreground text-center mb-12">Our commitment to healthcare innovation</h2>
+        <h2 className="section-headline gradient-text text-center mb-12">Our commitment to healthcare innovation</h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-5xl mx-auto">
           {commitments.map((item, i) => {
             const Icon = item.icon;

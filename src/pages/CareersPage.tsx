@@ -79,7 +79,7 @@ const CareersPage = () => (
       <div className="container mx-auto px-4 md:px-6 relative z-10 max-w-5xl">
         <div className="grid md:grid-cols-2 gap-12 items-center">
           <div>
-            <motion.h1 initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }} className="hero-headline text-foreground mb-3">Careers at Borna AI</motion.h1>
+            <motion.h1 initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }} className="hero-headline text-foreground mb-3">Careers at <span className="gradient-text">Borna AI</span></motion.h1>
             <motion.h2 initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.05, duration: 0.6 }} className="text-lg text-primary font-medium mb-6">
               Build the healthcare operating system of the future
             </motion.h2>
@@ -202,7 +202,7 @@ const CareersPage = () => (
     {/* Open Roles */}
     <section id="open-roles" className="py-12 md:py-20 border-t border-glass-border">
       <div className="container mx-auto px-4 md:px-6">
-        <h2 className="section-headline text-foreground text-center mb-4">Open positions</h2>
+        <h2 className="section-headline gradient-text text-center mb-4">Open positions</h2>
         <p className="body-text text-center mx-auto max-w-xl mb-12">Every role contributes to the whole system — not to a siloed function.</p>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
           {roles.map((role, i) => (
