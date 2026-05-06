@@ -87,13 +87,14 @@ const LeadershipPage = () => (
               <Link to="/platform" className="border border-glass-border text-foreground px-5 py-2.5 rounded-lg text-sm hover:bg-glass transition-colors">Explore Platform</Link>
             </motion.div>
           </div>
-          {/* Faint platform stack */}
-          <div className="hidden md:block opacity-55">
-            <div className="space-y-2 w-40 mx-auto">
+          {/* Platform stack */}
+          <div className="mt-8 md:mt-0 scale-90 md:scale-100 origin-center relative">
+            <div className="absolute inset-0 rounded-xl blur-[60px] bg-primary/10 pointer-events-none" />
+            <div className="space-y-2 w-56 mx-auto relative">
               {["Communication", "CRM", "Data", "AI"].map((l, i) => (
-                <motion.div key={l} animate={{ opacity: [0.3, 0.5, 0.3] }} transition={{ duration: 8, repeat: Infinity, delay: i }}
-                  className="glass-panel px-3 py-2 border-l-2 border-primary/40 hover-glow-card">
-                  <span className="text-xs text-muted-foreground">{l}</span>
+                <motion.div key={l} animate={{ opacity: [0.6, 0.95, 0.6] }} transition={{ duration: 6, repeat: Infinity, delay: i }}
+                  className="glass-panel px-4 py-3 border-l-2 border-primary/50 hover-glow-card">
+                  <span className="text-sm text-foreground/90">{l}</span>
                 </motion.div>
               ))}
             </div>
