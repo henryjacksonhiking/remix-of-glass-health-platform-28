@@ -87,13 +87,14 @@ const LeadershipPage = () => (
               <Link to="/platform" className="border border-glass-border text-foreground px-5 py-2.5 rounded-lg text-sm hover:bg-glass transition-colors">Explore Platform</Link>
             </motion.div>
           </div>
-          {/* Faint platform stack */}
-          <div className="hidden md:block opacity-55">
-            <div className="space-y-2 w-40 mx-auto">
+          {/* Platform stack */}
+          <div className="mt-8 md:mt-0 scale-90 md:scale-100 origin-center relative">
+            <div className="absolute inset-0 rounded-xl blur-[60px] bg-primary/10 pointer-events-none" />
+            <div className="space-y-2 w-56 mx-auto relative">
               {["Communication", "CRM", "Data", "AI"].map((l, i) => (
-                <motion.div key={l} animate={{ opacity: [0.3, 0.5, 0.3] }} transition={{ duration: 8, repeat: Infinity, delay: i }}
-                  className="glass-panel px-3 py-2 border-l-2 border-primary/40 hover-glow-card">
-                  <span className="text-xs text-muted-foreground">{l}</span>
+                <motion.div key={l} animate={{ opacity: [0.6, 0.95, 0.6] }} transition={{ duration: 6, repeat: Infinity, delay: i }}
+                  className="glass-panel px-4 py-3 border-l-2 border-primary/50 hover-glow-card">
+                  <span className="text-sm text-foreground/90">{l}</span>
                 </motion.div>
               ))}
             </div>
@@ -130,9 +131,9 @@ const LeadershipPage = () => (
               aria-label={`${leader.name}, ${leader.title} — leadership card`}
               className="glass-panel overflow-hidden hover:translate-y-[-3px] transition-all duration-300 group"
             >
-              {/* UPDATE: Replace this placeholder with actual leader photo. Recommended: professional portrait, consistent lighting, same crop for all leaders. */}
-              <div className="aspect-[3/4] bg-background/50 flex flex-col items-center justify-center" aria-label={`Photo placeholder for ${leader.title}`}>
-                <User className="w-12 h-12 text-primary/70" />
+              {/* UPDATE: Replace this placeholder with actual leader photo. */}
+              <div className="aspect-[3/4] bg-gradient-to-b from-primary/10 to-background/50 border-b border-glass-border flex flex-col items-center justify-center" aria-label={`Photo placeholder for ${leader.title}`}>
+                <User className="w-16 h-16 text-primary" />
                 <span className="text-xs text-muted-foreground mt-2">[Photo]</span>
               </div>
               <div className="p-5">

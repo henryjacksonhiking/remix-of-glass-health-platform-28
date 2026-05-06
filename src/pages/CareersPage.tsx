@@ -86,18 +86,28 @@ const CareersPage = () => (
             <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.1, duration: 0.6 }} className="body-text mb-8">
               We are not creating isolated tools — we are designing infrastructure that transforms how healthcare businesses operate, grow, and deliver care.
             </motion.p>
-            <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.2 }} className="flex flex-wrap gap-3">
-              <a href="#open-roles" className="gradient-btn text-sm">View Open Roles</a>
-              <a href="mailto:careers@borna.ai" className="border border-glass-border text-foreground px-5 py-2.5 rounded-lg text-sm hover:bg-glass transition-colors">Apply Now</a>
+            <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.2 }} className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
+              <a href="#open-roles" className="gradient-btn text-sm h-11 inline-flex items-center justify-center">View Open Roles</a>
+              <a href="mailto:careers@borna.ai" className="border border-glass-border text-foreground px-5 rounded-lg text-sm hover:bg-glass transition-colors h-11 inline-flex items-center justify-center">Apply Now</a>
             </motion.div>
           </div>
           {/* Team network visual */}
-          <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.3 }} className="hidden md:flex justify-center">
-            <div className="relative w-56 h-56">
+          <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.3 }} className="mt-8 md:mt-0 flex justify-center scale-75 md:scale-100 origin-center">
+            <div className="relative w-72 h-72">
+              <div className="absolute inset-0 rounded-full blur-[80px] bg-primary/15 pointer-events-none" />
+              {/* Connecting lines */}
+              <svg className="absolute inset-0 w-full h-full" viewBox="0 0 100 100" fill="none" aria-hidden>
+                {[0,1,2,3,4,5].map(i => {
+                  const angle = (i * 60 - 90) * (Math.PI / 180);
+                  const x = 50 + 38 * Math.cos(angle);
+                  const y = 50 + 38 * Math.sin(angle);
+                  return <line key={i} x1="50" y1="50" x2={x} y2={y} stroke="hsl(var(--primary))" strokeOpacity="0.25" strokeWidth="0.4" strokeDasharray="1.5 1.5" />;
+                })}
+              </svg>
               <div className="absolute inset-0 flex items-center justify-center">
-                <motion.div animate={{ opacity: [0.5, 0.9, 0.5] }} transition={{ duration: 4, repeat: Infinity }}
-                  className="w-14 h-14 rounded-full bg-primary/10 border border-primary/40 flex items-center justify-center">
-                  <span className="text-xs text-primary font-medium">Borna AI</span>
+                <motion.div animate={{ opacity: [0.6, 1, 0.6] }} transition={{ duration: 4, repeat: Infinity }}
+                  className="w-16 h-16 rounded-full bg-primary/15 border border-primary/50 flex items-center justify-center backdrop-blur-sm shadow-[0_0_30px_hsla(170,100%,43%,0.25)]">
+                  <span className="text-xs text-primary font-semibold">Borna AI</span>
                 </motion.div>
               </div>
               {["Product", "Engineering", "AI", "Growth", "Design", "Operations"].map((role, i) => {
@@ -105,10 +115,10 @@ const CareersPage = () => (
                 const x = 50 + 40 * Math.cos(angle);
                 const y = 50 + 40 * Math.sin(angle);
                 return (
-                  <motion.div key={role} animate={{ opacity: [0.4, 0.8, 0.4] }} transition={{ duration: 4, repeat: Infinity, delay: i * 0.7 }}
-                    className="absolute w-12 h-12 rounded-full bg-primary/10 border border-primary/40 flex items-center justify-center hover:border-primary/50 transition-colors"
+                  <motion.div key={role} animate={{ opacity: [0.5, 0.9, 0.5] }} transition={{ duration: 4, repeat: Infinity, delay: i * 0.7 }}
+                    className="absolute w-14 h-14 rounded-full bg-primary/10 border border-primary/40 flex items-center justify-center hover:border-primary/60 transition-colors"
                     style={{ left: `${x}%`, top: `${y}%`, transform: 'translate(-50%, -50%)' }} aria-label={`${role} team role`}>
-                    <span className="text-xs text-muted-foreground">{role}</span>
+                    <span className="text-xs text-foreground/90">{role}</span>
                   </motion.div>
                 );
               })}
@@ -205,19 +215,21 @@ const CareersPage = () => (
         <h2 className="section-headline gradient-text text-center mb-4">Open positions</h2>
         <p className="body-text text-center mx-auto max-w-xl mb-12">Every role contributes to the whole system — not to a siloed function.</p>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
-          {roles.map((role, i) => (
+          {roles.map((role, i) => {
+            const accents = ['border-primary', 'border-deep-blue', 'border-electric-blue', 'border-primary/60'];
+            return (
             <motion.div key={role.title} custom={i} initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeIn}
-              role="article" aria-label={role.title} className="glass-panel p-6 hover:translate-y-[-2px] transition-all duration-300 hover-glow-card">
+              role="article" aria-label={role.title} className={`glass-panel p-6 hover:translate-y-[-2px] transition-all duration-300 hover-glow-card border-l-2 ${accents[i % accents.length]}`}>
               <h3 className="text-base font-semibold text-foreground mb-2">{role.title}</h3>
               <div className="flex gap-2 mb-3">
                 {role.chips.map(c => <span key={c} className="text-xs px-2 py-0.5 rounded-full bg-primary/10 text-primary">{c}</span>)}
               </div>
               <p className="text-sm text-muted-foreground mb-4">{role.desc}</p>
-              <a href="mailto:careers@borna.ai" className="block text-center border border-glass-border text-foreground px-4 py-2 rounded-lg text-sm hover:bg-glass transition-colors">
+              <a href="mailto:careers@borna.ai" className="gradient-btn text-sm w-full block text-center">
                 Apply Now →
               </a>
             </motion.div>
-          ))}
+          );})}
         </div>
       </div>
     </section>

@@ -65,22 +65,23 @@ const AboutPage = () => (
             </motion.div>
           </div>
           {/* 4-layer stack with perspective */}
-          <motion.div initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} transition={{ delay: 0.3, duration: 0.8 }} className="hidden md:block">
-            <div className="w-56 mx-auto" style={{ transform: 'perspective(600px) rotateZ(2deg)' }}>
+          <motion.div initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} transition={{ delay: 0.3, duration: 0.8 }} className="mt-8 md:mt-0 scale-90 md:scale-100 origin-center relative">
+            <div className="absolute inset-0 rounded-xl blur-[60px] bg-primary/12 pointer-events-none" />
+            <div className="w-72 mx-auto relative" style={{ transform: 'perspective(600px) rotateZ(2deg)' }}>
               {[
                 { label: "Communication", sub: "Calls · SMS · Chat · Video · Email" },
                 { label: "CRM & Lifecycle", sub: "Acquisition · Engagement · Retention" },
                 { label: "Data & Integration", sub: "EHR/PMS · Analytics · Reporting" },
                 { label: "AI Intelligence", sub: "Insights · Workflow AI · Predictive" },
               ].map((layer, i) => (
-                <motion.div key={layer.label} animate={{ opacity: [0.5, 0.8, 0.5], y: [0, -2, 0] }} transition={{ duration: 7, repeat: Infinity, delay: i }}
-                  className="glass-panel px-4 py-3 mb-2 border-l-2 border-primary/40 hover-glow-card">
-                  <span className="text-xs font-medium text-foreground">{layer.label}</span>
+                <motion.div key={layer.label} animate={{ opacity: [0.6, 0.95, 0.6], y: [0, -2, 0] }} transition={{ duration: 7, repeat: Infinity, delay: i }}
+                  className="glass-panel px-4 py-3 mb-2 border-l-2 border-primary/50 hover-glow-card">
+                  <span className="text-sm font-medium text-foreground">{layer.label}</span>
                   <span className="text-xs text-muted-foreground block">{layer.sub}</span>
                 </motion.div>
               ))}
               <div className="flex gap-1 justify-end mt-1">
-                {[0,1,2].map(i => <div key={i} className="w-8 h-px bg-primary/20" style={{ transform: `rotate(${10 + i * 5}deg)` }} />)}
+                {[0,1,2].map(i => <div key={i} className="w-8 h-px bg-primary/40" style={{ transform: `rotate(${10 + i * 5}deg)` }} />)}
               </div>
             </div>
           </motion.div>
