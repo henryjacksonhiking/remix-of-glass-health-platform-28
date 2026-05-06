@@ -338,39 +338,49 @@ const JourneyFlow = () => {
             d={`M ${cx} ${cy - R} A ${R} ${R} 0 1 1 ${cx - 0.01} ${cy - R} Z`}
           />
         </defs>
-        {/* Continuous orbital ring — single unified track passing through all nodes */}
-        <circle cx={cx} cy={cy} r={R} fill="none" stroke="#70F5E3" strokeOpacity="0.18" strokeWidth="6" filter="url(#orbitGlow)" />
-        <circle cx={cx} cy={cy} r={R} fill="none" stroke="#40EBD8" strokeOpacity="0.4" strokeWidth="2.5" />
-        <motion.circle
-          cx={cx}
-          cy={cy}
-          r={R}
-          fill="none"
-          stroke="#00DEC4"
-          strokeOpacity="0.95"
-          strokeWidth="1.4"
-          initial={{ pathLength: 0 }}
-          whileInView={{ pathLength: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 1.6, ease: "easeOut" }}
-        />
-        <circle
-          cx={cx}
-          cy={cy}
-          r={R - 16}
-          fill="none"
-          stroke="#70F5E3"
-          strokeOpacity="0.35"
-          strokeWidth="1"
-          strokeDasharray="3 6"
-        />
-        {/* center label */}
-        <circle cx={cx} cy={cy} r="80" fill="url(#journeyCoreGlow)" />
-        <circle cx={cx} cy={cy} r="56" fill="hsla(170, 100%, 43%, 0.14)" stroke="#00DEC4" strokeOpacity="0.5" strokeWidth="1.2" />
-        <text x={cx} y={cy - 4} textAnchor="middle" fontSize="14" fontWeight="600" fill="#00DEC4">Patient</text>
-        <text x={cx} y={cy + 14} textAnchor="middle" fontSize="14" fontWeight="600" fill="#00DEC4">Lifecycle</text>
+        {/* Visual rings + center label shifted toward bottom-right (nodes stay on original orbit) */}
+        {(() => {
+          const dx = 28;
+          const dy = 28;
+          const rcx = cx + dx;
+          const rcy = cy + dy;
+          return (
+            <g>
+              <circle cx={rcx} cy={rcy} r={R} fill="none" stroke="#70F5E3" strokeOpacity="0.18" strokeWidth="6" filter="url(#orbitGlow)" />
+              <circle cx={rcx} cy={rcy} r={R} fill="none" stroke="#40EBD8" strokeOpacity="0.4" strokeWidth="2.5" />
+              <motion.circle
+                cx={rcx}
+                cy={rcy}
+                r={R}
+                fill="none"
+                stroke="#00DEC4"
+                strokeOpacity="0.95"
+                strokeWidth="1.4"
+                initial={{ pathLength: 0 }}
+                whileInView={{ pathLength: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 1.6, ease: "easeOut" }}
+              />
+              <circle
+                cx={rcx}
+                cy={rcy}
+                r={R - 16}
+                fill="none"
+                stroke="#70F5E3"
+                strokeOpacity="0.35"
+                strokeWidth="1"
+                strokeDasharray="3 6"
+              />
+              {/* center label */}
+              <circle cx={rcx} cy={rcy} r="80" fill="url(#journeyCoreGlow)" />
+              <circle cx={rcx} cy={rcy} r="56" fill="hsla(170, 100%, 43%, 0.14)" stroke="#00DEC4" strokeOpacity="0.5" strokeWidth="1.2" />
+              <text x={rcx} y={rcy - 4} textAnchor="middle" fontSize="14" fontWeight="600" fill="#00DEC4">Patient</text>
+              <text x={rcx} y={rcy + 14} textAnchor="middle" fontSize="14" fontWeight="600" fill="#00DEC4">Lifecycle</text>
+            </g>
+          );
+        })()}
 
-        {/* animated traveling pulse (clockwise) */}
+        {/* animated traveling pulse (clockwise) — stays on node orbit */}
         <circle r="6" fill="#00DEC4" style={{ filter: "drop-shadow(0 0 8px #00DEC4)" }}>
           <animateMotion dur="14s" repeatCount="indefinite" rotate="auto">
             <mpath href="#journeyOrbit" />
