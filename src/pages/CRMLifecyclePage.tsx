@@ -46,98 +46,124 @@ import {
    ============================================================ */
 const LifecyclePipeline = ({ broken = false, compact = false }: { broken?: boolean; compact?: boolean }) => {
   const reduced = useReducedMotion();
-  const stages = broken
-    ? [
-        { label: "Lead", Icon: Target },
-        { label: "Contact", Icon: Handshake },
-        { label: "Appointment", Icon: Calendar },
-        { label: "Treatment", Icon: Heart },
-        { label: "Retention", Icon: RefreshCcw },
-      ]
-    : [
-        { label: "Lead", Icon: Target },
-        { label: "Contact", Icon: Handshake },
-        { label: "Appointment", Icon: Calendar },
-        { label: "Treatment", Icon: Heart },
-        { label: "Retention", Icon: RefreshCcw },
-      ];
 
-  const nodeW = compact ? 90 : 110;
-  const gap = compact ? 40 : 55;
-  const totalW = stages.length * nodeW + (stages.length - 1) * gap;
-  const h = compact ? 70 : 90;
+  // Healthy funnel — strong conversion across the lifecycle
+  const healthyStages = [
+    { label: "Leads",        sub: "New inquiries",    count: 1000, Icon: Target },
+    { label: "Contacted",    sub: "Reached & engaged", count: 820,  Icon: Handshake },
+    { label: "Appointments", sub: "Booked visits",     count: 640,  Icon: Calendar },
+    { label: "Treatment",    sub: "Active patients",   count: 540,  Icon: Heart },
+    { label: "Retained",     sub: "Returning patients",count: 470,  Icon: RefreshCcw },
+  ];
+
+  // Broken funnel — heavy leakage at contact + retention
+  const brokenStages = [
+    { label: "Leads",        sub: "New inquiries",    count: 1000, Icon: Target,     leak: 0 },
+    { label: "Contacted",    sub: "Slow follow-up",   count: 430,  Icon: Handshake,  leak: 570 },
+    { label: "Appointments", sub: "Missed bookings",  count: 280,  Icon: Calendar,   leak: 150 },
+    { label: "Treatment",    sub: "Active patients",  count: 210,  Icon: Heart,      leak: 70 },
+    { label: "Retained",     sub: "Lost to silence",  count: 90,   Icon: RefreshCcw, leak: 120 },
+  ];
+
+  const stages = broken ? brokenStages : healthyStages.map(s => ({ ...s, leak: 0 }));
+  const max = stages[0].count;
 
   return (
-    <div className="relative w-full overflow-x-auto">
-      <svg viewBox={`0 0 ${totalW} ${h}`} className="w-full max-w-[760px] mx-auto h-auto" aria-hidden="true">
-        <defs>
-          <filter id="pipeGlow">
-            <feGaussianBlur stdDeviation="2" result="b" />
-            <feMerge><feMergeNode in="b" /><feMergeNode in="SourceGraphic" /></feMerge>
-          </filter>
-        </defs>
+    <div className={`relative w-full ${compact ? "max-w-[680px]" : "max-w-[760px]"} mx-auto`}>
+      {/* Header row */}
+      {!compact && (
+        <div className="flex items-center justify-between mb-3 px-1">
+          <span className="text-[11px] uppercase tracking-widest text-muted-foreground">
+            {broken ? "Without Borna — leaks across the funnel" : "With Borna — patients move through every stage"}
+          </span>
+          <span className="text-[11px] uppercase tracking-widest text-primary/80">
+            {broken ? "9% retained" : "47% retained"}
+          </span>
+        </div>
+      )}
+
+      <div className="flex flex-col gap-2">
         {stages.map((s, i) => {
-          const cx = i * (nodeW + gap) + nodeW / 2;
-          const cy = h / 2;
-          const isBroken = broken && (i === 1 || i === 4);
-          const opacity = broken ? 0.25 : 0.4 + i * 0.15;
+          const widthPct = (s.count / max) * 100;
+          const conv = i === 0 ? null : Math.round((s.count / stages[i - 1].count) * 100);
+          const isLeaky = broken && conv !== null && conv < 70;
 
           return (
-            <g key={s.label}>
-              {/* connecting line */}
-              {i < stages.length - 1 && (
-                <line
-                  x1={cx + nodeW / 2 - 5}
-                  y1={cy}
-                  x2={cx + nodeW + gap - nodeW / 2 + 5}
-                  y2={cy}
-                  stroke="#00DEC4"
-                  strokeWidth={broken && (i === 0 || i === 3) ? 0 : 1.5}
-                  strokeOpacity={broken ? 0.15 : 0.6}
-                  strokeDasharray={broken && (i === 0 || i === 3) ? "4 4" : "none"}
-                  filter="url(#pipeGlow)"
-                />
+            <div key={s.label} className="relative">
+              {/* Conversion connector */}
+              {i > 0 && (
+                <div className="flex items-center gap-2 pl-3 -mt-1 mb-1 h-4">
+                  <ArrowRight className={`w-3 h-3 ${isLeaky ? "text-red-400/70" : "text-primary/70"}`} strokeWidth={2} />
+                  <span className={`text-[10px] font-medium ${isLeaky ? "text-red-400/80" : "text-primary/70"}`}>
+                    {conv}% conversion
+                  </span>
+                  {broken && s.leak > 0 && (
+                    <span className="text-[10px] text-red-400/70 ml-auto pr-2">
+                      −{s.leak.toLocaleString()} lost
+                    </span>
+                  )}
+                </div>
               )}
-              {/* node */}
-              <rect
-                x={cx - nodeW / 2 + 10}
-                y={cy - 22}
-                width={nodeW - 20}
-                height={44}
-                rx={22}
-                fill={`rgba(0, 222, 196, ${isBroken ? 0.05 : opacity * 0.15})`}
-                stroke="#00DEC4"
-                strokeWidth={1}
-                strokeOpacity={broken ? 0.2 : opacity}
-              />
-              <text
-                x={cx}
-                y={cy + 4}
-                textAnchor="middle"
-                fill={broken ? "rgba(255,255,255,0.35)" : "rgba(255,255,255,0.95)"}
-                fontSize={compact ? 11 : 13}
-                fontWeight={600}
-              >
-                {s.label}
-              </text>
-              {/* particle */}
-              {!broken && !reduced && i < stages.length - 1 && (
-                <circle r={3} fill="#00DEC4" filter="url(#pipeGlow)">
-                  <animateMotion
-                    dur={`${3 + i * 0.3}s`}
-                    repeatCount="indefinite"
-                    path={`M${cx + nodeW / 2 - 5},${cy} L${cx + nodeW + gap - nodeW / 2 + 5},${cy}`}
+
+              {/* Stage row */}
+              <div className="flex items-center gap-3">
+                {/* Icon */}
+                <div className={`shrink-0 w-9 h-9 rounded-lg border flex items-center justify-center ${
+                  broken
+                    ? "border-white/10 bg-white/[0.03]"
+                    : "border-primary/40 bg-primary/10 shadow-[0_0_12px_-4px_hsla(170,100%,43%,0.6)]"
+                }`}>
+                  <s.Icon className={`w-4 h-4 ${broken ? "text-white/40" : "text-primary"}`} strokeWidth={1.8} />
+                </div>
+
+                {/* Bar */}
+                <div className="flex-1 relative h-9 rounded-md bg-white/[0.03] border border-white/[0.06] overflow-hidden">
+                  <motion.div
+                    initial={{ width: 0 }}
+                    whileInView={{ width: `${widthPct}%` }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.9, delay: i * 0.12, ease: [0.22, 1, 0.36, 1] }}
+                    className={`absolute inset-y-0 left-0 rounded-md ${
+                      broken
+                        ? "bg-gradient-to-r from-white/10 to-white/[0.04]"
+                        : "bg-gradient-to-r from-primary/40 via-primary/25 to-primary/10"
+                    }`}
+                    style={broken ? {} : { boxShadow: "inset 0 0 14px hsla(170,100%,43%,0.25)" }}
                   />
-                  <animate attributeName="opacity" values="0.3;1;0.3" dur={`${3 + i * 0.3}s`} repeatCount="indefinite" />
-                </circle>
-              )}
-            </g>
+                  {/* Flowing particle */}
+                  {!broken && !reduced && (
+                    <motion.div
+                      className="absolute top-1/2 -translate-y-1/2 w-1.5 h-1.5 rounded-full bg-primary"
+                      style={{ boxShadow: "0 0 8px hsl(var(--primary))" }}
+                      animate={{ left: ["0%", `${widthPct - 2}%`] }}
+                      transition={{ duration: 2.4 + i * 0.2, repeat: Infinity, ease: "easeInOut", delay: i * 0.3 }}
+                    />
+                  )}
+                  <div className="relative h-full flex items-center justify-between px-3">
+                    <div className="flex items-center gap-2 min-w-0">
+                      <span className={`text-xs font-semibold ${broken ? "text-white/60" : "text-foreground"}`}>
+                        {s.label}
+                      </span>
+                      <span className="hidden sm:inline text-[10px] text-muted-foreground truncate">
+                        {s.sub}
+                      </span>
+                    </div>
+                    <span className={`text-xs font-mono tabular-nums ${broken ? "text-white/50" : "text-primary"}`}>
+                      {s.count.toLocaleString()}
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
           );
         })}
-      </svg>
-      {!compact && !broken && (
-        <p className="text-center text-xs text-muted-foreground mt-3">
-          Full patient lifecycle — captured and managed
+      </div>
+
+      {!compact && (
+        <p className="text-center text-xs text-muted-foreground mt-4">
+          {broken
+            ? "Patients leak between stages — no visibility, no recovery"
+            : "Full patient lifecycle — every stage tracked, every patient retained"}
         </p>
       )}
     </div>
