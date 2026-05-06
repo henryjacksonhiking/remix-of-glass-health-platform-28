@@ -335,7 +335,7 @@ const JourneyFlow = () => {
           </filter>
           <path
             id="journeyOrbit"
-            d={`M ${cx} ${cy - R} A ${R} ${R} 0 1 1 ${cx - 0.01} ${cy - R} Z`}
+            d={`M ${cx + 28} ${cy + 28 - R} A ${R} ${R} 0 1 1 ${cx + 28 - 0.01} ${cy + 28 - R} Z`}
           />
         </defs>
         {/* Visual rings + center label shifted toward bottom-right (nodes stay on original orbit) */}
