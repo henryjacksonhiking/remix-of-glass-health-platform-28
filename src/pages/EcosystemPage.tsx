@@ -441,7 +441,7 @@ const JourneyFlow = () => {
                 animate={{ opacity: 1, y: 0 }}
                 role="tooltip"
                 className={`absolute left-1/2 -translate-x-1/2 z-20 w-48 px-3 py-2 rounded-lg glass-panel border border-primary/40 backdrop-blur-md shadow-lg text-[11px] leading-snug text-foreground/90 text-center pointer-events-none ${
-                  isBottomHalf ? "bottom-full mb-8" : "top-full mt-8"
+                  isBottom ? "bottom-full mb-8" : "top-full mt-8"
                 }`}
               >
                 <div className="font-semibold text-primary mb-0.5">{s.label}</div>
