@@ -82,13 +82,16 @@ const CompanyPage = () => (
               <Link to="/contact" className="gradient-btn text-sm">Contact Us</Link>
             </motion.div>
           </div>
-          <motion.div initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} transition={{ delay: 0.3, duration: 0.8 }} className="hidden md:flex justify-center">
-            <div className="relative w-48">
-              {["Communication", "CRM & Lifecycle", "Data & Integration", "AI Intelligence"].map((layer, i) => (
-                <motion.div key={layer} animate={{ opacity: [0.5, 0.8, 0.5] }} transition={{ duration: 6 + i, repeat: Infinity, delay: i }} className="glass-panel px-4 py-3 mb-2 border-l-2 border-primary/40 hover-glow-card">
-                  <span className="text-xs text-muted-foreground">{layer}</span>
-                </motion.div>
-              ))}
+          <motion.div initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} transition={{ delay: 0.3, duration: 0.8 }} className="mt-8 md:mt-0 flex justify-center scale-90 md:scale-100 origin-center">
+            <div className="relative w-64">
+              <div className="absolute inset-0 rounded-xl blur-[60px] bg-primary/12 pointer-events-none" />
+              <div className="relative">
+                {["Communication", "CRM & Lifecycle", "Data & Integration", "AI Intelligence"].map((layer, i) => (
+                  <motion.div key={layer} animate={{ opacity: [0.6, 0.95, 0.6] }} transition={{ duration: 6 + i, repeat: Infinity, delay: i }} className="glass-panel px-4 py-3 mb-2 border-l-2 border-primary/50 hover-glow-card">
+                    <span className="text-sm text-foreground/90">{layer}</span>
+                  </motion.div>
+                ))}
+              </div>
             </div>
           </motion.div>
         </div>
