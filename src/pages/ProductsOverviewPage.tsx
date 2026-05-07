@@ -812,11 +812,11 @@ const ConceptDiagram = ({ slug, color }: { slug: string; color: string }) => {
 /* ============== Section 6: How products work together ============== */
 const FlowSection = () => {
   const flow = [
-    { name: "Connect", desc: "Capture interactions", id: "connect" },
     { name: "Engage", desc: "Manage relationships", id: "engage" },
-    { name: "Insight", desc: "Track performance", id: "insight" },
-    { name: "Core", desc: "Analyze & automate", id: "core" },
+    { name: "Connect", desc: "Capture interactions", id: "connect" },
     { name: "Care", desc: "Deliver experience", id: "care" },
+    { name: "Core", desc: "Analyze & automate", id: "core" },
+    { name: "Insight", desc: "Track performance", id: "insight" },
   ];
   return (
     <section className="py-12 md:py-20 border-t border-glass-border">
@@ -1122,7 +1122,6 @@ const ProductsOverviewPage = () => {
       <CareSpotlight />
       <OtherProducts />
       <FlowSection />
-      <ComparisonTable />
       <AuthoritySection />
       <Takeaways />
       <FAQ />
