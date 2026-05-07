@@ -19,6 +19,7 @@ const aiCapabilities = [
   { title: "AI answering service", desc: "Automatically answer routine patient inquiries — appointment availability, office hours, insurance questions — without staff involvement." },
   { title: "AI call summaries", desc: "Every call auto-summarized and tagged with patient context, action items, and follow-up requirements." },
   { title: "Sentiment analysis", desc: "Real-time sentiment detection on calls and messages — flag frustrated patients for immediate attention." },
+  { title: "Missed call handling", desc: "Automatically follow up on missed calls with SMS or callback scheduling — no patient inquiry is left unanswered." },
   { title: "Smart routing", desc: "AI routes messages to the right team member based on content, urgency, and patient history." },
 ];
 
