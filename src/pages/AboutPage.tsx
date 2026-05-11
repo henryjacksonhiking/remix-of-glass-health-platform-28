@@ -179,24 +179,45 @@ const AboutPage = () => (
 
     {/* Platform Stack */}
     <section className="py-12 md:py-20 border-t border-glass-border">
-      <div className="container mx-auto px-4 md:px-6 max-w-3xl">
+      <div className="container mx-auto px-4 md:px-6 max-w-5xl">
         <h2 className="section-headline text-foreground text-center mb-4">The Borna AI platform</h2>
         <p className="body-text text-center mx-auto mb-10">Four integrated layers, each fully functional independently, exponentially more powerful together.</p>
-        <div className="space-y-2">
-          {[
-            { emoji: "💬", name: "Communication Layer", sub: "Calls · SMS · Chat · Video · Email" },
-            { emoji: "👤", name: "CRM & Lifecycle Layer", sub: "Acquisition · Engagement · Retention · Reactivation" },
-            { emoji: "⚙️", name: "Data & Integration Layer", sub: "EHR/PMS Integration · Analytics · Reporting" },
-            { emoji: "🤖", name: "AI Intelligence Layer", sub: "Automated Insights · Workflow AI · Predictive Analytics" },
-          ].map((layer, i) => (
-            <motion.div key={layer.name} initial={{ opacity: 0, x: -10 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.15 }}
-              className="glass-panel px-5 py-4 border-l-2 border-primary/40 hover-glow-card">
-              <span className="text-sm font-medium text-foreground">{layer.emoji} {layer.name}</span>
-              <span className="text-xs text-muted-foreground block mt-0.5">{layer.sub}</span>
-            </motion.div>
-          ))}
+        <div className="relative">
+          {/* Center pulse */}
+          <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-32 h-32 rounded-full bg-primary/10 blur-3xl pointer-events-none" />
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 relative">
+            {[
+              { icon: MessageSquare, name: "Communication", sub: "Calls · SMS · Chat · Video · Email", accent: "from-primary/20 to-primary/5" },
+              { icon: Heart, name: "CRM & Lifecycle", sub: "Acquisition · Engagement · Retention", accent: "from-deep-blue/20 to-deep-blue/5" },
+              { icon: Database, name: "Data & Integration", sub: "EHR/PMS · Analytics · Reporting", accent: "from-electric-blue/20 to-electric-blue/5" },
+              { icon: Brain, name: "AI Intelligence", sub: "Insights · Workflow AI · Predictive", accent: "from-primary/25 to-primary/5" },
+            ].map((layer, i) => {
+              const Icon = layer.icon;
+              return (
+                <motion.div
+                  key={layer.name}
+                  initial={{ opacity: 0, y: 12 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: i * 0.12 }}
+                  className={`relative rounded-2xl p-6 backdrop-blur-md hover-glow-card overflow-hidden bg-gradient-to-br ${layer.accent}`}
+                  style={{ border: "1px solid hsl(var(--primary) / 0.25)" }}
+                >
+                  <div className="flex items-start gap-4">
+                    <div className="w-12 h-12 rounded-xl bg-primary/15 border border-primary/40 flex items-center justify-center shrink-0 backdrop-blur-sm">
+                      <Icon className="w-5 h-5 text-primary" />
+                    </div>
+                    <div className="flex-1 min-w-0">
+                      <h3 className="text-base font-semibold text-foreground mb-1">{layer.name}</h3>
+                      <p className="text-xs text-muted-foreground leading-relaxed">{layer.sub}</p>
+                    </div>
+                  </div>
+                </motion.div>
+              );
+            })}
+          </div>
         </div>
-        <div className="text-center mt-6"><Link to="/platform" className="text-sm text-primary hover:underline">Explore the full platform in detail →</Link></div>
+        <div className="text-center mt-8"><Link to="/platform" className="text-sm text-primary hover:underline">Explore the full platform in detail →</Link></div>
       </div>
     </section>
 
