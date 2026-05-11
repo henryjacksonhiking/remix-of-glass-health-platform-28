@@ -227,35 +227,6 @@ const VisionMissionPage = () => (
       </div>
     </section>
 
-    {/* Platform stack */}
-    <section className="py-12 md:py-20 border-t border-glass-border">
-      <div className="container mx-auto px-4 md:px-6 max-w-4xl">
-        <div className="grid md:grid-cols-2 gap-12 items-center">
-          <div className="space-y-2">
-            {[
-              { emoji: "💬", name: "Communication Layer", sub: "All patient-facing channels" },
-              { emoji: "👤", name: "CRM & Lifecycle Layer", sub: "Full relationship lifecycle" },
-              { emoji: "⚙️", name: "Data & Integration Layer", sub: "Analytics and system connections" },
-              { emoji: "🤖", name: "AI Intelligence Layer", sub: "Automated insights and optimization" },
-            ].map((layer, i) => (
-              <motion.div key={layer.name} initial={{ opacity: 0, x: -10 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.15 }}
-                className="glass-panel px-5 py-3 border-l-2 border-primary/40 hover-glow-card">
-                <span className="text-sm text-foreground">{layer.emoji} {layer.name}</span>
-                <span className="text-xs text-muted-foreground ml-2">— {layer.sub}</span>
-              </motion.div>
-            ))}
-          </div>
-          <div>
-            <h2 className="section-headline text-foreground mb-4">Building a platform, not just a tool</h2>
-            <p className="body-text mb-4">
-              A tool solves one problem. A platform creates the infrastructure where many problems can be solved — and new capabilities can be added without rebuilding from scratch.
-            </p>
-            <Link to="/platform" className="text-sm text-primary hover:underline">Explore the Borna platform in detail →</Link>
-          </div>
-        </div>
-      </div>
-    </section>
-
     {/* Long-term impact */}
     <section className="py-12 md:py-20 border-t border-glass-border">
       <div className="container mx-auto px-4 md:px-6">
