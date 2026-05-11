@@ -232,18 +232,18 @@ const CareersPage = () => (
       <div className="container mx-auto px-4 md:px-6">
         <h2 className="section-headline gradient-text text-center mb-4">Open positions</h2>
         <p className="body-text text-center mx-auto max-w-xl mb-12">Every role contributes to the whole system — not to a siloed function.</p>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto items-stretch">
           {roles.map((role, i) => {
             const accents = ['border-primary', 'border-deep-blue', 'border-electric-blue', 'border-primary/60'];
             return (
             <motion.div key={role.title} custom={i} initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeIn}
-              role="article" aria-label={role.title} className={`glass-panel p-6 hover:translate-y-[-2px] transition-all duration-300 hover-glow-card border-l-2 ${accents[i % accents.length]}`}>
-              <h3 className="text-base font-semibold text-foreground mb-2">{role.title}</h3>
+              role="article" aria-label={role.title} className={`glass-panel p-6 hover:translate-y-[-2px] transition-all duration-300 hover-glow-card border-l-2 ${accents[i % accents.length]} flex flex-col h-full`}>
+              <h3 className="text-base font-semibold text-foreground mb-2 min-h-[3rem]">{role.title}</h3>
               <div className="flex gap-2 mb-3">
                 {role.chips.map(c => <span key={c} className="text-xs px-2 py-0.5 rounded-full bg-primary/10 text-primary">{c}</span>)}
               </div>
-              <p className="text-sm text-muted-foreground mb-4">{role.desc}</p>
-              <a href="mailto:careers@borna.ai" className="gradient-btn text-sm w-full block text-center">
+              <p className="text-sm text-muted-foreground mb-4 flex-1">{role.desc}</p>
+              <a href="mailto:careers@borna.ai" className="gradient-btn text-sm w-full block text-center mt-auto">
                 Apply Now →
               </a>
             </motion.div>
@@ -254,19 +254,27 @@ const CareersPage = () => (
 
     {/* Hiring Process */}
     <section className="py-12 md:py-20 border-t border-glass-border">
-      <div className="container mx-auto px-4 md:px-6 max-w-4xl">
+      <div className="container mx-auto px-4 md:px-6 max-w-5xl">
         <h2 className="section-headline text-foreground text-center mb-12">Our hiring process</h2>
-        <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-6 relative">
-          <div className="hidden md:block absolute top-3 left-0 right-0 h-px bg-primary/20" />
-          {hiringSteps.map((step, i) => (
-            <div key={step.label} className="relative flex flex-col items-center text-center flex-1">
-              <div className="w-5 h-5 rounded-full bg-primary/40 border border-primary/40 mb-3 relative z-10 flex items-center justify-center">
-                <span className="text-xs text-primary font-medium">{i + 1}</span>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6 relative">
+          <div className="hidden lg:block absolute top-12 left-[10%] right-[10%] h-px bg-gradient-to-r from-transparent via-primary/30 to-transparent" />
+          {hiringSteps.map((step, i) => {
+            const Icon = step.icon;
+            return (
+              <div key={step.label} className="relative flex flex-col items-center text-center px-2">
+                {/* Number badge */}
+                <span className="text-[10px] uppercase tracking-widest text-primary/70 mb-2">Step {i + 1}</span>
+                {/* Icon circle */}
+                <div className="relative z-10 w-12 h-12 rounded-full bg-primary/15 border border-primary/40 flex items-center justify-center mb-3 backdrop-blur-sm shadow-[0_0_20px_hsla(170,100%,43%,0.25)]">
+                  <Icon className="w-5 h-5 text-primary" />
+                </div>
+                {/* Heading */}
+                <h3 className="text-sm font-semibold text-foreground mb-1.5 min-h-[2.5rem] flex items-center justify-center">{step.label}</h3>
+                {/* Context */}
+                <p className="text-xs text-muted-foreground leading-relaxed">{step.desc}</p>
               </div>
-              <span className="text-xs font-medium text-foreground mb-1">{step.label}</span>
-              <span className="text-xs text-muted-foreground max-w-[120px]">{step.desc}</span>
-            </div>
-          ))}
+            );
+          })}
         </div>
         <p className="text-center text-xs text-muted-foreground mt-8">We prioritize clarity, efficiency, and mutual alignment throughout the process.</p>
       </div>
