@@ -106,74 +106,93 @@ const StatusBadge = ({
   );
 };
 
-/* ---------- Hero visual ---------- */
+/* ---------- Hero visual: investor growth chart ---------- */
 
 const HeroVisual = () => {
   const reduce = useReducedMotion();
+  const bars = [28, 42, 36, 58, 70, 64, 88, 96];
   return (
-    <div className="relative w-full aspect-square max-w-md mx-auto">
+    <div className="relative w-full max-w-md mx-auto aspect-square">
       {/* Ambient glow */}
-      <div className="absolute inset-0 rounded-full bg-primary/10 blur-[100px]" />
-      {/* Faint upward trending line */}
-      <svg
-        viewBox="0 0 400 400"
-        className="absolute inset-0 w-full h-full px-[5px] text-sm py-[5px]"
-        aria-hidden
-      >
-        <defs>
-          <linearGradient id="invHeroLine" x1="0" x2="1" y1="1" y2="0">
-            <stop offset="0%" stopColor="hsl(var(--primary))" stopOpacity="0" />
-            <stop offset="100%" stopColor="hsl(var(--primary))" stopOpacity="0.7" />
-          </linearGradient>
-          <radialGradient id="invHeroNode" cx="50%" cy="50%" r="50%">
-            <stop offset="0%" stopColor="hsl(var(--primary))" stopOpacity="0.9" />
-            <stop offset="100%" stopColor="hsl(var(--primary))" stopOpacity="0" />
-          </radialGradient>
-        </defs>
-        <path
-          d="M30 340 Q 160 300 220 200 T 380 60"
-          stroke="url(#invHeroLine)"
-          strokeWidth="1.2"
-          fill="none"
-        />
-        {/* Connecting lines */}
-        <line x1="200" y1="200" x2="110" y2="120" stroke="rgba(255,255,255,0.1)" />
-        <line x1="200" y1="200" x2="300" y2="140" stroke="rgba(255,255,255,0.1)" />
-        <line x1="200" y1="200" x2="280" y2="290" stroke="rgba(255,255,255,0.1)" />
-      </svg>
+      <div className="absolute inset-0 rounded-full bg-primary/15 blur-[100px]" />
 
-      {/* Central node */}
+      <div className="relative w-full h-full flex items-end justify-center p-6 md:p-10">
+        <svg viewBox="0 0 320 240" className="w-full h-full" aria-label="Investor growth chart">
+          <defs>
+            <linearGradient id="invBar" x1="0" x2="0" y1="0" y2="1">
+              <stop offset="0%" stopColor="hsl(var(--primary))" stopOpacity="0.95" />
+              <stop offset="100%" stopColor="hsl(var(--primary))" stopOpacity="0.15" />
+            </linearGradient>
+            <linearGradient id="invLine" x1="0" x2="1">
+              <stop offset="0%" stopColor="hsl(var(--primary))" stopOpacity="0.2" />
+              <stop offset="100%" stopColor="hsl(var(--primary))" stopOpacity="1" />
+            </linearGradient>
+          </defs>
+          {/* Baseline */}
+          <line x1="10" y1="210" x2="310" y2="210" stroke="rgba(255,255,255,0.15)" />
+          {/* Grid */}
+          {[60, 110, 160].map(y => (
+            <line key={y} x1="10" y1={y} x2="310" y2={y} stroke="rgba(255,255,255,0.05)" strokeDasharray="2 4" />
+          ))}
+          {/* Bars */}
+          {bars.map((h, i) => {
+            const x = 20 + i * 36;
+            const y = 210 - h * 1.6;
+            return (
+              <motion.rect
+                key={i}
+                x={x}
+                y={y}
+                width="22"
+                height={h * 1.6}
+                rx="3"
+                fill="url(#invBar)"
+                initial={reduce ? undefined : { scaleY: 0, transformOrigin: `${x + 11}px 210px` }}
+                animate={reduce ? undefined : { scaleY: 1 }}
+                transition={{ duration: 0.6, delay: i * 0.08, ease: "easeOut" }}
+              />
+            );
+          })}
+          {/* Trend line */}
+          <motion.path
+            d="M 31 165 L 67 142 L 103 152 L 139 117 L 175 98 L 211 108 L 247 70 L 283 55"
+            stroke="url(#invLine)"
+            strokeWidth="2.2"
+            fill="none"
+            strokeLinecap="round"
+            initial={reduce ? undefined : { pathLength: 0 }}
+            animate={reduce ? undefined : { pathLength: 1 }}
+            transition={{ duration: 1.6, delay: 0.4 }}
+          />
+          {/* End arrow */}
+          <motion.g
+            initial={reduce ? undefined : { opacity: 0 }}
+            animate={reduce ? undefined : { opacity: 1 }}
+            transition={{ delay: 1.8 }}
+          >
+            <circle cx="283" cy="55" r="14" fill="hsl(var(--primary))" opacity="0.18" />
+            <circle cx="283" cy="55" r="6" fill="hsl(var(--primary))" />
+          </motion.g>
+        </svg>
+      </div>
+
+      {/* Floating badges */}
       <motion.div
-        className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2"
-        animate={reduce ? undefined : { scale: [1, 1.04, 1] }}
-        transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
+        className="absolute top-6 left-4 px-3 py-1.5 rounded-full text-[11px] backdrop-blur-md"
+        style={{ background: "rgba(0,222,196,0.1)", border: "1px solid hsl(var(--primary) / 0.4)", color: "hsl(var(--primary))" }}
+        animate={reduce ? undefined : { y: [0, -4, 0] }}
+        transition={{ duration: 5, repeat: Infinity }}
       >
-        <div
-          className="w-20 h-20 rounded-full flex items-center justify-center"
-          style={{
-            background: "rgba(255,255,255,0.06)",
-            border: "1px solid hsl(var(--primary) / 0.4)",
-            boxShadow: "0 0 40px hsl(var(--primary) / 0.4)",
-          }}
-        >
-          <Sparkles className="w-7 h-7 text-primary" />
-        </div>
+        <TrendingUp className="w-3 h-3 inline mr-1" /> Growth trajectory
       </motion.div>
-
-      {/* Satellite nodes */}
-      {[
-        { top: "20%", left: "22%" },
-        { top: "28%", left: "72%" },
-        { top: "70%", left: "68%" },
-      ].map((p, i) => (
-        <motion.div
-          key={i}
-          className="absolute w-3 h-3 rounded-full bg-primary"
-          style={{ ...p, boxShadow: "0 0 16px hsl(var(--primary))" }}
-          animate={reduce ? undefined : { opacity: [0.4, 0.9, 0.4] }}
-          transition={{ duration: 6, delay: i * 1.2, repeat: Infinity }}
-        />
-      ))}
+      <motion.div
+        className="absolute bottom-10 right-4 px-3 py-1.5 rounded-full text-[11px] backdrop-blur-md text-foreground/80"
+        style={{ background: "rgba(255,255,255,0.06)", border: "1px solid rgba(255,255,255,0.15)" }}
+        animate={reduce ? undefined : { y: [0, 4, 0] }}
+        transition={{ duration: 5, repeat: Infinity, delay: 1.5 }}
+      >
+        Series-stage SaaS
+      </motion.div>
     </div>
   );
 };
