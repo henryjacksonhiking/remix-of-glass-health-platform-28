@@ -367,15 +367,16 @@ const Problem = () => (
               style={{ top, left }}
             >
               <div
-                className="w-11 h-11 rounded-lg flex items-center justify-center"
+                className="w-12 h-12 rounded-lg flex items-center justify-center backdrop-blur-sm"
                 style={{
-                  background: "rgba(255,255,255,0.025)",
-                  border: "0.5px solid rgba(255,255,255,0.06)",
+                  background: "rgba(255,255,255,0.08)",
+                  border: "1px solid rgba(255,255,255,0.18)",
+                  boxShadow: "0 0 16px rgba(255,255,255,0.04)",
                 }}
               >
-                <Icon className="w-4 h-4 text-white/30" />
+                <Icon className="w-4 h-4 text-foreground/80" />
               </div>
-              <span className="text-[10px] text-white/40">{label}</span>
+              <span className="text-[11px] text-muted-foreground">{label}</span>
             </div>
           ))}
           <div className="absolute bottom-0 left-1/2 -translate-x-1/2 text-[11px] text-muted-foreground">
