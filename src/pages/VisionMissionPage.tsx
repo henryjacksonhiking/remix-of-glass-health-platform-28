@@ -12,10 +12,10 @@ import CTASection from "@/components/sections/CTASection";
 const fadeIn = { hidden: { opacity: 0, y: 16 }, visible: (i: number) => ({ opacity: 1, y: 0, transition: { delay: i * 0.1, duration: 0.5 } }) };
 
 const stages = [
-  { label: "Fragmented", sub: "Today's healthcare reality", glow: "opacity-50" },
-  { label: "Connected", sub: "Integrated systems", glow: "opacity-60" },
-  { label: "Intelligent", sub: "AI-powered operations", glow: "opacity-90" },
-  { label: "Optimized", sub: "Borna's vision", glow: "opacity-100" },
+  { label: "Fragmented", sub: "Today's healthcare reality", intensity: 0.35 },
+  { label: "Connected", sub: "Integrated systems", intensity: 0.55 },
+  { label: "Intelligent", sub: "AI-powered operations", intensity: 0.8 },
+  { label: "Optimized", sub: "Borna's vision", intensity: 1 },
 ];
 
 const missionPillars = [
@@ -72,15 +72,26 @@ const VisionMissionPage = () => (
             </motion.div>
           </div>
           {/* Transformation Flow */}
-          <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.3 }} className="hidden md:flex flex-col gap-3">
+          <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.3 }} className="flex flex-col gap-2.5 mt-8 md:mt-0">
             {stages.map((s, i) => (
               <div key={s.label} className="flex items-center gap-3">
-                <motion.div animate={{ opacity: [0.4, 0.8, 0.4] }} transition={{ duration: 6, repeat: Infinity, delay: i * 1.5 }}
-                  className={`glass-panel px-4 py-2 flex-1 ${s.glow}`}>
-                  <span className="text-xs font-medium text-foreground">{s.label}</span>
-                  <span className="text-xs text-muted-foreground ml-2">{s.sub}</span>
+                <motion.div animate={{ boxShadow: [`0 0 0 hsl(var(--primary)/0)`, `0 0 24px hsl(var(--primary)/${s.intensity * 0.5})`, `0 0 0 hsl(var(--primary)/0)`] }}
+                  transition={{ duration: 5, repeat: Infinity, delay: i * 0.4 }}
+                  className="flex-1 px-4 py-3 rounded-xl backdrop-blur-md flex items-center gap-3"
+                  style={{
+                    background: `hsl(var(--primary) / ${s.intensity * 0.08})`,
+                    border: `1px solid hsl(var(--primary) / ${0.25 + s.intensity * 0.4})`,
+                  }}>
+                  <span
+                    className="w-2.5 h-2.5 rounded-full shrink-0"
+                    style={{ background: "hsl(var(--primary))", opacity: 0.4 + s.intensity * 0.6, boxShadow: `0 0 ${6 + s.intensity * 10}px hsl(var(--primary))` }}
+                  />
+                  <div className="flex-1 min-w-0">
+                    <span className="text-sm font-medium text-foreground">{s.label}</span>
+                    <span className="text-xs text-primary/80 ml-2">{s.sub}</span>
+                  </div>
                 </motion.div>
-                {i < stages.length - 1 && <ArrowRight className="w-3 h-3 text-primary/50 shrink-0" />}
+                {i < stages.length - 1 && <ArrowRight className="w-3.5 h-3.5 text-primary shrink-0" />}
               </div>
             ))}
           </motion.div>
@@ -109,15 +120,46 @@ const VisionMissionPage = () => (
               We envision a future where all patient communication is centralized, data flows seamlessly across systems, workflows are automated and optimized, and healthcare providers operate with full visibility and control.
             </p>
           </div>
-          <div className="space-y-2">
-            <span className="text-xs uppercase tracking-widest text-primary block text-center mb-3">The future state</span>
-            {["All patient communication centralized", "Data flows seamlessly", "Workflows automated", "Full visibility and control"].map((label, i) => (
-              <motion.div key={label} animate={{ boxShadow: [`0 0 8px hsl(var(--primary)/0.1)`, `0 0 16px hsl(var(--primary)/0.2)`, `0 0 8px hsl(var(--primary)/0.1)`] }}
-                transition={{ duration: 6, repeat: Infinity, delay: i }} className="glass-panel px-4 py-3 border-l-2 border-primary/50 hover-glow-card">
-                <span className="text-xs text-muted-foreground">{["💬", "👤", "⚙️", "🤖"][i]} {["Communication", "CRM & Lifecycle", "Data & Integration", "AI Intelligence"][i]}</span>
-                <span className="text-xs text-primary ml-2">— {label}</span>
+          {/* Future state quadrant: central node with 4 outcomes */}
+          <div className="relative">
+            <span className="text-xs uppercase tracking-widest text-primary block text-center mb-4">The future state</span>
+            <div className="relative grid grid-cols-2 gap-3">
+              {/* Center glow */}
+              <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-24 h-24 rounded-full bg-primary/15 blur-2xl pointer-events-none" />
+              <motion.div
+                animate={{ scale: [1, 1.15, 1], opacity: [0.6, 1, 0.6] }}
+                transition={{ duration: 4, repeat: Infinity }}
+                className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-primary/20 border border-primary/60 flex items-center justify-center backdrop-blur-md z-10 shadow-[0_0_30px_hsla(170,100%,43%,0.5)]"
+              >
+                <Target className="w-5 h-5 text-primary" />
               </motion.div>
-            ))}
+              {[
+                { icon: MessageSquare, title: "Centralized", desc: "All patient communication" },
+                { icon: Users, title: "Seamless", desc: "Data flows everywhere" },
+                { icon: Workflow, title: "Automated", desc: "Workflows orchestrated" },
+                { icon: Brain, title: "Intelligent", desc: "Visibility and control" },
+              ].map((q, i) => {
+                const Icon = q.icon;
+                return (
+                  <motion.div
+                    key={q.title}
+                    initial={{ opacity: 0, scale: 0.9 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: i * 0.12 }}
+                    className="rounded-xl p-4 backdrop-blur-md hover-glow-card"
+                    style={{
+                      background: "hsl(var(--primary) / 0.06)",
+                      border: "1px solid hsl(var(--primary) / 0.3)",
+                    }}
+                  >
+                    <Icon className="w-5 h-5 text-primary mb-2" />
+                    <div className="text-sm font-semibold text-foreground">{q.title}</div>
+                    <div className="text-xs text-muted-foreground">{q.desc}</div>
+                  </motion.div>
+                );
+              })}
+            </div>
           </div>
         </div>
       </div>
@@ -182,35 +224,6 @@ const VisionMissionPage = () => (
           })}
         </div>
         <div className="text-center mt-6"><Link to="/ecosystem" className="text-sm text-primary hover:underline">Explore the full ecosystem →</Link></div>
-      </div>
-    </section>
-
-    {/* Platform stack */}
-    <section className="py-12 md:py-20 border-t border-glass-border">
-      <div className="container mx-auto px-4 md:px-6 max-w-4xl">
-        <div className="grid md:grid-cols-2 gap-12 items-center">
-          <div className="space-y-2">
-            {[
-              { emoji: "💬", name: "Communication Layer", sub: "All patient-facing channels" },
-              { emoji: "👤", name: "CRM & Lifecycle Layer", sub: "Full relationship lifecycle" },
-              { emoji: "⚙️", name: "Data & Integration Layer", sub: "Analytics and system connections" },
-              { emoji: "🤖", name: "AI Intelligence Layer", sub: "Automated insights and optimization" },
-            ].map((layer, i) => (
-              <motion.div key={layer.name} initial={{ opacity: 0, x: -10 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.15 }}
-                className="glass-panel px-5 py-3 border-l-2 border-primary/40 hover-glow-card">
-                <span className="text-sm text-foreground">{layer.emoji} {layer.name}</span>
-                <span className="text-xs text-muted-foreground ml-2">— {layer.sub}</span>
-              </motion.div>
-            ))}
-          </div>
-          <div>
-            <h2 className="section-headline text-foreground mb-4">Building a platform, not just a tool</h2>
-            <p className="body-text mb-4">
-              A tool solves one problem. A platform creates the infrastructure where many problems can be solved — and new capabilities can be added without rebuilding from scratch.
-            </p>
-            <Link to="/platform" className="text-sm text-primary hover:underline">Explore the Borna platform in detail →</Link>
-          </div>
-        </div>
       </div>
     </section>
 

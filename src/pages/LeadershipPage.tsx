@@ -207,23 +207,39 @@ const LeadershipPage = () => (
     <section className="py-12 md:py-20 border-t border-glass-border">
       <div className="container mx-auto px-4 md:px-6 max-w-4xl">
         <div className="grid md:grid-cols-2 gap-12 items-center">
-          <div className="flex items-center justify-center gap-8">
-            <div className="flex flex-col gap-4">
-              {["CEO", "CTO", "Product"].map((role, i) => (
-                <motion.div key={role} animate={{ opacity: [0.5, 0.8, 0.5] }} transition={{ duration: 6, repeat: Infinity, delay: i * 2 }}
-                  className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center" aria-label={`${role} node`}>
-                  <span className="text-xs text-primary">{role}</span>
+          <div className="relative">
+            <div className="absolute inset-0 rounded-2xl blur-[80px] bg-primary/15 pointer-events-none" />
+            <div className="relative grid grid-cols-[auto_1fr] gap-3 items-center">
+              {[
+                { role: "CEO", initials: "CE", module: "Communication", icon: "💬", desc: "Patient channels" },
+                { role: "CTO", initials: "CT", module: "Data & AI", icon: "🤖", desc: "Intelligence layer" },
+                { role: "Product", initials: "PR", module: "CRM & Lifecycle", icon: "👤", desc: "Patient journey" },
+                { role: "Engineering", initials: "EN", module: "Integrations", icon: "⚙️", desc: "System fabric" },
+              ].map((row, i) => (
+                <motion.div
+                  key={row.role}
+                  initial={{ opacity: 0, x: -10 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: i * 0.15 }}
+                  className="contents"
+                >
+                  {/* Leader badge */}
+                  <div className="flex items-center gap-2">
+                    <div className="w-10 h-10 rounded-full bg-primary/15 border border-primary/40 flex items-center justify-center backdrop-blur-sm shadow-[0_0_18px_hsla(170,100%,43%,0.25)]">
+                      <span className="text-[11px] font-semibold text-primary">{row.initials}</span>
+                    </div>
+                    <span className="text-xs text-foreground/80 hidden sm:inline w-16">{row.role}</span>
+                  </div>
+                  {/* Connector + module */}
+                  <div className="flex items-center gap-2">
+                    <div className="flex-1 h-px bg-gradient-to-r from-primary/50 to-primary/10" />
+                    <div className="glass-panel px-3 py-2 border-l-2 border-primary/40 hover-glow-card flex-1">
+                      <span className="text-sm text-foreground">{row.icon} {row.module}</span>
+                      <span className="text-[10px] text-muted-foreground block">{row.desc}</span>
+                    </div>
+                  </div>
                 </motion.div>
-              ))}
-            </div>
-            <div className="flex flex-col gap-1">
-              {[0,1,2].map(i => <div key={i} className="w-12 h-px bg-primary/30" />)}
-            </div>
-            <div className="space-y-1 w-28">
-              {["Comm", "CRM", "Data", "AI"].map((l) => (
-                <div key={l} className="glass-panel px-2 py-1.5 border-l border-primary/40 hover-glow-card">
-                  <span className="text-[9px] text-muted-foreground">{l}</span>
-                </div>
               ))}
             </div>
           </div>
