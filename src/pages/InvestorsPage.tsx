@@ -414,59 +414,70 @@ const Opportunity = () => {
           </div>
         </div>
 
-        <div className="mt-14 relative max-w-4xl mx-auto h-64 md:h-80">
-          <svg
-            viewBox="0 0 800 280"
-            className="absolute inset-0 w-full h-full px-[5px] text-sm py-[5px]"
-            aria-label="Market growth trend"
-          >
-            <defs>
-              <linearGradient id="oppLine" x1="0" x2="1">
-                <stop offset="0%" stopColor="hsl(var(--primary))" stopOpacity="0.1" />
-                <stop offset="100%" stopColor="hsl(var(--primary))" stopOpacity="0.9" />
-              </linearGradient>
-            </defs>
-            <motion.path
-              d="M40 240 Q 220 220 360 160 T 760 30"
-              stroke="url(#oppLine)"
-              strokeWidth="1.5"
-              fill="none"
-              initial={reduce ? undefined : { pathLength: 0 }}
-              whileInView={reduce ? undefined : { pathLength: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 2.5, ease: "easeOut" }}
-            />
+        <div className="mt-14 max-w-4xl mx-auto">
+          <div className="relative w-full h-56 sm:h-64 md:h-80">
+            <svg
+              viewBox="0 0 800 280"
+              preserveAspectRatio="none"
+              className="absolute inset-0 w-full h-full"
+              aria-label="Market growth trend"
+            >
+              <defs>
+                <linearGradient id="oppLine" x1="0" x2="1">
+                  <stop offset="0%" stopColor="hsl(var(--primary))" stopOpacity="0.2" />
+                  <stop offset="100%" stopColor="hsl(var(--primary))" stopOpacity="1" />
+                </linearGradient>
+              </defs>
+              <motion.path
+                d="M40 240 Q 220 220 360 160 T 760 30"
+                stroke="url(#oppLine)"
+                strokeWidth="2"
+                fill="none"
+                initial={reduce ? undefined : { pathLength: 0 }}
+                whileInView={reduce ? undefined : { pathLength: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 2.5, ease: "easeOut" }}
+              />
+              {[
+                { x: 200, y: 220, r: 5 },
+                { x: 440, y: 130, r: 7 },
+                { x: 700, y: 50, r: 10 },
+              ].map((n, i) => (
+                <g key={i}>
+                  <circle cx={n.x} cy={n.y} r={n.r + 10} fill="hsl(var(--primary))" opacity="0.18" />
+                  <circle cx={n.x} cy={n.y} r={n.r} fill="hsl(var(--primary))" />
+                </g>
+              ))}
+            </svg>
+          </div>
+          <div className="mt-6 grid grid-cols-1 sm:grid-cols-3 gap-3">
             {[
-              { x: 200, y: 220, r: 4, label: "Patient engagement platforms" },
-              { x: 440, y: 130, r: 6, label: "AI healthcare automation" },
-              { x: 700, y: 50, r: 9, label: "Integrated systems" },
-            ].map((n, i) => (
-              <g key={i}>
-                <circle
-                  cx={n.x}
-                  cy={n.y}
-                  r={n.r}
-                  fill="hsl(var(--primary))"
-                  opacity="0.9"
+              { label: "Patient engagement platforms", tone: "muted" },
+              { label: "AI healthcare automation", tone: "muted" },
+              { label: "Integrated systems", tone: "primary" },
+            ].map((item, i) => (
+              <div
+                key={item.label}
+                className="flex items-center gap-2 px-3 py-2 rounded-lg"
+                style={{
+                  background: "rgba(255,255,255,0.04)",
+                  border: "1px solid rgba(255,255,255,0.08)",
+                }}
+              >
+                <span
+                  className="inline-block rounded-full"
+                  style={{
+                    width: 8 + i * 2,
+                    height: 8 + i * 2,
+                    background: "hsl(var(--primary))",
+                    boxShadow: `0 0 ${10 + i * 4}px hsl(var(--primary))`,
+                  }}
                 />
-                <circle
-                  cx={n.x}
-                  cy={n.y}
-                  r={n.r + 8}
-                  fill="hsl(var(--primary))"
-                  opacity="0.15"
-                />
-              </g>
+                <span className={`text-xs ${item.tone === "primary" ? "text-primary font-medium" : "text-muted-foreground"}`}>
+                  {item.label}
+                </span>
+              </div>
             ))}
-          </svg>
-          <div className="absolute left-[18%] bottom-2 text-[11px] text-muted-foreground">
-            Patient engagement platforms
-          </div>
-          <div className="absolute left-[48%] top-[32%] text-[11px] text-muted-foreground">
-            AI healthcare automation
-          </div>
-          <div className="absolute right-2 top-2 text-[11px] text-primary">
-            Integrated systems
           </div>
         </div>
       </div>
