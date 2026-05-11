@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import SpotlightCard from "@/components/ui/spotlight-card";
 import { Helmet } from "react-helmet-async";
 import { Link } from "react-router-dom";
-import { Layers, Brain, Zap, Network, Users, Target, Crown, Gauge, Globe, Minus, MessageSquare, BarChart3, ArrowRight } from "lucide-react";
+import { Layers, Brain, Zap, Network, Users, Target, Crown, Gauge, Globe, Minus, MessageSquare, BarChart3, ArrowRight, Rocket, FileText, MessageCircle, Code2, Briefcase, CheckCircle2 } from "lucide-react";
 import { BeamsBackground } from "@/components/ui/beams-background";
 import PageWrapper from "@/components/layout/PageWrapper";
 import StandardFAQ from "@/components/sections/StandardFAQ";
@@ -42,11 +42,11 @@ const roles = [
 ];
 
 const hiringSteps = [
-  { label: "Application review", desc: "We review every application carefully." },
-  { label: "Initial screening", desc: "A brief conversation about your background." },
-  { label: "Technical / strategic interview", desc: "Deep dive into your experience." },
-  { label: "Practical task", desc: "If required for the role." },
-  { label: "Final conversation", desc: "Mutual alignment on expectations." },
+  { icon: FileText, label: "Application review", desc: "We review every application carefully." },
+  { icon: MessageCircle, label: "Initial screening", desc: "A brief conversation about your background." },
+  { icon: Code2, label: "Technical / strategic interview", desc: "Deep dive into your experience." },
+  { icon: Briefcase, label: "Practical task", desc: "If required for the role." },
+  { icon: CheckCircle2, label: "Final conversation", desc: "Mutual alignment on expectations." },
 ];
 
 const faqItems = [
