@@ -299,7 +299,7 @@ const AboutPage = () => (
             return (
               <motion.div key={step.label} custom={i} initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeIn}
                 className="glass-panel p-4 text-center hover-glow-card">
-                <span className="text-xs text-primary font-medium block mb-2">{i + 1}</span>
+                
                 <div className="w-9 h-9 rounded-lg bg-primary/10 flex items-center justify-center mx-auto mb-2"><Icon className="w-4 h-4 text-primary" /></div>
                 <h3 className="text-xs font-medium text-foreground mb-1">{step.label}</h3>
                 <p className="text-xs text-muted-foreground">{step.desc}</p>
