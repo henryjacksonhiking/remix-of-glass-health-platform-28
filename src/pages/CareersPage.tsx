@@ -91,37 +91,55 @@ const CareersPage = () => (
               <a href="mailto:careers@borna.ai" className="border border-glass-border text-foreground px-5 rounded-lg text-sm hover:bg-glass transition-colors h-11 inline-flex items-center justify-center">Apply Now</a>
             </motion.div>
           </div>
-          {/* Team network visual */}
-          <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.3 }} className="mt-8 md:mt-0 flex justify-center scale-75 md:scale-100 origin-center">
-            <div className="relative w-72 h-72">
-              <div className="absolute inset-0 rounded-full blur-[80px] bg-primary/15 pointer-events-none" />
-              {/* Connecting lines */}
-              <svg className="absolute inset-0 w-full h-full" viewBox="0 0 100 100" fill="none" aria-hidden>
-                {[0,1,2,3,4,5].map(i => {
-                  const angle = (i * 60 - 90) * (Math.PI / 180);
-                  const x = 50 + 38 * Math.cos(angle);
-                  const y = 50 + 38 * Math.sin(angle);
-                  return <line key={i} x1="50" y1="50" x2={x} y2={y} stroke="hsl(var(--primary))" strokeOpacity="0.25" strokeWidth="0.4" strokeDasharray="1.5 1.5" />;
-                })}
-              </svg>
-              <div className="absolute inset-0 flex items-center justify-center">
-                <motion.div animate={{ opacity: [0.6, 1, 0.6] }} transition={{ duration: 4, repeat: Infinity }}
-                  className="w-16 h-16 rounded-full bg-primary/15 border border-primary/50 flex items-center justify-center backdrop-blur-sm shadow-[0_0_30px_hsla(170,100%,43%,0.25)]">
-                  <span className="text-xs text-primary font-semibold">Borna AI</span>
+          {/* Career growth visual: stack of role cards lifting toward a Rocket */}
+          <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.3 }} className="mt-8 md:mt-0 flex justify-center">
+            <div className="relative w-64 sm:w-72 h-72 sm:h-80">
+              <div className="absolute inset-0 rounded-full blur-[90px] bg-primary/20 pointer-events-none" />
+              {/* Rocket / mission badge at top */}
+              <motion.div
+                animate={{ y: [0, -6, 0] }}
+                transition={{ duration: 4, repeat: Infinity }}
+                className="absolute left-1/2 -translate-x-1/2 top-2 w-16 h-16 rounded-2xl bg-primary/15 border border-primary/50 flex items-center justify-center backdrop-blur-sm shadow-[0_0_40px_hsla(170,100%,43%,0.35)]"
+              >
+                <Rocket className="w-7 h-7 text-primary" />
+              </motion.div>
+
+              {/* Vertical connector line */}
+              <div className="absolute left-1/2 top-20 bottom-4 -translate-x-1/2 w-px bg-gradient-to-b from-primary/60 via-primary/30 to-transparent" />
+
+              {/* Floating role chips */}
+              {[
+                { label: "Engineering", side: "left", top: "26%", delay: 0 },
+                { label: "Product", side: "right", top: "40%", delay: 0.4 },
+                { label: "AI", side: "left", top: "54%", delay: 0.8 },
+                { label: "Design", side: "right", top: "68%", delay: 1.2 },
+                { label: "Growth", side: "left", top: "82%", delay: 1.6 },
+              ].map((role) => (
+                <motion.div
+                  key={role.label}
+                  animate={{ x: role.side === "left" ? [0, -3, 0] : [0, 3, 0], opacity: [0.7, 1, 0.7] }}
+                  transition={{ duration: 5, repeat: Infinity, delay: role.delay }}
+                  className="absolute glass-panel px-3 py-1.5 border border-primary/30 hover-glow-card backdrop-blur-sm"
+                  style={{
+                    top: role.top,
+                    [role.side]: "8%",
+                    transform: "translateY(-50%)",
+                  } as React.CSSProperties}
+                >
+                  <span className="text-xs text-foreground/90 whitespace-nowrap">{role.label}</span>
                 </motion.div>
-              </div>
-              {["Product", "Engineering", "AI", "Growth", "Design", "Operations"].map((role, i) => {
-                const angle = (i * 60 - 90) * (Math.PI / 180);
-                const x = 50 + 40 * Math.cos(angle);
-                const y = 50 + 40 * Math.sin(angle);
-                return (
-                  <motion.div key={role} animate={{ opacity: [0.5, 0.9, 0.5] }} transition={{ duration: 4, repeat: Infinity, delay: i * 0.7 }}
-                    className="absolute w-14 h-14 rounded-full bg-primary/10 border border-primary/40 flex items-center justify-center hover:border-primary/60 transition-colors"
-                    style={{ left: `${x}%`, top: `${y}%`, transform: 'translate(-50%, -50%)' }} aria-label={`${role} team role`}>
-                    <span className="text-xs text-foreground/90">{role}</span>
-                  </motion.div>
-                );
-              })}
+              ))}
+
+              {/* Connector dots on spine */}
+              {[26, 40, 54, 68, 82].map((t, i) => (
+                <motion.div
+                  key={i}
+                  animate={{ scale: [1, 1.4, 1], opacity: [0.6, 1, 0.6] }}
+                  transition={{ duration: 3, repeat: Infinity, delay: i * 0.4 }}
+                  className="absolute left-1/2 -translate-x-1/2 w-2 h-2 rounded-full bg-primary"
+                  style={{ top: `${t}%`, boxShadow: "0 0 10px hsl(var(--primary))" }}
+                />
+              ))}
             </div>
           </motion.div>
         </div>
