@@ -120,15 +120,46 @@ const VisionMissionPage = () => (
               We envision a future where all patient communication is centralized, data flows seamlessly across systems, workflows are automated and optimized, and healthcare providers operate with full visibility and control.
             </p>
           </div>
-          <div className="space-y-2">
-            <span className="text-xs uppercase tracking-widest text-primary block text-center mb-3">The future state</span>
-            {["All patient communication centralized", "Data flows seamlessly", "Workflows automated", "Full visibility and control"].map((label, i) => (
-              <motion.div key={label} animate={{ boxShadow: [`0 0 8px hsl(var(--primary)/0.1)`, `0 0 16px hsl(var(--primary)/0.2)`, `0 0 8px hsl(var(--primary)/0.1)`] }}
-                transition={{ duration: 6, repeat: Infinity, delay: i }} className="glass-panel px-4 py-3 border-l-2 border-primary/50 hover-glow-card">
-                <span className="text-xs text-muted-foreground">{["💬", "👤", "⚙️", "🤖"][i]} {["Communication", "CRM & Lifecycle", "Data & Integration", "AI Intelligence"][i]}</span>
-                <span className="text-xs text-primary ml-2">— {label}</span>
+          {/* Future state quadrant: central node with 4 outcomes */}
+          <div className="relative">
+            <span className="text-xs uppercase tracking-widest text-primary block text-center mb-4">The future state</span>
+            <div className="relative grid grid-cols-2 gap-3">
+              {/* Center glow */}
+              <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-24 h-24 rounded-full bg-primary/15 blur-2xl pointer-events-none" />
+              <motion.div
+                animate={{ scale: [1, 1.15, 1], opacity: [0.6, 1, 0.6] }}
+                transition={{ duration: 4, repeat: Infinity }}
+                className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-primary/20 border border-primary/60 flex items-center justify-center backdrop-blur-md z-10 shadow-[0_0_30px_hsla(170,100%,43%,0.5)]"
+              >
+                <Target className="w-5 h-5 text-primary" />
               </motion.div>
-            ))}
+              {[
+                { icon: MessageSquare, title: "Centralized", desc: "All patient communication" },
+                { icon: Users, title: "Seamless", desc: "Data flows everywhere" },
+                { icon: Workflow, title: "Automated", desc: "Workflows orchestrated" },
+                { icon: Brain, title: "Intelligent", desc: "Visibility and control" },
+              ].map((q, i) => {
+                const Icon = q.icon;
+                return (
+                  <motion.div
+                    key={q.title}
+                    initial={{ opacity: 0, scale: 0.9 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: i * 0.12 }}
+                    className="rounded-xl p-4 backdrop-blur-md hover-glow-card"
+                    style={{
+                      background: "hsl(var(--primary) / 0.06)",
+                      border: "1px solid hsl(var(--primary) / 0.3)",
+                    }}
+                  >
+                    <Icon className="w-5 h-5 text-primary mb-2" />
+                    <div className="text-sm font-semibold text-foreground">{q.title}</div>
+                    <div className="text-xs text-muted-foreground">{q.desc}</div>
+                  </motion.div>
+                );
+              })}
+            </div>
           </div>
         </div>
       </div>
