@@ -12,10 +12,10 @@ import CTASection from "@/components/sections/CTASection";
 const fadeIn = { hidden: { opacity: 0, y: 16 }, visible: (i: number) => ({ opacity: 1, y: 0, transition: { delay: i * 0.1, duration: 0.5 } }) };
 
 const stages = [
-  { label: "Fragmented", sub: "Today's healthcare reality", glow: "opacity-50" },
-  { label: "Connected", sub: "Integrated systems", glow: "opacity-60" },
-  { label: "Intelligent", sub: "AI-powered operations", glow: "opacity-90" },
-  { label: "Optimized", sub: "Borna's vision", glow: "opacity-100" },
+  { label: "Fragmented", sub: "Today's healthcare reality", intensity: 0.35 },
+  { label: "Connected", sub: "Integrated systems", intensity: 0.55 },
+  { label: "Intelligent", sub: "AI-powered operations", intensity: 0.8 },
+  { label: "Optimized", sub: "Borna's vision", intensity: 1 },
 ];
 
 const missionPillars = [
@@ -72,15 +72,26 @@ const VisionMissionPage = () => (
             </motion.div>
           </div>
           {/* Transformation Flow */}
-          <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.3 }} className="hidden md:flex flex-col gap-3">
+          <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.3 }} className="flex flex-col gap-2.5 mt-8 md:mt-0">
             {stages.map((s, i) => (
               <div key={s.label} className="flex items-center gap-3">
-                <motion.div animate={{ opacity: [0.4, 0.8, 0.4] }} transition={{ duration: 6, repeat: Infinity, delay: i * 1.5 }}
-                  className={`glass-panel px-4 py-2 flex-1 ${s.glow}`}>
-                  <span className="text-xs font-medium text-foreground">{s.label}</span>
-                  <span className="text-xs text-muted-foreground ml-2">{s.sub}</span>
+                <motion.div animate={{ boxShadow: [`0 0 0 hsl(var(--primary)/0)`, `0 0 24px hsl(var(--primary)/${s.intensity * 0.5})`, `0 0 0 hsl(var(--primary)/0)`] }}
+                  transition={{ duration: 5, repeat: Infinity, delay: i * 0.4 }}
+                  className="flex-1 px-4 py-3 rounded-xl backdrop-blur-md flex items-center gap-3"
+                  style={{
+                    background: `hsl(var(--primary) / ${s.intensity * 0.08})`,
+                    border: `1px solid hsl(var(--primary) / ${0.25 + s.intensity * 0.4})`,
+                  }}>
+                  <span
+                    className="w-2.5 h-2.5 rounded-full shrink-0"
+                    style={{ background: "hsl(var(--primary))", opacity: 0.4 + s.intensity * 0.6, boxShadow: `0 0 ${6 + s.intensity * 10}px hsl(var(--primary))` }}
+                  />
+                  <div className="flex-1 min-w-0">
+                    <span className="text-sm font-medium text-foreground">{s.label}</span>
+                    <span className="text-xs text-primary/80 ml-2">{s.sub}</span>
+                  </div>
                 </motion.div>
-                {i < stages.length - 1 && <ArrowRight className="w-3 h-3 text-primary/50 shrink-0" />}
+                {i < stages.length - 1 && <ArrowRight className="w-3.5 h-3.5 text-primary shrink-0" />}
               </div>
             ))}
           </motion.div>
